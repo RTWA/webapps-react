@@ -1,6 +1,6 @@
 {
   "name": "webapps-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React reusable components for WebApps",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/RTWA/webapps-react"
   },
   "author": "Rob Trehy <robert@trehy.co.uk>",
   "license": "MIT",
