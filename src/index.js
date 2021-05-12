@@ -7,25 +7,28 @@ import Input from './Components/Input';
 import Link from './Components/Link';
 import Switch from './Components/Switch';
 
-import { Auth, AuthContext, withAuth, AuthenticatedRoute, UnauthenticatedRoute, WebApps, WebAppsContext, withWebApps } from './Context';
+import { Auth, AuthContext, withAuth, AuthenticatedRoute, UnauthenticatedRoute, WebApps, WebAppsContext, withWebApps } from './Context/index';
 
+const returnLibrary = () => {
+    return {
+        Badge: Badge,
+        Bannner: Banner,
+        ConfirmDeleteButton: ConfirmDeleteButton,
+        ConfirmDeleteModal: ConfirmDeleteModal,
+        Icon: Icon,
+        Input: Input,
+        Link: Link,
+        Switch: Switch,
 
-export {
-    Badge,
-    Banner,
-    ConfirmDeleteButton,
-    ConfirmDeleteModal,
-    Icon,
-    Input,
-    Link,
-    Switch,
+        Auth: Auth,
+        AuthContext: AuthContext,
+        withAuth: withAuth,
+        AuthenticatedRoute: AuthenticatedRoute,
+        UnauthenticatedRoute: UnauthenticatedRoute,
+        WebApps: WebApps,
+        WebAppsContext: WebAppsContext,
+        withWebApps: withWebApps
+    }
+};
 
-    Auth,
-    AuthContext,
-    withAuth,
-    AuthenticatedRoute,
-    UnauthenticatedRoute,
-    WebApps,
-    WebAppsContext,
-    withWebApps,
-}
+export default returnLibrary();

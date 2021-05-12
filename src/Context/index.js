@@ -1,5 +1,5 @@
-import { Auth, AuthContext, withAuth, AuthenticatedRoute, UnauthenticatedRoute } from './Auth';
-import { WebApps, WebAppsContext, withWebApps } from './WebApps';
+import { Auth, AuthContext, withAuth, AuthenticatedRoute, UnauthenticatedRoute } from './Auth/index';
+import { WebApps, WebAppsContext, withWebApps } from './WebApps/index';
 
 export {
     Auth,
