@@ -18,9 +18,12 @@ MODE.map((m) => {
             format: m.format,
             exports: "auto"
         },
-        external: ["react", /@babel\/runtime/],
+        external: ['axios', 'react', 'react-dom', 'react-router-dom', /@babel\/runtime/],
         plugins: [
-            resolve(),
+            resolve({
+                extensions: ['.js'],
+                dedupe: ['axios', 'react', 'react-dom', 'react-router-dom']
+            }),
             babel({
                 exclude: 'node_modules/**',
                 plugins: [

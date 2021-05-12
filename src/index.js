@@ -7,7 +7,7 @@ import Input from './Components/Input';
 import Link from './Components/Link';
 import Switch from './Components/Switch';
 
-import { Auth, AuthContext, withAuth, AuthenticatedRoute, UnauthenticatedRoute, WebApps, WebAppsContext, withWebApps } from './Context/index';
+import { Auth, AuthContext, withAuth, WebApps, WebAppsContext, withWebApps } from './Context/index';
 
 const returnLibrary = () => {
     return {
@@ -23,8 +23,6 @@ const returnLibrary = () => {
         Auth: Auth,
         AuthContext: AuthContext,
         withAuth: withAuth,
-        AuthenticatedRoute: AuthenticatedRoute,
-        UnauthenticatedRoute: UnauthenticatedRoute,
         WebApps: WebApps,
         WebAppsContext: WebAppsContext,
         withWebApps: withWebApps

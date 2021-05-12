@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { createLocalStorageStateHook } from 'use-local-storage-state'
 
 export const WebAppsContext = React.createContext({});
 
+const useModals = createLocalStorageStateHook('modals', {});
+
 export const WebApps = props => {
     const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false });
+    const [modals, setModals] = useModals();
     const [navigation, setNavigation] = useState({});
     const [apps, setApps] = useState({});
     const [plugins, setPlugins] = useState({});
@@ -14,6 +18,12 @@ export const WebApps = props => {
         getApps();
         getPlugins();
     }, []);
+
+    const toggleModal = modal => {
+        setModals({
+            modal: !modals[modal]
+        });
+    }
 
     const loadNavigation = () => {
         axios.get('/api/navigation')
@@ -353,7 +363,7 @@ export const WebApps = props => {
 
     const _plugins = {
         all: plugins.all,
-        active: plugins.activate,
+        active: plugins.active,
         online: plugins.online,
         download: downloadPlugin,
         update: updatePlugin,
@@ -366,8 +376,11 @@ export const WebApps = props => {
             value={{
                 navigation: navigation,
                 UI: UI,
+                modals: modals,
                 loadNavigation: loadNavigation,
                 setUI: setUI,
+                setModals: setModals,
+                toggleModal: toggleModal,
                 apps: _apps,
                 plugins: _plugins,
             }}
