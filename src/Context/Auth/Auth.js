@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import AuthContext from './AuthContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Loader from '../../Components/Loader';
 
 axios.defaults.withCredentials = true;
 
@@ -110,11 +110,7 @@ class Auth extends Component {
                 />
             )
         else
-            return (
-                <div className="text-center text-gray-300 m-6">
-                    <FontAwesomeIcon icon={['fas', 'spinner']} className="fa-spin fa-6x" />
-                </div>
-            )
+            return <Loader />
     }
 }
 

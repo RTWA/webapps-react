@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
+import css from 'rollup-plugin-import-css';
 import pkg from './package.json';
 
 var MODE = [
@@ -20,9 +21,10 @@ MODE.map((m) => {
         },
         external: ['axios', 'react', 'react-dom', 'react-router-dom', /@babel\/runtime/],
         plugins: [
+            css(),
             resolve({
                 extensions: ['.js'],
-                dedupe: ['axios', 'react', 'react-dom', 'react-router-dom']
+                dedupe: ['axios', 'perfect-scrollbar', 'react', 'react-dom', 'react-router-dom']
             }),
             babel({
                 exclude: 'node_modules/**',

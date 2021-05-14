@@ -5,27 +5,52 @@ import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
 import Icon from './Components/Icon';
 import Input from './Components/Input';
 import Link from './Components/Link';
+import Loader from './Components/Loader';
 import Switch from './Components/Switch';
+import Scrollbar from './Components/Scrollbar';
+import Sidebar from './Components/Sidebar';
+import SidebarWrapper from './Components/SidebarWrapper';
+
+import { NavChild, NavDropdown, NavItem, NavTitle } from './Components/NavElements/index';
 
 import { Auth, AuthContext, withAuth, WebApps, WebAppsContext, withWebApps } from './Context/index';
 
+import AppError from './Errors/AppError';
+import NavigationError from './Errors/NavigationError';
+
+import CreateElement from './Helpers/CreateElement';
+
 const returnLibrary = () => {
     return {
-        Badge: Badge,
-        Bannner: Banner,
-        ConfirmDeleteButton: ConfirmDeleteButton,
-        ConfirmDeleteModal: ConfirmDeleteModal,
-        Icon: Icon,
-        Input: Input,
-        Link: Link,
-        Switch: Switch,
+        Badge,
+        Banner,
+        ConfirmDeleteButton,
+        ConfirmDeleteModal,
+        Icon,
+        Input,
+        Link,
+        Loader,
+        Switch,
+        Scrollbar,
+        Sidebar,
+        SidebarWrapper,
 
-        Auth: Auth,
-        AuthContext: AuthContext,
-        withAuth: withAuth,
-        WebApps: WebApps,
-        WebAppsContext: WebAppsContext,
-        withWebApps: withWebApps
+        NavChild,
+        NavDropdown,
+        NavItem,
+        NavTitle,
+
+        Auth,
+        AuthContext,
+        withAuth,
+        WebApps,
+        WebAppsContext,
+        withWebApps,
+
+        AppError,
+        NavigationError,
+
+        CreateElement
     }
 };
 

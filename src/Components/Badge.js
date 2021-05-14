@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
 
 const Badge = props => {
     let {

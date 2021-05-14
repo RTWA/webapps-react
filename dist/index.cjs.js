@@ -1,4 +1,4 @@
-'use strict';var _extends=require('@babel/runtime/helpers/extends'),_defineProperty$2=require('@babel/runtime/helpers/defineProperty'),_objectWithoutProperties$1=require('@babel/runtime/helpers/objectWithoutProperties'),React=require('react'),reactRouterDom=require('react-router-dom'),_slicedToArray$1=require('@babel/runtime/helpers/slicedToArray'),_asyncToGenerator=require('@babel/runtime/helpers/asyncToGenerator'),_classCallCheck$1=require('@babel/runtime/helpers/classCallCheck'),_createClass$1=require('@babel/runtime/helpers/createClass'),_assertThisInitialized=require('@babel/runtime/helpers/assertThisInitialized'),_inherits=require('@babel/runtime/helpers/inherits'),_possibleConstructorReturn=require('@babel/runtime/helpers/possibleConstructorReturn'),_getPrototypeOf=require('@babel/runtime/helpers/getPrototypeOf'),_regeneratorRuntime=require('@babel/runtime/regenerator'),axios=require('axios');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var _extends__default=/*#__PURE__*/_interopDefaultLegacy(_extends);var _defineProperty__default=/*#__PURE__*/_interopDefaultLegacy(_defineProperty$2);var _objectWithoutProperties__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties$1);var React__default=/*#__PURE__*/_interopDefaultLegacy(React);var _slicedToArray__default=/*#__PURE__*/_interopDefaultLegacy(_slicedToArray$1);var _asyncToGenerator__default=/*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);var _classCallCheck__default=/*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);var _createClass__default=/*#__PURE__*/_interopDefaultLegacy(_createClass$1);var _assertThisInitialized__default=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);var _inherits__default=/*#__PURE__*/_interopDefaultLegacy(_inherits);var _possibleConstructorReturn__default=/*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn);var _getPrototypeOf__default=/*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);var _regeneratorRuntime__default=/*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);var axios__default=/*#__PURE__*/_interopDefaultLegacy(axios);function createCommonjsModule(fn) {
+'use strict';var _extends=require('@babel/runtime/helpers/extends'),_defineProperty$2=require('@babel/runtime/helpers/defineProperty'),_objectWithoutProperties$1=require('@babel/runtime/helpers/objectWithoutProperties'),React=require('react'),reactRouterDom=require('react-router-dom'),_slicedToArray$1=require('@babel/runtime/helpers/slicedToArray'),_asyncToGenerator=require('@babel/runtime/helpers/asyncToGenerator'),_classCallCheck$1=require('@babel/runtime/helpers/classCallCheck'),_createClass$1=require('@babel/runtime/helpers/createClass'),_assertThisInitialized=require('@babel/runtime/helpers/assertThisInitialized'),_inherits=require('@babel/runtime/helpers/inherits'),_possibleConstructorReturn=require('@babel/runtime/helpers/possibleConstructorReturn'),_getPrototypeOf=require('@babel/runtime/helpers/getPrototypeOf'),_regeneratorRuntime=require('@babel/runtime/regenerator'),axios=require('axios'),_typeof$1=require('@babel/runtime/helpers/typeof');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var _extends__default=/*#__PURE__*/_interopDefaultLegacy(_extends);var _defineProperty__default=/*#__PURE__*/_interopDefaultLegacy(_defineProperty$2);var _objectWithoutProperties__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties$1);var React__default=/*#__PURE__*/_interopDefaultLegacy(React);var _slicedToArray__default=/*#__PURE__*/_interopDefaultLegacy(_slicedToArray$1);var _asyncToGenerator__default=/*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);var _classCallCheck__default=/*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);var _createClass__default=/*#__PURE__*/_interopDefaultLegacy(_createClass$1);var _assertThisInitialized__default=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);var _inherits__default=/*#__PURE__*/_interopDefaultLegacy(_inherits);var _possibleConstructorReturn__default=/*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn);var _getPrototypeOf__default=/*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);var _regeneratorRuntime__default=/*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);var axios__default=/*#__PURE__*/_interopDefaultLegacy(axios);var _typeof__default=/*#__PURE__*/_interopDefaultLegacy(_typeof$1);function createCommonjsModule(fn) {
   var module = { exports: {} };
 	return fn(module, module.exports), module.exports;
 }/** @license React v16.13.1
@@ -11,7 +11,7 @@
  */
 var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
 Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w$1=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
-function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}var AsyncMode=l;var ConcurrentMode=m;var ContextConsumer=k;var ContextProvider=h;var Element=c;var ForwardRef=n;var Fragment=e;var Lazy=t;var Memo=r;var Portal=d;
+function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}var AsyncMode=l;var ConcurrentMode=m;var ContextConsumer=k;var ContextProvider=h;var Element$1=c;var ForwardRef=n;var Fragment=e;var Lazy=t;var Memo=r;var Portal=d;
 var Profiler=g;var StrictMode=f;var Suspense=p;var isAsyncMode=function(a){return A(a)||z(a)===l};var isConcurrentMode=A;var isContextConsumer=function(a){return z(a)===k};var isContextProvider=function(a){return z(a)===h};var isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};var isForwardRef=function(a){return z(a)===n};var isFragment=function(a){return z(a)===e};var isLazy=function(a){return z(a)===t};
 var isMemo=function(a){return z(a)===r};var isPortal=function(a){return z(a)===d};var isProfiler=function(a){return z(a)===g};var isStrictMode=function(a){return z(a)===f};var isSuspense=function(a){return z(a)===p};
 var isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w$1||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};var typeOf=z;
@@ -21,7 +21,7 @@ var reactIs_production_min = {
 	ConcurrentMode: ConcurrentMode,
 	ContextConsumer: ContextConsumer,
 	ContextProvider: ContextProvider,
-	Element: Element,
+	Element: Element$1,
 	ForwardRef: ForwardRef,
 	Fragment: Fragment,
 	Lazy: Lazy,
@@ -1407,7 +1407,7 @@ function _defineProperty$1(obj, key, value) {
   return obj;
 }
 
-function _objectSpread$2(target) {
+function _objectSpread$6(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
     var ownKeys = Object.keys(source);
@@ -1559,11 +1559,11 @@ var _default = {
   showMissingIcons: true
 };
 
-var _config = _objectSpread$2({}, _default, initial);
+var _config = _objectSpread$6({}, _default, initial);
 
 if (!_config.autoReplaceSvg) _config.observeMutations = false;
 
-var config = _objectSpread$2({}, _config);
+var config = _objectSpread$6({}, _config);
 
 WINDOW.FontAwesomeConfig = config;
 
@@ -1717,7 +1717,7 @@ function makeIconMasking (_ref) {
   });
   var maskRect = {
     tag: 'rect',
-    attributes: _objectSpread$2({}, ALL_SPACE, {
+    attributes: _objectSpread$6({}, ALL_SPACE, {
       fill: 'white'
     })
   };
@@ -1726,22 +1726,22 @@ function makeIconMasking (_ref) {
   } : {};
   var maskInnerGroup = {
     tag: 'g',
-    attributes: _objectSpread$2({}, trans.inner),
-    children: [fillBlack(_objectSpread$2({
+    attributes: _objectSpread$6({}, trans.inner),
+    children: [fillBlack(_objectSpread$6({
       tag: mainPath.tag,
-      attributes: _objectSpread$2({}, mainPath.attributes, trans.path)
+      attributes: _objectSpread$6({}, mainPath.attributes, trans.path)
     }, maskInnerGroupChildrenMixin))]
   };
   var maskOuterGroup = {
     tag: 'g',
-    attributes: _objectSpread$2({}, trans.outer),
+    attributes: _objectSpread$6({}, trans.outer),
     children: [maskInnerGroup]
   };
   var maskId = "mask-".concat(explicitMaskId || nextUniqueId());
   var clipId = "clip-".concat(explicitMaskId || nextUniqueId());
   var maskTag = {
     tag: 'mask',
-    attributes: _objectSpread$2({}, ALL_SPACE, {
+    attributes: _objectSpread$6({}, ALL_SPACE, {
       id: maskId,
       maskUnits: 'userSpaceOnUse',
       maskContentUnits: 'userSpaceOnUse'
@@ -1760,7 +1760,7 @@ function makeIconMasking (_ref) {
   };
   children.push(defs, {
     tag: 'rect',
-    attributes: _objectSpread$2({
+    attributes: _objectSpread$6({
       fill: 'currentColor',
       'clip-path': "url(#".concat(clipId, ")"),
       mask: "url(#".concat(maskId, ")")
@@ -1792,14 +1792,14 @@ function makeIconStandard (_ref) {
     });
     children.push({
       tag: 'g',
-      attributes: _objectSpread$2({}, trans.outer),
+      attributes: _objectSpread$6({}, trans.outer),
       children: [{
         tag: 'g',
-        attributes: _objectSpread$2({}, trans.inner),
+        attributes: _objectSpread$6({}, trans.inner),
         children: [{
           tag: main.icon.tag,
           children: main.icon.children,
-          attributes: _objectSpread$2({}, main.icon.attributes, trans.path)
+          attributes: _objectSpread$6({}, main.icon.attributes, trans.path)
         }]
       }]
     });
@@ -1828,7 +1828,7 @@ function asIcon (_ref) {
       x: width / height / 2,
       y: 0.5
     };
-    attributes['style'] = joinStyles(_objectSpread$2({}, styles, {
+    attributes['style'] = joinStyles(_objectSpread$6({}, styles, {
       'transform-origin': "".concat(offset.x + transform.x / 16, "em ").concat(offset.y + transform.y / 16, "em")
     }));
   }
@@ -1854,7 +1854,7 @@ function asSymbol (_ref) {
     },
     children: [{
       tag: 'symbol',
-      attributes: _objectSpread$2({}, attributes, {
+      attributes: _objectSpread$6({}, attributes, {
         id: id
       }),
       children: children
@@ -1890,7 +1890,7 @@ function makeInlineSvgAbstract(params) {
   }).concat(extra.classes).join(' ');
   var content = {
     children: [],
-    attributes: _objectSpread$2({}, extra.attributes, {
+    attributes: _objectSpread$6({}, extra.attributes, {
       'data-prefix': prefix,
       'data-icon': iconName,
       'class': attrClass,
@@ -1915,7 +1915,7 @@ function makeInlineSvgAbstract(params) {
     children: [title]
   });
 
-  var args = _objectSpread$2({}, content, {
+  var args = _objectSpread$6({}, content, {
     prefix: prefix,
     iconName: iconName,
     main: main,
@@ -1923,7 +1923,7 @@ function makeInlineSvgAbstract(params) {
     maskId: maskId,
     transform: transform,
     symbol: symbol,
-    styles: _objectSpread$2({}, uploadedIconWidthStyle, extra.styles)
+    styles: _objectSpread$6({}, uploadedIconWidthStyle, extra.styles)
   });
 
   var _ref2 = mask.found && main.found ? makeIconMasking(args) : makeIconStandard(args),
@@ -2015,7 +2015,7 @@ function defineIcons(prefix, icons) {
   if (typeof namespace.hooks.addPack === 'function' && !skipHooks) {
     namespace.hooks.addPack(prefix, normalized);
   } else {
-    namespace.styles[prefix] = _objectSpread$2({}, namespace.styles[prefix] || {}, normalized);
+    namespace.styles[prefix] = _objectSpread$6({}, namespace.styles[prefix] || {}, normalized);
   }
   /**
    * Font Awesome 4 used the prefix of `fa` for all icons. With the introduction
@@ -2186,57 +2186,57 @@ var ANIMATION_BASE = {
 };
 ({
   tag: 'path',
-  attributes: _objectSpread$2({}, FILL, {
+  attributes: _objectSpread$6({}, FILL, {
     d: 'M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z'
   })
 });
 
-var OPACITY_ANIMATE = _objectSpread$2({}, ANIMATION_BASE, {
+var OPACITY_ANIMATE = _objectSpread$6({}, ANIMATION_BASE, {
   attributeName: 'opacity'
 });
 
 ({
   tag: 'circle',
-  attributes: _objectSpread$2({}, FILL, {
+  attributes: _objectSpread$6({}, FILL, {
     cx: '256',
     cy: '364',
     r: '28'
   }),
   children: [{
     tag: 'animate',
-    attributes: _objectSpread$2({}, ANIMATION_BASE, {
+    attributes: _objectSpread$6({}, ANIMATION_BASE, {
       attributeName: 'r',
       values: '28;14;28;28;14;28;'
     })
   }, {
     tag: 'animate',
-    attributes: _objectSpread$2({}, OPACITY_ANIMATE, {
+    attributes: _objectSpread$6({}, OPACITY_ANIMATE, {
       values: '1;0;1;1;0;1;'
     })
   }]
 });
 ({
   tag: 'path',
-  attributes: _objectSpread$2({}, FILL, {
+  attributes: _objectSpread$6({}, FILL, {
     opacity: '1',
     d: 'M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z'
   }),
   children: [{
     tag: 'animate',
-    attributes: _objectSpread$2({}, OPACITY_ANIMATE, {
+    attributes: _objectSpread$6({}, OPACITY_ANIMATE, {
       values: '1;0;0;0;0;1;'
     })
   }]
 });
 ({
   tag: 'path',
-  attributes: _objectSpread$2({}, FILL, {
+  attributes: _objectSpread$6({}, FILL, {
     opacity: '0',
     d: 'M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z'
   }),
   children: [{
     tag: 'animate',
-    attributes: _objectSpread$2({}, OPACITY_ANIMATE, {
+    attributes: _objectSpread$6({}, OPACITY_ANIMATE, {
       values: '0;0;1;1;0;0;'
     })
   }]
@@ -2334,7 +2334,7 @@ function () {
 
       var additions = definitions.reduce(this._pullDefinitions, {});
       Object.keys(additions).forEach(function (key) {
-        _this.definitions[key] = _objectSpread$2({}, _this.definitions[key] || {}, additions[key]);
+        _this.definitions[key] = _objectSpread$6({}, _this.definitions[key] || {}, additions[key]);
         defineIcons(key, additions[key]);
         build();
       });
@@ -2413,7 +2413,7 @@ function resolveIcons(next) {
       mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
     }
 
-    return next(iconDefinition, _objectSpread$2({}, params, {
+    return next(iconDefinition, _objectSpread$6({}, params, {
       mask: mask
     }));
   };
@@ -2450,7 +2450,7 @@ var icon = resolveIcons(function (iconDefinition) {
   var prefix = iconDefinition.prefix,
       iconName = iconDefinition.iconName,
       icon = iconDefinition.icon;
-  return apiObject(_objectSpread$2({
+  return apiObject(_objectSpread$6({
     type: 'icon'
   }, iconDefinition), function () {
     ensureCss();
@@ -2476,7 +2476,7 @@ var icon = resolveIcons(function (iconDefinition) {
       },
       prefix: prefix,
       iconName: iconName,
-      transform: _objectSpread$2({}, meaninglessTransform, transform),
+      transform: _objectSpread$6({}, meaninglessTransform, transform),
       symbol: symbol,
       title: title,
       maskId: maskId,
@@ -2517,7 +2517,7 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function ownKeys$2(object, enumerableOnly) {
+function ownKeys$6(object, enumerableOnly) {
   var keys = Object.keys(object);
 
   if (Object.getOwnPropertySymbols) {
@@ -2536,13 +2536,13 @@ function _objectSpread2(target) {
     var source = arguments[i] != null ? arguments[i] : {};
 
     if (i % 2) {
-      ownKeys$2(Object(source), true).forEach(function (key) {
+      ownKeys$6(Object(source), true).forEach(function (key) {
         _defineProperty(target, key, source[key]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
     } else {
-      ownKeys$2(Object(source)).forEach(function (key) {
+      ownKeys$6(Object(source)).forEach(function (key) {
         Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
       });
     }
@@ -12597,9 +12597,9 @@ Input.defaultProps = {
   error: '',
   state: '',
   className: ''
-};function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+};function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var Link = function Link(props) {
   var className = props.className,
@@ -12635,7 +12635,7 @@ var Link = function Link(props) {
   }));
 };
 
-Link.propTypes = _objectSpread$1(_objectSpread$1({
+Link.propTypes = _objectSpread$5(_objectSpread$5({
   innerRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
   active: propTypes.bool,
   href: propTypes.string,
@@ -12644,7 +12644,87 @@ Link.propTypes = _objectSpread$1(_objectSpread$1({
 }, reactRouterDom.NavLink.propTypes), {}, {
   className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object]),
   to: propTypes.oneOfType([propTypes.object, propTypes.string, propTypes.func])
-});var Switch = function Switch(props) {
+});var Loader = function Loader(props) {
+  var className = props.className,
+      attributes = _objectWithoutProperties__default['default'](props, ["className"]);
+
+  var classes = classnames('loader', className);
+  return /*#__PURE__*/React__default['default'].createElement("div", _extends__default['default']({
+    className: classes
+  }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
+    viewBox: "0 0 45 45",
+    xmlns: "http://www.w3.org/2000/svg",
+    stroke: "currentColor"
+  }, /*#__PURE__*/React__default['default'].createElement("g", {
+    fill: "none",
+    fillRule: "evenodd",
+    transform: "translate(1 1)",
+    strokeWidth: 2
+  }, /*#__PURE__*/React__default['default'].createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React__default['default'].createElement("animate", {
+    attributeName: "r",
+    begin: "1.5s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default['default'].createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "1.5s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default['default'].createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "1.5s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React__default['default'].createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React__default['default'].createElement("animate", {
+    attributeName: "r",
+    begin: "3s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default['default'].createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "3s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default['default'].createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "3s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React__default['default'].createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 8
+  }, /*#__PURE__*/React__default['default'].createElement("animate", {
+    attributeName: "r",
+    begin: "0s",
+    dur: "1.5s",
+    values: "6;1;2;3;4;5;6",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })))));
+};var Switch = function Switch(props) {
   var name = props.name,
       error = props.error,
       state = props.state,
@@ -12671,15 +12751,1398 @@ Switch.propTypes = {
 };
 Switch.defaultProps = {
   name: 'check'
-};var AuthContext = /*#__PURE__*/React__default['default'].createContext({});function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default['default'](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default['default'](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default['default'](this, result); }; }
+};/*!
+ * perfect-scrollbar v1.5.0
+ * Copyright 2020 Hyunje Jun, MDBootstrap and Contributors
+ * Licensed under MIT
+ */
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function get(element) {
+  return getComputedStyle(element);
+}
+
+function set(element, obj) {
+  for (var key in obj) {
+    var val = obj[key];
+    if (typeof val === 'number') {
+      val = val + "px";
+    }
+    element.style[key] = val;
+  }
+  return element;
+}
+
+function div(className) {
+  var div = document.createElement('div');
+  div.className = className;
+  return div;
+}
+
+var elMatches =
+  typeof Element !== 'undefined' &&
+  (Element.prototype.matches ||
+    Element.prototype.webkitMatchesSelector ||
+    Element.prototype.mozMatchesSelector ||
+    Element.prototype.msMatchesSelector);
+
+function matches(element, query) {
+  if (!elMatches) {
+    throw new Error('No element matching method supported');
+  }
+
+  return elMatches.call(element, query);
+}
+
+function remove(element) {
+  if (element.remove) {
+    element.remove();
+  } else {
+    if (element.parentNode) {
+      element.parentNode.removeChild(element);
+    }
+  }
+}
+
+function queryChildren(element, selector) {
+  return Array.prototype.filter.call(element.children, function (child) { return matches(child, selector); }
+  );
+}
+
+var cls = {
+  main: 'ps',
+  rtl: 'ps__rtl',
+  element: {
+    thumb: function (x) { return ("ps__thumb-" + x); },
+    rail: function (x) { return ("ps__rail-" + x); },
+    consuming: 'ps__child--consume',
+  },
+  state: {
+    focus: 'ps--focus',
+    clicking: 'ps--clicking',
+    active: function (x) { return ("ps--active-" + x); },
+    scrolling: function (x) { return ("ps--scrolling-" + x); },
+  },
+};
+
+/*
+ * Helper methods
+ */
+var scrollingClassTimeout = { x: null, y: null };
+
+function addScrollingClass(i, x) {
+  var classList = i.element.classList;
+  var className = cls.state.scrolling(x);
+
+  if (classList.contains(className)) {
+    clearTimeout(scrollingClassTimeout[x]);
+  } else {
+    classList.add(className);
+  }
+}
+
+function removeScrollingClass(i, x) {
+  scrollingClassTimeout[x] = setTimeout(
+    function () { return i.isAlive && i.element.classList.remove(cls.state.scrolling(x)); },
+    i.settings.scrollingThreshold
+  );
+}
+
+function setScrollingClassInstantly(i, x) {
+  addScrollingClass(i, x);
+  removeScrollingClass(i, x);
+}
+
+var EventElement = function EventElement(element) {
+  this.element = element;
+  this.handlers = {};
+};
+
+var prototypeAccessors = { isEmpty: { configurable: true } };
+
+EventElement.prototype.bind = function bind (eventName, handler) {
+  if (typeof this.handlers[eventName] === 'undefined') {
+    this.handlers[eventName] = [];
+  }
+  this.handlers[eventName].push(handler);
+  this.element.addEventListener(eventName, handler, false);
+};
+
+EventElement.prototype.unbind = function unbind (eventName, target) {
+    var this$1 = this;
+
+  this.handlers[eventName] = this.handlers[eventName].filter(function (handler) {
+    if (target && handler !== target) {
+      return true;
+    }
+    this$1.element.removeEventListener(eventName, handler, false);
+    return false;
+  });
+};
+
+EventElement.prototype.unbindAll = function unbindAll () {
+  for (var name in this.handlers) {
+    this.unbind(name);
+  }
+};
+
+prototypeAccessors.isEmpty.get = function () {
+    var this$1 = this;
+
+  return Object.keys(this.handlers).every(
+    function (key) { return this$1.handlers[key].length === 0; }
+  );
+};
+
+Object.defineProperties( EventElement.prototype, prototypeAccessors );
+
+var EventManager = function EventManager() {
+  this.eventElements = [];
+};
+
+EventManager.prototype.eventElement = function eventElement (element) {
+  var ee = this.eventElements.filter(function (ee) { return ee.element === element; })[0];
+  if (!ee) {
+    ee = new EventElement(element);
+    this.eventElements.push(ee);
+  }
+  return ee;
+};
+
+EventManager.prototype.bind = function bind (element, eventName, handler) {
+  this.eventElement(element).bind(eventName, handler);
+};
+
+EventManager.prototype.unbind = function unbind (element, eventName, handler) {
+  var ee = this.eventElement(element);
+  ee.unbind(eventName, handler);
+
+  if (ee.isEmpty) {
+    // remove
+    this.eventElements.splice(this.eventElements.indexOf(ee), 1);
+  }
+};
+
+EventManager.prototype.unbindAll = function unbindAll () {
+  this.eventElements.forEach(function (e) { return e.unbindAll(); });
+  this.eventElements = [];
+};
+
+EventManager.prototype.once = function once (element, eventName, handler) {
+  var ee = this.eventElement(element);
+  var onceHandler = function (evt) {
+    ee.unbind(eventName, onceHandler);
+    handler(evt);
+  };
+  ee.bind(eventName, onceHandler);
+};
+
+function createEvent(name) {
+  if (typeof window.CustomEvent === 'function') {
+    return new CustomEvent(name);
+  } else {
+    var evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(name, false, false, undefined);
+    return evt;
+  }
+}
+
+function processScrollDiff(
+  i,
+  axis,
+  diff,
+  useScrollingClass,
+  forceFireReachEvent
+) {
+  if ( useScrollingClass === void 0 ) useScrollingClass = true;
+  if ( forceFireReachEvent === void 0 ) forceFireReachEvent = false;
+
+  var fields;
+  if (axis === 'top') {
+    fields = [
+      'contentHeight',
+      'containerHeight',
+      'scrollTop',
+      'y',
+      'up',
+      'down' ];
+  } else if (axis === 'left') {
+    fields = [
+      'contentWidth',
+      'containerWidth',
+      'scrollLeft',
+      'x',
+      'left',
+      'right' ];
+  } else {
+    throw new Error('A proper axis should be provided');
+  }
+
+  processScrollDiff$1(i, diff, fields, useScrollingClass, forceFireReachEvent);
+}
+
+function processScrollDiff$1(
+  i,
+  diff,
+  ref,
+  useScrollingClass,
+  forceFireReachEvent
+) {
+  var contentHeight = ref[0];
+  var containerHeight = ref[1];
+  var scrollTop = ref[2];
+  var y = ref[3];
+  var up = ref[4];
+  var down = ref[5];
+  if ( useScrollingClass === void 0 ) useScrollingClass = true;
+  if ( forceFireReachEvent === void 0 ) forceFireReachEvent = false;
+
+  var element = i.element;
+
+  // reset reach
+  i.reach[y] = null;
+
+  // 1 for subpixel rounding
+  if (element[scrollTop] < 1) {
+    i.reach[y] = 'start';
+  }
+
+  // 1 for subpixel rounding
+  if (element[scrollTop] > i[contentHeight] - i[containerHeight] - 1) {
+    i.reach[y] = 'end';
+  }
+
+  if (diff) {
+    element.dispatchEvent(createEvent(("ps-scroll-" + y)));
+
+    if (diff < 0) {
+      element.dispatchEvent(createEvent(("ps-scroll-" + up)));
+    } else if (diff > 0) {
+      element.dispatchEvent(createEvent(("ps-scroll-" + down)));
+    }
+
+    if (useScrollingClass) {
+      setScrollingClassInstantly(i, y);
+    }
+  }
+
+  if (i.reach[y] && (diff || forceFireReachEvent)) {
+    element.dispatchEvent(createEvent(("ps-" + y + "-reach-" + (i.reach[y]))));
+  }
+}
+
+function toInt(x) {
+  return parseInt(x, 10) || 0;
+}
+
+function isEditable(el) {
+  return (
+    matches(el, 'input,[contenteditable]') ||
+    matches(el, 'select,[contenteditable]') ||
+    matches(el, 'textarea,[contenteditable]') ||
+    matches(el, 'button,[contenteditable]')
+  );
+}
+
+function outerWidth(element) {
+  var styles = get(element);
+  return (
+    toInt(styles.width) +
+    toInt(styles.paddingLeft) +
+    toInt(styles.paddingRight) +
+    toInt(styles.borderLeftWidth) +
+    toInt(styles.borderRightWidth)
+  );
+}
+
+var env = {
+  isWebKit:
+    typeof document !== 'undefined' &&
+    'WebkitAppearance' in document.documentElement.style,
+  supportsTouch:
+    typeof window !== 'undefined' &&
+    ('ontouchstart' in window ||
+      ('maxTouchPoints' in window.navigator &&
+        window.navigator.maxTouchPoints > 0) ||
+      (window.DocumentTouch && document instanceof window.DocumentTouch)),
+  supportsIePointer:
+    typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
+  isChrome:
+    typeof navigator !== 'undefined' &&
+    /Chrome/i.test(navigator && navigator.userAgent),
+};
+
+function updateGeometry(i) {
+  var element = i.element;
+  var roundedScrollTop = Math.floor(element.scrollTop);
+  var rect = element.getBoundingClientRect();
+
+  i.containerWidth = Math.ceil(rect.width);
+  i.containerHeight = Math.ceil(rect.height);
+  i.contentWidth = element.scrollWidth;
+  i.contentHeight = element.scrollHeight;
+
+  if (!element.contains(i.scrollbarXRail)) {
+    // clean up and append
+    queryChildren(element, cls.element.rail('x')).forEach(function (el) { return remove(el); }
+    );
+    element.appendChild(i.scrollbarXRail);
+  }
+  if (!element.contains(i.scrollbarYRail)) {
+    // clean up and append
+    queryChildren(element, cls.element.rail('y')).forEach(function (el) { return remove(el); }
+    );
+    element.appendChild(i.scrollbarYRail);
+  }
+
+  if (
+    !i.settings.suppressScrollX &&
+    i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth
+  ) {
+    i.scrollbarXActive = true;
+    i.railXWidth = i.containerWidth - i.railXMarginWidth;
+    i.railXRatio = i.containerWidth / i.railXWidth;
+    i.scrollbarXWidth = getThumbSize(
+      i,
+      toInt((i.railXWidth * i.containerWidth) / i.contentWidth)
+    );
+    i.scrollbarXLeft = toInt(
+      ((i.negativeScrollAdjustment + element.scrollLeft) *
+        (i.railXWidth - i.scrollbarXWidth)) /
+        (i.contentWidth - i.containerWidth)
+    );
+  } else {
+    i.scrollbarXActive = false;
+  }
+
+  if (
+    !i.settings.suppressScrollY &&
+    i.containerHeight + i.settings.scrollYMarginOffset < i.contentHeight
+  ) {
+    i.scrollbarYActive = true;
+    i.railYHeight = i.containerHeight - i.railYMarginHeight;
+    i.railYRatio = i.containerHeight / i.railYHeight;
+    i.scrollbarYHeight = getThumbSize(
+      i,
+      toInt((i.railYHeight * i.containerHeight) / i.contentHeight)
+    );
+    i.scrollbarYTop = toInt(
+      (roundedScrollTop * (i.railYHeight - i.scrollbarYHeight)) /
+        (i.contentHeight - i.containerHeight)
+    );
+  } else {
+    i.scrollbarYActive = false;
+  }
+
+  if (i.scrollbarXLeft >= i.railXWidth - i.scrollbarXWidth) {
+    i.scrollbarXLeft = i.railXWidth - i.scrollbarXWidth;
+  }
+  if (i.scrollbarYTop >= i.railYHeight - i.scrollbarYHeight) {
+    i.scrollbarYTop = i.railYHeight - i.scrollbarYHeight;
+  }
+
+  updateCss(element, i);
+
+  if (i.scrollbarXActive) {
+    element.classList.add(cls.state.active('x'));
+  } else {
+    element.classList.remove(cls.state.active('x'));
+    i.scrollbarXWidth = 0;
+    i.scrollbarXLeft = 0;
+    element.scrollLeft = i.isRtl === true ? i.contentWidth : 0;
+  }
+  if (i.scrollbarYActive) {
+    element.classList.add(cls.state.active('y'));
+  } else {
+    element.classList.remove(cls.state.active('y'));
+    i.scrollbarYHeight = 0;
+    i.scrollbarYTop = 0;
+    element.scrollTop = 0;
+  }
+}
+
+function getThumbSize(i, thumbSize) {
+  if (i.settings.minScrollbarLength) {
+    thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength);
+  }
+  if (i.settings.maxScrollbarLength) {
+    thumbSize = Math.min(thumbSize, i.settings.maxScrollbarLength);
+  }
+  return thumbSize;
+}
+
+function updateCss(element, i) {
+  var xRailOffset = { width: i.railXWidth };
+  var roundedScrollTop = Math.floor(element.scrollTop);
+
+  if (i.isRtl) {
+    xRailOffset.left =
+      i.negativeScrollAdjustment +
+      element.scrollLeft +
+      i.containerWidth -
+      i.contentWidth;
+  } else {
+    xRailOffset.left = element.scrollLeft;
+  }
+  if (i.isScrollbarXUsingBottom) {
+    xRailOffset.bottom = i.scrollbarXBottom - roundedScrollTop;
+  } else {
+    xRailOffset.top = i.scrollbarXTop + roundedScrollTop;
+  }
+  set(i.scrollbarXRail, xRailOffset);
+
+  var yRailOffset = { top: roundedScrollTop, height: i.railYHeight };
+  if (i.isScrollbarYUsingRight) {
+    if (i.isRtl) {
+      yRailOffset.right =
+        i.contentWidth -
+        (i.negativeScrollAdjustment + element.scrollLeft) -
+        i.scrollbarYRight -
+        i.scrollbarYOuterWidth -
+        9;
+    } else {
+      yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
+    }
+  } else {
+    if (i.isRtl) {
+      yRailOffset.left =
+        i.negativeScrollAdjustment +
+        element.scrollLeft +
+        i.containerWidth * 2 -
+        i.contentWidth -
+        i.scrollbarYLeft -
+        i.scrollbarYOuterWidth;
+    } else {
+      yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
+    }
+  }
+  set(i.scrollbarYRail, yRailOffset);
+
+  set(i.scrollbarX, {
+    left: i.scrollbarXLeft,
+    width: i.scrollbarXWidth - i.railBorderXWidth,
+  });
+  set(i.scrollbarY, {
+    top: i.scrollbarYTop,
+    height: i.scrollbarYHeight - i.railBorderYWidth,
+  });
+}
+
+function clickRail(i) {
+  i.element;
+
+  i.event.bind(i.scrollbarY, 'mousedown', function (e) { return e.stopPropagation(); });
+  i.event.bind(i.scrollbarYRail, 'mousedown', function (e) {
+    var positionTop =
+      e.pageY -
+      window.pageYOffset -
+      i.scrollbarYRail.getBoundingClientRect().top;
+    var direction = positionTop > i.scrollbarYTop ? 1 : -1;
+
+    i.element.scrollTop += direction * i.containerHeight;
+    updateGeometry(i);
+
+    e.stopPropagation();
+  });
+
+  i.event.bind(i.scrollbarX, 'mousedown', function (e) { return e.stopPropagation(); });
+  i.event.bind(i.scrollbarXRail, 'mousedown', function (e) {
+    var positionLeft =
+      e.pageX -
+      window.pageXOffset -
+      i.scrollbarXRail.getBoundingClientRect().left;
+    var direction = positionLeft > i.scrollbarXLeft ? 1 : -1;
+
+    i.element.scrollLeft += direction * i.containerWidth;
+    updateGeometry(i);
+
+    e.stopPropagation();
+  });
+}
+
+function dragThumb(i) {
+  bindMouseScrollHandler(i, [
+    'containerWidth',
+    'contentWidth',
+    'pageX',
+    'railXWidth',
+    'scrollbarX',
+    'scrollbarXWidth',
+    'scrollLeft',
+    'x',
+    'scrollbarXRail' ]);
+  bindMouseScrollHandler(i, [
+    'containerHeight',
+    'contentHeight',
+    'pageY',
+    'railYHeight',
+    'scrollbarY',
+    'scrollbarYHeight',
+    'scrollTop',
+    'y',
+    'scrollbarYRail' ]);
+}
+
+function bindMouseScrollHandler(
+  i,
+  ref
+) {
+  var containerHeight = ref[0];
+  var contentHeight = ref[1];
+  var pageY = ref[2];
+  var railYHeight = ref[3];
+  var scrollbarY = ref[4];
+  var scrollbarYHeight = ref[5];
+  var scrollTop = ref[6];
+  var y = ref[7];
+  var scrollbarYRail = ref[8];
+
+  var element = i.element;
+
+  var startingScrollTop = null;
+  var startingMousePageY = null;
+  var scrollBy = null;
+
+  function mouseMoveHandler(e) {
+    if (e.touches && e.touches[0]) {
+      e[pageY] = e.touches[0].pageY;
+    }
+    element[scrollTop] =
+      startingScrollTop + scrollBy * (e[pageY] - startingMousePageY);
+    addScrollingClass(i, y);
+    updateGeometry(i);
+
+    e.stopPropagation();
+    e.preventDefault();
+  }
+
+  function mouseUpHandler() {
+    removeScrollingClass(i, y);
+    i[scrollbarYRail].classList.remove(cls.state.clicking);
+    i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+  }
+
+  function bindMoves(e, touchMode) {
+    startingScrollTop = element[scrollTop];
+    if (touchMode && e.touches) {
+      e[pageY] = e.touches[0].pageY;
+    }
+    startingMousePageY = e[pageY];
+    scrollBy =
+      (i[contentHeight] - i[containerHeight]) /
+      (i[railYHeight] - i[scrollbarYHeight]);
+    if (!touchMode) {
+      i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+      i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+      e.preventDefault();
+    } else {
+      i.event.bind(i.ownerDocument, 'touchmove', mouseMoveHandler);
+    }
+
+    i[scrollbarYRail].classList.add(cls.state.clicking);
+
+    e.stopPropagation();
+  }
+
+  i.event.bind(i[scrollbarY], 'mousedown', function (e) {
+    bindMoves(e);
+  });
+  i.event.bind(i[scrollbarY], 'touchstart', function (e) {
+    bindMoves(e, true);
+  });
+}
+
+function keyboard(i) {
+  var element = i.element;
+
+  var elementHovered = function () { return matches(element, ':hover'); };
+  var scrollbarFocused = function () { return matches(i.scrollbarX, ':focus') || matches(i.scrollbarY, ':focus'); };
+
+  function shouldPreventDefault(deltaX, deltaY) {
+    var scrollTop = Math.floor(element.scrollTop);
+    if (deltaX === 0) {
+      if (!i.scrollbarYActive) {
+        return false;
+      }
+      if (
+        (scrollTop === 0 && deltaY > 0) ||
+        (scrollTop >= i.contentHeight - i.containerHeight && deltaY < 0)
+      ) {
+        return !i.settings.wheelPropagation;
+      }
+    }
+
+    var scrollLeft = element.scrollLeft;
+    if (deltaY === 0) {
+      if (!i.scrollbarXActive) {
+        return false;
+      }
+      if (
+        (scrollLeft === 0 && deltaX < 0) ||
+        (scrollLeft >= i.contentWidth - i.containerWidth && deltaX > 0)
+      ) {
+        return !i.settings.wheelPropagation;
+      }
+    }
+    return true;
+  }
+
+  i.event.bind(i.ownerDocument, 'keydown', function (e) {
+    if (
+      (e.isDefaultPrevented && e.isDefaultPrevented()) ||
+      e.defaultPrevented
+    ) {
+      return;
+    }
+
+    if (!elementHovered() && !scrollbarFocused()) {
+      return;
+    }
+
+    var activeElement = document.activeElement
+      ? document.activeElement
+      : i.ownerDocument.activeElement;
+    if (activeElement) {
+      if (activeElement.tagName === 'IFRAME') {
+        activeElement = activeElement.contentDocument.activeElement;
+      } else {
+        // go deeper if element is a webcomponent
+        while (activeElement.shadowRoot) {
+          activeElement = activeElement.shadowRoot.activeElement;
+        }
+      }
+      if (isEditable(activeElement)) {
+        return;
+      }
+    }
+
+    var deltaX = 0;
+    var deltaY = 0;
+
+    switch (e.which) {
+      case 37: // left
+        if (e.metaKey) {
+          deltaX = -i.contentWidth;
+        } else if (e.altKey) {
+          deltaX = -i.containerWidth;
+        } else {
+          deltaX = -30;
+        }
+        break;
+      case 38: // up
+        if (e.metaKey) {
+          deltaY = i.contentHeight;
+        } else if (e.altKey) {
+          deltaY = i.containerHeight;
+        } else {
+          deltaY = 30;
+        }
+        break;
+      case 39: // right
+        if (e.metaKey) {
+          deltaX = i.contentWidth;
+        } else if (e.altKey) {
+          deltaX = i.containerWidth;
+        } else {
+          deltaX = 30;
+        }
+        break;
+      case 40: // down
+        if (e.metaKey) {
+          deltaY = -i.contentHeight;
+        } else if (e.altKey) {
+          deltaY = -i.containerHeight;
+        } else {
+          deltaY = -30;
+        }
+        break;
+      case 32: // space bar
+        if (e.shiftKey) {
+          deltaY = i.containerHeight;
+        } else {
+          deltaY = -i.containerHeight;
+        }
+        break;
+      case 33: // page up
+        deltaY = i.containerHeight;
+        break;
+      case 34: // page down
+        deltaY = -i.containerHeight;
+        break;
+      case 36: // home
+        deltaY = i.contentHeight;
+        break;
+      case 35: // end
+        deltaY = -i.contentHeight;
+        break;
+      default:
+        return;
+    }
+
+    if (i.settings.suppressScrollX && deltaX !== 0) {
+      return;
+    }
+    if (i.settings.suppressScrollY && deltaY !== 0) {
+      return;
+    }
+
+    element.scrollTop -= deltaY;
+    element.scrollLeft += deltaX;
+    updateGeometry(i);
+
+    if (shouldPreventDefault(deltaX, deltaY)) {
+      e.preventDefault();
+    }
+  });
+}
+
+function wheel(i) {
+  var element = i.element;
+
+  function shouldPreventDefault(deltaX, deltaY) {
+    var roundedScrollTop = Math.floor(element.scrollTop);
+    var isTop = element.scrollTop === 0;
+    var isBottom =
+      roundedScrollTop + element.offsetHeight === element.scrollHeight;
+    var isLeft = element.scrollLeft === 0;
+    var isRight =
+      element.scrollLeft + element.offsetWidth === element.scrollWidth;
+
+    var hitsBound;
+
+    // pick axis with primary direction
+    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      hitsBound = isTop || isBottom;
+    } else {
+      hitsBound = isLeft || isRight;
+    }
+
+    return hitsBound ? !i.settings.wheelPropagation : true;
+  }
+
+  function getDeltaFromEvent(e) {
+    var deltaX = e.deltaX;
+    var deltaY = -1 * e.deltaY;
+
+    if (typeof deltaX === 'undefined' || typeof deltaY === 'undefined') {
+      // OS X Safari
+      deltaX = (-1 * e.wheelDeltaX) / 6;
+      deltaY = e.wheelDeltaY / 6;
+    }
+
+    if (e.deltaMode && e.deltaMode === 1) {
+      // Firefox in deltaMode 1: Line scrolling
+      deltaX *= 10;
+      deltaY *= 10;
+    }
+
+    if (deltaX !== deltaX && deltaY !== deltaY /* NaN checks */) {
+      // IE in some mouse drivers
+      deltaX = 0;
+      deltaY = e.wheelDelta;
+    }
+
+    if (e.shiftKey) {
+      // reverse axis with shift key
+      return [-deltaY, -deltaX];
+    }
+    return [deltaX, deltaY];
+  }
+
+  function shouldBeConsumedByChild(target, deltaX, deltaY) {
+    // FIXME: this is a workaround for <select> issue in FF and IE #571
+    if (!env.isWebKit && element.querySelector('select:focus')) {
+      return true;
+    }
+
+    if (!element.contains(target)) {
+      return false;
+    }
+
+    var cursor = target;
+
+    while (cursor && cursor !== element) {
+      if (cursor.classList.contains(cls.element.consuming)) {
+        return true;
+      }
+
+      var style = get(cursor);
+
+      // if deltaY && vertical scrollable
+      if (deltaY && style.overflowY.match(/(scroll|auto)/)) {
+        var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+        if (maxScrollTop > 0) {
+          if (
+            (cursor.scrollTop > 0 && deltaY < 0) ||
+            (cursor.scrollTop < maxScrollTop && deltaY > 0)
+          ) {
+            return true;
+          }
+        }
+      }
+      // if deltaX && horizontal scrollable
+      if (deltaX && style.overflowX.match(/(scroll|auto)/)) {
+        var maxScrollLeft = cursor.scrollWidth - cursor.clientWidth;
+        if (maxScrollLeft > 0) {
+          if (
+            (cursor.scrollLeft > 0 && deltaX < 0) ||
+            (cursor.scrollLeft < maxScrollLeft && deltaX > 0)
+          ) {
+            return true;
+          }
+        }
+      }
+
+      cursor = cursor.parentNode;
+    }
+
+    return false;
+  }
+
+  function mousewheelHandler(e) {
+    var ref = getDeltaFromEvent(e);
+    var deltaX = ref[0];
+    var deltaY = ref[1];
+
+    if (shouldBeConsumedByChild(e.target, deltaX, deltaY)) {
+      return;
+    }
+
+    var shouldPrevent = false;
+    if (!i.settings.useBothWheelAxes) {
+      // deltaX will only be used for horizontal scrolling and deltaY will
+      // only be used for vertical scrolling - this is the default
+      element.scrollTop -= deltaY * i.settings.wheelSpeed;
+      element.scrollLeft += deltaX * i.settings.wheelSpeed;
+    } else if (i.scrollbarYActive && !i.scrollbarXActive) {
+      // only vertical scrollbar is active and useBothWheelAxes option is
+      // active, so let's scroll vertical bar using both mouse wheel axes
+      if (deltaY) {
+        element.scrollTop -= deltaY * i.settings.wheelSpeed;
+      } else {
+        element.scrollTop += deltaX * i.settings.wheelSpeed;
+      }
+      shouldPrevent = true;
+    } else if (i.scrollbarXActive && !i.scrollbarYActive) {
+      // useBothWheelAxes and only horizontal bar is active, so use both
+      // wheel axes for horizontal bar
+      if (deltaX) {
+        element.scrollLeft += deltaX * i.settings.wheelSpeed;
+      } else {
+        element.scrollLeft -= deltaY * i.settings.wheelSpeed;
+      }
+      shouldPrevent = true;
+    }
+
+    updateGeometry(i);
+
+    shouldPrevent = shouldPrevent || shouldPreventDefault(deltaX, deltaY);
+    if (shouldPrevent && !e.ctrlKey) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  }
+
+  if (typeof window.onwheel !== 'undefined') {
+    i.event.bind(element, 'wheel', mousewheelHandler);
+  } else if (typeof window.onmousewheel !== 'undefined') {
+    i.event.bind(element, 'mousewheel', mousewheelHandler);
+  }
+}
+
+function touch(i) {
+  if (!env.supportsTouch && !env.supportsIePointer) {
+    return;
+  }
+
+  var element = i.element;
+
+  function shouldPrevent(deltaX, deltaY) {
+    var scrollTop = Math.floor(element.scrollTop);
+    var scrollLeft = element.scrollLeft;
+    var magnitudeX = Math.abs(deltaX);
+    var magnitudeY = Math.abs(deltaY);
+
+    if (magnitudeY > magnitudeX) {
+      // user is perhaps trying to swipe up/down the page
+
+      if (
+        (deltaY < 0 && scrollTop === i.contentHeight - i.containerHeight) ||
+        (deltaY > 0 && scrollTop === 0)
+      ) {
+        // set prevent for mobile Chrome refresh
+        return window.scrollY === 0 && deltaY > 0 && env.isChrome;
+      }
+    } else if (magnitudeX > magnitudeY) {
+      // user is perhaps trying to swipe left/right across the page
+
+      if (
+        (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
+        (deltaX > 0 && scrollLeft === 0)
+      ) {
+        return true;
+      }
+    }
+
+    return true;
+  }
+
+  function applyTouchMove(differenceX, differenceY) {
+    element.scrollTop -= differenceY;
+    element.scrollLeft -= differenceX;
+
+    updateGeometry(i);
+  }
+
+  var startOffset = {};
+  var startTime = 0;
+  var speed = {};
+  var easingLoop = null;
+
+  function getTouch(e) {
+    if (e.targetTouches) {
+      return e.targetTouches[0];
+    } else {
+      // Maybe IE pointer
+      return e;
+    }
+  }
+
+  function shouldHandle(e) {
+    if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
+      return false;
+    }
+    if (e.targetTouches && e.targetTouches.length === 1) {
+      return true;
+    }
+    if (
+      e.pointerType &&
+      e.pointerType !== 'mouse' &&
+      e.pointerType !== e.MSPOINTER_TYPE_MOUSE
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  function touchStart(e) {
+    if (!shouldHandle(e)) {
+      return;
+    }
+
+    var touch = getTouch(e);
+
+    startOffset.pageX = touch.pageX;
+    startOffset.pageY = touch.pageY;
+
+    startTime = new Date().getTime();
+
+    if (easingLoop !== null) {
+      clearInterval(easingLoop);
+    }
+  }
+
+  function shouldBeConsumedByChild(target, deltaX, deltaY) {
+    if (!element.contains(target)) {
+      return false;
+    }
+
+    var cursor = target;
+
+    while (cursor && cursor !== element) {
+      if (cursor.classList.contains(cls.element.consuming)) {
+        return true;
+      }
+
+      var style = get(cursor);
+
+      // if deltaY && vertical scrollable
+      if (deltaY && style.overflowY.match(/(scroll|auto)/)) {
+        var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+        if (maxScrollTop > 0) {
+          if (
+            (cursor.scrollTop > 0 && deltaY < 0) ||
+            (cursor.scrollTop < maxScrollTop && deltaY > 0)
+          ) {
+            return true;
+          }
+        }
+      }
+      // if deltaX && horizontal scrollable
+      if (deltaX && style.overflowX.match(/(scroll|auto)/)) {
+        var maxScrollLeft = cursor.scrollWidth - cursor.clientWidth;
+        if (maxScrollLeft > 0) {
+          if (
+            (cursor.scrollLeft > 0 && deltaX < 0) ||
+            (cursor.scrollLeft < maxScrollLeft && deltaX > 0)
+          ) {
+            return true;
+          }
+        }
+      }
+
+      cursor = cursor.parentNode;
+    }
+
+    return false;
+  }
+
+  function touchMove(e) {
+    if (shouldHandle(e)) {
+      var touch = getTouch(e);
+
+      var currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
+
+      var differenceX = currentOffset.pageX - startOffset.pageX;
+      var differenceY = currentOffset.pageY - startOffset.pageY;
+
+      if (shouldBeConsumedByChild(e.target, differenceX, differenceY)) {
+        return;
+      }
+
+      applyTouchMove(differenceX, differenceY);
+      startOffset = currentOffset;
+
+      var currentTime = new Date().getTime();
+
+      var timeGap = currentTime - startTime;
+      if (timeGap > 0) {
+        speed.x = differenceX / timeGap;
+        speed.y = differenceY / timeGap;
+        startTime = currentTime;
+      }
+
+      if (shouldPrevent(differenceX, differenceY)) {
+        e.preventDefault();
+      }
+    }
+  }
+  function touchEnd() {
+    if (i.settings.swipeEasing) {
+      clearInterval(easingLoop);
+      easingLoop = setInterval(function() {
+        if (i.isInitialized) {
+          clearInterval(easingLoop);
+          return;
+        }
+
+        if (!speed.x && !speed.y) {
+          clearInterval(easingLoop);
+          return;
+        }
+
+        if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
+          clearInterval(easingLoop);
+          return;
+        }
+
+        applyTouchMove(speed.x * 30, speed.y * 30);
+
+        speed.x *= 0.8;
+        speed.y *= 0.8;
+      }, 10);
+    }
+  }
+
+  if (env.supportsTouch) {
+    i.event.bind(element, 'touchstart', touchStart);
+    i.event.bind(element, 'touchmove', touchMove);
+    i.event.bind(element, 'touchend', touchEnd);
+  } else if (env.supportsIePointer) {
+    if (window.PointerEvent) {
+      i.event.bind(element, 'pointerdown', touchStart);
+      i.event.bind(element, 'pointermove', touchMove);
+      i.event.bind(element, 'pointerup', touchEnd);
+    } else if (window.MSPointerEvent) {
+      i.event.bind(element, 'MSPointerDown', touchStart);
+      i.event.bind(element, 'MSPointerMove', touchMove);
+      i.event.bind(element, 'MSPointerUp', touchEnd);
+    }
+  }
+}
+
+var defaultSettings = function () { return ({
+  handlers: ['click-rail', 'drag-thumb', 'keyboard', 'wheel', 'touch'],
+  maxScrollbarLength: null,
+  minScrollbarLength: null,
+  scrollingThreshold: 1000,
+  scrollXMarginOffset: 0,
+  scrollYMarginOffset: 0,
+  suppressScrollX: false,
+  suppressScrollY: false,
+  swipeEasing: true,
+  useBothWheelAxes: false,
+  wheelPropagation: true,
+  wheelSpeed: 1,
+}); };
+
+var handlers = {
+  'click-rail': clickRail,
+  'drag-thumb': dragThumb,
+  keyboard: keyboard,
+  wheel: wheel,
+  touch: touch,
+};
+
+var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
+  var this$1 = this;
+  if ( userSettings === void 0 ) userSettings = {};
+
+  if (typeof element === 'string') {
+    element = document.querySelector(element);
+  }
+
+  if (!element || !element.nodeName) {
+    throw new Error('no element is specified to initialize PerfectScrollbar');
+  }
+
+  this.element = element;
+
+  element.classList.add(cls.main);
+
+  this.settings = defaultSettings();
+  for (var key in userSettings) {
+    this.settings[key] = userSettings[key];
+  }
+
+  this.containerWidth = null;
+  this.containerHeight = null;
+  this.contentWidth = null;
+  this.contentHeight = null;
+
+  var focus = function () { return element.classList.add(cls.state.focus); };
+  var blur = function () { return element.classList.remove(cls.state.focus); };
+
+  this.isRtl = get(element).direction === 'rtl';
+  if (this.isRtl === true) {
+    element.classList.add(cls.rtl);
+  }
+  this.isNegativeScroll = (function () {
+    var originalScrollLeft = element.scrollLeft;
+    var result = null;
+    element.scrollLeft = -1;
+    result = element.scrollLeft < 0;
+    element.scrollLeft = originalScrollLeft;
+    return result;
+  })();
+  this.negativeScrollAdjustment = this.isNegativeScroll
+    ? element.scrollWidth - element.clientWidth
+    : 0;
+  this.event = new EventManager();
+  this.ownerDocument = element.ownerDocument || document;
+
+  this.scrollbarXRail = div(cls.element.rail('x'));
+  element.appendChild(this.scrollbarXRail);
+  this.scrollbarX = div(cls.element.thumb('x'));
+  this.scrollbarXRail.appendChild(this.scrollbarX);
+  this.scrollbarX.setAttribute('tabindex', 0);
+  this.event.bind(this.scrollbarX, 'focus', focus);
+  this.event.bind(this.scrollbarX, 'blur', blur);
+  this.scrollbarXActive = null;
+  this.scrollbarXWidth = null;
+  this.scrollbarXLeft = null;
+  var railXStyle = get(this.scrollbarXRail);
+  this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
+  if (isNaN(this.scrollbarXBottom)) {
+    this.isScrollbarXUsingBottom = false;
+    this.scrollbarXTop = toInt(railXStyle.top);
+  } else {
+    this.isScrollbarXUsingBottom = true;
+  }
+  this.railBorderXWidth =
+    toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
+  // Set rail to display:block to calculate margins
+  set(this.scrollbarXRail, { display: 'block' });
+  this.railXMarginWidth =
+    toInt(railXStyle.marginLeft) + toInt(railXStyle.marginRight);
+  set(this.scrollbarXRail, { display: '' });
+  this.railXWidth = null;
+  this.railXRatio = null;
+
+  this.scrollbarYRail = div(cls.element.rail('y'));
+  element.appendChild(this.scrollbarYRail);
+  this.scrollbarY = div(cls.element.thumb('y'));
+  this.scrollbarYRail.appendChild(this.scrollbarY);
+  this.scrollbarY.setAttribute('tabindex', 0);
+  this.event.bind(this.scrollbarY, 'focus', focus);
+  this.event.bind(this.scrollbarY, 'blur', blur);
+  this.scrollbarYActive = null;
+  this.scrollbarYHeight = null;
+  this.scrollbarYTop = null;
+  var railYStyle = get(this.scrollbarYRail);
+  this.scrollbarYRight = parseInt(railYStyle.right, 10);
+  if (isNaN(this.scrollbarYRight)) {
+    this.isScrollbarYUsingRight = false;
+    this.scrollbarYLeft = toInt(railYStyle.left);
+  } else {
+    this.isScrollbarYUsingRight = true;
+  }
+  this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;
+  this.railBorderYWidth =
+    toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
+  set(this.scrollbarYRail, { display: 'block' });
+  this.railYMarginHeight =
+    toInt(railYStyle.marginTop) + toInt(railYStyle.marginBottom);
+  set(this.scrollbarYRail, { display: '' });
+  this.railYHeight = null;
+  this.railYRatio = null;
+
+  this.reach = {
+    x:
+      element.scrollLeft <= 0
+        ? 'start'
+        : element.scrollLeft >= this.contentWidth - this.containerWidth
+        ? 'end'
+        : null,
+    y:
+      element.scrollTop <= 0
+        ? 'start'
+        : element.scrollTop >= this.contentHeight - this.containerHeight
+        ? 'end'
+        : null,
+  };
+
+  this.isAlive = true;
+
+  this.settings.handlers.forEach(function (handlerName) { return handlers[handlerName](this$1); });
+
+  this.lastScrollTop = Math.floor(element.scrollTop); // for onScroll only
+  this.lastScrollLeft = element.scrollLeft; // for onScroll only
+  this.event.bind(this.element, 'scroll', function (e) { return this$1.onScroll(e); });
+  updateGeometry(this);
+};
+
+PerfectScrollbar.prototype.update = function update () {
+  if (!this.isAlive) {
+    return;
+  }
+
+  // Recalcuate negative scrollLeft adjustment
+  this.negativeScrollAdjustment = this.isNegativeScroll
+    ? this.element.scrollWidth - this.element.clientWidth
+    : 0;
+
+  // Recalculate rail margins
+  set(this.scrollbarXRail, { display: 'block' });
+  set(this.scrollbarYRail, { display: 'block' });
+  this.railXMarginWidth =
+    toInt(get(this.scrollbarXRail).marginLeft) +
+    toInt(get(this.scrollbarXRail).marginRight);
+  this.railYMarginHeight =
+    toInt(get(this.scrollbarYRail).marginTop) +
+    toInt(get(this.scrollbarYRail).marginBottom);
+
+  // Hide scrollbars not to affect scrollWidth and scrollHeight
+  set(this.scrollbarXRail, { display: 'none' });
+  set(this.scrollbarYRail, { display: 'none' });
+
+  updateGeometry(this);
+
+  processScrollDiff(this, 'top', 0, false, true);
+  processScrollDiff(this, 'left', 0, false, true);
+
+  set(this.scrollbarXRail, { display: '' });
+  set(this.scrollbarYRail, { display: '' });
+};
+
+PerfectScrollbar.prototype.onScroll = function onScroll (e) {
+  if (!this.isAlive) {
+    return;
+  }
+
+  updateGeometry(this);
+  processScrollDiff(this, 'top', this.element.scrollTop - this.lastScrollTop);
+  processScrollDiff(
+    this,
+    'left',
+    this.element.scrollLeft - this.lastScrollLeft
+  );
+
+  this.lastScrollTop = Math.floor(this.element.scrollTop);
+  this.lastScrollLeft = this.element.scrollLeft;
+};
+
+PerfectScrollbar.prototype.destroy = function destroy () {
+  if (!this.isAlive) {
+    return;
+  }
+
+  this.event.unbindAll();
+  remove(this.scrollbarX);
+  remove(this.scrollbarY);
+  remove(this.scrollbarXRail);
+  remove(this.scrollbarYRail);
+  this.removePsClasses();
+
+  // unset elements
+  this.element = null;
+  this.scrollbarX = null;
+  this.scrollbarY = null;
+  this.scrollbarXRail = null;
+  this.scrollbarYRail = null;
+
+  this.isAlive = false;
+};
+
+PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
+  this.element.className = this.element.className
+    .split(' ')
+    .filter(function (name) { return !name.match(/^ps([-_].+|)$/); })
+    .join(' ');
+};var Scrollbar = function Scrollbar(props) {
+  var Tag = props.tag,
+      className = props.className,
+      settings = props.settings,
+      attributes = _objectWithoutProperties__default['default'](props, ["tag", "className", "settings"]);
+
+  var _useState = React.useState(),
+      _useState2 = _slicedToArray__default['default'](_useState, 2),
+      instance = _useState2[0],
+      setInstance = _useState2[1];
+
+  var ref = /*#__PURE__*/React.createRef();
+  React.useEffect(function () {
+    init();
+  }, []);
+
+  var init = function init() {
+    if (!instance) {
+      createPerfectScrollbar();
+    }
+  };
+
+  var createPerfectScrollbar = function createPerfectScrollbar() {
+    setInstance(new PerfectScrollbar(ref.current, settings));
+  };
+
+
+  return /*#__PURE__*/React__default['default'].createElement(Tag, _extends__default['default']({
+    className: classnames(className),
+    style: {
+      position: 'relative'
+    }
+  }, attributes, {
+    ref: ref
+  }));
+};
+
+Scrollbar.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object]),
+  settings: propTypes.object,
+  switcher: propTypes.bool,
+  innerRef: propTypes.oneOfType([propTypes.object, propTypes.func])
+};
+Scrollbar.defaultProps = {
+  tag: 'div'
+};var AuthContext = /*#__PURE__*/React__default['default'].createContext({});function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default['default'](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default['default'](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default['default'](this, result); }; }
+
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 axios__default['default'].defaults.withCredentials = true;
 
 var Auth = /*#__PURE__*/function (_Component) {
   _inherits__default['default'](Auth, _Component);
 
-  var _super = _createSuper(Auth);
+  var _super = _createSuper$2(Auth);
 
   function Auth(props) {
     var _this;
@@ -12912,12 +14375,7 @@ var Auth = /*#__PURE__*/function (_Component) {
           preferences: this.state.preferences,
           setPreference: this.setPreference
         }
-      });else return /*#__PURE__*/React__default['default'].createElement("div", {
-        className: "text-center text-gray-300 m-6"
-      }, /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
-        icon: ['fas', 'spinner'],
-        className: "fa-spin fa-6x"
-      }));
+      });else return /*#__PURE__*/React__default['default'].createElement(Loader, null);
     }
   }]);
 
@@ -13103,9 +14561,9 @@ function parseJSON(value) {
         }, [setValue]);
         return [value, setValueAll, isPersistent];
     };
-}function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+}function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React__default['default'].createContext({});
 var useModals = createLocalStorageStateHook('modals', {});
 var WebApps = function WebApps(props) {
@@ -13155,8 +14613,8 @@ var WebApps = function WebApps(props) {
       navigation.routes = json.data.routes;
       navigation.settings = json.data.settingsNav;
       UI.envWriteable = json.data.envPermissions;
-      setNavigation(_objectSpread({}, navigation));
-      setUI(_objectSpread({}, UI));
+      setNavigation(_objectSpread$4({}, navigation));
+      setUI(_objectSpread$4({}, UI));
     })["catch"](function (error) {
       var nav = [];
       nav['error'] = true;
@@ -13168,14 +14626,14 @@ var WebApps = function WebApps(props) {
   var getApps = function getApps() {
     axios__default['default'].get('/api/apps').then(function (json) {
       apps.local = json.data.apps;
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TOOD: Handle errors
       console.error(error);
     });
     axios__default['default'].get('/api/online/apps/list').then(function (json) {
       apps.online = json.data.apps;
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TODO: handle errors
       console.log(error);
@@ -13185,21 +14643,21 @@ var WebApps = function WebApps(props) {
   var getPlugins = function getPlugins() {
     axios__default['default'].get('/api/plugins').then(function (json) {
       plugins.all = json.data.plugins;
-      setPlugins(_objectSpread({}, plugins));
+      setPlugins(_objectSpread$4({}, plugins));
     })["catch"](function (error) {
       // TOOD: Handle errors
       console.error(error);
     });
     axios__default['default'].get('/api/plugins/active').then(function (json) {
       plugins.active = json.data.plugins;
-      setPlugins(_objectSpread({}, plugins));
+      setPlugins(_objectSpread$4({}, plugins));
     })["catch"](function (error) {
       // TOOD: Handle errors
       console.error(error);
     });
     axios__default['default'].get('/api/online/plugins/list').then(function (json) {
       plugins.online = json.data.plugins;
-      setPlugins(_objectSpread({}, plugins));
+      setPlugins(_objectSpread$4({}, plugins));
     })["catch"](function (error) {
       // TODO: handle errors
       console.log(error);
@@ -13215,7 +14673,7 @@ var WebApps = function WebApps(props) {
       alert(json.data.message);
       apps.local = json.data.apps;
       apps.online = json.data.online;
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TODO: handle errors
       console.log(error);
@@ -13231,7 +14689,7 @@ var WebApps = function WebApps(props) {
       alert(json.data.message);
       apps.local = json.data.apps;
       apps.online = json.data.online;
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TODO: handle errors
       console.log(error);
@@ -13258,7 +14716,7 @@ var WebApps = function WebApps(props) {
           apps.online[key].active = true;
         }
       });
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TODO: handle errors
       console.error(error);
@@ -13285,7 +14743,7 @@ var WebApps = function WebApps(props) {
           apps.online[key].active = false;
         }
       });
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TODO: handle errors
       console.error(error);
@@ -13312,7 +14770,7 @@ var WebApps = function WebApps(props) {
           apps.online[key].installed = true;
         }
       });
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TODO: handle errors
       console.error(error);
@@ -13339,7 +14797,7 @@ var WebApps = function WebApps(props) {
           apps.online[key] = json.data.app;
         }
       });
-      setApps(_objectSpread({}, apps));
+      setApps(_objectSpread$4({}, apps));
     })["catch"](function (error) {
       // TODO: handle errors
       console.error(error);
@@ -13355,7 +14813,7 @@ var WebApps = function WebApps(props) {
       alert(json.data.message);
       plugins.all = json.data.plugins;
       plugins.online = json.data.online;
-      setPlugins(_objectSpread({}, plugins));
+      setPlugins(_objectSpread$4({}, plugins));
     })["catch"](function (error) {
       // TODO: handle errors
       console.log(error);
@@ -13371,7 +14829,7 @@ var WebApps = function WebApps(props) {
       alert(json.data.message);
       plugins.all = json.data.plugins;
       plugins.online = json.data.online;
-      setPlugins(_objectSpread({}, plugins));
+      setPlugins(_objectSpread$4({}, plugins));
     })["catch"](function (error) {
       // TODO: handle errors
       console.log(error);
@@ -13395,7 +14853,7 @@ var WebApps = function WebApps(props) {
           plugins.online[key].state = json.data.plugin.state;
         }
       });
-      setPlugins(_objectSpread({}, plugins));
+      setPlugins(_objectSpread$4({}, plugins));
     })["catch"](function (error) {
       // TODO: handle errors
       console.error(error);
@@ -13422,7 +14880,7 @@ var WebApps = function WebApps(props) {
           plugins.online[key] = json.data.plugin;
         }
       });
-      setPlugins(_objectSpread({}, plugins));
+      setPlugins(_objectSpread$4({}, plugins));
     })["catch"](function (error) {
       // TODO: handle errors
       console.error(error);
@@ -13473,22 +14931,508 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var returnLibrary = function returnLibrary() {
+};function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var DropdownContext = /*#__PURE__*/React__default['default'].createContext({});
+
+var NavDropdown = function NavDropdown(_ref) {
+  var UI = _ref.UI,
+      setUI = _ref.setUI,
+      props = _objectWithoutProperties__default['default'](_ref, ["UI", "setUI"]);
+
+  var children = props.children,
+      className = props.className,
+      innerRef = props.innerRef,
+      color = props.color,
+      icon = props.icon,
+      name = props.name,
+      badge = props.badge,
+      show = props.show,
+      route = props.route;
+      _objectWithoutProperties__default['default'](props, ["children", "className", "innerRef", "color", "icon", "name", "badge", "show", "route"]);
+
+  var ref = /*#__PURE__*/React.createRef();
+  innerRef && innerRef(ref);
+  var _UI$navigation = UI.navigation,
+      dropdownMode = _UI$navigation.dropdownMode,
+      openDropdown = _UI$navigation.openDropdown;
+
+  var _useState = React.useState(show),
+      _useState2 = _slicedToArray__default['default'](_useState, 2),
+      isOpen = _useState2[0],
+      setIsOpen = _useState2[1];
+
+  React.useEffect(function () {
+    setIsOpen(show);
+  }, [show]);
+  React.useEffect(function () {
+    !dropdownMode && (!openDropdown || !ref.current.contains(openDropdown)) && setIsOpen(false);
+  }, [openDropdown]);
+
+  var isJSON = function isJSON(string) {
+    try {
+      JSON.parse(string);
+    } catch (_unused) {
+      return false;
+    }
+
+    return true;
+  };
+
+  var toggle = function toggle(e) {
+    e.preventDefault();
+
+    if (!dropdownMode && UI.navigation !== undefined) {
+      UI.navigation.openDropdown = isOpen ? ref.current.parentNode.closest('.nav-dropdown') : ref.current;
+      setUI(_objectSpread$3({}, UI));
+    }
+
+    setIsOpen(!isOpen);
+  };
+
+  var path = '';
+
+  try {
+    path = reactRouterDom.useLocation().pathname;
+  } catch (e) {
+    console.warn(e);
+  }
+
+  React.useEffect(function () {
+    if (dropdownMode === 'close') setIsOpen(false);else if (dropdownMode === 'closeInactive' && route) setIsOpen(path.includes(route));else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route) setIsOpen(path.includes(route));
+  }, [path]);
+  var linkClasses = classnames('flex', 'items-center', 'p-2', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600' : null);
+  var dropIcon = isOpen ? ['fas', 'angle-down'] : ['fas', 'angle-right'];
+  return /*#__PURE__*/React__default['default'].createElement("li", {
+    className: classnames(className, 'mb-2'),
+    ref: ref
+  }, /*#__PURE__*/React__default['default'].createElement("a", {
+    href: "#",
+    className: linkClasses,
+    tabIndex: "0",
+    onClick: toggle,
+    "aria-label": "menu dropdown"
+  }, icon && /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
+    className: "h-5 w-5 mr-4",
+    icon: isJSON(icon) ? JSON.parse(icon) : icon
+  }), /*#__PURE__*/React__default['default'].createElement("span", {
+    className: "font-medium text-sm"
+  }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
+    text: null
+  }), badge.text), /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
+    className: "h-5 w-5 ml-auto",
+    icon: dropIcon
+  })), /*#__PURE__*/React__default['default'].createElement("ul", {
+    className: classnames(isOpen ? 'block' : 'hidden')
+  }, /*#__PURE__*/React__default['default'].createElement(DropdownContext.Provider, {
+    value: {
+      isOpen: isOpen
+    }
+  }, children)));
+};
+
+var NavDropdown$1 = withWebApps(NavDropdown);function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var NavChild = function NavChild(props) {
+  var className = props.className,
+      innerRef = props.innerRef,
+      name = props.name,
+      icon = props.icon,
+      badge = props.badge;
+      props.addLinkClass;
+      props.label;
+      var color = props.color,
+      rest = _objectWithoutProperties__default['default'](props, ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"]);
+
+  var _useContext = React.useContext(DropdownContext),
+      isOpen = _useContext.isOpen;
+
+  var linkClasses = classnames('flex', 'items-center', 'p-2', 'px-4', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:font-medium', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-900 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white');
+  var routerLinkProps = rest.to && {
+    exact: true,
+    activeClassName: classnames(color ? "font-medium text-".concat(color, "-900 dark:text-").concat(color, "-100") : 'font-medium text-gray-900 dark:text-white')
+  };
+  return /*#__PURE__*/React__default['default'].createElement("li", {
+    className: className,
+    ref: innerRef
+  }, /*#__PURE__*/React__default['default'].createElement(Link, _extends__default['default']({
+    className: linkClasses
+  }, routerLinkProps, rest, {
+    tabIndex: isOpen === false ? -1 : 0
+  }), icon && /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
+    className: "h-5 w-5 mr-4",
+    icon: icon
+  }), /*#__PURE__*/React__default['default'].createElement("span", {
+    className: "text-sm"
+  }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$2(_objectSpread$2({}, badge), {}, {
+    text: null
+  }), badge.text)));
+};function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var NavItem = function NavItem(props) {
+  var className = props.className,
+      innerRef = props.innerRef,
+      name = props.name,
+      icon = props.icon,
+      badge = props.badge;
+      props.addLinkClass;
+      props.label;
+      var color = props.color,
+      rest = _objectWithoutProperties__default['default'](props, ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"]);
+
+  var _useContext = React.useContext(DropdownContext),
+      isOpen = _useContext.isOpen;
+
+  var isJSON = function isJSON(string) {
+    try {
+      JSON.parse(string);
+    } catch (_unused) {
+      return false;
+    }
+
+    return true;
+  };
+
+  var linkClasses = classnames('flex', 'items-center', 'p-2', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100 hover:bg-").concat(color, "-100 dark:hover:bg-").concat(color, "-600") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600');
+  var routerLinkProps = rest.to && {
+    exact: true,
+    activeClassName: classnames(color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600')
+  };
+  return /*#__PURE__*/React__default['default'].createElement("li", {
+    className: className,
+    ref: innerRef
+  }, /*#__PURE__*/React__default['default'].createElement(Link, _extends__default['default']({
+    className: linkClasses
+  }, routerLinkProps, rest, {
+    tabIndex: isOpen === false ? -1 : 0
+  }), icon && /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
+    className: "h-5 w-5 mr-4",
+    icon: isJSON(icon) ? JSON.parse(icon) : icon
+  }), /*#__PURE__*/React__default['default'].createElement("span", {
+    className: "font-medium text-sm"
+  }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$1(_objectSpread$1({}, badge), {}, {
+    text: null
+  }), badge.text)));
+};var NavTitle = function NavTitle(props) {
+  var name = props.name,
+      className = props.className,
+      innerRef = props.innerRef,
+      attributes = _objectWithoutProperties__default['default'](props, ["name", "className", "innerRef"]);
+
+  var classes = classnames('relative', 'my-6', 'h-px', 'bg-gray-600', 'dark:bg-gray-400', className);
+  return /*#__PURE__*/React__default['default'].createElement("li", _extends__default['default']({
+    className: classes
+  }, attributes, {
+    ref: innerRef
+  }), /*#__PURE__*/React__default['default'].createElement("div", {
+    className: "absolute left-0 top-0 flex justify-center w-full -mt-2"
+  }, /*#__PURE__*/React__default['default'].createElement("span", {
+    className: "bg-white dark:bg-gray-800 px-4 text-xs text-gray-600 dark:text-gray-400 uppercase"
+  }, name)));
+};
+
+NavTitle.propTypes = {
+  name: propTypes.string,
+  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object]),
+  innerRef: propTypes.oneOfType([propTypes.object, propTypes.func])
+};var CreateElement = function CreateElement(_ref) {
+  var items = _ref.items,
+      _ref$components = _ref.components,
+      components = _ref$components === void 0 ? {} : _ref$components;
+
+  var renderItem = function renderItem(item, i) {
+    var _tag = item._tag,
+        _children = item._children,
+        rest = _objectWithoutProperties__default['default'](item, ["_tag", "_children"]);
+
+    var Tag = components[_tag] || _tag;
+    var children = _children ? _children.map(function (child, i) {
+      return _typeof__default['default'](child) === 'object' ? renderItem(child, i) : child;
+    }) : '';
+    return /*#__PURE__*/React__default['default'].createElement(Tag, _extends__default['default']({
+      key: Tag + i
+    }, rest), children);
+  };
+
+  var generatedItems = React.useMemo(function () {
+    return items && items.map(function (item, i) {
+      return renderItem(item, i);
+    });
+  }, [JSON.stringify(items)]);
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, generatedItems);
+}; // items: PropTypes.oneOfType[PropTypes.array, PropTypes.object],
+
+
+CreateElement.propTypes = {
+  components: propTypes.object
+};function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf__default['default'](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default['default'](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default['default'](this, result); }; }
+
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+var NavigationError = /*#__PURE__*/function (_Component) {
+  _inherits__default['default'](NavigationError, _Component);
+
+  var _super = _createSuper$1(NavigationError);
+
+  function NavigationError(props) {
+    var _this;
+
+    _classCallCheck__default['default'](this, NavigationError);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      hasError: false,
+      info: '',
+      error: ''
+    };
+    return _this;
+  }
+
+  _createClass__default['default'](NavigationError, [{
+    key: "componentDidCatch",
+    value: function componentDidCatch(error, info) {
+      this.setState({
+        hasError: true,
+        info: info,
+        error: error
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.hasError) {
+        return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("li", {
+          className: "w-full text-center p-2 rounded-lg transition-colors duration-200 focus:outline-none text-gray-600 dark:text-gray-400"
+        }, "Failed to load navigation."), /*#__PURE__*/React__default['default'].createElement("li", {
+          className: "w-full text-center p-2 rounded-lg transition-colors duration-200 focus:outline-none text-gray-600 dark:text-gray-400"
+        }, this.state.error.toString()), /*#__PURE__*/React__default['default'].createElement("li", null, /*#__PURE__*/React__default['default'].createElement("button", {
+          className: "w-full text-center p-2 rounded-lg transition-colors duration-200 focus:outline-none text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-100 hover:bg-red-100 dark:hover:bg-red-600",
+          onClick: this.props.retry
+        }, "Click here to try again.")));
+      }
+
+      return this.props.children;
+    }
+  }]);
+
+  return NavigationError;
+}(React.Component);function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var SidebarWrapper = function SidebarWrapper(_ref) {
+  var loadNavigation = _ref.loadNavigation,
+      UI = _ref.UI,
+      setUI = _ref.setUI,
+      props = _objectWithoutProperties__default['default'](_ref, ["loadNavigation", "UI", "setUI"]);
+
+  var children = props.children,
+      dropdownMode = props.dropdownMode;
+  React.useEffect(function () {
+    if (UI !== undefined) {
+      UI.navigation = {
+        dropdownMode: dropdownMode,
+        openDropdown: ''
+      };
+      setUI(_objectSpread({}, UI));
+    }
+  }, [dropdownMode]);
+
+  var _useState = React.useState('hidden'),
+      _useState2 = _slicedToArray__default['default'](_useState, 2),
+      collapseShow = _useState2[0],
+      setCollapseShow = _useState2[1];
+
+  var toggle = function toggle() {
+    setCollapseShow(collapseShow === 'hidden' ? '' : 'hidden');
+  };
+
+  var isRtl = getComputedStyle(document.querySelector('html')).direction === 'rtl';
+  return /*#__PURE__*/React__default['default'].createElement("nav", {
+    className: "flex flex-wrap items-center relative z-50 shadow-xl bg-white dark:bg-gray-800 md:flex-col md:w-72 md:h-screen md:border-r border-transparent dark:border-gray-600"
+  }, /*#__PURE__*/React__default['default'].createElement("div", {
+    className: "md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto"
+  }, /*#__PURE__*/React__default['default'].createElement("button", {
+    className: "cursor-pointer text-black dark:text-white opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent outline-none",
+    type: "button",
+    onClick: toggle
+  }, /*#__PURE__*/React__default['default'].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    className: "h-6 w-6",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor"
+  }, /*#__PURE__*/React__default['default'].createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: 2,
+    d: "M4 6h16M4 12h16M4 18h16"
+  }))), /*#__PURE__*/React__default['default'].createElement("div", {
+    className: "flex flex-none items-center justify-center md:h-24 py-2 md:py-0 mx-auto text-gray-600 dark:text-gray-300"
+  }, /*#__PURE__*/React__default['default'].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    className: "h-10 text-indigo-600 dark:text-indigo-500"
+  }, /*#__PURE__*/React__default['default'].createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: 2,
+    d: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+  })), /*#__PURE__*/React__default['default'].createElement("span", {
+    className: "ml-4 text-2xl font-bold"
+  }, "WebApps")), /*#__PURE__*/React__default['default'].createElement(NavigationError, {
+    retry: loadNavigation
+  }, /*#__PURE__*/React__default['default'].createElement(Scrollbar, {
+    settings: {
+      suppressScrollX: !isRtl
+    },
+    tag: "ul",
+    className: "md:my-5 md:px-6 md:flex md:flex-col md:flex-grow md:relative md:top-0 md:left-0 md:right-0 md:p-0 bg-white dark:bg-gray-800 absolute top-14 left-2 right-2 p-2 z-40 overflow-y-auto overflow-x-hidden h-auto flex-1 rounded-b ".concat(collapseShow)
+  }, children))));
+};
+
+SidebarWrapper.propTypes = {
+  dropdownMode: propTypes.oneOf(['', 'openActive', 'close', 'closeInactive', 'noAction'])
+};
+SidebarWrapper.defaultProps = {
+  dropdownMode: 'closeInactive'
+};
+var SidebarWrapper$1 = withWebApps(SidebarWrapper);var Sidebar = function Sidebar(_ref) {
+  var navigation = _ref.navigation,
+      props = _objectWithoutProperties__default['default'](_ref, ["navigation"]);
+
+  React.useEffect(function () {
+    if (navigation.menu !== null && navigation.menu !== undefined) {
+      if (navigation.menu.error) {
+        throw new Error(navigation.menu.message);
+      }
+    }
+  }, [navigation]);
+  return /*#__PURE__*/React__default['default'].createElement(SidebarWrapper$1, props, navigation.menu !== null && navigation.menu !== undefined && !navigation.menu.error ? /*#__PURE__*/React__default['default'].createElement(CreateElement, {
+    items: navigation.menu,
+    components: {
+      NavChild: NavChild,
+      NavDropdown: NavDropdown$1,
+      NavItem: NavItem,
+      NavTitle: NavTitle
+    }
+  }) : null);
+};
+
+var Sidebar$1 = withWebApps(Sidebar);function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default['default'](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default['default'](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default['default'](this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+var AppError = /*#__PURE__*/function (_Component) {
+  _inherits__default['default'](AppError, _Component);
+
+  var _super = _createSuper(AppError);
+
+  function AppError(props) {
+    var _this;
+
+    _classCallCheck__default['default'](this, AppError);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      hasError: false,
+      info: '',
+      error: ''
+    }; // this.props.history.listen((location, action) => {
+    //     if (this.state.hasError) {
+    //         this.setState({
+    //             hasError: false,
+    //         });
+    //     }
+    // });
+
+    return _this;
+  }
+
+  _createClass__default['default'](AppError, [{
+    key: "componentDidCatch",
+    value: function componentDidCatch(error, info) {
+      this.setState({
+        hasError: true,
+        info: info,
+        error: error
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.hasError) {
+        return /*#__PURE__*/React__default['default'].createElement("div", {
+          className: "text-gray-700 bg-gray-200 dark:bg-gray-900 dark:text-white h-screen w-screen relative"
+        }, /*#__PURE__*/React__default['default'].createElement("div", {
+          className: "h-full w-full flex flex-wrap justify-center content-center items-center absolute z-0"
+        }, /*#__PURE__*/React__default['default'].createElement("svg", {
+          className: "w-full px-6 lg:px-64 fill-current text-gray-300 dark:text-gray-800",
+          viewBox: "0 0 445 202",
+          xmlns: "http://www.w3.org/2000/svg"
+        }, /*#__PURE__*/React__default['default'].createElement("path", {
+          d: "M38.804 144.71c1.527 8.356 4.447 14.803 8.76 19.34 4.312 4.537 10.601 6.805 18.867 6.805 9.523 0 16.778-3.346 21.764-10.04 4.987-6.693 7.48-15.116 7.48-25.268 0-9.973-2.336-18.396-7.008-25.269-4.672-6.873-11.95-10.31-21.832-10.31-4.672 0-8.715.585-12.129 1.753-6.02 2.156-10.557 6.154-13.611 11.994l-34.5-1.617L20.34 4.15h107.678v32.614H48.103l-7.008 42.72c5.93-3.863 10.556-6.423 13.88-7.681 5.57-2.067 12.354-3.1 20.35-3.1 16.172 0 30.277 5.436 42.317 16.307 12.039 10.87 18.058 26.683 18.058 47.437 0 18.059-5.795 34.186-17.385 48.381-11.59 14.196-28.93 21.293-52.02 21.293-18.597 0-33.87-4.986-45.82-14.959C8.527 177.19 1.879 163.04.53 144.711h38.274zm155.789-43.528c0 22.46 1.842 39.643 5.525 51.547 3.684 11.905 11.23 17.857 22.64 17.857 11.411 0 18.89-5.952 22.44-17.857 3.548-11.904 5.323-29.086 5.323-51.547 0-23.54-1.775-40.97-5.324-52.29s-11.028-16.98-22.438-16.98c-11.41 0-18.957 5.66-22.64 16.98-3.684 11.32-5.526 28.75-5.526 52.29zM222.759.242c24.887 0 42.339 8.76 52.356 26.28 10.018 17.52 15.027 42.406 15.027 74.66s-5.01 57.095-15.027 74.525c-10.017 17.43-27.47 26.145-52.356 26.145-24.887 0-42.339-8.715-52.357-26.145-10.017-17.43-15.026-42.271-15.026-74.525 0-32.254 5.009-57.14 15.026-74.66C180.42 9.001 197.872.241 222.76.241zm125.332 100.94c0 22.46 1.842 39.643 5.525 51.547 3.684 11.905 11.23 17.857 22.64 17.857 11.411 0 18.89-5.952 22.44-17.857 3.548-11.904 5.323-29.086 5.323-51.547 0-23.54-1.775-40.97-5.324-52.29s-11.028-16.98-22.438-16.98c-11.41 0-18.957 5.66-22.64 16.98-3.684 11.32-5.526 28.75-5.526 52.29zM376.257.242c24.887 0 42.339 8.76 52.356 26.28 10.018 17.52 15.027 42.406 15.027 74.66s-5.01 57.095-15.027 74.525c-10.017 17.43-27.47 26.145-52.356 26.145-24.887 0-42.339-8.715-52.357-26.145-10.017-17.43-15.026-42.271-15.026-74.525 0-32.254 5.009-57.14 15.026-74.66C333.918 9.001 351.37.241 376.257.241z",
+          fillRule: "nonzero"
+        }))), /*#__PURE__*/React__default['default'].createElement("div", {
+          className: "h-full w-full flex flex-wrap justify-center content-end md:content-center items-end md:items-center relative z-10"
+        }, /*#__PURE__*/React__default['default'].createElement("div", {
+          className: "p-6 text-center "
+        }, /*#__PURE__*/React__default['default'].createElement("h2", {
+          className: "uppercase text-xl lg:text-5xl font-black"
+        }, "Sorry, something went wrong."), /*#__PURE__*/React__default['default'].createElement("p", {
+          className: "mt-3 text-sm lg:text-base text-gray-900 dark:text-gray-300"
+        }, this.state.error.toString()), /*#__PURE__*/React__default['default'].createElement(reactRouterDom.Link, {
+          to: "/",
+          className: "inline-block mr-3 mt-6 px-4 py-2 border border-indigo-600 dark:border-indigo-500 bg-indigo-600 dark:bg-indigo-500 text-white dark:text-white hover:bg-indigo-400 dark:hover:bg-indigo-700 hover:border-indigo-400 dark:hover:border-indigo-700"
+        }, "Back To Homepage"), /*#__PURE__*/React__default['default'].createElement("button", {
+          onClick: function onClick() {
+            return window.location.reload();
+          },
+          className: "ml-3 inline-block mt-6 px-4 py-2 border border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white"
+        }, "Reload Page"))));
+      }
+
+      return this.props.children;
+    }
+  }]);
+
+  return AppError;
+}(React.Component); // export default withRouter(AppError);
+var returnLibrary = function returnLibrary() {
   return {
     Badge: Badge,
-    Bannner: Banner,
+    Banner: Banner,
     ConfirmDeleteButton: ConfirmDeleteButton,
     ConfirmDeleteModal: ConfirmDeleteModal,
     Icon: Icon,
     Input: Input,
     Link: Link,
+    Loader: Loader,
     Switch: Switch,
+    Scrollbar: Scrollbar,
+    Sidebar: Sidebar$1,
+    SidebarWrapper: SidebarWrapper$1,
+    NavChild: NavChild,
+    NavDropdown: NavDropdown$1,
+    NavItem: NavItem,
+    NavTitle: NavTitle,
     Auth: Auth,
     AuthContext: AuthContext,
     withAuth: withAuth,
     WebApps: WebApps,
     WebAppsContext: WebAppsContext,
-    withWebApps: withWebApps
+    withWebApps: withWebApps,
+    AppError: AppError,
+    NavigationError: NavigationError,
+    CreateElement: CreateElement
   };
 };
 
