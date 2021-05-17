@@ -14968,6 +14968,12 @@ var NavDropdown = function NavDropdown(_ref) {
 
   var ref = /*#__PURE__*/React.createRef();
   innerRef && innerRef(ref);
+
+  if (UI.navigation === undefined) {
+    console.error('`UI.navigation` is not defined in NavDropdown');
+    return null;
+  }
+
   var _UI$navigation = UI.navigation,
       dropdownMode = _UI$navigation.dropdownMode,
       openDropdown = _UI$navigation.openDropdown;
@@ -15221,7 +15227,7 @@ var NavigationError = /*#__PURE__*/function (_Component) {
     value: function render() {
       if (this.state.hasError) {
         return /*#__PURE__*/React__default['default'].createElement("ul", {
-          className: "px-4 ml-auto"
+          className: "px-4 my-auto"
         }, /*#__PURE__*/React__default['default'].createElement("li", {
           className: "w-full text-center p-2 rounded-lg transition-colors duration-200 focus:outline-none text-gray-600 dark:text-gray-400"
         }, "Failed to load navigation."), /*#__PURE__*/React__default['default'].createElement("li", {
@@ -15250,7 +15256,7 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
   var children = props.children,
       dropdownMode = props.dropdownMode;
   React.useEffect(function () {
-    if (UI.navigation !== undefined) {
+    if (UI !== undefined) {
       UI.navigation = {
         dropdownMode: dropdownMode,
         openDropdown: ''

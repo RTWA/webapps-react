@@ -32,6 +32,11 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
     const ref = createRef()
     innerRef && innerRef(ref)
 
+    if (UI.navigation === undefined) {
+        console.error('`UI.navigation` is not defined in NavDropdown');
+        return null;
+    }
+
     const { dropdownMode, openDropdown } = UI.navigation;
 
     const [isOpen, setIsOpen] = useState(show)

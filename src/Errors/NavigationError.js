@@ -17,7 +17,7 @@ class NavigationError extends Component {
     render() {
         if (this.state.hasError) {
             return (
-                <ul className="px-4 ml-auto">
+                <ul className="px-4 my-auto">
                     <li className="w-full text-center p-2 rounded-lg transition-colors duration-200 focus:outline-none text-gray-600 dark:text-gray-400">
                         Failed to load navigation.
                         </li>
