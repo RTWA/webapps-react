@@ -11,7 +11,7 @@ const SidebarWrapper = ({ loadNavigation, UI, setUI, ...props }) => {
     } = props;
 
     useEffect(() => {
-        if (UI !== undefined) {
+        if (UI.navigation !== undefined) {
             UI.navigation = {
                 dropdownMode: dropdownMode,
                 openDropdown: ''

@@ -15220,7 +15220,9 @@ var NavigationError = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       if (this.state.hasError) {
-        return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("li", {
+        return /*#__PURE__*/React__default['default'].createElement("ul", {
+          className: "px-4 ml-auto"
+        }, /*#__PURE__*/React__default['default'].createElement("li", {
           className: "w-full text-center p-2 rounded-lg transition-colors duration-200 focus:outline-none text-gray-600 dark:text-gray-400"
         }, "Failed to load navigation."), /*#__PURE__*/React__default['default'].createElement("li", {
           className: "w-full text-center p-2 rounded-lg transition-colors duration-200 focus:outline-none text-gray-600 dark:text-gray-400"
@@ -15248,7 +15250,7 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
   var children = props.children,
       dropdownMode = props.dropdownMode;
   React.useEffect(function () {
-    if (UI !== undefined) {
+    if (UI.navigation !== undefined) {
       UI.navigation = {
         dropdownMode: dropdownMode,
         openDropdown: ''

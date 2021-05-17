@@ -1,3 +1,7 @@
+## Version 1.1.20
+- Fixed `<SidebarWrapper />` Component
+- Fixed `<NavigationError />` Boundary
+
 ## Version 1.1.19
 - Removed the default `UI.theme` value of `indigo`
 
