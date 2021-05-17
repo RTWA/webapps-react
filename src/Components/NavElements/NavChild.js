@@ -28,6 +28,7 @@ const NavChild = props => {
         'items-center',
         'p-2',
         'px-4',
+        'mb-1',
         'transition-colors',
         'duration-200',
         'focus:outline-none',

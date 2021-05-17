@@ -1,3 +1,11 @@
+## Version 1.1.24
+- Added `UI.theme` to `<Input />` Component
+- Removed unnecessary console.log from `<NavDropdown />` Component
+- Updated `<ConfirmDeleteButton />` Component
+- Updated `<NavItem />` Component
+- Updated `<NavDropdown />` Component
+- Updated `<NavChild />` Component
+
 ## Version 1.1.23
 - Fixed `<SidebarWrapper />` Component
 - Removed unnecessary console.log from `<SidebarWrapper />` Component

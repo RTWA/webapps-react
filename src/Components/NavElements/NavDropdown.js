@@ -33,7 +33,6 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
     innerRef && innerRef(ref)
 
     if (UI.navigation === undefined) {
-        console.error('`UI.navigation` is not defined in NavDropdown');
         return null;
     }
 
@@ -86,6 +85,7 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
         'flex',
         'items-center',
         'p-2',
+        'mb-1',
         'rounded-lg',
         'transition-colors',
         'duration-200',

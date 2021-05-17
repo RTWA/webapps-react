@@ -36,6 +36,7 @@ const NavItem = props => {
         'flex',
         'items-center',
         'p-2',
+        'mb-1',
         'rounded-lg',
         'transition-colors',
         'duration-200',

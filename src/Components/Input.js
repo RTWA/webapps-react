@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { withWebApps } from '../Context/index';
 
-const Input = props => {
+const Input = ({ UI, ...props }) => {
     const {
         error,
         state,
@@ -12,6 +13,8 @@ const Input = props => {
     const classes = classNames(
         className,
         'input-field',
+        `focus:border-${UI.theme}-600`,
+        `dark:focus:border-${UI.theme}-500`,
         (state === 'error') ? 'border-red-500 text-red-500' : '',
         (state === 'saved') ? 'border-green-500 text-green-500' : '',
         (state === 'saving') ? 'border-orange-500' : '',
@@ -41,4 +44,4 @@ Input.defaultProps = {
     className: '',
 }
 
-export default Input;
+export default withWebApps(Input);

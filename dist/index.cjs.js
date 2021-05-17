@@ -1237,13 +1237,13 @@ Banner.defaultProps = {
 
   var queryClass = classnames(className, initialClasses);
   var confirmClass = classnames(className, confirmClasses);
-  return waiting ? /*#__PURE__*/React__default['default'].createElement("a", _extends__default['default']({
-    href: "#",
+  return waiting ? /*#__PURE__*/React__default['default'].createElement("button", _extends__default['default']({
+    type: "button",
     onClick: onConfirm,
     className: confirmClass
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    className: "h-6 w-6",
+    className: "h-6 w-6 inline-block -mt-1",
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor"
@@ -1252,13 +1252,13 @@ Banner.defaultProps = {
     strokeLinejoin: "round",
     strokeWidth: 2,
     d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-  })), confirmText) : /*#__PURE__*/React__default['default'].createElement("a", _extends__default['default']({
-    href: "#",
+  })), confirmText) : /*#__PURE__*/React__default['default'].createElement("button", _extends__default['default']({
+    type: "button",
     onClick: onQuery,
     className: queryClass
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    className: "h-6 w-6",
+    className: "h-6 w-6 inline-block -mt-1",
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor"
@@ -1283,7 +1283,7 @@ ConfirmDeleteButton.defaultProps = {
   text: "Delete",
   confirmText: "Delete - Are you sure?",
   timeout: 2000,
-  className: 'mx-auto my-auto px-4 py-2',
+  className: 'block mx-auto my-auto px-4 py-2',
   initialClasses: 'bg-red-500',
   confirmClasses: 'bg-orange-500'
 };var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
@@ -12576,75 +12576,7 @@ var Icon = function Icon(props) {
 
 Icon.propTypes = {
   icon: propTypes.oneOfType([propTypes.string, propTypes.object])
-};var Input = function Input(props) {
-  var error = props.error,
-      state = props.state,
-      className = props.className;
-  var classes = classnames(className, 'input-field', state === 'error' ? 'border-red-500 text-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
-  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("input", _extends__default['default']({}, props, {
-    className: classes
-  })), state === 'error' && error !== '' ? /*#__PURE__*/React__default['default'].createElement("span", {
-    className: "text-sm text-red-500"
-  }, error) : null);
-};
-
-Input.propTypes = {
-  error: propTypes.string,
-  state: propTypes.string,
-  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object])
-};
-Input.defaultProps = {
-  error: '',
-  state: '',
-  className: ''
-};function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-var Link = function Link(props) {
-  var className = props.className,
-      innerRef = props.innerRef,
-      active = props.active,
-      href = props.href,
-      onClick = props.onClick,
-      disabled = props.disabled,
-      rest = _objectWithoutProperties__default['default'](props, ["className", "innerRef", "active", "href", "onClick", "disabled"]);
-
-  var to = rest ? rest.to : null;
-
-  var click = function click(e) {
-    if (!href && !to || href === '#') {
-      e.preventDefault();
-    }
-
-    !disabled && onClick && onClick(e);
-  };
-
-  var classes = classnames(active, disabled, className);
-  return to ? /*#__PURE__*/React__default['default'].createElement(reactRouterDom.NavLink, _extends__default['default']({}, rest, {
-    className: classes,
-    onClick: click,
-    ref: innerRef
-  })) : /*#__PURE__*/React__default['default'].createElement("a", _extends__default['default']({
-    href: href || '#',
-    className: classes,
-    rel: rest.target === '_blank' ? 'noopener norefferer' : null
-  }, rest, {
-    onClick: click,
-    ref: innerRef
-  }));
-};
-
-Link.propTypes = _objectSpread$5(_objectSpread$5({
-  innerRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
-  active: propTypes.bool,
-  href: propTypes.string,
-  onClick: propTypes.func,
-  disabled: propTypes.bool
-}, reactRouterDom.NavLink.propTypes), {}, {
-  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object]),
-  to: propTypes.oneOfType([propTypes.object, propTypes.string, propTypes.func])
-});var Loader = function Loader(props) {
+};var AuthContext = /*#__PURE__*/React__default['default'].createContext({});var Loader = function Loader(props) {
   var className = props.className,
       attributes = _objectWithoutProperties__default['default'](props, ["className"]);
 
@@ -12724,7 +12656,889 @@ Link.propTypes = _objectSpread$5(_objectSpread$5({
     calcMode: "linear",
     repeatCount: "indefinite"
   })))));
-};var Switch = function Switch(props) {
+};function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default['default'](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default['default'](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default['default'](this, result); }; }
+
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+axios__default['default'].defaults.withCredentials = true;
+
+var Auth = /*#__PURE__*/function (_Component) {
+  _inherits__default['default'](Auth, _Component);
+
+  var _super = _createSuper$2(Auth);
+
+  function Auth(props) {
+    var _this;
+
+    _classCallCheck__default['default'](this, Auth);
+
+    _this = _super.call(this, props);
+
+    _defineProperty__default['default'](_assertThisInitialized__default['default'](_this), "setPreference", function (preference, value) {
+      var preferences = _this.state.preferences;
+      preferences[preference] = value;
+
+      _this.setState({
+        preferences: preferences
+      });
+    });
+
+    _this.state = {
+      user: null,
+      preferences: {},
+      authenticated: null
+    };
+    _this.signIn = _this.signIn.bind(_assertThisInitialized__default['default'](_this));
+    _this.signOut = _this.signOut.bind(_assertThisInitialized__default['default'](_this));
+    _this.setUser = _this.setUser.bind(_assertThisInitialized__default['default'](_this));
+    _this.checkAuthentication = _this.checkAuthentication.bind(_assertThisInitialized__default['default'](_this));
+    _this.setPreference = _this.setPreference.bind(_assertThisInitialized__default['default'](_this));
+    return _this;
+  }
+
+  _createClass__default['default'](Auth, [{
+    key: "signIn",
+    value: function signIn(username, password) {
+      var _this2 = this;
+
+      return new Promise( /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee(resolve, reject) {
+          var _yield$axios$get, data;
+
+          return _regeneratorRuntime__default['default'].wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.prev = 0;
+                  _context.next = 3;
+                  return axios__default['default'].get('/sanctum/csrf_cookie');
+
+                case 3:
+                  _context.next = 5;
+                  return axios__default['default'].post('/login', {
+                    username: username,
+                    password: password
+                  });
+
+                case 5:
+                  _context.next = 7;
+                  return axios__default['default'].get('/api/user');
+
+                case 7:
+                  _yield$axios$get = _context.sent;
+                  data = _yield$axios$get.data;
+
+                  _this2.setState({
+                    user: data,
+                    authenticated: true
+                  });
+
+                  return _context.abrupt("return", resolve(data));
+
+                case 13:
+                  _context.prev = 13;
+                  _context.t0 = _context["catch"](0);
+                  return _context.abrupt("return", reject(_context.t0));
+
+                case 16:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, null, [[0, 13]]);
+        }));
+
+        return function (_x, _x2) {
+          return _ref.apply(this, arguments);
+        };
+      }());
+    }
+  }, {
+    key: "signOut",
+    value: function signOut() {
+      var _this3 = this;
+
+      new Promise( /*#__PURE__*/function () {
+        var _ref2 = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee2(resolve, reject) {
+          return _regeneratorRuntime__default['default'].wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.prev = 0;
+                  _context2.next = 3;
+                  return axios__default['default'].post('/api/logout');
+
+                case 3:
+                  _this3.setState({
+                    user: null,
+                    authenticated: false
+                  });
+
+                  window.location.replace("//" + window.location.hostname + '/login?logout');
+                  resolve(true);
+                  _context2.next = 11;
+                  break;
+
+                case 8:
+                  _context2.prev = 8;
+                  _context2.t0 = _context2["catch"](0);
+                  return _context2.abrupt("return", reject(_context2.t0));
+
+                case 11:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, null, [[0, 8]]);
+        }));
+
+        return function (_x3, _x4) {
+          return _ref2.apply(this, arguments);
+        };
+      }());
+    }
+  }, {
+    key: "setUser",
+    value: function setUser(user, authenticated) {
+      this.setState({
+        user: user,
+        authenticated: authenticated
+      });
+    }
+  }, {
+    key: "checkAuthentication",
+    value: function checkAuthentication() {
+      var _this4 = this;
+
+      return new Promise( /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee3(resolve, reject) {
+          var _yield$axios$get2, data;
+
+          return _regeneratorRuntime__default['default'].wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  if (!(_this4.state.authenticated === null)) {
+                    _context3.next = 20;
+                    break;
+                  }
+
+                  _context3.prev = 1;
+                  _context3.next = 4;
+                  return axios__default['default'].get('/api/user');
+
+                case 4:
+                  _yield$axios$get2 = _context3.sent;
+                  data = _yield$axios$get2.data;
+
+                  _this4.setState({
+                    user: data,
+                    authenticated: true
+                  });
+
+                  return _context3.abrupt("return", resolve(true));
+
+                case 10:
+                  _context3.prev = 10;
+                  _context3.t0 = _context3["catch"](1);
+
+                  if (!(_context3.t0.response && _context3.t0.response.status === 401)) {
+                    _context3.next = 17;
+                    break;
+                  }
+
+                  // If 401 returns, the user is not logged in
+                  _this4.setState({
+                    user: null,
+                    authenticated: false
+                  });
+
+                  return _context3.abrupt("return", resolve(false));
+
+                case 17:
+                  return _context3.abrupt("return", reject(_context3.t0));
+
+                case 18:
+                  _context3.next = 21;
+                  break;
+
+                case 20:
+                  return _context3.abrupt("return", resolve(_this4.state.authenticated));
+
+                case 21:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3, null, [[1, 10]]);
+        }));
+
+        return function (_x5, _x6) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.checkOnInit) this.checkAuthentication();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.authenticated !== null) return /*#__PURE__*/React__default['default'].createElement(AuthContext.Provider, {
+        children: this.props.children || null,
+        value: {
+          user: this.state.user,
+          authenticated: this.state.authenticated,
+          signIn: this.signIn,
+          signOut: this.signOut,
+          setUser: this.setUser,
+          checkAuthentication: this.checkAuthentication,
+          preferences: this.state.preferences,
+          setPreference: this.setPreference
+        }
+      });else return /*#__PURE__*/React__default['default'].createElement(Loader, null);
+    }
+  }]);
+
+  return Auth;
+}(React.Component);
+
+Auth.propTypes = {
+  config: propTypes.object,
+  checkOnInit: propTypes.bool
+};
+Auth.defaultProps = {
+  checkOnInit: true
+};var isProduction = process.env.NODE_ENV === 'production';
+var prefix = 'Invariant failed';
+function invariant(condition, message) {
+    if (condition) {
+        return;
+    }
+    if (isProduction) {
+        throw new Error(prefix);
+    }
+    throw new Error(prefix + ": " + (message || ''));
+}var withAuth = function withAuth(Component) {
+  var displayName = "withAuth(".concat(Component.displayName || Component.name, ")");
+
+  var C = function C(props) {
+    return /*#__PURE__*/React__default['default'].createElement(AuthContext.Consumer, null, function (context) {
+      invariant(context, "You should not use <".concat(displayName, " /> outside a <Auth>"));
+      return /*#__PURE__*/React__default['default'].createElement(Component, _extends__default['default']({}, props, context));
+    });
+  };
+
+  C.displayName = displayName;
+  return C;
+};/**
+ * Abstraction for localStorage that uses an in-memory fallback when localStorage throws an error.
+ * Reasons for throwing an error:
+ * - maximum quota is exceeded
+ * - under Mobile Safari (since iOS 5) when the user enters private mode `localStorage.setItem()`
+ *   will throw
+ * - trying to access localStorage object when cookies are disabled in Safari throws
+ *   "SecurityError: The operation is insecure."
+ */
+const data = {};
+var storage = {
+    get(key, defaultValue) {
+        var _a;
+        try {
+            return (_a = data[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
+        }
+        catch (_b) {
+            return defaultValue;
+        }
+    },
+    set(key, value) {
+        try {
+            localStorage.setItem(key, JSON.stringify(value));
+            data[key] = undefined;
+            return true;
+        }
+        catch (_a) {
+            data[key] = value;
+            return false;
+        }
+    },
+    remove(key) {
+        data[key] = undefined;
+        localStorage.removeItem(key);
+    },
+};
+/**
+ * A wrapper for `JSON.parse()` which supports the return value of `JSON.stringify(undefined)`
+ * which returns the string `"undefined"` and this method returns the value `undefined`.
+ */
+function parseJSON(value) {
+    return value === 'undefined'
+        ? undefined
+        : // JSON.parse() doesn't accept non-string values, this is why we pass empty
+            // string which will throw an error which can be handled
+            JSON.parse(value !== null && value !== void 0 ? value : '');
+}function useLocalStorageStateBase(key, defaultValue) {
+    // we don't support updating the `defaultValue` the same way `useState()` doesn't support it
+    const [defaultValueState] = React.useState(() => {
+        const isCallable = (value) => typeof value === 'function';
+        return isCallable(defaultValue) ? defaultValue() : defaultValue;
+    });
+    const getDefaultState = React.useCallback(() => {
+        return {
+            value: storage.get(key, defaultValueState),
+            isPersistent: (() => {
+                /**
+                 * We want to return `true` on the server. If you render a message based on `isPersistent` and the
+                 * server returns `false` then the message will flicker until hydration is done:
+                 * `{!isPersistent && <span>You changes aren't being persisted.</span>}`
+                 */
+                if (typeof window === 'undefined') {
+                    return true;
+                }
+                try {
+                    localStorage.setItem('__ulss', '#');
+                    localStorage.removeItem('__ulss');
+                    return true;
+                }
+                catch (_a) {
+                    return false;
+                }
+            })(),
+        };
+    }, [defaultValueState, key]);
+    const [state, setState] = React.useState(getDefaultState);
+    const updateValue = React.useMemo(() => {
+        const fn = (newValue) => {
+            const isCallable = (value) => typeof value === 'function';
+            if (isCallable(newValue)) {
+                setState((state) => ({
+                    value: newValue(state.value),
+                    isPersistent: storage.set(key, newValue(state.value)),
+                }));
+            }
+            else {
+                setState({
+                    value: newValue,
+                    isPersistent: storage.set(key, newValue),
+                });
+            }
+        };
+        fn.reset = () => {
+            storage.remove(key);
+            setState((state) => ({
+                value: defaultValueState,
+                isPersistent: state.isPersistent,
+            }));
+        };
+        return fn;
+    }, [key, defaultValueState]);
+    /**
+     * Syncs changes across tabs and iframe's.
+     */
+    React.useEffect(() => {
+        const onStorage = (e) => {
+            if (e.storageArea === localStorage && e.key === key) {
+                setState({
+                    value: storage.get(key, defaultValueState),
+                    isPersistent: true,
+                });
+            }
+        };
+        window.addEventListener('storage', onStorage);
+        return () => window.removeEventListener('storage', onStorage);
+    }, [key, defaultValueState]);
+    /**
+     * Update the state when the `key` property changes.
+     */
+    const isFirstRender = React.useRef(true);
+    React.useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        setState(getDefaultState());
+    }, [getDefaultState]);
+    return [state.value, updateValue, state.isPersistent];
+}function createLocalStorageStateHook(key, defaultValue) {
+    const setValueFunctions = [];
+    return function useLocalStorageStateHook() {
+        const [value, setValue, isPersistent] = useLocalStorageStateBase(key, defaultValue);
+        const setValueAll = React.useMemo(() => {
+            const fn = (newValue) => {
+                for (const setValueFunction of setValueFunctions) {
+                    setValueFunction(newValue);
+                }
+            };
+            fn.reset = () => {
+                for (const setValueFunction of setValueFunctions) {
+                    setValueFunction.reset();
+                }
+            };
+            return fn;
+        }, []);
+        React.useEffect(() => {
+            setValueFunctions.push(setValue);
+            return () => void setValueFunctions.splice(setValueFunctions.indexOf(setValue), 1);
+        }, [setValue]);
+        return [value, setValueAll, isPersistent];
+    };
+}function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var WebAppsContext = /*#__PURE__*/React__default['default'].createContext({});
+var useModals = createLocalStorageStateHook('modals', {});
+var WebApps = function WebApps(props) {
+  var _useState = React.useState({
+    sidebar: 'responsive',
+    envWriteable: false
+  }),
+      _useState2 = _slicedToArray__default['default'](_useState, 2),
+      UI = _useState2[0],
+      setUI = _useState2[1];
+
+  var _useModals = useModals(),
+      _useModals2 = _slicedToArray__default['default'](_useModals, 2),
+      modals = _useModals2[0],
+      setModals = _useModals2[1];
+
+  var _useState3 = React.useState({}),
+      _useState4 = _slicedToArray__default['default'](_useState3, 2),
+      navigation = _useState4[0],
+      setNavigation = _useState4[1];
+
+  var _useState5 = React.useState({}),
+      _useState6 = _slicedToArray__default['default'](_useState5, 2),
+      apps = _useState6[0],
+      setApps = _useState6[1];
+
+  var _useState7 = React.useState({}),
+      _useState8 = _slicedToArray__default['default'](_useState7, 2),
+      plugins = _useState8[0],
+      setPlugins = _useState8[1];
+
+  React.useEffect(function () {
+    loadUI();
+    loadNavigation();
+    getApps();
+    getPlugins();
+  }, []);
+
+  var toggleModal = function toggleModal(modal) {
+    setModals({
+      modal: !modals[modal]
+    });
+  };
+
+  var loadUI = function loadUI() {
+    var formData = new FormData();
+    formData.append('key', ['core.ui.theme']);
+    axios__default['default'].post('/api/setting', formData).then(function (json) {
+      UI.theme = json.data['core.ui.theme'];
+      setUI(_objectSpread$5({}, UI));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
+
+  var loadNavigation = function loadNavigation() {
+    axios__default['default'].get('/api/navigation').then(function (json) {
+      navigation.menu = json.data.navigation;
+      navigation.routes = json.data.routes;
+      navigation.settings = json.data.settingsNav;
+      UI.envWriteable = json.data.envPermissions;
+      setNavigation(_objectSpread$5({}, navigation));
+      setUI(_objectSpread$5({}, UI));
+    })["catch"](function (error) {
+      var nav = [];
+      nav['error'] = true;
+      nav['message'] = error.response.data.message;
+      setNavigation(nav);
+    });
+  };
+
+  var getApps = function getApps() {
+    axios__default['default'].get('/api/apps').then(function (json) {
+      apps.local = json.data.apps;
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TOOD: Handle errors
+      console.error(error);
+    });
+    axios__default['default'].get('/api/online/apps/list').then(function (json) {
+      apps.online = json.data.apps;
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
+
+  var getPlugins = function getPlugins() {
+    axios__default['default'].get('/api/plugins').then(function (json) {
+      plugins.all = json.data.plugins;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TOOD: Handle errors
+      console.error(error);
+    });
+    axios__default['default'].get('/api/plugins/active').then(function (json) {
+      plugins.active = json.data.plugins;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TOOD: Handle errors
+      console.error(error);
+    });
+    axios__default['default'].get('/api/online/plugins/list').then(function (json) {
+      plugins.online = json.data.plugins;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
+
+  var downloadApp = function downloadApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
+      // TODO: toast
+      alert(json.data.message);
+      apps.local = json.data.apps;
+      apps.online = json.data.online;
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
+
+  var updateApp = function updateApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
+      // TODO: toast
+      alert(json.data.message);
+      apps.local = json.data.apps;
+      apps.online = json.data.online;
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
+
+  var activateApp = function activateApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'activate');
+    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
+      // TODO: Toast
+      // alert(json.data.message);
+      // Reload Navigation
+      loadNavigation();
+      Object.keys(apps.local).map(function (key) {
+        if (e.target.dataset.slug === apps.local[key].slug) {
+          apps.local[key].active = true;
+        }
+      });
+      Object.keys(apps.online).map(function (key) {
+        if (e.target.dataset.slug === apps.online[key].slug) {
+          apps.online[key].active = true;
+        }
+      });
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.error(error);
+    });
+  };
+
+  var deactivateApp = function deactivateApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'deactivate');
+    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
+      // TODO: Toast
+      // alert(json.data.message);
+      // Reload Navigation
+      loadNavigation();
+      Object.keys(apps.local).map(function (key) {
+        if (e.target.dataset.slug === apps.local[key].slug) {
+          apps.local[key].active = false;
+        }
+      });
+      Object.keys(apps.online).map(function (key) {
+        if (e.target.dataset.slug === apps.online[key].slug) {
+          apps.online[key].active = false;
+        }
+      });
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.error(error);
+    });
+  };
+
+  var installApp = function installApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'install');
+    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
+      // TODO: Toast
+      // alert(json.data.message);
+      // Reload Navigation
+      loadNavigation();
+      Object.keys(apps.local).map(function (key) {
+        if (e.target.dataset.slug === apps.local[key].slug) {
+          apps.local[key].installed = true;
+        }
+      });
+      Object.keys(apps.online).map(function (key) {
+        if (e.target.dataset.slug === apps.online[key].slug) {
+          apps.online[key].installed = true;
+        }
+      });
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.error(error);
+    });
+  };
+
+  var uninstallApp = function uninstallApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'uninstall');
+    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
+      // TODO: Toast
+      alert(json.data.message);
+      var _apps = [];
+      Object.keys(apps.local).map(function (key) {
+        if (e.target.dataset.slug !== apps.local[key].slug) {
+          _apps.push(apps.local[key]);
+        }
+      });
+      apps.local = _apps;
+      Object.keys(apps.online).map(function (key) {
+        if (e.target.dataset.slug === apps.online[key].slug) {
+          apps.online[key] = json.data.app;
+        }
+      });
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.error(error);
+    });
+  };
+
+  var downloadPlugin = function downloadPlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
+      // TODO: toast
+      alert(json.data.message);
+      plugins.all = json.data.plugins;
+      plugins.online = json.data.online;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
+
+  var updatePlugin = function updatePlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
+      // TODO: toast
+      alert(json.data.message);
+      plugins.all = json.data.plugins;
+      plugins.online = json.data.online;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
+
+  var togglePlugin = function togglePlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios__default['default'].post('/api/plugins/toggle', formData).then(function (json) {
+      // TODO: Toast
+      // alert(json.data.message);
+      Object.keys(plugins.all).map(function (key) {
+        if (e.target.dataset.slug === plugins.all[key].slug) {
+          plugins.all[key].state = json.data.plugin['state'];
+        }
+      });
+      Object.keys(plugins.online).map(function (key) {
+        if (e.target.dataset.slug === plugins.online[key].slug) {
+          plugins.online[key].state = json.data.plugin.state;
+        }
+      });
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.error(error);
+    });
+  };
+
+  var uninstallPlugin = function uninstallPlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('_method', 'DELETE');
+    formData.append('slug', e.target.dataset.slug);
+    axios__default['default'].post('/api/plugin', formData).then(function (json) {
+      // TODO: Toast
+      alert(json.data.message);
+      var _plugins = [];
+      Object.keys(plugins.all).map(function (key) {
+        if (e.target.dataset.slug !== plugins.all[key].slug) {
+          _plugins.push(plugins.all[key]);
+        }
+      });
+      plugins.all = _plugins;
+      Object.keys(plugins.online).map(function (key) {
+        if (e.target.dataset.slug === plugins.online[key].slug) {
+          plugins.online[key] = json.data.plugin;
+        }
+      });
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.error(error);
+    });
+  };
+
+  var _apps = {
+    local: apps.local,
+    online: apps.online,
+    download: downloadApp,
+    update: updateApp,
+    activate: activateApp,
+    deactivate: deactivateApp,
+    install: installApp,
+    uninstall: uninstallApp
+  };
+  var _plugins = {
+    all: plugins.all,
+    active: plugins.active,
+    online: plugins.online,
+    download: downloadPlugin,
+    update: updatePlugin,
+    toggle: togglePlugin,
+    uninstall: uninstallPlugin
+  };
+  return /*#__PURE__*/React__default['default'].createElement(WebAppsContext.Provider, {
+    value: {
+      navigation: navigation,
+      UI: UI,
+      modals: modals,
+      loadNavigation: loadNavigation,
+      setUI: setUI,
+      setModals: setModals,
+      toggleModal: toggleModal,
+      apps: _apps,
+      plugins: _plugins
+    }
+  }, props.children || null);
+};var withWebApps = function withWebApps(Component) {
+  var displayName = "withWebApps(".concat(Component.displayName || Component.name, ")");
+
+  var C = function C(props) {
+    return /*#__PURE__*/React__default['default'].createElement(WebAppsContext.Consumer, null, function (context) {
+      invariant(context, "You should not use <".concat(displayName, " /> outside a <WebApps>"));
+      return /*#__PURE__*/React__default['default'].createElement(Component, _extends__default['default']({}, props, context));
+    });
+  };
+
+  C.displayName = displayName;
+  return C;
+};var Input = function Input(_ref) {
+  var UI = _ref.UI,
+      props = _objectWithoutProperties__default['default'](_ref, ["UI"]);
+
+  var error = props.error,
+      state = props.state,
+      className = props.className;
+  var classes = classnames(className, 'input-field', "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("input", _extends__default['default']({}, props, {
+    className: classes
+  })), state === 'error' && error !== '' ? /*#__PURE__*/React__default['default'].createElement("span", {
+    className: "text-sm text-red-500"
+  }, error) : null);
+};
+
+Input.propTypes = {
+  error: propTypes.string,
+  state: propTypes.string,
+  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object])
+};
+Input.defaultProps = {
+  error: '',
+  state: '',
+  className: ''
+};
+var Input$1 = withWebApps(Input);function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var Link = function Link(props) {
+  var className = props.className,
+      innerRef = props.innerRef,
+      active = props.active,
+      href = props.href,
+      onClick = props.onClick,
+      disabled = props.disabled,
+      rest = _objectWithoutProperties__default['default'](props, ["className", "innerRef", "active", "href", "onClick", "disabled"]);
+
+  var to = rest ? rest.to : null;
+
+  var click = function click(e) {
+    if (!href && !to || href === '#') {
+      e.preventDefault();
+    }
+
+    !disabled && onClick && onClick(e);
+  };
+
+  var classes = classnames(active, disabled, className);
+  return to ? /*#__PURE__*/React__default['default'].createElement(reactRouterDom.NavLink, _extends__default['default']({}, rest, {
+    className: classes,
+    onClick: click,
+    ref: innerRef
+  })) : /*#__PURE__*/React__default['default'].createElement("a", _extends__default['default']({
+    href: href || '#',
+    className: classes,
+    rel: rest.target === '_blank' ? 'noopener norefferer' : null
+  }, rest, {
+    onClick: click,
+    ref: innerRef
+  }));
+};
+
+Link.propTypes = _objectSpread$4(_objectSpread$4({
+  innerRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
+  active: propTypes.bool,
+  href: propTypes.string,
+  onClick: propTypes.func,
+  disabled: propTypes.bool
+}, reactRouterDom.NavLink.propTypes), {}, {
+  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object]),
+  to: propTypes.oneOfType([propTypes.object, propTypes.string, propTypes.func])
+});var Switch = function Switch(props) {
   var name = props.name,
       error = props.error,
       state = props.state,
@@ -14134,816 +14948,6 @@ Scrollbar.propTypes = {
 };
 Scrollbar.defaultProps = {
   tag: 'div'
-};var AuthContext = /*#__PURE__*/React__default['default'].createContext({});function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default['default'](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default['default'](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default['default'](this, result); }; }
-
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-axios__default['default'].defaults.withCredentials = true;
-
-var Auth = /*#__PURE__*/function (_Component) {
-  _inherits__default['default'](Auth, _Component);
-
-  var _super = _createSuper$2(Auth);
-
-  function Auth(props) {
-    var _this;
-
-    _classCallCheck__default['default'](this, Auth);
-
-    _this = _super.call(this, props);
-
-    _defineProperty__default['default'](_assertThisInitialized__default['default'](_this), "setPreference", function (preference, value) {
-      var preferences = _this.state.preferences;
-      preferences[preference] = value;
-
-      _this.setState({
-        preferences: preferences
-      });
-    });
-
-    _this.state = {
-      user: null,
-      preferences: {},
-      authenticated: null
-    };
-    _this.signIn = _this.signIn.bind(_assertThisInitialized__default['default'](_this));
-    _this.signOut = _this.signOut.bind(_assertThisInitialized__default['default'](_this));
-    _this.setUser = _this.setUser.bind(_assertThisInitialized__default['default'](_this));
-    _this.checkAuthentication = _this.checkAuthentication.bind(_assertThisInitialized__default['default'](_this));
-    _this.setPreference = _this.setPreference.bind(_assertThisInitialized__default['default'](_this));
-    return _this;
-  }
-
-  _createClass__default['default'](Auth, [{
-    key: "signIn",
-    value: function signIn(username, password) {
-      var _this2 = this;
-
-      return new Promise( /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee(resolve, reject) {
-          var _yield$axios$get, data;
-
-          return _regeneratorRuntime__default['default'].wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.prev = 0;
-                  _context.next = 3;
-                  return axios__default['default'].get('/sanctum/csrf_cookie');
-
-                case 3:
-                  _context.next = 5;
-                  return axios__default['default'].post('/login', {
-                    username: username,
-                    password: password
-                  });
-
-                case 5:
-                  _context.next = 7;
-                  return axios__default['default'].get('/api/user');
-
-                case 7:
-                  _yield$axios$get = _context.sent;
-                  data = _yield$axios$get.data;
-
-                  _this2.setState({
-                    user: data,
-                    authenticated: true
-                  });
-
-                  return _context.abrupt("return", resolve(data));
-
-                case 13:
-                  _context.prev = 13;
-                  _context.t0 = _context["catch"](0);
-                  return _context.abrupt("return", reject(_context.t0));
-
-                case 16:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, null, [[0, 13]]);
-        }));
-
-        return function (_x, _x2) {
-          return _ref.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "signOut",
-    value: function signOut() {
-      var _this3 = this;
-
-      new Promise( /*#__PURE__*/function () {
-        var _ref2 = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee2(resolve, reject) {
-          return _regeneratorRuntime__default['default'].wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  _context2.prev = 0;
-                  _context2.next = 3;
-                  return axios__default['default'].post('/api/logout');
-
-                case 3:
-                  _this3.setState({
-                    user: null,
-                    authenticated: false
-                  });
-
-                  window.location.replace("//" + window.location.hostname + '/login?logout');
-                  resolve(true);
-                  _context2.next = 11;
-                  break;
-
-                case 8:
-                  _context2.prev = 8;
-                  _context2.t0 = _context2["catch"](0);
-                  return _context2.abrupt("return", reject(_context2.t0));
-
-                case 11:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2, null, [[0, 8]]);
-        }));
-
-        return function (_x3, _x4) {
-          return _ref2.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "setUser",
-    value: function setUser(user, authenticated) {
-      this.setState({
-        user: user,
-        authenticated: authenticated
-      });
-    }
-  }, {
-    key: "checkAuthentication",
-    value: function checkAuthentication() {
-      var _this4 = this;
-
-      return new Promise( /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee3(resolve, reject) {
-          var _yield$axios$get2, data;
-
-          return _regeneratorRuntime__default['default'].wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  if (!(_this4.state.authenticated === null)) {
-                    _context3.next = 20;
-                    break;
-                  }
-
-                  _context3.prev = 1;
-                  _context3.next = 4;
-                  return axios__default['default'].get('/api/user');
-
-                case 4:
-                  _yield$axios$get2 = _context3.sent;
-                  data = _yield$axios$get2.data;
-
-                  _this4.setState({
-                    user: data,
-                    authenticated: true
-                  });
-
-                  return _context3.abrupt("return", resolve(true));
-
-                case 10:
-                  _context3.prev = 10;
-                  _context3.t0 = _context3["catch"](1);
-
-                  if (!(_context3.t0.response && _context3.t0.response.status === 401)) {
-                    _context3.next = 17;
-                    break;
-                  }
-
-                  // If 401 returns, the user is not logged in
-                  _this4.setState({
-                    user: null,
-                    authenticated: false
-                  });
-
-                  return _context3.abrupt("return", resolve(false));
-
-                case 17:
-                  return _context3.abrupt("return", reject(_context3.t0));
-
-                case 18:
-                  _context3.next = 21;
-                  break;
-
-                case 20:
-                  return _context3.abrupt("return", resolve(_this4.state.authenticated));
-
-                case 21:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3, null, [[1, 10]]);
-        }));
-
-        return function (_x5, _x6) {
-          return _ref3.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.checkOnInit) this.checkAuthentication();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.state.authenticated !== null) return /*#__PURE__*/React__default['default'].createElement(AuthContext.Provider, {
-        children: this.props.children || null,
-        value: {
-          user: this.state.user,
-          authenticated: this.state.authenticated,
-          signIn: this.signIn,
-          signOut: this.signOut,
-          setUser: this.setUser,
-          checkAuthentication: this.checkAuthentication,
-          preferences: this.state.preferences,
-          setPreference: this.setPreference
-        }
-      });else return /*#__PURE__*/React__default['default'].createElement(Loader, null);
-    }
-  }]);
-
-  return Auth;
-}(React.Component);
-
-Auth.propTypes = {
-  config: propTypes.object,
-  checkOnInit: propTypes.bool
-};
-Auth.defaultProps = {
-  checkOnInit: true
-};var isProduction = process.env.NODE_ENV === 'production';
-var prefix = 'Invariant failed';
-function invariant(condition, message) {
-    if (condition) {
-        return;
-    }
-    if (isProduction) {
-        throw new Error(prefix);
-    }
-    throw new Error(prefix + ": " + (message || ''));
-}var withAuth = function withAuth(Component) {
-  var displayName = "withAuth(".concat(Component.displayName || Component.name, ")");
-
-  var C = function C(props) {
-    return /*#__PURE__*/React__default['default'].createElement(AuthContext.Consumer, null, function (context) {
-      invariant(context, "You should not use <".concat(displayName, " /> outside a <Auth>"));
-      return /*#__PURE__*/React__default['default'].createElement(Component, _extends__default['default']({}, props, context));
-    });
-  };
-
-  C.displayName = displayName;
-  return C;
-};/**
- * Abstraction for localStorage that uses an in-memory fallback when localStorage throws an error.
- * Reasons for throwing an error:
- * - maximum quota is exceeded
- * - under Mobile Safari (since iOS 5) when the user enters private mode `localStorage.setItem()`
- *   will throw
- * - trying to access localStorage object when cookies are disabled in Safari throws
- *   "SecurityError: The operation is insecure."
- */
-const data = {};
-var storage = {
-    get(key, defaultValue) {
-        var _a;
-        try {
-            return (_a = data[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
-        }
-        catch (_b) {
-            return defaultValue;
-        }
-    },
-    set(key, value) {
-        try {
-            localStorage.setItem(key, JSON.stringify(value));
-            data[key] = undefined;
-            return true;
-        }
-        catch (_a) {
-            data[key] = value;
-            return false;
-        }
-    },
-    remove(key) {
-        data[key] = undefined;
-        localStorage.removeItem(key);
-    },
-};
-/**
- * A wrapper for `JSON.parse()` which supports the return value of `JSON.stringify(undefined)`
- * which returns the string `"undefined"` and this method returns the value `undefined`.
- */
-function parseJSON(value) {
-    return value === 'undefined'
-        ? undefined
-        : // JSON.parse() doesn't accept non-string values, this is why we pass empty
-            // string which will throw an error which can be handled
-            JSON.parse(value !== null && value !== void 0 ? value : '');
-}function useLocalStorageStateBase(key, defaultValue) {
-    // we don't support updating the `defaultValue` the same way `useState()` doesn't support it
-    const [defaultValueState] = React.useState(() => {
-        const isCallable = (value) => typeof value === 'function';
-        return isCallable(defaultValue) ? defaultValue() : defaultValue;
-    });
-    const getDefaultState = React.useCallback(() => {
-        return {
-            value: storage.get(key, defaultValueState),
-            isPersistent: (() => {
-                /**
-                 * We want to return `true` on the server. If you render a message based on `isPersistent` and the
-                 * server returns `false` then the message will flicker until hydration is done:
-                 * `{!isPersistent && <span>You changes aren't being persisted.</span>}`
-                 */
-                if (typeof window === 'undefined') {
-                    return true;
-                }
-                try {
-                    localStorage.setItem('__ulss', '#');
-                    localStorage.removeItem('__ulss');
-                    return true;
-                }
-                catch (_a) {
-                    return false;
-                }
-            })(),
-        };
-    }, [defaultValueState, key]);
-    const [state, setState] = React.useState(getDefaultState);
-    const updateValue = React.useMemo(() => {
-        const fn = (newValue) => {
-            const isCallable = (value) => typeof value === 'function';
-            if (isCallable(newValue)) {
-                setState((state) => ({
-                    value: newValue(state.value),
-                    isPersistent: storage.set(key, newValue(state.value)),
-                }));
-            }
-            else {
-                setState({
-                    value: newValue,
-                    isPersistent: storage.set(key, newValue),
-                });
-            }
-        };
-        fn.reset = () => {
-            storage.remove(key);
-            setState((state) => ({
-                value: defaultValueState,
-                isPersistent: state.isPersistent,
-            }));
-        };
-        return fn;
-    }, [key, defaultValueState]);
-    /**
-     * Syncs changes across tabs and iframe's.
-     */
-    React.useEffect(() => {
-        const onStorage = (e) => {
-            if (e.storageArea === localStorage && e.key === key) {
-                setState({
-                    value: storage.get(key, defaultValueState),
-                    isPersistent: true,
-                });
-            }
-        };
-        window.addEventListener('storage', onStorage);
-        return () => window.removeEventListener('storage', onStorage);
-    }, [key, defaultValueState]);
-    /**
-     * Update the state when the `key` property changes.
-     */
-    const isFirstRender = React.useRef(true);
-    React.useEffect(() => {
-        if (isFirstRender.current) {
-            isFirstRender.current = false;
-            return;
-        }
-        setState(getDefaultState());
-    }, [getDefaultState]);
-    return [state.value, updateValue, state.isPersistent];
-}function createLocalStorageStateHook(key, defaultValue) {
-    const setValueFunctions = [];
-    return function useLocalStorageStateHook() {
-        const [value, setValue, isPersistent] = useLocalStorageStateBase(key, defaultValue);
-        const setValueAll = React.useMemo(() => {
-            const fn = (newValue) => {
-                for (const setValueFunction of setValueFunctions) {
-                    setValueFunction(newValue);
-                }
-            };
-            fn.reset = () => {
-                for (const setValueFunction of setValueFunctions) {
-                    setValueFunction.reset();
-                }
-            };
-            return fn;
-        }, []);
-        React.useEffect(() => {
-            setValueFunctions.push(setValue);
-            return () => void setValueFunctions.splice(setValueFunctions.indexOf(setValue), 1);
-        }, [setValue]);
-        return [value, setValueAll, isPersistent];
-    };
-}function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var WebAppsContext = /*#__PURE__*/React__default['default'].createContext({});
-var useModals = createLocalStorageStateHook('modals', {});
-var WebApps = function WebApps(props) {
-  var _useState = React.useState({
-    sidebar: 'responsive',
-    envWriteable: false
-  }),
-      _useState2 = _slicedToArray__default['default'](_useState, 2),
-      UI = _useState2[0],
-      setUI = _useState2[1];
-
-  var _useModals = useModals(),
-      _useModals2 = _slicedToArray__default['default'](_useModals, 2),
-      modals = _useModals2[0],
-      setModals = _useModals2[1];
-
-  var _useState3 = React.useState({}),
-      _useState4 = _slicedToArray__default['default'](_useState3, 2),
-      navigation = _useState4[0],
-      setNavigation = _useState4[1];
-
-  var _useState5 = React.useState({}),
-      _useState6 = _slicedToArray__default['default'](_useState5, 2),
-      apps = _useState6[0],
-      setApps = _useState6[1];
-
-  var _useState7 = React.useState({}),
-      _useState8 = _slicedToArray__default['default'](_useState7, 2),
-      plugins = _useState8[0],
-      setPlugins = _useState8[1];
-
-  React.useEffect(function () {
-    loadUI();
-    loadNavigation();
-    getApps();
-    getPlugins();
-  }, []);
-
-  var toggleModal = function toggleModal(modal) {
-    setModals({
-      modal: !modals[modal]
-    });
-  };
-
-  var loadUI = function loadUI() {
-    var formData = new FormData();
-    formData.append('key', ['core.ui.theme']);
-    axios__default['default'].post('/api/setting', formData).then(function (json) {
-      UI.theme = json.data['core.ui.theme'];
-      setUI(_objectSpread$4({}, UI));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
-
-  var loadNavigation = function loadNavigation() {
-    axios__default['default'].get('/api/navigation').then(function (json) {
-      navigation.menu = json.data.navigation;
-      navigation.routes = json.data.routes;
-      navigation.settings = json.data.settingsNav;
-      UI.envWriteable = json.data.envPermissions;
-      setNavigation(_objectSpread$4({}, navigation));
-      setUI(_objectSpread$4({}, UI));
-    })["catch"](function (error) {
-      var nav = [];
-      nav['error'] = true;
-      nav['message'] = error.response.data.message;
-      setNavigation(nav);
-    });
-  };
-
-  var getApps = function getApps() {
-    axios__default['default'].get('/api/apps').then(function (json) {
-      apps.local = json.data.apps;
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
-    });
-    axios__default['default'].get('/api/online/apps/list').then(function (json) {
-      apps.online = json.data.apps;
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
-
-  var getPlugins = function getPlugins() {
-    axios__default['default'].get('/api/plugins').then(function (json) {
-      plugins.all = json.data.plugins;
-      setPlugins(_objectSpread$4({}, plugins));
-    })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
-    });
-    axios__default['default'].get('/api/plugins/active').then(function (json) {
-      plugins.active = json.data.plugins;
-      setPlugins(_objectSpread$4({}, plugins));
-    })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
-    });
-    axios__default['default'].get('/api/online/plugins/list').then(function (json) {
-      plugins.online = json.data.plugins;
-      setPlugins(_objectSpread$4({}, plugins));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
-
-  var downloadApp = function downloadApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      apps.local = json.data.apps;
-      apps.online = json.data.online;
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
-
-  var updateApp = function updateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      apps.local = json.data.apps;
-      apps.online = json.data.online;
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
-
-  var activateApp = function activateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'activate');
-    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      // Reload Navigation
-      loadNavigation();
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug === apps.local[key].slug) {
-          apps.local[key].active = true;
-        }
-      });
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key].active = true;
-        }
-      });
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
-    });
-  };
-
-  var deactivateApp = function deactivateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'deactivate');
-    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      // Reload Navigation
-      loadNavigation();
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug === apps.local[key].slug) {
-          apps.local[key].active = false;
-        }
-      });
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key].active = false;
-        }
-      });
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
-    });
-  };
-
-  var installApp = function installApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'install');
-    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      // Reload Navigation
-      loadNavigation();
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug === apps.local[key].slug) {
-          apps.local[key].installed = true;
-        }
-      });
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key].installed = true;
-        }
-      });
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
-    });
-  };
-
-  var uninstallApp = function uninstallApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'uninstall');
-    axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      alert(json.data.message);
-      var _apps = [];
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug !== apps.local[key].slug) {
-          _apps.push(apps.local[key]);
-        }
-      });
-      apps.local = _apps;
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key] = json.data.app;
-        }
-      });
-      setApps(_objectSpread$4({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
-    });
-  };
-
-  var downloadPlugin = function downloadPlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      plugins.all = json.data.plugins;
-      plugins.online = json.data.online;
-      setPlugins(_objectSpread$4({}, plugins));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
-
-  var updatePlugin = function updatePlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      plugins.all = json.data.plugins;
-      plugins.online = json.data.online;
-      setPlugins(_objectSpread$4({}, plugins));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
-
-  var togglePlugin = function togglePlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios__default['default'].post('/api/plugins/toggle', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      Object.keys(plugins.all).map(function (key) {
-        if (e.target.dataset.slug === plugins.all[key].slug) {
-          plugins.all[key].state = json.data.plugin['state'];
-        }
-      });
-      Object.keys(plugins.online).map(function (key) {
-        if (e.target.dataset.slug === plugins.online[key].slug) {
-          plugins.online[key].state = json.data.plugin.state;
-        }
-      });
-      setPlugins(_objectSpread$4({}, plugins));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
-    });
-  };
-
-  var uninstallPlugin = function uninstallPlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('_method', 'DELETE');
-    formData.append('slug', e.target.dataset.slug);
-    axios__default['default'].post('/api/plugin', formData).then(function (json) {
-      // TODO: Toast
-      alert(json.data.message);
-      var _plugins = [];
-      Object.keys(plugins.all).map(function (key) {
-        if (e.target.dataset.slug !== plugins.all[key].slug) {
-          _plugins.push(plugins.all[key]);
-        }
-      });
-      plugins.all = _plugins;
-      Object.keys(plugins.online).map(function (key) {
-        if (e.target.dataset.slug === plugins.online[key].slug) {
-          plugins.online[key] = json.data.plugin;
-        }
-      });
-      setPlugins(_objectSpread$4({}, plugins));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
-    });
-  };
-
-  var _apps = {
-    local: apps.local,
-    online: apps.online,
-    download: downloadApp,
-    update: updateApp,
-    activate: activateApp,
-    deactivate: deactivateApp,
-    install: installApp,
-    uninstall: uninstallApp
-  };
-  var _plugins = {
-    all: plugins.all,
-    active: plugins.active,
-    online: plugins.online,
-    download: downloadPlugin,
-    update: updatePlugin,
-    toggle: togglePlugin,
-    uninstall: uninstallPlugin
-  };
-  return /*#__PURE__*/React__default['default'].createElement(WebAppsContext.Provider, {
-    value: {
-      navigation: navigation,
-      UI: UI,
-      modals: modals,
-      loadNavigation: loadNavigation,
-      setUI: setUI,
-      setModals: setModals,
-      toggleModal: toggleModal,
-      apps: _apps,
-      plugins: _plugins
-    }
-  }, props.children || null);
-};var withWebApps = function withWebApps(Component) {
-  var displayName = "withWebApps(".concat(Component.displayName || Component.name, ")");
-
-  var C = function C(props) {
-    return /*#__PURE__*/React__default['default'].createElement(WebAppsContext.Consumer, null, function (context) {
-      invariant(context, "You should not use <".concat(displayName, " /> outside a <WebApps>"));
-      return /*#__PURE__*/React__default['default'].createElement(Component, _extends__default['default']({}, props, context));
-    });
-  };
-
-  C.displayName = displayName;
-  return C;
 };function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -14970,7 +14974,6 @@ var NavDropdown = function NavDropdown(_ref) {
   innerRef && innerRef(ref);
 
   if (UI.navigation === undefined) {
-    console.error('`UI.navigation` is not defined in NavDropdown');
     return null;
   }
 
@@ -15022,7 +15025,7 @@ var NavDropdown = function NavDropdown(_ref) {
   React.useEffect(function () {
     if (dropdownMode === 'close') setIsOpen(false);else if (dropdownMode === 'closeInactive' && route) setIsOpen(path.includes(route));else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route) setIsOpen(path.includes(route));
   }, [path]);
-  var linkClasses = classnames('flex', 'items-center', 'p-2', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600' : null);
+  var linkClasses = classnames('flex', 'items-center', 'p-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600' : null);
   var dropIcon = isOpen ? ['fas', 'angle-down'] : ['fas', 'angle-right'];
   return /*#__PURE__*/React__default['default'].createElement("li", {
     className: classnames(className, 'mb-2'),
@@ -15070,7 +15073,7 @@ var NavChild = function NavChild(props) {
   var _useContext = React.useContext(DropdownContext),
       isOpen = _useContext.isOpen;
 
-  var linkClasses = classnames('flex', 'items-center', 'p-2', 'px-4', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:font-medium', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-900 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white');
+  var linkClasses = classnames('flex', 'items-center', 'p-2', 'px-4', 'mb-1', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:font-medium', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-900 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white');
   var routerLinkProps = rest.to && {
     exact: true,
     activeClassName: classnames(color ? "font-medium text-".concat(color, "-900 dark:text-").concat(color, "-100") : 'font-medium text-gray-900 dark:text-white')
@@ -15118,7 +15121,7 @@ var NavItem = function NavItem(props) {
     return true;
   };
 
-  var linkClasses = classnames('flex', 'items-center', 'p-2', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100 hover:bg-").concat(color, "-100 dark:hover:bg-").concat(color, "-600") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600');
+  var linkClasses = classnames('flex', 'items-center', 'p-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100 hover:bg-").concat(color, "-100 dark:hover:bg-").concat(color, "-600") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600');
   var routerLinkProps = rest.to && {
     exact: true,
     activeClassName: classnames(color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600')
@@ -15450,7 +15453,7 @@ var returnLibrary = function returnLibrary() {
     ConfirmDeleteButton: ConfirmDeleteButton,
     ConfirmDeleteModal: ConfirmDeleteModal,
     Icon: Icon,
-    Input: Input,
+    Input: Input$1,
     Link: Link,
     Loader: Loader,
     Switch: Switch,
