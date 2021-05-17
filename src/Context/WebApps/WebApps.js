@@ -33,12 +33,13 @@ export const WebApps = props => {
 
     const loadUI = () => {
         let formData = new FormData();
-        formData.append('key', ['core.ui.theme']);
+        formData.append('key', ['core.ui.theme', 'core.ui.dark_mode']);
 
         axios.post('/api/setting', formData)
             .then(json => {
                 if (_mounted) {
                     UI.theme = json.data['core.ui.theme'];
+                    UI.dark_mode = json.data['core.ui.dark_mode'];
                     setUI({ ...UI });
                 }
             })
@@ -47,7 +48,7 @@ export const WebApps = props => {
                     // TODO: handle errors
                     console.log(error);
                 }
-            })
+            });
     }
 
     const loadNavigation = () => {

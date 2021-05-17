@@ -12680,11 +12680,19 @@ var Auth = /*#__PURE__*/function (_Component) {
       _this.setState({
         preferences: preferences
       });
+
+      var formData = new FormData();
+      formData.append('_method', 'PUT');
+      formData.append('preference', preference);
+      formData.append('value', value);
+      axios__default['default'].post('/api/user/preference', formData)["catch"](function (error) {
+        // TODO: Handle errors
+        console.log(error);
+      });
     });
 
     _this.state = {
       user: null,
-      preferences: {},
       authenticated: null
     };
     _this.signIn = _this.signIn.bind(_assertThisInitialized__default['default'](_this));
@@ -12702,7 +12710,7 @@ var Auth = /*#__PURE__*/function (_Component) {
 
       return new Promise( /*#__PURE__*/function () {
         var _ref = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee(resolve, reject) {
-          var _yield$axios$get, data;
+          var _yield$axios$get, _data;
 
           return _regeneratorRuntime__default['default'].wrap(function _callee$(_context) {
             while (1) {
@@ -12725,14 +12733,14 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                 case 7:
                   _yield$axios$get = _context.sent;
-                  data = _yield$axios$get.data;
+                  _data = _yield$axios$get.data;
 
                   _this2.setState({
-                    user: data,
+                    user: _data,
                     authenticated: true
                   });
 
-                  return _context.abrupt("return", resolve(data));
+                  return _context.abrupt("return", resolve(_data));
 
                 case 13:
                   _context.prev = 13;
@@ -12811,7 +12819,7 @@ var Auth = /*#__PURE__*/function (_Component) {
 
       return new Promise( /*#__PURE__*/function () {
         var _ref3 = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee3(resolve, reject) {
-          var _yield$axios$get2, data;
+          var _yield$axios$get2, _data2;
 
           return _regeneratorRuntime__default['default'].wrap(function _callee3$(_context3) {
             while (1) {
@@ -12828,10 +12836,10 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                 case 4:
                   _yield$axios$get2 = _context3.sent;
-                  data = _yield$axios$get2.data;
+                  _data2 = _yield$axios$get2.data;
 
                   _this4.setState({
-                    user: data,
+                    user: _data2,
                     authenticated: true
                   });
 
@@ -12849,7 +12857,8 @@ var Auth = /*#__PURE__*/function (_Component) {
                   // If 401 returns, the user is not logged in
                   _this4.setState({
                     user: null,
-                    authenticated: false
+                    authenticated: false,
+                    preferences: data.preferences
                   });
 
                   return _context3.abrupt("return", resolve(false));
@@ -12941,12 +12950,12 @@ function invariant(condition, message) {
  * - trying to access localStorage object when cookies are disabled in Safari throws
  *   "SecurityError: The operation is insecure."
  */
-const data = {};
+const data$1 = {};
 var storage = {
     get(key, defaultValue) {
         var _a;
         try {
-            return (_a = data[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
+            return (_a = data$1[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
         }
         catch (_b) {
             return defaultValue;
@@ -12955,16 +12964,16 @@ var storage = {
     set(key, value) {
         try {
             localStorage.setItem(key, JSON.stringify(value));
-            data[key] = undefined;
+            data$1[key] = undefined;
             return true;
         }
         catch (_a) {
-            data[key] = value;
+            data$1[key] = value;
             return false;
         }
     },
     remove(key) {
-        data[key] = undefined;
+        data$1[key] = undefined;
         localStorage.removeItem(key);
     },
 };
@@ -13137,10 +13146,11 @@ var WebApps = function WebApps(props) {
 
   var loadUI = function loadUI() {
     var formData = new FormData();
-    formData.append('key', ['core.ui.theme']);
+    formData.append('key', ['core.ui.theme', 'core.ui.dark_mode']);
     axios__default['default'].post('/api/setting', formData).then(function (json) {
       if (_mounted) {
         UI.theme = json.data['core.ui.theme'];
+        UI.dark_mode = json.data['core.ui.dark_mode'];
         setUI(_objectSpread$5({}, UI));
       }
     })["catch"](function (error) {

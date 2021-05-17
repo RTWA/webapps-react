@@ -11,7 +11,6 @@ class Auth extends Component {
         super(props);
         this.state = {
             user: null,
-            preferences: {},
             authenticated: null,
         };
         this.signIn = this.signIn.bind(this);
@@ -67,7 +66,7 @@ class Auth extends Component {
                 } catch (error) {
                     if (error.response && error.response.status === 401) {
                         // If 401 returns, the user is not logged in
-                        this.setState({ user: null, authenticated: false });
+                        this.setState({ user: null, authenticated: false, preferences: data.preferences });
                         return resolve(false);
                     } else {
                         // Any other code, something went wrong
@@ -85,6 +84,17 @@ class Auth extends Component {
         let { preferences } = this.state;
         preferences[preference] = value;
         this.setState({ preferences });
+
+        let formData = new FormData();
+        formData.append('_method', 'PUT');
+        formData.append('preference', preference);
+        formData.append('value', value);
+
+        axios.post('/api/user/preference', formData)
+            .catch(error => {
+                // TODO: Handle errors
+                console.log(error);
+            })
     }
 
     componentDidMount() {

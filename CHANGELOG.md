@@ -1,3 +1,10 @@
+## Version 1.1.29
+- Updated `<Auth />` Context
+
+## Version 1.1.28
+- Added `UI.dark_mode` to `<WebApps />` Context
+- Updated `<Auth />` Context
+
 ## Version 1.1.27
 - Updated `<WebApps/ >` Component
 
