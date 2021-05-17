@@ -34,7 +34,6 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
 
     if (UI.navigation === undefined) {
         console.error('`UI.navigation` is not defined in NavDropdown');
-        console.log(UI);
         return null;
     }
 

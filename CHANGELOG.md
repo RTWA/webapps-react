@@ -1,3 +1,7 @@
+## Version 1.1.23
+- Fixed `<SidebarWrapper />` Component
+- Removed unnecessary console.log from `<SidebarWrapper />` Component
+
 ## Version 1.1.22
 - Fixed `<SidebarWrapper />` Component
 - Fixed `<NavDropdown />` Component

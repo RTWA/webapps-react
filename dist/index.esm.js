@@ -14971,7 +14971,6 @@ var NavDropdown = function NavDropdown(_ref) {
 
   if (UI.navigation === undefined) {
     console.error('`UI.navigation` is not defined in NavDropdown');
-    console.log(UI);
     return null;
   }
 
@@ -15258,15 +15257,22 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
       dropdownMode = props.dropdownMode;
   useEffect(function () {
     if (UI !== undefined) {
-      console.log("setting UI.navigation");
       UI.navigation = {
         dropdownMode: dropdownMode,
         openDropdown: ''
       };
       setUI(_objectSpread({}, UI));
-      console.log(UI);
     }
   }, [dropdownMode]);
+  useEffect(function () {
+    if (UI.navigation === undefined) {
+      UI.navigation = {
+        dropdownMode: dropdownMode,
+        openDropdown: ''
+      };
+      setUI(_objectSpread({}, UI));
+    }
+  }, [UI]);
 
   var _useState = useState('hidden'),
       _useState2 = _slicedToArray$1(_useState, 2),
