@@ -74,7 +74,7 @@ ConfirmDeleteButton.defaultProps = {
     text: "Delete",
     confirmText: "Delete - Are you sure?",
     timeout: 2000,
-    className: 'block mx-auto my-auto px-4 py-2',
+    className: 'block mx-auto my-auto px-4 py-2 outline-none',
     initialClasses: 'bg-red-500',
     confirmClasses: 'bg-orange-500',
 }

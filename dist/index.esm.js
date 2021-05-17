@@ -1283,7 +1283,7 @@ ConfirmDeleteButton.defaultProps = {
   text: "Delete",
   confirmText: "Delete - Are you sure?",
   timeout: 2000,
-  className: 'block mx-auto my-auto px-4 py-2',
+  className: 'block mx-auto my-auto px-4 py-2 outline-none',
   initialClasses: 'bg-red-500',
   confirmClasses: 'bg-orange-500'
 };var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
@@ -13117,33 +13117,12 @@ var WebApps = function WebApps(props) {
       plugins = _useState8[0],
       setPlugins = _useState8[1];
 
-  useEffect( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-    return _regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return loadUI();
-
-          case 2:
-            _context.next = 4;
-            return loadNavigation();
-
-          case 4:
-            _context.next = 6;
-            return getApps();
-
-          case 6:
-            _context.next = 8;
-            return getPlugins();
-
-          case 8:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  })), []);
+  useEffect(function () {
+    loadUI();
+    loadNavigation();
+    getApps();
+    getPlugins();
+  }, []);
 
   var toggleModal = function toggleModal(modal) {
     setModals({
@@ -13151,156 +13130,74 @@ var WebApps = function WebApps(props) {
     });
   };
 
-  var loadUI = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
-      var formData;
-      return _regeneratorRuntime.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              formData = new FormData();
-              formData.append('key', ['core.ui.theme']);
-              _context2.next = 4;
-              return axios.post('/api/setting', formData).then(function (json) {
-                UI.theme = json.data['core.ui.theme'];
-                setUI(_objectSpread$5({}, UI));
-              })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
-              });
+  var loadUI = function loadUI() {
+    var formData = new FormData();
+    formData.append('key', ['core.ui.theme']);
+    axios.post('/api/setting', formData).then(function (json) {
+      UI.theme = json.data['core.ui.theme'];
+      setUI(_objectSpread$5({}, UI));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
 
-            case 4:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
+  var loadNavigation = function loadNavigation() {
+    axios.get('/api/navigation').then(function (json) {
+      navigation.menu = json.data.navigation;
+      navigation.routes = json.data.routes;
+      navigation.settings = json.data.settingsNav;
+      UI.envWriteable = json.data.envPermissions;
+      setNavigation(_objectSpread$5({}, navigation));
+      setUI(_objectSpread$5({}, UI));
+    })["catch"](function (error) {
+      var nav = [];
+      nav['error'] = true;
+      nav['message'] = error.response.data.message;
+      setNavigation(nav);
+    });
+  };
 
-    return function loadUI() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
+  var getApps = function getApps() {
+    axios.get('/api/apps').then(function (json) {
+      apps.local = json.data.apps;
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TOOD: Handle errors
+      console.error(error);
+    });
+    axios.get('/api/online/apps/list').then(function (json) {
+      apps.online = json.data.apps;
+      setApps(_objectSpread$5({}, apps));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
 
-  var loadNavigation = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
-      return _regeneratorRuntime.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.next = 2;
-              return axios.get('/api/navigation').then(function (json) {
-                navigation.menu = json.data.navigation;
-                navigation.routes = json.data.routes;
-                navigation.settings = json.data.settingsNav;
-                UI.envWriteable = json.data.envPermissions;
-                setNavigation(_objectSpread$5({}, navigation));
-                setUI(_objectSpread$5({}, UI));
-              })["catch"](function (error) {
-                var nav = [];
-                nav['error'] = true;
-                nav['message'] = error.response.data.message;
-                setNavigation(nav);
-              });
-
-            case 2:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3);
-    }));
-
-    return function loadNavigation() {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-
-  var getApps = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
-      return _regeneratorRuntime.wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              _context4.next = 2;
-              return axios.get('/api/apps').then(function (json) {
-                apps.local = json.data.apps;
-                setApps(_objectSpread$5({}, apps));
-              })["catch"](function (error) {
-                // TOOD: Handle errors
-                console.error(error);
-              });
-
-            case 2:
-              _context4.next = 4;
-              return axios.get('/api/online/apps/list').then(function (json) {
-                apps.online = json.data.apps;
-                setApps(_objectSpread$5({}, apps));
-              })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
-              });
-
-            case 4:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4);
-    }));
-
-    return function getApps() {
-      return _ref4.apply(this, arguments);
-    };
-  }();
-
-  var getPlugins = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5() {
-      return _regeneratorRuntime.wrap(function _callee5$(_context5) {
-        while (1) {
-          switch (_context5.prev = _context5.next) {
-            case 0:
-              _context5.next = 2;
-              return axios.get('/api/plugins').then(function (json) {
-                plugins.all = json.data.plugins;
-                setPlugins(_objectSpread$5({}, plugins));
-              })["catch"](function (error) {
-                // TOOD: Handle errors
-                console.error(error);
-              });
-
-            case 2:
-              _context5.next = 4;
-              return axios.get('/api/plugins/active').then(function (json) {
-                plugins.active = json.data.plugins;
-                setPlugins(_objectSpread$5({}, plugins));
-              })["catch"](function (error) {
-                // TOOD: Handle errors
-                console.error(error);
-              });
-
-            case 4:
-              _context5.next = 6;
-              return axios.get('/api/online/plugins/list').then(function (json) {
-                plugins.online = json.data.plugins;
-                setPlugins(_objectSpread$5({}, plugins));
-              })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
-              });
-
-            case 6:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5);
-    }));
-
-    return function getPlugins() {
-      return _ref5.apply(this, arguments);
-    };
-  }();
+  var getPlugins = function getPlugins() {
+    axios.get('/api/plugins').then(function (json) {
+      plugins.all = json.data.plugins;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TOOD: Handle errors
+      console.error(error);
+    });
+    axios.get('/api/plugins/active').then(function (json) {
+      plugins.active = json.data.plugins;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TOOD: Handle errors
+      console.error(error);
+    });
+    axios.get('/api/online/plugins/list').then(function (json) {
+      plugins.online = json.data.plugins;
+      setPlugins(_objectSpread$5({}, plugins));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
+    });
+  };
 
   var downloadApp = function downloadApp(e) {
     e.preventDefault();

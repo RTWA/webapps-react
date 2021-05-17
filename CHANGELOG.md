@@ -1,6 +1,10 @@
+## Version 1.1.26
+- Updated `<WebApps/ >` Component
+- Updated `<ConfirmDeleteButton />` Component
+
 ## Version 1.1.25
 - Updated `<Input />` Component
-- Updates `<WebApps/ >` Component
+- Updated `<WebApps/ >` Component
 
 ## Version 1.1.24
 - Added `UI.theme` to `<Input />` Component
