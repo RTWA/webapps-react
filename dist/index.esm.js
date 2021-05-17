@@ -14596,6 +14596,7 @@ var WebApps = function WebApps(props) {
       setPlugins = _useState8[1];
 
   useEffect(function () {
+    loadUI();
     loadNavigation();
     getApps();
     getPlugins();
@@ -14604,6 +14605,18 @@ var WebApps = function WebApps(props) {
   var toggleModal = function toggleModal(modal) {
     setModals({
       modal: !modals[modal]
+    });
+  };
+
+  var loadUI = function loadUI() {
+    var formData = new FormData();
+    formData.append('key', ['core.ui.theme']);
+    axios.post('/api/setting', formData).then(function (json) {
+      UI.theme = json.data['core.ui.theme'];
+      setUI(_objectSpread$4({}, UI));
+    })["catch"](function (error) {
+      // TODO: handle errors
+      console.log(error);
     });
   };
 
@@ -15280,7 +15293,7 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
-    className: "h-10 text-indigo-600 dark:text-indigo-500"
+    className: "h-10 text-".concat(UI.theme, "-600 dark:text-").concat(UI.theme, "-500")
   }, /*#__PURE__*/React.createElement("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
@@ -15391,12 +15404,12 @@ var AppError = /*#__PURE__*/function (_Component) {
           className: "mt-3 text-sm lg:text-base text-gray-900 dark:text-gray-300"
         }, this.state.error.toString()), /*#__PURE__*/React.createElement(Link$1, {
           to: "/",
-          className: "inline-block mr-3 mt-6 px-4 py-2 border border-indigo-600 dark:border-indigo-500 bg-indigo-600 dark:bg-indigo-500 text-white dark:text-white hover:bg-indigo-400 dark:hover:bg-indigo-700 hover:border-indigo-400 dark:hover:border-indigo-700"
+          className: "inline-block mr-3 mt-6 px-4 py-2 border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 bg-").concat(this.props.theme, "-600 dark:bg-").concat(this.props.theme, "-500 text-white dark:text-white hover:bg-").concat(this.props.theme, "-400 dark:hover:bg-").concat(this.props.theme, "-700 hover:border-").concat(this.props.theme, "-400 dark:hover:border-").concat(this.props.theme, "-700")
         }, "Back To Homepage"), /*#__PURE__*/React.createElement("button", {
           onClick: function onClick() {
             return window.location.reload();
           },
-          className: "ml-3 inline-block mt-6 px-4 py-2 border border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white"
+          className: "ml-3 inline-block mt-6 px-4 py-2 border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 text-").concat(this.props.theme, "-600 dark:text-").concat(this.props.theme, "-500 hover:bg-").concat(this.props.theme, "-600 dark:hover:bg-").concat(this.props.theme, "-600 hover:text-white dark:hover:text-white")
         }, "Reload Page"))));
       }
 
@@ -15405,7 +15418,14 @@ var AppError = /*#__PURE__*/function (_Component) {
   }]);
 
   return AppError;
-}(Component); // export default withRouter(AppError);
+}(Component);
+
+AppError.propTypes = {
+  theme: propTypes.string
+};
+AppError.defaultProps = {
+  theme: 'indigo'
+}; // export default withRouter(AppError);
 var returnLibrary = function returnLibrary() {
   return {
     Badge: Badge,

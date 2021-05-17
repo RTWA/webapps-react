@@ -7,7 +7,7 @@ export const WebAppsContext = React.createContext({});
 const useModals = createLocalStorageStateHook('modals', {});
 
 export const WebApps = props => {
-    const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false, theme: 'indigo' });
+    const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false });
     const [modals, setModals] = useModals();
     const [navigation, setNavigation] = useState({});
     const [apps, setApps] = useState({});

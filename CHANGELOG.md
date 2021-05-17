@@ -1,3 +1,6 @@
+## Version 1.1.19
+- Removed the default `UI.theme` value of `indigo`
+
 ## Version 1.1.18
 - Added `UI.theme` to `<WebApps />` Context
 - Added basic test assertion for `<Sidebar />` Component
