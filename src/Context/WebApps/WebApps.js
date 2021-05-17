@@ -13,11 +13,11 @@ export const WebApps = props => {
     const [apps, setApps] = useState({});
     const [plugins, setPlugins] = useState({});
 
-    useEffect(() => {
-        loadUI();
-        loadNavigation();
-        getApps();
-        getPlugins();
+    useEffect( async () => {
+        await loadUI();
+        await loadNavigation();
+        await getApps();
+        await getPlugins();
     }, []);
 
     const toggleModal = modal => {
@@ -26,11 +26,11 @@ export const WebApps = props => {
         });
     }
 
-    const loadUI = () => {
+    const loadUI = async () => {
         let formData = new FormData();
         formData.append('key', ['core.ui.theme']);
 
-        axios.post('/api/setting', formData)
+        await axios.post('/api/setting', formData)
             .then(json => {
                 UI.theme = json.data['core.ui.theme'];
                 setUI({ ...UI });
@@ -41,8 +41,8 @@ export const WebApps = props => {
             })
     }
 
-    const loadNavigation = () => {
-        axios.get('/api/navigation')
+    const loadNavigation = async () => {
+        await axios.get('/api/navigation')
             .then(json => {
                 navigation.menu = json.data.navigation;
                 navigation.routes = json.data.routes;
@@ -60,8 +60,8 @@ export const WebApps = props => {
             });
     }
 
-    const getApps = () => {
-        axios.get('/api/apps')
+    const getApps = async () => {
+        await axios.get('/api/apps')
             .then(json => {
                 apps.local = json.data.apps;
                 setApps({ ...apps });
@@ -70,7 +70,7 @@ export const WebApps = props => {
                 // TOOD: Handle errors
                 console.error(error);
             });
-        axios.get('/api/online/apps/list')
+        await axios.get('/api/online/apps/list')
             .then(json => {
                 apps.online = json.data.apps;
                 setApps({ ...apps });
@@ -81,8 +81,8 @@ export const WebApps = props => {
             });
     }
 
-    const getPlugins = () => {
-        axios.get('/api/plugins')
+    const getPlugins = async () => {
+        await axios.get('/api/plugins')
             .then(json => {
                 plugins.all = json.data.plugins;
                 setPlugins({ ...plugins });
@@ -91,7 +91,7 @@ export const WebApps = props => {
                 // TOOD: Handle errors
                 console.error(error);
             });
-        axios.get('/api/plugins/active')
+        await axios.get('/api/plugins/active')
             .then(json => {
                 plugins.active = json.data.plugins;
                 setPlugins({ ...plugins });
@@ -100,7 +100,7 @@ export const WebApps = props => {
                 // TOOD: Handle errors
                 console.error(error);
             });
-        axios.get('/api/online/plugins/list')
+        await axios.get('/api/online/plugins/list')
             .then(json => {
                 plugins.online = json.data.plugins;
                 setPlugins({ ...plugins });

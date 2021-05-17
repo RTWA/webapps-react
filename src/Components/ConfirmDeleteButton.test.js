@@ -7,14 +7,14 @@ test('ConfirmDeleteButton Component Renders', async () => {
     render(<ConfirmDeleteButton data-testid="webapps-ConfirmDeleteButton-component" />);
 
     expect(screen.getByTestId('webapps-ConfirmDeleteButton-component')).toBeDefined();
-    expect(screen.getByRole('link', { name: /delete/i })).toBeDefined();
+    expect(screen.getByText(/delete/i)).toBeDefined();
 
     await act(async () => {
-        fireEvent.click(screen.getByRole('link', { name: /delete/i }));
+        fireEvent.click(screen.getByText(/delete/i));
     });
     await waitFor(() =>
-        screen.getByRole('link', { name: /delete - are you sure?/i })
+        screen.getByText(/delete - are you sure?/i)
     );
     
-    expect(screen.getByRole('link', { name: /delete - are you sure?/i })).toBeDefined();
+    expect(screen.getByText(/delete - are you sure?/i)).toBeDefined();
 });

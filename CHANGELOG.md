@@ -5,6 +5,7 @@
 - Updated `<NavItem />` Component
 - Updated `<NavDropdown />` Component
 - Updated `<NavChild />` Component
+- Updated `<WebApps />` Component
 
 ## Version 1.1.23
 - Fixed `<SidebarWrapper />` Component

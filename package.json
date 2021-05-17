@@ -43,6 +43,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "jest": "^26.6.3",
+    "msw": "^0.28.2",
     "perfect-scrollbar": "^1.5.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

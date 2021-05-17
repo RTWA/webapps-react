@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withWebApps } from '../Context/index';
+import { WebAppsContext } from '../Context/index';
 
-const Input = ({ UI, ...props }) => {
+const Input = props => {
     const {
         error,
         state,
         className,
+        ...attributes
     } = props;
+
+    const { UI } = useContext(WebAppsContext);
 
     const classes = classNames(
         className,
@@ -22,7 +25,7 @@ const Input = ({ UI, ...props }) => {
 
     return (
         <>
-            <input {...props} className={classes} />
+            <input {...attributes} className={classes} />
             {
                 (state === 'error' && error !== '')
                     ? <span className="text-sm text-red-500">{error}</span>
@@ -44,4 +47,4 @@ Input.defaultProps = {
     className: '',
 }
 
-export default withWebApps(Input);
+export default Input;
