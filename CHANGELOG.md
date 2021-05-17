@@ -1,3 +1,7 @@
+## Version 1.1.22
+- Fixed `<SidebarWrapper />` Component
+- Fixed `<NavDropdown />` Component
+
 ## Version 1.1.21
 - Fixed `<SidebarWrapper />` Component
 - Fixed `<NavigationError />` Boundary
