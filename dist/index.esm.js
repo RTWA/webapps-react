@@ -1,4 +1,4 @@
-import _extends from'@babel/runtime/helpers/extends';import _defineProperty$2 from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties$1 from'@babel/runtime/helpers/objectWithoutProperties';import React,{useState,Component,useCallback,useMemo,useEffect,useRef,createRef,useContext}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _slicedToArray$1 from'@babel/runtime/helpers/slicedToArray';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _regeneratorRuntime from'@babel/runtime/regenerator';import axios from'axios';import _typeof$1 from'@babel/runtime/helpers/typeof';function createCommonjsModule(fn) {
+import _extends from'@babel/runtime/helpers/extends';import _defineProperty$2 from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties$1 from'@babel/runtime/helpers/objectWithoutProperties';import React,{useState,Component,useCallback,useMemo,useEffect,useRef,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _slicedToArray$1 from'@babel/runtime/helpers/slicedToArray';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _regeneratorRuntime from'@babel/runtime/regenerator';import axios from'axios';import _typeof$1 from'@babel/runtime/helpers/typeof';function createCommonjsModule(fn) {
   var module = { exports: {} };
 	return fn(module, module.exports), module.exports;
 }/** @license React v16.13.1
@@ -13117,12 +13117,33 @@ var WebApps = function WebApps(props) {
       plugins = _useState8[0],
       setPlugins = _useState8[1];
 
-  useEffect(function () {
-    loadUI();
-    loadNavigation();
-    getApps();
-    getPlugins();
-  }, []);
+  useEffect( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+    return _regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return loadUI();
+
+          case 2:
+            _context.next = 4;
+            return loadNavigation();
+
+          case 4:
+            _context.next = 6;
+            return getApps();
+
+          case 6:
+            _context.next = 8;
+            return getPlugins();
+
+          case 8:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  })), []);
 
   var toggleModal = function toggleModal(modal) {
     setModals({
@@ -13130,74 +13151,156 @@ var WebApps = function WebApps(props) {
     });
   };
 
-  var loadUI = function loadUI() {
-    var formData = new FormData();
-    formData.append('key', ['core.ui.theme']);
-    axios.post('/api/setting', formData).then(function (json) {
-      UI.theme = json.data['core.ui.theme'];
-      setUI(_objectSpread$5({}, UI));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
+  var loadUI = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              formData = new FormData();
+              formData.append('key', ['core.ui.theme']);
+              _context2.next = 4;
+              return axios.post('/api/setting', formData).then(function (json) {
+                UI.theme = json.data['core.ui.theme'];
+                setUI(_objectSpread$5({}, UI));
+              })["catch"](function (error) {
+                // TODO: handle errors
+                console.log(error);
+              });
 
-  var loadNavigation = function loadNavigation() {
-    axios.get('/api/navigation').then(function (json) {
-      navigation.menu = json.data.navigation;
-      navigation.routes = json.data.routes;
-      navigation.settings = json.data.settingsNav;
-      UI.envWriteable = json.data.envPermissions;
-      setNavigation(_objectSpread$5({}, navigation));
-      setUI(_objectSpread$5({}, UI));
-    })["catch"](function (error) {
-      var nav = [];
-      nav['error'] = true;
-      nav['message'] = error.response.data.message;
-      setNavigation(nav);
-    });
-  };
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
 
-  var getApps = function getApps() {
-    axios.get('/api/apps').then(function (json) {
-      apps.local = json.data.apps;
-      setApps(_objectSpread$5({}, apps));
-    })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
-    });
-    axios.get('/api/online/apps/list').then(function (json) {
-      apps.online = json.data.apps;
-      setApps(_objectSpread$5({}, apps));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
+    return function loadUI() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
-  var getPlugins = function getPlugins() {
-    axios.get('/api/plugins').then(function (json) {
-      plugins.all = json.data.plugins;
-      setPlugins(_objectSpread$5({}, plugins));
-    })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
-    });
-    axios.get('/api/plugins/active').then(function (json) {
-      plugins.active = json.data.plugins;
-      setPlugins(_objectSpread$5({}, plugins));
-    })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
-    });
-    axios.get('/api/online/plugins/list').then(function (json) {
-      plugins.online = json.data.plugins;
-      setPlugins(_objectSpread$5({}, plugins));
-    })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
-    });
-  };
+  var loadNavigation = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
+      return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios.get('/api/navigation').then(function (json) {
+                navigation.menu = json.data.navigation;
+                navigation.routes = json.data.routes;
+                navigation.settings = json.data.settingsNav;
+                UI.envWriteable = json.data.envPermissions;
+                setNavigation(_objectSpread$5({}, navigation));
+                setUI(_objectSpread$5({}, UI));
+              })["catch"](function (error) {
+                var nav = [];
+                nav['error'] = true;
+                nav['message'] = error.response.data.message;
+                setNavigation(nav);
+              });
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function loadNavigation() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var getApps = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
+      return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios.get('/api/apps').then(function (json) {
+                apps.local = json.data.apps;
+                setApps(_objectSpread$5({}, apps));
+              })["catch"](function (error) {
+                // TOOD: Handle errors
+                console.error(error);
+              });
+
+            case 2:
+              _context4.next = 4;
+              return axios.get('/api/online/apps/list').then(function (json) {
+                apps.online = json.data.apps;
+                setApps(_objectSpread$5({}, apps));
+              })["catch"](function (error) {
+                // TODO: handle errors
+                console.log(error);
+              });
+
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function getApps() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var getPlugins = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5() {
+      return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return axios.get('/api/plugins').then(function (json) {
+                plugins.all = json.data.plugins;
+                setPlugins(_objectSpread$5({}, plugins));
+              })["catch"](function (error) {
+                // TOOD: Handle errors
+                console.error(error);
+              });
+
+            case 2:
+              _context5.next = 4;
+              return axios.get('/api/plugins/active').then(function (json) {
+                plugins.active = json.data.plugins;
+                setPlugins(_objectSpread$5({}, plugins));
+              })["catch"](function (error) {
+                // TOOD: Handle errors
+                console.error(error);
+              });
+
+            case 4:
+              _context5.next = 6;
+              return axios.get('/api/online/plugins/list').then(function (json) {
+                plugins.online = json.data.plugins;
+                setPlugins(_objectSpread$5({}, plugins));
+              })["catch"](function (error) {
+                // TODO: handle errors
+                console.log(error);
+              });
+
+            case 6:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function getPlugins() {
+      return _ref5.apply(this, arguments);
+    };
+  }();
 
   var downloadApp = function downloadApp(e) {
     e.preventDefault();
@@ -13466,15 +13569,17 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var Input = function Input(_ref) {
-  var UI = _ref.UI,
-      props = _objectWithoutProperties$1(_ref, ["UI"]);
-
+};var Input = function Input(props) {
   var error = props.error,
       state = props.state,
-      className = props.className;
+      className = props.className,
+      attributes = _objectWithoutProperties$1(props, ["error", "state", "className"]);
+
+  var _useContext = useContext(WebAppsContext),
+      UI = _useContext.UI;
+
   var classes = classnames(className, 'input-field', "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", _extends({}, props, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", _extends({}, attributes, {
     className: classes
   })), state === 'error' && error !== '' ? /*#__PURE__*/React.createElement("span", {
     className: "text-sm text-red-500"
@@ -13490,8 +13595,7 @@ Input.defaultProps = {
   error: '',
   state: '',
   className: ''
-};
-var Input$1 = withWebApps(Input);function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+};function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty$2(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -15453,7 +15557,7 @@ var returnLibrary = function returnLibrary() {
     ConfirmDeleteButton: ConfirmDeleteButton,
     ConfirmDeleteModal: ConfirmDeleteModal,
     Icon: Icon,
-    Input: Input$1,
+    Input: Input,
     Link: Link,
     Loader: Loader,
     Switch: Switch,

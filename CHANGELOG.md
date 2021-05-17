@@ -1,3 +1,7 @@
+## Version 1.1.25
+- Updated `<Input />` Component
+- Updates `<WebApps/ >` Component
+
 ## Version 1.1.24
 - Added `UI.theme` to `<Input />` Component
 - Removed unnecessary console.log from `<NavDropdown />` Component
@@ -5,7 +9,6 @@
 - Updated `<NavItem />` Component
 - Updated `<NavDropdown />` Component
 - Updated `<NavChild />` Component
-- Updated `<WebApps />` Component
 
 ## Version 1.1.23
 - Fixed `<SidebarWrapper />` Component
