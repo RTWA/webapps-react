@@ -1,3 +1,6 @@
+## Version 1.1.27
+- Updated `<WebApps/ >` Component
+
 ## Version 1.1.26
 - Updated `<WebApps/ >` Component
 - Updated `<ConfirmDeleteButton />` Component

@@ -13088,6 +13088,7 @@ function parseJSON(value) {
 function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React__default['default'].createContext({});
 var useModals = createLocalStorageStateHook('modals', {});
+var _mounted = false;
 var WebApps = function WebApps(props) {
   var _useState = React.useState({
     sidebar: 'responsive',
@@ -13118,10 +13119,14 @@ var WebApps = function WebApps(props) {
       setPlugins = _useState8[1];
 
   React.useEffect(function () {
+    _mounted = true;
     loadUI();
     loadNavigation();
     getApps();
     getPlugins();
+    return function () {
+      return _mounted = false;
+    };
   }, []);
 
   var toggleModal = function toggleModal(modal) {
@@ -13134,68 +13139,96 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('key', ['core.ui.theme']);
     axios__default['default'].post('/api/setting', formData).then(function (json) {
-      UI.theme = json.data['core.ui.theme'];
-      setUI(_objectSpread$5({}, UI));
+      if (_mounted) {
+        UI.theme = json.data['core.ui.theme'];
+        setUI(_objectSpread$5({}, UI));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.log(error);
+      }
     });
   };
 
   var loadNavigation = function loadNavigation() {
     axios__default['default'].get('/api/navigation').then(function (json) {
-      navigation.menu = json.data.navigation;
-      navigation.routes = json.data.routes;
-      navigation.settings = json.data.settingsNav;
-      UI.envWriteable = json.data.envPermissions;
-      setNavigation(_objectSpread$5({}, navigation));
-      setUI(_objectSpread$5({}, UI));
+      if (_mounted) {
+        navigation.menu = json.data.navigation;
+        navigation.routes = json.data.routes;
+        navigation.settings = json.data.settingsNav;
+        UI.envWriteable = json.data.envPermissions;
+        setNavigation(_objectSpread$5({}, navigation));
+        setUI(_objectSpread$5({}, UI));
+      }
     })["catch"](function (error) {
-      var nav = [];
-      nav['error'] = true;
-      nav['message'] = error.response.data.message;
-      setNavigation(nav);
+      if (_mounted) {
+        var nav = [];
+        nav['error'] = true;
+        nav['message'] = error.response.data.message;
+        setNavigation(nav);
+      }
     });
   };
 
   var getApps = function getApps() {
     axios__default['default'].get('/api/apps').then(function (json) {
-      apps.local = json.data.apps;
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        apps.local = json.data.apps;
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
+      if (_mounted) {
+        // TOOD: Handle errors
+        console.error(error);
+      }
     });
     axios__default['default'].get('/api/online/apps/list').then(function (json) {
-      apps.online = json.data.apps;
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        apps.online = json.data.apps;
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.log(error);
+      }
     });
   };
 
   var getPlugins = function getPlugins() {
     axios__default['default'].get('/api/plugins').then(function (json) {
-      plugins.all = json.data.plugins;
-      setPlugins(_objectSpread$5({}, plugins));
+      if (_mounted) {
+        plugins.all = json.data.plugins;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
     })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
+      if (_mounted) {
+        // TOOD: Handle errors
+        console.error(error);
+      }
     });
     axios__default['default'].get('/api/plugins/active').then(function (json) {
-      plugins.active = json.data.plugins;
-      setPlugins(_objectSpread$5({}, plugins));
+      if (_mounted) {
+        plugins.active = json.data.plugins;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
     })["catch"](function (error) {
-      // TOOD: Handle errors
-      console.error(error);
+      if (_mounted) {
+        // TOOD: Handle errors
+        console.error(error);
+      }
     });
     axios__default['default'].get('/api/online/plugins/list').then(function (json) {
-      plugins.online = json.data.plugins;
-      setPlugins(_objectSpread$5({}, plugins));
+      if (_mounted) {
+        plugins.online = json.data.plugins;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.log(error);
+      }
     });
   };
 
@@ -13204,14 +13237,18 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      apps.local = json.data.apps;
-      apps.online = json.data.online;
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        // TODO: toast
+        alert(json.data.message);
+        apps.local = json.data.apps;
+        apps.online = json.data.online;
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.log(error);
+      }
     });
   };
 
@@ -13220,14 +13257,18 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      apps.local = json.data.apps;
-      apps.online = json.data.online;
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        // TODO: toast
+        alert(json.data.message);
+        apps.local = json.data.apps;
+        apps.online = json.data.online;
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.log(error);
+      }
     });
   };
 
@@ -13237,24 +13278,28 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'activate');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      // Reload Navigation
-      loadNavigation();
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug === apps.local[key].slug) {
-          apps.local[key].active = true;
-        }
-      });
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key].active = true;
-        }
-      });
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        // TODO: Toast
+        // alert(json.data.message);
+        // Reload Navigation
+        loadNavigation();
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug === apps.local[key].slug) {
+            apps.local[key].active = true;
+          }
+        });
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key].active = true;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.error(error);
+      }
     });
   };
 
@@ -13264,24 +13309,28 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'deactivate');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      // Reload Navigation
-      loadNavigation();
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug === apps.local[key].slug) {
-          apps.local[key].active = false;
-        }
-      });
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key].active = false;
-        }
-      });
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        // TODO: Toast
+        // alert(json.data.message);
+        // Reload Navigation
+        loadNavigation();
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug === apps.local[key].slug) {
+            apps.local[key].active = false;
+          }
+        });
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key].active = false;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.error(error);
+      }
     });
   };
 
@@ -13291,24 +13340,28 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'install');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      // Reload Navigation
-      loadNavigation();
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug === apps.local[key].slug) {
-          apps.local[key].installed = true;
-        }
-      });
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key].installed = true;
-        }
-      });
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        // TODO: Toast
+        // alert(json.data.message);
+        // Reload Navigation
+        loadNavigation();
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug === apps.local[key].slug) {
+            apps.local[key].installed = true;
+          }
+        });
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key].installed = true;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.error(error);
+      }
     });
   };
 
@@ -13318,24 +13371,28 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'uninstall');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      // TODO: Toast
-      alert(json.data.message);
-      var _apps = [];
-      Object.keys(apps.local).map(function (key) {
-        if (e.target.dataset.slug !== apps.local[key].slug) {
-          _apps.push(apps.local[key]);
-        }
-      });
-      apps.local = _apps;
-      Object.keys(apps.online).map(function (key) {
-        if (e.target.dataset.slug === apps.online[key].slug) {
-          apps.online[key] = json.data.app;
-        }
-      });
-      setApps(_objectSpread$5({}, apps));
+      if (_mounted) {
+        // TODO: Toast
+        alert(json.data.message);
+        var _apps2 = [];
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug !== apps.local[key].slug) {
+            _apps2.push(apps.local[key]);
+          }
+        });
+        apps.local = _apps2;
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key] = json.data.app;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.error(error);
+      }
     });
   };
 
@@ -13344,14 +13401,18 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      plugins.all = json.data.plugins;
-      plugins.online = json.data.online;
-      setPlugins(_objectSpread$5({}, plugins));
+      if (_mounted) {
+        // TODO: toast
+        alert(json.data.message);
+        plugins.all = json.data.plugins;
+        plugins.online = json.data.online;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.log(error);
+      }
     });
   };
 
@@ -13360,14 +13421,18 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
-      // TODO: toast
-      alert(json.data.message);
-      plugins.all = json.data.plugins;
-      plugins.online = json.data.online;
-      setPlugins(_objectSpread$5({}, plugins));
+      if (_mounted) {
+        // TODO: toast
+        alert(json.data.message);
+        plugins.all = json.data.plugins;
+        plugins.online = json.data.online;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.log(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.log(error);
+      }
     });
   };
 
@@ -13376,22 +13441,26 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/plugins/toggle', formData).then(function (json) {
-      // TODO: Toast
-      // alert(json.data.message);
-      Object.keys(plugins.all).map(function (key) {
-        if (e.target.dataset.slug === plugins.all[key].slug) {
-          plugins.all[key].state = json.data.plugin['state'];
-        }
-      });
-      Object.keys(plugins.online).map(function (key) {
-        if (e.target.dataset.slug === plugins.online[key].slug) {
-          plugins.online[key].state = json.data.plugin.state;
-        }
-      });
-      setPlugins(_objectSpread$5({}, plugins));
+      if (_mounted) {
+        // TODO: Toast
+        // alert(json.data.message);
+        Object.keys(plugins.all).map(function (key) {
+          if (e.target.dataset.slug === plugins.all[key].slug) {
+            plugins.all[key].state = json.data.plugin['state'];
+          }
+        });
+        Object.keys(plugins.online).map(function (key) {
+          if (e.target.dataset.slug === plugins.online[key].slug) {
+            plugins.online[key].state = json.data.plugin.state;
+          }
+        });
+        setPlugins(_objectSpread$5({}, plugins));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.error(error);
+      }
     });
   };
 
@@ -13401,24 +13470,28 @@ var WebApps = function WebApps(props) {
     formData.append('_method', 'DELETE');
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/plugin', formData).then(function (json) {
-      // TODO: Toast
-      alert(json.data.message);
-      var _plugins = [];
-      Object.keys(plugins.all).map(function (key) {
-        if (e.target.dataset.slug !== plugins.all[key].slug) {
-          _plugins.push(plugins.all[key]);
-        }
-      });
-      plugins.all = _plugins;
-      Object.keys(plugins.online).map(function (key) {
-        if (e.target.dataset.slug === plugins.online[key].slug) {
-          plugins.online[key] = json.data.plugin;
-        }
-      });
-      setPlugins(_objectSpread$5({}, plugins));
+      if (_mounted) {
+        // TODO: Toast
+        alert(json.data.message);
+        var _plugins2 = [];
+        Object.keys(plugins.all).map(function (key) {
+          if (e.target.dataset.slug !== plugins.all[key].slug) {
+            _plugins2.push(plugins.all[key]);
+          }
+        });
+        plugins.all = _plugins2;
+        Object.keys(plugins.online).map(function (key) {
+          if (e.target.dataset.slug === plugins.online[key].slug) {
+            plugins.online[key] = json.data.plugin;
+          }
+        });
+        setPlugins(_objectSpread$5({}, plugins));
+      }
     })["catch"](function (error) {
-      // TODO: handle errors
-      console.error(error);
+      if (_mounted) {
+        // TODO: handle errors
+        console.error(error);
+      }
     });
   };
 

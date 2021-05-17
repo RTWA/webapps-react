@@ -6,6 +6,8 @@ export const WebAppsContext = React.createContext({});
 
 const useModals = createLocalStorageStateHook('modals', {});
 
+let _mounted = false;
+
 export const WebApps = props => {
     const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false });
     const [modals, setModals] = useModals();
@@ -14,10 +16,13 @@ export const WebApps = props => {
     const [plugins, setPlugins] = useState({});
 
     useEffect(() => {
+        _mounted = true;
         loadUI();
         loadNavigation();
         getApps();
         getPlugins();
+
+        return () => _mounted = false;
     }, []);
 
     const toggleModal = modal => {
@@ -32,82 +37,110 @@ export const WebApps = props => {
 
         axios.post('/api/setting', formData)
             .then(json => {
-                UI.theme = json.data['core.ui.theme'];
-                setUI({ ...UI });
+                if (_mounted) {
+                    UI.theme = json.data['core.ui.theme'];
+                    setUI({ ...UI });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.log(error);
+                }
             })
     }
 
     const loadNavigation = () => {
         axios.get('/api/navigation')
             .then(json => {
-                navigation.menu = json.data.navigation;
-                navigation.routes = json.data.routes;
-                navigation.settings = json.data.settingsNav;
-                UI.envWriteable = json.data.envPermissions;
+                if (_mounted) {
+                    navigation.menu = json.data.navigation;
+                    navigation.routes = json.data.routes;
+                    navigation.settings = json.data.settingsNav;
+                    UI.envWriteable = json.data.envPermissions;
 
-                setNavigation({ ...navigation });
-                setUI({ ...UI });
+                    setNavigation({ ...navigation });
+                    setUI({ ...UI });
+                }
             })
             .catch(error => {
-                let nav = [];
-                nav['error'] = true;
-                nav['message'] = error.response.data.message;
-                setNavigation(nav);
+                if (_mounted) {
+                    let nav = [];
+                    nav['error'] = true;
+                    nav['message'] = error.response.data.message;
+                    setNavigation(nav);
+                }
             });
     }
 
     const getApps = () => {
         axios.get('/api/apps')
             .then(json => {
-                apps.local = json.data.apps;
-                setApps({ ...apps });
+                if (_mounted) {
+                    apps.local = json.data.apps;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TOOD: Handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TOOD: Handle errors
+                    console.error(error);
+                }
             });
         axios.get('/api/online/apps/list')
             .then(json => {
-                apps.online = json.data.apps;
-                setApps({ ...apps });
+                if (_mounted) {
+                    apps.online = json.data.apps;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.log(error);
+                }
             });
     }
 
     const getPlugins = () => {
         axios.get('/api/plugins')
             .then(json => {
-                plugins.all = json.data.plugins;
-                setPlugins({ ...plugins });
+                if (_mounted) {
+                    plugins.all = json.data.plugins;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                // TOOD: Handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TOOD: Handle errors
+                    console.error(error);
+                }
             });
         axios.get('/api/plugins/active')
             .then(json => {
-                plugins.active = json.data.plugins;
-                setPlugins({ ...plugins });
+                if (_mounted) {
+                    plugins.active = json.data.plugins;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                // TOOD: Handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TOOD: Handle errors
+                    console.error(error);
+                }
             });
         axios.get('/api/online/plugins/list')
             .then(json => {
-                plugins.online = json.data.plugins;
-                setPlugins({ ...plugins });
+                if (_mounted) {
+                    plugins.online = json.data.plugins;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.log(error);
+                }
             });
     }
 
@@ -117,15 +150,19 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/apps/download', formData)
             .then(json => {
-                // TODO: toast
-                alert(json.data.message);
-                apps.local = json.data.apps;
-                apps.online = json.data.online;
-                setApps({ ...apps });
+                if (_mounted) {
+                    // TODO: toast
+                    alert(json.data.message);
+                    apps.local = json.data.apps;
+                    apps.online = json.data.online;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.log(error);
+                }
             });
     }
 
@@ -135,15 +172,19 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/apps/download', formData)
             .then(json => {
-                // TODO: toast
-                alert(json.data.message);
-                apps.local = json.data.apps;
-                apps.online = json.data.online;
-                setApps({ ...apps });
+                if (_mounted) {
+                    // TODO: toast
+                    alert(json.data.message);
+                    apps.local = json.data.apps;
+                    apps.online = json.data.online;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.log(error);
+                }
             });
     }
 
@@ -154,27 +195,31 @@ export const WebApps = props => {
         formData.append('task', 'activate');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                // TODO: Toast
-                // alert(json.data.message);
+                if (_mounted) {
+                    // TODO: Toast
+                    // alert(json.data.message);
 
-                // Reload Navigation
-                loadNavigation();
+                    // Reload Navigation
+                    loadNavigation();
 
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                        apps.local[key].active = true;
-                    }
-                });
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key].active = true;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug === apps.local[key].slug) {
+                            apps.local[key].active = true;
+                        }
+                    });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key].active = true;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -185,27 +230,31 @@ export const WebApps = props => {
         formData.append('task', 'deactivate');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                // TODO: Toast
-                // alert(json.data.message);
+                if (_mounted) {
+                    // TODO: Toast
+                    // alert(json.data.message);
 
-                // Reload Navigation
-                loadNavigation();
+                    // Reload Navigation
+                    loadNavigation();
 
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                        apps.local[key].active = false;
-                    }
-                });
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key].active = false;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug === apps.local[key].slug) {
+                            apps.local[key].active = false;
+                        }
+                    });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key].active = false;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -216,27 +265,31 @@ export const WebApps = props => {
         formData.append('task', 'install');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                // TODO: Toast
-                // alert(json.data.message);
+                if (_mounted) {
+                    // TODO: Toast
+                    // alert(json.data.message);
 
-                // Reload Navigation
-                loadNavigation();
+                    // Reload Navigation
+                    loadNavigation();
 
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                        apps.local[key].installed = true;
-                    }
-                });
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key].installed = true;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug === apps.local[key].slug) {
+                            apps.local[key].installed = true;
+                        }
+                    });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key].installed = true;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -247,27 +300,31 @@ export const WebApps = props => {
         formData.append('task', 'uninstall');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                // TODO: Toast
-                alert(json.data.message);
+                if (_mounted) {
+                    // TODO: Toast
+                    alert(json.data.message);
 
-                let _apps = [];
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug !== apps.local[key].slug) {
-                        _apps.push(apps.local[key]);
-                    }
-                });
-                apps.local = _apps;
+                    let _apps = [];
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug !== apps.local[key].slug) {
+                            _apps.push(apps.local[key]);
+                        }
+                    });
+                    apps.local = _apps;
 
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key] = json.data.app;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key] = json.data.app;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -277,16 +334,20 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/plugins/download', formData)
             .then(json => {
-                // TODO: toast
-                alert(json.data.message);
+                if (_mounted) {
+                    // TODO: toast
+                    alert(json.data.message);
 
-                plugins.all = json.data.plugins;
-                plugins.online = json.data.online;
-                setPlugins({ ...plugins });
+                    plugins.all = json.data.plugins;
+                    plugins.online = json.data.online;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.log(error);
+                }
             });
     }
 
@@ -296,16 +357,20 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/plugins/download', formData)
             .then(json => {
-                // TODO: toast
-                alert(json.data.message);
+                if (_mounted) {
+                    // TODO: toast
+                    alert(json.data.message);
 
-                plugins.all = json.data.plugins;
-                plugins.online = json.data.online;
-                setPlugins({ ...plugins });
+                    plugins.all = json.data.plugins;
+                    plugins.online = json.data.online;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.log(error);
+                }
             });
     }
 
@@ -315,24 +380,28 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/plugins/toggle', formData)
             .then(json => {
-                // TODO: Toast
-                // alert(json.data.message);
+                if (_mounted) {
+                    // TODO: Toast
+                    // alert(json.data.message);
 
-                Object.keys(plugins.all).map((key) => {
-                    if (e.target.dataset.slug === plugins.all[key].slug) {
-                        plugins.all[key].state = json.data.plugin['state'];
-                    }
-                });
-                Object.keys(plugins.online).map((key) => {
-                    if (e.target.dataset.slug === plugins.online[key].slug) {
-                        plugins.online[key].state = json.data.plugin.state;
-                    }
-                });
-                setPlugins({ ...plugins });
+                    Object.keys(plugins.all).map((key) => {
+                        if (e.target.dataset.slug === plugins.all[key].slug) {
+                            plugins.all[key].state = json.data.plugin['state'];
+                        }
+                    });
+                    Object.keys(plugins.online).map((key) => {
+                        if (e.target.dataset.slug === plugins.online[key].slug) {
+                            plugins.online[key].state = json.data.plugin.state;
+                        }
+                    });
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -343,26 +412,30 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/plugin', formData)
             .then(json => {
-                // TODO: Toast
-                alert(json.data.message);
+                if (_mounted) {
+                    // TODO: Toast
+                    alert(json.data.message);
 
-                let _plugins = [];
-                Object.keys(plugins.all).map((key) => {
-                    if (e.target.dataset.slug !== plugins.all[key].slug) {
-                        _plugins.push(plugins.all[key]);
-                    }
-                });
-                plugins.all = _plugins;
-                Object.keys(plugins.online).map((key) => {
-                    if (e.target.dataset.slug === plugins.online[key].slug) {
-                        plugins.online[key] = json.data.plugin;
-                    }
-                });
-                setPlugins({ ...plugins });
+                    let _plugins = [];
+                    Object.keys(plugins.all).map((key) => {
+                        if (e.target.dataset.slug !== plugins.all[key].slug) {
+                            _plugins.push(plugins.all[key]);
+                        }
+                    });
+                    plugins.all = _plugins;
+                    Object.keys(plugins.online).map((key) => {
+                        if (e.target.dataset.slug === plugins.online[key].slug) {
+                            plugins.online[key] = json.data.plugin;
+                        }
+                    });
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (_mounted) {
+                    // TODO: handle errors
+                    console.error(error);
+                }
             });
     }
 
