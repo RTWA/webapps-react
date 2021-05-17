@@ -6,5 +6,6 @@ import Sidebar from './Sidebar';
 test('Sidebar Component Renders', () => {
     render(<Sidebar />);
 
-    // expect(screen.getByTestId('webapps-Sidebar-component')).toBeDefined();
+    // Not great...
+    expect(screen.getByRole('list')).toBeDefined();
 });

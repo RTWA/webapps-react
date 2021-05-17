@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class AppError extends Component {
     constructor(props) {
@@ -35,10 +36,10 @@ class AppError extends Component {
                         <div className="p-6 text-center ">
                             <h2 className="uppercase text-xl lg:text-5xl font-black">Sorry, something went wrong.</h2>
                             <p className="mt-3 text-sm lg:text-base text-gray-900 dark:text-gray-300">{this.state.error.toString()}</p>
-                            <Link to="/" className="inline-block mr-3 mt-6 px-4 py-2 border border-indigo-600 dark:border-indigo-500 bg-indigo-600 dark:bg-indigo-500 text-white dark:text-white hover:bg-indigo-400 dark:hover:bg-indigo-700 hover:border-indigo-400 dark:hover:border-indigo-700">
+                            <Link to="/" className={`inline-block mr-3 mt-6 px-4 py-2 border border-${this.props.theme}-600 dark:border-${this.props.theme}-500 bg-${this.props.theme}-600 dark:bg-${this.props.theme}-500 text-white dark:text-white hover:bg-${this.props.theme}-400 dark:hover:bg-${this.props.theme}-700 hover:border-${this.props.theme}-400 dark:hover:border-${this.props.theme}-700`}>
                                 Back To Homepage
                             </Link>
-                            <button onClick={() => window.location.reload()} className="ml-3 inline-block mt-6 px-4 py-2 border border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white">
+                            <button onClick={() => window.location.reload()} className={`ml-3 inline-block mt-6 px-4 py-2 border border-${this.props.theme}-600 dark:border-${this.props.theme}-500 text-${this.props.theme}-600 dark:text-${this.props.theme}-500 hover:bg-${this.props.theme}-600 dark:hover:bg-${this.props.theme}-600 hover:text-white dark:hover:text-white`}>
                                 Reload Page
                             </button>
                         </div>
@@ -48,6 +49,14 @@ class AppError extends Component {
         }
         return this.props.children;
     }
+}
+
+AppError.propTypes = {
+    theme: PropTypes.string
+}
+
+AppError.defaultProps = {
+    theme: 'indigo'
 }
 
 // export default withRouter(AppError);

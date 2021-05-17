@@ -1,3 +1,9 @@
+## Version 1.1.18
+- Added `UI.theme` to `<WebApps />` Context
+- Added basic test assertion for `<Sidebar />` Component
+- Added `theme` prop to `<AppError />` boundary
+- Used `UI.theme` in `<SidebarWrapper />` Component
+
 ## Version 1.1.17
 - Fixed `<SidebarWrapper />` Component
 - Fixed `<NavDropdown />` Component

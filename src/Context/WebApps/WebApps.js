@@ -7,13 +7,14 @@ export const WebAppsContext = React.createContext({});
 const useModals = createLocalStorageStateHook('modals', {});
 
 export const WebApps = props => {
-    const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false });
+    const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false, theme: 'indigo' });
     const [modals, setModals] = useModals();
     const [navigation, setNavigation] = useState({});
     const [apps, setApps] = useState({});
     const [plugins, setPlugins] = useState({});
 
     useEffect(() => {
+        loadUI();
         loadNavigation();
         getApps();
         getPlugins();
@@ -23,6 +24,21 @@ export const WebApps = props => {
         setModals({
             modal: !modals[modal]
         });
+    }
+
+    const loadUI = () => {
+        let formData = new FormData();
+        formData.append('key', ['core.ui.theme']);
+
+        axios.post('/api/setting', formData)
+            .then(json => {
+                UI.theme = json.data['core.ui.theme'];
+                setUI({ ...UI });
+            })
+            .catch(error => {
+                // TODO: handle errors
+                console.log(error);
+            })
     }
 
     const loadNavigation = () => {
