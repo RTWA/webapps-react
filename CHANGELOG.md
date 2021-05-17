@@ -1,3 +1,6 @@
+## Version 1.1.33
+- Updated `<WebApps/ >` Component
+
 ## Version 1.1.32
 - Fixed memory leak in `<WebApps/ >` Component
 
