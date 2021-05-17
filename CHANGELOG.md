@@ -1,3 +1,6 @@
+## Version 1.1.30
+- Updated `<Auth />` Context
+
 ## Version 1.1.29
 - Updated `<Auth />` Context
 

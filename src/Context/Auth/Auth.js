@@ -12,6 +12,7 @@ class Auth extends Component {
         this.state = {
             user: null,
             authenticated: null,
+            preferences: {},
         };
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);
@@ -29,7 +30,7 @@ class Auth extends Component {
                 await axios.post('/login', { username, password });
                 // When correct, get the user object
                 const { data } = await axios.get('/api/user');
-                this.setState({ user: data, authenticated: true });
+                this.setState({ user: data, authenticated: true, preferences: data.preferences });
                 return resolve(data);
             } catch (error) {
                 return reject(error);
@@ -66,7 +67,7 @@ class Auth extends Component {
                 } catch (error) {
                     if (error.response && error.response.status === 401) {
                         // If 401 returns, the user is not logged in
-                        this.setState({ user: null, authenticated: false, preferences: data.preferences });
+                        this.setState({ user: null, authenticated: false, preferences: {} });
                         return resolve(false);
                     } else {
                         // Any other code, something went wrong
