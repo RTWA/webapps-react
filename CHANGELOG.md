@@ -1,3 +1,6 @@
+## Version 1.1.34
+- Updated `<WebApps/ >` Component
+
 ## Version 1.1.33
 - Updated `<WebApps/ >` Component
 

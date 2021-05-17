@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { createLocalStorageStateHook } from 'use-local-storage-state'
 
@@ -6,9 +6,8 @@ export const WebAppsContext = React.createContext({});
 
 const useModals = createLocalStorageStateHook('modals', {});
 
-let _mounted = false;
-
 export const WebApps = props => {
+    const unmounted = useRef(false);
     const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false });
     const [modals, setModals] = useModals();
     const [navigation, setNavigation] = useState({});
@@ -16,13 +15,12 @@ export const WebApps = props => {
     const [plugins, setPlugins] = useState({});
 
     useEffect(() => {
-        _mounted = true;
         loadUI();
         loadNavigation();
         getApps();
         getPlugins();
 
-        return () => _mounted = false;
+        return () => { unmounted.current = true; }
     }, []);
 
     const toggleModal = modal => {
@@ -37,14 +35,14 @@ export const WebApps = props => {
 
         axios.post('/api/setting', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     UI.theme = json.data['core.ui.theme'];
                     UI.dark_mode = json.data['core.ui.dark_mode'];
                     setUI({ ...UI });
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -54,7 +52,7 @@ export const WebApps = props => {
     const loadNavigation = () => {
         axios.get('/api/navigation')
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     navigation.menu = json.data.navigation;
                     navigation.routes = json.data.routes;
                     navigation.settings = json.data.settingsNav;
@@ -65,7 +63,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     let nav = [];
                     nav['error'] = true;
                     nav['message'] = error.response.data.message;
@@ -77,26 +75,26 @@ export const WebApps = props => {
     const getApps = () => {
         axios.get('/api/apps')
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     apps.local = json.data.apps;
                     setApps({ ...apps });
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TOOD: Handle errors
                     console.error(error);
                 }
             });
         axios.get('/api/online/apps/list')
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     apps.online = json.data.apps;
                     setApps({ ...apps });
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -106,39 +104,39 @@ export const WebApps = props => {
     const getPlugins = () => {
         axios.get('/api/plugins')
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     plugins.all = json.data.plugins;
                     setPlugins({ ...plugins });
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TOOD: Handle errors
                     console.error(error);
                 }
             });
         axios.get('/api/plugins/active')
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     plugins.active = json.data.plugins;
                     setPlugins({ ...plugins });
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TOOD: Handle errors
                     console.error(error);
                 }
             });
         axios.get('/api/online/plugins/list')
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     plugins.online = json.data.plugins;
                     setPlugins({ ...plugins });
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -151,7 +149,7 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/apps/download', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: toast
                     alert(json.data.message);
                     apps.local = json.data.apps;
@@ -160,7 +158,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -173,7 +171,7 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/apps/download', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: toast
                     alert(json.data.message);
                     apps.local = json.data.apps;
@@ -182,7 +180,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -196,7 +194,7 @@ export const WebApps = props => {
         formData.append('task', 'activate');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: Toast
                     // alert(json.data.message);
 
@@ -217,7 +215,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -231,7 +229,7 @@ export const WebApps = props => {
         formData.append('task', 'deactivate');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: Toast
                     // alert(json.data.message);
 
@@ -252,7 +250,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -266,7 +264,7 @@ export const WebApps = props => {
         formData.append('task', 'install');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: Toast
                     // alert(json.data.message);
 
@@ -287,7 +285,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -301,7 +299,7 @@ export const WebApps = props => {
         formData.append('task', 'uninstall');
         axios.post('/api/apps/control', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: Toast
                     alert(json.data.message);
 
@@ -322,7 +320,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -335,7 +333,7 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/plugins/download', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: toast
                     alert(json.data.message);
 
@@ -345,7 +343,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -358,7 +356,7 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/online/plugins/download', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: toast
                     alert(json.data.message);
 
@@ -368,7 +366,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -381,7 +379,7 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/plugins/toggle', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: Toast
                     // alert(json.data.message);
 
@@ -399,7 +397,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -413,7 +411,7 @@ export const WebApps = props => {
         formData.append('slug', e.target.dataset.slug);
         axios.post('/api/plugin', formData)
             .then(json => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: Toast
                     alert(json.data.message);
 
@@ -433,7 +431,7 @@ export const WebApps = props => {
                 }
             })
             .catch(error => {
-                if (_mounted) {
+                if (!unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }

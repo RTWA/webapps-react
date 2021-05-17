@@ -13099,8 +13099,9 @@ function parseJSON(value) {
 function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React__default['default'].createContext({});
 var useModals = createLocalStorageStateHook('modals', {});
-var _mounted = false;
 var WebApps = function WebApps(props) {
+  var unmounted = React.useRef(false);
+
   var _useState = React.useState({
     sidebar: 'responsive',
     envWriteable: false
@@ -13130,13 +13131,12 @@ var WebApps = function WebApps(props) {
       setPlugins = _useState8[1];
 
   React.useEffect(function () {
-    _mounted = true;
     loadUI();
     loadNavigation();
     getApps();
     getPlugins();
     return function () {
-      return _mounted = false;
+      unmounted.current = true;
     };
   }, []);
 
@@ -13150,13 +13150,13 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
     axios__default['default'].post('/api/setting', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         UI.theme = json.data['core.ui.theme'];
         UI.dark_mode = json.data['core.ui.dark_mode'];
         setUI(_objectSpread$5({}, UI));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.log(error);
       }
@@ -13165,7 +13165,7 @@ var WebApps = function WebApps(props) {
 
   var loadNavigation = function loadNavigation() {
     axios__default['default'].get('/api/navigation').then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         navigation.menu = json.data.navigation;
         navigation.routes = json.data.routes;
         navigation.settings = json.data.settingsNav;
@@ -13174,7 +13174,7 @@ var WebApps = function WebApps(props) {
         setUI(_objectSpread$5({}, UI));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         var nav = [];
         nav['error'] = true;
         nav['message'] = error.response.data.message;
@@ -13185,23 +13185,23 @@ var WebApps = function WebApps(props) {
 
   var getApps = function getApps() {
     axios__default['default'].get('/api/apps').then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         apps.local = json.data.apps;
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TOOD: Handle errors
         console.error(error);
       }
     });
     axios__default['default'].get('/api/online/apps/list').then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         apps.online = json.data.apps;
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.log(error);
       }
@@ -13210,34 +13210,34 @@ var WebApps = function WebApps(props) {
 
   var getPlugins = function getPlugins() {
     axios__default['default'].get('/api/plugins').then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         plugins.all = json.data.plugins;
         setPlugins(_objectSpread$5({}, plugins));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TOOD: Handle errors
         console.error(error);
       }
     });
     axios__default['default'].get('/api/plugins/active').then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         plugins.active = json.data.plugins;
         setPlugins(_objectSpread$5({}, plugins));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TOOD: Handle errors
         console.error(error);
       }
     });
     axios__default['default'].get('/api/online/plugins/list').then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         plugins.online = json.data.plugins;
         setPlugins(_objectSpread$5({}, plugins));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.log(error);
       }
@@ -13249,7 +13249,7 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: toast
         alert(json.data.message);
         apps.local = json.data.apps;
@@ -13257,7 +13257,7 @@ var WebApps = function WebApps(props) {
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.log(error);
       }
@@ -13269,7 +13269,7 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/apps/download', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: toast
         alert(json.data.message);
         apps.local = json.data.apps;
@@ -13277,7 +13277,7 @@ var WebApps = function WebApps(props) {
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.log(error);
       }
@@ -13290,7 +13290,7 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'activate');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: Toast
         // alert(json.data.message);
         // Reload Navigation
@@ -13308,7 +13308,7 @@ var WebApps = function WebApps(props) {
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.error(error);
       }
@@ -13321,7 +13321,7 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'deactivate');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: Toast
         // alert(json.data.message);
         // Reload Navigation
@@ -13339,7 +13339,7 @@ var WebApps = function WebApps(props) {
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.error(error);
       }
@@ -13352,7 +13352,7 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'install');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: Toast
         // alert(json.data.message);
         // Reload Navigation
@@ -13370,7 +13370,7 @@ var WebApps = function WebApps(props) {
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.error(error);
       }
@@ -13383,7 +13383,7 @@ var WebApps = function WebApps(props) {
     formData.append('slug', e.target.dataset.slug);
     formData.append('task', 'uninstall');
     axios__default['default'].post('/api/apps/control', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: Toast
         alert(json.data.message);
         var _apps2 = [];
@@ -13401,7 +13401,7 @@ var WebApps = function WebApps(props) {
         setApps(_objectSpread$5({}, apps));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.error(error);
       }
@@ -13413,7 +13413,7 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: toast
         alert(json.data.message);
         plugins.all = json.data.plugins;
@@ -13421,7 +13421,7 @@ var WebApps = function WebApps(props) {
         setPlugins(_objectSpread$5({}, plugins));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.log(error);
       }
@@ -13433,7 +13433,7 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: toast
         alert(json.data.message);
         plugins.all = json.data.plugins;
@@ -13441,7 +13441,7 @@ var WebApps = function WebApps(props) {
         setPlugins(_objectSpread$5({}, plugins));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.log(error);
       }
@@ -13453,7 +13453,7 @@ var WebApps = function WebApps(props) {
     var formData = new FormData();
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/plugins/toggle', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: Toast
         // alert(json.data.message);
         Object.keys(plugins.all).map(function (key) {
@@ -13469,7 +13469,7 @@ var WebApps = function WebApps(props) {
         setPlugins(_objectSpread$5({}, plugins));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.error(error);
       }
@@ -13482,7 +13482,7 @@ var WebApps = function WebApps(props) {
     formData.append('_method', 'DELETE');
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/plugin', formData).then(function (json) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: Toast
         alert(json.data.message);
         var _plugins2 = [];
@@ -13500,7 +13500,7 @@ var WebApps = function WebApps(props) {
         setPlugins(_objectSpread$5({}, plugins));
       }
     })["catch"](function (error) {
-      if (_mounted) {
+      if (!unmounted.current) {
         // TODO: handle errors
         console.error(error);
       }
