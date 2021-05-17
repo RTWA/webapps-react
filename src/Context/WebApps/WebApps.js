@@ -33,7 +33,7 @@ export const WebApps = props => {
 
     const loadUI = () => {
         let formData = new FormData();
-        formData.append('key', ['core.ui.theme', 'core.ui.dark_mode']);
+        formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
 
         axios.post('/api/setting', formData)
             .then(json => {

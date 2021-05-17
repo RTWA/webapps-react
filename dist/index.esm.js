@@ -13148,7 +13148,7 @@ var WebApps = function WebApps(props) {
 
   var loadUI = function loadUI() {
     var formData = new FormData();
-    formData.append('key', ['core.ui.theme', 'core.ui.dark_mode']);
+    formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
     axios.post('/api/setting', formData).then(function (json) {
       if (_mounted) {
         UI.theme = json.data['core.ui.theme'];

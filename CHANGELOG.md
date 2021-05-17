@@ -1,3 +1,6 @@
+## Version 1.1.31
+- Updated `<WebApps/ >` Component
+
 ## Version 1.1.30
 - Updated `<Auth />` Context
 
