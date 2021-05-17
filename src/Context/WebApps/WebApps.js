@@ -461,6 +461,10 @@ export const WebApps = props => {
         uninstall: uninstallPlugin,
     }
 
+    if(!_mounted) {
+        return null;
+    }
+
     return (
         <WebAppsContext.Provider
             value={{

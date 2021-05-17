@@ -13526,6 +13526,11 @@ var WebApps = function WebApps(props) {
     toggle: togglePlugin,
     uninstall: uninstallPlugin
   };
+
+  if (!_mounted) {
+    return null;
+  }
+
   return /*#__PURE__*/React.createElement(WebAppsContext.Provider, {
     value: {
       navigation: navigation,
