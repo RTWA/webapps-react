@@ -84,9 +84,7 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
     const linkClasses = classNames(
         'flex',
         'items-center',
-        'p-2',
-        'mb-1',
-        'rounded-lg',
+        'py-2',
         'transition-colors',
         'duration-200',
         'focus:outline-none',
@@ -97,9 +95,9 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
             : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white',
         isOpen
             ? color
-                ? `text-${color}-800 bg-gray-100 dark:text-${color}-100 dark:bg-gray-600`
-                : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600'
-            : null
+                ? `text-${color}-800 bg-gray-100 dark:text-${color}-100 dark:bg-gray-600 rounded-t-lg`
+                : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600 rounded-t-lg'
+            : 'rounded-lg'
     )
 
     const dropIcon = (isOpen
@@ -120,7 +118,7 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
                 {badge && <Badge {...{ ...badge, text: null }}>{badge.text}</Badge>}
                 <Icon icon={dropIcon} />
             </a>
-            <ul className={classNames(isOpen ? 'block' : 'hidden')}>
+            <ul className={classNames(isOpen ? 'block py-1 bg-gray-100 dark:bg-gray-600 rounded-b-lg' : 'hidden')}>
                 <DropdownContext.Provider value={{ isOpen }}>
                     {children}
                 </DropdownContext.Provider>

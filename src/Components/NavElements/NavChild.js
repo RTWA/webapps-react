@@ -33,6 +33,8 @@ const NavChild = props => {
         'duration-200',
         'focus:outline-none',
         'hover:font-medium',
+        'hover:bg-gray-200',
+        'dark:hover:bg-gray-900',
         color
             ? `text-${color}-600 hover:text-${color}-900 dark:text-${color}-400 dark:hover:text-${color}-100`
             : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white',

@@ -12555,8 +12555,7 @@ var _iconsCache = {
 };library.add(_iconsCache$2, _iconsCache$1, _iconsCache);
 
 var Icon = function Icon(props) {
-  var icon = props.icon,
-      attributes = _objectWithoutProperties$1(props, ["icon"]);
+  var icon = props.icon;
 
   var isJSON = function isJSON(string) {
     try {
@@ -12571,13 +12570,11 @@ var Icon = function Icon(props) {
   return isJSON(props.icon) ? /*#__PURE__*/React.createElement(FontAwesomeIcon, _extends({
     icon: JSON.parse(icon),
     className: "m-auto fa-fw"
-  }, attributes)) : /*#__PURE__*/React.createElement("div", _extends({
-    className: "m-auto w-12"
-  }, attributes, {
+  }, attributes)) : /*#__PURE__*/React.createElement("div", {
     dangerouslySetInnerHTML: {
       __html: icon
     }
-  }));
+  });
 };
 
 Icon.propTypes = {
@@ -15107,7 +15104,7 @@ var NavDropdown = function NavDropdown(_ref) {
   useEffect(function () {
     if (dropdownMode === 'close') setIsOpen(false);else if (dropdownMode === 'closeInactive' && route) setIsOpen(path.includes(route));else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route) setIsOpen(path.includes(route));
   }, [path]);
-  var linkClasses = classnames('flex', 'items-center', 'p-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600' : null);
+  var linkClasses = classnames('flex', 'items-center', 'py-2', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600 rounded-t-lg") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600 rounded-t-lg' : 'rounded-lg');
   var dropIcon = isOpen ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>';
   return /*#__PURE__*/React.createElement("li", {
     className: classnames(className, 'mb-2'),
@@ -15128,7 +15125,7 @@ var NavDropdown = function NavDropdown(_ref) {
   }), badge.text), /*#__PURE__*/React.createElement(Icon, {
     icon: dropIcon
   })), /*#__PURE__*/React.createElement("ul", {
-    className: classnames(isOpen ? 'block' : 'hidden')
+    className: classnames(isOpen ? 'block py-1 bg-gray-100 dark:bg-gray-600 rounded-b-lg' : 'hidden')
   }, /*#__PURE__*/React.createElement(DropdownContext.Provider, {
     value: {
       isOpen: isOpen
@@ -15154,7 +15151,7 @@ var NavChild = function NavChild(props) {
   var _useContext = useContext(DropdownContext),
       isOpen = _useContext.isOpen;
 
-  var linkClasses = classnames('flex', 'items-center', 'p-2', 'px-4', 'mb-1', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:font-medium', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-900 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white');
+  var linkClasses = classnames('flex', 'items-center', 'p-2', 'px-4', 'mb-1', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:font-medium', 'hover:bg-gray-200', 'dark:hover:bg-gray-900', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-900 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white');
   var routerLinkProps = rest.to && {
     exact: true,
     activeClassName: classnames(color ? "font-medium text-".concat(color, "-900 dark:text-").concat(color, "-100") : 'font-medium text-gray-900 dark:text-white')
@@ -15192,7 +15189,7 @@ var NavItem = function NavItem(props) {
   var _useContext = useContext(DropdownContext),
       isOpen = _useContext.isOpen;
 
-  var linkClasses = classnames('flex', 'items-center', 'p-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100 hover:bg-").concat(color, "-100 dark:hover:bg-").concat(color, "-600") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600');
+  var linkClasses = classnames('flex', 'items-center', 'py-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100 hover:bg-").concat(color, "-100 dark:hover:bg-").concat(color, "-600") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600');
   var routerLinkProps = rest.to && {
     exact: true,
     activeClassName: classnames(color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600')
@@ -15399,7 +15396,7 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
       suppressScrollX: !isRtl
     },
     tag: "ul",
-    className: "md:my-5 md:px-6 md:flex md:flex-col md:flex-grow md:relative md:top-0 md:left-0 md:right-0 md:p-0 bg-white dark:bg-gray-800 absolute top-14 left-2 right-2 p-2 z-40 overflow-y-auto overflow-x-hidden h-auto flex-1 rounded-b ".concat(collapseShow)
+    className: "md:my-5 md:px-4 md:flex md:flex-col md:flex-grow md:relative md:top-0 md:left-0 md:right-0 md:p-0 bg-white dark:bg-gray-800 absolute top-14 left-2 right-2 p-2 z-40 overflow-y-auto overflow-x-hidden h-auto flex-1 rounded-b ".concat(collapseShow)
   }, children))));
 };
 

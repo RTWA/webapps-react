@@ -1,3 +1,9 @@
+## Version 1.2.5
+- Updated `<Icon />` Component
+- Updated padding in `<NavItem />` Component
+- Updated padding in`<NavDropdown />` Component
+- Updated padding in`<NavChild />` Component
+
 ## Version 1.2.4
 - Updated `<Icon />` Component
 

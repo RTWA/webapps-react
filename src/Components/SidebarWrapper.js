@@ -61,7 +61,7 @@ const SidebarWrapper = ({ loadNavigation, UI, setUI, ...props }) => {
                     <Scrollbar
                         settings={{ suppressScrollX: !isRtl }}
                         tag="ul"
-                        className={`md:my-5 md:px-6 md:flex md:flex-col md:flex-grow md:relative md:top-0 md:left-0 md:right-0 md:p-0 bg-white dark:bg-gray-800 absolute top-14 left-2 right-2 p-2 z-40 overflow-y-auto overflow-x-hidden h-auto flex-1 rounded-b ${collapseShow}`}
+                        className={`md:my-5 md:px-4 md:flex md:flex-col md:flex-grow md:relative md:top-0 md:left-0 md:right-0 md:p-0 bg-white dark:bg-gray-800 absolute top-14 left-2 right-2 p-2 z-40 overflow-y-auto overflow-x-hidden h-auto flex-1 rounded-b ${collapseShow}`}
                     >
                         {children}
                     </Scrollbar>

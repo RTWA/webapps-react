@@ -35,7 +35,7 @@ const NavItem = props => {
     const linkClasses = classNames(
         'flex',
         'items-center',
-        'p-2',
+        'py-2',
         'mb-1',
         'rounded-lg',
         'transition-colors',
