@@ -10,6 +10,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 library.add(fas, far, fab);
 
 const Icon = props => {
+    const {
+        icon,
+        ...attributes
+    } = props;
+
     const isJSON = string => {
         try {
             JSON.parse(string);
@@ -21,8 +26,8 @@ const Icon = props => {
 
     return (
         (isJSON(props.icon))
-            ? <FontAwesomeIcon icon={JSON.parse(props.icon)} className="m-auto fa-fw" />
-            : <img src={`data:image/svg+xml;utf8,${props.icon}`} className="m-auto w-12"  {...props} />
+            ? <FontAwesomeIcon icon={JSON.parse(icon)} className="m-auto fa-fw"  {...attributes} />
+            : <div className="m-auto w-12"  {...attributes} dangerouslySetInnerHTML={{ __html: icon }} />
     )
 }
 

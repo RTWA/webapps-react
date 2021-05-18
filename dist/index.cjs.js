@@ -12555,6 +12555,9 @@ var _iconsCache = {
 };library.add(_iconsCache$2, _iconsCache$1, _iconsCache);
 
 var Icon = function Icon(props) {
+  var icon = props.icon,
+      attributes = _objectWithoutProperties__default['default'](props, ["icon"]);
+
   var isJSON = function isJSON(string) {
     try {
       JSON.parse(string);
@@ -12565,13 +12568,16 @@ var Icon = function Icon(props) {
     return true;
   };
 
-  return isJSON(props.icon) ? /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
-    icon: JSON.parse(props.icon),
+  return isJSON(props.icon) ? /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, _extends__default['default']({
+    icon: JSON.parse(icon),
     className: "m-auto fa-fw"
-  }) : /*#__PURE__*/React__default['default'].createElement("img", _extends__default['default']({
-    src: "data:image/svg+xml;utf8,".concat(props.icon),
+  }, attributes)) : /*#__PURE__*/React__default['default'].createElement("div", _extends__default['default']({
     className: "m-auto w-12"
-  }, props));
+  }, attributes, {
+    dangerouslySetInnerHTML: {
+      __html: icon
+    }
+  }));
 };
 
 Icon.propTypes = {
@@ -15102,25 +15108,7 @@ var NavDropdown = function NavDropdown(_ref) {
     if (dropdownMode === 'close') setIsOpen(false);else if (dropdownMode === 'closeInactive' && route) setIsOpen(path.includes(route));else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route) setIsOpen(path.includes(route));
   }, [path]);
   var linkClasses = classnames('flex', 'items-center', 'p-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600' : null);
-  var dropIcon = isOpen ? /*#__PURE__*/React__default['default'].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-5 w-5",
-    viewBox: "0 0 20 20",
-    fill: "currentColor"
-  }, /*#__PURE__*/React__default['default'].createElement("path", {
-    "fill-rule": "evenodd",
-    d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
-    "clip-rule": "evenodd"
-  })) : /*#__PURE__*/React__default['default'].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-5 w-5",
-    viewBox: "0 0 20 20",
-    fill: "currentColor"
-  }, /*#__PURE__*/React__default['default'].createElement("path", {
-    "fill-rule": "evenodd",
-    d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
-    "clip-rule": "evenodd"
-  }));
+  var dropIcon = isOpen ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>';
   return /*#__PURE__*/React__default['default'].createElement("li", {
     className: classnames(className, 'mb-2'),
     ref: ref
@@ -15132,7 +15120,7 @@ var NavDropdown = function NavDropdown(_ref) {
     "aria-label": "menu dropdown"
   }, icon && /*#__PURE__*/React__default['default'].createElement(Icon, {
     icon: icon,
-    "class": "h-6 w-12"
+    "class": "h-5 w-10"
   }), /*#__PURE__*/React__default['default'].createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
@@ -15218,7 +15206,7 @@ var NavItem = function NavItem(props) {
     tabIndex: isOpen === false ? -1 : 0
   }), icon && /*#__PURE__*/React__default['default'].createElement(Icon, {
     icon: icon,
-    "class": "h-6 w-12"
+    "class": "h-5 w-10"
   }), /*#__PURE__*/React__default['default'].createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$1(_objectSpread$1({}, badge), {}, {
