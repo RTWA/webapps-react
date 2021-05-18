@@ -12568,7 +12568,10 @@ var Icon = function Icon(props) {
   return isJSON(props.icon) ? /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
     icon: JSON.parse(props.icon),
     className: "m-auto fa-fw"
-  }) : props.icon;
+  }) : /*#__PURE__*/React__default['default'].createElement("img", _extends__default['default']({
+    src: "data:image/svg+xml;utf8,".concat(props.icon),
+    className: "m-auto w-12"
+  }, props));
 };
 
 Icon.propTypes = {
@@ -15128,7 +15131,8 @@ var NavDropdown = function NavDropdown(_ref) {
     onClick: toggle,
     "aria-label": "menu dropdown"
   }, icon && /*#__PURE__*/React__default['default'].createElement(Icon, {
-    icon: icon
+    icon: icon,
+    "class": "h-6 w-12"
   }), /*#__PURE__*/React__default['default'].createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
@@ -15213,7 +15217,8 @@ var NavItem = function NavItem(props) {
   }, routerLinkProps, rest, {
     tabIndex: isOpen === false ? -1 : 0
   }), icon && /*#__PURE__*/React__default['default'].createElement(Icon, {
-    icon: icon
+    icon: icon,
+    "class": "h-6 w-12"
   }), /*#__PURE__*/React__default['default'].createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$1(_objectSpread$1({}, badge), {}, {

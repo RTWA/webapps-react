@@ -63,7 +63,7 @@ const NavItem = props => {
                 {...rest}
                 tabIndex={isOpen === false ? -1 : 0}
             >
-                {icon && <Icon icon={icon} />}
+                {icon && <Icon icon={icon} class="h-6 w-12" />}
                 <span className="font-medium text-sm">{name}</span>
                 {badge && <Badge {...{ ...badge, text: null }}>{badge.text}</Badge>}
             </Link>

@@ -1,3 +1,8 @@
+## Version 1.2.2
+- Updated `<NavItem />` Component
+- Updated `<NavDropdown />` Component
+- Updated `<Icon />` Component
+
 ## Version 1.2.1
 - Updated `<Icon />` Component
 
