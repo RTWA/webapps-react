@@ -1,14 +1,18 @@
+## Version 1.2.0
+- Updated `<NavItem />` to use `<Icon />` rather than `<FontAwesomeIcon />`
+- Updated `<NavDropdown />` to use `<Icon />` rather than `<FontAwesomeIcon />`
+
 ## Version 1.1.34
-- Updated `<WebApps/ >` Component
+- Updated `<WebApps />` Component
 
 ## Version 1.1.33
-- Updated `<WebApps/ >` Component
+- Updated `<WebApps />` Component
 
 ## Version 1.1.32
-- Fixed memory leak in `<WebApps/ >` Component
+- Fixed memory leak in `<WebApps />` Component
 
 ## Version 1.1.31
-- Updated `<WebApps/ >` Component
+- Updated `<WebApps />` Component
 
 ## Version 1.1.30
 - Updated `<Auth />` Context
@@ -21,15 +25,15 @@
 - Updated `<Auth />` Context
 
 ## Version 1.1.27
-- Updated `<WebApps/ >` Component
+- Updated `<WebApps />` Component
 
 ## Version 1.1.26
-- Updated `<WebApps/ >` Component
+- Updated `<WebApps />` Component
 - Updated `<ConfirmDeleteButton />` Component
 
 ## Version 1.1.25
 - Updated `<Input />` Component
-- Updated `<WebApps/ >` Component
+- Updated `<WebApps />` Component
 
 ## Version 1.1.24
 - Added `UI.theme` to `<Input />` Component

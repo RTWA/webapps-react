@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import { createLocalStorageStateHook } from 'use-local-storage-state'
+import { createLocalStorageStateHook } from 'use-local-storage-state';
 
 export const WebAppsContext = React.createContext({});
 

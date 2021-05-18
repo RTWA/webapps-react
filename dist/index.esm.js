@@ -15079,16 +15079,6 @@ var NavDropdown = function NavDropdown(_ref) {
     !dropdownMode && (!openDropdown || !ref.current.contains(openDropdown)) && setIsOpen(false);
   }, [openDropdown]);
 
-  var isJSON = function isJSON(string) {
-    try {
-      JSON.parse(string);
-    } catch (_unused) {
-      return false;
-    }
-
-    return true;
-  };
-
   var toggle = function toggle(e) {
     e.preventDefault();
 
@@ -15112,7 +15102,25 @@ var NavDropdown = function NavDropdown(_ref) {
     if (dropdownMode === 'close') setIsOpen(false);else if (dropdownMode === 'closeInactive' && route) setIsOpen(path.includes(route));else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route) setIsOpen(path.includes(route));
   }, [path]);
   var linkClasses = classnames('flex', 'items-center', 'p-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600' : null);
-  var dropIcon = isOpen ? ['fas', 'angle-down'] : ['fas', 'angle-right'];
+  var dropIcon = isOpen ? /*#__PURE__*/React.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    "class": "h-5 w-5",
+    viewBox: "0 0 20 20",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    "fill-rule": "evenodd",
+    d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+    "clip-rule": "evenodd"
+  })) : /*#__PURE__*/React.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    "class": "h-5 w-5",
+    viewBox: "0 0 20 20",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    "fill-rule": "evenodd",
+    d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+    "clip-rule": "evenodd"
+  }));
   return /*#__PURE__*/React.createElement("li", {
     className: classnames(className, 'mb-2'),
     ref: ref
@@ -15122,15 +15130,13 @@ var NavDropdown = function NavDropdown(_ref) {
     tabIndex: "0",
     onClick: toggle,
     "aria-label": "menu dropdown"
-  }, icon && /*#__PURE__*/React.createElement(FontAwesomeIcon, {
-    className: "h-5 w-5 mr-4",
-    icon: isJSON(icon) ? JSON.parse(icon) : icon
+  }, icon && /*#__PURE__*/React.createElement(Icon, {
+    icon: icon
   }), /*#__PURE__*/React.createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React.createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
     text: null
-  }), badge.text), /*#__PURE__*/React.createElement(FontAwesomeIcon, {
-    className: "h-5 w-5 ml-auto",
+  }), badge.text), /*#__PURE__*/React.createElement(Icon, {
     icon: dropIcon
   })), /*#__PURE__*/React.createElement("ul", {
     className: classnames(isOpen ? 'block' : 'hidden')
@@ -15197,16 +15203,6 @@ var NavItem = function NavItem(props) {
   var _useContext = useContext(DropdownContext),
       isOpen = _useContext.isOpen;
 
-  var isJSON = function isJSON(string) {
-    try {
-      JSON.parse(string);
-    } catch (_unused) {
-      return false;
-    }
-
-    return true;
-  };
-
   var linkClasses = classnames('flex', 'items-center', 'p-2', 'mb-1', 'rounded-lg', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100 hover:bg-").concat(color, "-100 dark:hover:bg-").concat(color, "-600") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600');
   var routerLinkProps = rest.to && {
     exact: true,
@@ -15219,9 +15215,8 @@ var NavItem = function NavItem(props) {
     className: linkClasses
   }, routerLinkProps, rest, {
     tabIndex: isOpen === false ? -1 : 0
-  }), icon && /*#__PURE__*/React.createElement(FontAwesomeIcon, {
-    className: "h-5 w-5 mr-4",
-    icon: isJSON(icon) ? JSON.parse(icon) : icon
+  }), icon && /*#__PURE__*/React.createElement(Icon, {
+    icon: icon
   }), /*#__PURE__*/React.createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React.createElement(Badge, _objectSpread$1(_objectSpread$1({}, badge), {}, {
