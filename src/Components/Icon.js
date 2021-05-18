@@ -11,7 +11,8 @@ library.add(fas, far, fab);
 
 const Icon = props => {
     const {
-        icon
+        icon,
+        ...attributes
     } = props;
 
     const isJSON = string => {
@@ -25,8 +26,8 @@ const Icon = props => {
 
     return (
         (isJSON(props.icon))
-            ? <FontAwesomeIcon icon={JSON.parse(icon)} className="m-auto fa-fw"  {...attributes} />
-            : <div dangerouslySetInnerHTML={{ __html: icon }} />
+            ? <FontAwesomeIcon icon={JSON.parse(icon)} className="m-auto fa-fw" {...attributes} />
+            : <div dangerouslySetInnerHTML={{ __html: icon }} {...attributes} />
     )
 }
 

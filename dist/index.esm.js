@@ -12555,7 +12555,8 @@ var _iconsCache = {
 };library.add(_iconsCache$2, _iconsCache$1, _iconsCache);
 
 var Icon = function Icon(props) {
-  var icon = props.icon;
+  var icon = props.icon,
+      attributes = _objectWithoutProperties$1(props, ["icon"]);
 
   var isJSON = function isJSON(string) {
     try {
@@ -12570,11 +12571,11 @@ var Icon = function Icon(props) {
   return isJSON(props.icon) ? /*#__PURE__*/React.createElement(FontAwesomeIcon, _extends({
     icon: JSON.parse(icon),
     className: "m-auto fa-fw"
-  }, attributes)) : /*#__PURE__*/React.createElement("div", {
+  }, attributes)) : /*#__PURE__*/React.createElement("div", _extends({
     dangerouslySetInnerHTML: {
       __html: icon
     }
-  });
+  }, attributes));
 };
 
 Icon.propTypes = {
@@ -15105,7 +15106,7 @@ var NavDropdown = function NavDropdown(_ref) {
     if (dropdownMode === 'close') setIsOpen(false);else if (dropdownMode === 'closeInactive' && route) setIsOpen(path.includes(route));else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route) setIsOpen(path.includes(route));
   }, [path]);
   var linkClasses = classnames('flex', 'items-center', 'py-2', 'transition-colors', 'duration-200', 'focus:outline-none', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', color ? "text-".concat(color, "-600 hover:text-").concat(color, "-800 dark:text-").concat(color, "-400 dark:hover:text-").concat(color, "-100") : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white', isOpen ? color ? "text-".concat(color, "-800 bg-gray-100 dark:text-").concat(color, "-100 dark:bg-gray-600 rounded-t-lg") : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600 rounded-t-lg' : 'rounded-lg');
-  var dropIcon = isOpen ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>';
+  var dropIcon = isOpen ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" stroke="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" stroke="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>';
   return /*#__PURE__*/React.createElement("li", {
     className: classnames(className, 'mb-2'),
     ref: ref
@@ -15123,7 +15124,8 @@ var NavDropdown = function NavDropdown(_ref) {
   }, name), badge && /*#__PURE__*/React.createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
     text: null
   }), badge.text), /*#__PURE__*/React.createElement(Icon, {
-    icon: dropIcon
+    icon: dropIcon,
+    className: "ml-auto"
   })), /*#__PURE__*/React.createElement("ul", {
     className: classnames(isOpen ? 'block py-1 bg-gray-100 dark:bg-gray-600 rounded-b-lg' : 'hidden')
   }, /*#__PURE__*/React.createElement(DropdownContext.Provider, {
