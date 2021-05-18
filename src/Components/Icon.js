@@ -22,7 +22,7 @@ const Icon = props => {
     return (
         (isJSON(props.icon))
             ? <FontAwesomeIcon icon={JSON.parse(props.icon)} className="m-auto fa-fw" />
-            : <img src={`data:image/svg+xml;utf8,${props.icon}`} className="m-auto w-12"  {...props} />
+            : props.icon
     )
 }
 

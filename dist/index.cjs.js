@@ -12568,10 +12568,7 @@ var Icon = function Icon(props) {
   return isJSON(props.icon) ? /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
     icon: JSON.parse(props.icon),
     className: "m-auto fa-fw"
-  }) : /*#__PURE__*/React__default['default'].createElement("img", _extends__default['default']({
-    src: "data:image/svg+xml;utf8,".concat(props.icon),
-    className: "m-auto w-12"
-  }, props));
+  }) : props.icon;
 };
 
 Icon.propTypes = {

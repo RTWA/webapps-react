@@ -1,3 +1,6 @@
+## Version 1.2.1
+- Updated `<Icon />` Component
+
 ## Version 1.2.0
 - Updated `<NavItem />` to use `<Icon />` rather than `<FontAwesomeIcon />`
 - Updated `<NavDropdown />` to use `<Icon />` rather than `<FontAwesomeIcon />`
