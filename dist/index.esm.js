@@ -1,4 +1,4 @@
-import _extends from'@babel/runtime/helpers/extends';import _defineProperty$2 from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties$1 from'@babel/runtime/helpers/objectWithoutProperties';import React,{useState,Component,useCallback,useMemo,useEffect,useRef,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _slicedToArray$1 from'@babel/runtime/helpers/slicedToArray';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _regeneratorRuntime from'@babel/runtime/regenerator';import axios from'axios';import _typeof$1 from'@babel/runtime/helpers/typeof';function createCommonjsModule(fn) {
+import _extends from'@babel/runtime/helpers/extends';import _defineProperty$2 from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties$1 from'@babel/runtime/helpers/objectWithoutProperties';import React,{Component,useState,useCallback,useMemo,useEffect,useRef,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _regeneratorRuntime from'@babel/runtime/regenerator';import axios from'axios';import _slicedToArray$1 from'@babel/runtime/helpers/slicedToArray';import _typeof$1 from'@babel/runtime/helpers/typeof';function createCommonjsModule(fn) {
   var module = { exports: {} };
 	return fn(module, module.exports), module.exports;
 }/** @license React v16.13.1
@@ -1206,6 +1206,1061 @@ Banner.defaultProps = {
   tag: 'div',
   color: 'gray-300',
   darkColor: 'gray-700'
+};function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty$2(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var Link = function Link(props) {
+  var className = props.className,
+      innerRef = props.innerRef,
+      active = props.active,
+      href = props.href,
+      onClick = props.onClick,
+      disabled = props.disabled,
+      rest = _objectWithoutProperties$1(props, ["className", "innerRef", "active", "href", "onClick", "disabled"]);
+
+  var to = rest ? rest.to : null;
+
+  var click = function click(e) {
+    if (!href && !to || href === '#') {
+      e.preventDefault();
+    }
+
+    !disabled && onClick && onClick(e);
+  };
+
+  var classes = classnames(active, disabled, className);
+  return to ? /*#__PURE__*/React.createElement(NavLink, _extends({}, rest, {
+    className: classes,
+    onClick: click,
+    ref: innerRef
+  })) : /*#__PURE__*/React.createElement("a", _extends({
+    href: href || '#',
+    className: classes,
+    rel: rest.target === '_blank' ? 'noopener norefferer' : null
+  }, rest, {
+    onClick: click,
+    ref: innerRef
+  }));
+};
+
+Link.propTypes = _objectSpread$6(_objectSpread$6({
+  innerRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
+  active: propTypes.bool,
+  href: propTypes.string,
+  onClick: propTypes.func,
+  disabled: propTypes.bool
+}, NavLink.propTypes), {}, {
+  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object]),
+  to: propTypes.oneOfType([propTypes.object, propTypes.string, propTypes.func])
+});var AuthContext = /*#__PURE__*/React.createContext({});var Loader = function Loader(props) {
+  var className = props.className,
+      attributes = _objectWithoutProperties$1(props, ["className"]);
+
+  var classes = classnames('loader', className);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: classes
+  }, attributes), /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 45 45",
+    xmlns: "http://www.w3.org/2000/svg",
+    stroke: "currentColor"
+  }, /*#__PURE__*/React.createElement("g", {
+    fill: "none",
+    fillRule: "evenodd",
+    transform: "translate(1 1)",
+    strokeWidth: 2
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React.createElement("animate", {
+    attributeName: "r",
+    begin: "1.5s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React.createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "1.5s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React.createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "1.5s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React.createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React.createElement("animate", {
+    attributeName: "r",
+    begin: "3s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React.createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "3s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React.createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "3s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React.createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 8
+  }, /*#__PURE__*/React.createElement("animate", {
+    attributeName: "r",
+    begin: "0s",
+    dur: "1.5s",
+    values: "6;1;2;3;4;5;6",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })))));
+};function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+axios.defaults.withCredentials = true;
+
+var Auth = /*#__PURE__*/function (_Component) {
+  _inherits(Auth, _Component);
+
+  var _super = _createSuper$2(Auth);
+
+  function Auth(props) {
+    var _this;
+
+    _classCallCheck$1(this, Auth);
+
+    _this = _super.call(this, props);
+
+    _defineProperty$2(_assertThisInitialized(_this), "setPreference", function (preference, value) {
+      var preferences = _this.state.preferences;
+      preferences[preference] = value;
+
+      _this.setState({
+        preferences: preferences
+      });
+
+      var formData = new FormData();
+      formData.append('_method', 'PUT');
+      formData.append('preference', preference);
+      formData.append('value', value);
+      axios.post('/api/user/preference', formData)["catch"](function (error) {
+        // TODO: Handle errors
+        console.log(error);
+      });
+    });
+
+    _this.state = {
+      user: null,
+      authenticated: null,
+      preferences: {}
+    };
+    _this.signIn = _this.signIn.bind(_assertThisInitialized(_this));
+    _this.signOut = _this.signOut.bind(_assertThisInitialized(_this));
+    _this.setUser = _this.setUser.bind(_assertThisInitialized(_this));
+    _this.checkAuthentication = _this.checkAuthentication.bind(_assertThisInitialized(_this));
+    _this.setPreference = _this.setPreference.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass$1(Auth, [{
+    key: "signIn",
+    value: function signIn(username, password) {
+      var _this2 = this;
+
+      return new Promise( /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(resolve, reject) {
+          var _yield$axios$get, data;
+
+          return _regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.prev = 0;
+                  _context.next = 3;
+                  return axios.get('/sanctum/csrf_cookie');
+
+                case 3:
+                  _context.next = 5;
+                  return axios.post('/login', {
+                    username: username,
+                    password: password
+                  });
+
+                case 5:
+                  _context.next = 7;
+                  return axios.get('/api/user');
+
+                case 7:
+                  _yield$axios$get = _context.sent;
+                  data = _yield$axios$get.data;
+
+                  _this2.setState({
+                    user: data,
+                    authenticated: true,
+                    preferences: data.preferences
+                  });
+
+                  return _context.abrupt("return", resolve(data));
+
+                case 13:
+                  _context.prev = 13;
+                  _context.t0 = _context["catch"](0);
+                  return _context.abrupt("return", reject(_context.t0));
+
+                case 16:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, null, [[0, 13]]);
+        }));
+
+        return function (_x, _x2) {
+          return _ref.apply(this, arguments);
+        };
+      }());
+    }
+  }, {
+    key: "signOut",
+    value: function signOut() {
+      var _this3 = this;
+
+      new Promise( /*#__PURE__*/function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2(resolve, reject) {
+          return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.prev = 0;
+                  _context2.next = 3;
+                  return axios.post('/api/logout');
+
+                case 3:
+                  _this3.setState({
+                    user: null,
+                    authenticated: false
+                  });
+
+                  window.location.replace("//" + window.location.hostname + '/login?logout');
+                  resolve(true);
+                  _context2.next = 11;
+                  break;
+
+                case 8:
+                  _context2.prev = 8;
+                  _context2.t0 = _context2["catch"](0);
+                  return _context2.abrupt("return", reject(_context2.t0));
+
+                case 11:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, null, [[0, 8]]);
+        }));
+
+        return function (_x3, _x4) {
+          return _ref2.apply(this, arguments);
+        };
+      }());
+    }
+  }, {
+    key: "setUser",
+    value: function setUser(user, authenticated) {
+      this.setState({
+        user: user,
+        authenticated: authenticated
+      });
+    }
+  }, {
+    key: "checkAuthentication",
+    value: function checkAuthentication() {
+      var _this4 = this;
+
+      return new Promise( /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
+          var _yield$axios$get2, data;
+
+          return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  if (!(_this4.state.authenticated === null)) {
+                    _context3.next = 20;
+                    break;
+                  }
+
+                  _context3.prev = 1;
+                  _context3.next = 4;
+                  return axios.get('/api/user');
+
+                case 4:
+                  _yield$axios$get2 = _context3.sent;
+                  data = _yield$axios$get2.data;
+
+                  _this4.setState({
+                    user: data,
+                    authenticated: true
+                  });
+
+                  return _context3.abrupt("return", resolve(true));
+
+                case 10:
+                  _context3.prev = 10;
+                  _context3.t0 = _context3["catch"](1);
+
+                  if (!(_context3.t0.response && _context3.t0.response.status === 401)) {
+                    _context3.next = 17;
+                    break;
+                  }
+
+                  // If 401 returns, the user is not logged in
+                  _this4.setState({
+                    user: null,
+                    authenticated: false,
+                    preferences: {}
+                  });
+
+                  return _context3.abrupt("return", resolve(false));
+
+                case 17:
+                  return _context3.abrupt("return", reject(_context3.t0));
+
+                case 18:
+                  _context3.next = 21;
+                  break;
+
+                case 20:
+                  return _context3.abrupt("return", resolve(_this4.state.authenticated));
+
+                case 21:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3, null, [[1, 10]]);
+        }));
+
+        return function (_x5, _x6) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.checkOnInit) this.checkAuthentication();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.authenticated !== null) return /*#__PURE__*/React.createElement(AuthContext.Provider, {
+        children: this.props.children || null,
+        value: {
+          user: this.state.user,
+          authenticated: this.state.authenticated,
+          signIn: this.signIn,
+          signOut: this.signOut,
+          setUser: this.setUser,
+          checkAuthentication: this.checkAuthentication,
+          preferences: this.state.preferences,
+          setPreference: this.setPreference
+        }
+      });else return /*#__PURE__*/React.createElement(Loader, null);
+    }
+  }]);
+
+  return Auth;
+}(Component);
+
+Auth.propTypes = {
+  config: propTypes.object,
+  checkOnInit: propTypes.bool
+};
+Auth.defaultProps = {
+  checkOnInit: true
+};var isProduction = process.env.NODE_ENV === 'production';
+var prefix = 'Invariant failed';
+function invariant(condition, message) {
+    if (condition) {
+        return;
+    }
+    if (isProduction) {
+        throw new Error(prefix);
+    }
+    throw new Error(prefix + ": " + (message || ''));
+}var withAuth = function withAuth(Component) {
+  var displayName = "withAuth(".concat(Component.displayName || Component.name, ")");
+
+  var C = function C(props) {
+    return /*#__PURE__*/React.createElement(AuthContext.Consumer, null, function (context) {
+      invariant(context, "You should not use <".concat(displayName, " /> outside a <Auth>"));
+      return /*#__PURE__*/React.createElement(Component, _extends({}, props, context));
+    });
+  };
+
+  C.displayName = displayName;
+  return C;
+};/**
+ * Abstraction for localStorage that uses an in-memory fallback when localStorage throws an error.
+ * Reasons for throwing an error:
+ * - maximum quota is exceeded
+ * - under Mobile Safari (since iOS 5) when the user enters private mode `localStorage.setItem()`
+ *   will throw
+ * - trying to access localStorage object when cookies are disabled in Safari throws
+ *   "SecurityError: The operation is insecure."
+ */
+const data = {};
+var storage = {
+    get(key, defaultValue) {
+        var _a;
+        try {
+            return (_a = data[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
+        }
+        catch (_b) {
+            return defaultValue;
+        }
+    },
+    set(key, value) {
+        try {
+            localStorage.setItem(key, JSON.stringify(value));
+            data[key] = undefined;
+            return true;
+        }
+        catch (_a) {
+            data[key] = value;
+            return false;
+        }
+    },
+    remove(key) {
+        data[key] = undefined;
+        localStorage.removeItem(key);
+    },
+};
+/**
+ * A wrapper for `JSON.parse()` which supports the return value of `JSON.stringify(undefined)`
+ * which returns the string `"undefined"` and this method returns the value `undefined`.
+ */
+function parseJSON(value) {
+    return value === 'undefined'
+        ? undefined
+        : // JSON.parse() doesn't accept non-string values, this is why we pass empty
+            // string which will throw an error which can be handled
+            JSON.parse(value !== null && value !== void 0 ? value : '');
+}function useLocalStorageStateBase(key, defaultValue) {
+    // we don't support updating the `defaultValue` the same way `useState()` doesn't support it
+    const [defaultValueState] = useState(() => {
+        const isCallable = (value) => typeof value === 'function';
+        return isCallable(defaultValue) ? defaultValue() : defaultValue;
+    });
+    const getDefaultState = useCallback(() => {
+        return {
+            value: storage.get(key, defaultValueState),
+            isPersistent: (() => {
+                /**
+                 * We want to return `true` on the server. If you render a message based on `isPersistent` and the
+                 * server returns `false` then the message will flicker until hydration is done:
+                 * `{!isPersistent && <span>You changes aren't being persisted.</span>}`
+                 */
+                if (typeof window === 'undefined') {
+                    return true;
+                }
+                try {
+                    localStorage.setItem('__ulss', '#');
+                    localStorage.removeItem('__ulss');
+                    return true;
+                }
+                catch (_a) {
+                    return false;
+                }
+            })(),
+        };
+    }, [defaultValueState, key]);
+    const [state, setState] = useState(getDefaultState);
+    const updateValue = useMemo(() => {
+        const fn = (newValue) => {
+            const isCallable = (value) => typeof value === 'function';
+            if (isCallable(newValue)) {
+                setState((state) => ({
+                    value: newValue(state.value),
+                    isPersistent: storage.set(key, newValue(state.value)),
+                }));
+            }
+            else {
+                setState({
+                    value: newValue,
+                    isPersistent: storage.set(key, newValue),
+                });
+            }
+        };
+        fn.reset = () => {
+            storage.remove(key);
+            setState((state) => ({
+                value: defaultValueState,
+                isPersistent: state.isPersistent,
+            }));
+        };
+        return fn;
+    }, [key, defaultValueState]);
+    /**
+     * Syncs changes across tabs and iframe's.
+     */
+    useEffect(() => {
+        const onStorage = (e) => {
+            if (e.storageArea === localStorage && e.key === key) {
+                setState({
+                    value: storage.get(key, defaultValueState),
+                    isPersistent: true,
+                });
+            }
+        };
+        window.addEventListener('storage', onStorage);
+        return () => window.removeEventListener('storage', onStorage);
+    }, [key, defaultValueState]);
+    /**
+     * Update the state when the `key` property changes.
+     */
+    const isFirstRender = useRef(true);
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        setState(getDefaultState());
+    }, [getDefaultState]);
+    return [state.value, updateValue, state.isPersistent];
+}function createLocalStorageStateHook(key, defaultValue) {
+    const setValueFunctions = [];
+    return function useLocalStorageStateHook() {
+        const [value, setValue, isPersistent] = useLocalStorageStateBase(key, defaultValue);
+        const setValueAll = useMemo(() => {
+            const fn = (newValue) => {
+                for (const setValueFunction of setValueFunctions) {
+                    setValueFunction(newValue);
+                }
+            };
+            fn.reset = () => {
+                for (const setValueFunction of setValueFunctions) {
+                    setValueFunction.reset();
+                }
+            };
+            return fn;
+        }, []);
+        useEffect(() => {
+            setValueFunctions.push(setValue);
+            return () => void setValueFunctions.splice(setValueFunctions.indexOf(setValue), 1);
+        }, [setValue]);
+        return [value, setValueAll, isPersistent];
+    };
+}function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty$2(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var WebAppsContext = /*#__PURE__*/React.createContext({});
+var useModals = createLocalStorageStateHook('modals', {});
+var WebApps = function WebApps(props) {
+  var unmounted = useRef(false);
+
+  var _useState = useState({
+    sidebar: 'responsive',
+    envWriteable: false
+  }),
+      _useState2 = _slicedToArray$1(_useState, 2),
+      UI = _useState2[0],
+      setUI = _useState2[1];
+
+  var _useModals = useModals(),
+      _useModals2 = _slicedToArray$1(_useModals, 2),
+      modals = _useModals2[0],
+      setModals = _useModals2[1];
+
+  var _useState3 = useState({}),
+      _useState4 = _slicedToArray$1(_useState3, 2),
+      navigation = _useState4[0],
+      setNavigation = _useState4[1];
+
+  var _useState5 = useState({}),
+      _useState6 = _slicedToArray$1(_useState5, 2),
+      apps = _useState6[0],
+      setApps = _useState6[1];
+
+  var _useState7 = useState({}),
+      _useState8 = _slicedToArray$1(_useState7, 2),
+      plugins = _useState8[0],
+      setPlugins = _useState8[1];
+
+  useEffect(function () {
+    loadUI();
+    loadNavigation();
+    getApps();
+    getPlugins();
+    return function () {
+      unmounted.current = true;
+    };
+  }, []);
+
+  var toggleModal = function toggleModal(modal) {
+    setModals({
+      modal: !modals[modal]
+    });
+  };
+
+  var loadUI = function loadUI() {
+    var formData = new FormData();
+    formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
+    axios.post('/api/setting', formData).then(function (json) {
+      if (!unmounted.current) {
+        UI.theme = json.data['core.ui.theme'];
+        UI.dark_mode = json.data['core.ui.dark_mode'];
+        setUI(_objectSpread$5({}, UI));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.log(error);
+      }
+    });
+  };
+
+  var loadNavigation = function loadNavigation() {
+    axios.get('/api/navigation').then(function (json) {
+      if (!unmounted.current) {
+        navigation.menu = json.data.navigation;
+        navigation.routes = json.data.routes;
+        navigation.settings = json.data.settingsNav;
+        UI.envWriteable = json.data.envPermissions;
+        setNavigation(_objectSpread$5({}, navigation));
+        setUI(_objectSpread$5({}, UI));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        var nav = [];
+        nav['error'] = true;
+        nav['message'] = error.response.data.message;
+        setNavigation(nav);
+      }
+    });
+  };
+
+  var getApps = function getApps() {
+    axios.get('/api/apps').then(function (json) {
+      if (!unmounted.current) {
+        apps.local = json.data.apps;
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TOOD: Handle errors
+        console.error(error);
+      }
+    });
+    axios.get('/api/online/apps/list').then(function (json) {
+      if (!unmounted.current) {
+        apps.online = json.data.apps;
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.log(error);
+      }
+    });
+  };
+
+  var getPlugins = function getPlugins() {
+    axios.get('/api/plugins').then(function (json) {
+      if (!unmounted.current) {
+        plugins.all = json.data.plugins;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TOOD: Handle errors
+        console.error(error);
+      }
+    });
+    axios.get('/api/plugins/active').then(function (json) {
+      if (!unmounted.current) {
+        plugins.active = json.data.plugins;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TOOD: Handle errors
+        console.error(error);
+      }
+    });
+    axios.get('/api/online/plugins/list').then(function (json) {
+      if (!unmounted.current) {
+        plugins.online = json.data.plugins;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.log(error);
+      }
+    });
+  };
+
+  var downloadApp = function downloadApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios.post('/api/online/apps/download', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: toast
+        alert(json.data.message);
+        apps.local = json.data.apps;
+        apps.online = json.data.online;
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.log(error);
+      }
+    });
+  };
+
+  var updateApp = function updateApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios.post('/api/online/apps/download', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: toast
+        alert(json.data.message);
+        apps.local = json.data.apps;
+        apps.online = json.data.online;
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.log(error);
+      }
+    });
+  };
+
+  var activateApp = function activateApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'activate');
+    axios.post('/api/apps/control', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: Toast
+        // alert(json.data.message);
+        // Reload Navigation
+        loadNavigation();
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug === apps.local[key].slug) {
+            apps.local[key].active = true;
+          }
+        });
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key].active = true;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.error(error);
+      }
+    });
+  };
+
+  var deactivateApp = function deactivateApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'deactivate');
+    axios.post('/api/apps/control', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: Toast
+        // alert(json.data.message);
+        // Reload Navigation
+        loadNavigation();
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug === apps.local[key].slug) {
+            apps.local[key].active = false;
+          }
+        });
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key].active = false;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.error(error);
+      }
+    });
+  };
+
+  var installApp = function installApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'install');
+    axios.post('/api/apps/control', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: Toast
+        // alert(json.data.message);
+        // Reload Navigation
+        loadNavigation();
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug === apps.local[key].slug) {
+            apps.local[key].installed = true;
+          }
+        });
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key].installed = true;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.error(error);
+      }
+    });
+  };
+
+  var uninstallApp = function uninstallApp(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    formData.append('task', 'uninstall');
+    axios.post('/api/apps/control', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: Toast
+        alert(json.data.message);
+        var _apps2 = [];
+        Object.keys(apps.local).map(function (key) {
+          if (e.target.dataset.slug !== apps.local[key].slug) {
+            _apps2.push(apps.local[key]);
+          }
+        });
+        apps.local = _apps2;
+        Object.keys(apps.online).map(function (key) {
+          if (e.target.dataset.slug === apps.online[key].slug) {
+            apps.online[key] = json.data.app;
+          }
+        });
+        setApps(_objectSpread$5({}, apps));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.error(error);
+      }
+    });
+  };
+
+  var downloadPlugin = function downloadPlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios.post('/api/online/plugins/download', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: toast
+        alert(json.data.message);
+        plugins.all = json.data.plugins;
+        plugins.online = json.data.online;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.log(error);
+      }
+    });
+  };
+
+  var updatePlugin = function updatePlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios.post('/api/online/plugins/download', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: toast
+        alert(json.data.message);
+        plugins.all = json.data.plugins;
+        plugins.online = json.data.online;
+        setPlugins(_objectSpread$5({}, plugins));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.log(error);
+      }
+    });
+  };
+
+  var togglePlugin = function togglePlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('slug', e.target.dataset.slug);
+    axios.post('/api/plugins/toggle', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: Toast
+        // alert(json.data.message);
+        Object.keys(plugins.all).map(function (key) {
+          if (e.target.dataset.slug === plugins.all[key].slug) {
+            plugins.all[key].state = json.data.plugin['state'];
+          }
+        });
+        Object.keys(plugins.online).map(function (key) {
+          if (e.target.dataset.slug === plugins.online[key].slug) {
+            plugins.online[key].state = json.data.plugin.state;
+          }
+        });
+        setPlugins(_objectSpread$5({}, plugins));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.error(error);
+      }
+    });
+  };
+
+  var uninstallPlugin = function uninstallPlugin(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('_method', 'DELETE');
+    formData.append('slug', e.target.dataset.slug);
+    axios.post('/api/plugin', formData).then(function (json) {
+      if (!unmounted.current) {
+        // TODO: Toast
+        alert(json.data.message);
+        var _plugins2 = [];
+        Object.keys(plugins.all).map(function (key) {
+          if (e.target.dataset.slug !== plugins.all[key].slug) {
+            _plugins2.push(plugins.all[key]);
+          }
+        });
+        plugins.all = _plugins2;
+        Object.keys(plugins.online).map(function (key) {
+          if (e.target.dataset.slug === plugins.online[key].slug) {
+            plugins.online[key] = json.data.plugin;
+          }
+        });
+        setPlugins(_objectSpread$5({}, plugins));
+      }
+    })["catch"](function (error) {
+      if (!unmounted.current) {
+        // TODO: handle errors
+        console.error(error);
+      }
+    });
+  };
+
+  var _apps = {
+    local: apps.local,
+    online: apps.online,
+    download: downloadApp,
+    update: updateApp,
+    activate: activateApp,
+    deactivate: deactivateApp,
+    install: installApp,
+    uninstall: uninstallApp
+  };
+  var _plugins = {
+    all: plugins.all,
+    active: plugins.active,
+    online: plugins.online,
+    download: downloadPlugin,
+    update: updatePlugin,
+    toggle: togglePlugin,
+    uninstall: uninstallPlugin
+  };
+  return /*#__PURE__*/React.createElement(WebAppsContext.Provider, {
+    value: {
+      navigation: navigation,
+      UI: UI,
+      modals: modals,
+      loadNavigation: loadNavigation,
+      setUI: setUI,
+      setModals: setModals,
+      toggleModal: toggleModal,
+      apps: _apps,
+      plugins: _plugins
+    }
+  }, props.children || null);
+};var withWebApps = function withWebApps(Component) {
+  var displayName = "withWebApps(".concat(Component.displayName || Component.name, ")");
+
+  var C = function C(props) {
+    return /*#__PURE__*/React.createElement(WebAppsContext.Consumer, null, function (context) {
+      invariant(context, "You should not use <".concat(displayName, " /> outside a <WebApps>"));
+      return /*#__PURE__*/React.createElement(Component, _extends({}, props, context));
+    });
+  };
+
+  C.displayName = displayName;
+  return C;
+};var Button = function Button(props) {
+  var style = props.style,
+      size = props.size,
+      rounded = props.rounded,
+      square = props.square,
+      className = props.className,
+      children = props.children,
+      attributes = _objectWithoutProperties$1(props, ["style", "size", "rounded", "square", "className", "children"]);
+
+  var _useContext = useContext(WebAppsContext),
+      UI = _useContext.UI;
+
+  var color = props.color === 'brand' ? UI.theme : props.color;
+  var classes = classnames('font-bold', 'outline-none', 'focus:outline-none', 'mr-1', 'mb-1', 'ease-linear', 'transition-all', 'duration-150', style === 'full' ? "bg-".concat(color, "-600 hover:bg-").concat(color, "-400 dark:bg-").concat(color, "-400 dark:hover:bg-").concat(color, "-600") : '', style === 'outline' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent border border-").concat(color, "-600 dark:border-").concat(color, "-400 hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'ghost' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'link' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:text-").concat(color, "-400 dark:hover:text-").concat(color, "-600") : '', size === "small" ? 'text-xs px-2 py-1' : size === "large" ? 'text-lg px-8 py-3' : 'px-4 py-2', rounded ? 'rounded-full' : square ? 'rounded-none' : 'rounded-md', className);
+  return props.href !== undefined || props.to !== undefined ? /*#__PURE__*/React.createElement(Link, _extends({
+    className: classes
+  }, attributes), children) : /*#__PURE__*/React.createElement("button", _extends({
+    type: "button",
+    className: classes
+  }, attributes), children);
+};
+
+Button.propTypes = {
+  color: propTypes.string,
+  style: propTypes.oneOf(['full', 'outline', 'ghost', 'link']),
+  size: propTypes.oneOf(['', 'small', 'large']),
+  rounded: propTypes.bool,
+  square: propTypes.bool
+};
+Button.defaultProps = {
+  color: 'brand',
+  style: 'full',
+  size: ''
 };var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
       confirmText = props.confirmText,
@@ -1365,6 +2420,61 @@ ConfirmDeleteModal.defaultProps = {
   message: "Are you sure to wish to delete this item?\nThis action cannot be undone.",
   cancelText: "No",
   confirmText: "Yes"
+};var DropDownButton = function DropDownButton(props) {
+  var show = props.show,
+      text = props.text,
+      buttonClassNames = props.buttonClassNames,
+      dropClassNames = props.dropClassNames,
+      attributes = _objectWithoutProperties$1(props, ["show", "text", "buttonClassNames", "dropClassNames"]);
+
+  var _useState = useState(show),
+      _useState2 = _slicedToArray$1(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  useEffect(function (show) {
+    setOpen(show);
+  }, [show]);
+
+  var toggle = function toggle() {
+    setOpen(!open);
+  };
+
+  var close = function close() {
+    setOpen(false);
+  };
+
+  var dropClass = classnames('origin-top-right', 'absolute', 'right-0', 'mt-2', 'w-56', 'bg-white', 'dark:bg-gray-700', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'z-20', dropClassNames, open ? '' : 'hidden');
+  var childrenWithClose = React.Children.map(props.children, function (child) {
+    if ( /*#__PURE__*/React.isValidElement(child)) {
+      return /*#__PURE__*/React.cloneElement(child, {
+        onClick: close
+      });
+    }
+
+    return child;
+  });
+  var id = "options-menu-".concat(Math.floor(Math.random() * 1000));
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: "ml-auto relative"
+  }, attributes), /*#__PURE__*/React.createElement(Button, {
+    className: buttonClassNames,
+    id: id,
+    "aria-haspopup": "true",
+    "aria-expanded": "false",
+    onClick: toggle
+  }, text), /*#__PURE__*/React.createElement("div", {
+    className: dropClass
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "py-1",
+    role: "menu",
+    "aria-orientation": "vertical",
+    "aria-labelledby": id
+  }, childrenWithClose)));
+};
+
+DropDownButton.propTypes = {
+  text: propTypes.oneOfType([propTypes.string, propTypes.object])
 };/*!
  * Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -1407,7 +2517,7 @@ function _defineProperty$1(obj, key, value) {
   return obj;
 }
 
-function _objectSpread$6(target) {
+function _objectSpread$4(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
     var ownKeys = Object.keys(source);
@@ -1559,11 +2669,11 @@ var _default = {
   showMissingIcons: true
 };
 
-var _config = _objectSpread$6({}, _default, initial);
+var _config = _objectSpread$4({}, _default, initial);
 
 if (!_config.autoReplaceSvg) _config.observeMutations = false;
 
-var config = _objectSpread$6({}, _config);
+var config = _objectSpread$4({}, _config);
 
 WINDOW.FontAwesomeConfig = config;
 
@@ -1717,7 +2827,7 @@ function makeIconMasking (_ref) {
   });
   var maskRect = {
     tag: 'rect',
-    attributes: _objectSpread$6({}, ALL_SPACE, {
+    attributes: _objectSpread$4({}, ALL_SPACE, {
       fill: 'white'
     })
   };
@@ -1726,22 +2836,22 @@ function makeIconMasking (_ref) {
   } : {};
   var maskInnerGroup = {
     tag: 'g',
-    attributes: _objectSpread$6({}, trans.inner),
-    children: [fillBlack(_objectSpread$6({
+    attributes: _objectSpread$4({}, trans.inner),
+    children: [fillBlack(_objectSpread$4({
       tag: mainPath.tag,
-      attributes: _objectSpread$6({}, mainPath.attributes, trans.path)
+      attributes: _objectSpread$4({}, mainPath.attributes, trans.path)
     }, maskInnerGroupChildrenMixin))]
   };
   var maskOuterGroup = {
     tag: 'g',
-    attributes: _objectSpread$6({}, trans.outer),
+    attributes: _objectSpread$4({}, trans.outer),
     children: [maskInnerGroup]
   };
   var maskId = "mask-".concat(explicitMaskId || nextUniqueId());
   var clipId = "clip-".concat(explicitMaskId || nextUniqueId());
   var maskTag = {
     tag: 'mask',
-    attributes: _objectSpread$6({}, ALL_SPACE, {
+    attributes: _objectSpread$4({}, ALL_SPACE, {
       id: maskId,
       maskUnits: 'userSpaceOnUse',
       maskContentUnits: 'userSpaceOnUse'
@@ -1760,7 +2870,7 @@ function makeIconMasking (_ref) {
   };
   children.push(defs, {
     tag: 'rect',
-    attributes: _objectSpread$6({
+    attributes: _objectSpread$4({
       fill: 'currentColor',
       'clip-path': "url(#".concat(clipId, ")"),
       mask: "url(#".concat(maskId, ")")
@@ -1792,14 +2902,14 @@ function makeIconStandard (_ref) {
     });
     children.push({
       tag: 'g',
-      attributes: _objectSpread$6({}, trans.outer),
+      attributes: _objectSpread$4({}, trans.outer),
       children: [{
         tag: 'g',
-        attributes: _objectSpread$6({}, trans.inner),
+        attributes: _objectSpread$4({}, trans.inner),
         children: [{
           tag: main.icon.tag,
           children: main.icon.children,
-          attributes: _objectSpread$6({}, main.icon.attributes, trans.path)
+          attributes: _objectSpread$4({}, main.icon.attributes, trans.path)
         }]
       }]
     });
@@ -1828,7 +2938,7 @@ function asIcon (_ref) {
       x: width / height / 2,
       y: 0.5
     };
-    attributes['style'] = joinStyles(_objectSpread$6({}, styles, {
+    attributes['style'] = joinStyles(_objectSpread$4({}, styles, {
       'transform-origin': "".concat(offset.x + transform.x / 16, "em ").concat(offset.y + transform.y / 16, "em")
     }));
   }
@@ -1854,7 +2964,7 @@ function asSymbol (_ref) {
     },
     children: [{
       tag: 'symbol',
-      attributes: _objectSpread$6({}, attributes, {
+      attributes: _objectSpread$4({}, attributes, {
         id: id
       }),
       children: children
@@ -1890,7 +3000,7 @@ function makeInlineSvgAbstract(params) {
   }).concat(extra.classes).join(' ');
   var content = {
     children: [],
-    attributes: _objectSpread$6({}, extra.attributes, {
+    attributes: _objectSpread$4({}, extra.attributes, {
       'data-prefix': prefix,
       'data-icon': iconName,
       'class': attrClass,
@@ -1915,7 +3025,7 @@ function makeInlineSvgAbstract(params) {
     children: [title]
   });
 
-  var args = _objectSpread$6({}, content, {
+  var args = _objectSpread$4({}, content, {
     prefix: prefix,
     iconName: iconName,
     main: main,
@@ -1923,7 +3033,7 @@ function makeInlineSvgAbstract(params) {
     maskId: maskId,
     transform: transform,
     symbol: symbol,
-    styles: _objectSpread$6({}, uploadedIconWidthStyle, extra.styles)
+    styles: _objectSpread$4({}, uploadedIconWidthStyle, extra.styles)
   });
 
   var _ref2 = mask.found && main.found ? makeIconMasking(args) : makeIconStandard(args),
@@ -2015,7 +3125,7 @@ function defineIcons(prefix, icons) {
   if (typeof namespace.hooks.addPack === 'function' && !skipHooks) {
     namespace.hooks.addPack(prefix, normalized);
   } else {
-    namespace.styles[prefix] = _objectSpread$6({}, namespace.styles[prefix] || {}, normalized);
+    namespace.styles[prefix] = _objectSpread$4({}, namespace.styles[prefix] || {}, normalized);
   }
   /**
    * Font Awesome 4 used the prefix of `fa` for all icons. With the introduction
@@ -2186,57 +3296,57 @@ var ANIMATION_BASE = {
 };
 ({
   tag: 'path',
-  attributes: _objectSpread$6({}, FILL, {
+  attributes: _objectSpread$4({}, FILL, {
     d: 'M156.5,447.7l-12.6,29.5c-18.7-9.5-35.9-21.2-51.5-34.9l22.7-22.7C127.6,430.5,141.5,440,156.5,447.7z M40.6,272H8.5 c1.4,21.2,5.4,41.7,11.7,61.1L50,321.2C45.1,305.5,41.8,289,40.6,272z M40.6,240c1.4-18.8,5.2-37,11.1-54.1l-29.5-12.6 C14.7,194.3,10,216.7,8.5,240H40.6z M64.3,156.5c7.8-14.9,17.2-28.8,28.1-41.5L69.7,92.3c-13.7,15.6-25.5,32.8-34.9,51.5 L64.3,156.5z M397,419.6c-13.9,12-29.4,22.3-46.1,30.4l11.9,29.8c20.7-9.9,39.8-22.6,56.9-37.6L397,419.6z M115,92.4 c13.9-12,29.4-22.3,46.1-30.4l-11.9-29.8c-20.7,9.9-39.8,22.6-56.8,37.6L115,92.4z M447.7,355.5c-7.8,14.9-17.2,28.8-28.1,41.5 l22.7,22.7c13.7-15.6,25.5-32.9,34.9-51.5L447.7,355.5z M471.4,272c-1.4,18.8-5.2,37-11.1,54.1l29.5,12.6 c7.5-21.1,12.2-43.5,13.6-66.8H471.4z M321.2,462c-15.7,5-32.2,8.2-49.2,9.4v32.1c21.2-1.4,41.7-5.4,61.1-11.7L321.2,462z M240,471.4c-18.8-1.4-37-5.2-54.1-11.1l-12.6,29.5c21.1,7.5,43.5,12.2,66.8,13.6V471.4z M462,190.8c5,15.7,8.2,32.2,9.4,49.2h32.1 c-1.4-21.2-5.4-41.7-11.7-61.1L462,190.8z M92.4,397c-12-13.9-22.3-29.4-30.4-46.1l-29.8,11.9c9.9,20.7,22.6,39.8,37.6,56.9 L92.4,397z M272,40.6c18.8,1.4,36.9,5.2,54.1,11.1l12.6-29.5C317.7,14.7,295.3,10,272,8.5V40.6z M190.8,50 c15.7-5,32.2-8.2,49.2-9.4V8.5c-21.2,1.4-41.7,5.4-61.1,11.7L190.8,50z M442.3,92.3L419.6,115c12,13.9,22.3,29.4,30.5,46.1 l29.8-11.9C470,128.5,457.3,109.4,442.3,92.3z M397,92.4l22.7-22.7c-15.6-13.7-32.8-25.5-51.5-34.9l-12.6,29.5 C370.4,72.1,384.4,81.5,397,92.4z'
   })
 });
 
-var OPACITY_ANIMATE = _objectSpread$6({}, ANIMATION_BASE, {
+var OPACITY_ANIMATE = _objectSpread$4({}, ANIMATION_BASE, {
   attributeName: 'opacity'
 });
 
 ({
   tag: 'circle',
-  attributes: _objectSpread$6({}, FILL, {
+  attributes: _objectSpread$4({}, FILL, {
     cx: '256',
     cy: '364',
     r: '28'
   }),
   children: [{
     tag: 'animate',
-    attributes: _objectSpread$6({}, ANIMATION_BASE, {
+    attributes: _objectSpread$4({}, ANIMATION_BASE, {
       attributeName: 'r',
       values: '28;14;28;28;14;28;'
     })
   }, {
     tag: 'animate',
-    attributes: _objectSpread$6({}, OPACITY_ANIMATE, {
+    attributes: _objectSpread$4({}, OPACITY_ANIMATE, {
       values: '1;0;1;1;0;1;'
     })
   }]
 });
 ({
   tag: 'path',
-  attributes: _objectSpread$6({}, FILL, {
+  attributes: _objectSpread$4({}, FILL, {
     opacity: '1',
     d: 'M263.7,312h-16c-6.6,0-12-5.4-12-12c0-71,77.4-63.9,77.4-107.8c0-20-17.8-40.2-57.4-40.2c-29.1,0-44.3,9.6-59.2,28.7 c-3.9,5-11.1,6-16.2,2.4l-13.1-9.2c-5.6-3.9-6.9-11.8-2.6-17.2c21.2-27.2,46.4-44.7,91.2-44.7c52.3,0,97.4,29.8,97.4,80.2 c0,67.6-77.4,63.5-77.4,107.8C275.7,306.6,270.3,312,263.7,312z'
   }),
   children: [{
     tag: 'animate',
-    attributes: _objectSpread$6({}, OPACITY_ANIMATE, {
+    attributes: _objectSpread$4({}, OPACITY_ANIMATE, {
       values: '1;0;0;0;0;1;'
     })
   }]
 });
 ({
   tag: 'path',
-  attributes: _objectSpread$6({}, FILL, {
+  attributes: _objectSpread$4({}, FILL, {
     opacity: '0',
     d: 'M232.5,134.5l7,168c0.3,6.4,5.6,11.5,12,11.5h9c6.4,0,11.7-5.1,12-11.5l7-168c0.3-6.8-5.2-12.5-12-12.5h-23 C237.7,122,232.2,127.7,232.5,134.5z'
   }),
   children: [{
     tag: 'animate',
-    attributes: _objectSpread$6({}, OPACITY_ANIMATE, {
+    attributes: _objectSpread$4({}, OPACITY_ANIMATE, {
       values: '0;0;1;1;0;0;'
     })
   }]
@@ -2334,7 +3444,7 @@ function () {
 
       var additions = definitions.reduce(this._pullDefinitions, {});
       Object.keys(additions).forEach(function (key) {
-        _this.definitions[key] = _objectSpread$6({}, _this.definitions[key] || {}, additions[key]);
+        _this.definitions[key] = _objectSpread$4({}, _this.definitions[key] || {}, additions[key]);
         defineIcons(key, additions[key]);
         build();
       });
@@ -2413,7 +3523,7 @@ function resolveIcons(next) {
       mask = (mask || {}).icon ? mask : findIconDefinition(mask || {});
     }
 
-    return next(iconDefinition, _objectSpread$6({}, params, {
+    return next(iconDefinition, _objectSpread$4({}, params, {
       mask: mask
     }));
   };
@@ -2450,7 +3560,7 @@ var icon = resolveIcons(function (iconDefinition) {
   var prefix = iconDefinition.prefix,
       iconName = iconDefinition.iconName,
       icon = iconDefinition.icon;
-  return apiObject(_objectSpread$6({
+  return apiObject(_objectSpread$4({
     type: 'icon'
   }, iconDefinition), function () {
     ensureCss();
@@ -2476,7 +3586,7 @@ var icon = resolveIcons(function (iconDefinition) {
       },
       prefix: prefix,
       iconName: iconName,
-      transform: _objectSpread$6({}, meaninglessTransform, transform),
+      transform: _objectSpread$4({}, meaninglessTransform, transform),
       symbol: symbol,
       title: title,
       maskId: maskId,
@@ -2517,7 +3627,7 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function ownKeys$6(object, enumerableOnly) {
+function ownKeys$4(object, enumerableOnly) {
   var keys = Object.keys(object);
 
   if (Object.getOwnPropertySymbols) {
@@ -2536,13 +3646,13 @@ function _objectSpread2(target) {
     var source = arguments[i] != null ? arguments[i] : {};
 
     if (i % 2) {
-      ownKeys$6(Object(source), true).forEach(function (key) {
+      ownKeys$4(Object(source), true).forEach(function (key) {
         _defineProperty(target, key, source[key]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
     } else {
-      ownKeys$6(Object(source)).forEach(function (key) {
+      ownKeys$4(Object(source)).forEach(function (key) {
         Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
       });
     }
@@ -12580,981 +13690,44 @@ var Icon = function Icon(props) {
 
 Icon.propTypes = {
   icon: propTypes.oneOfType([propTypes.string, propTypes.object])
-};var AuthContext = /*#__PURE__*/React.createContext({});var Loader = function Loader(props) {
-  var className = props.className,
-      attributes = _objectWithoutProperties$1(props, ["className"]);
-
-  var classes = classnames('loader', className);
-  return /*#__PURE__*/React.createElement("div", _extends({
-    className: classes
-  }, attributes), /*#__PURE__*/React.createElement("svg", {
-    viewBox: "0 0 45 45",
-    xmlns: "http://www.w3.org/2000/svg",
-    stroke: "currentColor"
-  }, /*#__PURE__*/React.createElement("g", {
-    fill: "none",
-    fillRule: "evenodd",
-    transform: "translate(1 1)",
-    strokeWidth: 2
-  }, /*#__PURE__*/React.createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 6,
-    strokeOpacity: 0
-  }, /*#__PURE__*/React.createElement("animate", {
-    attributeName: "r",
-    begin: "1.5s",
-    dur: "3s",
-    values: "6;22",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React.createElement("animate", {
-    attributeName: "stroke-opacity",
-    begin: "1.5s",
-    dur: "3s",
-    values: "1;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React.createElement("animate", {
-    attributeName: "stroke-width",
-    begin: "1.5s",
-    dur: "3s",
-    values: "2;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React.createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 6,
-    strokeOpacity: 0
-  }, /*#__PURE__*/React.createElement("animate", {
-    attributeName: "r",
-    begin: "3s",
-    dur: "3s",
-    values: "6;22",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React.createElement("animate", {
-    attributeName: "stroke-opacity",
-    begin: "3s",
-    dur: "3s",
-    values: "1;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React.createElement("animate", {
-    attributeName: "stroke-width",
-    begin: "3s",
-    dur: "3s",
-    values: "2;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React.createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 8
-  }, /*#__PURE__*/React.createElement("animate", {
-    attributeName: "r",
-    begin: "0s",
-    dur: "1.5s",
-    values: "6;1;2;3;4;5;6",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })))));
-};function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-axios.defaults.withCredentials = true;
-
-var Auth = /*#__PURE__*/function (_Component) {
-  _inherits(Auth, _Component);
-
-  var _super = _createSuper$2(Auth);
-
-  function Auth(props) {
-    var _this;
-
-    _classCallCheck$1(this, Auth);
-
-    _this = _super.call(this, props);
-
-    _defineProperty$2(_assertThisInitialized(_this), "setPreference", function (preference, value) {
-      var preferences = _this.state.preferences;
-      preferences[preference] = value;
-
-      _this.setState({
-        preferences: preferences
-      });
-
-      var formData = new FormData();
-      formData.append('_method', 'PUT');
-      formData.append('preference', preference);
-      formData.append('value', value);
-      axios.post('/api/user/preference', formData)["catch"](function (error) {
-        // TODO: Handle errors
-        console.log(error);
-      });
-    });
-
-    _this.state = {
-      user: null,
-      authenticated: null,
-      preferences: {}
-    };
-    _this.signIn = _this.signIn.bind(_assertThisInitialized(_this));
-    _this.signOut = _this.signOut.bind(_assertThisInitialized(_this));
-    _this.setUser = _this.setUser.bind(_assertThisInitialized(_this));
-    _this.checkAuthentication = _this.checkAuthentication.bind(_assertThisInitialized(_this));
-    _this.setPreference = _this.setPreference.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass$1(Auth, [{
-    key: "signIn",
-    value: function signIn(username, password) {
-      var _this2 = this;
-
-      return new Promise( /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(resolve, reject) {
-          var _yield$axios$get, data;
-
-          return _regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.prev = 0;
-                  _context.next = 3;
-                  return axios.get('/sanctum/csrf_cookie');
-
-                case 3:
-                  _context.next = 5;
-                  return axios.post('/login', {
-                    username: username,
-                    password: password
-                  });
-
-                case 5:
-                  _context.next = 7;
-                  return axios.get('/api/user');
-
-                case 7:
-                  _yield$axios$get = _context.sent;
-                  data = _yield$axios$get.data;
-
-                  _this2.setState({
-                    user: data,
-                    authenticated: true,
-                    preferences: data.preferences
-                  });
-
-                  return _context.abrupt("return", resolve(data));
-
-                case 13:
-                  _context.prev = 13;
-                  _context.t0 = _context["catch"](0);
-                  return _context.abrupt("return", reject(_context.t0));
-
-                case 16:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, null, [[0, 13]]);
-        }));
-
-        return function (_x, _x2) {
-          return _ref.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "signOut",
-    value: function signOut() {
-      var _this3 = this;
-
-      new Promise( /*#__PURE__*/function () {
-        var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2(resolve, reject) {
-          return _regeneratorRuntime.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  _context2.prev = 0;
-                  _context2.next = 3;
-                  return axios.post('/api/logout');
-
-                case 3:
-                  _this3.setState({
-                    user: null,
-                    authenticated: false
-                  });
-
-                  window.location.replace("//" + window.location.hostname + '/login?logout');
-                  resolve(true);
-                  _context2.next = 11;
-                  break;
-
-                case 8:
-                  _context2.prev = 8;
-                  _context2.t0 = _context2["catch"](0);
-                  return _context2.abrupt("return", reject(_context2.t0));
-
-                case 11:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2, null, [[0, 8]]);
-        }));
-
-        return function (_x3, _x4) {
-          return _ref2.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "setUser",
-    value: function setUser(user, authenticated) {
-      this.setState({
-        user: user,
-        authenticated: authenticated
-      });
-    }
-  }, {
-    key: "checkAuthentication",
-    value: function checkAuthentication() {
-      var _this4 = this;
-
-      return new Promise( /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
-          var _yield$axios$get2, data;
-
-          return _regeneratorRuntime.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  if (!(_this4.state.authenticated === null)) {
-                    _context3.next = 20;
-                    break;
-                  }
-
-                  _context3.prev = 1;
-                  _context3.next = 4;
-                  return axios.get('/api/user');
-
-                case 4:
-                  _yield$axios$get2 = _context3.sent;
-                  data = _yield$axios$get2.data;
-
-                  _this4.setState({
-                    user: data,
-                    authenticated: true
-                  });
-
-                  return _context3.abrupt("return", resolve(true));
-
-                case 10:
-                  _context3.prev = 10;
-                  _context3.t0 = _context3["catch"](1);
-
-                  if (!(_context3.t0.response && _context3.t0.response.status === 401)) {
-                    _context3.next = 17;
-                    break;
-                  }
-
-                  // If 401 returns, the user is not logged in
-                  _this4.setState({
-                    user: null,
-                    authenticated: false,
-                    preferences: {}
-                  });
-
-                  return _context3.abrupt("return", resolve(false));
-
-                case 17:
-                  return _context3.abrupt("return", reject(_context3.t0));
-
-                case 18:
-                  _context3.next = 21;
-                  break;
-
-                case 20:
-                  return _context3.abrupt("return", resolve(_this4.state.authenticated));
-
-                case 21:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3, null, [[1, 10]]);
-        }));
-
-        return function (_x5, _x6) {
-          return _ref3.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.checkOnInit) this.checkAuthentication();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.state.authenticated !== null) return /*#__PURE__*/React.createElement(AuthContext.Provider, {
-        children: this.props.children || null,
-        value: {
-          user: this.state.user,
-          authenticated: this.state.authenticated,
-          signIn: this.signIn,
-          signOut: this.signOut,
-          setUser: this.setUser,
-          checkAuthentication: this.checkAuthentication,
-          preferences: this.state.preferences,
-          setPreference: this.setPreference
-        }
-      });else return /*#__PURE__*/React.createElement(Loader, null);
-    }
-  }]);
-
-  return Auth;
-}(Component);
-
-Auth.propTypes = {
-  config: propTypes.object,
-  checkOnInit: propTypes.bool
-};
-Auth.defaultProps = {
-  checkOnInit: true
-};var isProduction = process.env.NODE_ENV === 'production';
-var prefix = 'Invariant failed';
-function invariant(condition, message) {
-    if (condition) {
-        return;
-    }
-    if (isProduction) {
-        throw new Error(prefix);
-    }
-    throw new Error(prefix + ": " + (message || ''));
-}var withAuth = function withAuth(Component) {
-  var displayName = "withAuth(".concat(Component.displayName || Component.name, ")");
-
-  var C = function C(props) {
-    return /*#__PURE__*/React.createElement(AuthContext.Consumer, null, function (context) {
-      invariant(context, "You should not use <".concat(displayName, " /> outside a <Auth>"));
-      return /*#__PURE__*/React.createElement(Component, _extends({}, props, context));
-    });
-  };
-
-  C.displayName = displayName;
-  return C;
-};/**
- * Abstraction for localStorage that uses an in-memory fallback when localStorage throws an error.
- * Reasons for throwing an error:
- * - maximum quota is exceeded
- * - under Mobile Safari (since iOS 5) when the user enters private mode `localStorage.setItem()`
- *   will throw
- * - trying to access localStorage object when cookies are disabled in Safari throws
- *   "SecurityError: The operation is insecure."
- */
-const data = {};
-var storage = {
-    get(key, defaultValue) {
-        var _a;
-        try {
-            return (_a = data[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
-        }
-        catch (_b) {
-            return defaultValue;
-        }
-    },
-    set(key, value) {
-        try {
-            localStorage.setItem(key, JSON.stringify(value));
-            data[key] = undefined;
-            return true;
-        }
-        catch (_a) {
-            data[key] = value;
-            return false;
-        }
-    },
-    remove(key) {
-        data[key] = undefined;
-        localStorage.removeItem(key);
-    },
-};
-/**
- * A wrapper for `JSON.parse()` which supports the return value of `JSON.stringify(undefined)`
- * which returns the string `"undefined"` and this method returns the value `undefined`.
- */
-function parseJSON(value) {
-    return value === 'undefined'
-        ? undefined
-        : // JSON.parse() doesn't accept non-string values, this is why we pass empty
-            // string which will throw an error which can be handled
-            JSON.parse(value !== null && value !== void 0 ? value : '');
-}function useLocalStorageStateBase(key, defaultValue) {
-    // we don't support updating the `defaultValue` the same way `useState()` doesn't support it
-    const [defaultValueState] = useState(() => {
-        const isCallable = (value) => typeof value === 'function';
-        return isCallable(defaultValue) ? defaultValue() : defaultValue;
-    });
-    const getDefaultState = useCallback(() => {
-        return {
-            value: storage.get(key, defaultValueState),
-            isPersistent: (() => {
-                /**
-                 * We want to return `true` on the server. If you render a message based on `isPersistent` and the
-                 * server returns `false` then the message will flicker until hydration is done:
-                 * `{!isPersistent && <span>You changes aren't being persisted.</span>}`
-                 */
-                if (typeof window === 'undefined') {
-                    return true;
-                }
-                try {
-                    localStorage.setItem('__ulss', '#');
-                    localStorage.removeItem('__ulss');
-                    return true;
-                }
-                catch (_a) {
-                    return false;
-                }
-            })(),
-        };
-    }, [defaultValueState, key]);
-    const [state, setState] = useState(getDefaultState);
-    const updateValue = useMemo(() => {
-        const fn = (newValue) => {
-            const isCallable = (value) => typeof value === 'function';
-            if (isCallable(newValue)) {
-                setState((state) => ({
-                    value: newValue(state.value),
-                    isPersistent: storage.set(key, newValue(state.value)),
-                }));
-            }
-            else {
-                setState({
-                    value: newValue,
-                    isPersistent: storage.set(key, newValue),
-                });
-            }
-        };
-        fn.reset = () => {
-            storage.remove(key);
-            setState((state) => ({
-                value: defaultValueState,
-                isPersistent: state.isPersistent,
-            }));
-        };
-        return fn;
-    }, [key, defaultValueState]);
-    /**
-     * Syncs changes across tabs and iframe's.
-     */
-    useEffect(() => {
-        const onStorage = (e) => {
-            if (e.storageArea === localStorage && e.key === key) {
-                setState({
-                    value: storage.get(key, defaultValueState),
-                    isPersistent: true,
-                });
-            }
-        };
-        window.addEventListener('storage', onStorage);
-        return () => window.removeEventListener('storage', onStorage);
-    }, [key, defaultValueState]);
-    /**
-     * Update the state when the `key` property changes.
-     */
-    const isFirstRender = useRef(true);
-    useEffect(() => {
-        if (isFirstRender.current) {
-            isFirstRender.current = false;
-            return;
-        }
-        setState(getDefaultState());
-    }, [getDefaultState]);
-    return [state.value, updateValue, state.isPersistent];
-}function createLocalStorageStateHook(key, defaultValue) {
-    const setValueFunctions = [];
-    return function useLocalStorageStateHook() {
-        const [value, setValue, isPersistent] = useLocalStorageStateBase(key, defaultValue);
-        const setValueAll = useMemo(() => {
-            const fn = (newValue) => {
-                for (const setValueFunction of setValueFunctions) {
-                    setValueFunction(newValue);
-                }
-            };
-            fn.reset = () => {
-                for (const setValueFunction of setValueFunctions) {
-                    setValueFunction.reset();
-                }
-            };
-            return fn;
-        }, []);
-        useEffect(() => {
-            setValueFunctions.push(setValue);
-            return () => void setValueFunctions.splice(setValueFunctions.indexOf(setValue), 1);
-        }, [setValue]);
-        return [value, setValueAll, isPersistent];
-    };
-}function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty$2(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var WebAppsContext = /*#__PURE__*/React.createContext({});
-var useModals = createLocalStorageStateHook('modals', {});
-var WebApps = function WebApps(props) {
-  var unmounted = useRef(false);
-
-  var _useState = useState({
-    sidebar: 'responsive',
-    envWriteable: false
-  }),
+};var InfiniteScroll = function InfiniteScroll(props) {
+  var _useState = useState(1),
       _useState2 = _slicedToArray$1(_useState, 2),
-      UI = _useState2[0],
-      setUI = _useState2[1];
+      page = _useState2[0],
+      setPage = _useState2[1];
 
-  var _useModals = useModals(),
-      _useModals2 = _slicedToArray$1(_useModals, 2),
-      modals = _useModals2[0],
-      setModals = _useModals2[1];
-
-  var _useState3 = useState({}),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      navigation = _useState4[0],
-      setNavigation = _useState4[1];
-
-  var _useState5 = useState({}),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      apps = _useState6[0],
-      setApps = _useState6[1];
-
-  var _useState7 = useState({}),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      plugins = _useState8[0],
-      setPlugins = _useState8[1];
-
+  var marker = useRef(null);
   useEffect(function () {
-    loadUI();
-    loadNavigation();
-    getApps();
-    getPlugins();
-    return function () {
-      unmounted.current = true;
+    var options = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 1.0
     };
-  }, []);
+    var observer = new IntersectionObserver(handleObserver, options);
 
-  var toggleModal = function toggleModal(modal) {
-    setModals({
-      modal: !modals[modal]
-    });
-  };
-
-  var loadUI = function loadUI() {
-    var formData = new FormData();
-    formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
-    axios.post('/api/setting', formData).then(function (json) {
-      if (!unmounted.current) {
-        UI.theme = json.data['core.ui.theme'];
-        UI.dark_mode = json.data['core.ui.dark_mode'];
-        setUI(_objectSpread$5({}, UI));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var loadNavigation = function loadNavigation() {
-    axios.get('/api/navigation').then(function (json) {
-      if (!unmounted.current) {
-        navigation.menu = json.data.navigation;
-        navigation.routes = json.data.routes;
-        navigation.settings = json.data.settingsNav;
-        UI.envWriteable = json.data.envPermissions;
-        setNavigation(_objectSpread$5({}, navigation));
-        setUI(_objectSpread$5({}, UI));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        var nav = [];
-        nav['error'] = true;
-        nav['message'] = error.response.data.message;
-        setNavigation(nav);
-      }
-    });
-  };
-
-  var getApps = function getApps() {
-    axios.get('/api/apps').then(function (json) {
-      if (!unmounted.current) {
-        apps.local = json.data.apps;
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TOOD: Handle errors
-        console.error(error);
-      }
-    });
-    axios.get('/api/online/apps/list').then(function (json) {
-      if (!unmounted.current) {
-        apps.online = json.data.apps;
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var getPlugins = function getPlugins() {
-    axios.get('/api/plugins').then(function (json) {
-      if (!unmounted.current) {
-        plugins.all = json.data.plugins;
-        setPlugins(_objectSpread$5({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TOOD: Handle errors
-        console.error(error);
-      }
-    });
-    axios.get('/api/plugins/active').then(function (json) {
-      if (!unmounted.current) {
-        plugins.active = json.data.plugins;
-        setPlugins(_objectSpread$5({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TOOD: Handle errors
-        console.error(error);
-      }
-    });
-    axios.get('/api/online/plugins/list').then(function (json) {
-      if (!unmounted.current) {
-        plugins.online = json.data.plugins;
-        setPlugins(_objectSpread$5({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var downloadApp = function downloadApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/apps/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: toast
-        alert(json.data.message);
-        apps.local = json.data.apps;
-        apps.online = json.data.online;
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var updateApp = function updateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/apps/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: toast
-        alert(json.data.message);
-        apps.local = json.data.apps;
-        apps.online = json.data.online;
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var activateApp = function activateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'activate');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: Toast
-        // alert(json.data.message);
-        // Reload Navigation
-        loadNavigation();
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug === apps.local[key].slug) {
-            apps.local[key].active = true;
-          }
-        });
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key].active = true;
-          }
-        });
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
-
-  var deactivateApp = function deactivateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'deactivate');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: Toast
-        // alert(json.data.message);
-        // Reload Navigation
-        loadNavigation();
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug === apps.local[key].slug) {
-            apps.local[key].active = false;
-          }
-        });
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key].active = false;
-          }
-        });
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
-
-  var installApp = function installApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'install');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: Toast
-        // alert(json.data.message);
-        // Reload Navigation
-        loadNavigation();
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug === apps.local[key].slug) {
-            apps.local[key].installed = true;
-          }
-        });
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key].installed = true;
-          }
-        });
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
-
-  var uninstallApp = function uninstallApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'uninstall');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: Toast
-        alert(json.data.message);
-        var _apps2 = [];
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug !== apps.local[key].slug) {
-            _apps2.push(apps.local[key]);
-          }
-        });
-        apps.local = _apps2;
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key] = json.data.app;
-          }
-        });
-        setApps(_objectSpread$5({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
-
-  var downloadPlugin = function downloadPlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/plugins/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: toast
-        alert(json.data.message);
-        plugins.all = json.data.plugins;
-        plugins.online = json.data.online;
-        setPlugins(_objectSpread$5({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var updatePlugin = function updatePlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/plugins/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: toast
-        alert(json.data.message);
-        plugins.all = json.data.plugins;
-        plugins.online = json.data.online;
-        setPlugins(_objectSpread$5({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var togglePlugin = function togglePlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/plugins/toggle', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: Toast
-        // alert(json.data.message);
-        Object.keys(plugins.all).map(function (key) {
-          if (e.target.dataset.slug === plugins.all[key].slug) {
-            plugins.all[key].state = json.data.plugin['state'];
-          }
-        });
-        Object.keys(plugins.online).map(function (key) {
-          if (e.target.dataset.slug === plugins.online[key].slug) {
-            plugins.online[key].state = json.data.plugin.state;
-          }
-        });
-        setPlugins(_objectSpread$5({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
-
-  var uninstallPlugin = function uninstallPlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('_method', 'DELETE');
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/plugin', formData).then(function (json) {
-      if (!unmounted.current) {
-        // TODO: Toast
-        alert(json.data.message);
-        var _plugins2 = [];
-        Object.keys(plugins.all).map(function (key) {
-          if (e.target.dataset.slug !== plugins.all[key].slug) {
-            _plugins2.push(plugins.all[key]);
-          }
-        });
-        plugins.all = _plugins2;
-        Object.keys(plugins.online).map(function (key) {
-          if (e.target.dataset.slug === plugins.online[key].slug) {
-            plugins.online[key] = json.data.plugin;
-          }
-        });
-        setPlugins(_objectSpread$5({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
-
-  var _apps = {
-    local: apps.local,
-    online: apps.online,
-    download: downloadApp,
-    update: updateApp,
-    activate: activateApp,
-    deactivate: deactivateApp,
-    install: installApp,
-    uninstall: uninstallApp
-  };
-  var _plugins = {
-    all: plugins.all,
-    active: plugins.active,
-    online: plugins.online,
-    download: downloadPlugin,
-    update: updatePlugin,
-    toggle: togglePlugin,
-    uninstall: uninstallPlugin
-  };
-  return /*#__PURE__*/React.createElement(WebAppsContext.Provider, {
-    value: {
-      navigation: navigation,
-      UI: UI,
-      modals: modals,
-      loadNavigation: loadNavigation,
-      setUI: setUI,
-      setModals: setModals,
-      toggleModal: toggleModal,
-      apps: _apps,
-      plugins: _plugins
+    if (marker.current) {
+      observer.observe(marker.current);
     }
-  }, props.children || null);
-};var withWebApps = function withWebApps(Component) {
-  var displayName = "withWebApps(".concat(Component.displayName || Component.name, ")");
+  }, []);
+  useEffect(function () {
+    if (props.hasMore) {
+      props.loadMore();
+    }
+  }, [page]);
 
-  var C = function C(props) {
-    return /*#__PURE__*/React.createElement(WebAppsContext.Consumer, null, function (context) {
-      invariant(context, "You should not use <".concat(displayName, " /> outside a <WebApps>"));
-      return /*#__PURE__*/React.createElement(Component, _extends({}, props, context));
-    });
+  var handleObserver = function handleObserver(entities) {
+    var target = entities[0];
+
+    if (target.isIntersecting) {
+      setPage(function (page) {
+        return page + 1;
+      });
+    }
   };
 
-  C.displayName = displayName;
-  return C;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, props.children, /*#__PURE__*/React.createElement("span", {
+    ref: marker
+  }));
 };var Input = function Input(props) {
   var error = props.error,
       state = props.state,
@@ -13581,54 +13754,7 @@ Input.defaultProps = {
   error: '',
   state: '',
   className: ''
-};function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty$2(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-var Link = function Link(props) {
-  var className = props.className,
-      innerRef = props.innerRef,
-      active = props.active,
-      href = props.href,
-      onClick = props.onClick,
-      disabled = props.disabled,
-      rest = _objectWithoutProperties$1(props, ["className", "innerRef", "active", "href", "onClick", "disabled"]);
-
-  var to = rest ? rest.to : null;
-
-  var click = function click(e) {
-    if (!href && !to || href === '#') {
-      e.preventDefault();
-    }
-
-    !disabled && onClick && onClick(e);
-  };
-
-  var classes = classnames(active, disabled, className);
-  return to ? /*#__PURE__*/React.createElement(NavLink, _extends({}, rest, {
-    className: classes,
-    onClick: click,
-    ref: innerRef
-  })) : /*#__PURE__*/React.createElement("a", _extends({
-    href: href || '#',
-    className: classes,
-    rel: rest.target === '_blank' ? 'noopener norefferer' : null
-  }, rest, {
-    onClick: click,
-    ref: innerRef
-  }));
-};
-
-Link.propTypes = _objectSpread$4(_objectSpread$4({
-  innerRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
-  active: propTypes.bool,
-  href: propTypes.string,
-  onClick: propTypes.func,
-  disabled: propTypes.bool
-}, NavLink.propTypes), {}, {
-  className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object]),
-  to: propTypes.oneOfType([propTypes.object, propTypes.string, propTypes.func])
-});var Switch = function Switch(props) {
+};var Switch = function Switch(props) {
   var name = props.name,
       error = props.error,
       state = props.state,
@@ -15205,7 +15331,7 @@ var NavItem = function NavItem(props) {
     tabIndex: isOpen === false ? -1 : 0
   }), icon && /*#__PURE__*/React.createElement(Icon, {
     icon: icon,
-    "class": "h-5 w-10"
+    className: "h-5 w-10"
   }), /*#__PURE__*/React.createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React.createElement(Badge, _objectSpread$1(_objectSpread$1({}, badge), {}, {
@@ -15430,7 +15556,168 @@ var SidebarWrapper$1 = withWebApps(SidebarWrapper);var Sidebar = function Sideba
   }) : null);
 };
 
-var Sidebar$1 = withWebApps(Sidebar);function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+var Sidebar$1 = withWebApps(Sidebar);var AppActionButtons = function AppActionButtons(_ref) {
+  var app = _ref.app;
+      _objectWithoutProperties$1(_ref, ["app"]);
+
+  var _useContext = useContext(WebAppsContext),
+      apps = _useContext.apps; // Installed, has update
+
+
+  if (app.installed && app.hasUpdate) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-orange-300 dark:bg-orange-600 hover:bg-orange-600 dark:hover:bg-orange-400 focus:outline-none w-full",
+      "data-slug": app.slug,
+      onClick: apps.update
+    }, "Update", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+      className: "text-xs"
+    }, "from ", app.current_version));
+  } // Installed, not active
+
+
+  if (app.installed && !app.active) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-col w-full"
+    }, /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-blue-300 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-400 focus:outline-none w-full flex-grow",
+      "data-slug": app.slug,
+      onClick: apps.activate
+    }, "Activate"), /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-gray-200 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-500 hover:text-white focus:outline-none w-full flex-grow",
+      "data-slug": app.slug,
+      onClick: apps.uninstall
+    }, "Uninstall"));
+  } // Not downloaded, not installed
+
+
+  if (!app.downloaded && !app.installed) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-green-300 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-400 focus:outline-none w-full",
+      "data-slug": app.slug,
+      onClick: apps.download
+    }, "Install");
+  } // Downloaded, but not installed
+
+
+  if (app.downloaded && !app.installed) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-green-300 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-400 focus:outline-none w-full",
+      "data-slug": app.slug,
+      onClick: apps.install
+    }, "Install");
+  } // Installed, Active, No Updates
+
+
+  if (app.installed && app.active && !app.hasUpdate) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-gray-300 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-400 hover:text-white focus:outline-none w-full ",
+      "data-slug": app.slug,
+      onClick: apps.deactivate
+    }, "Deactivate");
+  }
+};var AppCard = function AppCard(props) {
+  var app = props.app,
+      showActions = props.showActions;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "my-2 px-1 w-full lg:my-4 lg:px-4 lg:w-4/12"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "overflow-hidden rounded-2xl shadow-lg bg-white dark:bg-gray-800 flex flex-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-grow-0 flex-shrink-0 text-4xl w-20 bg-gray-100 dark:bg-gray-700"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    icon: app.icon
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex-grow p-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "font-bold flex-grow"
+  }, app.name), /*#__PURE__*/React.createElement("span", {
+    className: "inline-block text-blue-600 border border-blue-600 bg-blue-300 px-2 py-1 text-xs font-bold"
+  }, app.version)), /*#__PURE__*/React.createElement("p", {
+    className: "text-gray-400 text-sm"
+  }, "By ", app.author), /*#__PURE__*/React.createElement("p", {
+    className: "text-gray-400"
+  }, app.description)), showActions ? /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-grow-0 flex-shrink-0 w-24 ml-3"
+  }, /*#__PURE__*/React.createElement(AppActionButtons, {
+    app: app
+  })) : null));
+};var PluginActionButtons = function PluginActionButtons(_ref) {
+  var plugin = _ref.plugin;
+      _objectWithoutProperties$1(_ref, ["plugin"]);
+
+  var _useContext = useContext(WebAppsContext),
+      plugins = _useContext.plugins;
+
+  if (plugin.installed && plugin.hasUpdate) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-orange-300 dark:bg-orange-600 hover:bg-orange-600 dark:hover:bg-orange-400 focus:outline-none w-full",
+      "data-slug": plugin.slug,
+      onClick: plugins.update
+    }, "Update", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+      className: "text-xs"
+    }, "from ", plugin.current_version));
+  }
+
+  if (plugin.downloaded && !plugin.installed || plugin.installed && !plugin.state) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-col w-full"
+    }, /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-blue-300 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-400 focus:outline-none w-full flex-grow",
+      "data-slug": plugin.slug,
+      onClick: plugins.toggle
+    }, "Activate"), /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-gray-200 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-500 hover:text-white focus:outline-none w-full flex-grow",
+      "data-slug": plugin.slug,
+      onClick: plugins.uninstall
+    }, "Uninstall"));
+  }
+
+  if (!plugin.downloaded && !plugin.installed) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-green-300 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-400 focus:outline-none w-full",
+      "data-slug": plugin.slug,
+      onClick: plugins.download
+    }, "Install");
+  }
+
+  if (plugin.installed && !plugin.hasUpdate) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "py-auto bg-gray-300 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-400 hover:text-white focus:outline-none w-full ",
+      "data-slug": plugin.slug,
+      onClick: plugins.toggle
+    }, "Deactivate");
+  }
+};var PluginCard = function PluginCard(props) {
+  var plugin = props.plugin,
+      showActions = props.showActions;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "my-2 px-1 w-full lg:my-4 lg:px-4 lg:w-4/12"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "overflow-hidden rounded-2xl shadow-lg bg-white dark:bg-gray-800 flex flex-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-grow-0 flex-shrink-0 text-4xl w-20 bg-gray-100 dark:bg-gray-700"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    icon: plugin.icon
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex-grow p-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "font-bold flex-grow"
+  }, plugin.name), /*#__PURE__*/React.createElement("span", {
+    className: "inline-block text-blue-600 border border-blue-600 bg-blue-300 px-2 py-1 text-xs font-bold"
+  }, plugin.version)), /*#__PURE__*/React.createElement("p", {
+    className: "text-gray-400 text-sm"
+  }, "By ", plugin.author), /*#__PURE__*/React.createElement("p", {
+    className: "text-gray-400"
+  }, plugin.description)), showActions ? /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-grow-0 flex-shrink-0 w-24 ml-3"
+  }, /*#__PURE__*/React.createElement(PluginActionButtons, {
+    plugin: plugin
+  })) : null));
+};function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -15520,9 +15807,12 @@ var returnLibrary = function returnLibrary() {
   return {
     Badge: Badge,
     Banner: Banner,
+    Button: Button,
     ConfirmDeleteButton: ConfirmDeleteButton,
     ConfirmDeleteModal: ConfirmDeleteModal,
+    DropDownButton: DropDownButton,
     Icon: Icon,
+    InfiniteScroll: InfiniteScroll,
     Input: Input,
     Link: Link,
     Loader: Loader,
@@ -15530,6 +15820,8 @@ var returnLibrary = function returnLibrary() {
     Scrollbar: Scrollbar,
     Sidebar: Sidebar$1,
     SidebarWrapper: SidebarWrapper$1,
+    AppCard: AppCard,
+    PluginCard: PluginCard,
     NavChild: NavChild,
     NavDropdown: NavDropdown$1,
     NavItem: NavItem,

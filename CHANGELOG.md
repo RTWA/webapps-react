@@ -1,3 +1,16 @@
+## Version 1.2.8
+- Bug fixes
+
+## Version 1.2.7
+- Added `<Button />` Component
+- Added `<DropDownButton />` Component
+- Added `<InfiniteScroll />` Component
+- Added `<AppCard />` Component
+- Added `<AppActionButtons />` Component
+- Added `<PluginCard />` Component
+- Added `<PluginActionButtons />` Component
+- Updated `<NavItem />` Component
+
 ## Version 1.2.6
 - Updated `<Icon />` Component
 - Updated `<NavDropdown />` Component
@@ -145,5 +158,4 @@
 - Added `<AppError />` Error Boundary
 - Added `<NavigationError />` Error Boundary
 - Added `<CreateElement />` Helper
-
 - Updated Auth to use new `<Loader />`

@@ -1,8 +1,11 @@
 import Badge from './Components/Badge';
 import Banner from './Components/Banner';
+import Button  from './Components/Button';
 import ConfirmDeleteButton from './Components/ConfirmDeleteButton';
 import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
+import DropDownButton from './Components/DropDownButton';
 import Icon from './Components/Icon';
+import InfiniteScroll from './Components/InfiniteScroll';
 import Input from './Components/Input';
 import Link from './Components/Link';
 import Loader from './Components/Loader';
@@ -11,6 +14,7 @@ import Scrollbar from './Components/Scrollbar';
 import Sidebar from './Components/Sidebar';
 import SidebarWrapper from './Components/SidebarWrapper';
 
+import { AppCard, PluginCard } from './Components/Cards/index';
 import { NavChild, NavDropdown, NavItem, NavTitle } from './Components/NavElements/index';
 
 import { Auth, AuthContext, withAuth, WebApps, WebAppsContext, withWebApps } from './Context/index';
@@ -24,9 +28,12 @@ const returnLibrary = () => {
     return {
         Badge,
         Banner,
+        Button,
         ConfirmDeleteButton,
         ConfirmDeleteModal,
+        DropDownButton,
         Icon,
+        InfiniteScroll,
         Input,
         Link,
         Loader,
@@ -34,6 +41,9 @@ const returnLibrary = () => {
         Scrollbar,
         Sidebar,
         SidebarWrapper,
+
+        AppCard,
+        PluginCard,
 
         NavChild,
         NavDropdown,
