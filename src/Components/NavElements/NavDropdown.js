@@ -113,7 +113,7 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
                 onClick={toggle}
                 aria-label="menu dropdown"
             >
-                {icon && <Icon icon={icon} class="h-5 w-10" />}
+                {icon && <Icon icon={icon} className="h-5 w-10" />}
                 <span className="font-medium text-sm">{name}</span>
                 {badge && <Badge {...{ ...badge, text: null }}>{badge.text}</Badge>}
                 <Icon icon={dropIcon} className="ml-auto" />

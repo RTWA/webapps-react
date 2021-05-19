@@ -2425,7 +2425,7 @@ ConfirmDeleteModal.defaultProps = {
       text = props.text,
       buttonClassNames = props.buttonClassNames,
       dropClassNames = props.dropClassNames,
-      attributes = _objectWithoutProperties$1(props, ["show", "text", "buttonClassNames", "dropClassNames"]);
+      rest = _objectWithoutProperties$1(props, ["show", "text", "buttonClassNames", "dropClassNames"]);
 
   var _useState = useState(show),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -2455,15 +2455,16 @@ ConfirmDeleteModal.defaultProps = {
     return child;
   });
   var id = "options-menu-".concat(Math.floor(Math.random() * 1000));
-  return /*#__PURE__*/React.createElement("div", _extends({
+  return /*#__PURE__*/React.createElement("div", {
     className: "ml-auto relative"
-  }, attributes), /*#__PURE__*/React.createElement(Button, {
-    className: buttonClassNames,
+  }, /*#__PURE__*/React.createElement(Button, _extends({
+    className: buttonClassNames
+  }, rest, {
     id: id,
     "aria-haspopup": "true",
     "aria-expanded": "false",
     onClick: toggle
-  }, text), /*#__PURE__*/React.createElement("div", {
+  }), text), /*#__PURE__*/React.createElement("div", {
     className: dropClass
   }, /*#__PURE__*/React.createElement("div", {
     className: "py-1",
@@ -15244,7 +15245,7 @@ var NavDropdown = function NavDropdown(_ref) {
     "aria-label": "menu dropdown"
   }, icon && /*#__PURE__*/React.createElement(Icon, {
     icon: icon,
-    "class": "h-5 w-10"
+    className: "h-5 w-10"
   }), /*#__PURE__*/React.createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React.createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {

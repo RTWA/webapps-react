@@ -2425,7 +2425,7 @@ ConfirmDeleteModal.defaultProps = {
       text = props.text,
       buttonClassNames = props.buttonClassNames,
       dropClassNames = props.dropClassNames,
-      attributes = _objectWithoutProperties__default['default'](props, ["show", "text", "buttonClassNames", "dropClassNames"]);
+      rest = _objectWithoutProperties__default['default'](props, ["show", "text", "buttonClassNames", "dropClassNames"]);
 
   var _useState = React.useState(show),
       _useState2 = _slicedToArray__default['default'](_useState, 2),
@@ -2455,15 +2455,16 @@ ConfirmDeleteModal.defaultProps = {
     return child;
   });
   var id = "options-menu-".concat(Math.floor(Math.random() * 1000));
-  return /*#__PURE__*/React__default['default'].createElement("div", _extends__default['default']({
+  return /*#__PURE__*/React__default['default'].createElement("div", {
     className: "ml-auto relative"
-  }, attributes), /*#__PURE__*/React__default['default'].createElement(Button, {
-    className: buttonClassNames,
+  }, /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
+    className: buttonClassNames
+  }, rest, {
     id: id,
     "aria-haspopup": "true",
     "aria-expanded": "false",
     onClick: toggle
-  }, text), /*#__PURE__*/React__default['default'].createElement("div", {
+  }), text), /*#__PURE__*/React__default['default'].createElement("div", {
     className: dropClass
   }, /*#__PURE__*/React__default['default'].createElement("div", {
     className: "py-1",
@@ -15244,7 +15245,7 @@ var NavDropdown = function NavDropdown(_ref) {
     "aria-label": "menu dropdown"
   }, icon && /*#__PURE__*/React__default['default'].createElement(Icon, {
     icon: icon,
-    "class": "h-5 w-10"
+    className: "h-5 w-10"
   }), /*#__PURE__*/React__default['default'].createElement("span", {
     className: "font-medium text-sm"
   }, name), badge && /*#__PURE__*/React__default['default'].createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {

@@ -1,3 +1,7 @@
+## Version 1.2.9
+- Updated `<NavDropdown />` Component
+- Updated `<DropDownButton />` Component
+
 ## Version 1.2.8
 - Bug fixes
 

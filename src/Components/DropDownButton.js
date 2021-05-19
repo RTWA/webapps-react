@@ -10,7 +10,7 @@ const DropDownButton = props => {
         text,
         buttonClassNames,
         dropClassNames,
-        ...attributes
+        ...rest
     } = props;
 
     const [open, setOpen] = useState(show);
@@ -53,8 +53,8 @@ const DropDownButton = props => {
     const id = `options-menu-${Math.floor(Math.random() * 1000)}`;
 
     return (
-        <div className="ml-auto relative" {...attributes}>
-            <Button className={buttonClassNames}
+        <div className="ml-auto relative">
+            <Button className={buttonClassNames} {...rest}
                 id={id} aria-haspopup="true" aria-expanded="false" onClick={toggle}>
                 {text}
             </Button>
