@@ -30,7 +30,6 @@ const DropDownButton = props => {
         'origin-top-right',
         'absolute',
         'right-0',
-        'mt-2',
         'w-56',
         'bg-white',
         'dark:bg-gray-700',

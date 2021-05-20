@@ -1,3 +1,11 @@
+## Version 1.3.0
+- Updated margins in `<DropDownButton />` Component
+- Updated margins in `<Button />` Component
+- `<ConfirmDeleteButton />` now uses `<Button />` Component
+  - Props change:
+    - `initialClass` is now `initialColor` (default: 'red')
+    - `confirmClass` is now `confirmColor` (default: 'orange')
+
 ## Version 1.2.9
 - Updated `<NavDropdown />` Component
 - Updated `<DropDownButton />` Component

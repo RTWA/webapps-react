@@ -2241,7 +2241,7 @@ var WebApps = function WebApps(props) {
       UI = _useContext.UI;
 
   var color = props.color === 'brand' ? UI.theme : props.color;
-  var classes = classnames('font-bold', 'outline-none', 'focus:outline-none', 'mr-1', 'mb-1', 'ease-linear', 'transition-all', 'duration-150', style === 'full' ? "bg-".concat(color, "-600 hover:bg-").concat(color, "-400 dark:bg-").concat(color, "-400 dark:hover:bg-").concat(color, "-600") : '', style === 'outline' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent border border-").concat(color, "-600 dark:border-").concat(color, "-400 hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'ghost' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'link' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:text-").concat(color, "-400 dark:hover:text-").concat(color, "-600") : '', size === "small" ? 'text-xs px-2 py-1' : size === "large" ? 'text-lg px-8 py-3' : 'px-4 py-2', rounded ? 'rounded-full' : square ? 'rounded-none' : 'rounded-md', className);
+  var classes = classnames('font-bold', 'outline-none', 'focus:outline-none', 'ease-linear', 'transition-all', 'duration-150', style === 'full' ? "bg-".concat(color, "-600 hover:bg-").concat(color, "-400 dark:bg-").concat(color, "-400 dark:hover:bg-").concat(color, "-600") : '', style === 'outline' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent border border-").concat(color, "-600 dark:border-").concat(color, "-400 hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'ghost' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'link' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:text-").concat(color, "-400 dark:hover:text-").concat(color, "-600") : '', size === "small" ? 'text-xs px-2 py-1' : size === "large" ? 'text-lg px-8 py-3' : 'px-4 py-2', rounded ? 'rounded-full' : square ? 'rounded-none' : 'rounded-md', className);
   return props.href !== undefined || props.to !== undefined ? /*#__PURE__*/React__default['default'].createElement(Link, _extends__default['default']({
     className: classes
   }, attributes), children) : /*#__PURE__*/React__default['default'].createElement("button", _extends__default['default']({
@@ -2266,10 +2266,9 @@ Button.defaultProps = {
       confirmText = props.confirmText,
       onClick = props.onClick,
       timeout = props.timeout,
-      className = props.className,
-      initialClasses = props.initialClasses,
-      confirmClasses = props.confirmClasses,
-      attributes = _objectWithoutProperties__default['default'](props, ["text", "confirmText", "onClick", "timeout", "className", "initialClasses", "confirmClasses"]);
+      initialColor = props.initialColor,
+      confirmColor = props.confirmColor,
+      attributes = _objectWithoutProperties__default['default'](props, ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor"]);
 
   var _useState = React.useState(false),
       _useState2 = _slicedToArray__default['default'](_useState, 2),
@@ -2290,12 +2289,9 @@ Button.defaultProps = {
     }, timeout);
   };
 
-  var queryClass = classnames(className, initialClasses);
-  var confirmClass = classnames(className, confirmClasses);
-  return waiting ? /*#__PURE__*/React__default['default'].createElement("button", _extends__default['default']({
-    type: "button",
-    onClick: onConfirm,
-    className: confirmClass
+  return waiting ? /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
+    color: confirmColor,
+    onClick: onConfirm
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "h-6 w-6 inline-block -mt-1",
@@ -2307,10 +2303,9 @@ Button.defaultProps = {
     strokeLinejoin: "round",
     strokeWidth: 2,
     d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-  })), confirmText) : /*#__PURE__*/React__default['default'].createElement("button", _extends__default['default']({
-    type: "button",
-    onClick: onQuery,
-    className: queryClass
+  })), confirmText) : /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
+    color: initialColor,
+    onClick: onQuery
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "h-6 w-6 inline-block -mt-1",
@@ -2331,16 +2326,16 @@ ConfirmDeleteButton.propTypes = {
   onClick: propTypes.func,
   timeout: propTypes.number,
   className: propTypes.string,
-  initialClasses: propTypes.string,
-  confirmClasses: propTypes.string
+  initialColor: propTypes.string,
+  confirmColor: propTypes.string
 };
 ConfirmDeleteButton.defaultProps = {
   text: "Delete",
   confirmText: "Delete - Are you sure?",
   timeout: 2000,
-  className: 'block mx-auto my-auto px-4 py-2 outline-none',
-  initialClasses: 'bg-red-500',
-  confirmClasses: 'bg-orange-500'
+  className: '',
+  initialColor: 'red',
+  confirmColor: 'orange'
 };var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
       message = props.message,
@@ -2444,7 +2439,7 @@ ConfirmDeleteModal.defaultProps = {
     setOpen(false);
   };
 
-  var dropClass = classnames('origin-top-right', 'absolute', 'right-0', 'mt-2', 'w-56', 'bg-white', 'dark:bg-gray-700', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'z-20', dropClassNames, open ? '' : 'hidden');
+  var dropClass = classnames('origin-top-right', 'absolute', 'right-0', 'w-56', 'bg-white', 'dark:bg-gray-700', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'z-20', dropClassNames, open ? '' : 'hidden');
   var childrenWithClose = React__default['default'].Children.map(props.children, function (child) {
     if ( /*#__PURE__*/React__default['default'].isValidElement(child)) {
       return /*#__PURE__*/React__default['default'].cloneElement(child, {
