@@ -1255,9 +1255,32 @@ Link.propTypes = _objectSpread$6(_objectSpread$6({
   to: propTypes.oneOfType([propTypes.object, propTypes.string, propTypes.func])
 });var AuthContext = /*#__PURE__*/React.createContext({});var Loader = function Loader(props) {
   var className = props.className,
-      attributes = _objectWithoutProperties$1(props, ["className"]);
+      style = props.style,
+      attributes = _objectWithoutProperties$1(props, ["className", "style"]);
 
   var classes = classnames('loader', className);
+  var circleClasses = classnames('animate-spin', className);
+
+  if (style === 'circle') {
+    return /*#__PURE__*/React.createElement("svg", {
+      className: circleClasses,
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "none",
+      viewBox: "0 0 24 24"
+    }, /*#__PURE__*/React.createElement("circle", {
+      className: "opacity-25",
+      cx: "12",
+      cy: "12",
+      r: "10",
+      stroke: "currentColor",
+      strokeWidth: "4"
+    }), /*#__PURE__*/React.createElement("path", {
+      className: "opacity-75",
+      fill: "currentColor",
+      d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    }));
+  }
+
   return /*#__PURE__*/React.createElement("div", _extends({
     className: classes
   }, attributes), /*#__PURE__*/React.createElement("svg", {
@@ -1333,6 +1356,13 @@ Link.propTypes = _objectSpread$6(_objectSpread$6({
     calcMode: "linear",
     repeatCount: "indefinite"
   })))));
+};
+
+Loader.propsTypes = {
+  style: propTypes.oneOf(['', 'circle'])
+};
+Loader.defaultProps = {
+  style: ''
 };function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
@@ -2294,7 +2324,7 @@ Button.defaultProps = {
     onClick: onConfirm
   }, attributes), /*#__PURE__*/React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    className: "h-6 w-6 inline-block -mt-1",
+    className: "h-5 w-5 mt-1 mr-2",
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor"
@@ -2308,7 +2338,7 @@ Button.defaultProps = {
     onClick: onQuery
   }, attributes), /*#__PURE__*/React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    className: "h-6 w-6 inline-block -mt-1",
+    className: "h-5 w-5 mt-1 mr-2",
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor"

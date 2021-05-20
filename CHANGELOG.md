@@ -1,3 +1,7 @@
+## Version 1.3.1
+- Updated margins in `<ConfirmDeleteButton />`'s `SVG` element
+- Added additional style `style="circle"` to `<Loader />` Component
+
 ## Version 1.3.0
 - Updated margins in `<DropDownButton />` Component
 - Updated margins in `<Button />` Component
