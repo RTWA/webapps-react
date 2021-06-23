@@ -37,7 +37,7 @@ const Input = props => {
 
 Input.propTypes = {
     error: PropTypes.string,
-    state: PropTypes.string,
+    state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
     className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 }
 

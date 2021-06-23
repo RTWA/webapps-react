@@ -30,7 +30,10 @@ class Auth extends Component {
                 await axios.post('/login', { username, password });
                 // When correct, get the user object
                 const { data } = await axios.get('/api/user');
-                this.setState({ user: data, authenticated: true, preferences: data.preferences });
+                const { preferences } = data;
+                delete data.preferences;
+
+                this.setState({ user: data, authenticated: true, preferences: preferences });
                 return resolve(data);
             } catch (error) {
                 return reject(error);

@@ -16,6 +16,7 @@ const Banner = props => {
 
     const classes = classNames(
         className,
+        'w-full',
         'py-2',
         'px-8',
         'mb-4',

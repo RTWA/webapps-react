@@ -1185,7 +1185,7 @@ Badge.defaultProps = {
       children = props.children,
       attributes = _objectWithoutProperties__default['default'](props, ["tag", "className", "innerRef", "color", "darkColor", "children"]);
 
-  var classes = classnames(className, 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
+  var classes = classnames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
 
   var ref = _defineProperty__default['default']({}, "".concat(typeof Tag === 'string' ? 'ref' : 'innerRef'), innerRef);
@@ -1418,7 +1418,7 @@ var Auth = /*#__PURE__*/function (_Component) {
 
       return new Promise( /*#__PURE__*/function () {
         var _ref = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee(resolve, reject) {
-          var _yield$axios$get, data;
+          var _yield$axios$get, data, preferences;
 
           return _regeneratorRuntime__default['default'].wrap(function _callee$(_context) {
             while (1) {
@@ -1442,26 +1442,28 @@ var Auth = /*#__PURE__*/function (_Component) {
                 case 7:
                   _yield$axios$get = _context.sent;
                   data = _yield$axios$get.data;
+                  preferences = data.preferences;
+                  delete data.preferences;
 
                   _this2.setState({
                     user: data,
                     authenticated: true,
-                    preferences: data.preferences
+                    preferences: preferences
                   });
 
                   return _context.abrupt("return", resolve(data));
 
-                case 13:
-                  _context.prev = 13;
+                case 15:
+                  _context.prev = 15;
                   _context.t0 = _context["catch"](0);
                   return _context.abrupt("return", reject(_context.t0));
 
-                case 16:
+                case 18:
                 case "end":
                   return _context.stop();
               }
             }
-          }, _callee, null, [[0, 13]]);
+          }, _callee, null, [[0, 15]]);
         }));
 
         return function (_x, _x2) {
@@ -2320,11 +2322,12 @@ Button.defaultProps = {
   };
 
   return waiting ? /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
+    className: "flex flex-row items-center",
     color: confirmColor,
     onClick: onConfirm
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    className: "h-5 w-5 mt-1 mr-2",
+    className: "h-5 w-5 mr-2",
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor"
@@ -2334,11 +2337,12 @@ Button.defaultProps = {
     strokeWidth: 2,
     d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
   })), confirmText) : /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
+    className: "flex flex-row items-center",
     color: initialColor,
     onClick: onQuery
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    className: "h-5 w-5 mt-1 mr-2",
+    className: "h-5 w-5 mr-2",
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor"
@@ -2355,7 +2359,6 @@ ConfirmDeleteButton.propTypes = {
   confirmText: propTypes.string,
   onClick: propTypes.func,
   timeout: propTypes.number,
-  className: propTypes.string,
   initialColor: propTypes.string,
   confirmColor: propTypes.string
 };
@@ -2363,7 +2366,6 @@ ConfirmDeleteButton.defaultProps = {
   text: "Delete",
   confirmText: "Delete - Are you sure?",
   timeout: 2000,
-  className: '',
   initialColor: 'red',
   confirmColor: 'orange'
 };var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
@@ -2481,7 +2483,7 @@ ConfirmDeleteModal.defaultProps = {
   });
   var id = "options-menu-".concat(Math.floor(Math.random() * 1000));
   return /*#__PURE__*/React__default['default'].createElement("div", {
-    className: "ml-auto relative"
+    className: "relative"
   }, /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
     className: buttonClassNames
   }, rest, {
@@ -13773,7 +13775,7 @@ Icon.propTypes = {
 
 Input.propTypes = {
   error: propTypes.string,
-  state: propTypes.string,
+  state: propTypes.oneOf(['', 'saving', 'error', 'saved']),
   className: propTypes.oneOfType([propTypes.string, propTypes.array, propTypes.object])
 };
 Input.defaultProps = {
@@ -13786,7 +13788,9 @@ Input.defaultProps = {
       state = props.state,
       className = props.className;
   var classes = classnames(className, 'checked:bg-gray-500', 'outline-none', 'focus:ring-0', 'focus:outline-none', 'right-4', 'checked:right-0', 'duration-200', 'ease-in', 'absolute', 'block', 'w-6', 'h-6', 'rounded-full', 'bg-white', 'border-4', 'appearance-none', 'cursor-pointer', state === 'error' ? 'border-red-500 checked:bg-red-500' : '', state === 'saved' ? 'border-green-500 checked:bg-green-500' : '', state === 'saving' ? 'border-orange-500 checked:bg-orange-500' : '');
-  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("input", _extends__default['default']({
+  return /*#__PURE__*/React__default['default'].createElement("div", {
+    className: "relative inline-block w-10 mr-2 align-middle select-none"
+  }, /*#__PURE__*/React__default['default'].createElement("input", _extends__default['default']({
     type: "checkbox",
     id: name,
     name: name,

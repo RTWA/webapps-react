@@ -1,3 +1,6 @@
+## Version 1.3.2
+- Bug Fixes
+
 ## Version 1.3.1
 - Updated margins in `<ConfirmDeleteButton />`'s `SVG` element
 - Added additional style `style="circle"` to `<Loader />` Component

@@ -34,8 +34,8 @@ const Switch = props => {
         (state === 'saving') ? 'border-orange-500 checked:bg-orange-500' : '',
     )
 
-    return (
-        <>
+    return (        
+        <div className="relative inline-block w-10 mr-2 align-middle select-none">
             <input type="checkbox" id={name} name={name} className={classes} {...props} />
             <label htmlFor={name} className="block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-gray-700 cursor-pointer" />
             {
@@ -43,7 +43,7 @@ const Switch = props => {
                     ? <span className="text-sm text-red-500">{error}</span>
                     : null
             }
-        </>
+        </div>
     )
 }
 
