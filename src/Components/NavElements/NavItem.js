@@ -23,15 +23,6 @@ const NavItem = props => {
 
     const { isOpen } = useContext(DropdownContext);
 
-    const isJSON = string => {
-        try {
-            JSON.parse(string);
-        } catch {
-            return false;
-        }
-        return true;
-    }
-
     const linkClasses = classNames(
         'flex',
         'items-center',

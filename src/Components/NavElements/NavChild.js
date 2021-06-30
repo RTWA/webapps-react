@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Badge from '../Badge';
+import Icon from '../Icon';
 import Link from '../Link';
 
 import { DropdownContext } from './NavDropdown';
@@ -57,7 +57,7 @@ const NavChild = props => {
                 {...rest}
                 tabIndex={isOpen === false ? -1 : 0}
             >
-                {icon && <FontAwesomeIcon className="h-5 w-5 mr-4" icon={icon} />}
+                {icon && <Icon className="h-5 w-5 mr-4" icon={icon} />}
                 <span className="text-sm">{name}</span>
                 {badge && <Badge {...{ ...badge, text: null }}>{badge.text}</Badge>}
             </Link>

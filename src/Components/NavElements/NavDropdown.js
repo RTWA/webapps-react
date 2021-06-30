@@ -47,15 +47,6 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
         !dropdownMode && (!openDropdown || !ref.current.contains(openDropdown)) && setIsOpen(false)
     }, [openDropdown]);
 
-    const isJSON = string => {
-        try {
-            JSON.parse(string);
-        } catch {
-            return false;
-        }
-        return true;
-    }
-
     const toggle = (e) => {
         e.preventDefault();
         if (!dropdownMode && UI.navigation !== undefined) {

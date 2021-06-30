@@ -13706,12 +13706,16 @@ var Icon = function Icon(props) {
     return true;
   };
 
+  var addClasses = function addClasses(string) {
+    return string.replace(/<svg/g, "<svg class=\"".concat(attributes.className, "\""));
+  };
+
   return isJSON(props.icon) ? /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, _extends__default['default']({
     icon: JSON.parse(icon),
     className: "m-auto fa-fw"
   }, attributes)) : /*#__PURE__*/React__default['default'].createElement("div", _extends__default['default']({
     dangerouslySetInnerHTML: {
-      __html: icon
+      __html: addClasses(icon)
     }
   }, attributes));
 };
@@ -15321,7 +15325,7 @@ var NavChild = function NavChild(props) {
     className: linkClasses
   }, routerLinkProps, rest, {
     tabIndex: isOpen === false ? -1 : 0
-  }), icon && /*#__PURE__*/React__default['default'].createElement(FontAwesomeIcon, {
+  }), icon && /*#__PURE__*/React__default['default'].createElement(Icon, {
     className: "h-5 w-5 mr-4",
     icon: icon
   }), /*#__PURE__*/React__default['default'].createElement("span", {
@@ -15655,7 +15659,8 @@ var Sidebar$1 = withWebApps(Sidebar);var AppActionButtons = function AppActionBu
   }, /*#__PURE__*/React__default['default'].createElement("div", {
     className: "flex flex-grow-0 flex-shrink-0 text-4xl w-20 bg-gray-100 dark:bg-gray-700"
   }, /*#__PURE__*/React__default['default'].createElement(Icon, {
-    icon: app.icon
+    icon: app.icon,
+    className: "h-20 w-20 p-3"
   })), /*#__PURE__*/React__default['default'].createElement("div", {
     className: "flex-grow p-4"
   }, /*#__PURE__*/React__default['default'].createElement("div", {
@@ -15729,7 +15734,8 @@ var Sidebar$1 = withWebApps(Sidebar);var AppActionButtons = function AppActionBu
   }, /*#__PURE__*/React__default['default'].createElement("div", {
     className: "flex flex-grow-0 flex-shrink-0 text-4xl w-20 bg-gray-100 dark:bg-gray-700"
   }, /*#__PURE__*/React__default['default'].createElement(Icon, {
-    icon: plugin.icon
+    icon: plugin.icon,
+    className: "h-20 w-20 p-3"
   })), /*#__PURE__*/React__default['default'].createElement("div", {
     className: "flex-grow p-4"
   }, /*#__PURE__*/React__default['default'].createElement("div", {

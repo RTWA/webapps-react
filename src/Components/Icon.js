@@ -24,10 +24,14 @@ const Icon = props => {
         return true;
     }
 
+    const addClasses = string => {
+        return string.replace(/<svg/g, `<svg class="${attributes.className}"`)
+    }
+
     return (
         (isJSON(props.icon))
             ? <FontAwesomeIcon icon={JSON.parse(icon)} className="m-auto fa-fw" {...attributes} />
-            : <div dangerouslySetInnerHTML={{ __html: icon }} {...attributes} />
+            : <div dangerouslySetInnerHTML={{ __html: addClasses(icon) }} {...attributes} />
     )
 }
 

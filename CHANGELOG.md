@@ -1,3 +1,7 @@
+## Version 1.3.4
+- `<AppCard />` and `<PluginCard />` add required classes to the icons
+- `<Icon />` returning SVG adds classes to the SVG and the wrapper `<div />`
+
 ## Version 1.3.2
 - Bug Fixes
 

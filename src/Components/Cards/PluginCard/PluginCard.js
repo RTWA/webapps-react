@@ -13,7 +13,7 @@ const PluginCard = props => {
         <div className="my-2 px-1 w-full lg:my-4 lg:px-4 lg:w-4/12">
             <div className="overflow-hidden rounded-2xl shadow-lg bg-white dark:bg-gray-800 flex flex-row">
                 <div className="flex flex-grow-0 flex-shrink-0 text-4xl w-20 bg-gray-100 dark:bg-gray-700">
-                    <Icon icon={plugin.icon} />
+                    <Icon icon={plugin.icon} className="h-20 w-20 p-3" />
                 </div>
                 <div className="flex-grow p-4">
                     <div className="flex">
