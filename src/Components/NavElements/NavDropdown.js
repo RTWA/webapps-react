@@ -92,8 +92,8 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
     )
 
     const dropIcon = (isOpen
-        ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" stroke="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>'
-        : '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" stroke="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>')
+        ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" stroke="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>'
+        : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" stroke="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>')
 
     return (
         <li className={classNames(className, 'mb-2')} ref={ref}>
@@ -107,7 +107,7 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
                 {icon && <Icon icon={icon} className="h-5 w-10" />}
                 <span className="font-medium text-sm">{name}</span>
                 {badge && <Badge {...{ ...badge, text: null }}>{badge.text}</Badge>}
-                <Icon icon={dropIcon} className="ml-auto" />
+                <Icon icon={dropIcon} className="ml-auto h-5 w-5" />
             </a>
             <ul className={classNames(isOpen ? 'block py-1 bg-gray-100 dark:bg-gray-600 rounded-b-lg' : 'hidden')}>
                 <DropdownContext.Provider value={{ isOpen }}>

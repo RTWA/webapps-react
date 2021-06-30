@@ -1,3 +1,8 @@
+## Version 1.4.0
+- BREAKING: Dropped support for `<FontAwesomeIcon />` in `<Icon />` Component
+- Fixed `<NavDropdown />` dropdown icon not showing
+- Updated `<AppCard />` and `<PluginCard />` icon placement
+
 ## Version 1.3.4
 - `<AppCard />` and `<PluginCard />` add required classes to the icons
 - `<Icon />` returning SVG adds classes to the SVG and the wrapper `<div />`
