@@ -18,7 +18,7 @@ const PluginCard = props => {
                 <div className="flex-grow p-4">
                     <div className="flex">
                         <p className="font-bold flex-grow">{plugin.name}</p>
-                        <span className="inline-block text-blue-600 border border-blue-600 bg-blue-300 px-2 py-1 text-xs font-bold">{plugin.version}</span>
+                        <span className="inline-block text-blue-600 border border-blue-600 bg-blue-300 px-2 py-1 text-xs font-bold">{plugin.version || plugin.release.version}</span>
                     </div>
                     <p className="text-gray-400 text-sm">By {plugin.author}</p>
                     <p className="text-gray-400">{plugin.description}</p>

@@ -1,3 +1,7 @@
+## Version 1.4.1
+- Updated `<ConfirmDeleteButton />` to prevent provided classNames overriding required ones
+- Updated `<PluginCard />` and `<AppCard />` to support new repository data
+
 ## Version 1.4.0
 - BREAKING: Dropped support for `<FontAwesomeIcon />` in `<Icon />` Component
 - Fixed `<NavDropdown />` dropdown icon not showing

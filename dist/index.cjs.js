@@ -2300,7 +2300,8 @@ Button.defaultProps = {
       timeout = props.timeout,
       initialColor = props.initialColor,
       confirmColor = props.confirmColor,
-      attributes = _objectWithoutProperties__default['default'](props, ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor"]);
+      className = props.className,
+      attributes = _objectWithoutProperties__default['default'](props, ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"]);
 
   var _useState = React.useState(false),
       _useState2 = _slicedToArray__default['default'](_useState, 2),
@@ -2322,7 +2323,7 @@ Button.defaultProps = {
   };
 
   return waiting ? /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
-    className: "flex flex-row items-center",
+    className: classnames('flex', 'flex-row', 'items-center', className),
     color: confirmColor,
     onClick: onConfirm
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
@@ -2337,7 +2338,7 @@ Button.defaultProps = {
     strokeWidth: 2,
     d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
   })), confirmText) : /*#__PURE__*/React__default['default'].createElement(Button, _extends__default['default']({
-    className: "flex flex-row items-center",
+    className: classnames('flex', 'flex-row', 'items-center', className),
     color: initialColor,
     onClick: onQuery
   }, attributes), /*#__PURE__*/React__default['default'].createElement("svg", {
@@ -4467,7 +4468,7 @@ var Sidebar$1 = withWebApps(Sidebar);var AppActionButtons = function AppActionBu
     className: "font-bold flex-grow"
   }, app.name), /*#__PURE__*/React__default['default'].createElement("span", {
     className: "inline-block text-blue-600 border border-blue-600 bg-blue-300 px-2 py-1 text-xs font-bold"
-  }, app.version)), /*#__PURE__*/React__default['default'].createElement("p", {
+  }, app.version || app.release.version)), /*#__PURE__*/React__default['default'].createElement("p", {
     className: "text-gray-400 text-sm"
   }, "By ", app.author), /*#__PURE__*/React__default['default'].createElement("p", {
     className: "text-gray-400"
@@ -4542,7 +4543,7 @@ var Sidebar$1 = withWebApps(Sidebar);var AppActionButtons = function AppActionBu
     className: "font-bold flex-grow"
   }, plugin.name), /*#__PURE__*/React__default['default'].createElement("span", {
     className: "inline-block text-blue-600 border border-blue-600 bg-blue-300 px-2 py-1 text-xs font-bold"
-  }, plugin.version)), /*#__PURE__*/React__default['default'].createElement("p", {
+  }, plugin.version || plugin.release.version)), /*#__PURE__*/React__default['default'].createElement("p", {
     className: "text-gray-400 text-sm"
   }, "By ", plugin.author), /*#__PURE__*/React__default['default'].createElement("p", {
     className: "text-gray-400"
