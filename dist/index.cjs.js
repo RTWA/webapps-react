@@ -6608,7 +6608,8 @@ Object.defineProperty(exports, 'useToasts', {
 function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React__default['default'].createContext({});
 var useModals = createLocalStorageStateHook('modals', {});
-var WebApps = function WebApps(props) {
+
+var WebAppsProvider = function WebAppsProvider(props) {
   var unmounted = React.useRef(false);
 
   var _useState = React.useState({
@@ -7061,6 +7062,13 @@ var WebApps = function WebApps(props) {
       plugins: _plugins
     }
   }, props.children || null);
+};
+
+var WebApps = function WebApps(props) {
+  return /*#__PURE__*/React__default['default'].createElement(dist.ToastProvider, {
+    autoDismiss: "true",
+    autoDismissTimeout: "3000"
+  }, /*#__PURE__*/React__default['default'].createElement(WebAppsProvider, props));
 };var withWebApps = function withWebApps(Component) {
   var displayName = "withWebApps(".concat(Component.displayName || Component.name, ")");
 

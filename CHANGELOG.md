@@ -1,3 +1,6 @@
+## Version 1.4.2 & 1.4.3
+- Added `react-toast-notifications` to `<Webapps />` Context
+
 ## Version 1.4.1
 - Updated `<ConfirmDeleteButton />` to prevent provided classNames overriding required ones
 - Updated `<PluginCard />` and `<AppCard />` to support new repository data
