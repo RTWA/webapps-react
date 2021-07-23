@@ -6681,7 +6681,6 @@ var WebAppsProvider = function WebAppsProvider(props) {
       if (!unmounted.current) {
         navigation.menu = json.data.navigation;
         navigation.routes = json.data.routes;
-        navigation.settings = json.data.settingsNav;
         UI.envWriteable = json.data.envPermissions;
         setNavigation(_objectSpread$4({}, navigation));
         setUI(_objectSpread$4({}, UI));
@@ -6954,7 +6953,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios__default['default'].post('/api/online/plugins/download', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.datat.message, {
+        addToast(json.data.message, {
           appearance: 'success'
         });
         plugins.all = json.data.plugins;
@@ -6980,12 +6979,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
         });
         Object.keys(plugins.all).map(function (key) {
           if (e.target.dataset.slug === plugins.all[key].slug) {
-            plugins.all[key].state = json.data.plugin['state'];
+            plugins.all[key] = json.data.plugin;
           }
         });
         Object.keys(plugins.online).map(function (key) {
           if (e.target.dataset.slug === plugins.online[key].slug) {
-            plugins.online[key].state = json.data.plugin.state;
+            plugins.online[key] = json.data.plugin;
           }
         });
         setPlugins(_objectSpread$4({}, plugins));

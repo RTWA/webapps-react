@@ -58,7 +58,6 @@ const WebAppsProvider = props => {
                 if (!unmounted.current) {
                     navigation.menu = json.data.navigation;
                     navigation.routes = json.data.routes;
-                    navigation.settings = json.data.settingsNav;
                     UI.envWriteable = json.data.envPermissions;
 
                     setNavigation({ ...navigation });
@@ -353,7 +352,7 @@ const WebAppsProvider = props => {
         axios.post('/api/online/plugins/download', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.datat.message, { appearance: 'success' });
+                    addToast(json.data.message, { appearance: 'success' });
 
                     plugins.all = json.data.plugins;
                     plugins.online = json.data.online;
@@ -379,12 +378,12 @@ const WebAppsProvider = props => {
 
                     Object.keys(plugins.all).map((key) => {
                         if (e.target.dataset.slug === plugins.all[key].slug) {
-                            plugins.all[key].state = json.data.plugin['state'];
+                            plugins.all[key] = json.data.plugin;
                         }
                     });
                     Object.keys(plugins.online).map((key) => {
                         if (e.target.dataset.slug === plugins.online[key].slug) {
-                            plugins.online[key].state = json.data.plugin.state;
+                            plugins.online[key] = json.data.plugin;
                         }
                     });
                     setPlugins({ ...plugins });

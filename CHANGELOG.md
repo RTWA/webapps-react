@@ -1,5 +1,9 @@
+## Version 1.5.0
+- Removed unused `navigation.settings` from `<WebApps />` Context
+- Fixed Plugin activation/deactivation not updating in state for `<WebApps />` Context
+
 ## Version 1.4.2 & 1.4.3
-- Added `react-toast-notifications` to `<Webapps />` Context
+- Added `react-toast-notifications` to `<WebApps />` Context
 
 ## Version 1.4.1
 - Updated `<ConfirmDeleteButton />` to prevent provided classNames overriding required ones
