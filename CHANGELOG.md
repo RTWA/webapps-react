@@ -1,3 +1,6 @@
+## Version 1.5.1
+- Fixed (2) Plugin activation/deactivation not updating in state for `<WebApps />` Context
+
 ## Version 1.5.0
 - Removed unused `navigation.settings` from `<WebApps />` Context
 - Fixed Plugin activation/deactivation not updating in state for `<WebApps />` Context

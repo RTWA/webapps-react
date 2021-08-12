@@ -378,12 +378,12 @@ const WebAppsProvider = props => {
 
                     Object.keys(plugins.all).map((key) => {
                         if (e.target.dataset.slug === plugins.all[key].slug) {
-                            plugins.all[key] = json.data.plugin;
+                            plugins.all[key].state = json.data.plugin.state;
                         }
                     });
                     Object.keys(plugins.online).map((key) => {
                         if (e.target.dataset.slug === plugins.online[key].slug) {
-                            plugins.online[key] = json.data.plugin;
+                            plugins.online[key].state = json.data.plugin.state;
                         }
                     });
                     setPlugins({ ...plugins });
