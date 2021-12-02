@@ -24,7 +24,8 @@ MODE.map((m) => {
             css(),
             resolve({
                 extensions: ['.js'],
-                dedupe: ['axios', 'perfect-scrollbar', 'react', 'react-dom', 'react-router-dom']
+                dedupe: ['axios', 'perfect-scrollbar', 'react', 'react-dom', 'react-router-dom'],
+                preferBuiltins: true,
             }),
             babel({
                 exclude: 'node_modules/**',
