@@ -1,3 +1,8 @@
+## Version 1.6.0
+- BREAKING: Updated peer requirements for `axios` to `>=0.24.0`
+- Updated `<PluginCard />`, `<AppCard/ >`, `<PluginActionButtons />` and `<AppActionsButtons />` to implement a new card design
+- Added CHANGELOG display for Apps and Plugins - `<AppPluginChangelogModal />`
+
 ## Version 1.5.1
 - Fixed (2) Plugin activation/deactivation not updating in state for `<WebApps />` Context
 
@@ -56,7 +61,6 @@
 ## Version 1.2.6
 - Updated `<Icon />` Component
 - Updated `<NavDropdown />` Component
-- 
   
 ## Version 1.2.5
 - Updated `<Icon />` Component
@@ -184,7 +188,7 @@
 
 ## Version 1.1.8
 - Fixed `<CreateElement />` Helper prop-types
-- 
+
 ## Version 1.1.7
 - Fixed `<CreateElement />` Helper prop-types
 

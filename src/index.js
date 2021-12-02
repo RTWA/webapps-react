@@ -1,3 +1,6 @@
+/** @jsxRuntime classic /
+/* @jsx jsx */
+
 import Badge from './Components/Badge';
 import Banner from './Components/Banner';
 import Button  from './Components/Button';
@@ -13,6 +16,8 @@ import Switch from './Components/Switch';
 import Scrollbar from './Components/Scrollbar';
 import Sidebar from './Components/Sidebar';
 import SidebarWrapper from './Components/SidebarWrapper';
+
+import AppPluginChangelogModal from './Components/AppPluginChangelogModal';
 
 import { AppCard, PluginCard } from './Components/Cards/index';
 import { NavChild, NavDropdown, NavItem, NavTitle } from './Components/NavElements/index';
@@ -41,6 +46,8 @@ const returnLibrary = () => {
         Scrollbar,
         Sidebar,
         SidebarWrapper,
+
+        AppPluginChangelogModal,
 
         AppCard,
         PluginCard,
