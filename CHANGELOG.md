@@ -1,3 +1,6 @@
+## Version 1.6.2
+- Skip interaction on Jest Testing for `<InfiniteScroll />`
+
 ## Version 1.6.1
 - Fixed an issue toggling activation state of a Plugin with `<PluginActionButtons />`
 

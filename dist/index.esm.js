@@ -1,4 +1,29 @@
-import _extends$5 from'@babel/runtime/helpers/extends';import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties$4 from'@babel/runtime/helpers/objectWithoutProperties';import React,{Component,useMemo,useState,useEffect,useRef,useCallback,createContext,forwardRef,createElement,Fragment,Children,isValidElement,cloneElement,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _classCallCheck$2 from'@babel/runtime/helpers/classCallCheck';import _createClass$2 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits$2 from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn$2 from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _regeneratorRuntime from'@babel/runtime/regenerator';import axios from'axios';import _slicedToArray$1 from'@babel/runtime/helpers/slicedToArray';import ReactDOM,{unstable_batchedUpdates}from'react-dom';import _inheritsLoose from'@babel/runtime/helpers/esm/inheritsLoose';import _extends$6 from'@babel/runtime/helpers/esm/extends';import _objectWithoutPropertiesLoose from'@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';import _assertThisInitialized$1 from'@babel/runtime/helpers/esm/assertThisInitialized';import _typeof from'@babel/runtime/helpers/typeof';import path from'path';import process$1 from'process';import {fileURLToPath}from'url';function getAugmentedNamespace(n) {
+import _extends$5 from '@babel/runtime/helpers/extends';
+import _defineProperty from '@babel/runtime/helpers/defineProperty';
+import _objectWithoutProperties$4 from '@babel/runtime/helpers/objectWithoutProperties';
+import React, { Component, useMemo, useState, useEffect, useRef, useCallback, createContext, forwardRef, createElement, Fragment, Children, isValidElement, cloneElement, useContext, createRef } from 'react';
+import { NavLink, useLocation, Link as Link$1 } from 'react-router-dom';
+import _asyncToGenerator from '@babel/runtime/helpers/asyncToGenerator';
+import _classCallCheck$2 from '@babel/runtime/helpers/classCallCheck';
+import _createClass$2 from '@babel/runtime/helpers/createClass';
+import _assertThisInitialized from '@babel/runtime/helpers/assertThisInitialized';
+import _inherits$2 from '@babel/runtime/helpers/inherits';
+import _possibleConstructorReturn$2 from '@babel/runtime/helpers/possibleConstructorReturn';
+import _getPrototypeOf from '@babel/runtime/helpers/getPrototypeOf';
+import _regeneratorRuntime from '@babel/runtime/regenerator';
+import axios from 'axios';
+import _slicedToArray$1 from '@babel/runtime/helpers/slicedToArray';
+import ReactDOM, { unstable_batchedUpdates } from 'react-dom';
+import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
+import _extends$6 from '@babel/runtime/helpers/esm/extends';
+import _objectWithoutPropertiesLoose from '@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';
+import _assertThisInitialized$1 from '@babel/runtime/helpers/esm/assertThisInitialized';
+import _typeof from '@babel/runtime/helpers/typeof';
+import path from 'path';
+import process$1 from 'process';
+import { fileURLToPath } from 'url';
+
+function getAugmentedNamespace(n) {
 	if (n.__esModule) return n;
 	var a = Object.defineProperty({}, '__esModule', {value: true});
 	Object.keys(n).forEach(function (k) {
@@ -11,7 +36,15 @@ import _extends$5 from'@babel/runtime/helpers/extends';import _defineProperty fr
 		});
 	});
 	return a;
-}var propTypes = {exports: {}};var reactIs$1 = {exports: {}};var reactIs_production_min$1 = {};/** @license React v16.13.1
+}
+
+var propTypes = {exports: {}};
+
+var reactIs$1 = {exports: {}};
+
+var reactIs_production_min$1 = {};
+
+/** @license React v16.13.1
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -24,7 +57,11 @@ Symbol.for("react.suspense_list"):60120,r$1=b$1?Symbol.for("react.memo"):60115,t
 function z$1(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c$1:switch(a=a.type,a){case l$1:case m$1:case e$1:case g$1:case f$1:case p$1:return a;default:switch(a=a&&a.$$typeof,a){case k$1:case n$1:case t:case r$1:case h$1:return a;default:return u}}case d$1:return u}}}function A$1(a){return z$1(a)===m$1}reactIs_production_min$1.AsyncMode=l$1;reactIs_production_min$1.ConcurrentMode=m$1;reactIs_production_min$1.ContextConsumer=k$1;reactIs_production_min$1.ContextProvider=h$1;reactIs_production_min$1.Element=c$1;reactIs_production_min$1.ForwardRef=n$1;reactIs_production_min$1.Fragment=e$1;reactIs_production_min$1.Lazy=t;reactIs_production_min$1.Memo=r$1;reactIs_production_min$1.Portal=d$1;
 reactIs_production_min$1.Profiler=g$1;reactIs_production_min$1.StrictMode=f$1;reactIs_production_min$1.Suspense=p$1;reactIs_production_min$1.isAsyncMode=function(a){return A$1(a)||z$1(a)===l$1};reactIs_production_min$1.isConcurrentMode=A$1;reactIs_production_min$1.isContextConsumer=function(a){return z$1(a)===k$1};reactIs_production_min$1.isContextProvider=function(a){return z$1(a)===h$1};reactIs_production_min$1.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c$1};reactIs_production_min$1.isForwardRef=function(a){return z$1(a)===n$1};reactIs_production_min$1.isFragment=function(a){return z$1(a)===e$1};reactIs_production_min$1.isLazy=function(a){return z$1(a)===t};
 reactIs_production_min$1.isMemo=function(a){return z$1(a)===r$1};reactIs_production_min$1.isPortal=function(a){return z$1(a)===d$1};reactIs_production_min$1.isProfiler=function(a){return z$1(a)===g$1};reactIs_production_min$1.isStrictMode=function(a){return z$1(a)===f$1};reactIs_production_min$1.isSuspense=function(a){return z$1(a)===p$1};
-reactIs_production_min$1.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e$1||a===m$1||a===g$1||a===f$1||a===p$1||a===q$1||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r$1||a.$$typeof===h$1||a.$$typeof===k$1||a.$$typeof===n$1||a.$$typeof===w$1||a.$$typeof===x$1||a.$$typeof===y$1||a.$$typeof===v$1)};reactIs_production_min$1.typeOf=z$1;var reactIs_development$1 = {};/** @license React v16.13.1
+reactIs_production_min$1.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e$1||a===m$1||a===g$1||a===f$1||a===p$1||a===q$1||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r$1||a.$$typeof===h$1||a.$$typeof===k$1||a.$$typeof===n$1||a.$$typeof===w$1||a.$$typeof===x$1||a.$$typeof===y$1||a.$$typeof===v$1)};reactIs_production_min$1.typeOf=z$1;
+
+var reactIs_development$1 = {};
+
+/** @license React v16.13.1
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -201,11 +238,15 @@ reactIs_development$1.isSuspense = isSuspense;
 reactIs_development$1.isValidElementType = isValidElementType;
 reactIs_development$1.typeOf = typeOf;
   })();
-}if (process.env.NODE_ENV === 'production') {
+}
+
+if (process.env.NODE_ENV === 'production') {
   reactIs$1.exports = reactIs_production_min$1;
 } else {
   reactIs$1.exports = reactIs_development$1;
-}/*
+}
+
+/*
 object-assign
 (c) Sindre Sorhus
 @license MIT
@@ -292,7 +333,9 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
 	}
 
 	return to;
-};/**
+};
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -301,7 +344,9 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
 
 var ReactPropTypesSecret$3 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;/**
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -400,7 +445,9 @@ checkPropTypes$1.resetWarningCache = function() {
   }
 };
 
-var checkPropTypes_1 = checkPropTypes$1;/**
+var checkPropTypes_1 = checkPropTypes$1;
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -988,7 +1035,9 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
   ReactPropTypes.PropTypes = ReactPropTypes;
 
   return ReactPropTypes;
-};/**
+};
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -1047,7 +1096,9 @@ var factoryWithThrowingShims = function() {
   ReactPropTypes.PropTypes = ReactPropTypes;
 
   return ReactPropTypes;
-};/**
+};
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -1067,7 +1118,11 @@ if (process.env.NODE_ENV !== 'production') {
   propTypes.exports = factoryWithThrowingShims();
 }
 
-var PropTypes = propTypes.exports;var classnames$1 = {exports: {}};/*!
+var PropTypes = propTypes.exports;
+
+var classnames$1 = {exports: {}};
+
+/*!
   Copyright (c) 2018 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
@@ -1123,7 +1178,9 @@ var PropTypes = propTypes.exports;var classnames$1 = {exports: {}};/*!
 }());
 }(classnames$1));
 
-var classNames = classnames$1.exports;var _excluded$k = ["tag", "className", "innerRef", "color", "pill", "children"];
+var classNames = classnames$1.exports;
+
+var _excluded$k = ["tag", "className", "innerRef", "color", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -1153,7 +1210,9 @@ Badge.propTypes = {
 };
 Badge.defaultProps = {
   tag: 'span'
-};var _excluded$j = ["tag", "className", "innerRef", "color", "darkColor", "children"];
+};
+
+var _excluded$j = ["tag", "className", "innerRef", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -1185,7 +1244,9 @@ Banner.defaultProps = {
   tag: 'div',
   color: 'gray-300',
   darkColor: 'gray-700'
-};var _excluded$i = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+};
+
+var _excluded$i = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -1234,7 +1295,11 @@ Link.propTypes = _objectSpread$5(_objectSpread$5({
 }, NavLink.propTypes), {}, {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
-});var AuthContext = /*#__PURE__*/React.createContext({});var _excluded$h = ["className", "style"];
+});
+
+var AuthContext = /*#__PURE__*/React.createContext({});
+
+var _excluded$h = ["className", "style"];
 
 var Loader = function Loader(props) {
   var className = props.className,
@@ -1346,7 +1411,9 @@ Loader.propsTypes = {
 };
 Loader.defaultProps = {
   style: ''
-};function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
+};
+
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
 
 function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 axios.defaults.withCredentials = true;
@@ -1613,7 +1680,9 @@ Auth.propTypes = {
 };
 Auth.defaultProps = {
   checkOnInit: true
-};var isProduction = process.env.NODE_ENV === 'production';
+};
+
+var isProduction = process.env.NODE_ENV === 'production';
 var prefix = 'Invariant failed';
 function invariant(condition, message) {
     if (condition) {
@@ -1625,7 +1694,9 @@ function invariant(condition, message) {
     var provided = typeof message === 'function' ? message() : message;
     var value = provided ? prefix + ": " + provided : prefix;
     throw new Error(value);
-}var withAuth = function withAuth(Component) {
+}
+
+var withAuth = function withAuth(Component) {
   var displayName = "withAuth(".concat(Component.displayName || Component.name, ")");
 
   var C = function C(props) {
@@ -1637,7 +1708,9 @@ function invariant(condition, message) {
 
   C.displayName = displayName;
   return C;
-};/**
+};
+
+/**
  * Abstraction for localStorage that uses an in-memory fallback when localStorage throws an error.
  * Reasons for throwing an error:
  * - maximum quota is exceeded
@@ -1683,7 +1756,9 @@ function parseJSON(value) {
         : // JSON.parse() doesn't accept non-string values, this is why we pass empty
             // string which will throw an error which can be handled
             JSON.parse(value !== null && value !== void 0 ? value : '');
-}function useLocalStorageStateBase(key, defaultValue) {
+}
+
+function useLocalStorageStateBase(key, defaultValue) {
     const defaultValueForKey = useMemo(() => {
         const isCallable = (value) => typeof value === 'function';
         return isCallable(defaultValue) ? defaultValue() : defaultValue;
@@ -1779,7 +1854,9 @@ function parseJSON(value) {
             },
         },
     ], [value, updateValue, isPersistent, key, defaultValueForKey]);
-}function createLocalStorageStateHook(key, defaultValue) {
+}
+
+function createLocalStorageStateHook(key, defaultValue) {
     const setValueFunctions = [];
     const removeItemFunctions = [];
     return function useLocalStorageStateHook() {
@@ -1812,7 +1889,13 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var dist = {};var ToastContainer$1 = {};/*
+}
+
+var dist = {};
+
+var ToastContainer$1 = {};
+
+/*
 
 Based off glamor's StyleSheet, thanks Sunil ❤️
 
@@ -1944,7 +2027,9 @@ function () {
   };
 
   return StyleSheet;
-}();function stylis_min (W) {
+}();
+
+function stylis_min (W) {
   function M(d, c, e, h, a) {
     for (var m = 0, b = 0, v = 0, n = 0, q, g, x = 0, K = 0, k, u = k = q = 0, l = 0, r = 0, I = 0, t = 0, B = e.length, J = B - 1, y, f = '', p = '', F = '', G = '', C; l < B;) {
       g = e.charCodeAt(l);
@@ -2556,7 +2641,9 @@ function () {
   B.set = U;
   void 0 !== W && U(W);
   return B;
-}var weakMemoize = function weakMemoize(func) {
+}
+
+var weakMemoize = function weakMemoize(func) {
   // $FlowFixMe flow doesn't include all non-primitive types as allowed for weakmaps
   var cache = new WeakMap();
   return function (arg) {
@@ -2569,7 +2656,9 @@ function () {
     cache.set(arg, ret);
     return ret;
   };
-};// https://github.com/thysultan/stylis.js/tree/master/plugins/rule-sheet
+};
+
+// https://github.com/thysultan/stylis.js/tree/master/plugins/rule-sheet
 // inlined to avoid umd wrapper and peerDep warnings/installing stylis
 // since we use stylis after closure compiler
 var delimiter = '/*|*/';
@@ -2855,7 +2944,9 @@ var createCache = function createCache(options) {
     insert: _insert
   };
   return cache;
-};var isBrowser$1 = typeof document !== 'undefined';
+};
+
+var isBrowser$1 = typeof document !== 'undefined';
 function getRegisteredStyles(registered, registeredStyles, classNames) {
   var rawClassName = '';
   classNames.split(' ').forEach(function (className) {
@@ -2901,7 +2992,9 @@ var insertStyles = function insertStyles(cache, serialized, isStringTag) {
       return stylesForSSR;
     }
   }
-};/* eslint-disable */
+};
+
+/* eslint-disable */
 // Inspired by https://github.com/garycourt/murmurhash-js
 // Ported from https://github.com/aappleby/smhasher/blob/61a0530f28277f2e850bfc39600ce61d02b518de/src/MurmurHash2.cpp#L37-L86
 function murmur2(str) {
@@ -2953,7 +3046,9 @@ function murmur2(str) {
   /* Math.imul(h, m): */
   (h & 0xffff) * 0x5bd1e995 + ((h >>> 16) * 0xe995 << 16);
   return ((h ^ h >>> 15) >>> 0).toString(36);
-}var unitlessKeys = {
+}
+
+var unitlessKeys = {
   animationIterationCount: 1,
   borderImageOutset: 1,
   borderImageSlice: 1,
@@ -3000,13 +3095,17 @@ function murmur2(str) {
   strokeMiterlimit: 1,
   strokeOpacity: 1,
   strokeWidth: 1
-};function memoize(fn) {
+};
+
+function memoize(fn) {
   var cache = {};
   return function (arg) {
     if (cache[arg] === undefined) cache[arg] = fn(arg);
     return cache[arg];
   };
-}var ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
+}
+
+var ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
 var UNDEFINED_AS_OBJECT_KEY_ERROR = "You have passed in falsy value as style object's key (can happen when in example you pass unexported component as computed key).";
 var hyphenateRegex = /[A-Z]|^ms/g;
 var animationRegex = /_EMO_([^_]+?)_([^]*?)_EMO_/g;
@@ -3321,7 +3420,9 @@ var serializeStyles = function serializeStyles(args, registered, mergedProps) {
     styles: styles,
     next: cursor
   };
-};var isBrowser = typeof document !== 'undefined';
+};
+
+var isBrowser = typeof document !== 'undefined';
 var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
 var EmotionCacheContext = /*#__PURE__*/createContext( // we're doing this to avoid preconstruct's dead code elimination in this one case
@@ -3503,13 +3604,17 @@ var Emotion = /* #__PURE__ */withEmotionCache(function (props, cache, ref) {
 
 if (process.env.NODE_ENV !== 'production') {
   Emotion.displayName = 'EmotionCssPropInternal';
-}function css() {
+}
+
+function css() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
 
   return serializeStyles(args);
-}var jsx = function jsx(type, props) {
+}
+
+var jsx = function jsx(type, props) {
   var args = arguments;
 
   if (props == null || !hasOwnProperty$1.call(props, 'css')) {
@@ -3788,7 +3893,24 @@ var ClassNames = withEmotionCache(function (props, context) {
 
     return ele;
   });
-});var core_esm=/*#__PURE__*/Object.freeze({__proto__:null,ClassNames:ClassNames,Global:Global,createElement:jsx,jsx:jsx,keyframes:keyframes,CacheProvider:CacheProvider,ThemeContext:ThemeContext,get withEmotionCache(){return withEmotionCache},css:css});var require$$0 = /*@__PURE__*/getAugmentedNamespace(core_esm);/**
+});
+
+var core_esm = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	ClassNames: ClassNames,
+	Global: Global,
+	createElement: jsx,
+	jsx: jsx,
+	keyframes: keyframes,
+	CacheProvider: CacheProvider,
+	ThemeContext: ThemeContext,
+	get withEmotionCache () { return withEmotionCache; },
+	css: css
+});
+
+var require$$0 = /*@__PURE__*/getAugmentedNamespace(core_esm);
+
+/**
  * Checks if a given element has a CSS class.
  * 
  * @param element the element
@@ -3797,7 +3919,9 @@ var ClassNames = withEmotionCache(function (props, context) {
 function hasClass(element, className) {
   if (element.classList) return !!className && element.classList.contains(className);
   return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
-}/**
+}
+
+/**
  * Adds a CSS class to a given element.
  * 
  * @param element the element
@@ -3806,7 +3930,9 @@ function hasClass(element, className) {
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!hasClass(element, className)) if (typeof element.className === 'string') element.className = element.className + " " + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + " " + className);
-}function replaceClassName(origClass, classToRemove) {
+}
+
+function replaceClassName(origClass, classToRemove) {
   return origClass.replace(new RegExp("(^|\\s)" + classToRemove + "(?:\\s|$)", 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
 }
 /**
@@ -3825,9 +3951,13 @@ function removeClass$1(element, className) {
   } else {
     element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
   }
-}var config = {
+}
+
+var config = {
   disabled: false
-};var timeoutsShape = process.env.NODE_ENV !== 'production' ? PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
+};
+
+var timeoutsShape = process.env.NODE_ENV !== 'production' ? PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
   enter: PropTypes.number,
   exit: PropTypes.number,
   appear: PropTypes.number
@@ -3843,7 +3973,11 @@ var classNamesShape = process.env.NODE_ENV !== 'production' ? PropTypes.oneOfTyp
   exit: PropTypes.string,
   exitDone: PropTypes.string,
   exitActive: PropTypes.string
-})]) : null;var TransitionGroupContext = React.createContext(null);var UNMOUNTED = 'unmounted';
+})]) : null;
+
+var TransitionGroupContext = React.createContext(null);
+
+var UNMOUNTED = 'unmounted';
 var EXITED = 'exited';
 var ENTERING = 'entering';
 var ENTERED = 'entered';
@@ -4450,7 +4584,9 @@ Transition.EXITED = EXITED;
 Transition.ENTERING = ENTERING;
 Transition.ENTERED = ENTERED;
 Transition.EXITING = EXITING;
-var Transition$1 = Transition;var _addClass = function addClass$1(node, classes) {
+var Transition$1 = Transition;
+
+var _addClass = function addClass$1(node, classes) {
   return node && classes && classes.split(' ').forEach(function (c) {
     return addClass(node, c);
   });
@@ -4851,7 +4987,9 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends$6({},
    */
   onExited: PropTypes.func
 }) : {};
-var CSSTransition$1 = CSSTransition;/**
+var CSSTransition$1 = CSSTransition;
+
+/**
  * Given `this.props.children`, return an object mapping key to child.
  *
  * @param {*} children `this.props.children`
@@ -4989,7 +5127,9 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
     }
   });
   return children;
-}var values = Object.values || function (obj) {
+}
+
+var values = Object.values || function (obj) {
   return Object.keys(obj).map(function (k) {
     return obj[k];
   });
@@ -5168,7 +5308,9 @@ TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
   childFactory: PropTypes.func
 } : {};
 TransitionGroup.defaultProps = defaultProps;
-var TransitionGroup$1 = TransitionGroup;/**
+var TransitionGroup$1 = TransitionGroup;
+
+/**
  * The `<ReplaceTransition>` component is a specialized `Transition` component
  * that animates between two children.
  *
@@ -5297,7 +5439,9 @@ ReplaceTransition.propTypes = process.env.NODE_ENV !== "production" ? {
     return null;
   }
 } : {};
-var ReplaceTransition$1 = ReplaceTransition;var _leaveRenders, _enterRenders;
+var ReplaceTransition$1 = ReplaceTransition;
+
+var _leaveRenders, _enterRenders;
 
 function areChildrenDifferent(oldChildren, newChildren) {
   if (oldChildren === newChildren) return false;
@@ -5546,7 +5690,25 @@ SwitchTransition.propTypes = process.env.NODE_ENV !== "production" ? {
 SwitchTransition.defaultProps = {
   mode: modes.out
 };
-var SwitchTransition$1 = SwitchTransition;var esm=/*#__PURE__*/Object.freeze({__proto__:null,CSSTransition:CSSTransition$1,ReplaceTransition:ReplaceTransition$1,SwitchTransition:SwitchTransition$1,TransitionGroup:TransitionGroup$1,Transition:Transition$1,config:config});var require$$2 = /*@__PURE__*/getAugmentedNamespace(esm);var ToastElement$1 = {};var icons = {};Object.defineProperty(icons, "__esModule", {
+var SwitchTransition$1 = SwitchTransition;
+
+var esm = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	CSSTransition: CSSTransition$1,
+	ReplaceTransition: ReplaceTransition$1,
+	SwitchTransition: SwitchTransition$1,
+	TransitionGroup: TransitionGroup$1,
+	Transition: Transition$1,
+	config: config
+});
+
+var require$$2 = /*@__PURE__*/getAugmentedNamespace(esm);
+
+var ToastElement$1 = {};
+
+var icons = {};
+
+Object.defineProperty(icons, "__esModule", {
   value: true
 });
 icons.CloseIcon = icons.InfoIcon = icons.FlameIcon = icons.CheckIcon = icons.AlertIcon = undefined;
@@ -5619,7 +5781,11 @@ icons.CloseIcon = function CloseIcon(props) {
       d: 'M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z'
     })
   );
-};var colors$1 = {};Object.defineProperty(colors$1, "__esModule", {
+};
+
+var colors$1 = {};
+
+Object.defineProperty(colors$1, "__esModule", {
   value: true
 });
 // Reds
@@ -5716,7 +5882,11 @@ colors$1.N400A = 'rgba(9, 30, 66, 0.71)';
 colors$1.N500A = 'rgba(9, 30, 66, 0.77)';
 colors$1.N600A = 'rgba(9, 30, 66, 0.82)';
 colors$1.N700A = 'rgba(9, 30, 66, 0.89)';
-colors$1.N800A = 'rgba(9, 30, 66, 0.95)';var utils = {};Object.defineProperty(utils, "__esModule", {
+colors$1.N800A = 'rgba(9, 30, 66, 0.95)';
+
+var utils = {};
+
+Object.defineProperty(utils, "__esModule", {
   value: true
 });
 utils.generateUEID = generateUEID;
@@ -5727,7 +5897,9 @@ function generateUEID() {
   first = ('000' + first.toString(36)).slice(-3);
   second = ('000' + second.toString(36)).slice(-3);
   return first + second;
-}Object.defineProperty(ToastElement$1, "__esModule", {
+}
+
+Object.defineProperty(ToastElement$1, "__esModule", {
   value: true
 });
 ToastElement$1.DefaultToast = ToastElement$1.shrinkKeyframes = ToastElement$1.toastWidth = ToastElement$1.gutter = ToastElement$1.borderRadius = undefined;
@@ -6043,7 +6215,9 @@ var DefaultToast = function DefaultToast(_ref5) {
 ToastElement$1.DefaultToast = DefaultToast;
 DefaultToast.defaultProps = {
   onDismiss: _utils$2.NOOP
-};Object.defineProperty(ToastContainer$1, "__esModule", {
+};
+
+Object.defineProperty(ToastContainer$1, "__esModule", {
   value: true
 });
 ToastContainer$1.ToastContainer = undefined;
@@ -6091,7 +6265,13 @@ var ToastContainer = function ToastContainer(_ref) {
     }, placements[placement])
   }, props));
 };
-ToastContainer$1.ToastContainer = ToastContainer;var ToastProvider$1 = {};var ToastController$1 = {};Object.defineProperty(ToastController$1, "__esModule", {
+ToastContainer$1.ToastContainer = ToastContainer;
+
+var ToastProvider$1 = {};
+
+var ToastController$1 = {};
+
+Object.defineProperty(ToastController$1, "__esModule", {
   value: true
 });
 ToastController$1.ToastController = undefined;
@@ -6235,7 +6415,9 @@ var ToastController = ToastController$1.ToastController = function (_Component) 
 
 ToastController.defaultProps = {
   autoDismiss: false
-};Object.defineProperty(ToastProvider$1, "__esModule", {
+};
+
+Object.defineProperty(ToastProvider$1, "__esModule", {
   value: true
 });
 ToastProvider$1.useToasts = ToastProvider$1.withToastManager = ToastProvider$1.ToastConsumer = ToastProvider$1.ToastProvider = undefined;
@@ -6527,7 +6709,9 @@ ToastProvider$1.useToasts = function useToasts() {
     updateToast: ctx.update,
     toastStack: ctx.toasts
   };
-};(function (exports) {
+};
+
+(function (exports) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6577,7 +6761,9 @@ Object.defineProperty(exports, 'useToasts', {
     return _ToastProvider.useToasts;
   }
 });
-}(dist));function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+}(dist));
+
+function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React.createContext({});
@@ -7042,7 +7228,9 @@ var WebApps = function WebApps(props) {
     autoDismiss: "true",
     autoDismissTimeout: "3000"
   }, /*#__PURE__*/React.createElement(WebAppsProvider, props));
-};var withWebApps = function withWebApps(Component) {
+};
+
+var withWebApps = function withWebApps(Component) {
   var displayName = "withWebApps(".concat(Component.displayName || Component.name, ")");
 
   var C = function C(props) {
@@ -7054,7 +7242,9 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var _excluded$g = ["style", "size", "rounded", "square", "className", "children"];
+};
+
+var _excluded$g = ["style", "size", "rounded", "square", "className", "children"];
 
 var Button = function Button(props) {
   var style = props.style,
@@ -7089,7 +7279,9 @@ Button.defaultProps = {
   color: 'brand',
   style: 'full',
   size: ''
-};var _excluded$f = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+};
+
+var _excluded$f = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -7167,7 +7359,9 @@ ConfirmDeleteButton.defaultProps = {
   timeout: 2000,
   initialColor: 'red',
   confirmColor: 'orange'
-};var _excluded$e = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+};
+
+var _excluded$e = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -7248,7 +7442,9 @@ ConfirmDeleteModal.defaultProps = {
   message: "Are you sure to wish to delete this item?\nThis action cannot be undone.",
   cancelText: "No",
   confirmText: "Yes"
-};var _excluded$d = ["show", "text", "buttonClassNames", "dropClassNames"];
+};
+
+var _excluded$d = ["show", "text", "buttonClassNames", "dropClassNames"];
 
 var DropDownButton = function DropDownButton(props) {
   var show = props.show,
@@ -7306,7 +7502,9 @@ var DropDownButton = function DropDownButton(props) {
 
 DropDownButton.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-};var _excluded$c = ["icon"];
+};
+
+var _excluded$c = ["icon"];
 
 var Icon = function Icon(props) {
   var icon = props.icon,
@@ -7325,7 +7523,9 @@ var Icon = function Icon(props) {
 
 Icon.propTypes = {
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-};var InfiniteScroll = function InfiniteScroll(props) {
+};
+
+var InfiniteScroll = function InfiniteScroll(props) {
   var _useState = useState(1),
       _useState2 = _slicedToArray$1(_useState, 2),
       page = _useState2[0],
@@ -7351,9 +7551,9 @@ Icon.propTypes = {
   }, [page]);
 
   var handleObserver = function handleObserver(entities) {
-    var target = entities[0];
+    var target = entities[0]; // Only interact, if we are not in a test environment (Jest)
 
-    if (target.isIntersecting) {
+    if (target.isIntersecting && (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test')) {
       setPage(function (page) {
         return page + 1;
       });
@@ -7363,7 +7563,9 @@ Icon.propTypes = {
   return /*#__PURE__*/React.createElement(React.Fragment, null, props.children, /*#__PURE__*/React.createElement("span", {
     ref: marker
   }));
-};var _excluded$b = ["error", "state", "className"];
+};
+
+var _excluded$b = ["error", "state", "className"];
 
 var Input = function Input(props) {
   var error = props.error,
@@ -7391,7 +7593,9 @@ Input.defaultProps = {
   error: '',
   state: '',
   className: ''
-};var Switch = function Switch(props) {
+};
+
+var Switch = function Switch(props) {
   var name = props.name,
       error = props.error,
       state = props.state,
@@ -7420,7 +7624,9 @@ Switch.propTypes = {
 };
 Switch.defaultProps = {
   name: 'check'
-};/*!
+};
+
+/*!
  * perfect-scrollbar v1.5.3
  * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
@@ -8765,7 +8971,9 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
     .split(' ')
     .filter(function (name) { return !name.match(/^ps([-_].+|)$/); })
     .join(' ');
-};var _excluded$a = ["tag", "className", "settings"];
+};
+
+var _excluded$a = ["tag", "className", "settings"];
 
 var Scrollbar = function Scrollbar(props) {
   var Tag = props.tag,
@@ -8813,7 +9021,9 @@ Scrollbar.propTypes = {
 };
 Scrollbar.defaultProps = {
   tag: 'div'
-};var _excluded$9 = ["UI", "setUI"],
+};
+
+var _excluded$9 = ["UI", "setUI"],
     _excluded2 = ["children", "className", "innerRef", "color", "icon", "name", "badge", "show", "route"];
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -8913,7 +9123,9 @@ var NavDropdown = function NavDropdown(_ref) {
   }, children)));
 };
 
-var NavDropdown$1 = withWebApps(NavDropdown);var _excluded$8 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+var NavDropdown$1 = withWebApps(NavDropdown);
+
+var _excluded$8 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -8953,7 +9165,9 @@ var NavChild = function NavChild(props) {
   }, name), badge && /*#__PURE__*/React.createElement(Badge, _objectSpread$2(_objectSpread$2({}, badge), {}, {
     text: null
   }), badge.text)));
-};var _excluded$7 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+};
+
+var _excluded$7 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -8993,7 +9207,9 @@ var NavItem = function NavItem(props) {
   }, name), badge && /*#__PURE__*/React.createElement(Badge, _objectSpread$1(_objectSpread$1({}, badge), {}, {
     text: null
   }), badge.text)));
-};var _excluded$6 = ["name", "className", "innerRef"];
+};
+
+var _excluded$6 = ["name", "className", "innerRef"];
 
 var NavTitle = function NavTitle(props) {
   var name = props.name,
@@ -9017,7 +9233,9 @@ NavTitle.propTypes = {
   name: PropTypes.string,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-};var _excluded$5 = ["_tag", "_children"];
+};
+
+var _excluded$5 = ["_tag", "_children"];
 
 var CreateElement = function CreateElement(_ref) {
   var items = _ref.items,
@@ -9049,7 +9267,9 @@ var CreateElement = function CreateElement(_ref) {
 
 CreateElement.propTypes = {
   components: PropTypes.object
-};function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
+};
+
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
 
 function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -9102,7 +9322,9 @@ var NavigationError = /*#__PURE__*/function (_Component) {
   }]);
 
   return NavigationError;
-}(Component);var _excluded$4 = ["loadNavigation", "UI", "setUI"];
+}(Component);
+
+var _excluded$4 = ["loadNavigation", "UI", "setUI"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -9196,7 +9418,9 @@ SidebarWrapper.propTypes = {
 SidebarWrapper.defaultProps = {
   dropdownMode: 'closeInactive'
 };
-var SidebarWrapper$1 = withWebApps(SidebarWrapper);var _excluded$3 = ["navigation"];
+var SidebarWrapper$1 = withWebApps(SidebarWrapper);
+
+var _excluded$3 = ["navigation"];
 
 var Sidebar = function Sidebar(_ref) {
   var navigation = _ref.navigation,
@@ -9220,7 +9444,9 @@ var Sidebar = function Sidebar(_ref) {
   }) : null);
 };
 
-var Sidebar$1 = withWebApps(Sidebar);const protocols = ['http', 'https', 'mailto', 'tel'];
+var Sidebar$1 = withWebApps(Sidebar);
+
+const protocols = ['http', 'https', 'mailto', 'tel'];
 
 /**
  * @param {string} uri
@@ -9264,7 +9490,9 @@ function uriTransformer(uri) {
 
   // eslint-disable-next-line no-script-url
   return 'javascript:void(0)'
-}/*!
+}
+
+/*!
  * Determine if an object is a Buffer
  *
  * @author   Feross Aboukhadijeh <https://feross.org>
@@ -9274,7 +9502,9 @@ function uriTransformer(uri) {
 var isBuffer = function isBuffer (obj) {
   return obj != null && obj.constructor != null &&
     typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-};var own$9 = {}.hasOwnProperty;
+};
+
+var own$9 = {}.hasOwnProperty;
 
 /**
  * @typedef {import('unist').Node} Node
@@ -9339,7 +9569,9 @@ function position(pos) {
  */
 function index$1(value) {
   return value && typeof value === 'number' ? value : 1
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Position} Position
  * @typedef {import('unist').Point} Point
@@ -9478,7 +9710,11 @@ VFileMessage.prototype.column = null;
 VFileMessage.prototype.line = null;
 VFileMessage.prototype.source = null;
 VFileMessage.prototype.ruleId = null;
-VFileMessage.prototype.position = null;const proc = process$1;/**
+VFileMessage.prototype.position = null;
+
+const proc = process$1;
+
+/**
  * @typedef URL
  * @property {string} hash
  * @property {string} host
@@ -9510,7 +9746,9 @@ function isUrl(fileURLOrPath) {
     // @ts-expect-error: indexable.
     fileURLOrPath.origin
   )
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Position} Position
  * @typedef {import('unist').Point} Point
@@ -9896,7 +10134,9 @@ function assertPath(path, name) {
   if (!path) {
     throw new Error('Setting `' + name + '` requires `path` to be set too')
   }
-}/**
+}
+
+/**
  * Throw a given error.
  *
  * @param {Error|null|undefined} [error]
@@ -9907,7 +10147,9 @@ function bail(error) {
   if (error) {
     throw error
   }
-}var hasOwn = Object.prototype.hasOwnProperty;
+}
+
+var hasOwn = Object.prototype.hasOwnProperty;
 var toStr = Object.prototype.toString;
 var defineProperty = Object.defineProperty;
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -10021,14 +10263,18 @@ var extend = function extend() {
 
 	// Return the modified object
 	return target;
-};function isPlainObject(value) {
+};
+
+function isPlainObject(value) {
 	if (Object.prototype.toString.call(value) !== '[object Object]') {
 		return false;
 	}
 
 	const prototype = Object.getPrototypeOf(value);
 	return prototype === null || prototype === Object.prototype;
-}/**
+}
+
+/**
  * @typedef {(error?: Error|null|undefined, ...output: any[]) => void} Callback
  * @typedef {(...input: any[]) => any} Middleware
  *
@@ -10184,7 +10430,9 @@ function wrap$1(middleware, callback) {
   function then(value) {
     done(null, value);
   }
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('vfile').VFileCompatible} VFileCompatible
  * @typedef {import('vfile').VFileValue} VFileValue
@@ -10769,7 +11017,9 @@ function looksLikeAVFile(value) {
  */
 function looksLikeAVFileValue(value) {
   return typeof value === 'string' || isBuffer(value)
-}/**
+}
+
+/**
  * @typedef Options
  * @property {boolean} [includeImageAlt=true]
  */
@@ -10823,7 +11073,9 @@ function all$1(values, includeImageAlt) {
   }
 
   return result.join('')
-}/**
+}
+
+/**
  * Like `Array#splice`, but smarter for giant arrays.
  *
  * `Array#splice` takes all items to be inserted as individual argument which
@@ -10891,7 +11143,9 @@ function push(list, items) {
   }
 
   return items
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').NormalizedExtension} NormalizedExtension
  * @typedef {import('micromark-util-types').Extension} Extension
  * @typedef {import('micromark-util-types').Construct} Construct
@@ -10966,14 +11220,18 @@ function constructs(existing, list) {
   }
 
   splice(existing, 0, 0, before);
-}// This module is generated by `script/`.
+}
+
+// This module is generated by `script/`.
 //
 // CommonMark handles attention (emphasis, strong) markers based on what comes
 // before or after them.
 // One such difference is if those characters are Unicode punctuation.
 // This script is generated from the Unicode data.
 const unicodePunctuationRegex =
-  /[!-/:-@[-`{-~\u00A1\u00A7\u00AB\u00B6\u00B7\u00BB\u00BF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;/**
+  /[!-/:-@[-`{-~\u00A1\u00A7\u00AB\u00B6\u00B7\u00BB\u00BF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;
+
+/**
  * @typedef {import('micromark-util-types').Code} Code
  */
 /**
@@ -11166,7 +11424,9 @@ function regexCheck(regex) {
   function check(code) {
     return code !== null && regex.test(String.fromCharCode(code))
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  */
@@ -11203,7 +11463,9 @@ function factorySpace(effects, ok, type, max) {
     effects.exit(type);
     return ok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').Token} Token
@@ -11279,7 +11541,9 @@ function initializeContent(effects) {
     effects.consume(code);
     return data
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').Construct} Construct
@@ -11643,7 +11907,9 @@ function tokenizeContainer(effects, ok, nok) {
     'linePrefix',
     this.parser.constructs.disable.null.includes('codeIndented') ? undefined : 4
   )
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Code} Code
  */
 
@@ -11671,7 +11937,9 @@ function classifyCharacter(code) {
   if (unicodePunctuation(code)) {
     return 2
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').TokenizeContext} TokenizeContext
  * @typedef {import('micromark-util-types').Event} Event
  * @typedef {import('micromark-util-types').Resolver} Resolver
@@ -11700,7 +11968,9 @@ function resolveAll(constructs, events, context) {
   }
 
   return events
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Resolver} Resolver
@@ -11931,7 +12201,9 @@ function movePoint(point, offset) {
   point.column += offset;
   point.offset += offset;
   point._bufferIndex += offset;
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -12064,7 +12336,9 @@ function tokenizeAutolink(effects, ok, nok) {
     effects.exit('autolink');
     return ok
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -12084,7 +12358,9 @@ function tokenizeBlankLine(effects, ok, nok) {
   function afterWhitespace(code) {
     return code === null || markdownLineEnding(code) ? ok(code) : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Exiter} Exiter
@@ -12156,7 +12432,9 @@ function tokenizeBlockQuoteContinuation(effects, ok, nok) {
 
 function exit(effects) {
   effects.exit('blockQuote');
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -12193,7 +12471,9 @@ function tokenizeCharacterEscape(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * Map of named character references.
  *
  * @type {Record<string, string>}
@@ -14421,7 +14701,9 @@ const characterEntities = {
   zscr: '𝓏',
   zwj: '‍',
   zwnj: '‌'
-};const own$7 = {}.hasOwnProperty;
+};
+
+const own$7 = {}.hasOwnProperty;
 
 /**
  * Decode a single character reference (without the `&` or `;`).
@@ -14436,7 +14718,9 @@ const characterEntities = {
  */
 function decodeNamedCharacterReference(value) {
   return own$7.call(characterEntities, value) ? characterEntities[value] : false
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Token} Token
@@ -14533,7 +14817,9 @@ function tokenizeCharacterReference(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -14761,7 +15047,9 @@ function tokenizeCodeFenced(effects, ok, nok) {
       return nok(code)
     }
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Resolver} Resolver
@@ -14867,7 +15155,9 @@ function tokenizeIndentedContent(effects, ok, nok) {
       ? start(code)
       : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -15050,7 +15340,9 @@ function tokenizeCodeText(effects, ok, nok) {
     token.type = 'codeTextData';
     return data(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Token} Token
  * @typedef {import('micromark-util-types').Chunk} Chunk
  * @typedef {import('micromark-util-types').Event} Event
@@ -15295,7 +15587,9 @@ function subcontent(events, eventIndex) {
   }
 
   return gaps
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -15415,7 +15709,9 @@ function tokenizeContinuation(effects, ok, nok) {
 
     return effects.interrupt(self.parser.constructs.flow, nok, ok)(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  */
@@ -15560,7 +15856,9 @@ function factoryDestination(
 
     return destinationRaw(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').TokenizeContext} TokenizeContext
  * @typedef {import('micromark-util-types').State} State
@@ -15666,7 +15964,9 @@ function factoryLabel(effects, ok, nok, type, markerType, stringType) {
 
     return label(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  * @typedef {import('micromark-util-types').Code} Code
@@ -15755,7 +16055,9 @@ function factoryTitle(effects, ok, nok, type, markerType, stringType) {
 
     return title(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  */
@@ -15789,7 +16091,9 @@ function factoryWhitespace(effects, ok) {
 
     return ok(code)
   }
-}/**
+}
+
+/**
  * Normalize an identifier (such as used in definitions).
  *
  * @param {string} value
@@ -15808,7 +16112,9 @@ function normalizeIdentifier(value) {
       .toLowerCase()
       .toUpperCase()
   )
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -15928,7 +16234,9 @@ function tokenizeTitle(effects, ok, nok) {
   function after(code) {
     return code === null || markdownLineEnding(code) ? ok(code) : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -15962,7 +16270,9 @@ function tokenizeHardBreakEscape(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -16101,7 +16411,9 @@ function tokenizeHeadingAtx(effects, ok, nok) {
     effects.consume(code);
     return data
   }
-}/**
+}
+
+/**
  * List of lowercase HTML tag names which when parsing HTML (flow), result
  * in more relaxed rules (condition 6): because they are known blocks, the
  * HTML-like syntax doesn’t have to be strictly parsed.
@@ -16188,7 +16500,9 @@ const htmlBlockNames = [
  * merged to the primary branch and is slated to be released in the next release
  * of CommonMark.
  */
-const htmlRawNames = ['pre', 'script', 'style', 'textarea'];/**
+const htmlRawNames = ['pre', 'script', 'style', 'textarea'];
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -16739,7 +17053,9 @@ function tokenizeNextBlank(effects, ok, nok) {
     effects.exit('lineEndingBlank');
     return effects.attempt(blankLine, ok, nok)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -17209,7 +17525,9 @@ function tokenizeHtmlText(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -17567,7 +17885,9 @@ function tokenizeCollapsedReference(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -17620,7 +17940,9 @@ function tokenizeLabelStartImage(effects, ok, nok) {
       ? nok(code)
       : ok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -17661,7 +17983,9 @@ function tokenizeLabelStartLink(effects, ok, nok) {
       ? nok(code)
       : ok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -17684,7 +18008,9 @@ function tokenizeLineEnding(effects, ok) {
     effects.exit('lineEnding');
     return factorySpace(effects, ok, 'linePrefix')
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -17742,7 +18068,9 @@ function tokenizeThematicBreak(effects, ok, nok) {
     effects.exit('thematicBreakSequence');
     return atBreak(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').TokenizeContext} TokenizeContext
  * @typedef {import('micromark-util-types').Exiter} Exiter
@@ -18001,7 +18329,9 @@ function tokenizeListItemPrefixWhitespace(effects, ok, nok) {
       ? ok(code)
       : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -18132,7 +18462,9 @@ function tokenizeSetextUnderline(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').State} State
@@ -18193,7 +18525,9 @@ function initializeFlow(effects) {
     self.currentConstruct = undefined;
     return initial
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').Construct} Construct
@@ -18408,7 +18742,9 @@ function resolveAllLineSuffixes(events, context) {
   }
 
   return events
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Code} Code
  * @typedef {import('micromark-util-types').Chunk} Chunk
  * @typedef {import('micromark-util-types').Point} Point
@@ -18971,7 +19307,9 @@ function serializeChunks(chunks, expandTabs) {
   }
 
   return result.join('')
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Extension} Extension
  */
 /** @type {Extension['document']} */
@@ -19052,7 +19390,22 @@ const attentionMarkers = {
 
 const disable = {
   null: []
-};var defaultConstructs=/*#__PURE__*/Object.freeze({__proto__:null,document:document$1,contentInitial:contentInitial,flowInitial:flowInitial,flow:flow,string:string,text:text$1,insideSpan:insideSpan,attentionMarkers:attentionMarkers,disable:disable});/**
+};
+
+var defaultConstructs = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	document: document$1,
+	contentInitial: contentInitial,
+	flowInitial: flowInitial,
+	flow: flow,
+	string: string,
+	text: text$1,
+	insideSpan: insideSpan,
+	attentionMarkers: attentionMarkers,
+	disable: disable
+});
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').FullNormalizedExtension} FullNormalizedExtension
  * @typedef {import('micromark-util-types').ParseOptions} ParseOptions
@@ -19096,7 +19449,9 @@ function parse$1(options = {}) {
       return createTokenizer(parser, initial, from)
     }
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Encoding} Encoding
  * @typedef {import('micromark-util-types').Value} Value
  * @typedef {import('micromark-util-types').Chunk} Chunk
@@ -19224,7 +19579,9 @@ function preprocess() {
 
     return chunks
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Event} Event
  */
 /**
@@ -19238,7 +19595,9 @@ function postprocess(events) {
   }
 
   return events
-}/**
+}
+
+/**
  * Turn the number (in string form as either hexa- or plain decimal) coming from
  * a numeric character reference into a character.
  *
@@ -19267,7 +19626,9 @@ function decodeNumericCharacterReference(value, base) {
   }
 
   return String.fromCharCode(code)
-}const characterEscapeOrReference =
+}
+
+const characterEscapeOrReference =
   /\\([!-/:-@[-`{-~])|&(#(?:\d{1,7}|x[\da-f]{1,6})|[\da-z]{1,31});/gi;
 /**
  * Utility to decode markdown strings (which occur in places such as fenced
@@ -19304,7 +19665,9 @@ function decode($0, $1, $2) {
   }
 
   return decodeNamedCharacterReference($2) || $0
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Encoding} Encoding
  * @typedef {import('micromark-util-types').Event} Event
  * @typedef {import('micromark-util-types').ParseOptions} ParseOptions
@@ -20485,7 +20848,9 @@ function defaultOnError(left, right) {
         ') is still open'
     )
   }
-}/**
+}
+
+/**
  * @typedef {import('mdast').Root} Root
  * @typedef {import('mdast-util-from-markdown').Options} Options
  */
@@ -20510,7 +20875,9 @@ function remarkParse(options) {
   };
 
   Object.assign(this, {Parser: parser});
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist').Literal} Literal
@@ -20555,7 +20922,9 @@ var u$1 = /**
 
     return node
   }
-);/**
+);
+
+/**
  * @typedef {import('mdast').Root|import('mdast').Parent['children'][number]} MdastNode
  * @typedef {import('./index.js').H} H
  * @typedef {import('./index.js').Handler} Handler
@@ -20660,7 +21029,9 @@ function all(h, parent) {
   }
 
   return values
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  *
@@ -20807,13 +21178,17 @@ function castFactory(check) {
 // Utility to return true.
 function ok() {
   return true
-}/**
+}
+
+/**
  * @param {string} d
  * @returns {string}
  */
 function color$1(d) {
   return '\u001B[33m' + d + '\u001B[39m'
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -20961,7 +21336,9 @@ function toResult$1(value) {
   }
 
   return [value]
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -21013,7 +21390,9 @@ const visit$1 =
         )
       }
     }
-  );/**
+  );
+
+/**
  * @typedef {import('unist').Position} Position
  * @typedef {import('unist').Point} Point
  *
@@ -21055,7 +21434,9 @@ function point(type) {
       offset: point.offset > -1 ? point.offset : null
     }
   }
-}/**
+}
+
+/**
  * @typedef {Object} PointLike
  * @property {number} [line]
  * @property {number} [column]
@@ -21086,13 +21467,17 @@ function generated(node) {
     !node.position.end.line ||
     !node.position.end.column
   )
-}/**
+}
+
+/**
  * @param {string} d
  * @returns {string}
  */
 function color(d) {
   return '\u001B[33m' + d + '\u001B[39m'
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -21227,7 +21612,9 @@ function toResult(value) {
   }
 
   return [value]
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -21273,7 +21660,9 @@ const visit =
         )
       }
     }
-  );/**
+  );
+
+/**
  * @typedef {import('mdast').Root|import('mdast').Content} Node
  * @typedef {import('mdast').Definition} Definition
  * @typedef {import('unist-util-visit').Visitor<Definition>} DefinitionVisitor
@@ -21323,7 +21712,9 @@ function definitions(node) {
  */
 function clean(value) {
   return String(value || '').toUpperCase()
-}/**
+}
+
+/**
  * @typedef {import('mdast').ThematicBreak} ThematicBreak
  * @typedef {import('hast').Element} Element
  * @typedef {import('../index.js').Handler} Handler
@@ -21336,7 +21727,9 @@ function clean(value) {
  */
 function thematicBreak(h, node) {
   return h(node, 'hr')
-}/**
+}
+
+/**
  * @typedef {import('./index.js').Content} Content
  */
 
@@ -21367,7 +21760,9 @@ function wrap(nodes, loose) {
   }
 
   return result
-}/**
+}
+
+/**
  * @typedef {import('mdast').List} List
  * @typedef {import('hast').Element} Element
  * @typedef {import('hast').Properties} Properties
@@ -21407,7 +21802,9 @@ function list(h, node) {
   }
 
   return h(node, name, props, wrap(items, true))
-}/**
+}
+
+/**
  * @typedef {import('mdast').BlockContent} BlockContent
  * @typedef {import('mdast').FootnoteDefinition} FootnoteDefinition
  * @typedef {import('mdast').Link} Link
@@ -21477,7 +21874,9 @@ function footer(h) {
       true
     )
   )
-}/**
+}
+
+/**
  * @typedef {import('mdast').Blockquote} Blockquote
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21488,7 +21887,9 @@ function footer(h) {
  */
 function blockquote(h, node) {
   return h(node, 'blockquote', wrap(all(h, node), true))
-}/**
+}
+
+/**
  * @typedef {import('hast').Element} Element
  * @typedef {import('hast').Text} Text
  * @typedef {import('mdast').Break} Break
@@ -21502,7 +21903,9 @@ function blockquote(h, node) {
  */
 function hardBreak(h, node) {
   return [h(node, 'br'), u$1('text', '\n')]
-}/**
+}
+
+/**
  * @typedef {import('mdast').Code} Code
  * @typedef {import('hast').Element} Element
  * @typedef {import('hast').Properties} Properties
@@ -21532,7 +21935,9 @@ function code(h, node) {
   }
 
   return h(node.position, 'pre', [code])
-}/**
+}
+
+/**
  * @typedef {import('mdast').Delete} Delete
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21543,7 +21948,9 @@ function code(h, node) {
  */
 function strikethrough(h, node) {
   return h(node, 'del', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Emphasis} Emphasis
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21554,7 +21961,9 @@ function strikethrough(h, node) {
  */
 function emphasis(h, node) {
   return h(node, 'em', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').FootnoteReference} FootnoteReference
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21582,7 +21991,9 @@ function footnoteReference(h, node) {
     },
     [h(node.position, 'sup', [u$1('text', marker)])]
   )
-}/**
+}
+
+/**
  * @typedef {import('mdast').Footnote} Footnote
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21616,7 +22027,9 @@ function footnote(h, node) {
     identifier,
     position: node.position
   })
-}/**
+}
+
+/**
  * @typedef {import('mdast').Heading} Heading
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21627,7 +22040,9 @@ function footnote(h, node) {
  */
 function heading(h, node) {
   return h(node, 'h' + node.depth, all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').HTML} HTML
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21640,7 +22055,9 @@ function heading(h, node) {
  */
 function html$2(h, node) {
   return h.dangerous ? h.augment(node, u$1('raw', node.value)) : null
-}var encodeCache = {};
+}
+
+var encodeCache = {};
 
 
 // Create a lookup array where anything but characters in `chars` string
@@ -21733,7 +22150,9 @@ encode.defaultChars   = ";/?:@&=+$,-_.!~*'()#";
 encode.componentChars = "-_.!~*'()";
 
 
-var encode_1 = encode;/**
+var encode_1 = encode;
+
+/**
  * @typedef {import('mdast').LinkReference} LinkReference
  * @typedef {import('mdast').ImageReference} ImageReference
  * @typedef {import('./index.js').Handler} Handler
@@ -21779,7 +22198,9 @@ function revert(h, node) {
   }
 
   return contents
-}/**
+}
+
+/**
  * @typedef {import('mdast').ImageReference} ImageReference
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -21804,7 +22225,9 @@ function imageReference(h, node) {
   }
 
   return h(node, 'img', props)
-}/**
+}
+
+/**
  * @typedef {import('mdast').Image} Image
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -21823,7 +22246,9 @@ function image(h, node) {
   }
 
   return h(node, 'img', props)
-}/**
+}
+
+/**
  * @typedef {import('mdast').InlineCode} InlineCode
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -21834,7 +22259,9 @@ function image(h, node) {
  */
 function inlineCode(h, node) {
   return h(node, 'code', [u$1('text', node.value.replace(/\r?\n|\r/g, ' '))])
-}/**
+}
+
+/**
  * @typedef {import('mdast').LinkReference} LinkReference
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -21859,7 +22286,9 @@ function linkReference(h, node) {
   }
 
   return h(node, 'a', props, all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Link} Link
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -21878,7 +22307,9 @@ function link(h, node) {
   }
 
   return h(node, 'a', props, all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').ListItem} ListItem
  * @typedef {import('mdast').List} List
  * @typedef {import('hast').Properties} Properties
@@ -21990,7 +22421,9 @@ function listItemLoose(node) {
   return spread === undefined || spread === null
     ? node.children.length > 1
     : spread
-}/**
+}
+
+/**
  * @typedef {import('mdast').Paragraph} Paragraph
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -22001,7 +22434,9 @@ function listItemLoose(node) {
  */
 function paragraph(h, node) {
   return h(node, 'p', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Root} Root
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -22013,7 +22448,9 @@ function paragraph(h, node) {
 function root(h, node) {
   // @ts-expect-error `root`s are also fine.
   return h.augment(node, u$1('root', wrap(all(h, node))))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Strong} Strong
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -22024,7 +22461,9 @@ function root(h, node) {
  */
 function strong(h, node) {
   return h(node, 'strong', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Table} Table
  * @typedef {import('mdast').TableCell} TableCell
  * @typedef {import('hast').Element} Element
@@ -22077,7 +22516,9 @@ function table(h, node) {
       true
     )
   )
-}/**
+}
+
+/**
  * @typedef {import('mdast').Text} Text
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -22091,7 +22532,9 @@ function text(h, node) {
     node,
     u$1('text', String(node.value).replace(/[ \t]*(\r?\n|\r)[ \t]*/g, '$1'))
   )
-}const handlers = {
+}
+
+const handlers = {
   blockquote,
   break: hardBreak,
   code,
@@ -22123,7 +22566,9 @@ function text(h, node) {
 // Return nothing for nodes that are ignored.
 function ignore() {
   return null
-}/**
+}
+
+/**
  * @typedef {import('mdast').Root|import('mdast').Parent['children'][number]} MdastNode
  * @typedef {import('hast').Root|import('hast').Parent['children'][number]} HastNode
  * @typedef {import('mdast').Parent} Parent
@@ -22308,7 +22753,9 @@ function toHast(tree, options) {
   }
 
   return Array.isArray(node) ? {type: 'root', children: node} : node
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('hast').Root} HastRoot
  * @typedef {import('mdast').Root} MdastRoot
@@ -22368,7 +22815,9 @@ function bridge(destination, options) {
 function mutate(options) {
   // @ts-expect-error: assume a corresponding node is returned for `toHast`.
   return (node) => toHast(node, options)
-}/**
+}
+
+/**
  * @typedef {import('./info.js').Info} Info
  * @typedef {Record<string, Info>} Properties
  * @typedef {Record<string, string>} Normal
@@ -22395,7 +22844,9 @@ Schema.prototype.property = {};
 /** @type {Normal} */
 Schema.prototype.normal = {};
 /** @type {string|null} */
-Schema.prototype.space = null;/**
+Schema.prototype.space = null;
+
+/**
  * @typedef {import('./schema.js').Properties} Properties
  * @typedef {import('./schema.js').Normal} Normal
  */
@@ -22418,13 +22869,17 @@ function merge(definitions, space) {
   }
 
   return new Schema(property, normal, space)
-}/**
+}
+
+/**
  * @param {string} value
  * @returns {string}
  */
 function normalize(value) {
   return value.toLowerCase()
-}class Info {
+}
+
+class Info {
   /**
    * @constructor
    * @param {string} property
@@ -22448,7 +22903,9 @@ Info.prototype.commaSeparated = false;
 Info.prototype.spaceSeparated = false;
 Info.prototype.commaOrSpaceSeparated = false;
 Info.prototype.mustUseProperty = false;
-Info.prototype.defined = false;let powers = 0;
+Info.prototype.defined = false;
+
+let powers = 0;
 
 const boolean = increment();
 const booleanish = increment();
@@ -22460,7 +22917,20 @@ const commaOrSpaceSeparated = increment();
 
 function increment() {
   return 2 ** ++powers
-}var types=/*#__PURE__*/Object.freeze({__proto__:null,boolean:boolean,booleanish:booleanish,overloadedBoolean:overloadedBoolean,number:number,spaceSeparated:spaceSeparated,commaSeparated:commaSeparated,commaOrSpaceSeparated:commaOrSpaceSeparated});/** @type {Array<keyof types>} */
+}
+
+var types = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	boolean: boolean,
+	booleanish: booleanish,
+	overloadedBoolean: overloadedBoolean,
+	number: number,
+	spaceSeparated: spaceSeparated,
+	commaSeparated: commaSeparated,
+	commaOrSpaceSeparated: commaOrSpaceSeparated
+});
+
+/** @type {Array<keyof types>} */
 // @ts-expect-error: hush.
 const checks = Object.keys(types);
 
@@ -22500,7 +22970,9 @@ function mark(values, key, value) {
     // @ts-expect-error: assume `value` matches the expected value of `key`.
     values[key] = value;
   }
-}/**
+}
+
+/**
  * @typedef {import('./schema.js').Properties} Properties
  * @typedef {import('./schema.js').Normal} Normal
  *
@@ -22553,7 +23025,9 @@ function create(definition) {
   }
 
   return new Schema(property, normal, definition.space)
-}const xlink = create({
+}
+
+const xlink = create({
   space: 'xlink',
   transform(_, prop) {
     return 'xlink:' + prop.slice(5).toLowerCase()
@@ -22567,32 +23041,42 @@ function create(definition) {
     xLinkTitle: null,
     xLinkType: null
   }
-});const xml = create({
+});
+
+const xml = create({
   space: 'xml',
   transform(_, prop) {
     return 'xml:' + prop.slice(3).toLowerCase()
   },
   properties: {xmlLang: null, xmlBase: null, xmlSpace: null}
-});/**
+});
+
+/**
  * @param {Record<string, string>} attributes
  * @param {string} attribute
  * @returns {string}
  */
 function caseSensitiveTransform(attributes, attribute) {
   return attribute in attributes ? attributes[attribute] : attribute
-}/**
+}
+
+/**
  * @param {Record<string, string>} attributes
  * @param {string} property
  * @returns {string}
  */
 function caseInsensitiveTransform(attributes, property) {
   return caseSensitiveTransform(attributes, property.toLowerCase())
-}const xmlns = create({
+}
+
+const xmlns = create({
   space: 'xmlns',
   attributes: {xmlnsxlink: 'xmlns:xlink'},
   transform: caseInsensitiveTransform,
   properties: {xmlns: null, xmlnsXLink: null}
-});const aria = create({
+});
+
+const aria = create({
   transform(_, prop) {
     return prop === 'role' ? prop : 'aria-' + prop.slice(4).toLowerCase()
   },
@@ -22647,7 +23131,9 @@ function caseInsensitiveTransform(attributes, property) {
     ariaValueText: null,
     role: null
   }
-});const html$1 = create({
+});
+
+const html$1 = create({
   space: 'html',
   attributes: {
     acceptcharset: 'accept-charset',
@@ -22944,7 +23430,9 @@ function caseInsensitiveTransform(attributes, property) {
     security: null,
     unselectable: null
   }
-});const svg$1 = create({
+});
+
+const svg$1 = create({
   space: 'svg',
   attributes: {
     accentHeight: 'accent-height',
@@ -23498,7 +23986,9 @@ function caseInsensitiveTransform(attributes, property) {
     z: null,
     zoomAndPan: null
   }
-});/**
+});
+
+/**
  * @typedef {import('./util/schema.js').Schema} Schema
  */
 
@@ -23561,7 +24051,9 @@ function kebab($0) {
  */
 function camelcase($0) {
   return $0.charAt(1).toUpperCase()
-}const hastToReact = {
+}
+
+const hastToReact = {
   classId: 'classID',
   dataType: 'datatype',
   itemId: 'itemID',
@@ -23579,12 +24071,16 @@ function camelcase($0) {
   xLinkTitle: 'xlinkTitle',
   xLinkType: 'xlinkType',
   xmlnsXLink: 'xmlnsXlink'
-};/**
+};
+
+/**
  * @typedef {import('./lib/util/info.js').Info} Info
  * @typedef {import('./lib/util/schema.js').Schema} Schema
  */
 const html = merge([xml, xlink, xmlns, aria, html$1], 'html');
-const svg = merge([xml, xlink, xmlns, aria, svg$1], 'svg');/**
+const svg = merge([xml, xlink, xmlns, aria, svg$1], 'svg');
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('hast').Root} Root
  * @typedef {import('hast').Element} Element
@@ -23647,7 +24143,13 @@ function rehypeFilter(options) {
       });
     }
   }
-}var reactIs = {exports: {}};var reactIs_production_min = {};/** @license React v17.0.2
+}
+
+var reactIs = {exports: {}};
+
+var reactIs_production_min = {};
+
+/** @license React v17.0.2
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -23660,7 +24162,11 @@ if("function"===typeof Symbol&&Symbol.for){var x=Symbol.for;b=x("react.element")
 function y(a){if("object"===typeof a&&null!==a){var t=a.$$typeof;switch(t){case b:switch(a=a.type,a){case d:case f:case e:case l:case m:return a;default:switch(a=a&&a.$$typeof,a){case h:case k:case p:case n:case g:return a;default:return t}}case c:return t}}}var z=g,A=b,B=k,C=d,D=p,E=n,F=c,G=f,H=e,I=l;reactIs_production_min.ContextConsumer=h;reactIs_production_min.ContextProvider=z;reactIs_production_min.Element=A;reactIs_production_min.ForwardRef=B;reactIs_production_min.Fragment=C;reactIs_production_min.Lazy=D;reactIs_production_min.Memo=E;reactIs_production_min.Portal=F;reactIs_production_min.Profiler=G;reactIs_production_min.StrictMode=H;
 reactIs_production_min.Suspense=I;reactIs_production_min.isAsyncMode=function(){return !1};reactIs_production_min.isConcurrentMode=function(){return !1};reactIs_production_min.isContextConsumer=function(a){return y(a)===h};reactIs_production_min.isContextProvider=function(a){return y(a)===g};reactIs_production_min.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===b};reactIs_production_min.isForwardRef=function(a){return y(a)===k};reactIs_production_min.isFragment=function(a){return y(a)===d};reactIs_production_min.isLazy=function(a){return y(a)===p};reactIs_production_min.isMemo=function(a){return y(a)===n};
 reactIs_production_min.isPortal=function(a){return y(a)===c};reactIs_production_min.isProfiler=function(a){return y(a)===f};reactIs_production_min.isStrictMode=function(a){return y(a)===e};reactIs_production_min.isSuspense=function(a){return y(a)===l};reactIs_production_min.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===d||a===f||a===v||a===e||a===l||a===m||a===w||"object"===typeof a&&null!==a&&(a.$$typeof===p||a.$$typeof===n||a.$$typeof===g||a.$$typeof===h||a.$$typeof===k||a.$$typeof===u||a.$$typeof===q||a[0]===r)?!0:!1};
-reactIs_production_min.typeOf=y;var reactIs_development = {};/** @license React v17.0.2
+reactIs_production_min.typeOf=y;
+
+var reactIs_development = {};
+
+/** @license React v17.0.2
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -23879,13 +24385,17 @@ reactIs_development.isSuspense = isSuspense;
 reactIs_development.isValidElementType = isValidElementType;
 reactIs_development.typeOf = typeOf;
   })();
-}if (process.env.NODE_ENV === 'production') {
+}
+
+if (process.env.NODE_ENV === 'production') {
   reactIs.exports = reactIs_production_min;
 } else {
   reactIs.exports = reactIs_development;
 }
 
-var ReactIs = reactIs.exports;/**
+var ReactIs = reactIs.exports;
+
+/**
  * @param {unknown} thing
  * @returns {boolean}
  */
@@ -23901,7 +24411,9 @@ function whitespace(thing) {
   // HTML whitespace expression.
   // See <https://html.spec.whatwg.org/#space-character>.
   return typeof value === 'string' && value.replace(/[ \t\n\f\r]/g, '') === ''
-}/**
+}
+
+/**
  * Parse space separated tokens to an array of strings.
  *
  * @param {string} value Space separated tokens
@@ -23916,7 +24428,9 @@ function whitespace(thing) {
  */
 function stringify$1(values) {
   return values.join(' ').trim()
-}/**
+}
+
+/**
  * @typedef {Object} StringifyOptions
  * @property {boolean} [padLeft=true] Whether to pad a space before a token (`boolean`, default: `true`).
  * @property {boolean} [padRight=false] Whether to pad a space after a token (`boolean`, default: `false`).
@@ -23944,7 +24458,9 @@ function stringify(values, options) {
         (settings.padLeft === false ? '' : ' ')
     )
     .trim()
-}// http://www.w3.org/TR/CSS21/grammar.html
+}
+
+// http://www.w3.org/TR/CSS21/grammar.html
 // https://github.com/visionmedia/css-parse/pull/49#issuecomment-30088027
 var COMMENT_REGEX = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g;
 
@@ -24200,7 +24716,9 @@ var inlineStyleParser = function(style, options) {
  */
 function trim(str) {
   return str ? str.replace(TRIM_REGEX, EMPTY_STRING) : EMPTY_STRING;
-}var parse = inlineStyleParser;
+}
+
+var parse = inlineStyleParser;
 
 /**
  * Parses inline style to object.
@@ -24241,7 +24759,9 @@ function StyleToObject(style, iterator) {
   return output;
 }
 
-var styleToObject = StyleToObject;/**
+var styleToObject = StyleToObject;
+
+/**
  * @template T
  * @typedef {import('react').ComponentType<T>} ComponentType<T>
  */
@@ -24586,7 +25106,9 @@ function flattenPosition(pos) {
   ]
     .map((d) => String(d))
     .join('')
-}/**
+}
+
+/**
  * @typedef {import('react').ReactNode} ReactNode
  * @typedef {import('react').ReactElement<{}>} ReactElement
  * @typedef {import('unified').PluggableList} PluggableList
@@ -24734,7 +25256,9 @@ ReactMarkdown.propTypes = {
   linkTarget: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   transformImageUri: PropTypes.func,
   components: PropTypes.object
-};var _excluded$2 = ["item", "close", "install"];
+};
+
+var _excluded$2 = ["item", "close", "install"];
 
 var AppPluginChangelogModal = function AppPluginChangelogModal(props) {
   var item = props.item,
@@ -24800,7 +25324,9 @@ AppPluginChangelogModal.propTypes = {
   item: PropTypes.object,
   close: PropTypes.func,
   install: PropTypes.func
-};var _excluded$1 = ["app", "setChangelog"];
+};
+
+var _excluded$1 = ["app", "setChangelog"];
 
 var AppActionButtons = function AppActionButtons(_ref) {
   var app = _ref.app,
@@ -24941,7 +25467,9 @@ var AppActionButtons = function AppActionButtons(_ref) {
       d: "M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
     })), "Deactivate");
   }
-};var AppCard = function AppCard(props) {
+};
+
+var AppCard = function AppCard(props) {
   var app = props.app,
       showActions = props.showActions;
 
@@ -25030,7 +25558,9 @@ var AppActionButtons = function AppActionButtons(_ref) {
     },
     install: apps.install
   }) : null));
-};var _excluded = ["plugin", "setChangelog"];
+};
+
+var _excluded = ["plugin", "setChangelog"];
 
 var PluginActionButtons = function PluginActionButtons(_ref) {
   var plugin = _ref.plugin,
@@ -25147,7 +25677,9 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
       d: "M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
     })), "Deactivate");
   }
-};var PluginCard = function PluginCard(props) {
+};
+
+var PluginCard = function PluginCard(props) {
   var plugin = props.plugin,
       showActions = props.showActions;
 
@@ -25236,7 +25768,9 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
     },
     install: plugins.install
   }) : null));
-};function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
+};
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25322,6 +25856,7 @@ AppError.propTypes = {
 AppError.defaultProps = {
   theme: 'indigo'
 }; // export default withRouter(AppError);
+
 /** @jsxRuntime classic /
 /* @jsx jsx */
 
@@ -25361,4 +25896,6 @@ var returnLibrary = function returnLibrary() {
   };
 };
 
-var index = returnLibrary();export{index as default};
+var index = returnLibrary();
+
+export { index as default };

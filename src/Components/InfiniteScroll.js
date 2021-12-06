@@ -26,7 +26,8 @@ const InfiniteScroll = props => {
 
     const handleObserver = (entities) => {
         const target = entities[0];
-        if (target.isIntersecting) {
+        // Only interact, if we are not in a test environment (Jest)
+        if (target.isIntersecting && (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test')) {
             setPage((page) => page + 1)
         }
     }

@@ -1,6 +1,6 @@
 {
   "name": "webapps-react",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "React reusable components for WebApps",
   "main": "dist/index.cjs.js",
   "private": false,
