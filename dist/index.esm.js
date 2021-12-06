@@ -25080,7 +25080,7 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
       className: "w-full bg-blue-300 dark:bg-blue-700 hover:bg-blue-400 dark:hover:bg-blue-600 font-bold py-2 px-4 inline-flex items-center rounded-none",
       "data-slug": plugin.slug,
-      onClick: plugins.activate
+      onClick: plugins.toggle
     }, /*#__PURE__*/React.createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       className: "h-5 w-5 mr-2",
@@ -25133,7 +25133,7 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
     return /*#__PURE__*/React.createElement("button", {
       className: "w-full bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-bold py-2 px-4 inline-flex items-center rounded-none",
       "data-slug": plugin.slug,
-      onClick: plugins.deactivate
+      onClick: plugins.toggle
     }, /*#__PURE__*/React.createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       className: "h-5 w-5 mr-2",

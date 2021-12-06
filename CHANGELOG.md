@@ -1,3 +1,6 @@
+## Version 1.6.1
+- Fixed an issue toggling activation state of a Plugin with `<PluginActionButtons />`
+
 ## Version 1.6.0
 - BREAKING: Updated peer requirements for `axios` to `>=0.24.0`
 - Updated `<PluginCard />`, `<AppCard/ >`, `<PluginActionButtons />` and `<AppActionsButtons />` to implement a new card design
