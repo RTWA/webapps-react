@@ -28,7 +28,7 @@ const Button = props => {
         'transition-all',
         'duration-150',
         (style === 'full')
-            ? `bg-${color}-600 hover:bg-${color}-400 dark:bg-${color}-400 dark:hover:bg-${color}-600`
+            ? `bg-${color}-600 hover:bg-${color}-400 dark:bg-${color}-400 dark:hover:bg-${color}-600 text-white dark:text-gray-900`
             : '',
         (style === 'outline')
             ? `text-${color}-600 dark:text-${color}-400 bg-transparent border border-${color}-600 dark:border-${color}-400 hover:bg-${color}-600 dark:hover:bg-${color}-400 hover:text-white dark:hover:text-white`
