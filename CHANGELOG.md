@@ -1,3 +1,6 @@
+## Version 1.6.3
+- Added `checkPermission` function to `<AuthContext />`
+
 ## Version 1.6.2
 - Skip interaction on Jest Testing for `<InfiniteScroll />`
 
