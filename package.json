@@ -1,6 +1,6 @@
 {
   "name": "webapps-react",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "React reusable components for WebApps",
   "main": "dist/index.cjs.js",
   "private": false,
@@ -53,6 +53,7 @@
     "react-markdown": "^7.1.1",
     "react-router-dom": "^5.3.0",
     "react-toast-notifications": "^2.4.4",
+    "react-user-avatar": "^1.10.0",
     "rollup": "^2.60.2",
     "rollup-plugin-import-css": "^3.0.2",
     "tiny-invariant": "^1.2.0",

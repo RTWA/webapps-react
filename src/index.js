@@ -16,6 +16,7 @@ import Switch from './Components/Switch';
 import Scrollbar from './Components/Scrollbar';
 import Sidebar from './Components/Sidebar';
 import SidebarWrapper from './Components/SidebarWrapper';
+import UserSuggest from './Components/UserSuggest';
 
 import AppPluginChangelogModal from './Components/AppPluginChangelogModal';
 
@@ -46,6 +47,7 @@ const returnLibrary = () => {
         Scrollbar,
         Sidebar,
         SidebarWrapper,
+        UserSuggest,
 
         AppPluginChangelogModal,
 
