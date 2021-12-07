@@ -84,22 +84,25 @@ class Auth extends Component {
         });
     }
 
-    checkPermission = async permission => {
-        let formData = new FormData();
-        formData.append('permission', permission);
+    checkPermission = permission => {
+        return new Promise(async (resolve, reject) => {
+            let formData = new FormData();
+            formData.append('permission', permission);
 
-        await axios.post('/api/permission/check', formData)
-            .then(json => {
-                if (user.id = json.data.user_id) {
-                    return json.data.has_permission;
-                } else {
-                    return false;
-                }
-            })
-            .catch(error => {
-                // TODO: handle errors
-                console.log(error);
-            })
+            await axios.post('/api/permission/check', formData)
+                .then(json => {
+                    if (user.id = json.data.user_id) {
+                        return resolve(json.data.has_permission);
+                    } else {
+                        return resolve(false);
+                    }
+                })
+                .catch(error => {
+                    // TODO: handle errors
+                    console.log(error);
+                    return reject(error);
+                })
+        });
     }
 
     setPreference = (preference, value) => {
