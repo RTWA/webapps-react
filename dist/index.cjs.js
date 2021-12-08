@@ -9945,14 +9945,14 @@ var UserSuggest = function UserSuggest(_ref) {
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "relative"
-  }, /*#__PURE__*/React__default["default"].createElement(Input, {
+  }, /*#__PURE__*/React__default["default"].createElement(Input, _extends__default["default"]({
     type: "text",
     onChange: onChange,
     onKeyDown: onKeyDown,
     value: userInput,
     placeholder: props.placeholder,
     autoComplete: "no"
-  }), usersListComponent);
+  }, props)), usersListComponent);
 };
 
 UserSuggest.propTypes = _defineProperty__default["default"]({

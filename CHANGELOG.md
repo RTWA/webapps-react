@@ -1,3 +1,6 @@
+## Version 1.6.4
+- Updated `<UserSuggest />` to add `...props` to the `<input />` element
+
 ## Version 1.6.3
 - Added `checkPermission` function to `<AuthContext />`
 - Added `<UserSuggest />` Component

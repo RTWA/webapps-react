@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import UserAvatar from 'react-user-avatar';
 import PropTypes from "prop-types";
 import Input from './Input';
@@ -99,7 +99,7 @@ const UserSuggest = ({ users, select, ...props }) => {
     return (
         <div className="relative">
             <Input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput}
-                placeholder={props.placeholder} autoComplete="no" />
+                placeholder={props.placeholder} autoComplete="no" {...props} />
             {usersListComponent}
         </div>
     );
