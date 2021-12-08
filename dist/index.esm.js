@@ -9842,11 +9842,15 @@ var UserAvatar = function (_React$Component) {
   return UserAvatar;
 }(React.Component);
 
-var userAvatar = UserAvatar;var _excluded$3 = ["users", "select"];
+var userAvatar = UserAvatar;var _excluded$3 = ["users", "select", "photos", "placeholder", "noMatchesText", "limit"];
 
 var UserSuggest = function UserSuggest(_ref) {
   var users = _ref.users,
       select = _ref.select,
+      photos = _ref.photos,
+      placeholder = _ref.placeholder,
+      noMatchesText = _ref.noMatchesText,
+      limit = _ref.limit,
       props = _objectWithoutProperties$4(_ref, _excluded$3);
 
   var _useState = useState(0),
@@ -9914,7 +9918,7 @@ var UserSuggest = function UserSuggest(_ref) {
       usersListComponent = /*#__PURE__*/React$1.createElement("ul", {
         className: "absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
       }, filteredUsers.map(function (user, index) {
-        if (props.limit === 0 || count <= props.limit) {
+        if (limit === 0 || count <= limit) {
           var className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
 
           if (index === activeUser) {
@@ -9927,7 +9931,7 @@ var UserSuggest = function UserSuggest(_ref) {
             key: user.id,
             "data-key": index,
             onClick: onClick
-          }, props.photos ? /*#__PURE__*/React$1.createElement(userAvatar, {
+          }, photos ? /*#__PURE__*/React$1.createElement(userAvatar, {
             size: "18",
             name: user.name,
             src: "/user/".concat(user.id, "/photo")
@@ -9939,7 +9943,7 @@ var UserSuggest = function UserSuggest(_ref) {
         className: "absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
       }, /*#__PURE__*/React$1.createElement("li", {
         className: "px-4 py-2 text-center"
-      }, /*#__PURE__*/React$1.createElement("em", null, props.noMatchesText)));
+      }, /*#__PURE__*/React$1.createElement("em", null, noMatchesText)));
     }
   }
 
@@ -9950,19 +9954,19 @@ var UserSuggest = function UserSuggest(_ref) {
     onChange: onChange,
     onKeyDown: onKeyDown,
     value: userInput,
-    placeholder: props.placeholder,
+    placeholder: placeholder,
     autoComplete: "no"
   }, props)), usersListComponent);
 };
 
-UserSuggest.propTypes = _defineProperty({
+UserSuggest.propTypes = {
   users: PropTypes.instanceOf(Array),
   select: PropTypes.instanceOf(Function),
   photos: PropTypes.bool,
   placeholder: PropTypes.string,
   noMatchesText: PropTypes.string,
   limit: PropTypes.number
-}, "select", PropTypes.instanceOf(Function));
+};
 UserSuggest.defaultProps = {
   users: [],
   select: function select() {

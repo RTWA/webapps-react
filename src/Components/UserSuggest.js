@@ -3,7 +3,7 @@ import UserAvatar from 'react-user-avatar';
 import PropTypes from "prop-types";
 import Input from './Input';
 
-const UserSuggest = ({ users, select, ...props }) => {
+const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit, ...props }) => {
     const [activeUser, setActiveUser] = useState(0);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [showUsers, setShowUsers] = useState(false);
@@ -63,7 +63,7 @@ const UserSuggest = ({ users, select, ...props }) => {
                 <ul className="absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer">
                     {
                         filteredUsers.map((user, index) => {
-                            if (props.limit === 0 || count <= props.limit) {
+                            if (limit === 0 || count <= limit) {
                                 let className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
 
                                 if (index === activeUser) {
@@ -75,7 +75,7 @@ const UserSuggest = ({ users, select, ...props }) => {
                                 return (
                                     <li className={className} key={user.id} data-key={index} onClick={onClick}>
                                         {
-                                            (props.photos)
+                                            (photos)
                                                 ? <UserAvatar size="18" name={user.name} src={`/user/${user.id}/photo`} />
                                                 : null
                                         }
@@ -90,7 +90,7 @@ const UserSuggest = ({ users, select, ...props }) => {
         } else {
             usersListComponent = (
                 <ul className="absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer">
-                    <li className="px-4 py-2 text-center"><em>{props.noMatchesText}</em></li>
+                    <li className="px-4 py-2 text-center"><em>{noMatchesText}</em></li>
                 </ul>
             );
         }
@@ -99,7 +99,7 @@ const UserSuggest = ({ users, select, ...props }) => {
     return (
         <div className="relative">
             <Input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput}
-                placeholder={props.placeholder} autoComplete="no" {...props} />
+                placeholder={placeholder} autoComplete="no" {...props} />
             {usersListComponent}
         </div>
     );
@@ -112,7 +112,6 @@ UserSuggest.propTypes = {
     placeholder: PropTypes.string,
     noMatchesText: PropTypes.string,
     limit: PropTypes.number,
-    select: PropTypes.instanceOf(Function),
 };
 
 UserSuggest.defaultProps = {

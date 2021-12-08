@@ -1,3 +1,6 @@
+## Version 1.6.5
+- Updated `<UserSuggest />` to prevent props errors in console
+
 ## Version 1.6.4
 - Updated `<UserSuggest />` to add `...props` to the `<input />` element
 
