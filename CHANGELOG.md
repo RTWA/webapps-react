@@ -1,3 +1,6 @@
+## Version 1.7.0
+- Added toasts functionality - see [documentation](https://docs.getwebapps.uk/developers/react-components/components/toasts)
+
 ## Version 1.6.5
 - Updated `<UserSuggest />` to prevent props errors in console
 

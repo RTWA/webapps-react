@@ -3,7 +3,7 @@
 
 import Badge from './Components/Badge';
 import Banner from './Components/Banner';
-import Button  from './Components/Button';
+import Button from './Components/Button';
 import ConfirmDeleteButton from './Components/ConfirmDeleteButton';
 import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
 import DropDownButton from './Components/DropDownButton';
@@ -29,6 +29,15 @@ import AppError from './Errors/AppError';
 import NavigationError from './Errors/NavigationError';
 
 import CreateElement from './Helpers/CreateElement';
+
+import {
+    DefaultToastContainer,
+    DefaultToast,
+    ToastConsumer,
+    ToastProvider,
+    withToastManager,
+    useToasts,
+} from './Toasts';
 
 const returnLibrary = () => {
     return {
@@ -69,7 +78,14 @@ const returnLibrary = () => {
         AppError,
         NavigationError,
 
-        CreateElement
+        CreateElement,
+
+        DefaultToastContainer,
+        DefaultToast,
+        ToastConsumer,
+        ToastProvider,
+        withToastManager,
+        useToasts,
     }
 };
 

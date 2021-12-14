@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { createLocalStorageStateHook } from 'use-local-storage-state';
-import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { ToastProvider, useToasts } from '../../Toasts';
 
 export const WebAppsContext = React.createContext({});
 
 const useModals = createLocalStorageStateHook('modals', {});
+const useUI = createLocalStorageStateHook('UI', { sidebar: 'responsive', envWriteable: false })
 
 const WebAppsProvider = props => {
     const unmounted = useRef(false);
-    const [UI, setUI] = useState({ sidebar: 'responsive', envWriteable: false });
+    const [UI, setUI] = useUI();
     const [modals, setModals] = useModals();
     const [navigation, setNavigation] = useState({});
     const [apps, setApps] = useState({});
@@ -471,8 +472,10 @@ const WebAppsProvider = props => {
 }
 
 export const WebApps = props => {
+    const [UI, setUI] = useUI();
+    
     return (
-        <ToastProvider autoDismiss="true" autoDismissTimeout="3000">
+        <ToastProvider UI={UI} autoDismiss="true" autoDismissTimeout="3000">
             <WebAppsProvider {...props} />
         </ToastProvider>
     )
