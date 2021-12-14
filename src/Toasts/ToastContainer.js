@@ -10,7 +10,7 @@ const placements = {
     'bottom-right': ['bottom-0', 'right-0'],
 };
 
-const classes = (placement, hasToasts) => classNames(
+const classes = (placement, hasToasts, className) => classNames(
     'box-border',
     'max-w-full',
     'max-h-screen',
@@ -18,12 +18,13 @@ const classes = (placement, hasToasts) => classNames(
     'fixed',
     'p-2',
     placements[placement],
-    (hasToasts) ? null : 'pointer-events-none'
+    (hasToasts) ? null : 'pointer-events-none',
+    className,
 )
 
-export const ToastContainer = ({ hasToasts, placement, ...props }) => (
+export const ToastContainer = ({ hasToasts, placement, className, ...props }) => (
     <div
-        className={classes(placement, hasToasts)}
+        className={classes(placement, hasToasts, className)}
         style={{
             zIndex: 1000,
         }}

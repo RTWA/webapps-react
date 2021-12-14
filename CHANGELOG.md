@@ -1,3 +1,7 @@
+## Version 1.7.1
+- Updated `Toasts` to inherit classes on container
+- Updated `Toasts` to override color for action buttons
+
 ## Version 1.7.0
 - Added toasts functionality - see [documentation](https://docs.getwebapps.uk/developers/react-components/components/toasts)
 

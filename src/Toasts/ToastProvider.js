@@ -121,6 +121,7 @@ export class ToastProvider extends Component {
             portalTargetSelector,
             transitionDuration,
             UI,
+            color,
         } = this.props;
         const { Toast, ToastContainer } = { ...defaultComponents, ...components };
         const { add, remove, removeAll, update } = this;
@@ -184,6 +185,7 @@ export class ToastProvider extends Component {
                                                         secondaryAction={secondaryAction}
                                                         secondaryActionLabel={secondaryActionLabel}
                                                         UI={UI}
+                                                        color={color}
                                                         {...unknownConsumerProps}
                                                     />
                                                 )

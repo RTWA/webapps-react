@@ -1837,7 +1837,7 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var _excluded$l = ["hasToasts", "placement"];
+}var _excluded$l = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -1847,17 +1847,18 @@ var placements = {
   'bottom-right': ['bottom-0', 'right-0']
 };
 
-var classes = function classes(placement, hasToasts) {
-  return classNames('box-border', 'max-w-full', 'max-h-screen', 'overflow-hidden', 'fixed', 'p-2', placements[placement], hasToasts ? null : 'pointer-events-none');
+var classes = function classes(placement, hasToasts, className) {
+  return classNames('box-border', 'max-w-full', 'max-h-screen', 'overflow-hidden', 'fixed', 'p-2', placements[placement], hasToasts ? null : 'pointer-events-none', className);
 };
 
 var ToastContainer = function ToastContainer(_ref) {
   var hasToasts = _ref.hasToasts,
       placement = _ref.placement,
+      className = _ref.className,
       props = _objectWithoutProperties(_ref, _excluded$l);
 
   return /*#__PURE__*/React$1.createElement("div", _extends({
-    className: classes(placement, hasToasts),
+    className: classes(placement, hasToasts, className),
     style: {
       zIndex: 1000
     }
@@ -1983,7 +1984,7 @@ function generateUEID() {
   }
 };var _excluded$k = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2$1 = ["appearance", "placement", "transitionDuration", "transitionState"],
-    _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "UI"];
+    _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "UI", "color"];
 
 function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -2103,6 +2104,7 @@ var DefaultToast = function DefaultToast(_ref3) {
       secondaryAction = _ref3.secondaryAction,
       secondaryActionLabel = _ref3.secondaryActionLabel,
       UI = _ref3.UI,
+      color = _ref3.color,
       otherProps = _objectWithoutProperties(_ref3, _excluded3);
 
   var style = appearances[appearance];
@@ -2129,14 +2131,14 @@ var DefaultToast = function DefaultToast(_ref3) {
     className: "flex flex-row gap-x-6 pt-2"
   }, /*#__PURE__*/React$1.createElement("button", {
     role: "button",
-    className: "text-".concat(UI.theme, "-600 dark:text-").concat(UI.theme, "-500 hover:text-").concat(UI.theme, "-500 dark:hover:text-").concat(UI.theme, "-600 font-bold"),
+    className: "text-".concat(color ? color : UI.theme, "-600 dark:text-").concat(color ? color : UI.theme, "-500 hover:text-").concat(color ? color : UI.theme, "-500 dark:hover:text-").concat(color ? color : UI.theme, "-600 font-bold"),
     onClick: action
   }, actionLabel), /*#__PURE__*/React$1.createElement("button", {
     role: "button",
     className: "text-gray-500 dark:text-white hover:font-medium",
     onClick: secondaryAction === 'dismiss' ? onDismiss : secondaryAction
   }, secondaryActionLabel)) : null), action && !secondaryAction ? /*#__PURE__*/React$1.createElement("div", {
-    className: "flex items-center text-".concat(UI.theme, "-600 dark:text-").concat(UI.theme, "-500 hover:text-").concat(UI.theme, "-500 dark:hover:text-").concat(UI.theme, "-600 px-4")
+    className: "flex items-center text-".concat(color ? color : UI.theme, "-600 dark:text-").concat(color ? color : UI.theme, "-500 hover:text-").concat(color ? color : UI.theme, "-500 dark:hover:text-").concat(color ? color : UI.theme, "-600 px-4")
   }, /*#__PURE__*/React$1.createElement("button", {
     role: "button",
     className: "font-bold",
@@ -3392,7 +3394,8 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           placement = _this$props.placement,
           portalTargetSelector = _this$props.portalTargetSelector,
           transitionDuration = _this$props.transitionDuration,
-          UI = _this$props.UI;
+          UI = _this$props.UI,
+          color = _this$props.color;
 
       var _defaultComponents$co = _objectSpread$5(_objectSpread$5({}, defaultComponents), components),
           Toast = _defaultComponents$co.Toast,
@@ -3454,7 +3457,8 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
             actionLabel: actionLabel,
             secondaryAction: secondaryAction,
             secondaryActionLabel: secondaryActionLabel,
-            UI: UI
+            UI: UI,
+            color: color
           }, unknownConsumerProps));
         });
       }))), portalTarget) : /*#__PURE__*/React$1.createElement(ToastContainer, {
