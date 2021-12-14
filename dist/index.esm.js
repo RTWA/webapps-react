@@ -3394,6 +3394,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           placement = _this$props.placement,
           portalTargetSelector = _this$props.portalTargetSelector,
           transitionDuration = _this$props.transitionDuration,
+          containerClasses = _this$props.containerClasses,
           UI = _this$props.UI,
           color = _this$props.color;
 
@@ -3417,6 +3418,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           toasts: toasts
         }
       }, children, portalTarget ? /*#__PURE__*/createPortal( /*#__PURE__*/React$1.createElement(ToastContainer, {
+        className: containerClasses,
         placement: placement,
         hasToasts: hasToasts
       }, /*#__PURE__*/React$1.createElement(TransitionGroup$1, {
@@ -3477,7 +3479,8 @@ _defineProperty(ToastProvider, "defaultProps", {
   components: defaultComponents,
   newestOnTop: false,
   placement: 'top-right',
-  transitionDuration: 220
+  transitionDuration: 220,
+  containerClasses: ''
 });
 
 var ToastConsumer = function ToastConsumer(_ref2) {

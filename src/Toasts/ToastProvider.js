@@ -28,6 +28,7 @@ export class ToastProvider extends Component {
         newestOnTop: false,
         placement: 'top-right',
         transitionDuration: 220,
+        containerClasses: '',
     };
 
     state = { toasts: [] };
@@ -120,6 +121,7 @@ export class ToastProvider extends Component {
             placement,
             portalTargetSelector,
             transitionDuration,
+            containerClasses,
             UI,
             color,
         } = this.props;
@@ -139,7 +141,7 @@ export class ToastProvider extends Component {
                 {children}
                 {portalTarget ? (
                     createPortal(
-                        <ToastContainer placement={placement} hasToasts={hasToasts}>
+                        <ToastContainer className={containerClasses} placement={placement} hasToasts={hasToasts}>
                             <TransitionGroup component={null}>
                                 {toasts.map(
                                     ({
