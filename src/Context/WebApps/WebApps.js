@@ -153,7 +153,7 @@ const WebAppsProvider = props => {
         axios.post('/api/online/apps/download', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(`${e.target.dataset.slug} Downloaded and Installed`, { appearance: 'success' });
+                    addToast(e.target.dataset.slug, 'Has been downloaded and installed', { appearance: 'success' });
                     apps.local = json.data.apps;
                     apps.online = json.data.online;
                     setApps({ ...apps });
@@ -174,7 +174,7 @@ const WebAppsProvider = props => {
         axios.post('/api/online/apps/download', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(`${e.target.dataset.slug} Updated`, { appearance: 'success' });
+                    addToast(e.target.dataset.slug, `Has been updated`, { appearance: 'success' });
                     apps.local = json.data.apps;
                     apps.online = json.data.online;
                     setApps({ ...apps });
@@ -196,7 +196,7 @@ const WebAppsProvider = props => {
         axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     // Reload Navigation
                     loadNavigation();
@@ -230,7 +230,7 @@ const WebAppsProvider = props => {
         axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     // Reload Navigation
                     loadNavigation();
@@ -264,7 +264,7 @@ const WebAppsProvider = props => {
         axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     // Reload Navigation
                     loadNavigation();
@@ -298,7 +298,7 @@ const WebAppsProvider = props => {
         axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     let _apps = [];
                     Object.keys(apps.local).map((key) => {
@@ -331,7 +331,7 @@ const WebAppsProvider = props => {
         axios.post('/api/online/plugins/download', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     plugins.all = json.data.plugins;
                     plugins.online = json.data.online;
@@ -353,7 +353,7 @@ const WebAppsProvider = props => {
         axios.post('/api/online/plugins/download', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     plugins.all = json.data.plugins;
                     plugins.online = json.data.online;
@@ -375,7 +375,7 @@ const WebAppsProvider = props => {
         axios.post('/api/plugins/toggle', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     Object.keys(plugins.all).map((key) => {
                         if (e.target.dataset.slug === plugins.all[key].slug) {
@@ -406,7 +406,7 @@ const WebAppsProvider = props => {
         axios.post('/api/plugin', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, { appearance: 'success' });
+                    addToast(json.data.message, '', { appearance: 'success' });
 
                     let _plugins = [];
                     Object.keys(plugins.all).map((key) => {

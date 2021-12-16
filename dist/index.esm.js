@@ -3674,7 +3674,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/online/apps/download', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast("".concat(e.target.dataset.slug, " Downloaded and Installed"), {
+        addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
           appearance: 'success'
         });
         apps.local = json.data.apps;
@@ -3695,7 +3695,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/online/apps/download', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast("".concat(e.target.dataset.slug, " Updated"), {
+        addToast(e.target.dataset.slug, "Has been updated", {
           appearance: 'success'
         });
         apps.local = json.data.apps;
@@ -3717,7 +3717,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('task', 'activate');
     axios.post('/api/apps/control', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         }); // Reload Navigation
 
@@ -3749,7 +3749,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('task', 'deactivate');
     axios.post('/api/apps/control', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         }); // Reload Navigation
 
@@ -3781,7 +3781,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('task', 'install');
     axios.post('/api/apps/control', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         }); // Reload Navigation
 
@@ -3813,7 +3813,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('task', 'uninstall');
     axios.post('/api/apps/control', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         });
         var _apps2 = [];
@@ -3844,7 +3844,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/online/plugins/download', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         });
         plugins.all = json.data.plugins;
@@ -3865,7 +3865,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/online/plugins/download', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         });
         plugins.all = json.data.plugins;
@@ -3886,7 +3886,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/plugins/toggle', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         });
         Object.keys(plugins.all).map(function (key) {
@@ -3916,7 +3916,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/plugin', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, {
+        addToast(json.data.message, '', {
           appearance: 'success'
         });
         var _plugins2 = [];

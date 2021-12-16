@@ -1,3 +1,6 @@
+## Version 1.7.3
+- Fixed Toast notifications causing errors when performing actions on Apps and Plugins
+
 ## Version 1.7.2
 - Updated `Toasts` to inherit classes on container
 - Updated `Toasts` to override color for action buttons
