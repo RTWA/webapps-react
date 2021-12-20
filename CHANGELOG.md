@@ -1,3 +1,9 @@
+## Version 1.7.4
+- Fixed display of Plugin state if it is activated immediately after being installed
+- Reduced version badge size on `<AppCard />` and `<PluginCard />`
+- Fixed selection bug in `<UserSuggest />`
+- Added `checkGroup` function to `<Auth />` Context
+
 ## Version 1.7.3
 - Fixed Toast notifications causing errors when performing actions on Apps and Plugins
 
@@ -15,7 +21,7 @@
 - Updated `<UserSuggest />` to add `...props` to the `<input />` element
 
 ## Version 1.6.3
-- Added `checkPermission` function to `<AuthContext />`
+- Added `checkPermission` function to `<Auth />` Context
 - Added `<UserSuggest />` Component
 - Improved text contrast on `<Button />` component when style is `full` (default)
 

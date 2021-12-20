@@ -1350,42 +1350,113 @@ var Auth = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "checkPermission", function (permission) {
-      return new Promise( /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(resolve, reject) {
-          var formData;
-          return _regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  formData = new FormData();
-                  formData.append('permission', permission);
-                  _context.next = 4;
-                  return axios.post('/api/permission/check', formData).then(function (json) {
-                    if (user.id = json.data.user_id) {
-                      return resolve(json.data.has_permission);
-                    } else {
-                      return resolve(false);
-                    }
-                  })["catch"](function (error) {
-                    // TODO: handle errors
-                    console.log(error);
-                    return reject(error);
-                  });
+    _defineProperty(_assertThisInitialized(_this), "checkPermission", /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2(permission) {
+        return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
+                  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(resolve, reject) {
+                    var formData;
+                    return _regeneratorRuntime.wrap(function _callee$(_context) {
+                      while (1) {
+                        switch (_context.prev = _context.next) {
+                          case 0:
+                            formData = new FormData();
+                            formData.append('permission', permission);
+                            _context.next = 4;
+                            return axios.post('/api/permission/check', formData).then(function (json) {
+                              if (user.id === json.data.user_id) {
+                                return resolve(json.data.has_permission);
+                              } else {
+                                return resolve(false);
+                              }
+                            })["catch"](function (error) {
+                              // TODO: handle errors
+                              console.log(error);
+                              return reject(error);
+                            });
 
-                case 4:
-                case "end":
-                  return _context.stop();
-              }
+                          case 4:
+                          case "end":
+                            return _context.stop();
+                        }
+                      }
+                    }, _callee);
+                  }));
+
+                  return function (_x2, _x3) {
+                    return _ref2.apply(this, arguments);
+                  };
+                }()));
+
+              case 1:
+              case "end":
+                return _context2.stop();
             }
-          }, _callee);
-        }));
+          }
+        }, _callee2);
+      }));
 
-        return function (_x, _x2) {
-          return _ref.apply(this, arguments);
-        };
-      }());
-    });
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+
+    _defineProperty(_assertThisInitialized(_this), "checkGroup", /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(group) {
+        return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                return _context4.abrupt("return", new Promise( /*#__PURE__*/function () {
+                  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
+                    var formData;
+                    return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+                      while (1) {
+                        switch (_context3.prev = _context3.next) {
+                          case 0:
+                            formData = new FormData();
+                            formData.append('group', group);
+                            _context3.next = 4;
+                            return axios.post('/api/group/check', formData).then(function (json) {
+                              if (user.id === json.data.user_id) {
+                                return resolve(json.data.in_group);
+                              } else {
+                                return resolve(false);
+                              }
+                            })["catch"](function (error) {
+                              // TODO: handle errors
+                              console.log(error);
+                              return reject(error);
+                            });
+
+                          case 4:
+                          case "end":
+                            return _context3.stop();
+                        }
+                      }
+                    }, _callee3);
+                  }));
+
+                  return function (_x5, _x6) {
+                    return _ref4.apply(this, arguments);
+                  };
+                }()));
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
 
     _defineProperty(_assertThisInitialized(_this), "setPreference", function (preference, value) {
       var preferences = _this.state.preferences;
@@ -1424,30 +1495,30 @@ var Auth = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       return new Promise( /*#__PURE__*/function () {
-        var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2(resolve, reject) {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(resolve, reject) {
           var _yield$axios$get, data, preferences;
 
-          return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+          return _regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context5.prev = _context5.next) {
                 case 0:
-                  _context2.prev = 0;
-                  _context2.next = 3;
+                  _context5.prev = 0;
+                  _context5.next = 3;
                   return axios.get('/sanctum/csrf_cookie');
 
                 case 3:
-                  _context2.next = 5;
+                  _context5.next = 5;
                   return axios.post('/login', {
                     username: username,
                     password: password
                   });
 
                 case 5:
-                  _context2.next = 7;
+                  _context5.next = 7;
                   return axios.get('/api/user');
 
                 case 7:
-                  _yield$axios$get = _context2.sent;
+                  _yield$axios$get = _context5.sent;
                   data = _yield$axios$get.data;
                   preferences = data.preferences;
                   delete data.preferences;
@@ -1458,23 +1529,23 @@ var Auth = /*#__PURE__*/function (_Component) {
                     preferences: preferences
                   });
 
-                  return _context2.abrupt("return", resolve(data));
+                  return _context5.abrupt("return", resolve(data));
 
                 case 15:
-                  _context2.prev = 15;
-                  _context2.t0 = _context2["catch"](0);
-                  return _context2.abrupt("return", reject(_context2.t0));
+                  _context5.prev = 15;
+                  _context5.t0 = _context5["catch"](0);
+                  return _context5.abrupt("return", reject(_context5.t0));
 
                 case 18:
                 case "end":
-                  return _context2.stop();
+                  return _context5.stop();
               }
             }
-          }, _callee2, null, [[0, 15]]);
+          }, _callee5, null, [[0, 15]]);
         }));
 
-        return function (_x3, _x4) {
-          return _ref2.apply(this, arguments);
+        return function (_x7, _x8) {
+          return _ref5.apply(this, arguments);
         };
       }());
     }
@@ -1484,13 +1555,13 @@ var Auth = /*#__PURE__*/function (_Component) {
       var _this3 = this;
 
       new Promise( /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
-          return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(resolve, reject) {
+          return _regeneratorRuntime.wrap(function _callee6$(_context6) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context6.prev = _context6.next) {
                 case 0:
-                  _context3.prev = 0;
-                  _context3.next = 3;
+                  _context6.prev = 0;
+                  _context6.next = 3;
                   return axios.post('/api/logout');
 
                 case 3:
@@ -1501,24 +1572,24 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                   window.location.replace("//" + window.location.hostname + '/login?logout');
                   resolve(true);
-                  _context3.next = 11;
+                  _context6.next = 11;
                   break;
 
                 case 8:
-                  _context3.prev = 8;
-                  _context3.t0 = _context3["catch"](0);
-                  return _context3.abrupt("return", reject(_context3.t0));
+                  _context6.prev = 8;
+                  _context6.t0 = _context6["catch"](0);
+                  return _context6.abrupt("return", reject(_context6.t0));
 
                 case 11:
                 case "end":
-                  return _context3.stop();
+                  return _context6.stop();
               }
             }
-          }, _callee3, null, [[0, 8]]);
+          }, _callee6, null, [[0, 8]]);
         }));
 
-        return function (_x5, _x6) {
-          return _ref3.apply(this, arguments);
+        return function (_x9, _x10) {
+          return _ref6.apply(this, arguments);
         };
       }());
     }
@@ -1536,24 +1607,24 @@ var Auth = /*#__PURE__*/function (_Component) {
       var _this4 = this;
 
       return new Promise( /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(resolve, reject) {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7(resolve, reject) {
           var _yield$axios$get2, data;
 
-          return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+          return _regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
-              switch (_context4.prev = _context4.next) {
+              switch (_context7.prev = _context7.next) {
                 case 0:
                   if (!(_this4.state.authenticated === null)) {
-                    _context4.next = 20;
+                    _context7.next = 20;
                     break;
                   }
 
-                  _context4.prev = 1;
-                  _context4.next = 4;
+                  _context7.prev = 1;
+                  _context7.next = 4;
                   return axios.get('/api/user');
 
                 case 4:
-                  _yield$axios$get2 = _context4.sent;
+                  _yield$axios$get2 = _context7.sent;
                   data = _yield$axios$get2.data;
 
                   _this4.setState({
@@ -1561,14 +1632,14 @@ var Auth = /*#__PURE__*/function (_Component) {
                     authenticated: true
                   });
 
-                  return _context4.abrupt("return", resolve(true));
+                  return _context7.abrupt("return", resolve(true));
 
                 case 10:
-                  _context4.prev = 10;
-                  _context4.t0 = _context4["catch"](1);
+                  _context7.prev = 10;
+                  _context7.t0 = _context7["catch"](1);
 
-                  if (!(_context4.t0.response && _context4.t0.response.status === 401)) {
-                    _context4.next = 17;
+                  if (!(_context7.t0.response && _context7.t0.response.status === 401)) {
+                    _context7.next = 17;
                     break;
                   }
 
@@ -1579,28 +1650,28 @@ var Auth = /*#__PURE__*/function (_Component) {
                     preferences: {}
                   });
 
-                  return _context4.abrupt("return", resolve(false));
+                  return _context7.abrupt("return", resolve(false));
 
                 case 17:
-                  return _context4.abrupt("return", reject(_context4.t0));
+                  return _context7.abrupt("return", reject(_context7.t0));
 
                 case 18:
-                  _context4.next = 21;
+                  _context7.next = 21;
                   break;
 
                 case 20:
-                  return _context4.abrupt("return", resolve(_this4.state.authenticated));
+                  return _context7.abrupt("return", resolve(_this4.state.authenticated));
 
                 case 21:
                 case "end":
-                  return _context4.stop();
+                  return _context7.stop();
               }
             }
-          }, _callee4, null, [[1, 10]]);
+          }, _callee7, null, [[1, 10]]);
         }));
 
-        return function (_x7, _x8) {
-          return _ref4.apply(this, arguments);
+        return function (_x11, _x12) {
+          return _ref7.apply(this, arguments);
         };
       }());
     }
@@ -1622,6 +1693,7 @@ var Auth = /*#__PURE__*/function (_Component) {
           setUser: this.setUser,
           checkAuthentication: this.checkAuthentication,
           checkPermission: this.checkPermission,
+          checkGroup: this.checkGroup,
           preferences: this.state.preferences,
           setPreference: this.setPreference
         }
@@ -3886,17 +3958,21 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/plugins/toggle', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, '', {
+        addToast(json.data.plugin.name, json.data.message, {
           appearance: 'success'
         });
         Object.keys(plugins.all).map(function (key) {
           if (e.target.dataset.slug === plugins.all[key].slug) {
             plugins.all[key].state = json.data.plugin.state;
+            plugins.all[key].installed = true;
+            delete plugins.all[key].downloaded;
           }
         });
         Object.keys(plugins.online).map(function (key) {
           if (e.target.dataset.slug === plugins.online[key].slug) {
             plugins.online[key].state = json.data.plugin.state;
+            plugins.online[key].installed = true;
+            delete plugins.online[key].downloaded;
           }
         });
         setPlugins(_objectSpread$4({}, plugins));
@@ -3916,7 +3992,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
     formData.append('slug', e.target.dataset.slug);
     axios.post('/api/plugin', formData).then(function (json) {
       if (!unmounted.current) {
-        addToast(json.data.message, '', {
+        addToast(json.data.plugin.name, json.data.message, {
           appearance: 'success'
         });
         var _plugins2 = [];
@@ -6811,7 +6887,7 @@ var UserSuggest = function UserSuggest(_ref) {
       if (activeUser === 0) return;
       setActiveUser(activeUser - 1);
     } else if (e.keyCode === 40) {
-      if (activeUser - 1 === filteredUsers.length) return;
+      if (activeUser + 1 === filteredUsers.length) return;
       setActiveUser(activeUser + 1);
     }
   };
@@ -22647,7 +22723,7 @@ var AppActionButtons = function AppActionButtons(_ref) {
     style: icon_style
   }), /*#__PURE__*/React$1.createElement("span", {
     className: "inline-block m-1 px-2 py-1 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-lg tracking-wide text-xs"
-  }, "Version ", app.version || app.release.version)), /*#__PURE__*/React$1.createElement("div", {
+  }, "v", app.version || app.release.version)), /*#__PURE__*/React$1.createElement("div", {
     className: "p-4"
   }, /*#__PURE__*/React$1.createElement("h2", {
     className: "mb-2 font-bold"
@@ -22853,7 +22929,7 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
     style: icon_style
   }), /*#__PURE__*/React$1.createElement("span", {
     className: "inline-block m-1 px-2 py-1 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-lg tracking-wide text-xs"
-  }, "Version ", plugin.version || plugin.release.version)), /*#__PURE__*/React$1.createElement("div", {
+  }, "v", plugin.version || plugin.release.version)), /*#__PURE__*/React$1.createElement("div", {
     className: "p-4"
   }, /*#__PURE__*/React$1.createElement("h2", {
     className: "mb-2 font-bold"

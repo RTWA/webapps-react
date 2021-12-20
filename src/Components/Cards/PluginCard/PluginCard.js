@@ -38,7 +38,7 @@ const PluginCard = props => {
                 <div className="relative pb-28 overflow-hidden" style={background_style}>
                     <Icon icon={plugin.icon} className="absolute inset-0 h-full w-full flex justify center" style={icon_style} />
                     <span className="inline-block m-1 px-2 py-1 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-lg tracking-wide text-xs">
-                        Version {plugin.version || plugin.release.version}
+                        v{plugin.version || plugin.release.version}
                     </span>
                 </div>
                 <div className="p-4">

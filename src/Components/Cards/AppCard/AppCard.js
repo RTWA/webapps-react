@@ -38,7 +38,7 @@ const AppCard = props => {
                 <div className="relative pb-28 overflow-hidden" style={background_style}>
                     <Icon icon={app.icon} className="absolute inset-0 h-full w-full flex justify center" style={icon_style} />
                     <span className="inline-block m-1 px-2 py-1 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-lg tracking-wide text-xs">
-                        Version {app.version || app.release.version}
+                        v{app.version || app.release.version}
                     </span>
                 </div>
                 <div className="p-4">

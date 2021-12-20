@@ -84,15 +84,36 @@ class Auth extends Component {
         });
     }
 
-    checkPermission = permission => {
+    checkPermission = async permission => {
         return new Promise(async (resolve, reject) => {
             let formData = new FormData();
             formData.append('permission', permission);
 
             await axios.post('/api/permission/check', formData)
                 .then(json => {
-                    if (user.id = json.data.user_id) {
+                    if (user.id === json.data.user_id) {
                         return resolve(json.data.has_permission);
+                    } else {
+                        return resolve(false);
+                    }
+                })
+                .catch(error => {
+                    // TODO: handle errors
+                    console.log(error);
+                    return reject(error);
+                })
+        });
+    }
+
+    checkGroup = async group => {
+        return new Promise(async (resolve, reject) => {
+            let formData = new FormData();
+            formData.append('group', group);
+
+            await axios.post('/api/group/check', formData)
+                .then(json => {
+                    if (user.id === json.data.user_id) {
+                        return resolve(json.data.in_group);
                     } else {
                         return resolve(false);
                     }
@@ -140,6 +161,7 @@ class Auth extends Component {
                         setUser: this.setUser,
                         checkAuthentication: this.checkAuthentication,
                         checkPermission: this.checkPermission,
+                        checkGroup: this.checkGroup,
                         preferences: this.state.preferences,
                         setPreference: this.setPreference
                     }}

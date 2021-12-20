@@ -375,16 +375,20 @@ const WebAppsProvider = props => {
         axios.post('/api/plugins/toggle', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, '', { appearance: 'success' });
+                    addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
 
                     Object.keys(plugins.all).map((key) => {
                         if (e.target.dataset.slug === plugins.all[key].slug) {
                             plugins.all[key].state = json.data.plugin.state;
+                            plugins.all[key].installed = true;
+                            delete plugins.all[key].downloaded;
                         }
                     });
                     Object.keys(plugins.online).map((key) => {
                         if (e.target.dataset.slug === plugins.online[key].slug) {
                             plugins.online[key].state = json.data.plugin.state;
+                            plugins.online[key].installed = true;
+                            delete plugins.online[key].downloaded;
                         }
                     });
                     setPlugins({ ...plugins });
@@ -406,7 +410,7 @@ const WebAppsProvider = props => {
         axios.post('/api/plugin', formData)
             .then(json => {
                 if (!unmounted.current) {
-                    addToast(json.data.message, '', { appearance: 'success' });
+                    addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
 
                     let _plugins = [];
                     Object.keys(plugins.all).map((key) => {

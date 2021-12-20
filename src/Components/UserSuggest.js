@@ -48,7 +48,7 @@ const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit,
             setActiveUser(activeUser - 1);
         }
         else if (e.keyCode === 40) {
-            if (activeUser - 1 === filteredUsers.length)
+            if (activeUser + 1 === filteredUsers.length)
                 return;
             setActiveUser(activeUser + 1);
         }
