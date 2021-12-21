@@ -1,3 +1,6 @@
+## Version 1.7.5
+- Remove ID check from `checkGroup` and `checkPermission` functions in `<Auth />` Context
+
 ## Version 1.7.4
 - Fixed display of Plugin state if it is activated immediately after being installed
 - Reduced version badge size on `<AppCard />` and `<PluginCard />`

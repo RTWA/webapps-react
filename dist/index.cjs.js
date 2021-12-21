@@ -1367,7 +1367,7 @@ var Auth = /*#__PURE__*/function (_Component) {
                             formData.append('permission', permission);
                             _context.next = 4;
                             return axios__default["default"].post('/api/permission/check', formData).then(function (json) {
-                              if (user.id === json.data.user_id) {
+                              if (user.id == json.data.user_id) {
                                 return resolve(json.data.has_permission);
                               } else {
                                 return resolve(false);
@@ -1421,11 +1421,7 @@ var Auth = /*#__PURE__*/function (_Component) {
                             formData.append('group', group);
                             _context3.next = 4;
                             return axios__default["default"].post('/api/group/check', formData).then(function (json) {
-                              if (user.id === json.data.user_id) {
-                                return resolve(json.data.in_group);
-                              } else {
-                                return resolve(false);
-                              }
+                              return resolve(json.data.in_group);
                             })["catch"](function (error) {
                               // TODO: handle errors
                               console.log(error);

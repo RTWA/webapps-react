@@ -91,15 +91,9 @@ class Auth extends Component {
 
             await axios.post('/api/permission/check', formData)
                 .then(json => {
-                    if (user.id === json.data.user_id) {
-                        return resolve(json.data.has_permission);
-                    } else {
-                        return resolve(false);
-                    }
+                    return resolve(json.data.has_permission);
                 })
                 .catch(error => {
-                    // TODO: handle errors
-                    console.log(error);
                     return reject(error);
                 })
         });
@@ -112,15 +106,9 @@ class Auth extends Component {
 
             await axios.post('/api/group/check', formData)
                 .then(json => {
-                    if (user.id === json.data.user_id) {
-                        return resolve(json.data.in_group);
-                    } else {
-                        return resolve(false);
-                    }
+                    return resolve(json.data.in_group);
                 })
                 .catch(error => {
-                    // TODO: handle errors
-                    console.log(error);
                     return reject(error);
                 })
         });
