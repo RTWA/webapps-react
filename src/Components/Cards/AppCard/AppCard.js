@@ -72,7 +72,7 @@ const AppCard = props => {
                     (showActions) ? <AppActionButtons app={app} setChangelog={setChangelog} /> : null
                 }
                 {
-                    (changelog) ? <AppPluginChangelogModal item={app} close={() => setChangelog(false)} install={apps.install} /> : null
+                    (changelog) ? <AppPluginChangelogModal item={app} close={() => setChangelog(false)} update={apps.update} /> : null
                 }
             </div>
         </div>

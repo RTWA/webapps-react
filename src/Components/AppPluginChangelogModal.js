@@ -6,7 +6,7 @@ const AppPluginChangelogModal = props => {
     const {
         item,
         close,
-        install,
+        update,
         ...attributes
     } = props;
 
@@ -35,7 +35,7 @@ const AppPluginChangelogModal = props => {
                     <div className="bg-gray-50 dark:bg-gray-800 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <button type="button"
                             className="mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm bg-orange-300 dark:bg-orange-700 hover:bg-orange-400 dark:hover:bg-orange-600 font-bold py-2 px-4 inline-flex justify-center rounded-md"
-                            data-slug={item.slug} onClick={install}>
+                            data-slug={item.slug} onClick={update}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
                             </svg>

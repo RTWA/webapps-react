@@ -72,7 +72,7 @@ const PluginCard = props => {
                     (showActions) ? <PluginActionButtons plugin={plugin} setChangelog={setChangelog} /> : null
                 }
                 {
-                    (changelog) ? <AppPluginChangelogModal item={plugin} close={() => setChangelog(false)} install={plugins.install} /> : null
+                    (changelog) ? <AppPluginChangelogModal item={plugin} close={() => setChangelog(false)} update={plugins.update} /> : null
                 }
             </div>
         </div>
