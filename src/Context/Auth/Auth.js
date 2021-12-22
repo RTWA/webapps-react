@@ -114,7 +114,7 @@ class Auth extends Component {
         });
     }
 
-    setPreference = (preference, value) => {
+    setPreference = async (preference, value) => {
         let { preferences } = this.state;
         preferences[preference] = value;
         this.setState({ preferences });
@@ -124,7 +124,7 @@ class Auth extends Component {
         formData.append('preference', preference);
         formData.append('value', value);
 
-        axios.post('/api/user/preference', formData)
+        await axios.post('/api/user/preference', formData)
             .catch(error => {
                 // TODO: Handle errors
                 console.log(error);

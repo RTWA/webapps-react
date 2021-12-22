@@ -33,11 +33,11 @@ const WebAppsProvider = props => {
         });
     }
 
-    const loadUI = () => {
+    const loadUI = async () => {
         let formData = new FormData();
         formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
 
-        axios.post('/api/setting', formData)
+        await axios.post('/api/setting', formData)
             .then(json => {
                 if (!unmounted.current) {
                     UI.theme = json.data['core.ui.theme'];
@@ -53,8 +53,8 @@ const WebAppsProvider = props => {
             });
     }
 
-    const loadNavigation = () => {
-        axios.get('/api/navigation')
+    const loadNavigation = async () => {
+        await axios.get('/api/navigation')
             .then(json => {
                 if (!unmounted.current) {
                     navigation.menu = json.data.navigation;
@@ -75,8 +75,8 @@ const WebAppsProvider = props => {
             });
     }
 
-    const getApps = () => {
-        axios.get('/api/apps')
+    const getApps = async () => {
+        await axios.get('/api/apps')
             .then(json => {
                 if (!unmounted.current) {
                     apps.local = json.data.apps;
@@ -89,7 +89,7 @@ const WebAppsProvider = props => {
                     console.error(error);
                 }
             });
-        axios.get('/api/online/apps/list')
+        await axios.get('/api/online/apps/list')
             .then(json => {
                 if (!unmounted.current) {
                     apps.online = json.data.apps;
@@ -104,8 +104,8 @@ const WebAppsProvider = props => {
             });
     }
 
-    const getPlugins = () => {
-        axios.get('/api/plugins')
+    const getPlugins = async () => {
+        await axios.get('/api/plugins')
             .then(json => {
                 if (!unmounted.current) {
                     plugins.all = json.data.plugins;
@@ -118,7 +118,7 @@ const WebAppsProvider = props => {
                     console.error(error);
                 }
             });
-        axios.get('/api/plugins/active')
+        await axios.get('/api/plugins/active')
             .then(json => {
                 if (!unmounted.current) {
                     plugins.active = json.data.plugins;
@@ -131,7 +131,7 @@ const WebAppsProvider = props => {
                     console.error(error);
                 }
             });
-        axios.get('/api/online/plugins/list')
+        await axios.get('/api/online/plugins/list')
             .then(json => {
                 if (!unmounted.current) {
                     plugins.online = json.data.plugins;
@@ -146,11 +146,11 @@ const WebAppsProvider = props => {
             });
     }
 
-    const downloadApp = e => {
+    const downloadApp = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
-        axios.post('/api/online/apps/download', formData)
+        await axios.post('/api/online/apps/download', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(e.target.dataset.slug, 'Has been downloaded and installed', { appearance: 'success' });
@@ -167,11 +167,11 @@ const WebAppsProvider = props => {
             });
     }
 
-    const updateApp = e => {
+    const updateApp = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
-        axios.post('/api/online/apps/download', formData)
+        await axios.post('/api/online/apps/download', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(e.target.dataset.slug, `Has been updated`, { appearance: 'success' });
@@ -188,12 +188,12 @@ const WebAppsProvider = props => {
             });
     }
 
-    const activateApp = e => {
+    const activateApp = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
         formData.append('task', 'activate');
-        axios.post('/api/apps/control', formData)
+        await axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -222,12 +222,12 @@ const WebAppsProvider = props => {
             });
     }
 
-    const deactivateApp = e => {
+    const deactivateApp = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
         formData.append('task', 'deactivate');
-        axios.post('/api/apps/control', formData)
+        await axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -256,12 +256,12 @@ const WebAppsProvider = props => {
             });
     }
 
-    const installApp = e => {
+    const installApp = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
         formData.append('task', 'install');
-        axios.post('/api/apps/control', formData)
+        await axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -290,12 +290,12 @@ const WebAppsProvider = props => {
             });
     }
 
-    const uninstallApp = e => {
+    const uninstallApp = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
         formData.append('task', 'uninstall');
-        axios.post('/api/apps/control', formData)
+        await axios.post('/api/apps/control', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -324,11 +324,11 @@ const WebAppsProvider = props => {
             });
     }
 
-    const downloadPlugin = e => {
+    const downloadPlugin = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
-        axios.post('/api/online/plugins/download', formData)
+        await axios.post('/api/online/plugins/download', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -346,11 +346,11 @@ const WebAppsProvider = props => {
             });
     }
 
-    const updatePlugin = e => {
+    const updatePlugin = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
-        axios.post('/api/online/plugins/download', formData)
+        await axios.post('/api/online/plugins/download', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -368,11 +368,11 @@ const WebAppsProvider = props => {
             });
     }
 
-    const togglePlugin = e => {
+    const togglePlugin = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('slug', e.target.dataset.slug);
-        axios.post('/api/plugins/toggle', formData)
+        await axios.post('/api/plugins/toggle', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
@@ -402,12 +402,12 @@ const WebAppsProvider = props => {
             });
     }
 
-    const uninstallPlugin = e => {
+    const uninstallPlugin = async e => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('_method', 'DELETE');
         formData.append('slug', e.target.dataset.slug);
-        axios.post('/api/plugin', formData)
+        await axios.post('/api/plugin', formData)
             .then(json => {
                 if (!unmounted.current) {
                     addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
