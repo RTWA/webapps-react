@@ -1367,14 +1367,8 @@ var Auth = /*#__PURE__*/function (_Component) {
                             formData.append('permission', permission);
                             _context.next = 4;
                             return axios.post('/api/permission/check', formData).then(function (json) {
-                              if (user.id == json.data.user_id) {
-                                return resolve(json.data.has_permission);
-                              } else {
-                                return resolve(false);
-                              }
+                              return resolve(json.data.has_permission);
                             })["catch"](function (error) {
-                              // TODO: handle errors
-                              console.log(error);
                               return reject(error);
                             });
 
@@ -1423,8 +1417,6 @@ var Auth = /*#__PURE__*/function (_Component) {
                             return axios.post('/api/group/check', formData).then(function (json) {
                               return resolve(json.data.in_group);
                             })["catch"](function (error) {
-                              // TODO: handle errors
-                              console.log(error);
                               return reject(error);
                             });
 
@@ -1454,23 +1446,42 @@ var Auth = /*#__PURE__*/function (_Component) {
       };
     }());
 
-    _defineProperty(_assertThisInitialized(_this), "setPreference", function (preference, value) {
-      var preferences = _this.state.preferences;
-      preferences[preference] = value;
+    _defineProperty(_assertThisInitialized(_this), "setPreference", /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(preference, value) {
+        var preferences, formData;
+        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                preferences = _this.state.preferences;
+                preferences[preference] = value;
 
-      _this.setState({
-        preferences: preferences
-      });
+                _this.setState({
+                  preferences: preferences
+                });
 
-      var formData = new FormData();
-      formData.append('_method', 'PUT');
-      formData.append('preference', preference);
-      formData.append('value', value);
-      axios.post('/api/user/preference', formData)["catch"](function (error) {
-        // TODO: Handle errors
-        console.log(error);
-      });
-    });
+                formData = new FormData();
+                formData.append('_method', 'PUT');
+                formData.append('preference', preference);
+                formData.append('value', value);
+                _context5.next = 9;
+                return axios.post('/api/user/preference', formData)["catch"](function (error) {
+                  // TODO: Handle errors
+                  console.log(error);
+                });
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }));
+
+      return function (_x7, _x8) {
+        return _ref5.apply(this, arguments);
+      };
+    }());
 
     _this.state = {
       user: null,
@@ -1491,30 +1502,30 @@ var Auth = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       return new Promise( /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(resolve, reject) {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(resolve, reject) {
           var _yield$axios$get, data, preferences;
 
-          return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+          return _regeneratorRuntime.wrap(function _callee6$(_context6) {
             while (1) {
-              switch (_context5.prev = _context5.next) {
+              switch (_context6.prev = _context6.next) {
                 case 0:
-                  _context5.prev = 0;
-                  _context5.next = 3;
+                  _context6.prev = 0;
+                  _context6.next = 3;
                   return axios.get('/sanctum/csrf_cookie');
 
                 case 3:
-                  _context5.next = 5;
+                  _context6.next = 5;
                   return axios.post('/login', {
                     username: username,
                     password: password
                   });
 
                 case 5:
-                  _context5.next = 7;
+                  _context6.next = 7;
                   return axios.get('/api/user');
 
                 case 7:
-                  _yield$axios$get = _context5.sent;
+                  _yield$axios$get = _context6.sent;
                   data = _yield$axios$get.data;
                   preferences = data.preferences;
                   delete data.preferences;
@@ -1525,23 +1536,23 @@ var Auth = /*#__PURE__*/function (_Component) {
                     preferences: preferences
                   });
 
-                  return _context5.abrupt("return", resolve(data));
+                  return _context6.abrupt("return", resolve(data));
 
                 case 15:
-                  _context5.prev = 15;
-                  _context5.t0 = _context5["catch"](0);
-                  return _context5.abrupt("return", reject(_context5.t0));
+                  _context6.prev = 15;
+                  _context6.t0 = _context6["catch"](0);
+                  return _context6.abrupt("return", reject(_context6.t0));
 
                 case 18:
                 case "end":
-                  return _context5.stop();
+                  return _context6.stop();
               }
             }
-          }, _callee5, null, [[0, 15]]);
+          }, _callee6, null, [[0, 15]]);
         }));
 
-        return function (_x7, _x8) {
-          return _ref5.apply(this, arguments);
+        return function (_x9, _x10) {
+          return _ref6.apply(this, arguments);
         };
       }());
     }
@@ -1551,13 +1562,13 @@ var Auth = /*#__PURE__*/function (_Component) {
       var _this3 = this;
 
       new Promise( /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(resolve, reject) {
-          return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7(resolve, reject) {
+          return _regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
-              switch (_context6.prev = _context6.next) {
+              switch (_context7.prev = _context7.next) {
                 case 0:
-                  _context6.prev = 0;
-                  _context6.next = 3;
+                  _context7.prev = 0;
+                  _context7.next = 3;
                   return axios.post('/api/logout');
 
                 case 3:
@@ -1568,24 +1579,24 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                   window.location.replace("//" + window.location.hostname + '/login?logout');
                   resolve(true);
-                  _context6.next = 11;
+                  _context7.next = 11;
                   break;
 
                 case 8:
-                  _context6.prev = 8;
-                  _context6.t0 = _context6["catch"](0);
-                  return _context6.abrupt("return", reject(_context6.t0));
+                  _context7.prev = 8;
+                  _context7.t0 = _context7["catch"](0);
+                  return _context7.abrupt("return", reject(_context7.t0));
 
                 case 11:
                 case "end":
-                  return _context6.stop();
+                  return _context7.stop();
               }
             }
-          }, _callee6, null, [[0, 8]]);
+          }, _callee7, null, [[0, 8]]);
         }));
 
-        return function (_x9, _x10) {
-          return _ref6.apply(this, arguments);
+        return function (_x11, _x12) {
+          return _ref7.apply(this, arguments);
         };
       }());
     }
@@ -1603,24 +1614,24 @@ var Auth = /*#__PURE__*/function (_Component) {
       var _this4 = this;
 
       return new Promise( /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7(resolve, reject) {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee8(resolve, reject) {
           var _yield$axios$get2, data;
 
-          return _regeneratorRuntime.wrap(function _callee7$(_context7) {
+          return _regeneratorRuntime.wrap(function _callee8$(_context8) {
             while (1) {
-              switch (_context7.prev = _context7.next) {
+              switch (_context8.prev = _context8.next) {
                 case 0:
                   if (!(_this4.state.authenticated === null)) {
-                    _context7.next = 20;
+                    _context8.next = 20;
                     break;
                   }
 
-                  _context7.prev = 1;
-                  _context7.next = 4;
+                  _context8.prev = 1;
+                  _context8.next = 4;
                   return axios.get('/api/user');
 
                 case 4:
-                  _yield$axios$get2 = _context7.sent;
+                  _yield$axios$get2 = _context8.sent;
                   data = _yield$axios$get2.data;
 
                   _this4.setState({
@@ -1628,14 +1639,14 @@ var Auth = /*#__PURE__*/function (_Component) {
                     authenticated: true
                   });
 
-                  return _context7.abrupt("return", resolve(true));
+                  return _context8.abrupt("return", resolve(true));
 
                 case 10:
-                  _context7.prev = 10;
-                  _context7.t0 = _context7["catch"](1);
+                  _context8.prev = 10;
+                  _context8.t0 = _context8["catch"](1);
 
-                  if (!(_context7.t0.response && _context7.t0.response.status === 401)) {
-                    _context7.next = 17;
+                  if (!(_context8.t0.response && _context8.t0.response.status === 401)) {
+                    _context8.next = 17;
                     break;
                   }
 
@@ -1646,28 +1657,28 @@ var Auth = /*#__PURE__*/function (_Component) {
                     preferences: {}
                   });
 
-                  return _context7.abrupt("return", resolve(false));
+                  return _context8.abrupt("return", resolve(false));
 
                 case 17:
-                  return _context7.abrupt("return", reject(_context7.t0));
+                  return _context8.abrupt("return", reject(_context8.t0));
 
                 case 18:
-                  _context7.next = 21;
+                  _context8.next = 21;
                   break;
 
                 case 20:
-                  return _context7.abrupt("return", resolve(_this4.state.authenticated));
+                  return _context8.abrupt("return", resolve(_this4.state.authenticated));
 
                 case 21:
                 case "end":
-                  return _context7.stop();
+                  return _context8.stop();
               }
             }
-          }, _callee7, null, [[1, 10]]);
+          }, _callee8, null, [[1, 10]]);
         }));
 
-        return function (_x11, _x12) {
-          return _ref7.apply(this, arguments);
+        return function (_x13, _x14) {
+          return _ref8.apply(this, arguments);
         };
       }());
     }
@@ -3639,379 +3650,654 @@ var WebAppsProvider = function WebAppsProvider(props) {
     });
   };
 
-  var loadUI = function loadUI() {
-    var formData = new FormData();
-    formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
-    axios.post('/api/setting', formData).then(function (json) {
-      if (!unmounted.current) {
-        UI.theme = json.data['core.ui.theme'];
-        UI.dark_mode = json.data['core.ui.dark_mode'];
-        setUI(_objectSpread$4({}, UI));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
+  var loadUI = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              formData = new FormData();
+              formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
+              _context.next = 4;
+              return axios.post('/api/setting', formData).then(function (json) {
+                if (!unmounted.current) {
+                  UI.theme = json.data['core.ui.theme'];
+                  UI.dark_mode = json.data['core.ui.dark_mode'];
+                  setUI(_objectSpread$4({}, UI));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.log(error);
+                }
+              });
 
-  var loadNavigation = function loadNavigation() {
-    axios.get('/api/navigation').then(function (json) {
-      if (!unmounted.current) {
-        navigation.menu = json.data.navigation;
-        navigation.routes = json.data.routes;
-        UI.envWriteable = json.data.envPermissions;
-        setNavigation(_objectSpread$4({}, navigation));
-        setUI(_objectSpread$4({}, UI));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        var nav = [];
-        nav['error'] = true;
-        nav['message'] = error.response.data.message;
-        setNavigation(nav);
-      }
-    });
-  };
-
-  var getApps = function getApps() {
-    axios.get('/api/apps').then(function (json) {
-      if (!unmounted.current) {
-        apps.local = json.data.apps;
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TOOD: Handle errors
-        console.error(error);
-      }
-    });
-    axios.get('/api/online/apps/list').then(function (json) {
-      if (!unmounted.current) {
-        apps.online = json.data.apps;
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var getPlugins = function getPlugins() {
-    axios.get('/api/plugins').then(function (json) {
-      if (!unmounted.current) {
-        plugins.all = json.data.plugins;
-        setPlugins(_objectSpread$4({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TOOD: Handle errors
-        console.error(error);
-      }
-    });
-    axios.get('/api/plugins/active').then(function (json) {
-      if (!unmounted.current) {
-        plugins.active = json.data.plugins;
-        setPlugins(_objectSpread$4({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TOOD: Handle errors
-        console.error(error);
-      }
-    });
-    axios.get('/api/online/plugins/list').then(function (json) {
-      if (!unmounted.current) {
-        plugins.online = json.data.plugins;
-        setPlugins(_objectSpread$4({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var downloadApp = function downloadApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/apps/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
-          appearance: 'success'
-        });
-        apps.local = json.data.apps;
-        apps.online = json.data.online;
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var updateApp = function updateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/apps/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(e.target.dataset.slug, "Has been updated", {
-          appearance: 'success'
-        });
-        apps.local = json.data.apps;
-        apps.online = json.data.online;
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
-
-  var activateApp = function activateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'activate');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.message, '', {
-          appearance: 'success'
-        }); // Reload Navigation
-
-        loadNavigation();
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug === apps.local[key].slug) {
-            apps.local[key].active = true;
+            case 4:
+            case "end":
+              return _context.stop();
           }
-        });
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key].active = true;
-          }
-        });
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
+        }
+      }, _callee);
+    }));
 
-  var deactivateApp = function deactivateApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'deactivate');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.message, '', {
-          appearance: 'success'
-        }); // Reload Navigation
+    return function loadUI() {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
-        loadNavigation();
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug === apps.local[key].slug) {
-            apps.local[key].active = false;
-          }
-        });
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key].active = false;
-          }
-        });
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
+  var loadNavigation = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
+      return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.get('/api/navigation').then(function (json) {
+                if (!unmounted.current) {
+                  navigation.menu = json.data.navigation;
+                  navigation.routes = json.data.routes;
+                  UI.envWriteable = json.data.envPermissions;
+                  setNavigation(_objectSpread$4({}, navigation));
+                  setUI(_objectSpread$4({}, UI));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  var nav = [];
+                  nav['error'] = true;
+                  nav['message'] = error.response.data.message;
+                  setNavigation(nav);
+                }
+              });
 
-  var installApp = function installApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'install');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.message, '', {
-          appearance: 'success'
-        }); // Reload Navigation
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
 
-        loadNavigation();
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug === apps.local[key].slug) {
-            apps.local[key].installed = true;
-          }
-        });
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key].installed = true;
-          }
-        });
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
+    return function loadNavigation() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
-  var uninstallApp = function uninstallApp(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    formData.append('task', 'uninstall');
-    axios.post('/api/apps/control', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.message, '', {
-          appearance: 'success'
-        });
-        var _apps2 = [];
-        Object.keys(apps.local).map(function (key) {
-          if (e.target.dataset.slug !== apps.local[key].slug) {
-            _apps2.push(apps.local[key]);
-          }
-        });
-        apps.local = _apps2;
-        Object.keys(apps.online).map(function (key) {
-          if (e.target.dataset.slug === apps.online[key].slug) {
-            apps.online[key] = json.data.app;
-          }
-        });
-        setApps(_objectSpread$4({}, apps));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
+  var getApps = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
+      return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios.get('/api/apps').then(function (json) {
+                if (!unmounted.current) {
+                  apps.local = json.data.apps;
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TOOD: Handle errors
+                  console.error(error);
+                }
+              });
 
-  var downloadPlugin = function downloadPlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/plugins/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.message, '', {
-          appearance: 'success'
-        });
-        plugins.all = json.data.plugins;
-        plugins.online = json.data.online;
-        setPlugins(_objectSpread$4({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
+            case 2:
+              _context3.next = 4;
+              return axios.get('/api/online/apps/list').then(function (json) {
+                if (!unmounted.current) {
+                  apps.online = json.data.apps;
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.log(error);
+                }
+              });
 
-  var updatePlugin = function updatePlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/online/plugins/download', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.message, '', {
-          appearance: 'success'
-        });
-        plugins.all = json.data.plugins;
-        plugins.online = json.data.online;
-        setPlugins(_objectSpread$4({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.log(error);
-      }
-    });
-  };
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
 
-  var togglePlugin = function togglePlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/plugins/toggle', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.plugin.name, json.data.message, {
-          appearance: 'success'
-        });
-        Object.keys(plugins.all).map(function (key) {
-          if (e.target.dataset.slug === plugins.all[key].slug) {
-            plugins.all[key].state = json.data.plugin.state;
-            plugins.all[key].installed = true;
-            delete plugins.all[key].downloaded;
-          }
-        });
-        Object.keys(plugins.online).map(function (key) {
-          if (e.target.dataset.slug === plugins.online[key].slug) {
-            plugins.online[key].state = json.data.plugin.state;
-            plugins.online[key].installed = true;
-            delete plugins.online[key].downloaded;
-          }
-        });
-        setPlugins(_objectSpread$4({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
+    return function getApps() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 
-  var uninstallPlugin = function uninstallPlugin(e) {
-    e.preventDefault();
-    var formData = new FormData();
-    formData.append('_method', 'DELETE');
-    formData.append('slug', e.target.dataset.slug);
-    axios.post('/api/plugin', formData).then(function (json) {
-      if (!unmounted.current) {
-        addToast(json.data.plugin.name, json.data.message, {
-          appearance: 'success'
-        });
-        var _plugins2 = [];
-        Object.keys(plugins.all).map(function (key) {
-          if (e.target.dataset.slug !== plugins.all[key].slug) {
-            _plugins2.push(plugins.all[key]);
+  var getPlugins = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
+      return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios.get('/api/plugins').then(function (json) {
+                if (!unmounted.current) {
+                  plugins.all = json.data.plugins;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TOOD: Handle errors
+                  console.error(error);
+                }
+              });
+
+            case 2:
+              _context4.next = 4;
+              return axios.get('/api/plugins/active').then(function (json) {
+                if (!unmounted.current) {
+                  plugins.active = json.data.plugins;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TOOD: Handle errors
+                  console.error(error);
+                }
+              });
+
+            case 4:
+              _context4.next = 6;
+              return axios.get('/api/online/plugins/list').then(function (json) {
+                if (!unmounted.current) {
+                  plugins.online = json.data.plugins;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.log(error);
+                }
+              });
+
+            case 6:
+            case "end":
+              return _context4.stop();
           }
-        });
-        plugins.all = _plugins2;
-        Object.keys(plugins.online).map(function (key) {
-          if (e.target.dataset.slug === plugins.online[key].slug) {
-            plugins.online[key] = json.data.plugin;
+        }
+      }, _callee4);
+    }));
+
+    return function getPlugins() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var downloadApp = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              _context5.next = 5;
+              return axios.post('/api/online/apps/download', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
+                    appearance: 'success'
+                  });
+                  apps.local = json.data.apps;
+                  apps.online = json.data.online;
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.log(error);
+                }
+              });
+
+            case 5:
+            case "end":
+              return _context5.stop();
           }
-        });
-        setPlugins(_objectSpread$4({}, plugins));
-      }
-    })["catch"](function (error) {
-      if (!unmounted.current) {
-        // TODO: handle errors
-        console.error(error);
-      }
-    });
-  };
+        }
+      }, _callee5);
+    }));
+
+    return function downloadApp(_x) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+
+  var updateApp = /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              _context6.next = 5;
+              return axios.post('/api/online/apps/download', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(e.target.dataset.slug, "Has been updated", {
+                    appearance: 'success'
+                  });
+                  apps.local = json.data.apps;
+                  apps.online = json.data.online;
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.log(error);
+                }
+              });
+
+            case 5:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+
+    return function updateApp(_x2) {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+
+  var activateApp = /*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              formData.append('task', 'activate');
+              _context7.next = 6;
+              return axios.post('/api/apps/control', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  }); // Reload Navigation
+
+                  // Reload Navigation
+                  loadNavigation();
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug === apps.local[key].slug) {
+                      apps.local[key].active = true;
+                    }
+                  });
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key].active = true;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.error(error);
+                }
+              });
+
+            case 6:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7);
+    }));
+
+    return function activateApp(_x3) {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+
+  var deactivateApp = /*#__PURE__*/function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee8(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              formData.append('task', 'deactivate');
+              _context8.next = 6;
+              return axios.post('/api/apps/control', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  }); // Reload Navigation
+
+                  // Reload Navigation
+                  loadNavigation();
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug === apps.local[key].slug) {
+                      apps.local[key].active = false;
+                    }
+                  });
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key].active = false;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.error(error);
+                }
+              });
+
+            case 6:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
+    }));
+
+    return function deactivateApp(_x4) {
+      return _ref8.apply(this, arguments);
+    };
+  }();
+
+  var installApp = /*#__PURE__*/function () {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee9(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              formData.append('task', 'install');
+              _context9.next = 6;
+              return axios.post('/api/apps/control', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  }); // Reload Navigation
+
+                  // Reload Navigation
+                  loadNavigation();
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug === apps.local[key].slug) {
+                      apps.local[key].installed = true;
+                    }
+                  });
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key].installed = true;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.error(error);
+                }
+              });
+
+            case 6:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9);
+    }));
+
+    return function installApp(_x5) {
+      return _ref9.apply(this, arguments);
+    };
+  }();
+
+  var uninstallApp = /*#__PURE__*/function () {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee10(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              formData.append('task', 'uninstall');
+              _context10.next = 6;
+              return axios.post('/api/apps/control', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  });
+                  var _apps2 = [];
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug !== apps.local[key].slug) {
+                      _apps2.push(apps.local[key]);
+                    }
+                  });
+                  apps.local = _apps2;
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key] = json.data.app;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.error(error);
+                }
+              });
+
+            case 6:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10);
+    }));
+
+    return function uninstallApp(_x6) {
+      return _ref10.apply(this, arguments);
+    };
+  }();
+
+  var downloadPlugin = /*#__PURE__*/function () {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee11(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              _context11.next = 5;
+              return axios.post('/api/online/plugins/download', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  });
+                  plugins.all = json.data.plugins;
+                  plugins.online = json.data.online;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.log(error);
+                }
+              });
+
+            case 5:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11);
+    }));
+
+    return function downloadPlugin(_x7) {
+      return _ref11.apply(this, arguments);
+    };
+  }();
+
+  var updatePlugin = /*#__PURE__*/function () {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee12(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee12$(_context12) {
+        while (1) {
+          switch (_context12.prev = _context12.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              _context12.next = 5;
+              return axios.post('/api/online/plugins/download', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  });
+                  plugins.all = json.data.plugins;
+                  plugins.online = json.data.online;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.log(error);
+                }
+              });
+
+            case 5:
+            case "end":
+              return _context12.stop();
+          }
+        }
+      }, _callee12);
+    }));
+
+    return function updatePlugin(_x8) {
+      return _ref12.apply(this, arguments);
+    };
+  }();
+
+  var togglePlugin = /*#__PURE__*/function () {
+    var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee13(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('slug', e.target.dataset.slug);
+              _context13.next = 5;
+              return axios.post('/api/plugins/toggle', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.plugin.name, json.data.message, {
+                    appearance: 'success'
+                  });
+                  Object.keys(plugins.all).map(function (key) {
+                    if (e.target.dataset.slug === plugins.all[key].slug) {
+                      plugins.all[key].state = json.data.plugin.state;
+                      plugins.all[key].installed = true;
+                      delete plugins.all[key].downloaded;
+                    }
+                  });
+                  Object.keys(plugins.online).map(function (key) {
+                    if (e.target.dataset.slug === plugins.online[key].slug) {
+                      plugins.online[key].state = json.data.plugin.state;
+                      plugins.online[key].installed = true;
+                      delete plugins.online[key].downloaded;
+                    }
+                  });
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.error(error);
+                }
+              });
+
+            case 5:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13);
+    }));
+
+    return function togglePlugin(_x9) {
+      return _ref13.apply(this, arguments);
+    };
+  }();
+
+  var uninstallPlugin = /*#__PURE__*/function () {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee14(e) {
+      var formData;
+      return _regeneratorRuntime.wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('_method', 'DELETE');
+              formData.append('slug', e.target.dataset.slug);
+              _context14.next = 6;
+              return axios.post('/api/plugin', formData).then(function (json) {
+                if (!unmounted.current) {
+                  addToast(json.data.plugin.name, json.data.message, {
+                    appearance: 'success'
+                  });
+                  var _plugins2 = [];
+                  Object.keys(plugins.all).map(function (key) {
+                    if (e.target.dataset.slug !== plugins.all[key].slug) {
+                      _plugins2.push(plugins.all[key]);
+                    }
+                  });
+                  plugins.all = _plugins2;
+                  Object.keys(plugins.online).map(function (key) {
+                    if (e.target.dataset.slug === plugins.online[key].slug) {
+                      plugins.online[key] = json.data.plugin;
+                    }
+                  });
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
+              })["catch"](function (error) {
+                if (!unmounted.current) {
+                  // TODO: handle errors
+                  console.error(error);
+                }
+              });
+
+            case 6:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14);
+    }));
+
+    return function uninstallPlugin(_x10) {
+      return _ref14.apply(this, arguments);
+    };
+  }();
 
   var _apps = {
     local: apps.local,
@@ -22468,12 +22754,12 @@ ReactMarkdown.propTypes = {
   linkTarget: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   transformImageUri: PropTypes.func,
   components: PropTypes.object
-};var _excluded$2 = ["item", "close", "install"];
+};var _excluded$2 = ["item", "close", "update"];
 
 var AppPluginChangelogModal = function AppPluginChangelogModal(props) {
   var item = props.item,
       close = props.close,
-      install = props.install,
+      update = props.update,
       attributes = _objectWithoutProperties(props, _excluded$2);
 
   console.log(item);
@@ -22511,7 +22797,7 @@ var AppPluginChangelogModal = function AppPluginChangelogModal(props) {
     type: "button",
     className: "mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm bg-orange-300 dark:bg-orange-700 hover:bg-orange-400 dark:hover:bg-orange-600 font-bold py-2 px-4 inline-flex justify-center rounded-md",
     "data-slug": item.slug,
-    onClick: install
+    onClick: update
   }, /*#__PURE__*/React$1.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "h-5 w-5 mr-2",
@@ -22762,7 +23048,7 @@ var AppActionButtons = function AppActionButtons(_ref) {
     close: function close() {
       return setChangelog(false);
     },
-    install: apps.install
+    update: apps.update
   }) : null));
 };var _excluded = ["plugin", "setChangelog"];
 
@@ -22968,7 +23254,7 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
     close: function close() {
       return setChangelog(false);
     },
-    install: plugins.install
+    update: plugins.update
   }) : null));
 };function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 

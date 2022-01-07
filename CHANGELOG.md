@@ -1,3 +1,7 @@
+## Version 1.7.6
+- Fixed updating `App` or `Plugin` from the `<AppPluginChangelog />` Component
+- General Improvements
+
 ## Version 1.7.5
 - Remove ID check from `checkGroup` and `checkPermission` functions in `<Auth />` Context
 
