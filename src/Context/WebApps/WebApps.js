@@ -19,18 +19,22 @@ const WebAppsProvider = props => {
     const { addToast } = useToasts();
 
     useEffect(() => {
+        unmounted.current = true;
+
         loadUI();
         loadNavigation();
         getApps();
         getPlugins();
 
-        return () => { unmounted.current = true; }
+        return () => { unmounted.current = false; }
     }, []);
 
     const toggleModal = modal => {
-        setModals({
-            modal: !modals[modal]
-        });
+        if (unmounted.current) {
+            setModals({
+                modal: !modals[modal]
+            });
+        }
     }
 
     const loadUI = async () => {
@@ -39,14 +43,14 @@ const WebAppsProvider = props => {
 
         await axios.post('/api/setting', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     UI.theme = json.data['core.ui.theme'];
                     UI.dark_mode = json.data['core.ui.dark_mode'];
                     setUI({ ...UI });
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -56,7 +60,7 @@ const WebAppsProvider = props => {
     const loadNavigation = async () => {
         await axios.get('/api/navigation')
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     navigation.menu = json.data.navigation;
                     navigation.routes = json.data.routes;
                     UI.envWriteable = json.data.envPermissions;
@@ -66,7 +70,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     let nav = [];
                     nav['error'] = true;
                     nav['message'] = error.response.data.message;
@@ -78,26 +82,26 @@ const WebAppsProvider = props => {
     const getApps = async () => {
         await axios.get('/api/apps')
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     apps.local = json.data.apps;
                     setApps({ ...apps });
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TOOD: Handle errors
                     console.error(error);
                 }
             });
         await axios.get('/api/online/apps/list')
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     apps.online = json.data.apps;
                     setApps({ ...apps });
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -107,39 +111,39 @@ const WebAppsProvider = props => {
     const getPlugins = async () => {
         await axios.get('/api/plugins')
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     plugins.all = json.data.plugins;
                     setPlugins({ ...plugins });
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TOOD: Handle errors
                     console.error(error);
                 }
             });
         await axios.get('/api/plugins/active')
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     plugins.active = json.data.plugins;
                     setPlugins({ ...plugins });
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TOOD: Handle errors
                     console.error(error);
                 }
             });
         await axios.get('/api/online/plugins/list')
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     plugins.online = json.data.plugins;
                     setPlugins({ ...plugins });
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -152,7 +156,7 @@ const WebAppsProvider = props => {
         formData.append('slug', e.target.dataset.slug);
         await axios.post('/api/online/apps/download', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(e.target.dataset.slug, 'Has been downloaded and installed', { appearance: 'success' });
                     apps.local = json.data.apps;
                     apps.online = json.data.online;
@@ -160,7 +164,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -173,7 +177,7 @@ const WebAppsProvider = props => {
         formData.append('slug', e.target.dataset.slug);
         await axios.post('/api/online/apps/download', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(e.target.dataset.slug, `Has been updated`, { appearance: 'success' });
                     apps.local = json.data.apps;
                     apps.online = json.data.online;
@@ -181,7 +185,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -195,7 +199,7 @@ const WebAppsProvider = props => {
         formData.append('task', 'activate');
         await axios.post('/api/apps/control', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
 
                     // Reload Navigation
@@ -215,7 +219,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -229,7 +233,7 @@ const WebAppsProvider = props => {
         formData.append('task', 'deactivate');
         await axios.post('/api/apps/control', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
 
                     // Reload Navigation
@@ -249,7 +253,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -263,7 +267,7 @@ const WebAppsProvider = props => {
         formData.append('task', 'install');
         await axios.post('/api/apps/control', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
 
                     // Reload Navigation
@@ -283,7 +287,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -297,7 +301,7 @@ const WebAppsProvider = props => {
         formData.append('task', 'uninstall');
         await axios.post('/api/apps/control', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
 
                     let _apps = [];
@@ -317,7 +321,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -330,7 +334,7 @@ const WebAppsProvider = props => {
         formData.append('slug', e.target.dataset.slug);
         await axios.post('/api/online/plugins/download', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
 
                     plugins.all = json.data.plugins;
@@ -339,7 +343,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -352,7 +356,7 @@ const WebAppsProvider = props => {
         formData.append('slug', e.target.dataset.slug);
         await axios.post('/api/online/plugins/download', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.message, '', { appearance: 'success' });
 
                     plugins.all = json.data.plugins;
@@ -361,7 +365,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.log(error);
                 }
@@ -374,7 +378,7 @@ const WebAppsProvider = props => {
         formData.append('slug', e.target.dataset.slug);
         await axios.post('/api/plugins/toggle', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
 
                     Object.keys(plugins.all).map((key) => {
@@ -395,7 +399,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -409,7 +413,7 @@ const WebAppsProvider = props => {
         formData.append('slug', e.target.dataset.slug);
         await axios.post('/api/plugin', formData)
             .then(json => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
 
                     let _plugins = [];
@@ -428,7 +432,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!unmounted.current) {
+                if (unmounted.current) {
                     // TODO: handle errors
                     console.error(error);
                 }
@@ -477,7 +481,7 @@ const WebAppsProvider = props => {
 
 export const WebApps = props => {
     const [UI, setUI] = useUI();
-    
+
     return (
         <ToastProvider UI={UI} autoDismiss="true" autoDismissTimeout="3000">
             <WebAppsProvider {...props} />
