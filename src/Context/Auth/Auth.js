@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import AuthContext from './AuthContext';
+import { client, controller } from '../../API';
 import Loader from '../../Components/Loader';
-
-axios.defaults.withCredentials = true;
 
 class Auth extends Component {
     constructor(props) {
@@ -21,16 +19,20 @@ class Auth extends Component {
         this.setPreference = this.setPreference.bind(this);
     }
 
+    componentWillUnmount() {
+        controller.abort();
+    }
+
     signIn(username, password) {
         return new Promise(async (resolve, reject) => {
             try {
                 // Get CSRF Cookie
-                await axios.get('/sanctum/csrf_cookie');
+                await client('/sanctum/csrf_cookie', undefined, { accept: 'text/html' });
                 // Perform sign in
-                await axios.post('/login', { username, password });
+                await client('/login', { username, password });
                 // When correct, get the user object
-                const { data } = await axios.get('/api/user');
-                const { preferences } = data;
+                const { data } = await client('/api/user');
+                const preferences = data.preferences ? data.preferences : {};
                 delete data.preferences;
 
                 this.setState({ user: data, authenticated: true, preferences: preferences });
@@ -44,7 +46,7 @@ class Auth extends Component {
     signOut() {
         new Promise(async (resolve, reject) => {
             try {
-                await axios.post('/api/logout');
+                await client('/api/logout', {});
                 this.setState({ user: null, authenticated: false });
 
                 window.location.replace("//" + window.location.hostname + '/login?logout');
@@ -64,8 +66,11 @@ class Auth extends Component {
             if (this.state.authenticated === null) {
                 // The status is null if it hasn't been checked
                 try {
-                    const { data } = await axios.get('/api/user');
-                    this.setState({ user: data, authenticated: true });
+                    const { data } = await client('/api/user');
+                    const preferences = data.preferences ? data.preferences : {};
+                    delete data.preferences;
+
+                    this.setState({ user: data, authenticated: true, preferences: preferences });
                     return resolve(true);
                 } catch (error) {
                     if (error.response && error.response.status === 401) {
@@ -86,12 +91,12 @@ class Auth extends Component {
 
     checkPermission = async permission => {
         return new Promise(async (resolve, reject) => {
-            let formData = new FormData();
-            formData.append('permission', permission);
+            // let formData = new FormData();
+            // formData.append('permission', permission);
 
-            await axios.post('/api/permission/check', formData)
-                .then(json => {
-                    return resolve(json.data.has_permission);
+            await client('/api/permission/check', { 'permission': permission })
+                .then(data => {
+                    return resolve(data.has_permission);
                 })
                 .catch(error => {
                     return reject(error);
@@ -101,12 +106,12 @@ class Auth extends Component {
 
     checkGroup = async group => {
         return new Promise(async (resolve, reject) => {
-            let formData = new FormData();
-            formData.append('group', group);
+            // let formData = new FormData();
+            // formData.append('group', group);
 
-            await axios.post('/api/group/check', formData)
-                .then(json => {
-                    return resolve(json.data.in_group);
+            await client('/api/group/check', { 'group': group })
+                .then(data => {
+                    return resolve(data.in_group);
                 })
                 .catch(error => {
                     return reject(error);
@@ -119,12 +124,12 @@ class Auth extends Component {
         preferences[preference] = value;
         this.setState({ preferences });
 
-        let formData = new FormData();
-        formData.append('_method', 'PUT');
-        formData.append('preference', preference);
-        formData.append('value', value);
+        // let formData = new FormData();
+        // formData.append('_method', 'PUT');
+        // formData.append('preference', preference);
+        // formData.append('value', value);
 
-        await axios.post('/api/user/preference', formData)
+        await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT' })
             .catch(error => {
                 // TODO: Handle errors
                 console.log(error);
