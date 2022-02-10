@@ -19,12 +19,12 @@ MODE.map((m) => {
             format: m.format,
             exports: "auto"
         },
-        external: ['axios', 'react', 'react-dom', 'react-router-dom', /@babel\/runtime/],
+        external: ['react', 'react-dom', 'react-router-dom', /@babel\/runtime/],
         plugins: [
             css(),
             resolve({
                 extensions: ['.js'],
-                dedupe: ['axios', 'perfect-scrollbar', 'react', 'react-dom', 'react-router-dom'],
+                dedupe: ['perfect-scrollbar', 'react', 'react-dom', 'react-router-dom'],
                 preferBuiltins: true,
             }),
             babel({
