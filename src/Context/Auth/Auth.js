@@ -73,7 +73,7 @@ class Auth extends Component {
                     this.setState({ user: data, authenticated: true, preferences: preferences });
                     return resolve(true);
                 } catch (error) {
-                    if (error.response && error.response.status === 401) {
+                    if (error.response && error.status.code === 401) {
                         // If 401 returns, the user is not logged in
                         this.setState({ user: null, authenticated: false, preferences: {} });
                         return resolve(false);

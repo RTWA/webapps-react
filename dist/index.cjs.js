@@ -1996,7 +1996,7 @@ var Auth = /*#__PURE__*/function (_Component) {
                   _context8.prev = 12;
                   _context8.t0 = _context8["catch"](1);
 
-                  if (!(_context8.t0.response && _context8.t0.response.status === 401)) {
+                  if (!(_context8.t0.response && _context8.t0.status.code === 401)) {
                     _context8.next = 19;
                     break;
                   }
@@ -4048,7 +4048,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               })["catch"](function (error) {
                 var nav = [];
                 nav['error'] = true;
-                nav['message'] = error.response.data.message;
+                nav['message'] = error.data.message;
                 setNavigation(nav);
               });
 

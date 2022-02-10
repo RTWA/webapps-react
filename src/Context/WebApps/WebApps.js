@@ -64,7 +64,7 @@ const WebAppsProvider = props => {
             .catch(error => {
                 let nav = [];
                 nav['error'] = true;
-                nav['message'] = error.response.data.message;
+                nav['message'] = error.data.message;
                 setNavigation(nav);
             });
     }
