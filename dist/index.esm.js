@@ -1,4 +1,343 @@
-import _extends from'@babel/runtime/helpers/extends';import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties from'@babel/runtime/helpers/objectWithoutProperties';import React$1,{Component,useMemo,useState,useEffect,useRef,useCallback,Children,isValidElement,cloneElement,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits$1 from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn$1 from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _regeneratorRuntime from'@babel/runtime/regenerator';import axios from'axios';import _slicedToArray from'@babel/runtime/helpers/slicedToArray';import ReactDOM,{unstable_batchedUpdates,createPortal}from'react-dom';import _toConsumableArray from'@babel/runtime/helpers/toConsumableArray';import _objectWithoutPropertiesLoose from'@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';import _extends$1 from'@babel/runtime/helpers/esm/extends';import _assertThisInitialized$1 from'@babel/runtime/helpers/esm/assertThisInitialized';import _inheritsLoose from'@babel/runtime/helpers/esm/inheritsLoose';import _typeof from'@babel/runtime/helpers/typeof';import path from'path';import process$1 from'process';import {fileURLToPath}from'url';var propTypes = {exports: {}};var reactIs$1 = {exports: {}};var reactIs_production_min$1 = {};/** @license React v16.13.1
+import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties from'@babel/runtime/helpers/objectWithoutProperties';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _regeneratorRuntime from'@babel/runtime/regenerator';import _extends from'@babel/runtime/helpers/extends';import React$1,{Component,useMemo,useState,useEffect,useRef,useCallback,Children,isValidElement,cloneElement,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits$1 from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn$1 from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _slicedToArray from'@babel/runtime/helpers/slicedToArray';import ReactDOM,{unstable_batchedUpdates,createPortal}from'react-dom';import _toConsumableArray from'@babel/runtime/helpers/toConsumableArray';import _objectWithoutPropertiesLoose from'@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';import _extends$1 from'@babel/runtime/helpers/esm/extends';import _assertThisInitialized$1 from'@babel/runtime/helpers/esm/assertThisInitialized';import _inheritsLoose from'@babel/runtime/helpers/esm/inheritsLoose';import _typeof from'@babel/runtime/helpers/typeof';import path from'path';import process$1 from'process';import {fileURLToPath}from'url';var getCookie = function getCookie(name) {
+  var value = "; ".concat(document.cookie);
+  var parts = value.split("; ".concat(name, "="));
+  if (parts.length === 2) return parts.pop().split(';').shift();
+};var _excluded$q = ["headers", "accept", "type"],
+    _excluded2$2 = ["headers", "accept", "type"];
+
+function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var RE_CONTENT_TYPE_JSON = new RegExp("^application/(x-)?json", "i");
+var RE_CONTENT_TYPE_TEXT = new RegExp("^text/", "i"); // Static strings.
+
+var TYPE_JSON = 'application/json';
+var UNEXPECTED_ERROR_MESSAGE = "An unexpected error occurred while processing your request.";
+var controller = new AbortController();
+var client = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2(endpoint) {
+    var data,
+        _ref2,
+        customHeaders,
+        _ref2$accept,
+        accept,
+        _ref2$type,
+        type,
+        customConfig,
+        config,
+        csrfToken,
+        fetchRequest,
+        fetchResponse,
+        responseData,
+        _args2 = arguments;
+
+    return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties(_ref2, _excluded$q);
+            _context2.prev = 2;
+            config = _objectSpread$8({
+              method: data ? 'POST' : 'GET',
+              body: data ? JSON.stringify(data) : undefined,
+              headers: _objectSpread$8({
+                'Accept': accept ? accept : null,
+                'Content-Type': data ? type : undefined
+              }, customHeaders),
+              signal: controller.signal
+            }, customConfig);
+            csrfToken = getCookie('XSRF-TOKEN');
+
+            if (csrfToken !== undefined) {
+              config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
+            }
+
+            fetchRequest = new window.Request(endpoint, config);
+            _context2.next = 9;
+            return window.fetch(fetchRequest);
+
+          case 9:
+            fetchResponse = _context2.sent;
+            _context2.next = 12;
+            return unwrapResponseData(fetchResponse);
+
+          case 12:
+            responseData = _context2.sent;
+            return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
+              var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(resolve, reject) {
+                return _regeneratorRuntime.wrap(function _callee$(_context) {
+                  while (1) {
+                    switch (_context.prev = _context.next) {
+                      case 0:
+                        if (!(fetchResponse.ok && fetchResponse.status >= 200 && fetchResponse.status < 300)) {
+                          _context.next = 3;
+                          break;
+                        }
+
+                        fetchResponse.data = responseData;
+                        return _context.abrupt("return", resolve(fetchResponse));
+
+                      case 3:
+                        return _context.abrupt("return", reject(normalizeError(responseData, fetchRequest, fetchResponse)));
+
+                      case 4:
+                      case "end":
+                        return _context.stop();
+                    }
+                  }
+                }, _callee);
+              }));
+
+              return function (_x2, _x3) {
+                return _ref3.apply(this, arguments);
+              };
+            }()));
+
+          case 16:
+            _context2.prev = 16;
+            _context2.t0 = _context2["catch"](2);
+            return _context2.abrupt("return", Promise.reject(normalizeTransportError(_context2.t0)));
+
+          case 19:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[2, 16]]);
+  }));
+
+  return function client(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+var unabortableClient = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(endpoint) {
+    var data,
+        _ref5,
+        customHeaders,
+        _ref5$accept,
+        accept,
+        _ref5$type,
+        type,
+        customConfig,
+        config,
+        csrfToken,
+        fetchRequest,
+        fetchResponse,
+        responseData,
+        _args4 = arguments;
+
+    return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            data = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : undefined;
+            _ref5 = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : {}, customHeaders = _ref5.headers, _ref5$accept = _ref5.accept, accept = _ref5$accept === void 0 ? TYPE_JSON : _ref5$accept, _ref5$type = _ref5.type, type = _ref5$type === void 0 ? TYPE_JSON : _ref5$type, customConfig = _objectWithoutProperties(_ref5, _excluded2$2);
+            _context4.prev = 2;
+            config = _objectSpread$8({
+              method: data ? 'POST' : 'GET',
+              body: data ? JSON.stringify(data) : undefined,
+              headers: _objectSpread$8({
+                'Accept': accept ? accept : null,
+                'Content-Type': data ? type : undefined
+              }, customHeaders)
+            }, customConfig);
+            csrfToken = getCookie('XSRF-TOKEN');
+
+            if (csrfToken !== undefined) {
+              config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
+            }
+
+            fetchRequest = new window.Request(endpoint, config);
+            _context4.next = 9;
+            return window.fetch(fetchRequest);
+
+          case 9:
+            fetchResponse = _context4.sent;
+            _context4.next = 12;
+            return unwrapResponseData(fetchResponse);
+
+          case 12:
+            responseData = _context4.sent;
+            return _context4.abrupt("return", new Promise( /*#__PURE__*/function () {
+              var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
+                return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+                  while (1) {
+                    switch (_context3.prev = _context3.next) {
+                      case 0:
+                        if (!(fetchResponse.ok && fetchResponse.status >= 200 && fetchResponse.status < 300)) {
+                          _context3.next = 3;
+                          break;
+                        }
+
+                        fetchResponse.data = responseData;
+                        return _context3.abrupt("return", resolve(fetchResponse));
+
+                      case 3:
+                        return _context3.abrupt("return", reject(normalizeError(responseData, fetchRequest, fetchResponse)));
+
+                      case 4:
+                      case "end":
+                        return _context3.stop();
+                    }
+                  }
+                }, _callee3);
+              }));
+
+              return function (_x5, _x6) {
+                return _ref6.apply(this, arguments);
+              };
+            }()));
+
+          case 16:
+            _context4.prev = 16;
+            _context4.t0 = _context4["catch"](2);
+            return _context4.abrupt("return", Promise.reject(normalizeTransportError(_context4.t0)));
+
+          case 19:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4, null, [[2, 16]]);
+  }));
+
+  return function unabortableClient(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+var normalizeError = function normalizeError(data, fetchRequest, fetchResponse) {
+  if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
+    new Promise( /*#__PURE__*/function () {
+      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(resolve, reject) {
+        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return unabortableClient('/api/logout', {});
+
+              case 3:
+                localStorage.setItem('WA_Login', window.location.href);
+                window.location.replace("//" + window.location.hostname + '/login?logout');
+                resolve(true);
+                _context5.next = 11;
+                break;
+
+              case 8:
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](0);
+                return _context5.abrupt("return", reject(_context5.t0));
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 8]]);
+      }));
+
+      return function (_x7, _x8) {
+        return _ref7.apply(this, arguments);
+      };
+    }());
+  }
+
+  var error = {
+    data: _objectSpread$8({
+      type: "ServerError",
+      message: UNEXPECTED_ERROR_MESSAGE
+    }, data),
+    status: {
+      code: fetchResponse.status,
+      text: fetchResponse.statusText,
+      isAbort: false
+    },
+    // The following data is being provided for debugging
+    request: fetchRequest,
+    response: fetchResponse
+  };
+  return error;
+};
+
+var normalizeTransportError = function normalizeTransportError(transportError) {
+  return {
+    data: {
+      type: "TransportError",
+      message: UNEXPECTED_ERROR_MESSAGE,
+      rootCause: transportError
+    },
+    status: {
+      code: 0,
+      text: "Unknown",
+      isAbort: transportError.name === "AbortError"
+    }
+  };
+};
+
+var unwrapResponseData = /*#__PURE__*/function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(response) {
+    var contentType;
+    return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            if (!(response.status === 204)) {
+              _context6.next = 2;
+              break;
+            }
+
+            return _context6.abrupt("return");
+
+          case 2:
+            contentType = response.headers.has('Content-Type') ? response.headers.get('Content-Type') : "";
+
+            if (!RE_CONTENT_TYPE_JSON.test(contentType)) {
+              _context6.next = 9;
+              break;
+            }
+
+            _context6.next = 6;
+            return response.json();
+
+          case 6:
+            return _context6.abrupt("return", _context6.sent);
+
+          case 9:
+            if (!RE_CONTENT_TYPE_TEXT.test(contentType)) {
+              _context6.next = 15;
+              break;
+            }
+
+            _context6.next = 12;
+            return response.text();
+
+          case 12:
+            return _context6.abrupt("return", _context6.sent);
+
+          case 15:
+            _context6.next = 17;
+            return response.blob();
+
+          case 17:
+            return _context6.abrupt("return", _context6.sent);
+
+          case 18:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function unwrapResponseData(_x9) {
+    return _ref8.apply(this, arguments);
+  };
+}();var propTypes = {exports: {}};var reactIs$1 = {exports: {}};var reactIs_production_min$1 = {};/** @license React v16.13.1
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -1336,7 +1675,6 @@ Loader.defaultProps = {
 };function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
 function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-axios.defaults.withCredentials = true;
 
 var Auth = /*#__PURE__*/function (_Component) {
   _inherits$1(Auth, _Component);
@@ -1358,21 +1696,20 @@ var Auth = /*#__PURE__*/function (_Component) {
               case 0:
                 return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
                   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(resolve, reject) {
-                    var formData;
                     return _regeneratorRuntime.wrap(function _callee$(_context) {
                       while (1) {
                         switch (_context.prev = _context.next) {
                           case 0:
-                            formData = new FormData();
-                            formData.append('permission', permission);
-                            _context.next = 4;
-                            return axios.post('/api/permission/check', formData).then(function (json) {
-                              return resolve(json.data.has_permission);
+                            _context.next = 2;
+                            return client('/api/permission/check', {
+                              'permission': permission
+                            }).then(function (data) {
+                              return resolve(data.has_permission);
                             })["catch"](function (error) {
                               return reject(error);
                             });
 
-                          case 4:
+                          case 2:
                           case "end":
                             return _context.stop();
                         }
@@ -1406,21 +1743,20 @@ var Auth = /*#__PURE__*/function (_Component) {
               case 0:
                 return _context4.abrupt("return", new Promise( /*#__PURE__*/function () {
                   var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
-                    var formData;
                     return _regeneratorRuntime.wrap(function _callee3$(_context3) {
                       while (1) {
                         switch (_context3.prev = _context3.next) {
                           case 0:
-                            formData = new FormData();
-                            formData.append('group', group);
-                            _context3.next = 4;
-                            return axios.post('/api/group/check', formData).then(function (json) {
-                              return resolve(json.data.in_group);
+                            _context3.next = 2;
+                            return client('/api/group/check', {
+                              'group': group
+                            }).then(function (data) {
+                              return resolve(data.in_group);
                             })["catch"](function (error) {
                               return reject(error);
                             });
 
-                          case 4:
+                          case 2:
                           case "end":
                             return _context3.stop();
                         }
@@ -1448,7 +1784,7 @@ var Auth = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "setPreference", /*#__PURE__*/function () {
       var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(preference, value) {
-        var preferences, formData;
+        var preferences;
         return _regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
@@ -1458,19 +1794,24 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                 _this.setState({
                   preferences: preferences
-                });
+                }); // let formData = new FormData();
+                // formData.append('_method', 'PUT');
+                // formData.append('preference', preference);
+                // formData.append('value', value);
 
-                formData = new FormData();
-                formData.append('_method', 'PUT');
-                formData.append('preference', preference);
-                formData.append('value', value);
-                _context5.next = 9;
-                return axios.post('/api/user/preference', formData)["catch"](function (error) {
+
+                _context5.next = 5;
+                return client('/api/user/preference', {
+                  'preference': preference,
+                  'value': value
+                }, {
+                  method: 'PUT'
+                })["catch"](function (error) {
                   // TODO: Handle errors
                   console.log(error);
                 });
 
-              case 9:
+              case 5:
               case "end":
                 return _context5.stop();
             }
@@ -1497,13 +1838,18 @@ var Auth = /*#__PURE__*/function (_Component) {
   }
 
   _createClass$1(Auth, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      controller.abort();
+    }
+  }, {
     key: "signIn",
     value: function signIn(username, password) {
       var _this2 = this;
 
       return new Promise( /*#__PURE__*/function () {
         var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(resolve, reject) {
-          var _yield$axios$get, data, preferences;
+          var _yield$client, data, preferences;
 
           return _regeneratorRuntime.wrap(function _callee6$(_context6) {
             while (1) {
@@ -1511,23 +1857,25 @@ var Auth = /*#__PURE__*/function (_Component) {
                 case 0:
                   _context6.prev = 0;
                   _context6.next = 3;
-                  return axios.get('/sanctum/csrf_cookie');
+                  return client('/sanctum/csrf_cookie', undefined, {
+                    accept: 'text/html'
+                  });
 
                 case 3:
                   _context6.next = 5;
-                  return axios.post('/login', {
+                  return client('/login', {
                     username: username,
                     password: password
                   });
 
                 case 5:
                   _context6.next = 7;
-                  return axios.get('/api/user');
+                  return client('/api/user');
 
                 case 7:
-                  _yield$axios$get = _context6.sent;
-                  data = _yield$axios$get.data;
-                  preferences = data.preferences;
+                  _yield$client = _context6.sent;
+                  data = _yield$client.data;
+                  preferences = data.preferences ? data.preferences : {};
                   delete data.preferences;
 
                   _this2.setState({
@@ -1569,7 +1917,7 @@ var Auth = /*#__PURE__*/function (_Component) {
                 case 0:
                   _context7.prev = 0;
                   _context7.next = 3;
-                  return axios.post('/api/logout');
+                  return unabortableClient('/api/logout', {});
 
                 case 3:
                   _this3.setState({
@@ -1615,38 +1963,41 @@ var Auth = /*#__PURE__*/function (_Component) {
 
       return new Promise( /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee8(resolve, reject) {
-          var _yield$axios$get2, data;
+          var _yield$client2, data, preferences;
 
           return _regeneratorRuntime.wrap(function _callee8$(_context8) {
             while (1) {
               switch (_context8.prev = _context8.next) {
                 case 0:
                   if (!(_this4.state.authenticated === null)) {
-                    _context8.next = 20;
+                    _context8.next = 22;
                     break;
                   }
 
                   _context8.prev = 1;
                   _context8.next = 4;
-                  return axios.get('/api/user');
+                  return client('/api/user');
 
                 case 4:
-                  _yield$axios$get2 = _context8.sent;
-                  data = _yield$axios$get2.data;
+                  _yield$client2 = _context8.sent;
+                  data = _yield$client2.data;
+                  preferences = data.preferences ? data.preferences : {};
+                  delete data.preferences;
 
                   _this4.setState({
                     user: data,
-                    authenticated: true
+                    authenticated: true,
+                    preferences: preferences
                   });
 
                   return _context8.abrupt("return", resolve(true));
 
-                case 10:
-                  _context8.prev = 10;
+                case 12:
+                  _context8.prev = 12;
                   _context8.t0 = _context8["catch"](1);
 
                   if (!(_context8.t0.response && _context8.t0.response.status === 401)) {
-                    _context8.next = 17;
+                    _context8.next = 19;
                     break;
                   }
 
@@ -1659,22 +2010,22 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                   return _context8.abrupt("return", resolve(false));
 
-                case 17:
+                case 19:
                   return _context8.abrupt("return", reject(_context8.t0));
 
-                case 18:
-                  _context8.next = 21;
+                case 20:
+                  _context8.next = 23;
                   break;
 
-                case 20:
+                case 22:
                   return _context8.abrupt("return", resolve(_this4.state.authenticated));
 
-                case 21:
+                case 23:
                 case "end":
                   return _context8.stop();
               }
             }
-          }, _callee8, null, [[1, 10]]);
+          }, _callee8, null, [[1, 12]]);
         }));
 
         return function (_x13, _x14) {
@@ -3604,8 +3955,6 @@ var useUI = createLocalStorageStateHook('UI', {
 });
 
 var WebAppsProvider = function WebAppsProvider(props) {
-  var unmounted = useRef(false);
-
   var _useUI = useUI(),
       _useUI2 = _slicedToArray(_useUI, 2),
       UI = _useUI2[0],
@@ -3640,40 +3989,37 @@ var WebAppsProvider = function WebAppsProvider(props) {
     getApps();
     getPlugins();
     return function () {
-      unmounted.current = true;
+      controller.abort();
     };
   }, []);
 
   var toggleModal = function toggleModal(modal) {
-    setModals({
-      modal: !modals[modal]
-    });
+    if (unmounted.current) {
+      setModals({
+        modal: !modals[modal]
+      });
+    }
   };
 
   var loadUI = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              formData = new FormData();
-              formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
-              _context.next = 4;
-              return axios.post('/api/setting', formData).then(function (json) {
-                if (!unmounted.current) {
-                  UI.theme = json.data['core.ui.theme'];
-                  UI.dark_mode = json.data['core.ui.dark_mode'];
-                  setUI(_objectSpread$4({}, UI));
-                }
+              _context.next = 2;
+              return client('/api/setting', {
+                key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode'])
+              }).then(function (json) {
+                UI.theme = json.data['core.ui.theme'];
+                UI.dark_mode = json.data['core.ui.dark_mode'];
+                setUI(_objectSpread$4({}, UI));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.log(error);
-                }
+                // TODO: handle errors
+                console.log(error);
               });
 
-            case 4:
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -3693,21 +4039,17 @@ var WebAppsProvider = function WebAppsProvider(props) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios.get('/api/navigation').then(function (json) {
-                if (!unmounted.current) {
-                  navigation.menu = json.data.navigation;
-                  navigation.routes = json.data.routes;
-                  UI.envWriteable = json.data.envPermissions;
-                  setNavigation(_objectSpread$4({}, navigation));
-                  setUI(_objectSpread$4({}, UI));
-                }
+              return client('/api/navigation').then(function (json) {
+                navigation.menu = json.data.navigation;
+                navigation.routes = json.data.routes;
+                UI.envWriteable = json.data.envPermissions;
+                setNavigation(_objectSpread$4({}, navigation));
+                setUI(_objectSpread$4({}, UI));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  var nav = [];
-                  nav['error'] = true;
-                  nav['message'] = error.response.data.message;
-                  setNavigation(nav);
-                }
+                var nav = [];
+                nav['error'] = true;
+                nav['message'] = error.response.data.message;
+                setNavigation(nav);
               });
 
             case 2:
@@ -3730,30 +4072,22 @@ var WebAppsProvider = function WebAppsProvider(props) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return axios.get('/api/apps').then(function (json) {
-                if (!unmounted.current) {
-                  apps.local = json.data.apps;
-                  setApps(_objectSpread$4({}, apps));
-                }
+              return client('/api/apps').then(function (json) {
+                apps.local = json.data.apps;
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TOOD: Handle errors
-                  console.error(error);
-                }
+                // TOOD: Handle errors
+                console.error(error);
               });
 
             case 2:
               _context3.next = 4;
-              return axios.get('/api/online/apps/list').then(function (json) {
-                if (!unmounted.current) {
-                  apps.online = json.data.apps;
-                  setApps(_objectSpread$4({}, apps));
-                }
+              return client('/api/online/apps/list').then(function (json) {
+                apps.online = json.data.apps;
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.log(error);
-                }
+                // TODO: handle errors
+                console.log(error);
               });
 
             case 4:
@@ -3776,44 +4110,32 @@ var WebAppsProvider = function WebAppsProvider(props) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios.get('/api/plugins').then(function (json) {
-                if (!unmounted.current) {
-                  plugins.all = json.data.plugins;
-                  setPlugins(_objectSpread$4({}, plugins));
-                }
+              return client('/api/plugins').then(function (json) {
+                plugins.all = json.data.plugins;
+                setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TOOD: Handle errors
-                  console.error(error);
-                }
+                // TOOD: Handle errors
+                console.error(error);
               });
 
             case 2:
               _context4.next = 4;
-              return axios.get('/api/plugins/active').then(function (json) {
-                if (!unmounted.current) {
-                  plugins.active = json.data.plugins;
-                  setPlugins(_objectSpread$4({}, plugins));
-                }
+              return client('/api/plugins/active').then(function (json) {
+                plugins.active = json.data.plugins;
+                setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TOOD: Handle errors
-                  console.error(error);
-                }
+                // TOOD: Handle errors
+                console.error(error);
               });
 
             case 4:
               _context4.next = 6;
-              return axios.get('/api/online/plugins/list').then(function (json) {
-                if (!unmounted.current) {
-                  plugins.online = json.data.plugins;
-                  setPlugins(_objectSpread$4({}, plugins));
-                }
+              return client('/api/online/plugins/list').then(function (json) {
+                plugins.online = json.data.plugins;
+                setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.log(error);
-                }
+                // TODO: handle errors
+                console.log(error);
               });
 
             case 6:
@@ -3831,32 +4153,29 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var downloadApp = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              _context5.next = 5;
-              return axios.post('/api/online/apps/download', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
-                    appearance: 'success'
-                  });
-                  apps.local = json.data.apps;
-                  apps.online = json.data.online;
-                  setApps(_objectSpread$4({}, apps));
-                }
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+
+              _context5.next = 3;
+              return client('/api/online/apps/download', {
+                slug: e.target.dataset.slug
+              }).then(function (json) {
+                addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
+                  appearance: 'success'
+                });
+                apps.local = json.data.apps;
+                apps.online = json.data.online;
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.log(error);
-                }
+                // TODO: handle errors
+                console.log(error);
               });
 
-            case 5:
+            case 3:
             case "end":
               return _context5.stop();
           }
@@ -3871,32 +4190,29 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var updateApp = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              _context6.next = 5;
-              return axios.post('/api/online/apps/download', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(e.target.dataset.slug, "Has been updated", {
-                    appearance: 'success'
-                  });
-                  apps.local = json.data.apps;
-                  apps.online = json.data.online;
-                  setApps(_objectSpread$4({}, apps));
-                }
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+
+              _context6.next = 3;
+              return client('/api/online/apps/download', {
+                slug: e.target.dataset.slug
+              }).then(function (json) {
+                addToast(e.target.dataset.slug, "Has been updated", {
+                  appearance: 'success'
+                });
+                apps.local = json.data.apps;
+                apps.online = json.data.online;
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.log(error);
-                }
+                // TODO: handle errors
+                console.log(error);
               });
 
-            case 5:
+            case 3:
             case "end":
               return _context6.stop();
           }
@@ -3911,44 +4227,42 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var activateApp = /*#__PURE__*/function () {
     var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee7$(_context7) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              formData.append('task', 'activate');
-              _context7.next = 6;
-              return axios.post('/api/apps/control', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.message, '', {
-                    appearance: 'success'
-                  }); // Reload Navigation
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+              // formData.append('task', 'activate');
 
-                  // Reload Navigation
-                  loadNavigation();
-                  Object.keys(apps.local).map(function (key) {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                      apps.local[key].active = true;
-                    }
-                  });
-                  Object.keys(apps.online).map(function (key) {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                      apps.online[key].active = true;
-                    }
-                  });
-                  setApps(_objectSpread$4({}, apps));
-                }
+              _context7.next = 3;
+              return client('/api/apps/control', {
+                slug: e.target.dataset.slug,
+                task: 'activate'
+              }).then(function (json) {
+                addToast(json.data.message, '', {
+                  appearance: 'success'
+                }); // Reload Navigation
+
+                // Reload Navigation
+                loadNavigation();
+                Object.keys(apps.local).map(function (key) {
+                  if (e.target.dataset.slug === apps.local[key].slug) {
+                    apps.local[key].active = true;
+                  }
+                });
+                Object.keys(apps.online).map(function (key) {
+                  if (e.target.dataset.slug === apps.online[key].slug) {
+                    apps.online[key].active = true;
+                  }
+                });
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.error(error);
-                }
+                // TODO: handle errors
+                console.error(error);
               });
 
-            case 6:
+            case 3:
             case "end":
               return _context7.stop();
           }
@@ -3963,44 +4277,42 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var deactivateApp = /*#__PURE__*/function () {
     var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee8(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee8$(_context8) {
         while (1) {
           switch (_context8.prev = _context8.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              formData.append('task', 'deactivate');
-              _context8.next = 6;
-              return axios.post('/api/apps/control', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.message, '', {
-                    appearance: 'success'
-                  }); // Reload Navigation
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+              // formData.append('task', 'deactivate');
 
-                  // Reload Navigation
-                  loadNavigation();
-                  Object.keys(apps.local).map(function (key) {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                      apps.local[key].active = false;
-                    }
-                  });
-                  Object.keys(apps.online).map(function (key) {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                      apps.online[key].active = false;
-                    }
-                  });
-                  setApps(_objectSpread$4({}, apps));
-                }
+              _context8.next = 3;
+              return client('/api/apps/control', {
+                slug: e.target.dataset.slug,
+                task: 'deactivate'
+              }).then(function (json) {
+                addToast(json.data.message, '', {
+                  appearance: 'success'
+                }); // Reload Navigation
+
+                // Reload Navigation
+                loadNavigation();
+                Object.keys(apps.local).map(function (key) {
+                  if (e.target.dataset.slug === apps.local[key].slug) {
+                    apps.local[key].active = false;
+                  }
+                });
+                Object.keys(apps.online).map(function (key) {
+                  if (e.target.dataset.slug === apps.online[key].slug) {
+                    apps.online[key].active = false;
+                  }
+                });
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.error(error);
-                }
+                // TODO: handle errors
+                console.error(error);
               });
 
-            case 6:
+            case 3:
             case "end":
               return _context8.stop();
           }
@@ -4015,44 +4327,42 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var installApp = /*#__PURE__*/function () {
     var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee9(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee9$(_context9) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              formData.append('task', 'install');
-              _context9.next = 6;
-              return axios.post('/api/apps/control', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.message, '', {
-                    appearance: 'success'
-                  }); // Reload Navigation
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+              // formData.append('task', 'install');
 
-                  // Reload Navigation
-                  loadNavigation();
-                  Object.keys(apps.local).map(function (key) {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                      apps.local[key].installed = true;
-                    }
-                  });
-                  Object.keys(apps.online).map(function (key) {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                      apps.online[key].installed = true;
-                    }
-                  });
-                  setApps(_objectSpread$4({}, apps));
-                }
+              _context9.next = 3;
+              return client('/api/apps/control', {
+                slug: e.target.dataset.slug,
+                task: 'install'
+              }).then(function (json) {
+                addToast(json.data.message, '', {
+                  appearance: 'success'
+                }); // Reload Navigation
+
+                // Reload Navigation
+                loadNavigation();
+                Object.keys(apps.local).map(function (key) {
+                  if (e.target.dataset.slug === apps.local[key].slug) {
+                    apps.local[key].installed = true;
+                  }
+                });
+                Object.keys(apps.online).map(function (key) {
+                  if (e.target.dataset.slug === apps.online[key].slug) {
+                    apps.online[key].installed = true;
+                  }
+                });
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.error(error);
-                }
+                // TODO: handle errors
+                console.error(error);
               });
 
-            case 6:
+            case 3:
             case "end":
               return _context9.stop();
           }
@@ -4067,43 +4377,41 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var uninstallApp = /*#__PURE__*/function () {
     var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee10(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee10$(_context10) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              formData.append('task', 'uninstall');
-              _context10.next = 6;
-              return axios.post('/api/apps/control', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.message, '', {
-                    appearance: 'success'
-                  });
-                  var _apps2 = [];
-                  Object.keys(apps.local).map(function (key) {
-                    if (e.target.dataset.slug !== apps.local[key].slug) {
-                      _apps2.push(apps.local[key]);
-                    }
-                  });
-                  apps.local = _apps2;
-                  Object.keys(apps.online).map(function (key) {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                      apps.online[key] = json.data.app;
-                    }
-                  });
-                  setApps(_objectSpread$4({}, apps));
-                }
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+              // formData.append('task', 'uninstall');
+
+              _context10.next = 3;
+              return client('/api/apps/control', {
+                slug: e.target.dataset.slug,
+                task: 'uninstall'
+              }).then(function (json) {
+                addToast(json.data.message, '', {
+                  appearance: 'success'
+                });
+                var _apps = [];
+                Object.keys(apps.local).map(function (key) {
+                  if (e.target.dataset.slug !== apps.local[key].slug) {
+                    _apps.push(apps.local[key]);
+                  }
+                });
+                apps.local = _apps;
+                Object.keys(apps.online).map(function (key) {
+                  if (e.target.dataset.slug === apps.online[key].slug) {
+                    apps.online[key] = json.data.app;
+                  }
+                });
+                setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.error(error);
-                }
+                // TODO: handle errors
+                console.error(error);
               });
 
-            case 6:
+            case 3:
             case "end":
               return _context10.stop();
           }
@@ -4118,32 +4426,29 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var downloadPlugin = /*#__PURE__*/function () {
     var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee11(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee11$(_context11) {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              _context11.next = 5;
-              return axios.post('/api/online/plugins/download', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.message, '', {
-                    appearance: 'success'
-                  });
-                  plugins.all = json.data.plugins;
-                  plugins.online = json.data.online;
-                  setPlugins(_objectSpread$4({}, plugins));
-                }
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+
+              _context11.next = 3;
+              return client('/api/online/plugins/download', {
+                slug: e.target.dataset.slug
+              }).then(function (json) {
+                addToast(json.data.message, '', {
+                  appearance: 'success'
+                });
+                plugins.all = json.data.plugins;
+                plugins.online = json.data.online;
+                setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.log(error);
-                }
+                // TODO: handle errors
+                console.log(error);
               });
 
-            case 5:
+            case 3:
             case "end":
               return _context11.stop();
           }
@@ -4158,32 +4463,29 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var updatePlugin = /*#__PURE__*/function () {
     var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee12(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              _context12.next = 5;
-              return axios.post('/api/online/plugins/download', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.message, '', {
-                    appearance: 'success'
-                  });
-                  plugins.all = json.data.plugins;
-                  plugins.online = json.data.online;
-                  setPlugins(_objectSpread$4({}, plugins));
-                }
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+
+              _context12.next = 3;
+              return client('/api/online/plugins/download', {
+                slug: e.target.dataset.slug
+              }).then(function (json) {
+                addToast(json.data.message, '', {
+                  appearance: 'success'
+                });
+                plugins.all = json.data.plugins;
+                plugins.online = json.data.online;
+                setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.log(error);
-                }
+                // TODO: handle errors
+                console.log(error);
               });
 
-            case 5:
+            case 3:
             case "end":
               return _context12.stop();
           }
@@ -4198,44 +4500,41 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var togglePlugin = /*#__PURE__*/function () {
     var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee13(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee13$(_context13) {
         while (1) {
           switch (_context13.prev = _context13.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('slug', e.target.dataset.slug);
-              _context13.next = 5;
-              return axios.post('/api/plugins/toggle', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.plugin.name, json.data.message, {
-                    appearance: 'success'
-                  });
-                  Object.keys(plugins.all).map(function (key) {
-                    if (e.target.dataset.slug === plugins.all[key].slug) {
-                      plugins.all[key].state = json.data.plugin.state;
-                      plugins.all[key].installed = true;
-                      delete plugins.all[key].downloaded;
-                    }
-                  });
-                  Object.keys(plugins.online).map(function (key) {
-                    if (e.target.dataset.slug === plugins.online[key].slug) {
-                      plugins.online[key].state = json.data.plugin.state;
-                      plugins.online[key].installed = true;
-                      delete plugins.online[key].downloaded;
-                    }
-                  });
-                  setPlugins(_objectSpread$4({}, plugins));
-                }
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('slug', e.target.dataset.slug);
+
+              _context13.next = 3;
+              return client('/api/plugins/toggle', {
+                slug: e.target.dataset.slug
+              }).then(function (json) {
+                addToast(json.data.plugin.name, json.data.message, {
+                  appearance: 'success'
+                });
+                Object.keys(plugins.all).map(function (key) {
+                  if (e.target.dataset.slug === plugins.all[key].slug) {
+                    plugins.all[key].state = json.data.plugin.state;
+                    plugins.all[key].installed = true;
+                    delete plugins.all[key].downloaded;
+                  }
+                });
+                Object.keys(plugins.online).map(function (key) {
+                  if (e.target.dataset.slug === plugins.online[key].slug) {
+                    plugins.online[key].state = json.data.plugin.state;
+                    plugins.online[key].installed = true;
+                    delete plugins.online[key].downloaded;
+                  }
+                });
+                setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.error(error);
-                }
+                // TODO: handle errors
+                console.error(error);
               });
 
-            case 5:
+            case 3:
             case "end":
               return _context13.stop();
           }
@@ -4250,43 +4549,43 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
   var uninstallPlugin = /*#__PURE__*/function () {
     var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee14(e) {
-      var formData;
       return _regeneratorRuntime.wrap(function _callee14$(_context14) {
         while (1) {
           switch (_context14.prev = _context14.next) {
             case 0:
-              e.preventDefault();
-              formData = new FormData();
-              formData.append('_method', 'DELETE');
-              formData.append('slug', e.target.dataset.slug);
-              _context14.next = 6;
-              return axios.post('/api/plugin', formData).then(function (json) {
-                if (!unmounted.current) {
-                  addToast(json.data.plugin.name, json.data.message, {
-                    appearance: 'success'
-                  });
-                  var _plugins2 = [];
-                  Object.keys(plugins.all).map(function (key) {
-                    if (e.target.dataset.slug !== plugins.all[key].slug) {
-                      _plugins2.push(plugins.all[key]);
-                    }
-                  });
-                  plugins.all = _plugins2;
-                  Object.keys(plugins.online).map(function (key) {
-                    if (e.target.dataset.slug === plugins.online[key].slug) {
-                      plugins.online[key] = json.data.plugin;
-                    }
-                  });
-                  setPlugins(_objectSpread$4({}, plugins));
-                }
+              e.preventDefault(); // let formData = new FormData();
+              // formData.append('_method', 'DELETE');
+              // formData.append('slug', e.target.dataset.slug);
+
+              _context14.next = 3;
+              return client('/api/plugin', {
+                slug: e.target.dataset.slug,
+                '_method': 'DELETE'
+              }, {
+                method: 'DELETE'
+              }).then(function (json) {
+                addToast(json.data.plugin.name, json.data.message, {
+                  appearance: 'success'
+                });
+                var _plugins = [];
+                Object.keys(plugins.all).map(function (key) {
+                  if (e.target.dataset.slug !== plugins.all[key].slug) {
+                    _plugins.push(plugins.all[key]);
+                  }
+                });
+                plugins.all = _plugins;
+                Object.keys(plugins.online).map(function (key) {
+                  if (e.target.dataset.slug === plugins.online[key].slug) {
+                    plugins.online[key] = json.data.plugin;
+                  }
+                });
+                setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                if (!unmounted.current) {
-                  // TODO: handle errors
-                  console.error(error);
-                }
+                // TODO: handle errors
+                console.error(error);
               });
 
-            case 6:
+            case 3:
             case "end":
               return _context14.stop();
           }
@@ -23347,6 +23646,8 @@ AppError.defaultProps = {
 
 var returnLibrary = function returnLibrary() {
   return {
+    APIClient: client,
+    APIController: controller,
     Badge: Badge,
     Banner: Banner,
     Button: Button,

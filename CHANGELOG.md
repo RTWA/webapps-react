@@ -1,3 +1,8 @@
+## Version 1.8.0
+- Removed Peer Dependency for Axios
+- Added new `APIClient` fetch wrapper for making API calls
+- Added new `APIController` fetch AbortController to be able to Abort running requests
+
 ## Version 1.7.6
 - Fixed updating `App` or `Plugin` from the `<AppPluginChangelog />` Component
 - General Improvements
