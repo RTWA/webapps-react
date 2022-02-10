@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AuthContext from './AuthContext';
-import { client, controller } from '../../API';
+import { client, controller, unabortableClient } from '../../API';
 import Loader from '../../Components/Loader';
 
 class Auth extends Component {
@@ -46,7 +46,7 @@ class Auth extends Component {
     signOut() {
         new Promise(async (resolve, reject) => {
             try {
-                await client('/api/logout', {});
+                await unabortableClient('/api/logout', {});
                 this.setState({ user: null, authenticated: false });
 
                 window.location.replace("//" + window.location.hostname + '/login?logout');

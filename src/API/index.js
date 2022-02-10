@@ -19,9 +19,7 @@ export const client = async (
         ...customConfig
     } = {}
 ) => {
-
     try {
-
         const config = {
             method: data ? 'POST' : 'GET',
             body: data ? JSON.stringify(data) : undefined,
@@ -56,7 +54,64 @@ export const client = async (
     }
 }
 
+export const unabortableClient = async (
+    endpoint,
+    data = undefined,
+    {
+        headers: customHeaders,
+        accept: accept = TYPE_JSON,
+        type: type = TYPE_JSON,
+        ...customConfig
+    } = {}
+) => {
+    try {
+        const config = {
+            method: data ? 'POST' : 'GET',
+            body: data ? JSON.stringify(data) : undefined,
+            headers: {
+                'Accept': accept ? accept : null,
+                'Content-Type': data ? type : undefined,
+                ...customHeaders
+            },
+            ...customConfig,
+        }
+
+        const csrfToken = getCookie('XSRF-TOKEN');
+        if (csrfToken !== undefined) {
+            config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
+        }
+
+        const fetchRequest = new window.Request(endpoint, config)
+        const fetchResponse = await window.fetch(fetchRequest);
+        const responseData = await unwrapResponseData(fetchResponse);
+
+        return new Promise(async (resolve, reject) => {
+            if (fetchResponse.ok && (fetchResponse.status >= 200 && fetchResponse.status < 300)) {
+                fetchResponse.data = responseData;
+                return resolve(fetchResponse);
+            }
+
+            return reject(normalizeError(responseData, fetchRequest, fetchResponse));
+        });
+    } catch (error) {
+        return Promise.reject(normalizeTransportError(error));
+    }
+}
+
 const normalizeError = (data, fetchRequest, fetchResponse) => {
+    if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
+        new Promise(async (resolve, reject) => {
+            try {
+                await unabortableClient('/api/logout', {});
+                localStorage.setItem('WA_Login', window.location.href);
+                window.location.replace("//" + window.location.hostname + '/login?logout');
+                resolve(true);
+            } catch (error) {
+                return reject(error);
+            }
+        });
+    }
+
     var error = {
         data: {
             type: "ServerError",
