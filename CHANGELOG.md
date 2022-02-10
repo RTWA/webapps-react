@@ -1,3 +1,6 @@
+## Version 1.8.1
+- Security Updates
+
 ## Version 1.8.0
 - Removed Peer Dependency for Axios
 - Added new `APIClient` fetch wrapper for making API calls
