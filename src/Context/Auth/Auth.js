@@ -124,15 +124,12 @@ class Auth extends Component {
         preferences[preference] = value;
         this.setState({ preferences });
 
-        // let formData = new FormData();
-        // formData.append('_method', 'PUT');
-        // formData.append('preference', preference);
-        // formData.append('value', value);
-
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT' })
             .catch(error => {
-                // TODO: Handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             })
     }
 

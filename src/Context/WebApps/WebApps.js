@@ -46,8 +46,10 @@ const WebAppsProvider = props => {
                 setUI({ ...UI });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -76,8 +78,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TOOD: Handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
         await client('/api/online/apps/list')
             .then(json => {
@@ -85,8 +89,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -97,8 +103,10 @@ const WebAppsProvider = props => {
                 setPlugins({ ...plugins });
             })
             .catch(error => {
-                // TOOD: Handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
         await client('/api/plugins/active')
             .then(json => {
@@ -106,8 +114,10 @@ const WebAppsProvider = props => {
                 setPlugins({ ...plugins });
             })
             .catch(error => {
-                // TOOD: Handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
         await client('/api/online/plugins/list')
             .then(json => {
@@ -115,8 +125,10 @@ const WebAppsProvider = props => {
                 setPlugins({ ...plugins });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -132,8 +144,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -149,8 +163,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -179,8 +195,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -209,8 +227,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -239,8 +259,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -269,8 +291,10 @@ const WebAppsProvider = props => {
                 setApps({ ...apps });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -287,8 +311,10 @@ const WebAppsProvider = props => {
                 setPlugins({ ...plugins });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -305,8 +331,10 @@ const WebAppsProvider = props => {
                 setPlugins({ ...plugins });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -335,8 +363,10 @@ const WebAppsProvider = props => {
                 setPlugins({ ...plugins });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 
@@ -364,8 +394,10 @@ const WebAppsProvider = props => {
                 setPlugins({ ...plugins });
             })
             .catch(error => {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                }
             });
     }
 

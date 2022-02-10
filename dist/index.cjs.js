@@ -1794,11 +1794,7 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                 _this.setState({
                   preferences: preferences
-                }); // let formData = new FormData();
-                // formData.append('_method', 'PUT');
-                // formData.append('preference', preference);
-                // formData.append('value', value);
-
+                });
 
                 _context5.next = 5;
                 return client('/api/user/preference', {
@@ -1807,8 +1803,10 @@ var Auth = /*#__PURE__*/function (_Component) {
                 }, {
                   method: 'PUT'
                 })["catch"](function (error) {
-                  // TODO: Handle errors
-                  console.log(error);
+                  if (!error.status.isAbort) {
+                    // TODO: Handle errors
+                    console.error(error);
+                  }
                 });
 
               case 5:
@@ -4015,8 +4013,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 UI.dark_mode = json.data['core.ui.dark_mode'];
                 setUI(_objectSpread$4({}, UI));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 2:
@@ -4076,8 +4076,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 apps.local = json.data.apps;
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TOOD: Handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 2:
@@ -4086,8 +4088,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 apps.online = json.data.apps;
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 4:
@@ -4114,8 +4118,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 plugins.all = json.data.plugins;
                 setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                // TOOD: Handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 2:
@@ -4124,8 +4130,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 plugins.active = json.data.plugins;
                 setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                // TOOD: Handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 4:
@@ -4134,8 +4142,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 plugins.online = json.data.plugins;
                 setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 6:
@@ -4171,8 +4181,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 apps.online = json.data.online;
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4208,8 +4220,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 apps.online = json.data.online;
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4258,8 +4272,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 });
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4308,8 +4324,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 });
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4358,8 +4376,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 });
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4407,8 +4427,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 });
                 setApps(_objectSpread$4({}, apps));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4444,8 +4466,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 plugins.online = json.data.online;
                 setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4481,8 +4505,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 plugins.online = json.data.online;
                 setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.log(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4530,8 +4556,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 });
                 setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
@@ -4581,8 +4609,10 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 });
                 setPlugins(_objectSpread$4({}, plugins));
               })["catch"](function (error) {
-                // TODO: handle errors
-                console.error(error);
+                if (!error.status.isAbort) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
               });
 
             case 3:
