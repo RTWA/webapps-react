@@ -27,6 +27,7 @@ var client = /*#__PURE__*/function () {
         customConfig,
         config,
         csrfToken,
+        url,
         fetchRequest,
         fetchResponse,
         responseData,
@@ -54,16 +55,17 @@ var client = /*#__PURE__*/function () {
               config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
             }
 
-            fetchRequest = new window.Request(endpoint, config);
-            _context2.next = 9;
+            url = process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test' ? "".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint) : endpoint;
+            fetchRequest = new window.Request(url, config);
+            _context2.next = 10;
             return window.fetch(fetchRequest);
 
-          case 9:
+          case 10:
             fetchResponse = _context2.sent;
-            _context2.next = 12;
+            _context2.next = 13;
             return unwrapResponseData(fetchResponse);
 
-          case 12:
+          case 13:
             responseData = _context2.sent;
             return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
               var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(resolve, reject) {
@@ -95,17 +97,17 @@ var client = /*#__PURE__*/function () {
               };
             }()));
 
-          case 16:
-            _context2.prev = 16;
+          case 17:
+            _context2.prev = 17;
             _context2.t0 = _context2["catch"](2);
             return _context2.abrupt("return", Promise.reject(normalizeTransportError(_context2.t0)));
 
-          case 19:
+          case 20:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[2, 16]]);
+    }, _callee2, null, [[2, 17]]);
   }));
 
   return function client(_x) {

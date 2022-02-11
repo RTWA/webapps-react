@@ -36,8 +36,10 @@ export const client = async (
         if (csrfToken !== undefined) {
             config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
         }
+        const url = (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') ? 
+            `${window.location.origin.replace(/\/$/, "")}${endpoint}` : endpoint;
 
-        const fetchRequest = new window.Request(endpoint, config)
+        const fetchRequest = new window.Request(url, config)
         const fetchResponse = await window.fetch(fetchRequest);
         const responseData = await unwrapResponseData(fetchResponse);
 
