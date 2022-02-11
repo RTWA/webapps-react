@@ -94,7 +94,7 @@ export const unabortableClient = async (
             return reject(normalizeError(responseData, fetchRequest, fetchResponse));
         });
     } catch (error) {
-        return Promise.reject(normalizeTransportError(error));
+        return Promise.reject(normalizeTransportError(error, fetchRequest, fetchResponse));
     }
 }
 
@@ -131,7 +131,7 @@ const normalizeError = (data, fetchRequest, fetchResponse) => {
     return error;
 }
 
-const normalizeTransportError = transportError => {
+const normalizeTransportError = (transportError, fetchRequest, fetchResponse) => {
     return({
         data: {
             type: "TransportError",

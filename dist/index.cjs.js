@@ -194,7 +194,7 @@ var unabortableClient = /*#__PURE__*/function () {
           case 16:
             _context4.prev = 16;
             _context4.t0 = _context4["catch"](2);
-            return _context4.abrupt("return", Promise.reject(normalizeTransportError(_context4.t0)));
+            return _context4.abrupt("return", Promise.reject(normalizeTransportError(_context4.t0, fetchRequest, fetchResponse)));
 
           case 19:
           case "end":
@@ -264,7 +264,7 @@ var normalizeError = function normalizeError(data, fetchRequest, fetchResponse) 
   return error;
 };
 
-var normalizeTransportError = function normalizeTransportError(transportError) {
+var normalizeTransportError = function normalizeTransportError(transportError, fetchRequest, fetchResponse) {
   return {
     data: {
       type: "TransportError",
