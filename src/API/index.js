@@ -36,10 +36,8 @@ export const client = async (
         if (csrfToken !== undefined) {
             config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
         }
-        const url = (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') ? 
-            `${window.location.origin.replace(/\/$/, "")}${endpoint}` : endpoint;
 
-        const fetchRequest = new window.Request(url, config)
+        const fetchRequest = new window.Request(`${window.location.origin.replace(/\/$/, "")}${endpoint}`, config)
         const fetchResponse = await window.fetch(fetchRequest);
         const responseData = await unwrapResponseData(fetchResponse);
 
@@ -83,7 +81,7 @@ export const unabortableClient = async (
             config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
         }
 
-        const fetchRequest = new window.Request(endpoint, config)
+        const fetchRequest = new window.Request(`${window.location.origin.replace(/\/$/, "")}${endpoint}`, config)
         const fetchResponse = await window.fetch(fetchRequest);
         const responseData = await unwrapResponseData(fetchResponse);
 
@@ -106,7 +104,7 @@ const normalizeError = (data, fetchRequest, fetchResponse) => {
             try {
                 await unabortableClient('/api/logout', {});
                 localStorage.setItem('WA_Login', window.location.href);
-                window.location.replace("//" + window.location.hostname + '/login?logout');
+                window.location.replace(window.location.origin + '/login?logout');
                 resolve(true);
             } catch (error) {
                 return reject(error);
@@ -144,7 +142,10 @@ const normalizeTransportError = transportError => {
             code: 0,
             text: "Unknown",
             isAbort: (transportError.name === "AbortError")
-        }
+        },
+        // The following data is being provided for debugging
+        request: fetchRequest,
+        response: fetchResponse,
     });
 }
 
