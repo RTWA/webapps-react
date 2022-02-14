@@ -2331,9 +2331,9 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var isMounted$1 = isMounted = function isMounted() {
+}var isMounted = function isMounted() {
   var isMountedRef = useRef(true);
-  var isMounted = useCallback(function () {
+  var currentIsMounted = useCallback(function () {
     return isMountedRef.current;
   }, []);
   useEffect(function () {
@@ -2341,7 +2341,7 @@ function parseJSON(value) {
       return void (isMountedRef.current = false);
     };
   }, []);
-  return isMounted;
+  return currentIsMounted;
 };var _excluded$l = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
@@ -4086,13 +4086,13 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/setting', {
                 key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode'])
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   UI.theme = json.data['core.ui.theme'];
                   UI.dark_mode = json.data['core.ui.dark_mode'];
                   setUI(_objectSpread$4({}, UI));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4119,7 +4119,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 0:
               _context2.next = 2;
               return client('/api/navigation').then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   navigation.menu = json.data.navigation;
                   navigation.routes = json.data.routes;
                   UI.envWriteable = json.data.envPermissions;
@@ -4127,7 +4127,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setUI(_objectSpread$4({}, UI));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   var nav = [];
                   nav['error'] = true;
                   nav['message'] = error.data.message;
@@ -4156,12 +4156,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 0:
               _context3.next = 2;
               return client('/api/apps').then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   apps.local = json.data.apps;
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4170,12 +4170,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 2:
               _context3.next = 4;
               return client('/api/online/apps/list').then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   apps.online = json.data.apps;
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4202,12 +4202,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 0:
               _context4.next = 2;
               return client('/api/plugins').then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   plugins.all = json.data.plugins;
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4216,12 +4216,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 2:
               _context4.next = 4;
               return client('/api/plugins/active').then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   plugins.active = json.data.plugins;
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4230,12 +4230,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 4:
               _context4.next = 6;
               return client('/api/online/plugins/list').then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   plugins.online = json.data.plugins;
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4265,7 +4265,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
                     appearance: 'success'
                   });
@@ -4274,7 +4274,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4304,7 +4304,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(e.target.dataset.slug, "Has been updated", {
                     appearance: 'success'
                   });
@@ -4313,7 +4313,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4344,7 +4344,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 slug: e.target.dataset.slug,
                 task: 'activate'
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   }); // Reload Navigation
@@ -4364,7 +4364,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4395,7 +4395,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 slug: e.target.dataset.slug,
                 task: 'deactivate'
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   }); // Reload Navigation
@@ -4415,7 +4415,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4446,7 +4446,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 slug: e.target.dataset.slug,
                 task: 'install'
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   }); // Reload Navigation
@@ -4466,7 +4466,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4497,7 +4497,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 slug: e.target.dataset.slug,
                 task: 'uninstall'
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   });
@@ -4516,7 +4516,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4546,7 +4546,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   });
@@ -4555,7 +4555,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4585,7 +4585,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   });
@@ -4594,7 +4594,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4624,7 +4624,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/plugins/toggle', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.plugin.name, json.data.message, {
                     appearance: 'success'
                   });
@@ -4645,7 +4645,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4678,7 +4678,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               }, {
                 method: 'DELETE'
               }).then(function (json) {
-                if (isMounted$1()) {
+                if (isMounted()) {
                   addToast(json.data.plugin.name, json.data.message, {
                     appearance: 'success'
                   });
@@ -4697,7 +4697,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted$1()) {
+                if (!error.status.isAbort && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -23798,7 +23798,7 @@ var returnLibrary = function returnLibrary() {
     AppError: AppError,
     NavigationError: NavigationError,
     CreateElement: CreateElement,
-    isMounted: isMounted$1,
+    isMounted: isMounted,
     DefaultToastContainer: ToastContainer,
     DefaultToast: DefaultToast,
     ToastConsumer: ToastConsumer,
