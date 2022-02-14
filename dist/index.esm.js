@@ -27,8 +27,8 @@ var client = /*#__PURE__*/function () {
         customConfig,
         config,
         csrfToken,
-        _fetchRequest,
-        _fetchResponse,
+        url,
+        fetchResponse,
         responseData,
         _args2 = arguments;
 
@@ -54,14 +54,14 @@ var client = /*#__PURE__*/function () {
               config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
             }
 
-            _fetchRequest = new window.Request("".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint), config);
+            url = "".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint);
             _context2.next = 9;
-            return window.fetch(_fetchRequest);
+            return window.fetch(url, config);
 
           case 9:
-            _fetchResponse = _context2.sent;
+            fetchResponse = _context2.sent;
             _context2.next = 12;
-            return unwrapResponseData(_fetchResponse);
+            return unwrapResponseData(fetchResponse);
 
           case 12:
             responseData = _context2.sent;
@@ -71,16 +71,16 @@ var client = /*#__PURE__*/function () {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
-                        if (!(_fetchResponse.ok && _fetchResponse.status >= 200 && _fetchResponse.status < 300)) {
+                        if (!(fetchResponse.ok && fetchResponse.status >= 200 && fetchResponse.status < 300)) {
                           _context.next = 3;
                           break;
                         }
 
-                        _fetchResponse.data = responseData;
-                        return _context.abrupt("return", resolve(_fetchResponse));
+                        fetchResponse.data = responseData;
+                        return _context.abrupt("return", resolve(fetchResponse));
 
                       case 3:
-                        return _context.abrupt("return", reject(normalizeError(responseData, _fetchRequest, _fetchResponse)));
+                        return _context.abrupt("return", reject(normalizeError(responseData, url, config, fetchResponse)));
 
                       case 4:
                       case "end":
@@ -124,8 +124,8 @@ var unabortableClient = /*#__PURE__*/function () {
         customConfig,
         config,
         csrfToken,
-        _fetchRequest2,
-        _fetchResponse2,
+        url,
+        fetchResponse,
         responseData,
         _args4 = arguments;
 
@@ -150,14 +150,14 @@ var unabortableClient = /*#__PURE__*/function () {
               config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
             }
 
-            _fetchRequest2 = new window.Request("".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint), config);
+            url = "".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint);
             _context4.next = 9;
-            return window.fetch(_fetchRequest2);
+            return window.fetch(url, config);
 
           case 9:
-            _fetchResponse2 = _context4.sent;
+            fetchResponse = _context4.sent;
             _context4.next = 12;
-            return unwrapResponseData(_fetchResponse2);
+            return unwrapResponseData(fetchResponse);
 
           case 12:
             responseData = _context4.sent;
@@ -167,16 +167,16 @@ var unabortableClient = /*#__PURE__*/function () {
                   while (1) {
                     switch (_context3.prev = _context3.next) {
                       case 0:
-                        if (!(_fetchResponse2.ok && _fetchResponse2.status >= 200 && _fetchResponse2.status < 300)) {
+                        if (!(fetchResponse.ok && fetchResponse.status >= 200 && fetchResponse.status < 300)) {
                           _context3.next = 3;
                           break;
                         }
 
-                        _fetchResponse2.data = responseData;
-                        return _context3.abrupt("return", resolve(_fetchResponse2));
+                        fetchResponse.data = responseData;
+                        return _context3.abrupt("return", resolve(fetchResponse));
 
                       case 3:
-                        return _context3.abrupt("return", reject(normalizeError(responseData, _fetchRequest2, _fetchResponse2)));
+                        return _context3.abrupt("return", reject(normalizeError(responseData, url, config, fetchResponse)));
 
                       case 4:
                       case "end":
@@ -194,7 +194,7 @@ var unabortableClient = /*#__PURE__*/function () {
           case 16:
             _context4.prev = 16;
             _context4.t0 = _context4["catch"](2);
-            return _context4.abrupt("return", Promise.reject(normalizeTransportError(_context4.t0, fetchRequest, fetchResponse)));
+            return _context4.abrupt("return", Promise.reject(normalizeTransportError(_context4.t0)));
 
           case 19:
           case "end":
@@ -209,7 +209,7 @@ var unabortableClient = /*#__PURE__*/function () {
   };
 }();
 
-var normalizeError = function normalizeError(data, fetchRequest, fetchResponse) {
+var normalizeError = function normalizeError(data, url, config, fetchResponse) {
   if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
     new Promise( /*#__PURE__*/function () {
       var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(resolve, reject) {
@@ -258,13 +258,14 @@ var normalizeError = function normalizeError(data, fetchRequest, fetchResponse) 
       isAbort: false
     },
     // The following data is being provided for debugging
-    request: fetchRequest,
+    requestUrl: url,
+    requestConfig: config,
     response: fetchResponse
   };
   return error;
 };
 
-var normalizeTransportError = function normalizeTransportError(transportError, fetchRequest, fetchResponse) {
+var normalizeTransportError = function normalizeTransportError(transportError) {
   return {
     data: {
       type: "TransportError",
@@ -275,10 +276,7 @@ var normalizeTransportError = function normalizeTransportError(transportError, f
       code: 0,
       text: "Unknown",
       isAbort: transportError.name === "AbortError"
-    },
-    // The following data is being provided for debugging
-    request: fetchRequest,
-    response: fetchResponse
+    }
   };
 };
 

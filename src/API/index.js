@@ -36,9 +36,9 @@ export const client = async (
         if (csrfToken !== undefined) {
             config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
         }
+        const url = `${window.location.origin.replace(/\/$/, "")}${endpoint}`;
 
-        const fetchRequest = new window.Request(`${window.location.origin.replace(/\/$/, "")}${endpoint}`, config)
-        const fetchResponse = await window.fetch(fetchRequest);
+        const fetchResponse = await window.fetch(url, config);
         const responseData = await unwrapResponseData(fetchResponse);
 
         return new Promise(async (resolve, reject) => {
@@ -47,7 +47,7 @@ export const client = async (
                 return resolve(fetchResponse);
             }
 
-            return reject(normalizeError(responseData, fetchRequest, fetchResponse));
+            return reject(normalizeError(responseData, url, config, fetchResponse));
         });
     } catch (error) {
         return Promise.reject(normalizeTransportError(error));
@@ -80,9 +80,9 @@ export const unabortableClient = async (
         if (csrfToken !== undefined) {
             config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
         }
+        const url = `${window.location.origin.replace(/\/$/, "")}${endpoint}`;
 
-        const fetchRequest = new window.Request(`${window.location.origin.replace(/\/$/, "")}${endpoint}`, config)
-        const fetchResponse = await window.fetch(fetchRequest);
+        const fetchResponse = await window.fetch(url, config);
         const responseData = await unwrapResponseData(fetchResponse);
 
         return new Promise(async (resolve, reject) => {
@@ -91,14 +91,14 @@ export const unabortableClient = async (
                 return resolve(fetchResponse);
             }
 
-            return reject(normalizeError(responseData, fetchRequest, fetchResponse));
+            return reject(normalizeError(responseData, url, config, fetchResponse));
         });
     } catch (error) {
-        return Promise.reject(normalizeTransportError(error, fetchRequest, fetchResponse));
+        return Promise.reject(normalizeTransportError(error));
     }
 }
 
-const normalizeError = (data, fetchRequest, fetchResponse) => {
+const normalizeError = (data, url, config, fetchResponse) => {
     if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
         new Promise(async (resolve, reject) => {
             try {
@@ -124,14 +124,15 @@ const normalizeError = (data, fetchRequest, fetchResponse) => {
             isAbort: false,
         },
         // The following data is being provided for debugging
-        request: fetchRequest,
+        requestUrl: url,
+        requestConfig: config,
         response: fetchResponse,
     }
 
     return error;
 }
 
-const normalizeTransportError = (transportError, fetchRequest, fetchResponse) => {
+const normalizeTransportError = transportError => {
     return({
         data: {
             type: "TransportError",
@@ -143,9 +144,6 @@ const normalizeTransportError = (transportError, fetchRequest, fetchResponse) =>
             text: "Unknown",
             isAbort: (transportError.name === "AbortError")
         },
-        // The following data is being provided for debugging
-        request: fetchRequest,
-        response: fetchResponse,
     });
 }
 
