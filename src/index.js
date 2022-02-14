@@ -31,6 +31,7 @@ import AppError from './Errors/AppError';
 import NavigationError from './Errors/NavigationError';
 
 import CreateElement from './Helpers/CreateElement';
+import isMounted from './Helpers/isMounted';
 
 import {
     DefaultToastContainer,
@@ -84,6 +85,7 @@ const returnLibrary = () => {
         NavigationError,
 
         CreateElement,
+        isMounted,
 
         DefaultToastContainer,
         DefaultToast,

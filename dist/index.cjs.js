@@ -1676,6 +1676,7 @@ Loader.defaultProps = {
 };function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
 function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var _mounted = false;
 
 var Auth = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](Auth, _Component);
@@ -1705,9 +1706,13 @@ var Auth = /*#__PURE__*/function (_Component) {
                             return client('/api/permission/check', {
                               'permission': permission
                             }).then(function (data) {
-                              return resolve(data.has_permission);
+                              if (_mounted) {
+                                return resolve(data.has_permission);
+                              }
                             })["catch"](function (error) {
-                              return reject(error);
+                              if (_mounted) {
+                                return reject(error);
+                              }
                             });
 
                           case 2:
@@ -1752,9 +1757,13 @@ var Auth = /*#__PURE__*/function (_Component) {
                             return client('/api/group/check', {
                               'group': group
                             }).then(function (data) {
-                              return resolve(data.in_group);
+                              if (_mounted) {
+                                return resolve(data.in_group);
+                              }
                             })["catch"](function (error) {
-                              return reject(error);
+                              if (_mounted) {
+                                return reject(error);
+                              }
                             });
 
                           case 2:
@@ -1804,7 +1813,7 @@ var Auth = /*#__PURE__*/function (_Component) {
                 }, {
                   method: 'PUT'
                 })["catch"](function (error) {
-                  if (!error.status.isAbort) {
+                  if (!error.status.isAbort && _mounted) {
                     // TODO: Handle errors
                     console.error(error);
                   }
@@ -1837,8 +1846,16 @@ var Auth = /*#__PURE__*/function (_Component) {
   }
 
   _createClass__default["default"](Auth, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.checkOnInit) {
+        this.checkAuthentication();
+      }
+    }
+  }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
+      _mounted = false;
       controller.abort();
     }
   }, {
@@ -1877,6 +1894,11 @@ var Auth = /*#__PURE__*/function (_Component) {
                   preferences = data.preferences ? data.preferences : {};
                   delete data.preferences;
 
+                  if (!_mounted) {
+                    _context6.next = 14;
+                    break;
+                  }
+
                   _this2.setState({
                     user: data,
                     authenticated: true,
@@ -1885,17 +1907,27 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                   return _context6.abrupt("return", resolve(data));
 
-                case 15:
-                  _context6.prev = 15;
+                case 14:
+                  _context6.next = 20;
+                  break;
+
+                case 16:
+                  _context6.prev = 16;
                   _context6.t0 = _context6["catch"](0);
+
+                  if (!_mounted) {
+                    _context6.next = 20;
+                    break;
+                  }
+
                   return _context6.abrupt("return", reject(_context6.t0));
 
-                case 18:
+                case 20:
                 case "end":
                   return _context6.stop();
               }
             }
-          }, _callee6, null, [[0, 15]]);
+          }, _callee6, null, [[0, 16]]);
         }));
 
         return function (_x9, _x10) {
@@ -1919,27 +1951,36 @@ var Auth = /*#__PURE__*/function (_Component) {
                   return unabortableClient('/api/logout', {});
 
                 case 3:
-                  _this3.setState({
-                    user: null,
-                    authenticated: false
-                  });
+                  if (_mounted) {
+                    _this3.setState({
+                      user: null,
+                      authenticated: false
+                    });
 
-                  window.location.replace("//" + window.location.hostname + '/login?logout');
-                  resolve(true);
-                  _context7.next = 11;
+                    window.location.replace("//" + window.location.hostname + '/login?logout');
+                    resolve(true);
+                  }
+
+                  _context7.next = 10;
                   break;
 
-                case 8:
-                  _context7.prev = 8;
+                case 6:
+                  _context7.prev = 6;
                   _context7.t0 = _context7["catch"](0);
+
+                  if (!_mounted) {
+                    _context7.next = 10;
+                    break;
+                  }
+
                   return _context7.abrupt("return", reject(_context7.t0));
 
-                case 11:
+                case 10:
                 case "end":
                   return _context7.stop();
               }
             }
-          }, _callee7, null, [[0, 8]]);
+          }, _callee7, null, [[0, 6]]);
         }));
 
         return function (_x11, _x12) {
@@ -1950,10 +1991,12 @@ var Auth = /*#__PURE__*/function (_Component) {
   }, {
     key: "setUser",
     value: function setUser(user, authenticated) {
-      this.setState({
-        user: user,
-        authenticated: authenticated
-      });
+      if (_mounted) {
+        this.setState({
+          user: user,
+          authenticated: authenticated
+        });
+      }
     }
   }, {
     key: "checkAuthentication",
@@ -1969,7 +2012,7 @@ var Auth = /*#__PURE__*/function (_Component) {
               switch (_context8.prev = _context8.next) {
                 case 0:
                   if (!(_this4.state.authenticated === null)) {
-                    _context8.next = 22;
+                    _context8.next = 25;
                     break;
                   }
 
@@ -1983,6 +2026,11 @@ var Auth = /*#__PURE__*/function (_Component) {
                   preferences = data.preferences ? data.preferences : {};
                   delete data.preferences;
 
+                  if (!_mounted) {
+                    _context8.next = 11;
+                    break;
+                  }
+
                   _this4.setState({
                     user: data,
                     authenticated: true,
@@ -1991,16 +2039,24 @@ var Auth = /*#__PURE__*/function (_Component) {
 
                   return _context8.abrupt("return", resolve(true));
 
-                case 12:
-                  _context8.prev = 12;
+                case 11:
+                  _context8.next = 23;
+                  break;
+
+                case 13:
+                  _context8.prev = 13;
                   _context8.t0 = _context8["catch"](1);
 
                   if (!(_context8.t0.response && _context8.t0.status.code === 401)) {
+                    _context8.next = 21;
+                    break;
+                  }
+
+                  if (!_mounted) {
                     _context8.next = 19;
                     break;
                   }
 
-                  // If 401 returns, the user is not logged in
                   _this4.setState({
                     user: null,
                     authenticated: false,
@@ -2010,32 +2066,41 @@ var Auth = /*#__PURE__*/function (_Component) {
                   return _context8.abrupt("return", resolve(false));
 
                 case 19:
-                  return _context8.abrupt("return", reject(_context8.t0));
-
-                case 20:
                   _context8.next = 23;
                   break;
 
-                case 22:
-                  return _context8.abrupt("return", resolve(_this4.state.authenticated));
+                case 21:
+                  if (!_mounted) {
+                    _context8.next = 23;
+                    break;
+                  }
+
+                  return _context8.abrupt("return", reject(_context8.t0));
 
                 case 23:
+                  _context8.next = 27;
+                  break;
+
+                case 25:
+                  if (!_mounted) {
+                    _context8.next = 27;
+                    break;
+                  }
+
+                  return _context8.abrupt("return", resolve(_this4.state.authenticated));
+
+                case 27:
                 case "end":
                   return _context8.stop();
               }
             }
-          }, _callee8, null, [[1, 12]]);
+          }, _callee8, null, [[1, 13]]);
         }));
 
         return function (_x13, _x14) {
           return _ref8.apply(this, arguments);
         };
       }());
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.checkOnInit) this.checkAuthentication();
     }
   }, {
     key: "render",
@@ -2266,7 +2331,18 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var _excluded$l = ["hasToasts", "placement", "className"];
+}var isMounted$1 = isMounted = function isMounted() {
+  var isMountedRef = React$1.useRef(true);
+  var isMounted = React$1.useCallback(function () {
+    return isMountedRef.current;
+  }, []);
+  React$1.useEffect(function () {
+    return function () {
+      return void (isMountedRef.current = false);
+    };
+  }, []);
+  return isMounted;
+};var _excluded$l = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -4010,11 +4086,13 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/setting', {
                 key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode'])
               }).then(function (json) {
-                UI.theme = json.data['core.ui.theme'];
-                UI.dark_mode = json.data['core.ui.dark_mode'];
-                setUI(_objectSpread$4({}, UI));
+                if (isMounted$1()) {
+                  UI.theme = json.data['core.ui.theme'];
+                  UI.dark_mode = json.data['core.ui.dark_mode'];
+                  setUI(_objectSpread$4({}, UI));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4041,13 +4119,15 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 0:
               _context2.next = 2;
               return client('/api/navigation').then(function (json) {
-                navigation.menu = json.data.navigation;
-                navigation.routes = json.data.routes;
-                UI.envWriteable = json.data.envPermissions;
-                setNavigation(_objectSpread$4({}, navigation));
-                setUI(_objectSpread$4({}, UI));
+                if (isMounted$1()) {
+                  navigation.menu = json.data.navigation;
+                  navigation.routes = json.data.routes;
+                  UI.envWriteable = json.data.envPermissions;
+                  setNavigation(_objectSpread$4({}, navigation));
+                  setUI(_objectSpread$4({}, UI));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   var nav = [];
                   nav['error'] = true;
                   nav['message'] = error.data.message;
@@ -4076,10 +4156,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 0:
               _context3.next = 2;
               return client('/api/apps').then(function (json) {
-                apps.local = json.data.apps;
-                setApps(_objectSpread$4({}, apps));
+                if (isMounted$1()) {
+                  apps.local = json.data.apps;
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4088,10 +4170,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 2:
               _context3.next = 4;
               return client('/api/online/apps/list').then(function (json) {
-                apps.online = json.data.apps;
-                setApps(_objectSpread$4({}, apps));
+                if (isMounted$1()) {
+                  apps.online = json.data.apps;
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4118,10 +4202,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 0:
               _context4.next = 2;
               return client('/api/plugins').then(function (json) {
-                plugins.all = json.data.plugins;
-                setPlugins(_objectSpread$4({}, plugins));
+                if (isMounted$1()) {
+                  plugins.all = json.data.plugins;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4130,10 +4216,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 2:
               _context4.next = 4;
               return client('/api/plugins/active').then(function (json) {
-                plugins.active = json.data.plugins;
-                setPlugins(_objectSpread$4({}, plugins));
+                if (isMounted$1()) {
+                  plugins.active = json.data.plugins;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4142,10 +4230,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
             case 4:
               _context4.next = 6;
               return client('/api/online/plugins/list').then(function (json) {
-                plugins.online = json.data.plugins;
-                setPlugins(_objectSpread$4({}, plugins));
+                if (isMounted$1()) {
+                  plugins.online = json.data.plugins;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4170,21 +4260,21 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-
+              e.preventDefault();
               _context5.next = 3;
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
-                  appearance: 'success'
-                });
-                apps.local = json.data.apps;
-                apps.online = json.data.online;
-                setApps(_objectSpread$4({}, apps));
+                if (isMounted$1()) {
+                  addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
+                    appearance: 'success'
+                  });
+                  apps.local = json.data.apps;
+                  apps.online = json.data.online;
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4209,21 +4299,21 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-
+              e.preventDefault();
               _context6.next = 3;
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                addToast(e.target.dataset.slug, "Has been updated", {
-                  appearance: 'success'
-                });
-                apps.local = json.data.apps;
-                apps.online = json.data.online;
-                setApps(_objectSpread$4({}, apps));
+                if (isMounted$1()) {
+                  addToast(e.target.dataset.slug, "Has been updated", {
+                    appearance: 'success'
+                  });
+                  apps.local = json.data.apps;
+                  apps.online = json.data.online;
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4248,34 +4338,33 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-              // formData.append('task', 'activate');
-
+              e.preventDefault();
               _context7.next = 3;
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'activate'
               }).then(function (json) {
-                addToast(json.data.message, '', {
-                  appearance: 'success'
-                }); // Reload Navigation
+                if (isMounted$1()) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  }); // Reload Navigation
 
-                // Reload Navigation
-                loadNavigation();
-                Object.keys(apps.local).map(function (key) {
-                  if (e.target.dataset.slug === apps.local[key].slug) {
-                    apps.local[key].active = true;
-                  }
-                });
-                Object.keys(apps.online).map(function (key) {
-                  if (e.target.dataset.slug === apps.online[key].slug) {
-                    apps.online[key].active = true;
-                  }
-                });
-                setApps(_objectSpread$4({}, apps));
+                  // Reload Navigation
+                  loadNavigation();
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug === apps.local[key].slug) {
+                      apps.local[key].active = true;
+                    }
+                  });
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key].active = true;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4300,34 +4389,33 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context8.prev = _context8.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-              // formData.append('task', 'deactivate');
-
+              e.preventDefault();
               _context8.next = 3;
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'deactivate'
               }).then(function (json) {
-                addToast(json.data.message, '', {
-                  appearance: 'success'
-                }); // Reload Navigation
+                if (isMounted$1()) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  }); // Reload Navigation
 
-                // Reload Navigation
-                loadNavigation();
-                Object.keys(apps.local).map(function (key) {
-                  if (e.target.dataset.slug === apps.local[key].slug) {
-                    apps.local[key].active = false;
-                  }
-                });
-                Object.keys(apps.online).map(function (key) {
-                  if (e.target.dataset.slug === apps.online[key].slug) {
-                    apps.online[key].active = false;
-                  }
-                });
-                setApps(_objectSpread$4({}, apps));
+                  // Reload Navigation
+                  loadNavigation();
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug === apps.local[key].slug) {
+                      apps.local[key].active = false;
+                    }
+                  });
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key].active = false;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4352,34 +4440,33 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-              // formData.append('task', 'install');
-
+              e.preventDefault();
               _context9.next = 3;
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'install'
               }).then(function (json) {
-                addToast(json.data.message, '', {
-                  appearance: 'success'
-                }); // Reload Navigation
+                if (isMounted$1()) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  }); // Reload Navigation
 
-                // Reload Navigation
-                loadNavigation();
-                Object.keys(apps.local).map(function (key) {
-                  if (e.target.dataset.slug === apps.local[key].slug) {
-                    apps.local[key].installed = true;
-                  }
-                });
-                Object.keys(apps.online).map(function (key) {
-                  if (e.target.dataset.slug === apps.online[key].slug) {
-                    apps.online[key].installed = true;
-                  }
-                });
-                setApps(_objectSpread$4({}, apps));
+                  // Reload Navigation
+                  loadNavigation();
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug === apps.local[key].slug) {
+                      apps.local[key].installed = true;
+                    }
+                  });
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key].installed = true;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4404,33 +4491,32 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-              // formData.append('task', 'uninstall');
-
+              e.preventDefault();
               _context10.next = 3;
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'uninstall'
               }).then(function (json) {
-                addToast(json.data.message, '', {
-                  appearance: 'success'
-                });
-                var _apps = [];
-                Object.keys(apps.local).map(function (key) {
-                  if (e.target.dataset.slug !== apps.local[key].slug) {
-                    _apps.push(apps.local[key]);
-                  }
-                });
-                apps.local = _apps;
-                Object.keys(apps.online).map(function (key) {
-                  if (e.target.dataset.slug === apps.online[key].slug) {
-                    apps.online[key] = json.data.app;
-                  }
-                });
-                setApps(_objectSpread$4({}, apps));
+                if (isMounted$1()) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  });
+                  var _apps2 = [];
+                  Object.keys(apps.local).map(function (key) {
+                    if (e.target.dataset.slug !== apps.local[key].slug) {
+                      _apps2.push(apps.local[key]);
+                    }
+                  });
+                  apps.local = _apps2;
+                  Object.keys(apps.online).map(function (key) {
+                    if (e.target.dataset.slug === apps.online[key].slug) {
+                      apps.online[key] = json.data.app;
+                    }
+                  });
+                  setApps(_objectSpread$4({}, apps));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4455,21 +4541,21 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-
+              e.preventDefault();
               _context11.next = 3;
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                addToast(json.data.message, '', {
-                  appearance: 'success'
-                });
-                plugins.all = json.data.plugins;
-                plugins.online = json.data.online;
-                setPlugins(_objectSpread$4({}, plugins));
+                if (isMounted$1()) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  });
+                  plugins.all = json.data.plugins;
+                  plugins.online = json.data.online;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4494,21 +4580,21 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-
+              e.preventDefault();
               _context12.next = 3;
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                addToast(json.data.message, '', {
-                  appearance: 'success'
-                });
-                plugins.all = json.data.plugins;
-                plugins.online = json.data.online;
-                setPlugins(_objectSpread$4({}, plugins));
+                if (isMounted$1()) {
+                  addToast(json.data.message, '', {
+                    appearance: 'success'
+                  });
+                  plugins.all = json.data.plugins;
+                  plugins.online = json.data.online;
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4533,33 +4619,33 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context13.prev = _context13.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('slug', e.target.dataset.slug);
-
+              e.preventDefault();
               _context13.next = 3;
               return client('/api/plugins/toggle', {
                 slug: e.target.dataset.slug
               }).then(function (json) {
-                addToast(json.data.plugin.name, json.data.message, {
-                  appearance: 'success'
-                });
-                Object.keys(plugins.all).map(function (key) {
-                  if (e.target.dataset.slug === plugins.all[key].slug) {
-                    plugins.all[key].state = json.data.plugin.state;
-                    plugins.all[key].installed = true;
-                    delete plugins.all[key].downloaded;
-                  }
-                });
-                Object.keys(plugins.online).map(function (key) {
-                  if (e.target.dataset.slug === plugins.online[key].slug) {
-                    plugins.online[key].state = json.data.plugin.state;
-                    plugins.online[key].installed = true;
-                    delete plugins.online[key].downloaded;
-                  }
-                });
-                setPlugins(_objectSpread$4({}, plugins));
+                if (isMounted$1()) {
+                  addToast(json.data.plugin.name, json.data.message, {
+                    appearance: 'success'
+                  });
+                  Object.keys(plugins.all).map(function (key) {
+                    if (e.target.dataset.slug === plugins.all[key].slug) {
+                      plugins.all[key].state = json.data.plugin.state;
+                      plugins.all[key].installed = true;
+                      delete plugins.all[key].downloaded;
+                    }
+                  });
+                  Object.keys(plugins.online).map(function (key) {
+                    if (e.target.dataset.slug === plugins.online[key].slug) {
+                      plugins.online[key].state = json.data.plugin.state;
+                      plugins.online[key].installed = true;
+                      delete plugins.online[key].downloaded;
+                    }
+                  });
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4584,10 +4670,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
         while (1) {
           switch (_context14.prev = _context14.next) {
             case 0:
-              e.preventDefault(); // let formData = new FormData();
-              // formData.append('_method', 'DELETE');
-              // formData.append('slug', e.target.dataset.slug);
-
+              e.preventDefault();
               _context14.next = 3;
               return client('/api/plugin', {
                 slug: e.target.dataset.slug,
@@ -4595,24 +4678,26 @@ var WebAppsProvider = function WebAppsProvider(props) {
               }, {
                 method: 'DELETE'
               }).then(function (json) {
-                addToast(json.data.plugin.name, json.data.message, {
-                  appearance: 'success'
-                });
-                var _plugins = [];
-                Object.keys(plugins.all).map(function (key) {
-                  if (e.target.dataset.slug !== plugins.all[key].slug) {
-                    _plugins.push(plugins.all[key]);
-                  }
-                });
-                plugins.all = _plugins;
-                Object.keys(plugins.online).map(function (key) {
-                  if (e.target.dataset.slug === plugins.online[key].slug) {
-                    plugins.online[key] = json.data.plugin;
-                  }
-                });
-                setPlugins(_objectSpread$4({}, plugins));
+                if (isMounted$1()) {
+                  addToast(json.data.plugin.name, json.data.message, {
+                    appearance: 'success'
+                  });
+                  var _plugins2 = [];
+                  Object.keys(plugins.all).map(function (key) {
+                    if (e.target.dataset.slug !== plugins.all[key].slug) {
+                      _plugins2.push(plugins.all[key]);
+                    }
+                  });
+                  plugins.all = _plugins2;
+                  Object.keys(plugins.online).map(function (key) {
+                    if (e.target.dataset.slug === plugins.online[key].slug) {
+                      plugins.online[key] = json.data.plugin;
+                    }
+                  });
+                  setPlugins(_objectSpread$4({}, plugins));
+                }
               })["catch"](function (error) {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted$1()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -23713,6 +23798,7 @@ var returnLibrary = function returnLibrary() {
     AppError: AppError,
     NavigationError: NavigationError,
     CreateElement: CreateElement,
+    isMounted: isMounted$1,
     DefaultToastContainer: ToastContainer,
     DefaultToast: DefaultToast,
     ToastConsumer: ToastConsumer,

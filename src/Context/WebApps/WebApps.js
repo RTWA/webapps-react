@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createLocalStorageStateHook } from 'use-local-storage-state';
 
 import { client, controller } from '../../API';
+import isMounted from '../../Helpers/isMounted';
 import { ToastProvider, useToasts } from '../../Toasts';
 
 export const WebAppsContext = React.createContext({});
@@ -36,17 +37,16 @@ const WebAppsProvider = props => {
     }
 
     const loadUI = async () => {
-        // let formData = new FormData();
-        // formData.append('key', JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']));
-
         await client('/api/setting', { key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']) })
             .then(json => {
-                UI.theme = json.data['core.ui.theme'];
-                UI.dark_mode = json.data['core.ui.dark_mode'];
-                setUI({ ...UI });
+                if (isMounted()) {
+                    UI.theme = json.data['core.ui.theme'];
+                    UI.dark_mode = json.data['core.ui.dark_mode'];
+                    setUI({ ...UI });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -56,15 +56,17 @@ const WebAppsProvider = props => {
     const loadNavigation = async () => {
         await client('/api/navigation')
             .then(json => {
-                navigation.menu = json.data.navigation;
-                navigation.routes = json.data.routes;
-                UI.envWriteable = json.data.envPermissions;
+                if (isMounted()) {
+                    navigation.menu = json.data.navigation;
+                    navigation.routes = json.data.routes;
+                    UI.envWriteable = json.data.envPermissions;
 
-                setNavigation({ ...navigation });
-                setUI({ ...UI });
+                    setNavigation({ ...navigation });
+                    setUI({ ...UI });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     let nav = [];
                     nav['error'] = true;
                     nav['message'] = error.data.message;
@@ -76,22 +78,26 @@ const WebAppsProvider = props => {
     const getApps = async () => {
         await client('/api/apps')
             .then(json => {
-                apps.local = json.data.apps;
-                setApps({ ...apps });
+                if (isMounted()) {
+                    apps.local = json.data.apps;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
             });
         await client('/api/online/apps/list')
             .then(json => {
-                apps.online = json.data.apps;
-                setApps({ ...apps });
+                if (isMounted()) {
+                    apps.online = json.data.apps;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -101,33 +107,39 @@ const WebAppsProvider = props => {
     const getPlugins = async () => {
         await client('/api/plugins')
             .then(json => {
-                plugins.all = json.data.plugins;
-                setPlugins({ ...plugins });
+                if (isMounted()) {
+                    plugins.all = json.data.plugins;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
             });
         await client('/api/plugins/active')
             .then(json => {
-                plugins.active = json.data.plugins;
-                setPlugins({ ...plugins });
+                if (isMounted()) {
+                    plugins.active = json.data.plugins;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
             });
         await client('/api/online/plugins/list')
             .then(json => {
-                plugins.online = json.data.plugins;
-                setPlugins({ ...plugins });
+                if (isMounted()) {
+                    plugins.online = json.data.plugins;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -136,17 +148,17 @@ const WebAppsProvider = props => {
 
     const downloadApp = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
         await client('/api/online/apps/download', { slug: e.target.dataset.slug })
             .then(json => {
-                addToast(e.target.dataset.slug, 'Has been downloaded and installed', { appearance: 'success' });
-                apps.local = json.data.apps;
-                apps.online = json.data.online;
-                setApps({ ...apps });
+                if (isMounted()) {
+                    addToast(e.target.dataset.slug, 'Has been downloaded and installed', { appearance: 'success' });
+                    apps.local = json.data.apps;
+                    apps.online = json.data.online;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -155,17 +167,17 @@ const WebAppsProvider = props => {
 
     const updateApp = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
         await client('/api/online/apps/download', { slug: e.target.dataset.slug })
             .then(json => {
-                addToast(e.target.dataset.slug, `Has been updated`, { appearance: 'success' });
-                apps.local = json.data.apps;
-                apps.online = json.data.online;
-                setApps({ ...apps });
+                if (isMounted()) {
+                    addToast(e.target.dataset.slug, `Has been updated`, { appearance: 'success' });
+                    apps.local = json.data.apps;
+                    apps.online = json.data.online;
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -174,30 +186,29 @@ const WebAppsProvider = props => {
 
     const activateApp = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
-        // formData.append('task', 'activate');
         await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'activate' })
             .then(json => {
-                addToast(json.data.message, '', { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.message, '', { appearance: 'success' });
 
-                // Reload Navigation
-                loadNavigation();
+                    // Reload Navigation
+                    loadNavigation();
 
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                        apps.local[key].active = true;
-                    }
-                });
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key].active = true;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug === apps.local[key].slug) {
+                            apps.local[key].active = true;
+                        }
+                    });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key].active = true;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -206,30 +217,29 @@ const WebAppsProvider = props => {
 
     const deactivateApp = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
-        // formData.append('task', 'deactivate');
         await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'deactivate' })
             .then(json => {
-                addToast(json.data.message, '', { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.message, '', { appearance: 'success' });
 
-                // Reload Navigation
-                loadNavigation();
+                    // Reload Navigation
+                    loadNavigation();
 
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                        apps.local[key].active = false;
-                    }
-                });
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key].active = false;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug === apps.local[key].slug) {
+                            apps.local[key].active = false;
+                        }
+                    });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key].active = false;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -238,30 +248,29 @@ const WebAppsProvider = props => {
 
     const installApp = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
-        // formData.append('task', 'install');
         await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'install' })
             .then(json => {
-                addToast(json.data.message, '', { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.message, '', { appearance: 'success' });
 
-                // Reload Navigation
-                loadNavigation();
+                    // Reload Navigation
+                    loadNavigation();
 
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug === apps.local[key].slug) {
-                        apps.local[key].installed = true;
-                    }
-                });
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key].installed = true;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug === apps.local[key].slug) {
+                            apps.local[key].installed = true;
+                        }
+                    });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key].installed = true;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -270,30 +279,29 @@ const WebAppsProvider = props => {
 
     const uninstallApp = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
-        // formData.append('task', 'uninstall');
         await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'uninstall' })
             .then(json => {
-                addToast(json.data.message, '', { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.message, '', { appearance: 'success' });
 
-                let _apps = [];
-                Object.keys(apps.local).map((key) => {
-                    if (e.target.dataset.slug !== apps.local[key].slug) {
-                        _apps.push(apps.local[key]);
-                    }
-                });
-                apps.local = _apps;
+                    let _apps = [];
+                    Object.keys(apps.local).map((key) => {
+                        if (e.target.dataset.slug !== apps.local[key].slug) {
+                            _apps.push(apps.local[key]);
+                        }
+                    });
+                    apps.local = _apps;
 
-                Object.keys(apps.online).map((key) => {
-                    if (e.target.dataset.slug === apps.online[key].slug) {
-                        apps.online[key] = json.data.app;
-                    }
-                });
-                setApps({ ...apps });
+                    Object.keys(apps.online).map((key) => {
+                        if (e.target.dataset.slug === apps.online[key].slug) {
+                            apps.online[key] = json.data.app;
+                        }
+                    });
+                    setApps({ ...apps });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -302,18 +310,18 @@ const WebAppsProvider = props => {
 
     const downloadPlugin = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
         await client('/api/online/plugins/download', { slug: e.target.dataset.slug })
             .then(json => {
-                addToast(json.data.message, '', { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.message, '', { appearance: 'success' });
 
-                plugins.all = json.data.plugins;
-                plugins.online = json.data.online;
-                setPlugins({ ...plugins });
+                    plugins.all = json.data.plugins;
+                    plugins.online = json.data.online;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -322,18 +330,18 @@ const WebAppsProvider = props => {
 
     const updatePlugin = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
         await client('/api/online/plugins/download', { slug: e.target.dataset.slug })
             .then(json => {
-                addToast(json.data.message, '', { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.message, '', { appearance: 'success' });
 
-                plugins.all = json.data.plugins;
-                plugins.online = json.data.online;
-                setPlugins({ ...plugins });
+                    plugins.all = json.data.plugins;
+                    plugins.online = json.data.online;
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -342,30 +350,30 @@ const WebAppsProvider = props => {
 
     const togglePlugin = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('slug', e.target.dataset.slug);
         await client('/api/plugins/toggle', { slug: e.target.dataset.slug })
             .then(json => {
-                addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
 
-                Object.keys(plugins.all).map((key) => {
-                    if (e.target.dataset.slug === plugins.all[key].slug) {
-                        plugins.all[key].state = json.data.plugin.state;
-                        plugins.all[key].installed = true;
-                        delete plugins.all[key].downloaded;
-                    }
-                });
-                Object.keys(plugins.online).map((key) => {
-                    if (e.target.dataset.slug === plugins.online[key].slug) {
-                        plugins.online[key].state = json.data.plugin.state;
-                        plugins.online[key].installed = true;
-                        delete plugins.online[key].downloaded;
-                    }
-                });
-                setPlugins({ ...plugins });
+                    Object.keys(plugins.all).map((key) => {
+                        if (e.target.dataset.slug === plugins.all[key].slug) {
+                            plugins.all[key].state = json.data.plugin.state;
+                            plugins.all[key].installed = true;
+                            delete plugins.all[key].downloaded;
+                        }
+                    });
+                    Object.keys(plugins.online).map((key) => {
+                        if (e.target.dataset.slug === plugins.online[key].slug) {
+                            plugins.online[key].state = json.data.plugin.state;
+                            plugins.online[key].installed = true;
+                            delete plugins.online[key].downloaded;
+                        }
+                    });
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -374,29 +382,28 @@ const WebAppsProvider = props => {
 
     const uninstallPlugin = async e => {
         e.preventDefault();
-        // let formData = new FormData();
-        // formData.append('_method', 'DELETE');
-        // formData.append('slug', e.target.dataset.slug);
         await client('/api/plugin', { slug: e.target.dataset.slug, '_method': 'DELETE' }, { method: 'DELETE' })
             .then(json => {
-                addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
+                if (isMounted()) {
+                    addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
 
-                let _plugins = [];
-                Object.keys(plugins.all).map((key) => {
-                    if (e.target.dataset.slug !== plugins.all[key].slug) {
-                        _plugins.push(plugins.all[key]);
-                    }
-                });
-                plugins.all = _plugins;
-                Object.keys(plugins.online).map((key) => {
-                    if (e.target.dataset.slug === plugins.online[key].slug) {
-                        plugins.online[key] = json.data.plugin;
-                    }
-                });
-                setPlugins({ ...plugins });
+                    let _plugins = [];
+                    Object.keys(plugins.all).map((key) => {
+                        if (e.target.dataset.slug !== plugins.all[key].slug) {
+                            _plugins.push(plugins.all[key]);
+                        }
+                    });
+                    plugins.all = _plugins;
+                    Object.keys(plugins.online).map((key) => {
+                        if (e.target.dataset.slug === plugins.online[key].slug) {
+                            plugins.online[key] = json.data.plugin;
+                        }
+                    });
+                    setPlugins({ ...plugins });
+                }
             })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }

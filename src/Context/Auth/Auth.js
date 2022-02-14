@@ -4,6 +4,8 @@ import AuthContext from './AuthContext';
 import { client, controller, unabortableClient } from '../../API';
 import Loader from '../../Components/Loader';
 
+let _mounted = false;
+
 class Auth extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +21,12 @@ class Auth extends Component {
         this.setPreference = this.setPreference.bind(this);
     }
 
+    componentDidMount() {
+        _mounted = true;
+    }
+
     componentWillUnmount() {
+        _mounted = false;
         controller.abort();
     }
 
@@ -35,10 +42,14 @@ class Auth extends Component {
                 const preferences = data.preferences ? data.preferences : {};
                 delete data.preferences;
 
-                this.setState({ user: data, authenticated: true, preferences: preferences });
-                return resolve(data);
+                if (_mounted) {
+                    this.setState({ user: data, authenticated: true, preferences: preferences });
+                    return resolve(data);
+                }
             } catch (error) {
-                return reject(error);
+                if (_mounted) {
+                    return reject(error);
+                }
             }
         });
     }
@@ -47,18 +58,24 @@ class Auth extends Component {
         new Promise(async (resolve, reject) => {
             try {
                 await unabortableClient('/api/logout', {});
-                this.setState({ user: null, authenticated: false });
+                if (_mounted) {
+                    this.setState({ user: null, authenticated: false });
 
-                window.location.replace("//" + window.location.hostname + '/login?logout');
-                resolve(true);
+                    window.location.replace("//" + window.location.hostname + '/login?logout');
+                    resolve(true);
+                }
             } catch (error) {
-                return reject(error);
+                if (_mounted) {
+                    return reject(error);
+                }
             }
         });
     }
 
     setUser(user, authenticated) {
-        this.setState({ user, authenticated });
+        if (_mounted) {
+            this.setState({ user, authenticated });
+        }
     }
 
     checkAuthentication() {
@@ -70,51 +87,61 @@ class Auth extends Component {
                     const preferences = data.preferences ? data.preferences : {};
                     delete data.preferences;
 
-                    this.setState({ user: data, authenticated: true, preferences: preferences });
-                    return resolve(true);
+                    if (_mounted) {
+                        this.setState({ user: data, authenticated: true, preferences: preferences });
+                        return resolve(true);
+                    }
                 } catch (error) {
                     if (error.response && error.status.code === 401) {
                         // If 401 returns, the user is not logged in
-                        this.setState({ user: null, authenticated: false, preferences: {} });
-                        return resolve(false);
+                        if (_mounted) {
+                            this.setState({ user: null, authenticated: false, preferences: {} });
+                            return resolve(false);
+                        }
                     } else {
                         // Any other code, something went wrong
-                        return reject(error);
+                        if (_mounted) {
+                            return reject(error);
+                        }
                     }
                 }
             } else {
                 // We've already check authenticated, just return state
-                return resolve(this.state.authenticated);
+                if (_mounted) {
+                    return resolve(this.state.authenticated);
+                }
             }
         });
     }
 
     checkPermission = async permission => {
         return new Promise(async (resolve, reject) => {
-            // let formData = new FormData();
-            // formData.append('permission', permission);
-
             await client('/api/permission/check', { 'permission': permission })
                 .then(data => {
-                    return resolve(data.has_permission);
+                    if (_mounted) {
+                        return resolve(data.has_permission);
+                    }
                 })
                 .catch(error => {
-                    return reject(error);
+                    if (_mounted) {
+                        return reject(error);
+                    }
                 })
         });
     }
 
     checkGroup = async group => {
         return new Promise(async (resolve, reject) => {
-            // let formData = new FormData();
-            // formData.append('group', group);
-
             await client('/api/group/check', { 'group': group })
                 .then(data => {
-                    return resolve(data.in_group);
+                    if (_mounted) {
+                        return resolve(data.in_group);
+                    }
                 })
                 .catch(error => {
-                    return reject(error);
+                    if (_mounted) {
+                        return reject(error);
+                    }
                 })
         });
     }
@@ -126,7 +153,7 @@ class Auth extends Component {
 
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT' })
             .catch(error => {
-                if (!error.status.isAbort) {
+                if (!error.status.isAbort && _mounted) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -134,8 +161,9 @@ class Auth extends Component {
     }
 
     componentDidMount() {
-        if (this.props.checkOnInit)
+        if (this.props.checkOnInit) {
             this.checkAuthentication();
+        }
     }
 
     render() {
