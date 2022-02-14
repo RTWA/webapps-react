@@ -64,10 +64,12 @@ const WebAppsProvider = props => {
                 setUI({ ...UI });
             })
             .catch(error => {
-                let nav = [];
-                nav['error'] = true;
-                nav['message'] = error.data.message;
-                setNavigation(nav);
+                if (!error.status.isAbort) {
+                    let nav = [];
+                    nav['error'] = true;
+                    nav['message'] = error.data.message;
+                    setNavigation(nav);
+                }
             });
     }
 

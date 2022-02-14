@@ -1,3 +1,6 @@
+## Version 1.8.9
+- Improved logging for `<WebApps />` Context
+
 ## Version 1.8.8
 - Bug fixes for new `APIClient`
 

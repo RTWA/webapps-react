@@ -4047,10 +4047,12 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 setNavigation(_objectSpread$4({}, navigation));
                 setUI(_objectSpread$4({}, UI));
               })["catch"](function (error) {
-                var nav = [];
-                nav['error'] = true;
-                nav['message'] = error.data.message;
-                setNavigation(nav);
+                if (!error.status.isAbort) {
+                  var nav = [];
+                  nav['error'] = true;
+                  nav['message'] = error.data.message;
+                  setNavigation(nav);
+                }
               });
 
             case 2:
