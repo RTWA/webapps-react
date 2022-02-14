@@ -1,5 +1,6 @@
-## Version 1.8.12
+## Version 1.8.12 & 1.8.13
 - Bug fixes for `isMounted` helper
+- Improved abort handling in `<WebApps />` and `<Auth />` Context
 
 ## Version 1.8.10
 - Added `isMounted` helper

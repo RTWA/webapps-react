@@ -153,7 +153,7 @@ class Auth extends Component {
 
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT' })
             .catch(error => {
-                if (!error.status.isAbort && _mounted) {
+                if (!error.status?.isAbort && _mounted) {
                     // TODO: Handle errors
                     console.error(error);
                 }

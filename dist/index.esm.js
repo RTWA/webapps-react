@@ -1813,7 +1813,9 @@ var Auth = /*#__PURE__*/function (_Component) {
                 }, {
                   method: 'PUT'
                 })["catch"](function (error) {
-                  if (!error.status.isAbort && _mounted) {
+                  var _error$status;
+
+                  if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort) && _mounted) {
                     // TODO: Handle errors
                     console.error(error);
                   }
@@ -4092,7 +4094,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setUI(_objectSpread$4({}, UI));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status;
+
+                if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4127,7 +4131,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setUI(_objectSpread$4({}, UI));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status2;
+
+                if (!((_error$status2 = error.status) !== null && _error$status2 !== void 0 && _error$status2.isAbort) && isMounted()) {
                   var nav = [];
                   nav['error'] = true;
                   nav['message'] = error.data.message;
@@ -4161,7 +4167,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status3;
+
+                if (!((_error$status3 = error.status) !== null && _error$status3 !== void 0 && _error$status3.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4175,7 +4183,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status4;
+
+                if (!((_error$status4 = error.status) !== null && _error$status4 !== void 0 && _error$status4.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4207,7 +4217,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status5;
+
+                if (!((_error$status5 = error.status) !== null && _error$status5 !== void 0 && _error$status5.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4221,7 +4233,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status6;
+
+                if (!((_error$status6 = error.status) !== null && _error$status6 !== void 0 && _error$status6.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4235,7 +4249,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status7;
+
+                if (!((_error$status7 = error.status) !== null && _error$status7 !== void 0 && _error$status7.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4274,7 +4290,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status8;
+
+                if (!((_error$status8 = error.status) !== null && _error$status8 !== void 0 && _error$status8.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4313,7 +4331,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status9;
+
+                if (!((_error$status9 = error.status) !== null && _error$status9 !== void 0 && _error$status9.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4364,7 +4384,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status10;
+
+                if (!((_error$status10 = error.status) !== null && _error$status10 !== void 0 && _error$status10.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4415,7 +4437,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status11;
+
+                if (!((_error$status11 = error.status) !== null && _error$status11 !== void 0 && _error$status11.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4466,7 +4490,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status12;
+
+                if (!((_error$status12 = error.status) !== null && _error$status12 !== void 0 && _error$status12.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4516,7 +4542,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setApps(_objectSpread$4({}, apps));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status13;
+
+                if (!((_error$status13 = error.status) !== null && _error$status13 !== void 0 && _error$status13.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4555,7 +4583,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status14;
+
+                if (!((_error$status14 = error.status) !== null && _error$status14 !== void 0 && _error$status14.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4594,7 +4624,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status15;
+
+                if (!((_error$status15 = error.status) !== null && _error$status15 !== void 0 && _error$status15.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4645,7 +4677,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status16;
+
+                if (!((_error$status16 = error.status) !== null && _error$status16 !== void 0 && _error$status16.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }
@@ -4697,7 +4731,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   setPlugins(_objectSpread$4({}, plugins));
                 }
               })["catch"](function (error) {
-                if (!error.status.isAbort && isMounted()) {
+                var _error$status17;
+
+                if (!((_error$status17 = error.status) !== null && _error$status17 !== void 0 && _error$status17.isAbort) && isMounted()) {
                   // TODO: Handle errors
                   console.error(error);
                 }

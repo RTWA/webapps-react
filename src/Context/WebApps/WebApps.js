@@ -46,7 +46,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -66,7 +66,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     let nav = [];
                     nav['error'] = true;
                     nav['message'] = error.data.message;
@@ -84,7 +84,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -97,7 +97,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -113,7 +113,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -126,7 +126,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -139,7 +139,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -158,7 +158,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -177,7 +177,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -208,7 +208,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -239,7 +239,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -270,7 +270,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -301,7 +301,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -321,7 +321,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -341,7 +341,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -373,7 +373,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
@@ -403,7 +403,7 @@ const WebAppsProvider = props => {
                 }
             })
             .catch(error => {
-                if (!error.status.isAbort && isMounted()) {
+                if (!error.status?.isAbort && isMounted()) {
                     // TODO: Handle errors
                     console.error(error);
                 }
