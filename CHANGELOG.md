@@ -1,3 +1,7 @@
+## Version 1.8.14
+- Add document check to `getCookie` helper
+- Removed `isMounted` helper
+
 ## Version 1.8.12 & 1.8.13
 - Bug fixes for `isMounted` helper
 - Improved abort handling in `<WebApps />` and `<Auth />` Context

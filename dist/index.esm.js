@@ -1,5 +1,7 @@
 import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties from'@babel/runtime/helpers/objectWithoutProperties';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _regeneratorRuntime from'@babel/runtime/regenerator';import _extends from'@babel/runtime/helpers/extends';import React$1,{Component,useMemo,useState,useEffect,useRef,useCallback,Children,isValidElement,cloneElement,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized from'@babel/runtime/helpers/assertThisInitialized';import _inherits$1 from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn$1 from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _slicedToArray from'@babel/runtime/helpers/slicedToArray';import ReactDOM,{unstable_batchedUpdates,createPortal}from'react-dom';import _toConsumableArray from'@babel/runtime/helpers/toConsumableArray';import _objectWithoutPropertiesLoose from'@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';import _extends$1 from'@babel/runtime/helpers/esm/extends';import _assertThisInitialized$1 from'@babel/runtime/helpers/esm/assertThisInitialized';import _inheritsLoose from'@babel/runtime/helpers/esm/inheritsLoose';import _typeof from'@babel/runtime/helpers/typeof';import path from'path';import process$1 from'process';import {fileURLToPath}from'url';var getCookie = function getCookie(name) {
-  var value = "; ".concat(document.cookie);
+  var _document;
+
+  var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
 };var _excluded$q = ["headers", "accept", "type"],
@@ -2333,18 +2335,7 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var isMounted = function isMounted() {
-  var isMountedRef = useRef(true);
-  var currentIsMounted = useCallback(function () {
-    return isMountedRef.current;
-  }, []);
-  useEffect(function () {
-    return function () {
-      return void (isMountedRef.current = false);
-    };
-  }, []);
-  return currentIsMounted;
-};var _excluded$l = ["hasToasts", "placement", "className"];
+}var _excluded$l = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -4060,12 +4051,17 @@ var WebAppsProvider = function WebAppsProvider(props) {
   var _useToasts = useToasts(),
       addToast = _useToasts.addToast;
 
+  var isMountedRef = useRef(true);
+  var isMounted = useCallback(function () {
+    return isMountedRef.current;
+  }, []);
   useEffect(function () {
     loadUI();
     loadNavigation();
     getApps();
     getPlugins();
     return function () {
+      void (isMountedRef.current = false);
       controller.abort();
     };
   }, []);
@@ -23834,7 +23830,6 @@ var returnLibrary = function returnLibrary() {
     AppError: AppError,
     NavigationError: NavigationError,
     CreateElement: CreateElement,
-    isMounted: isMounted,
     DefaultToastContainer: ToastContainer,
     DefaultToast: DefaultToast,
     ToastConsumer: ToastConsumer,

@@ -1,5 +1,7 @@
 'use strict';var _defineProperty=require('@babel/runtime/helpers/defineProperty'),_objectWithoutProperties=require('@babel/runtime/helpers/objectWithoutProperties'),_asyncToGenerator=require('@babel/runtime/helpers/asyncToGenerator'),_regeneratorRuntime=require('@babel/runtime/regenerator'),_extends=require('@babel/runtime/helpers/extends'),React$1=require('react'),reactRouterDom=require('react-router-dom'),_classCallCheck$1=require('@babel/runtime/helpers/classCallCheck'),_createClass$1=require('@babel/runtime/helpers/createClass'),_assertThisInitialized=require('@babel/runtime/helpers/assertThisInitialized'),_inherits$1=require('@babel/runtime/helpers/inherits'),_possibleConstructorReturn$1=require('@babel/runtime/helpers/possibleConstructorReturn'),_getPrototypeOf=require('@babel/runtime/helpers/getPrototypeOf'),_slicedToArray=require('@babel/runtime/helpers/slicedToArray'),ReactDOM=require('react-dom'),_toConsumableArray=require('@babel/runtime/helpers/toConsumableArray'),_objectWithoutPropertiesLoose=require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose'),_extends$1=require('@babel/runtime/helpers/esm/extends'),_assertThisInitialized$1=require('@babel/runtime/helpers/esm/assertThisInitialized'),_inheritsLoose=require('@babel/runtime/helpers/esm/inheritsLoose'),_typeof=require('@babel/runtime/helpers/typeof'),path=require('path'),process$1=require('process'),url=require('url');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var _defineProperty__default=/*#__PURE__*/_interopDefaultLegacy(_defineProperty);var _objectWithoutProperties__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);var _asyncToGenerator__default=/*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);var _regeneratorRuntime__default=/*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);var _extends__default=/*#__PURE__*/_interopDefaultLegacy(_extends);var React__default=/*#__PURE__*/_interopDefaultLegacy(React$1);var _classCallCheck__default=/*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);var _createClass__default=/*#__PURE__*/_interopDefaultLegacy(_createClass$1);var _assertThisInitialized__default=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);var _inherits__default=/*#__PURE__*/_interopDefaultLegacy(_inherits$1);var _possibleConstructorReturn__default=/*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn$1);var _getPrototypeOf__default=/*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);var _slicedToArray__default=/*#__PURE__*/_interopDefaultLegacy(_slicedToArray);var ReactDOM__default=/*#__PURE__*/_interopDefaultLegacy(ReactDOM);var _toConsumableArray__default=/*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);var _objectWithoutPropertiesLoose__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);var _extends__default$1=/*#__PURE__*/_interopDefaultLegacy(_extends$1);var _assertThisInitialized__default$1=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$1);var _inheritsLoose__default=/*#__PURE__*/_interopDefaultLegacy(_inheritsLoose);var _typeof__default=/*#__PURE__*/_interopDefaultLegacy(_typeof);var path__default=/*#__PURE__*/_interopDefaultLegacy(path);var process__default=/*#__PURE__*/_interopDefaultLegacy(process$1);var getCookie = function getCookie(name) {
-  var value = "; ".concat(document.cookie);
+  var _document;
+
+  var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
 };var _excluded$q = ["headers", "accept", "type"],
@@ -2333,18 +2335,7 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var isMounted = function isMounted() {
-  var isMountedRef = React$1.useRef(true);
-  var currentIsMounted = React$1.useCallback(function () {
-    return isMountedRef.current;
-  }, []);
-  React$1.useEffect(function () {
-    return function () {
-      return void (isMountedRef.current = false);
-    };
-  }, []);
-  return currentIsMounted;
-};var _excluded$l = ["hasToasts", "placement", "className"];
+}var _excluded$l = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -4060,12 +4051,17 @@ var WebAppsProvider = function WebAppsProvider(props) {
   var _useToasts = useToasts(),
       addToast = _useToasts.addToast;
 
+  var isMountedRef = React$1.useRef(true);
+  var isMounted = React$1.useCallback(function () {
+    return isMountedRef.current;
+  }, []);
   React$1.useEffect(function () {
     loadUI();
     loadNavigation();
     getApps();
     getPlugins();
     return function () {
+      void (isMountedRef.current = false);
       controller.abort();
     };
   }, []);
@@ -23834,7 +23830,6 @@ var returnLibrary = function returnLibrary() {
     AppError: AppError,
     NavigationError: NavigationError,
     CreateElement: CreateElement,
-    isMounted: isMounted,
     DefaultToastContainer: ToastContainer,
     DefaultToast: DefaultToast,
     ToastConsumer: ToastConsumer,

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createLocalStorageStateHook } from 'use-local-storage-state';
 
 import { client, controller } from '../../API';
-import isMounted from '../../Helpers/isMounted';
 import { ToastProvider, useToasts } from '../../Toasts';
 
 export const WebAppsContext = React.createContext({});
@@ -19,13 +18,16 @@ const WebAppsProvider = props => {
 
     const { addToast } = useToasts();
 
+    const isMountedRef = useRef(true);
+    const isMounted = useCallback(() => isMountedRef.current, []);
+
     useEffect(() => {
         loadUI();
         loadNavigation();
         getApps();
         getPlugins();
 
-        return () => { controller.abort(); }
+        return () => { void (isMountedRef.current = false); controller.abort(); }
     }, []);
 
     const toggleModal = modal => {
