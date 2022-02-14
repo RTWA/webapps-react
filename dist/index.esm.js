@@ -56,7 +56,7 @@ var client = /*#__PURE__*/function () {
 
             url = "".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint);
             _context2.next = 9;
-            return window.fetch(url, config);
+            return fetch(url, config);
 
           case 9:
             fetchResponse = _context2.sent;
@@ -152,7 +152,7 @@ var unabortableClient = /*#__PURE__*/function () {
 
             url = "".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint);
             _context4.next = 9;
-            return window.fetch(url, config);
+            return fetch(url, config);
 
           case 9:
             fetchResponse = _context4.sent;

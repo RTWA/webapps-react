@@ -1,3 +1,6 @@
+## Version 1.8.8
+- Bug fixes for new `APIClient`
+
 ## Version 1.8.5, 1.8.6 & 1.8.7
 - Improved errors produced by `APIClient`
 

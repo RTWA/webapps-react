@@ -38,7 +38,7 @@ export const client = async (
         }
         const url = `${window.location.origin.replace(/\/$/, "")}${endpoint}`;
 
-        const fetchResponse = await window.fetch(url, config);
+        const fetchResponse = await fetch(url, config);
         const responseData = await unwrapResponseData(fetchResponse);
 
         return new Promise(async (resolve, reject) => {
@@ -82,7 +82,7 @@ export const unabortableClient = async (
         }
         const url = `${window.location.origin.replace(/\/$/, "")}${endpoint}`;
 
-        const fetchResponse = await window.fetch(url, config);
+        const fetchResponse = await fetch(url, config);
         const responseData = await unwrapResponseData(fetchResponse);
 
         return new Promise(async (resolve, reject) => {
