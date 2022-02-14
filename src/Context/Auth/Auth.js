@@ -1,36 +1,31 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import AuthContext from './AuthContext';
 import { client, controller, unabortableClient } from '../../API';
 import Loader from '../../Components/Loader';
 
-let _mounted = false;
+const Auth = props => {
+    const [state, setState] = useState({
+        user: null,
+        authenticated: null,
+        preferences: {},
+    });
 
-class Auth extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: null,
-            authenticated: null,
-            preferences: {},
-        };
-        this.signIn = this.signIn.bind(this);
-        this.signOut = this.signOut.bind(this);
-        this.setUser = this.setUser.bind(this);
-        this.checkAuthentication = this.checkAuthentication.bind(this);
-        this.setPreference = this.setPreference.bind(this);
-    }
+    const isMountedRef = useRef(true);
+    const isMounted = useCallback(() => isMountedRef.current, []);
 
-    componentDidMount() {
-        _mounted = true;
-    }
+    useEffect(() => {
+        if (props.checkOnInit) {
+            checkAuthentication();
+        }
 
-    componentWillUnmount() {
-        _mounted = false;
-        controller.abort();
-    }
+        return () => {
+            void (isMountedRef.current = false);
+            controller.abort();
+        }
+    }, []);
 
-    signIn(username, password) {
+    const signIn = async (username, password) => {
         return new Promise(async (resolve, reject) => {
             try {
                 // Get CSRF Cookie
@@ -42,43 +37,53 @@ class Auth extends Component {
                 const preferences = data.preferences ? data.preferences : {};
                 delete data.preferences;
 
-                if (_mounted) {
-                    this.setState({ user: data, authenticated: true, preferences: preferences });
+                if (isMounted) {
+                    setState({
+                        user: data,
+                        authenticated: true,
+                        preferences: preferences
+                    });
                     return resolve(data);
                 }
             } catch (error) {
-                if (_mounted) {
+                if (isMounted) {
                     return reject(error);
                 }
             }
         });
     }
 
-    signOut() {
+    const signOut = async () => {
         new Promise(async (resolve, reject) => {
             try {
                 await unabortableClient('/api/logout', {});
-                if (_mounted) {
-                    this.setState({ user: null, authenticated: false });
+                if (isMounted) {
+                    setState({
+                        user: null,
+                        authenticated: false
+                    });
 
                     window.location.replace("//" + window.location.hostname + '/login?logout');
                     resolve(true);
                 }
             } catch (error) {
-                if (_mounted) {
+                if (isMounted) {
                     return reject(error);
                 }
             }
         });
     }
 
-    setUser(user, authenticated) {
-        if (_mounted) {
-            this.setState({ user, authenticated });
+    const setUser = (user, authenticated) => {
+        if (isMounted) {
+            setState({
+                user,
+                authenticated
+            });
         }
     }
 
-    checkAuthentication() {
+    const checkAuthentication = async () => {
         return new Promise(async (resolve, reject) => {
             if (this.state.authenticated === null) {
                 // The status is null if it hasn't been checked
@@ -87,106 +92,99 @@ class Auth extends Component {
                     const preferences = data.preferences ? data.preferences : {};
                     delete data.preferences;
 
-                    if (_mounted) {
+                    if (isMounted) {
                         this.setState({ user: data, authenticated: true, preferences: preferences });
                         return resolve(true);
                     }
                 } catch (error) {
                     if (error.response && error.status.code === 401) {
                         // If 401 returns, the user is not logged in
-                        if (_mounted) {
+                        if (isMounted) {
                             this.setState({ user: null, authenticated: false, preferences: {} });
                             return resolve(false);
                         }
                     } else {
                         // Any other code, something went wrong
-                        if (_mounted) {
+                        if (isMounted) {
                             return reject(error);
                         }
                     }
                 }
             } else {
                 // We've already check authenticated, just return state
-                if (_mounted) {
+                if (isMounted) {
                     return resolve(this.state.authenticated);
                 }
             }
         });
     }
 
-    checkPermission = async permission => {
+    const checkPermission = async permission => {
         return new Promise(async (resolve, reject) => {
             await client('/api/permission/check', { 'permission': permission })
                 .then(data => {
-                    if (_mounted) {
+                    if (isMounted) {
                         return resolve(data.has_permission);
                     }
                 })
                 .catch(error => {
-                    if (_mounted) {
+                    if (isMounted) {
                         return reject(error);
                     }
                 })
         });
     }
 
-    checkGroup = async group => {
+    const checkGroup = async group => {
         return new Promise(async (resolve, reject) => {
             await client('/api/group/check', { 'group': group })
                 .then(data => {
-                    if (_mounted) {
+                    if (isMounted) {
                         return resolve(data.in_group);
                     }
                 })
                 .catch(error => {
-                    if (_mounted) {
+                    if (isMounted) {
                         return reject(error);
                     }
                 })
         });
     }
 
-    setPreference = async (preference, value) => {
+    const setPreference = async (preference, value) => {
         let { preferences } = this.state;
         preferences[preference] = value;
         this.setState({ preferences });
 
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT' })
             .catch(error => {
-                if (!error.status?.isAbort && _mounted) {
+                if (!error.status?.isAbort && isMounted) {
                     // TODO: Handle errors
                     console.error(error);
                 }
             })
     }
 
-    componentDidMount() {
-        if (this.props.checkOnInit) {
-            this.checkAuthentication();
-        }
-    }
-
-    render() {
-        if (this.state.authenticated !== null)
-            return (
-                <AuthContext.Provider
-                    children={this.props.children || null}
-                    value={{
-                        user: this.state.user,
-                        authenticated: this.state.authenticated,
-                        signIn: this.signIn,
-                        signOut: this.signOut,
-                        setUser: this.setUser,
-                        checkAuthentication: this.checkAuthentication,
-                        checkPermission: this.checkPermission,
-                        checkGroup: this.checkGroup,
-                        preferences: this.state.preferences,
-                        setPreference: this.setPreference
-                    }}
-                />
-            )
-        else
-            return <Loader />
+    if (state.authenticated !== null) {
+        return (
+            <AuthContext.Provider
+                children={props.children || null}
+                value={{
+                    user: state.user,
+                    authenticated: state.authenticated,
+                    signIn: signIn,
+                    signOut: signOut,
+                    setUser: setUser,
+                    checkAuthentication: checkAuthentication,
+                    checkPermission: checkPermission,
+                    checkGroup: checkGroup,
+                    preferences: state.preferences,
+                    setPreference: setPreference
+                }}
+            />
+        )
+    } else {
+        return <Loader />
     }
 }
 

@@ -1,4 +1,4 @@
-'use strict';var _defineProperty=require('@babel/runtime/helpers/defineProperty'),_objectWithoutProperties=require('@babel/runtime/helpers/objectWithoutProperties'),_asyncToGenerator=require('@babel/runtime/helpers/asyncToGenerator'),_regeneratorRuntime=require('@babel/runtime/regenerator'),_extends=require('@babel/runtime/helpers/extends'),React$1=require('react'),reactRouterDom=require('react-router-dom'),_classCallCheck$1=require('@babel/runtime/helpers/classCallCheck'),_createClass$1=require('@babel/runtime/helpers/createClass'),_assertThisInitialized=require('@babel/runtime/helpers/assertThisInitialized'),_inherits$1=require('@babel/runtime/helpers/inherits'),_possibleConstructorReturn$1=require('@babel/runtime/helpers/possibleConstructorReturn'),_getPrototypeOf=require('@babel/runtime/helpers/getPrototypeOf'),_slicedToArray=require('@babel/runtime/helpers/slicedToArray'),ReactDOM=require('react-dom'),_toConsumableArray=require('@babel/runtime/helpers/toConsumableArray'),_objectWithoutPropertiesLoose=require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose'),_extends$1=require('@babel/runtime/helpers/esm/extends'),_assertThisInitialized$1=require('@babel/runtime/helpers/esm/assertThisInitialized'),_inheritsLoose=require('@babel/runtime/helpers/esm/inheritsLoose'),_typeof=require('@babel/runtime/helpers/typeof'),path=require('path'),process$1=require('process'),url=require('url');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var _defineProperty__default=/*#__PURE__*/_interopDefaultLegacy(_defineProperty);var _objectWithoutProperties__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);var _asyncToGenerator__default=/*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);var _regeneratorRuntime__default=/*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);var _extends__default=/*#__PURE__*/_interopDefaultLegacy(_extends);var React__default=/*#__PURE__*/_interopDefaultLegacy(React$1);var _classCallCheck__default=/*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);var _createClass__default=/*#__PURE__*/_interopDefaultLegacy(_createClass$1);var _assertThisInitialized__default=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);var _inherits__default=/*#__PURE__*/_interopDefaultLegacy(_inherits$1);var _possibleConstructorReturn__default=/*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn$1);var _getPrototypeOf__default=/*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);var _slicedToArray__default=/*#__PURE__*/_interopDefaultLegacy(_slicedToArray);var ReactDOM__default=/*#__PURE__*/_interopDefaultLegacy(ReactDOM);var _toConsumableArray__default=/*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);var _objectWithoutPropertiesLoose__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);var _extends__default$1=/*#__PURE__*/_interopDefaultLegacy(_extends$1);var _assertThisInitialized__default$1=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$1);var _inheritsLoose__default=/*#__PURE__*/_interopDefaultLegacy(_inheritsLoose);var _typeof__default=/*#__PURE__*/_interopDefaultLegacy(_typeof);var path__default=/*#__PURE__*/_interopDefaultLegacy(path);var process__default=/*#__PURE__*/_interopDefaultLegacy(process$1);var getCookie = function getCookie(name) {
+'use strict';var _defineProperty=require('@babel/runtime/helpers/defineProperty'),_objectWithoutProperties=require('@babel/runtime/helpers/objectWithoutProperties'),_asyncToGenerator=require('@babel/runtime/helpers/asyncToGenerator'),_regeneratorRuntime=require('@babel/runtime/regenerator'),_extends=require('@babel/runtime/helpers/extends'),React$1=require('react'),reactRouterDom=require('react-router-dom'),_slicedToArray=require('@babel/runtime/helpers/slicedToArray'),ReactDOM=require('react-dom'),_toConsumableArray=require('@babel/runtime/helpers/toConsumableArray'),_classCallCheck$1=require('@babel/runtime/helpers/classCallCheck'),_createClass$1=require('@babel/runtime/helpers/createClass'),_assertThisInitialized$1=require('@babel/runtime/helpers/assertThisInitialized'),_inherits$1=require('@babel/runtime/helpers/inherits'),_possibleConstructorReturn$1=require('@babel/runtime/helpers/possibleConstructorReturn'),_getPrototypeOf=require('@babel/runtime/helpers/getPrototypeOf'),_objectWithoutPropertiesLoose=require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose'),_extends$1=require('@babel/runtime/helpers/esm/extends'),_assertThisInitialized=require('@babel/runtime/helpers/esm/assertThisInitialized'),_inheritsLoose=require('@babel/runtime/helpers/esm/inheritsLoose'),_typeof=require('@babel/runtime/helpers/typeof'),path=require('path'),process$1=require('process'),url=require('url');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var _defineProperty__default=/*#__PURE__*/_interopDefaultLegacy(_defineProperty);var _objectWithoutProperties__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);var _asyncToGenerator__default=/*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);var _regeneratorRuntime__default=/*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);var _extends__default=/*#__PURE__*/_interopDefaultLegacy(_extends);var React__default=/*#__PURE__*/_interopDefaultLegacy(React$1);var _slicedToArray__default=/*#__PURE__*/_interopDefaultLegacy(_slicedToArray);var ReactDOM__default=/*#__PURE__*/_interopDefaultLegacy(ReactDOM);var _toConsumableArray__default=/*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);var _classCallCheck__default=/*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);var _createClass__default=/*#__PURE__*/_interopDefaultLegacy(_createClass$1);var _assertThisInitialized__default$1=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$1);var _inherits__default=/*#__PURE__*/_interopDefaultLegacy(_inherits$1);var _possibleConstructorReturn__default=/*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn$1);var _getPrototypeOf__default=/*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);var _objectWithoutPropertiesLoose__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);var _extends__default$1=/*#__PURE__*/_interopDefaultLegacy(_extends$1);var _assertThisInitialized__default=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);var _inheritsLoose__default=/*#__PURE__*/_interopDefaultLegacy(_inheritsLoose);var _typeof__default=/*#__PURE__*/_interopDefaultLegacy(_typeof);var path__default=/*#__PURE__*/_interopDefaultLegacy(path);var process__default=/*#__PURE__*/_interopDefaultLegacy(process$1);var getCookie = function getCookie(name) {
   var _document;
 
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
@@ -1675,460 +1675,480 @@ Loader.propsTypes = {
 };
 Loader.defaultProps = {
   style: ''
-};function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+};var _this = undefined;
 
-function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var _mounted = false;
+var Auth = function Auth(props) {
+  var _useState = React$1.useState({
+    user: null,
+    authenticated: null,
+    preferences: {}
+  }),
+      _useState2 = _slicedToArray__default["default"](_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
 
-var Auth = /*#__PURE__*/function (_Component) {
-  _inherits__default["default"](Auth, _Component);
-
-  var _super = _createSuper$4(Auth);
-
-  function Auth(props) {
-    var _this;
-
-    _classCallCheck__default["default"](this, Auth);
-
-    _this = _super.call(this, props);
-
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "checkPermission", /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee2(permission) {
-        return _regeneratorRuntime__default["default"].wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
-                  var _ref2 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee(resolve, reject) {
-                    return _regeneratorRuntime__default["default"].wrap(function _callee$(_context) {
-                      while (1) {
-                        switch (_context.prev = _context.next) {
-                          case 0:
-                            _context.next = 2;
-                            return client('/api/permission/check', {
-                              'permission': permission
-                            }).then(function (data) {
-                              if (_mounted) {
-                                return resolve(data.has_permission);
-                              }
-                            })["catch"](function (error) {
-                              if (_mounted) {
-                                return reject(error);
-                              }
-                            });
-
-                          case 2:
-                          case "end":
-                            return _context.stop();
-                        }
-                      }
-                    }, _callee);
-                  }));
-
-                  return function (_x2, _x3) {
-                    return _ref2.apply(this, arguments);
-                  };
-                }()));
-
-              case 1:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      return function (_x) {
-        return _ref.apply(this, arguments);
-      };
-    }());
-
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "checkGroup", /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee4(group) {
-        return _regeneratorRuntime__default["default"].wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                return _context4.abrupt("return", new Promise( /*#__PURE__*/function () {
-                  var _ref4 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee3(resolve, reject) {
-                    return _regeneratorRuntime__default["default"].wrap(function _callee3$(_context3) {
-                      while (1) {
-                        switch (_context3.prev = _context3.next) {
-                          case 0:
-                            _context3.next = 2;
-                            return client('/api/group/check', {
-                              'group': group
-                            }).then(function (data) {
-                              if (_mounted) {
-                                return resolve(data.in_group);
-                              }
-                            })["catch"](function (error) {
-                              if (_mounted) {
-                                return reject(error);
-                              }
-                            });
-
-                          case 2:
-                          case "end":
-                            return _context3.stop();
-                        }
-                      }
-                    }, _callee3);
-                  }));
-
-                  return function (_x5, _x6) {
-                    return _ref4.apply(this, arguments);
-                  };
-                }()));
-
-              case 1:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }));
-
-      return function (_x4) {
-        return _ref3.apply(this, arguments);
-      };
-    }());
-
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "setPreference", /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee5(preference, value) {
-        var preferences;
-        return _regeneratorRuntime__default["default"].wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                preferences = _this.state.preferences;
-                preferences[preference] = value;
-
-                _this.setState({
-                  preferences: preferences
-                });
-
-                _context5.next = 5;
-                return client('/api/user/preference', {
-                  'preference': preference,
-                  'value': value
-                }, {
-                  method: 'PUT'
-                })["catch"](function (error) {
-                  var _error$status;
-
-                  if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort) && _mounted) {
-                    // TODO: Handle errors
-                    console.error(error);
-                  }
-                });
-
-              case 5:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }));
-
-      return function (_x7, _x8) {
-        return _ref5.apply(this, arguments);
-      };
-    }());
-
-    _this.state = {
-      user: null,
-      authenticated: null,
-      preferences: {}
-    };
-    _this.signIn = _this.signIn.bind(_assertThisInitialized__default["default"](_this));
-    _this.signOut = _this.signOut.bind(_assertThisInitialized__default["default"](_this));
-    _this.setUser = _this.setUser.bind(_assertThisInitialized__default["default"](_this));
-    _this.checkAuthentication = _this.checkAuthentication.bind(_assertThisInitialized__default["default"](_this));
-    _this.setPreference = _this.setPreference.bind(_assertThisInitialized__default["default"](_this));
-    return _this;
-  }
-
-  _createClass__default["default"](Auth, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.checkOnInit) {
-        this.checkAuthentication();
-      }
+  var isMountedRef = React$1.useRef(true);
+  var isMounted = React$1.useCallback(function () {
+    return isMountedRef.current;
+  }, []);
+  React$1.useEffect(function () {
+    if (props.checkOnInit) {
+      checkAuthentication();
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      _mounted = false;
+
+    return function () {
+      void (isMountedRef.current = false);
       controller.abort();
-    }
-  }, {
-    key: "signIn",
-    value: function signIn(username, password) {
-      var _this2 = this;
+    };
+  }, []);
 
-      return new Promise( /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee6(resolve, reject) {
-          var _yield$client, data, preferences;
+  var signIn = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee2(username, password) {
+      return _regeneratorRuntime__default["default"].wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
+                var _ref2 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee(resolve, reject) {
+                  var _yield$client, data, preferences;
 
-          return _regeneratorRuntime__default["default"].wrap(function _callee6$(_context6) {
-            while (1) {
-              switch (_context6.prev = _context6.next) {
-                case 0:
-                  _context6.prev = 0;
-                  _context6.next = 3;
-                  return client('/sanctum/csrf_cookie', undefined, {
-                    accept: 'text/html'
-                  });
+                  return _regeneratorRuntime__default["default"].wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          _context.prev = 0;
+                          _context.next = 3;
+                          return client('/sanctum/csrf_cookie', undefined, {
+                            accept: 'text/html'
+                          });
 
-                case 3:
-                  _context6.next = 5;
-                  return client('/login', {
-                    username: username,
-                    password: password
-                  });
+                        case 3:
+                          _context.next = 5;
+                          return client('/login', {
+                            username: username,
+                            password: password
+                          });
 
-                case 5:
-                  _context6.next = 7;
-                  return client('/api/user');
+                        case 5:
+                          _context.next = 7;
+                          return client('/api/user');
 
-                case 7:
-                  _yield$client = _context6.sent;
-                  data = _yield$client.data;
-                  preferences = data.preferences ? data.preferences : {};
-                  delete data.preferences;
+                        case 7:
+                          _yield$client = _context.sent;
+                          data = _yield$client.data;
+                          preferences = data.preferences ? data.preferences : {};
+                          delete data.preferences;
 
-                  if (!_mounted) {
-                    _context6.next = 14;
-                    break;
-                  }
+                          if (!isMounted) {
+                            _context.next = 14;
+                            break;
+                          }
 
-                  _this2.setState({
-                    user: data,
-                    authenticated: true,
-                    preferences: preferences
-                  });
+                          setState({
+                            user: data,
+                            authenticated: true,
+                            preferences: preferences
+                          });
+                          return _context.abrupt("return", resolve(data));
 
-                  return _context6.abrupt("return", resolve(data));
+                        case 14:
+                          _context.next = 20;
+                          break;
 
-                case 14:
-                  _context6.next = 20;
-                  break;
+                        case 16:
+                          _context.prev = 16;
+                          _context.t0 = _context["catch"](0);
 
-                case 16:
-                  _context6.prev = 16;
-                  _context6.t0 = _context6["catch"](0);
+                          if (!isMounted) {
+                            _context.next = 20;
+                            break;
+                          }
 
-                  if (!_mounted) {
-                    _context6.next = 20;
-                    break;
-                  }
+                          return _context.abrupt("return", reject(_context.t0));
 
-                  return _context6.abrupt("return", reject(_context6.t0));
+                        case 20:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee, null, [[0, 16]]);
+                }));
 
-                case 20:
-                case "end":
-                  return _context6.stop();
-              }
-            }
-          }, _callee6, null, [[0, 16]]);
-        }));
+                return function (_x3, _x4) {
+                  return _ref2.apply(this, arguments);
+                };
+              }()));
 
-        return function (_x9, _x10) {
-          return _ref6.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "signOut",
-    value: function signOut() {
-      var _this3 = this;
-
-      new Promise( /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee7(resolve, reject) {
-          return _regeneratorRuntime__default["default"].wrap(function _callee7$(_context7) {
-            while (1) {
-              switch (_context7.prev = _context7.next) {
-                case 0:
-                  _context7.prev = 0;
-                  _context7.next = 3;
-                  return unabortableClient('/api/logout', {});
-
-                case 3:
-                  if (_mounted) {
-                    _this3.setState({
-                      user: null,
-                      authenticated: false
-                    });
-
-                    window.location.replace("//" + window.location.hostname + '/login?logout');
-                    resolve(true);
-                  }
-
-                  _context7.next = 10;
-                  break;
-
-                case 6:
-                  _context7.prev = 6;
-                  _context7.t0 = _context7["catch"](0);
-
-                  if (!_mounted) {
-                    _context7.next = 10;
-                    break;
-                  }
-
-                  return _context7.abrupt("return", reject(_context7.t0));
-
-                case 10:
-                case "end":
-                  return _context7.stop();
-              }
-            }
-          }, _callee7, null, [[0, 6]]);
-        }));
-
-        return function (_x11, _x12) {
-          return _ref7.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "setUser",
-    value: function setUser(user, authenticated) {
-      if (_mounted) {
-        this.setState({
-          user: user,
-          authenticated: authenticated
-        });
-      }
-    }
-  }, {
-    key: "checkAuthentication",
-    value: function checkAuthentication() {
-      var _this4 = this;
-
-      return new Promise( /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee8(resolve, reject) {
-          var _yield$client2, data, preferences;
-
-          return _regeneratorRuntime__default["default"].wrap(function _callee8$(_context8) {
-            while (1) {
-              switch (_context8.prev = _context8.next) {
-                case 0:
-                  if (!(_this4.state.authenticated === null)) {
-                    _context8.next = 25;
-                    break;
-                  }
-
-                  _context8.prev = 1;
-                  _context8.next = 4;
-                  return client('/api/user');
-
-                case 4:
-                  _yield$client2 = _context8.sent;
-                  data = _yield$client2.data;
-                  preferences = data.preferences ? data.preferences : {};
-                  delete data.preferences;
-
-                  if (!_mounted) {
-                    _context8.next = 11;
-                    break;
-                  }
-
-                  _this4.setState({
-                    user: data,
-                    authenticated: true,
-                    preferences: preferences
-                  });
-
-                  return _context8.abrupt("return", resolve(true));
-
-                case 11:
-                  _context8.next = 23;
-                  break;
-
-                case 13:
-                  _context8.prev = 13;
-                  _context8.t0 = _context8["catch"](1);
-
-                  if (!(_context8.t0.response && _context8.t0.status.code === 401)) {
-                    _context8.next = 21;
-                    break;
-                  }
-
-                  if (!_mounted) {
-                    _context8.next = 19;
-                    break;
-                  }
-
-                  _this4.setState({
-                    user: null,
-                    authenticated: false,
-                    preferences: {}
-                  });
-
-                  return _context8.abrupt("return", resolve(false));
-
-                case 19:
-                  _context8.next = 23;
-                  break;
-
-                case 21:
-                  if (!_mounted) {
-                    _context8.next = 23;
-                    break;
-                  }
-
-                  return _context8.abrupt("return", reject(_context8.t0));
-
-                case 23:
-                  _context8.next = 27;
-                  break;
-
-                case 25:
-                  if (!_mounted) {
-                    _context8.next = 27;
-                    break;
-                  }
-
-                  return _context8.abrupt("return", resolve(_this4.state.authenticated));
-
-                case 27:
-                case "end":
-                  return _context8.stop();
-              }
-            }
-          }, _callee8, null, [[1, 13]]);
-        }));
-
-        return function (_x13, _x14) {
-          return _ref8.apply(this, arguments);
-        };
-      }());
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.state.authenticated !== null) return /*#__PURE__*/React__default["default"].createElement(AuthContext.Provider, {
-        children: this.props.children || null,
-        value: {
-          user: this.state.user,
-          authenticated: this.state.authenticated,
-          signIn: this.signIn,
-          signOut: this.signOut,
-          setUser: this.setUser,
-          checkAuthentication: this.checkAuthentication,
-          checkPermission: this.checkPermission,
-          checkGroup: this.checkGroup,
-          preferences: this.state.preferences,
-          setPreference: this.setPreference
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
         }
-      });else return /*#__PURE__*/React__default["default"].createElement(Loader, null);
-    }
-  }]);
+      }, _callee2);
+    }));
 
-  return Auth;
-}(React$1.Component);
+    return function signIn(_x, _x2) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var signOut = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee4() {
+      return _regeneratorRuntime__default["default"].wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              new Promise( /*#__PURE__*/function () {
+                var _ref4 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee3(resolve, reject) {
+                  return _regeneratorRuntime__default["default"].wrap(function _callee3$(_context3) {
+                    while (1) {
+                      switch (_context3.prev = _context3.next) {
+                        case 0:
+                          _context3.prev = 0;
+                          _context3.next = 3;
+                          return unabortableClient('/api/logout', {});
+
+                        case 3:
+                          if (isMounted) {
+                            setState({
+                              user: null,
+                              authenticated: false
+                            });
+                            window.location.replace("//" + window.location.hostname + '/login?logout');
+                            resolve(true);
+                          }
+
+                          _context3.next = 10;
+                          break;
+
+                        case 6:
+                          _context3.prev = 6;
+                          _context3.t0 = _context3["catch"](0);
+
+                          if (!isMounted) {
+                            _context3.next = 10;
+                            break;
+                          }
+
+                          return _context3.abrupt("return", reject(_context3.t0));
+
+                        case 10:
+                        case "end":
+                          return _context3.stop();
+                      }
+                    }
+                  }, _callee3, null, [[0, 6]]);
+                }));
+
+                return function (_x5, _x6) {
+                  return _ref4.apply(this, arguments);
+                };
+              }());
+
+            case 1:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function signOut() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var setUser = function setUser(user, authenticated) {
+    if (isMounted) {
+      setState({
+        user: user,
+        authenticated: authenticated
+      });
+    }
+  };
+
+  var checkAuthentication = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee6() {
+      return _regeneratorRuntime__default["default"].wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              return _context6.abrupt("return", new Promise( /*#__PURE__*/function () {
+                var _ref6 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee5(resolve, reject) {
+                  var _yield$client2, data, preferences;
+
+                  return _regeneratorRuntime__default["default"].wrap(function _callee5$(_context5) {
+                    while (1) {
+                      switch (_context5.prev = _context5.next) {
+                        case 0:
+                          if (!(_this.state.authenticated === null)) {
+                            _context5.next = 25;
+                            break;
+                          }
+
+                          _context5.prev = 1;
+                          _context5.next = 4;
+                          return client('/api/user');
+
+                        case 4:
+                          _yield$client2 = _context5.sent;
+                          data = _yield$client2.data;
+                          preferences = data.preferences ? data.preferences : {};
+                          delete data.preferences;
+
+                          if (!isMounted) {
+                            _context5.next = 11;
+                            break;
+                          }
+
+                          _this.setState({
+                            user: data,
+                            authenticated: true,
+                            preferences: preferences
+                          });
+
+                          return _context5.abrupt("return", resolve(true));
+
+                        case 11:
+                          _context5.next = 23;
+                          break;
+
+                        case 13:
+                          _context5.prev = 13;
+                          _context5.t0 = _context5["catch"](1);
+
+                          if (!(_context5.t0.response && _context5.t0.status.code === 401)) {
+                            _context5.next = 21;
+                            break;
+                          }
+
+                          if (!isMounted) {
+                            _context5.next = 19;
+                            break;
+                          }
+
+                          _this.setState({
+                            user: null,
+                            authenticated: false,
+                            preferences: {}
+                          });
+
+                          return _context5.abrupt("return", resolve(false));
+
+                        case 19:
+                          _context5.next = 23;
+                          break;
+
+                        case 21:
+                          if (!isMounted) {
+                            _context5.next = 23;
+                            break;
+                          }
+
+                          return _context5.abrupt("return", reject(_context5.t0));
+
+                        case 23:
+                          _context5.next = 27;
+                          break;
+
+                        case 25:
+                          if (!isMounted) {
+                            _context5.next = 27;
+                            break;
+                          }
+
+                          return _context5.abrupt("return", resolve(_this.state.authenticated));
+
+                        case 27:
+                        case "end":
+                          return _context5.stop();
+                      }
+                    }
+                  }, _callee5, null, [[1, 13]]);
+                }));
+
+                return function (_x7, _x8) {
+                  return _ref6.apply(this, arguments);
+                };
+              }()));
+
+            case 1:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+
+    return function checkAuthentication() {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+
+  var checkPermission = /*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee8(permission) {
+      return _regeneratorRuntime__default["default"].wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              return _context8.abrupt("return", new Promise( /*#__PURE__*/function () {
+                var _ref8 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee7(resolve, reject) {
+                  return _regeneratorRuntime__default["default"].wrap(function _callee7$(_context7) {
+                    while (1) {
+                      switch (_context7.prev = _context7.next) {
+                        case 0:
+                          _context7.next = 2;
+                          return client('/api/permission/check', {
+                            'permission': permission
+                          }).then(function (data) {
+                            if (isMounted) {
+                              return resolve(data.has_permission);
+                            }
+                          })["catch"](function (error) {
+                            if (isMounted) {
+                              return reject(error);
+                            }
+                          });
+
+                        case 2:
+                        case "end":
+                          return _context7.stop();
+                      }
+                    }
+                  }, _callee7);
+                }));
+
+                return function (_x10, _x11) {
+                  return _ref8.apply(this, arguments);
+                };
+              }()));
+
+            case 1:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
+    }));
+
+    return function checkPermission(_x9) {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+
+  var checkGroup = /*#__PURE__*/function () {
+    var _ref9 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee10(group) {
+      return _regeneratorRuntime__default["default"].wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              return _context10.abrupt("return", new Promise( /*#__PURE__*/function () {
+                var _ref10 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee9(resolve, reject) {
+                  return _regeneratorRuntime__default["default"].wrap(function _callee9$(_context9) {
+                    while (1) {
+                      switch (_context9.prev = _context9.next) {
+                        case 0:
+                          _context9.next = 2;
+                          return client('/api/group/check', {
+                            'group': group
+                          }).then(function (data) {
+                            if (isMounted) {
+                              return resolve(data.in_group);
+                            }
+                          })["catch"](function (error) {
+                            if (isMounted) {
+                              return reject(error);
+                            }
+                          });
+
+                        case 2:
+                        case "end":
+                          return _context9.stop();
+                      }
+                    }
+                  }, _callee9);
+                }));
+
+                return function (_x13, _x14) {
+                  return _ref10.apply(this, arguments);
+                };
+              }()));
+
+            case 1:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10);
+    }));
+
+    return function checkGroup(_x12) {
+      return _ref9.apply(this, arguments);
+    };
+  }();
+
+  var setPreference = /*#__PURE__*/function () {
+    var _ref11 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee11(preference, value) {
+      var preferences;
+      return _regeneratorRuntime__default["default"].wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              preferences = _this.state.preferences;
+              preferences[preference] = value;
+
+              _this.setState({
+                preferences: preferences
+              });
+
+              _context11.next = 5;
+              return client('/api/user/preference', {
+                'preference': preference,
+                'value': value
+              }, {
+                method: 'PUT'
+              })["catch"](function (error) {
+                var _error$status;
+
+                if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort) && isMounted) {
+                  // TODO: Handle errors
+                  console.error(error);
+                }
+              });
+
+            case 5:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11);
+    }));
+
+    return function setPreference(_x15, _x16) {
+      return _ref11.apply(this, arguments);
+    };
+  }();
+
+  if (state.authenticated !== null) {
+    return /*#__PURE__*/React__default["default"].createElement(AuthContext.Provider, {
+      children: props.children || null,
+      value: {
+        user: state.user,
+        authenticated: state.authenticated,
+        signIn: signIn,
+        signOut: signOut,
+        setUser: setUser,
+        checkAuthentication: checkAuthentication,
+        checkPermission: checkPermission,
+        checkGroup: checkGroup,
+        preferences: state.preferences,
+        setPreference: setPreference
+      }
+    });
+  } else {
+    return /*#__PURE__*/React__default["default"].createElement(Loader, null);
+  }
+};
 
 Auth.propTypes = {
   config: PropTypes.object,
@@ -3449,7 +3469,7 @@ var TransitionGroup = /*#__PURE__*/function (_React$Component) {
 
     _this = _React$Component.call(this, props, context) || this;
 
-    var handleExited = _this.handleExited.bind(_assertThisInitialized__default$1["default"](_this)); // Initial children should all be entering, dependent on appear
+    var handleExited = _this.handleExited.bind(_assertThisInitialized__default["default"](_this)); // Initial children should all be entering, dependent on appear
 
 
     _this.state = {
@@ -3638,11 +3658,11 @@ var ToastController = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "state", {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "state", {
       isRunning: Boolean(_this.props.autoDismiss)
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "startTimer", function () {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "startTimer", function () {
       var _this$props = _this.props,
           autoDismiss = _this$props.autoDismiss,
           autoDismissTimeout = _this$props.autoDismissTimeout,
@@ -3656,11 +3676,11 @@ var ToastController = /*#__PURE__*/function (_Component) {
       _this.timeout = new Timer(onDismiss, autoDismissTimeout);
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "clearTimer", function () {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "clearTimer", function () {
       if (_this.timeout) _this.timeout.clear();
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "onMouseEnter", function () {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "onMouseEnter", function () {
       _this.setState({
         isRunning: false
       }, function () {
@@ -3668,7 +3688,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
       });
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "onMouseLeave", function () {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "onMouseLeave", function () {
       _this.setState({
         isRunning: true
       }, function () {
@@ -3760,11 +3780,11 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "state", {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "state", {
       toasts: []
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "has", function (id) {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "has", function (id) {
       if (!_this.state.toasts.length) {
         return false;
       }
@@ -3774,7 +3794,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
       }).length);
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "onDismiss", function (id) {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "onDismiss", function (id) {
       var cb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : NOOP;
       return function () {
         cb(id);
@@ -3783,7 +3803,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
       };
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "add", function (title, content) {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "add", function (title, content) {
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
       var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : NOOP;
       var id = options.id ? options.id : generateUEID();
@@ -3815,7 +3835,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
       return id;
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "remove", function (id) {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "remove", function (id) {
       var cb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : NOOP;
 
       var callback = function callback() {
@@ -3837,7 +3857,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
       }, callback);
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "removeAll", function () {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "removeAll", function () {
       if (!_this.state.toasts.length) {
         return;
       }
@@ -3847,7 +3867,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
       });
     });
 
-    _defineProperty__default["default"](_assertThisInitialized__default["default"](_this), "update", function (id) {
+    _defineProperty__default["default"](_assertThisInitialized__default$1["default"](_this), "update", function (id) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : NOOP;
 

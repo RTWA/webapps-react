@@ -1,3 +1,6 @@
+## Version 1.8.15
+- `<Auth />` Context updated to functional component
+
 ## Version 1.8.14
 - Add document check to `getCookie` helper
 - Removed `isMounted` helper

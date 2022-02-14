@@ -27,7 +27,10 @@ const WebAppsProvider = props => {
         getApps();
         getPlugins();
 
-        return () => { void (isMountedRef.current = false); controller.abort(); }
+        return () => {
+            void (isMountedRef.current = false);
+            controller.abort();
+        }
     }, []);
 
     const toggleModal = modal => {
