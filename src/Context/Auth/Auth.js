@@ -85,7 +85,7 @@ const Auth = props => {
 
     const checkAuthentication = async () => {
         return new Promise(async (resolve, reject) => {
-            if (this.state.authenticated === null) {
+            if (state.authenticated === null) {
                 // The status is null if it hasn't been checked
                 try {
                     const { data } = await client('/api/user');
@@ -93,14 +93,22 @@ const Auth = props => {
                     delete data.preferences;
 
                     if (isMounted) {
-                        this.setState({ user: data, authenticated: true, preferences: preferences });
+                        setState({ 
+                            user: data,
+                            authenticated: true,
+                            preferences: preferences
+                        });
                         return resolve(true);
                     }
                 } catch (error) {
                     if (error.response && error.status.code === 401) {
                         // If 401 returns, the user is not logged in
                         if (isMounted) {
-                            this.setState({ user: null, authenticated: false, preferences: {} });
+                            setState({ 
+                                user: null,
+                                authenticated: false,
+                                preferences: {}
+                            });
                             return resolve(false);
                         }
                     } else {
@@ -113,7 +121,7 @@ const Auth = props => {
             } else {
                 // We've already check authenticated, just return state
                 if (isMounted) {
-                    return resolve(this.state.authenticated);
+                    return resolve(state.authenticated);
                 }
             }
         });
@@ -152,9 +160,9 @@ const Auth = props => {
     }
 
     const setPreference = async (preference, value) => {
-        let { preferences } = this.state;
+        let { preferences } = state;
         preferences[preference] = value;
-        this.setState({ preferences });
+        setState({ preferences });
 
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT' })
             .catch(error => {

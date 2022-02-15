@@ -1675,9 +1675,7 @@ Loader.propsTypes = {
 };
 Loader.defaultProps = {
   style: ''
-};var _this = undefined;
-
-var Auth = function Auth(props) {
+};var Auth = function Auth(props) {
   var _useState = React$1.useState({
     user: null,
     authenticated: null,
@@ -1881,7 +1879,7 @@ var Auth = function Auth(props) {
                     while (1) {
                       switch (_context5.prev = _context5.next) {
                         case 0:
-                          if (!(_this.state.authenticated === null)) {
+                          if (!(state.authenticated === null)) {
                             _context5.next = 25;
                             break;
                           }
@@ -1901,12 +1899,11 @@ var Auth = function Auth(props) {
                             break;
                           }
 
-                          _this.setState({
+                          setState({
                             user: data,
                             authenticated: true,
                             preferences: preferences
                           });
-
                           return _context5.abrupt("return", resolve(true));
 
                         case 11:
@@ -1927,12 +1924,11 @@ var Auth = function Auth(props) {
                             break;
                           }
 
-                          _this.setState({
+                          setState({
                             user: null,
                             authenticated: false,
                             preferences: {}
                           });
-
                           return _context5.abrupt("return", resolve(false));
 
                         case 19:
@@ -1957,7 +1953,7 @@ var Auth = function Auth(props) {
                             break;
                           }
 
-                          return _context5.abrupt("return", resolve(_this.state.authenticated));
+                          return _context5.abrupt("return", resolve(state.authenticated));
 
                         case 27:
                         case "end":
@@ -2094,13 +2090,11 @@ var Auth = function Auth(props) {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
-              preferences = _this.state.preferences;
+              preferences = state.preferences;
               preferences[preference] = value;
-
-              _this.setState({
+              setState({
                 preferences: preferences
               });
-
               _context11.next = 5;
               return client('/api/user/preference', {
                 'preference': preference,

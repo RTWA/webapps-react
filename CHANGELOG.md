@@ -1,4 +1,4 @@
-## Version 1.8.15
+## Version 1.8.15 & 1.8.16
 - `<Auth />` Context updated to functional component
 
 ## Version 1.8.14
