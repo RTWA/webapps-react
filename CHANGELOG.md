@@ -1,3 +1,6 @@
+## Version 1.8.17
+- Bug Fixed: `checkPermission` function of `<Auth />` Context
+
 ## Version 1.8.15 & 1.8.16
 - `<Auth />` Context updated to functional component
 

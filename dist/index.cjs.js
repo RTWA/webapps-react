@@ -1996,9 +1996,9 @@ Loader.defaultProps = {
                           _context7.next = 2;
                           return client('/api/permission/check', {
                             'permission': permission
-                          }).then(function (data) {
+                          }).then(function (json) {
                             if (isMounted) {
-                              return resolve(data.has_permission);
+                              return resolve(json.data.has_permission);
                             }
                           })["catch"](function (error) {
                             if (isMounted) {

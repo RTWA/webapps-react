@@ -130,9 +130,9 @@ const Auth = props => {
     const checkPermission = async permission => {
         return new Promise(async (resolve, reject) => {
             await client('/api/permission/check', { 'permission': permission })
-                .then(data => {
+                .then(json => {
                     if (isMounted) {
-                        return resolve(data.has_permission);
+                        return resolve(json.data.has_permission);
                     }
                 })
                 .catch(error => {
