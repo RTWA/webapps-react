@@ -4,7 +4,7 @@
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
-};var _excluded$q = ["headers", "accept", "type"],
+};var _excluded$r = ["headers", "accept", "type"],
     _excluded2$2 = ["headers", "accept", "type"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -39,7 +39,7 @@ var client = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
-            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$q);
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$r);
             _context2.prev = 2;
             config = _objectSpread$8({
               method: data ? 'POST' : 'GET',
@@ -1452,7 +1452,7 @@ var PropTypes = propTypes.exports;var classnames = {exports: {}};/*!
 }());
 }(classnames));
 
-var classNames = classnames.exports;var _excluded$p = ["tag", "className", "innerRef", "color", "pill", "children"];
+var classNames = classnames.exports;var _excluded$q = ["tag", "className", "innerRef", "color", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -1461,7 +1461,7 @@ var Badge = function Badge(props) {
       color = props.color,
       pill = props.pill,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$p);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$q);
 
   var classes = classNames(className, 'inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', "bg-".concat(color), pill ? 'rounded-full' : '');
   var Tag = attributes.to || attributes.href ? reactRouterDom.NavLink : tag;
@@ -1482,7 +1482,7 @@ Badge.propTypes = {
 };
 Badge.defaultProps = {
   tag: 'span'
-};var _excluded$o = ["tag", "className", "innerRef", "color", "darkColor", "children"];
+};var _excluded$p = ["tag", "className", "innerRef", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -1491,7 +1491,7 @@ var Banner = function Banner(props) {
       color = props.color,
       darkColor = props.darkColor,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$o);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$p);
 
   var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
@@ -1514,7 +1514,7 @@ Banner.defaultProps = {
   tag: 'div',
   color: 'gray-300',
   darkColor: 'gray-700'
-};var _excluded$n = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+};var _excluded$o = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -1527,7 +1527,7 @@ var Link = function Link(props) {
       href = props.href,
       onClick = props.onClick,
       disabled = props.disabled,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$n);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$o);
 
   var to = rest ? rest.to : null;
 
@@ -1563,12 +1563,12 @@ Link.propTypes = _objectSpread$7(_objectSpread$7({
 }, reactRouterDom.NavLink.propTypes), {}, {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
-});var AuthContext = /*#__PURE__*/React__default["default"].createContext({});var _excluded$m = ["className", "style"];
+});var AuthContext = /*#__PURE__*/React__default["default"].createContext({});var _excluded$n = ["className", "style"];
 
 var Loader = function Loader(props) {
   var className = props.className,
       style = props.style,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$m);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$n);
 
   var classes = classNames('loader', className);
   var circleClasses = classNames('animate-spin', className);
@@ -2349,7 +2349,7 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var _excluded$l = ["hasToasts", "placement", "className"];
+}var _excluded$m = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -2367,7 +2367,7 @@ var ToastContainer = function ToastContainer(_ref) {
   var hasToasts = _ref.hasToasts,
       placement = _ref.placement,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$l);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$m);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: classes(placement, hasToasts, className),
@@ -2494,7 +2494,7 @@ function generateUEID() {
     icon: MiscIcon,
     iconColor: 'text-gray-500 dark:text-white'
   }
-};var _excluded$k = ["autoDismissTimeout", "opacity", "isRunning"],
+};var _excluded$l = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2$1 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "UI", "color"];
 
@@ -2509,7 +2509,7 @@ var Countdown = function Countdown(_ref) {
   _ref.autoDismissTimeout;
       var opacity = _ref.opacity,
       isRunning = _ref.isRunning,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$k);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$l);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "toast-countdown",
@@ -3607,7 +3607,7 @@ TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
   childFactory: PropTypes.func
 } : {};
 TransitionGroup.defaultProps = defaultProps;
-var TransitionGroup$1 = TransitionGroup;var _excluded$j = ["autoDismiss", "autoDismissTimeout", "component"];
+var TransitionGroup$1 = TransitionGroup;var _excluded$k = ["autoDismiss", "autoDismissTimeout", "component"];
 
 function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -3718,7 +3718,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
           autoDismiss = _this$props2.autoDismiss,
           autoDismissTimeout = _this$props2.autoDismissTimeout,
           Toast = _this$props2.component,
-          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$j);
+          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$k);
 
       var isRunning = this.state.isRunning; // NOTE: conditions here so methods can be clean
 
@@ -3739,7 +3739,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
 
 _defineProperty__default["default"](ToastController, "defaultProps", {
   autoDismiss: false
-});var _excluded$i = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
+});var _excluded$j = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
 function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -3946,7 +3946,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
             actionLabel = _ref.actionLabel,
             secondaryAction = _ref.secondaryAction,
             secondaryActionLabel = _ref.secondaryActionLabel,
-            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$i);
+            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$j);
 
         return /*#__PURE__*/React__default["default"].createElement(Transition$1, {
           appear: true,
@@ -4819,7 +4819,7 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var _excluded$h = ["style", "size", "rounded", "square", "className", "children"];
+};var _excluded$i = ["style", "size", "rounded", "square", "className", "children"];
 
 var Button = function Button(props) {
   var style = props.style,
@@ -4828,7 +4828,7 @@ var Button = function Button(props) {
       square = props.square,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
 
   var _useContext = React$1.useContext(WebAppsContext),
       UI = _useContext.UI;
@@ -4854,7 +4854,7 @@ Button.defaultProps = {
   color: 'brand',
   style: 'full',
   size: ''
-};var _excluded$g = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+};var _excluded$h = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -4864,7 +4864,12 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
       initialColor = props.initialColor,
       confirmColor = props.confirmColor,
       className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$g);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
+
+  var isMountedRef = React$1.useRef(true);
+  var isMounted = React$1.useCallback(function () {
+    return isMountedRef.current;
+  }, []);
 
   var _useState = React$1.useState(false),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -4881,7 +4886,9 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
     e.preventDefault();
     setWaiting(true);
     setTimeout(function () {
-      setWaiting(false);
+      if (isMounted) {
+        setWaiting(false);
+      }
     }, timeout);
   };
 
@@ -4932,7 +4939,7 @@ ConfirmDeleteButton.defaultProps = {
   timeout: 2000,
   initialColor: 'red',
   confirmColor: 'orange'
-};var _excluded$f = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+};var _excluded$g = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -4941,7 +4948,7 @@ var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
       confirmText = props.confirmText,
       onCancel = props.onCancel,
       onConfirm = props.onConfirm,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$f);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$g);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "fixed z-50 inset-0 overflow-y-auto"
@@ -5013,14 +5020,169 @@ ConfirmDeleteModal.defaultProps = {
   message: "Are you sure to wish to delete this item?\nThis action cannot be undone.",
   cancelText: "No",
   confirmText: "Yes"
-};var _excluded$e = ["show", "text", "buttonClassNames", "dropClassNames"];
+};var _excluded$f = ["error", "state", "className"];
+
+var Input = function Input(props) {
+  var error = props.error,
+      state = props.state,
+      className = props.className,
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$f);
+
+  var _useContext = React$1.useContext(WebAppsContext),
+      UI = _useContext.UI;
+
+  var classes = classNames(className, 'input-field', "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("input", _extends__default["default"]({}, attributes, {
+    className: classes
+  })), state === 'error' && error !== '' ? /*#__PURE__*/React__default["default"].createElement("span", {
+    className: "text-sm text-red-500"
+  }, error) : null);
+};
+
+Input.propTypes = {
+  error: PropTypes.string,
+  state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
+};
+Input.defaultProps = {
+  error: '',
+  state: '',
+  className: ''
+};var _excluded$e = ["data", "select", "placeholder", "noMatchesText", "limit"];
+
+var DataSuggest = function DataSuggest(_ref) {
+  var data = _ref.data,
+      select = _ref.select,
+      placeholder = _ref.placeholder,
+      noMatchesText = _ref.noMatchesText,
+      limit = _ref.limit,
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$e);
+
+  var _useState = React$1.useState(0),
+      _useState2 = _slicedToArray__default["default"](_useState, 2),
+      active = _useState2[0],
+      setActive = _useState2[1];
+
+  var _useState3 = React$1.useState([]),
+      _useState4 = _slicedToArray__default["default"](_useState3, 2),
+      filteredData = _useState4[0],
+      setFilteredData = _useState4[1];
+
+  var _useState5 = React$1.useState(false),
+      _useState6 = _slicedToArray__default["default"](_useState5, 2),
+      showResults = _useState6[0],
+      setShowResults = _useState6[1];
+
+  var _useState7 = React$1.useState(''),
+      _useState8 = _slicedToArray__default["default"](_useState7, 2),
+      dataInput = _useState8[0],
+      setDataInput = _useState8[1];
+
+  var onChange = function onChange(e) {
+    var dataInput = e.currentTarget.value;
+
+    var _filteredData = data.filter(function (data) {
+      return data.label.toLowerCase().indexOf(dataInput.toLowerCase()) > -1;
+    });
+
+    setActive(0);
+    setFilteredData(_filteredData);
+    setShowResults(true);
+    setDataInput(e.currentTarget.value);
+  };
+
+  var onClick = function onClick(e) {
+    e.stopPropagation();
+    setDataInput(filteredData[e.currentTarget.dataset.key].label);
+    select(filteredData[e.currentTarget.dataset.key]);
+    setActive(0);
+    setFilteredData([]);
+    setShowResults(false);
+  };
+
+  var onKeyDown = function onKeyDown(e) {
+    if (e.keyCode === 13) {
+      setDataInput(filteredData[active].label);
+      select(filteredData[active]);
+      setShowResults(false);
+      setActive(0);
+    } else if (e.keyCode === 38) {
+      if (active === 0) return;
+      setActive(active - 1);
+    } else if (e.keyCode === 40) {
+      if (active + 1 === filteredData.length) return;
+      setActive(active + 1);
+    }
+  };
+
+  var dataListComponent;
+
+  if (showResults && dataInput) {
+    if (filteredData.length) {
+      var count = 1;
+      dataListComponent = /*#__PURE__*/React__default["default"].createElement("ul", {
+        className: "absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
+      }, filteredData.map(function (data, index) {
+        if (limit === 0 || count <= limit) {
+          var className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
+
+          if (index === active) {
+            className = "flex flex-row gap-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-900";
+          }
+
+          count = count + 1;
+          return /*#__PURE__*/React__default["default"].createElement("li", {
+            className: className,
+            key: data.id,
+            "data-key": index,
+            onClick: onClick
+          }, data.label);
+        }
+      }));
+    } else {
+      dataListComponent = /*#__PURE__*/React__default["default"].createElement("ul", {
+        className: "absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
+      }, /*#__PURE__*/React__default["default"].createElement("li", {
+        className: "px-4 py-2 text-center"
+      }, /*#__PURE__*/React__default["default"].createElement("em", null, noMatchesText)));
+    }
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React__default["default"].createElement(Input, _extends__default["default"]({
+    type: "text",
+    onChange: onChange,
+    onKeyDown: onKeyDown,
+    value: dataInput,
+    placeholder: placeholder,
+    autoComplete: "no"
+  }, props)), dataListComponent);
+};
+
+DataSuggest.propTypes = {
+  data: PropTypes.instanceOf(Array),
+  select: PropTypes.instanceOf(Function),
+  placeholder: PropTypes.string,
+  noMatchesText: PropTypes.string,
+  limit: PropTypes.number
+};
+DataSuggest.defaultProps = {
+  data: [],
+  select: function select() {
+    return true;
+  },
+  placeholder: 'Start typing to search...',
+  noMatchesText: 'No matching results found!',
+  limit: 0
+};var _excluded$d = ["show", "text", "buttonClassNames", "dropClassNames"];
 
 var DropDownButton = function DropDownButton(props) {
   var show = props.show,
       text = props.text,
       buttonClassNames = props.buttonClassNames,
       dropClassNames = props.dropClassNames,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$e);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$d);
 
   var _useState = React$1.useState(show),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -5071,11 +5233,11 @@ var DropDownButton = function DropDownButton(props) {
 
 DropDownButton.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-};var _excluded$d = ["icon"];
+};var _excluded$c = ["icon"];
 
 var Icon = function Icon(props) {
   var icon = props.icon,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$d);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$c);
 
   var addClasses = function addClasses(string) {
     return string.replace(/<svg/g, "<svg class=\"".concat(attributes.className, "\""));
@@ -5128,34 +5290,6 @@ Icon.propTypes = {
   return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, props.children, /*#__PURE__*/React__default["default"].createElement("span", {
     ref: marker
   }));
-};var _excluded$c = ["error", "state", "className"];
-
-var Input = function Input(props) {
-  var error = props.error,
-      state = props.state,
-      className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$c);
-
-  var _useContext = React$1.useContext(WebAppsContext),
-      UI = _useContext.UI;
-
-  var classes = classNames(className, 'input-field', "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("input", _extends__default["default"]({}, attributes, {
-    className: classes
-  })), state === 'error' && error !== '' ? /*#__PURE__*/React__default["default"].createElement("span", {
-    className: "text-sm text-red-500"
-  }, error) : null);
-};
-
-Input.propTypes = {
-  error: PropTypes.string,
-  state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
-};
-Input.defaultProps = {
-  error: '',
-  state: '',
-  className: ''
 };var Switch = function Switch(props) {
   var name = props.name,
       error = props.error,
@@ -23817,6 +23951,7 @@ var returnLibrary = function returnLibrary() {
     Button: Button,
     ConfirmDeleteButton: ConfirmDeleteButton,
     ConfirmDeleteModal: ConfirmDeleteModal,
+    DataSuggest: DataSuggest,
     DropDownButton: DropDownButton,
     Icon: Icon,
     InfiniteScroll: InfiniteScroll,

@@ -1,3 +1,7 @@
+## Version 1.9.0
+- NEW: Added `<DataSuggest />` Component
+- Added mounted check to `<ConfirmDeleteButton />` on timers
+
 ## Version 1.8.17
 - Bug Fixed: `checkPermission` function of `<Auth />` Context
 

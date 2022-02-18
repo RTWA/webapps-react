@@ -8,6 +8,7 @@ import Banner from './Components/Banner';
 import Button from './Components/Button';
 import ConfirmDeleteButton from './Components/ConfirmDeleteButton';
 import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
+import DataSuggest from './Components/DataSuggest';
 import DropDownButton from './Components/DropDownButton';
 import Icon from './Components/Icon';
 import InfiniteScroll from './Components/InfiniteScroll';
@@ -51,6 +52,7 @@ const returnLibrary = () => {
         Button,
         ConfirmDeleteButton,
         ConfirmDeleteModal,
+        DataSuggest,
         DropDownButton,
         Icon,
         InfiniteScroll,
