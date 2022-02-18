@@ -112,6 +112,15 @@ const handlers = [
         )
     }),
     
+    rest.post('/api/setting', (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json({
+                settings: [],
+            })
+        )
+    }),
+    
 ];
 
 const server = setupServer(...handlers);

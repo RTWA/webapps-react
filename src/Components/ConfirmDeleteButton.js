@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -19,6 +19,10 @@ const ConfirmDeleteButton = props => {
     const isMountedRef = useRef(true);
     const isMounted = useCallback(() => isMountedRef.current, []);
 
+    useEffect(() => {
+        () => void (isMountedRef.current = false);
+    },[]);
+
     const [waiting, setWaiting] = useState(false);
 
     const onConfirm = e => {
@@ -32,7 +36,7 @@ const ConfirmDeleteButton = props => {
         setWaiting(true);
 
         setTimeout(() => {
-            if (isMounted) {
+            if (isMounted()) {
                 setWaiting(false);
             }
         }, timeout)

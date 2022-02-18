@@ -1,5 +1,5 @@
 import React from 'react';
-import { container, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Icon from './Icon';
 
@@ -9,13 +9,7 @@ const svg = (
     </svg>
 );
 
-test('Icon (FontAwesome) Component Renders', () => {
-    render(<Icon icon={"[\"fas\", \"star\"]"} />);
-
-    expect(screen.getByRole('img', {  hidden: true})).toBeDefined();
-});
-
-test('Icon (SVG) Component Renders', () => {
+test('Icon Component Renders', () => {
     render(<Icon icon={svg} data-testid="webapps-IconSVG-component" />);
 
     expect(screen.getByTestId('webapps-IconSVG-component')).toBeDefined();

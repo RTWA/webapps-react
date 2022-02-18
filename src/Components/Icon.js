@@ -8,7 +8,9 @@ const Icon = props => {
     } = props;
 
     const addClasses = string => {
-        return string.replace(/<svg/g, `<svg class="${attributes.className}"`)
+        if (typeof (string) === 'string') {
+            return string.replace(/<svg/g, `<svg class="${attributes.className}"`)
+        }
     }
 
     return <div dangerouslySetInnerHTML={{ __html: addClasses(icon) }} {...attributes} />

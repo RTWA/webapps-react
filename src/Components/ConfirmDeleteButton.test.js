@@ -5,7 +5,7 @@ import ConfirmDeleteButton from './ConfirmDeleteButton';
 import { WebApps } from '../Context/index';
 
 test('ConfirmDeleteButton Component Renders', async () => {
-    render(<WebApps><ConfirmDeleteButton data-testid="webapps-ConfirmDeleteButton-component" /></WebApps>);
+    render(<WebApps><ConfirmDeleteButton data-testid="webapps-ConfirmDeleteButton-component" timeout={10} /></WebApps>);
 
     expect(screen.getByTestId('webapps-ConfirmDeleteButton-component')).toBeDefined();
     expect(screen.getByText(/delete/i)).toBeDefined();
@@ -13,9 +13,8 @@ test('ConfirmDeleteButton Component Renders', async () => {
     await act(async () => {
         fireEvent.click(screen.getByText(/delete/i));
     });
-    await waitFor(() =>
-        screen.getByText(/delete - are you sure?/i)
-    );
-    
-    expect(screen.getByText(/delete - are you sure?/i)).toBeDefined();
+    await waitFor(() => expect(screen.getByText(/delete - are you sure?/i)).toBeDefined());
+
+    /* Wait for the timeout to clear */
+    await waitFor(() => expect(screen.getByText("Delete")).toBeDefined());
 });
