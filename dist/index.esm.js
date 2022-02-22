@@ -1,4 +1,4 @@
-import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties from'@babel/runtime/helpers/objectWithoutProperties';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _regeneratorRuntime from'@babel/runtime/regenerator';import _extends from'@babel/runtime/helpers/extends';import React$1,{useState,useRef,useCallback,useEffect,useMemo,Children,isValidElement,cloneElement,Component,useContext,createRef}from'react';import {NavLink,useLocation,Link as Link$1}from'react-router-dom';import _slicedToArray from'@babel/runtime/helpers/slicedToArray';import ReactDOM,{unstable_batchedUpdates,createPortal}from'react-dom';import _toConsumableArray from'@babel/runtime/helpers/toConsumableArray';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized$1 from'@babel/runtime/helpers/assertThisInitialized';import _inherits$1 from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn$1 from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _objectWithoutPropertiesLoose from'@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';import _extends$1 from'@babel/runtime/helpers/esm/extends';import _assertThisInitialized from'@babel/runtime/helpers/esm/assertThisInitialized';import _inheritsLoose from'@babel/runtime/helpers/esm/inheritsLoose';import _typeof from'@babel/runtime/helpers/typeof';import path from'path';import process$1 from'process';import {fileURLToPath}from'url';var getCookie = function getCookie(name) {
+import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties from'@babel/runtime/helpers/objectWithoutProperties';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _regeneratorRuntime from'@babel/runtime/regenerator';import _extends from'@babel/runtime/helpers/extends';import React$1,{useState,useRef,useCallback,useEffect,useMemo,Children,isValidElement,cloneElement,Component,useContext,createRef}from'react';import {NavLink,useLocation,withRouter,Link as Link$1}from'react-router-dom';import _slicedToArray from'@babel/runtime/helpers/slicedToArray';import ReactDOM,{unstable_batchedUpdates,createPortal}from'react-dom';import _toConsumableArray from'@babel/runtime/helpers/toConsumableArray';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized$1 from'@babel/runtime/helpers/assertThisInitialized';import _inherits$1 from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn$1 from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import _objectWithoutPropertiesLoose from'@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';import _extends$1 from'@babel/runtime/helpers/esm/extends';import _assertThisInitialized from'@babel/runtime/helpers/esm/assertThisInitialized';import _inheritsLoose from'@babel/runtime/helpers/esm/inheritsLoose';import _typeof from'@babel/runtime/helpers/typeof';import path from'path';import process$1 from'process';import {fileURLToPath}from'url';var getCookie = function getCookie(name) {
   var _document;
 
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
@@ -4870,6 +4870,8 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var isMounted = useCallback(function () {
     return isMountedRef.current;
   }, []);
+  useEffect(function () {
+  }, []);
 
   var _useState = useState(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -4886,7 +4888,7 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
     e.preventDefault();
     setWaiting(true);
     setTimeout(function () {
-      if (isMounted) {
+      if (isMounted()) {
         setWaiting(false);
       }
     }, timeout);
@@ -5082,7 +5084,7 @@ var DataSuggest = function DataSuggest(_ref) {
     var dataInput = e.currentTarget.value;
 
     var _filteredData = data.filter(function (data) {
-      return data.label.toLowerCase().indexOf(dataInput.toLowerCase()) > -1;
+      return data[labelKey].toLowerCase().indexOf(dataInput.toLowerCase()) > -1;
     });
 
     setActive(0);
@@ -5093,7 +5095,7 @@ var DataSuggest = function DataSuggest(_ref) {
 
   var onClick = function onClick(e) {
     e.stopPropagation();
-    setDataInput(filteredData[e.currentTarget.dataset.key].label);
+    setDataInput(filteredData[e.currentTarget.dataset.key][labelKey]);
     select(filteredData[e.currentTarget.dataset.key]);
     setActive(0);
     setFilteredData([]);
@@ -5102,7 +5104,7 @@ var DataSuggest = function DataSuggest(_ref) {
 
   var onKeyDown = function onKeyDown(e) {
     if (e.keyCode === 13) {
-      setDataInput(filteredData[active].label);
+      setDataInput(filteredData[active][labelKey]);
       select(filteredData[active]);
       setShowResults(false);
       setActive(0);
@@ -5133,10 +5135,10 @@ var DataSuggest = function DataSuggest(_ref) {
           count = count + 1;
           return /*#__PURE__*/React$1.createElement("li", {
             className: className,
-            key: data.id,
+            key: data[valueKey],
             "data-key": index,
             onClick: onClick
-          }, data.label);
+          }, data[labelKey]);
         }
       }));
     } else {
@@ -5163,6 +5165,8 @@ var DataSuggest = function DataSuggest(_ref) {
 DataSuggest.propTypes = {
   data: PropTypes.instanceOf(Array),
   select: PropTypes.instanceOf(Function),
+  valueKey: PropTypes.string,
+  labelKey: PropTypes.string,
   placeholder: PropTypes.string,
   noMatchesText: PropTypes.string,
   limit: PropTypes.number
@@ -5172,6 +5176,8 @@ DataSuggest.defaultProps = {
   select: function select() {
     return true;
   },
+  valueKey: 'value',
+  labelKey: 'label',
   placeholder: 'Start typing to search...',
   noMatchesText: 'No matching results found!',
   limit: 0
@@ -5240,7 +5246,9 @@ var Icon = function Icon(props) {
       attributes = _objectWithoutProperties(props, _excluded$c);
 
   var addClasses = function addClasses(string) {
-    return string.replace(/<svg/g, "<svg class=\"".concat(attributes.className, "\""));
+    if (typeof string === 'string') {
+      return string.replace(/<svg/g, "<svg class=\"".concat(attributes.className, "\""));
+    }
   };
 
   return /*#__PURE__*/React$1.createElement("div", _extends({
@@ -23872,13 +23880,15 @@ var AppError = /*#__PURE__*/function (_Component) {
       hasError: false,
       info: '',
       error: ''
-    }; // this.props.history.listen((location, action) => {
-    //     if (this.state.hasError) {
-    //         this.setState({
-    //             hasError: false,
-    //         });
-    //     }
-    // });
+    };
+
+    _this.props.history.listen(function (location, action) {
+      if (_this.state.hasError) {
+        _this.setState({
+          hasError: false
+        });
+      }
+    });
 
     return _this;
   }
@@ -23938,8 +23948,8 @@ AppError.propTypes = {
 };
 AppError.defaultProps = {
   theme: 'indigo'
-}; // export default withRouter(AppError);
-/** @jsxRuntime classic /
+};
+var AppError$1 = withRouter(AppError);/** @jsxRuntime classic /
 /* @jsx jsx */
 
 var returnLibrary = function returnLibrary() {
@@ -23976,7 +23986,7 @@ var returnLibrary = function returnLibrary() {
     WebApps: WebApps,
     WebAppsContext: WebAppsContext,
     withWebApps: withWebApps,
-    AppError: AppError,
+    AppError: AppError$1,
     NavigationError: NavigationError,
     CreateElement: CreateElement,
     DefaultToastContainer: ToastContainer,

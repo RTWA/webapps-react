@@ -1,6 +1,10 @@
+## Version 1.9.1
+- Added `valueKey` and `labelKey` propers to `<DataSuggest />` Component
+
 ## Version 1.9.0
 - NEW: Added `<DataSuggest />` Component
 - Added mounted check to `<ConfirmDeleteButton />` on timers
+- Added location change handle to `<AppError />` boundary
 
 ## Version 1.8.17
 - Bug Fixed: `checkPermission` function of `<Auth />` Context

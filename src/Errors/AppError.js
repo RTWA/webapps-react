@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class AppError extends Component {
@@ -10,13 +10,13 @@ class AppError extends Component {
             info: '',
             error: '',
         };
-        // this.props.history.listen((location, action) => {
-        //     if (this.state.hasError) {
-        //         this.setState({
-        //             hasError: false,
-        //         });
-        //     }
-        // });
+        this.props.history.listen((location, action) => {
+            if (this.state.hasError) {
+                this.setState({
+                    hasError: false,
+                });
+            }
+        });
     }
 
     componentDidCatch(error, info) {
@@ -59,5 +59,4 @@ AppError.defaultProps = {
     theme: 'indigo'
 }
 
-// export default withRouter(AppError);
-export default AppError;
+export default withRouter(AppError);
