@@ -1,3 +1,6 @@
+## Version 1.9.2
+- NEW: Added `<WebAppsDocs />` Context and `<WebAppsDocComponent />` Component
+
 ## Version 1.9.1
 - Added `valueKey` and `labelKey` propers to `<DataSuggest />` Component
 

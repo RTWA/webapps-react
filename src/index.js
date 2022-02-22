@@ -42,6 +42,13 @@ import {
     useToasts,
 } from './Toasts';
 
+import {
+    WebAppsDocComponent,
+    WebAppsDocs,
+    WebAppsDocsContext,
+    withWebAppsDocs,
+} from './Docs';
+
 const returnLibrary = () => {
     return {
         APIClient,
@@ -93,6 +100,11 @@ const returnLibrary = () => {
         ToastProvider,
         withToastManager,
         useToasts,
+
+        WebAppsDocComponent,
+        WebAppsDocs,
+        WebAppsDocsContext,
+        withWebAppsDocs,
     }
 };
 

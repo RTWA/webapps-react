@@ -12,7 +12,7 @@ const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, ...props
         const dataInput = e.currentTarget.value;
 
         const _filteredData = data.filter(
-            data => data.label.toLowerCase().indexOf(dataInput.toLowerCase()) > -1
+            data => data[labelKey].toLowerCase().indexOf(dataInput.toLowerCase()) > -1
         );
 
         setActive(0);
@@ -24,7 +24,7 @@ const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, ...props
     const onClick = e => {
         e.stopPropagation();
 
-        setDataInput(filteredData[e.currentTarget.dataset.key].label);
+        setDataInput(filteredData[e.currentTarget.dataset.key][labelKey]);
         select(filteredData[e.currentTarget.dataset.key]);
 
         setActive(0);
@@ -34,7 +34,7 @@ const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, ...props
 
     const onKeyDown = e => {
         if (e.keyCode === 13) {
-            setDataInput(filteredData[active].label);
+            setDataInput(filteredData[active][labelKey]);
             select(filteredData[active]);
 
             setShowResults(false);
@@ -71,7 +71,7 @@ const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, ...props
 
                                 count = count + 1;
 
-                                return <li className={className} key={data.id} data-key={index} onClick={onClick}>{data.label}</li>
+                                return <li className={className} key={data[valueKey]} data-key={index} onClick={onClick}>{data[labelKey]}</li>
                             }
                         })
                     }
@@ -98,6 +98,8 @@ const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, ...props
 DataSuggest.propTypes = {
     data: PropTypes.instanceOf(Array),
     select: PropTypes.instanceOf(Function),
+    valueKey: PropTypes.string,
+    labelKey: PropTypes.string,
     placeholder: PropTypes.string,
     noMatchesText: PropTypes.string,
     limit: PropTypes.number,
@@ -106,6 +108,8 @@ DataSuggest.propTypes = {
 DataSuggest.defaultProps = {
     data: [],
     select: function () { return true; },
+    valueKey: 'value',
+    labelKey: 'label',
     placeholder: 'Start typing to search...',
     noMatchesText: 'No matching results found!',
     limit: 0

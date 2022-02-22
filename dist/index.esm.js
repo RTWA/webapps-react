@@ -7,9 +7,9 @@ import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objec
 };var _excluded$r = ["headers", "accept", "type"],
     _excluded2$2 = ["headers", "accept", "type"];
 
-function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$9(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var RE_CONTENT_TYPE_JSON = new RegExp("^application/(x-)?json", "i");
 var RE_CONTENT_TYPE_TEXT = new RegExp("^text/", "i"); // Static strings.
@@ -41,10 +41,10 @@ var client = /*#__PURE__*/function () {
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
             _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties(_ref2, _excluded$r);
             _context2.prev = 2;
-            config = _objectSpread$8({
+            config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
               body: data ? JSON.stringify(data) : undefined,
-              headers: _objectSpread$8({
+              headers: _objectSpread$9({
                 'Accept': accept ? accept : null,
                 'Content-Type': data ? type : undefined
               }, customHeaders),
@@ -138,10 +138,10 @@ var unabortableClient = /*#__PURE__*/function () {
             data = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : undefined;
             _ref5 = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : {}, customHeaders = _ref5.headers, _ref5$accept = _ref5.accept, accept = _ref5$accept === void 0 ? TYPE_JSON : _ref5$accept, _ref5$type = _ref5.type, type = _ref5$type === void 0 ? TYPE_JSON : _ref5$type, customConfig = _objectWithoutProperties(_ref5, _excluded2$2);
             _context4.prev = 2;
-            config = _objectSpread$8({
+            config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
               body: data ? JSON.stringify(data) : undefined,
-              headers: _objectSpread$8({
+              headers: _objectSpread$9({
                 'Accept': accept ? accept : null,
                 'Content-Type': data ? type : undefined
               }, customHeaders)
@@ -250,7 +250,7 @@ var normalizeError = function normalizeError(data, url, config, fetchResponse) {
   }
 
   var error = {
-    data: _objectSpread$8({
+    data: _objectSpread$9({
       type: "ServerError",
       message: UNEXPECTED_ERROR_MESSAGE
     }, data),
@@ -1516,9 +1516,9 @@ Banner.defaultProps = {
   darkColor: 'gray-700'
 };var _excluded$o = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
-function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var Link = function Link(props) {
   var className = props.className,
@@ -1554,7 +1554,7 @@ var Link = function Link(props) {
   }));
 };
 
-Link.propTypes = _objectSpread$7(_objectSpread$7({
+Link.propTypes = _objectSpread$8(_objectSpread$8({
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   active: PropTypes.bool,
   href: PropTypes.string,
@@ -2498,9 +2498,9 @@ function generateUEID() {
     _excluded2$1 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "UI", "color"];
 
-function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var gutter = 8; // NOTE: invoke animation when NOT `autoDismiss` with opacity of 0 to avoid a
 // paint bug in FireFox.
 // https://bugzilla.mozilla.org/show_bug.cgi?id=625289
@@ -2591,7 +2591,7 @@ var ToastElement = function ToastElement(_ref2) {
     }
   }, /*#__PURE__*/React$1.createElement("div", _extends({
     className: "".concat((_appearances$appearan = appearances[appearance]) !== null && _appearances$appearan !== void 0 && _appearances$appearan.background ? appearances[appearance].background : 'bg-white dark:bg-gray-600', "\n                    ").concat((_appearances$appearan2 = appearances[appearance]) !== null && _appearances$appearan2 !== void 0 && _appearances$appearan2.border ? appearances[appearance].border : 'border-gray-200 dark:border-gray-600', "\n                    border overflow-hidden shadow-lg rounded-lg mx-auto mb-2 flex flex-row w-96"),
-    style: _objectSpread$6({
+    style: _objectSpread$7({
       transition: "transform ".concat(transitionDuration, "ms cubic-bezier(0.2, 0, 0, 1), opacity ").concat(transitionDuration, "ms")
     }, toastStates(placement)[transitionState])
   }, props)));
@@ -3741,9 +3741,9 @@ _defineProperty(ToastController, "defaultProps", {
   autoDismiss: false
 });var _excluded$j = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
-function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
@@ -3813,7 +3813,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
 
 
       _this.setState(function (state) {
-        var newToast = _objectSpread$5({
+        var newToast = _objectSpread$6({
           title: title,
           content: content,
           id: id
@@ -3881,7 +3881,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           return t.id === id;
         });
 
-        var updateToast = _objectSpread$5(_objectSpread$5({}, old[i]), options);
+        var updateToast = _objectSpread$6(_objectSpread$6({}, old[i]), options);
 
         var toasts = [].concat(_toConsumableArray(old.slice(0, i)), [updateToast], _toConsumableArray(old.slice(i + 1)));
         return {
@@ -3910,7 +3910,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           UI = _this$props.UI,
           color = _this$props.color;
 
-      var _defaultComponents$co = _objectSpread$5(_objectSpread$5({}, defaultComponents), components),
+      var _defaultComponents$co = _objectSpread$6(_objectSpread$6({}, defaultComponents), components),
           Toast = _defaultComponents$co.Toast,
           ToastContainer = _defaultComponents$co.ToastContainer;
 
@@ -4026,18 +4026,18 @@ var useToasts = function useToasts() {
     updateToast: ctx.update,
     toastStack: ctx.toasts
   };
-};function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+};function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React$1.createContext({});
 var useModals = createLocalStorageStateHook('modals', {});
-var useUI = createLocalStorageStateHook('UI', {
+var useUI$1 = createLocalStorageStateHook('UI', {
   sidebar: 'responsive',
   envWriteable: false
 });
 
 var WebAppsProvider = function WebAppsProvider(props) {
-  var _useUI = useUI(),
+  var _useUI = useUI$1(),
       _useUI2 = _slicedToArray(_useUI, 2),
       UI = _useUI2[0],
       setUI = _useUI2[1];
@@ -4101,7 +4101,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 if (isMounted()) {
                   UI.theme = json.data['core.ui.theme'];
                   UI.dark_mode = json.data['core.ui.dark_mode'];
-                  setUI(_objectSpread$4({}, UI));
+                  setUI(_objectSpread$5({}, UI));
                 }
               })["catch"](function (error) {
                 var _error$status;
@@ -4137,8 +4137,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   navigation.menu = json.data.navigation;
                   navigation.routes = json.data.routes;
                   UI.envWriteable = json.data.envPermissions;
-                  setNavigation(_objectSpread$4({}, navigation));
-                  setUI(_objectSpread$4({}, UI));
+                  setNavigation(_objectSpread$5({}, navigation));
+                  setUI(_objectSpread$5({}, UI));
                 }
               })["catch"](function (error) {
                 var _error$status2;
@@ -4174,7 +4174,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/apps').then(function (json) {
                 if (isMounted()) {
                   apps.local = json.data.apps;
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status3;
@@ -4190,7 +4190,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/online/apps/list').then(function (json) {
                 if (isMounted()) {
                   apps.online = json.data.apps;
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status4;
@@ -4224,7 +4224,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/plugins').then(function (json) {
                 if (isMounted()) {
                   plugins.all = json.data.plugins;
-                  setPlugins(_objectSpread$4({}, plugins));
+                  setPlugins(_objectSpread$5({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status5;
@@ -4240,7 +4240,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/plugins/active').then(function (json) {
                 if (isMounted()) {
                   plugins.active = json.data.plugins;
-                  setPlugins(_objectSpread$4({}, plugins));
+                  setPlugins(_objectSpread$5({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status6;
@@ -4256,7 +4256,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/online/plugins/list').then(function (json) {
                 if (isMounted()) {
                   plugins.online = json.data.plugins;
-                  setPlugins(_objectSpread$4({}, plugins));
+                  setPlugins(_objectSpread$5({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status7;
@@ -4297,7 +4297,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status8;
@@ -4338,7 +4338,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status9;
@@ -4391,7 +4391,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key].active = true;
                     }
                   });
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status10;
@@ -4444,7 +4444,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key].active = false;
                     }
                   });
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status11;
@@ -4497,7 +4497,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key].installed = true;
                     }
                   });
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status12;
@@ -4549,7 +4549,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key] = json.data.app;
                     }
                   });
-                  setApps(_objectSpread$4({}, apps));
+                  setApps(_objectSpread$5({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status13;
@@ -4590,7 +4590,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
-                  setPlugins(_objectSpread$4({}, plugins));
+                  setPlugins(_objectSpread$5({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status14;
@@ -4631,7 +4631,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
-                  setPlugins(_objectSpread$4({}, plugins));
+                  setPlugins(_objectSpread$5({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status15;
@@ -4684,7 +4684,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       delete plugins.online[key].downloaded;
                     }
                   });
-                  setPlugins(_objectSpread$4({}, plugins));
+                  setPlugins(_objectSpread$5({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status16;
@@ -4738,7 +4738,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       plugins.online[key] = json.data.plugin;
                     }
                   });
-                  setPlugins(_objectSpread$4({}, plugins));
+                  setPlugins(_objectSpread$5({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status17;
@@ -4797,7 +4797,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
 };
 
 var WebApps = function WebApps(props) {
-  var _useUI3 = useUI(),
+  var _useUI3 = useUI$1(),
       _useUI4 = _slicedToArray(_useUI3, 2),
       UI = _useUI4[0];
       _useUI4[1];
@@ -6723,9 +6723,9 @@ Scrollbar.defaultProps = {
 };var _excluded$a = ["UI", "setUI"],
     _excluded2 = ["children", "className", "innerRef", "color", "icon", "name", "badge", "show", "route"];
 
-function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var DropdownContext = /*#__PURE__*/React$1.createContext({});
 
@@ -6773,7 +6773,7 @@ var NavDropdown = function NavDropdown(_ref) {
 
     if (!dropdownMode && UI.navigation !== undefined) {
       UI.navigation.openDropdown = isOpen ? ref.current.parentNode.closest('.nav-dropdown') : ref.current;
-      setUI(_objectSpread$3({}, UI));
+      setUI(_objectSpread$4({}, UI));
     }
 
     setIsOpen(!isOpen);
@@ -6806,7 +6806,7 @@ var NavDropdown = function NavDropdown(_ref) {
     className: "h-5 w-10"
   }), /*#__PURE__*/React$1.createElement("span", {
     className: "font-medium text-sm"
-  }, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
+  }, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$4(_objectSpread$4({}, badge), {}, {
     text: null
   }), badge.text), /*#__PURE__*/React$1.createElement(Icon, {
     icon: dropIcon,
@@ -6822,9 +6822,9 @@ var NavDropdown = function NavDropdown(_ref) {
 
 var NavDropdown$1 = withWebApps(NavDropdown);var _excluded$9 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
-function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var NavChild = function NavChild(props) {
   var className = props.className,
@@ -6857,14 +6857,14 @@ var NavChild = function NavChild(props) {
     icon: icon
   }), /*#__PURE__*/React$1.createElement("span", {
     className: "text-sm"
-  }, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$2(_objectSpread$2({}, badge), {}, {
+  }, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
     text: null
   }), badge.text)));
 };var _excluded$8 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
-function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var NavItem = function NavItem(props) {
   var className = props.className,
@@ -6897,7 +6897,7 @@ var NavItem = function NavItem(props) {
     className: "h-5 w-10"
   }), /*#__PURE__*/React$1.createElement("span", {
     className: "font-medium text-sm"
-  }, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$1(_objectSpread$1({}, badge), {}, {
+  }, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$2(_objectSpread$2({}, badge), {}, {
     text: null
   }), badge.text)));
 };var _excluded$7 = ["name", "className", "innerRef"];
@@ -7011,9 +7011,9 @@ var NavigationError = /*#__PURE__*/function (_Component) {
   return NavigationError;
 }(Component);var _excluded$5 = ["loadNavigation", "UI", "setUI"];
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var SidebarWrapper = function SidebarWrapper(_ref) {
   var loadNavigation = _ref.loadNavigation,
@@ -7029,7 +7029,7 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
         dropdownMode: dropdownMode,
         openDropdown: ''
       };
-      setUI(_objectSpread({}, UI));
+      setUI(_objectSpread$1({}, UI));
     }
   }, [dropdownMode]);
   useEffect(function () {
@@ -7038,7 +7038,7 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
         dropdownMode: dropdownMode,
         openDropdown: ''
       };
-      setUI(_objectSpread({}, UI));
+      setUI(_objectSpread$1({}, UI));
     }
   }, [UI]);
 
@@ -23949,7 +23949,134 @@ AppError.propTypes = {
 AppError.defaultProps = {
   theme: 'indigo'
 };
-var AppError$1 = withRouter(AppError);/** @jsxRuntime classic /
+var AppError$1 = withRouter(AppError);var WebAppsDocsContext = /*#__PURE__*/React$1.createContext({});
+var colors = [{
+  "class": 'indigo',
+  name: 'Indigo'
+}, {
+  "class": 'fuchsia',
+  name: 'Fuchsia'
+}, {
+  "class": 'light-blue',
+  name: 'Blue'
+}, {
+  "class": 'red',
+  name: 'Red'
+}, {
+  "class": 'orange',
+  name: 'Orange'
+}, {
+  "class": 'yellow',
+  name: 'Yellow'
+}, {
+  "class": 'lime',
+  name: 'Green'
+}, {
+  "class": 'gray',
+  name: 'Gray'
+}];
+var useUI = createLocalStorageStateHook('UI', {
+  theme: 'indigo',
+  dark_mode: 'light',
+  colors: colors
+});
+var WebAppsDocs = function WebAppsDocs(props) {
+  var _useUI = useUI(),
+      _useUI2 = _slicedToArray(_useUI, 2),
+      UI = _useUI2[0],
+      setUI = _useUI2[1];
+
+  return /*#__PURE__*/React$1.createElement(WebAppsDocsContext.Provider, {
+    value: {
+      UI: UI,
+      setUI: setUI
+    }
+  }, props.children || null);
+};
+var withWebAppsDocs = function withWebAppsDocs(Component) {
+  var displayName = "withWebAppsDocs(".concat(Component.displayName || Component.name, ")");
+
+  var C = function C(props) {
+    return /*#__PURE__*/React$1.createElement(WebAppsDocsContext.Consumer, null, function (context) {
+      invariant(context, "You should not use <".concat(displayName, " /> outside a <WebAppsDocs>"));
+      return /*#__PURE__*/React$1.createElement(Component, _extends({}, props, context));
+    });
+  };
+
+  C.displayName = displayName;
+  return C;
+};function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var WebAppsDocComponent = function WebAppsDocComponent(_ref) {
+  var UI = _ref.UI,
+      setUI = _ref.setUI,
+      children = _ref.children,
+      withColors = _ref.withColors,
+      noDarkSwitch = _ref.noDarkSwitch;
+
+  var setDark = function setDark(mode) {
+    UI.dark_mode = mode;
+    setUI(_objectSpread({}, UI));
+  };
+
+  var setTheme = function setTheme(color) {
+    UI.theme = color;
+    setUI(_objectSpread({}, UI));
+  };
+
+  var darkClass = function darkClass(mode) {
+    return classNames('w-6', 'h-6', 'p-1', 'border', 'border-gray-600', 'rounded-full', 'outline-none', 'mr-1', 'cursor-pointer', UI.dark_mode === mode ? mode === 'light' ? 'bg-gray-200' : 'bg-gray-900' : 'bg-white');
+  };
+
+  var themeClass = function themeClass(color) {
+    return classNames('w-6', 'h-6', 'p-1', 'border', 'border-gray-600', "hover:border-".concat(color["class"], "-600"), "dark:hover:border-".concat(color["class"], "-500"), 'rounded-full', 'outline-none', 'mr-1', 'cursor-pointer', UI.theme === color["class"] ? "bg-".concat(color["class"], "-600 dark:bg-").concat(color["class"], "-500") : 'bg-white');
+  };
+
+  var themePillClass = function themePillClass(color) {
+    return classNames('flex', 'h-full', 'w-full', 'rounded-full', UI.theme === color["class"] ? "bg-".concat(color["class"], "-800 dark:bg-").concat(color["class"], "-300") : "bg-".concat(color["class"], "-600 dark:bg-").concat(color["class"], "-500"));
+  };
+
+  return /*#__PURE__*/React$1.createElement("div", {
+    className: "p-4 border border-gray-600 rounded-md mb-8 mx-2 ".concat(UI.dark_mode)
+  }, /*#__PURE__*/React$1.createElement("div", {
+    className: "relative w-full p-4 rounded-md bg-gray-200 dark:bg-gray-900"
+  }, !noDarkSwitch ? /*#__PURE__*/React$1.createElement("div", {
+    className: "absolute -top-7 w-full flex flex-row justify-center"
+  }, /*#__PURE__*/React$1.createElement("button", {
+    type: "button",
+    className: darkClass('light'),
+    onClick: function onClick() {
+      return setDark('light');
+    }
+  }, /*#__PURE__*/React$1.createElement("span", {
+    className: "flex h-full w-full rounded-full bg-gray-200"
+  })), /*#__PURE__*/React$1.createElement("button", {
+    type: "button",
+    className: darkClass('dark'),
+    onClick: function onClick() {
+      return setDark('dark');
+    }
+  }, /*#__PURE__*/React$1.createElement("span", {
+    className: "flex h-full w-full rounded-full bg-gray-900"
+  }))) : null, children || null, withColors !== false ? /*#__PURE__*/React$1.createElement("div", {
+    className: "absolute -bottom-7 w-full flex flex-row justify-center"
+  }, Object(UI.colors).map(function (color) {
+    return /*#__PURE__*/React$1.createElement("button", {
+      key: color["class"],
+      type: "button",
+      className: themeClass(color),
+      onClick: function onClick() {
+        return setTheme(color["class"]);
+      }
+    }, /*#__PURE__*/React$1.createElement("span", {
+      className: themePillClass(color)
+    }));
+  })) : null));
+};
+
+var WebAppsDocComponent$1 = withWebAppsDocs(WebAppsDocComponent);/** @jsxRuntime classic /
 /* @jsx jsx */
 
 var returnLibrary = function returnLibrary() {
@@ -23994,7 +24121,11 @@ var returnLibrary = function returnLibrary() {
     ToastConsumer: ToastConsumer,
     ToastProvider: ToastProvider,
     withToastManager: withToastManager,
-    useToasts: useToasts
+    useToasts: useToasts,
+    WebAppsDocComponent: WebAppsDocComponent$1,
+    WebAppsDocs: WebAppsDocs,
+    WebAppsDocsContext: WebAppsDocsContext,
+    withWebAppsDocs: withWebAppsDocs
   };
 };
 
