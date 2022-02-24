@@ -5160,7 +5160,7 @@ var Input = function Input(props) {
   return /*#__PURE__*/React$1.createElement("div", {
     className: wrapperClassName
   }, label !== '' ? /*#__PURE__*/React$1.createElement("label", {
-    "for": id,
+    htmlFor: id,
     className: labelClasses
   }, label) : null, /*#__PURE__*/React$1.createElement("div", {
     className: "relative"
@@ -6904,7 +6904,7 @@ var Select = function Select(props) {
   return /*#__PURE__*/React$1.createElement("div", {
     className: wrapperClassName
   }, label !== '' ? /*#__PURE__*/React$1.createElement("label", {
-    "for": id,
+    htmlFor: id,
     className: labelClasses
   }, label) : null, /*#__PURE__*/React$1.createElement("div", {
     className: "relative"

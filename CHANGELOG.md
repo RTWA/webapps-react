@@ -1,3 +1,6 @@
+## Version 1.10.2
+- Fixed attribute issue with `<Input />` and `<Select />` Components
+
 ## Versoin 1.10.1
 - Fixed missing exports for `<ColorGridSelect />` and `<Select />` Components
 
