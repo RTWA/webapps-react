@@ -1578,7 +1578,7 @@ Link.propTypes = _objectSpread$8(_objectSpread$8({
       className: "text-".concat(alignment)
     }, /*#__PURE__*/React$1.createElement("svg", {
       role: "status",
-      "class": circleClasses,
+      className: circleClasses,
       viewBox: "0 0 100 101",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
@@ -4907,7 +4907,7 @@ Button.defaultProps = {
       className: "text-center"
     }, color.name));
   })), helpText !== '' ? /*#__PURE__*/React$1.createElement("p", {
-    "class": "mt-1 text-sm text-gray-500 dark:text-gray-400"
+    className: "mt-1 text-sm text-gray-500 dark:text-gray-400"
   }, helpText) : null);
 };
 
@@ -5171,7 +5171,7 @@ var Input = function Input(props) {
   }, attributes)), /*#__PURE__*/React$1.createElement("div", {
     className: "flex absolute inset-y-0 right-0 items-center pr-3"
   }, /*#__PURE__*/React$1.createElement(Append, null))), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("span", {
-    "class": "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
+    className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
   }, state === 'error' ? error : helpText) : null);
 };
 
@@ -5394,7 +5394,7 @@ var Icon = function Icon(props) {
 
   var addClasses = function addClasses(string) {
     if (typeof string === 'string') {
-      return string.replace(/<svg/g, "<svg class=\"".concat(attributes.className, "\""));
+      return string.replace(/<svg/g, "<svg className=\"".concat(attributes.className, "\""));
     }
   };
 
@@ -6915,7 +6915,7 @@ var Select = function Select(props) {
   }, attributes), children), /*#__PURE__*/React$1.createElement("div", {
     className: "flex absolute inset-y-0 right-5 items-center pr-3"
   }, /*#__PURE__*/React$1.createElement(Append, null))), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("span", {
-    "class": "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
+    className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
   }, state === 'error' ? error : helpText) : null);
 };
 

@@ -1,3 +1,6 @@
+## Version 1.10.3
+- Fixed attribute issue with multiple Components
+
 ## Version 1.10.2
 - Fixed attribute issue with `<Input />` and `<Select />` Components
 
