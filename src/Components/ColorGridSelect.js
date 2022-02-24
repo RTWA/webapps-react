@@ -48,7 +48,7 @@ const ColorGridSelect = props => {
                     })
                 }
             </div>
-            { (helpText !== '') ? <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{helpText}</p> : null }
+            { (helpText !== '') ? <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{helpText}</p> : null }
         </div>
     )
 }

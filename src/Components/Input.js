@@ -92,7 +92,7 @@ const Input = props => {
             {
                 (helpText !== '' || error !== '')
                     ? (
-                        <span class={`text-sm transition-colors ${(state === 'error') ? 'text-red-500' : 'text-gray-500 dark:text-gray-400'}`}>
+                        <span className={`text-sm transition-colors ${(state === 'error') ? 'text-red-500' : 'text-gray-500 dark:text-gray-400'}`}>
                             {(state === 'error') ? error : helpText}
                         </span>
                     ) : null
