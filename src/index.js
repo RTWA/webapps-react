@@ -6,6 +6,7 @@ import { client as APIClient, controller as APIController } from './API';
 import Badge from './Components/Badge';
 import Banner from './Components/Banner';
 import Button from './Components/Button';
+import ColorGridSelect from './Components/ColorGridSelect';
 import ConfirmDeleteButton from './Components/ConfirmDeleteButton';
 import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
 import DataSuggest from './Components/DataSuggest';
@@ -15,10 +16,11 @@ import InfiniteScroll from './Components/InfiniteScroll';
 import Input from './Components/Input';
 import Link from './Components/Link';
 import Loader from './Components/Loader';
-import Switch from './Components/Switch';
 import Scrollbar from './Components/Scrollbar';
+import Select from './Components/Select';
 import Sidebar from './Components/Sidebar';
 import SidebarWrapper from './Components/SidebarWrapper';
+import Switch from './Components/Switch';
 import UserSuggest from './Components/UserSuggest';
 
 import AppPluginChangelogModal from './Components/AppPluginChangelogModal';
@@ -57,6 +59,7 @@ const returnLibrary = () => {
         Badge,
         Banner,
         Button,
+        ColorGridSelect,
         ConfirmDeleteButton,
         ConfirmDeleteModal,
         DataSuggest,
@@ -66,10 +69,11 @@ const returnLibrary = () => {
         Input,
         Link,
         Loader,
-        Switch,
         Scrollbar,
+        Select,
         Sidebar,
         SidebarWrapper,
+        Switch,
         UserSuggest,
 
         AppPluginChangelogModal,

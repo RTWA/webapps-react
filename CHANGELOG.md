@@ -1,3 +1,6 @@
+## Versoin 1.10.1
+- Fixed missing exports for `<ColorGridSelect />` and `<Select />` Components
+
 ## Version 1.10.0
 - NEW: Added `<ColorGridSelect />` Component
 - NEW: Added `<Select />` Component
