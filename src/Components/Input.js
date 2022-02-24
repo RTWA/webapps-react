@@ -81,7 +81,7 @@ const Input = props => {
     return (
         <div className={wrapperClassName}>
             {
-                (label !== '') ? <label for={id} className={labelClasses}>{label}</label> : null
+                (label !== '') ? <label htmlFor={id} className={labelClasses}>{label}</label> : null
             }
             <div className="relative">
                 <input id={id} name={name} className={inputClasses} {...attributes} />

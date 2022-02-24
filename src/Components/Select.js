@@ -82,7 +82,7 @@ const Select = props => {
     return (
         <div className={wrapperClassName}>
             {
-                (label !== '') ? <label for={id} className={labelClasses}>{label}</label> : null
+                (label !== '') ? <label htmlFor={id} className={labelClasses}>{label}</label> : null
             }
             <div className="relative">
                 <select id={id} name={name} className={selectClasses} {...attributes}>
