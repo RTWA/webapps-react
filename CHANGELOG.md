@@ -1,3 +1,12 @@
+## Version 1.10.0
+- NEW: Added `<ColorGridSelect />` Component
+- NEW: Added `<Select />` Component
+- Updated `<Switch />` Component
+- Updated `<Input />` Component
+- Updated `<Loader />` Component
+- Fixed `<DataSuggest />` Component with `labelKey` or `valueKey` being undefined error
+- [See Documentation](https://docs.getwebapps.uk/v/developer-information/react-components/components)
+
 ## Version 1.9.2
 - NEW: Added `<WebAppsDocs />` Context and `<WebAppsDocComponent />` Component
 

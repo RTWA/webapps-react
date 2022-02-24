@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import Input from './Input';
 
-const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, ...props }) => {
+const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, labelKey, valueKey, ...props }) => {
     const [active, setActive] = useState(0);
     const [filteredData, setFilteredData] = useState([]);
     const [showResults, setShowResults] = useState(false);

@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import Loader from './Loader';
 
 test('Loader Component Renders', () => {
-    render(<Loader data-testid="webapps-Loader-component" />);
+    render(<Loader />);
 
-    expect(screen.getByTestId('webapps-Loader-component')).toBeDefined();
+    expect(screen.getByText('Loading')).toBeDefined();
 });

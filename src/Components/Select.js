@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { WebAppsContext } from '../Context/index';
 import Loader from './Loader';
+import { WebAppsContext } from '../Context';
 
-const Input = props => {
+const Select = props => {
     const {
         id,
         name,
@@ -15,7 +15,8 @@ const Input = props => {
         state,
         wrapperClassName,
         labelClassName,
-        inputClassName,
+        selectClassName,
+        children,
         ...attributes
     } = props;
 
@@ -31,7 +32,7 @@ const Input = props => {
         labelClassName,
     )
 
-    const inputClasses = classNames(
+    const selectClasses = classNames(
         'bg-gray-50',
         'border-2',
         'border-gray-300',
@@ -54,7 +55,7 @@ const Input = props => {
         (state === 'error') ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '',
         (state === 'saved') ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '',
         (state === 'saving') ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '',
-        inputClassName,
+        selectClassName,
     )
 
     const Append = () => {
@@ -84,8 +85,10 @@ const Input = props => {
                 (label !== '') ? <label for={id} className={labelClasses}>{label}</label> : null
             }
             <div className="relative">
-                <input id={id} name={name} className={inputClasses} {...attributes} />
-                <div className="flex absolute inset-y-0 right-0 items-center pr-3">
+                <select id={id} name={name} className={selectClasses} {...attributes}>
+                    {children}
+                </select>
+                <div className="flex absolute inset-y-0 right-5 items-center pr-3">
                     <Append />
                 </div>
             </div>
@@ -101,7 +104,7 @@ const Input = props => {
     );
 }
 
-Input.propTypes = {
+Select.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     label: PropTypes.string,
@@ -111,17 +114,17 @@ Input.propTypes = {
     state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
     wrapperClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
     labelClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
-    inputClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+    selectClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 }
 
-Input.defaultProps = {
+Select.defaultProps = {
     error: '',
     state: '',
     label: '',
     helpText: '',
     wrapperClassName: 'mb-6',
     labelClassName: '',
-    inputClassName: '',
+    selectClassName: '',
 }
 
-export default Input;
+export default Select;

@@ -4,7 +4,7 @@ import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objec
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
-};var _excluded$r = ["headers", "accept", "type"],
+};var _excluded$q = ["headers", "accept", "type"],
     _excluded2$2 = ["headers", "accept", "type"];
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -39,7 +39,7 @@ var client = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
-            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties(_ref2, _excluded$r);
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties(_ref2, _excluded$q);
             _context2.prev = 2;
             config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
@@ -1452,7 +1452,7 @@ var PropTypes = propTypes.exports;var classnames = {exports: {}};/*!
 }());
 }(classnames));
 
-var classNames = classnames.exports;var _excluded$q = ["tag", "className", "innerRef", "color", "pill", "children"];
+var classNames = classnames.exports;var _excluded$p = ["tag", "className", "innerRef", "color", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -1461,7 +1461,7 @@ var Badge = function Badge(props) {
       color = props.color,
       pill = props.pill,
       children = props.children,
-      attributes = _objectWithoutProperties(props, _excluded$q);
+      attributes = _objectWithoutProperties(props, _excluded$p);
 
   var classes = classNames(className, 'inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', "bg-".concat(color), pill ? 'rounded-full' : '');
   var Tag = attributes.to || attributes.href ? NavLink : tag;
@@ -1482,7 +1482,7 @@ Badge.propTypes = {
 };
 Badge.defaultProps = {
   tag: 'span'
-};var _excluded$p = ["tag", "className", "innerRef", "color", "darkColor", "children"];
+};var _excluded$o = ["tag", "className", "innerRef", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -1491,7 +1491,7 @@ var Banner = function Banner(props) {
       color = props.color,
       darkColor = props.darkColor,
       children = props.children,
-      attributes = _objectWithoutProperties(props, _excluded$p);
+      attributes = _objectWithoutProperties(props, _excluded$o);
 
   var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? NavLink : tag;
@@ -1514,7 +1514,7 @@ Banner.defaultProps = {
   tag: 'div',
   color: 'gray-300',
   darkColor: 'gray-700'
-};var _excluded$o = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+};var _excluded$n = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -1527,7 +1527,7 @@ var Link = function Link(props) {
       href = props.href,
       onClick = props.onClick,
       disabled = props.disabled,
-      rest = _objectWithoutProperties(props, _excluded$o);
+      rest = _objectWithoutProperties(props, _excluded$n);
 
   var to = rest ? rest.to : null;
 
@@ -1563,39 +1563,39 @@ Link.propTypes = _objectSpread$8(_objectSpread$8({
 }, NavLink.propTypes), {}, {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
-});var AuthContext = /*#__PURE__*/React$1.createContext({});var _excluded$n = ["className", "style"];
-
-var Loader = function Loader(props) {
+});var AuthContext = /*#__PURE__*/React$1.createContext({});var Loader = function Loader(props) {
   var className = props.className,
       style = props.style,
-      attributes = _objectWithoutProperties(props, _excluded$n);
-
-  var classes = classNames('loader', className);
-  var circleClasses = classNames('animate-spin', className);
+      color = props.color,
+      height = props.height,
+      width = props.width,
+      alignment = props.alignment;
+  var classes = classNames('loader', "text-".concat(color, "-300"), "dark:text-".concat(color, "-500"), "h-".concat(height), "w-".concat(width), alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '', className);
+  var circleClasses = classNames('animate-spin', 'inline', 'text-gray-200', 'dark:text-gray-600', "fill-".concat(color, "-600"), "h-".concat(height), "w-".concat(width), className);
 
   if (style === 'circle') {
-    return /*#__PURE__*/React$1.createElement("svg", {
-      className: circleClasses,
-      xmlns: "http://www.w3.org/2000/svg",
+    return /*#__PURE__*/React$1.createElement("div", {
+      className: "text-".concat(alignment)
+    }, /*#__PURE__*/React$1.createElement("svg", {
+      role: "status",
+      "class": circleClasses,
+      viewBox: "0 0 100 101",
       fill: "none",
-      viewBox: "0 0 24 24"
-    }, /*#__PURE__*/React$1.createElement("circle", {
-      className: "opacity-25",
-      cx: "12",
-      cy: "12",
-      r: "10",
-      stroke: "currentColor",
-      strokeWidth: "4"
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/React$1.createElement("path", {
+      d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
+      fill: "currentColor"
     }), /*#__PURE__*/React$1.createElement("path", {
-      className: "opacity-75",
-      fill: "currentColor",
-      d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-    }));
+      d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
+      fill: "currentFill"
+    })), /*#__PURE__*/React$1.createElement("div", {
+      className: "sr-only"
+    }, "Loading"));
   }
 
-  return /*#__PURE__*/React$1.createElement("div", _extends({
+  return /*#__PURE__*/React$1.createElement("div", {
     className: classes
-  }, attributes), /*#__PURE__*/React$1.createElement("svg", {
+  }, /*#__PURE__*/React$1.createElement("svg", {
     viewBox: "0 0 45 45",
     xmlns: "http://www.w3.org/2000/svg",
     stroke: "currentColor"
@@ -1667,14 +1667,24 @@ var Loader = function Loader(props) {
     values: "6;1;2;3;4;5;6",
     calcMode: "linear",
     repeatCount: "indefinite"
-  })))));
+  })))), /*#__PURE__*/React$1.createElement("div", {
+    className: "sr-only"
+  }, "Loading"));
 };
 
 Loader.propsTypes = {
-  style: PropTypes.oneOf(['', 'circle'])
+  style: PropTypes.oneOf(['', 'circle']),
+  color: PropTypes.string,
+  height: PropTypes.string,
+  width: PropTypes.string,
+  alignment: PropTypes.oneOf(['left', 'center', 'right'])
 };
 Loader.defaultProps = {
-  style: ''
+  style: '',
+  color: 'gray',
+  height: '24',
+  width: '24',
+  alignment: 'center'
 };var Auth = function Auth(props) {
   var _useState = useState({
     user: null,
@@ -5022,35 +5032,107 @@ ConfirmDeleteModal.defaultProps = {
   message: "Are you sure to wish to delete this item?\nThis action cannot be undone.",
   cancelText: "No",
   confirmText: "Yes"
-};var _excluded$f = ["error", "state", "className"];
+};var _excluded$f = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
-  var error = props.error,
+  var id = props.id,
+      name = props.name,
+      label = props.label,
+      action = props.action,
+      helpText = props.helpText,
+      error = props.error,
       state = props.state,
-      className = props.className,
+      wrapperClassName = props.wrapperClassName,
+      labelClassName = props.labelClassName,
+      inputClassName = props.inputClassName,
       attributes = _objectWithoutProperties(props, _excluded$f);
 
   var _useContext = useContext(WebAppsContext),
       UI = _useContext.UI;
 
-  var classes = classNames(className, 'input-field', "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
-  return /*#__PURE__*/React$1.createElement(React$1.Fragment, null, /*#__PURE__*/React$1.createElement("input", _extends({}, attributes, {
-    className: classes
-  })), state === 'error' && error !== '' ? /*#__PURE__*/React$1.createElement("span", {
-    className: "text-sm text-red-500"
-  }, error) : null);
+  var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
+  var inputClasses = classNames('bg-gray-50', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'dark:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', "focus:ring-".concat(UI.theme, "-600"), "dark:focus:ring-".concat(UI.theme, "-500"), "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '', inputClassName);
+
+  var Append = function Append() {
+    if (state === 'saving') {
+      return /*#__PURE__*/React$1.createElement(Loader, {
+        style: "circle",
+        height: "5",
+        width: "5",
+        color: "orange"
+      });
+    } else if (state === 'saved') {
+      return /*#__PURE__*/React$1.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-green-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React$1.createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M5 13l4 4L19 7"
+      }));
+    } else if (state === 'error') {
+      return /*#__PURE__*/React$1.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-red-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React$1.createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M6 18L18 6M6 6l12 12"
+      }));
+    } else if (action) {
+      return action;
+    }
+
+    return null;
+  };
+
+  return /*#__PURE__*/React$1.createElement("div", {
+    className: wrapperClassName
+  }, label !== '' ? /*#__PURE__*/React$1.createElement("label", {
+    "for": id,
+    className: labelClasses
+  }, label) : null, /*#__PURE__*/React$1.createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React$1.createElement("input", _extends({
+    id: id,
+    name: name,
+    className: inputClasses
+  }, attributes)), /*#__PURE__*/React$1.createElement("div", {
+    className: "flex absolute inset-y-0 right-0 items-center pr-3"
+  }, /*#__PURE__*/React$1.createElement(Append, null))), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("span", {
+    "class": "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
+  }, state === 'error' ? error : helpText) : null);
 };
 
 Input.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  action: PropTypes.object,
+  helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
   state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
+  wrapperClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  labelClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  inputClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
 };
 Input.defaultProps = {
   error: '',
   state: '',
-  className: ''
-};var _excluded$e = ["data", "select", "placeholder", "noMatchesText", "limit"];
+  label: '',
+  helpText: '',
+  wrapperClassName: 'mb-6',
+  labelClassName: '',
+  inputClassName: ''
+};var _excluded$e = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
 
 var DataSuggest = function DataSuggest(_ref) {
   var data = _ref.data,
@@ -5058,6 +5140,8 @@ var DataSuggest = function DataSuggest(_ref) {
       placeholder = _ref.placeholder,
       noMatchesText = _ref.noMatchesText,
       limit = _ref.limit,
+      labelKey = _ref.labelKey,
+      valueKey = _ref.valueKey,
       props = _objectWithoutProperties(_ref, _excluded$e);
 
   var _useState = useState(0),
@@ -5299,34 +5383,63 @@ Icon.propTypes = {
     ref: marker
   }));
 };var Switch = function Switch(props) {
-  var name = props.name,
+  var id = props.id,
+      name = props.name,
+      label = props.label,
+      helpText = props.helpText,
       error = props.error,
       state = props.state,
+      checked = props.checked,
+      disabled = props.disabled,
+      onChange = props.onChange,
       className = props.className;
-  var classes = classNames(className, 'checked:bg-gray-500', 'outline-none', 'focus:ring-0', 'focus:outline-none', 'right-4', 'checked:right-0', 'duration-200', 'ease-in', 'absolute', 'block', 'w-6', 'h-6', 'rounded-full', 'bg-white', 'border-4', 'appearance-none', 'cursor-pointer', state === 'error' ? 'border-red-500 checked:bg-red-500' : '', state === 'saved' ? 'border-green-500 checked:bg-green-500' : '', state === 'saving' ? 'border-orange-500 checked:bg-orange-500' : '');
+
+  var _useContext = useContext(WebAppsContext),
+      UI = _useContext.UI;
+
+  var classes = classNames('outline-none', 'focus:ring-0', 'focus:ring-offset-0', 'focus:outline-none', 'right-4', 'checked:right-0', 'duration-200', 'ease-in', 'absolute', 'block', 'w-6', 'h-6', 'rounded-full', 'bg-white', 'border-2', 'appearance-none', 'transition-colours', 'duration-500', disabled ? 'cursor-not-allowed' : 'cursor-pointer', checked ? "border-".concat(UI.theme, "-600 dark:border-").concat(UI.theme, "-500") : 'border-gray-300 dark:border-gray-700', state === 'error' ? 'border-red-500' : '', state === 'saved' ? 'border-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
+  var labelClasses = classNames('block', 'overflow-hidden', 'h-6', 'rounded-full', 'transition-colours', 'duration-500', disabled ? 'cursor-not-allowed' : 'cursor-pointer', !checked && state === '' ? 'bg-gray-300 dark:bg-gray-700' : '', checked && state === '' ? "bg-".concat(UI.theme, "-600 dark:bg-").concat(UI.theme, "-500") : '', state === 'error' ? 'bg-red-500' : '', state === 'saved' ? 'bg-green-500' : '', state === 'saving' ? 'bg-orange-500' : '');
   return /*#__PURE__*/React$1.createElement("div", {
+    className: className
+  }, /*#__PURE__*/React$1.createElement("div", {
     className: "relative inline-block w-10 mr-2 align-middle select-none"
-  }, /*#__PURE__*/React$1.createElement("input", _extends({
+  }, /*#__PURE__*/React$1.createElement("input", {
     type: "checkbox",
-    id: name,
+    id: id,
     name: name,
-    className: classes
-  }, props)), /*#__PURE__*/React$1.createElement("label", {
-    htmlFor: name,
-    className: "block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-gray-700 cursor-pointer"
-  }), state === 'error' && error !== '' ? /*#__PURE__*/React$1.createElement("span", {
-    className: "text-sm text-red-500"
-  }, error) : null);
+    className: classes,
+    checked: checked,
+    disabled: disabled,
+    onChange: onChange
+  }), /*#__PURE__*/React$1.createElement("label", {
+    htmlFor: id,
+    className: labelClasses
+  })), /*#__PURE__*/React$1.createElement("label", {
+    htmlFor: id,
+    className: "ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+  }, label), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("p", {
+    className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
+  }, state === 'error' ? error : helpText) : null);
 };
 
 Switch.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
+  label: PropTypes.string,
+  helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
   state: PropTypes.string,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
 };
 Switch.defaultProps = {
-  name: 'check'
+  error: '',
+  state: '',
+  label: '',
+  helpText: '',
+  disabled: false,
+  className: 'w-full'
 };/*!
  * perfect-scrollbar v1.5.3
  * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
