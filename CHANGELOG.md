@@ -1,3 +1,6 @@
+## Version 1.11.1
+- Added additional attributes to `<Switch />` Component
+
 ## Version 1.11.0
 - BREAKING: Removed `APIController` - you must now provide your own AbortController to `APIClient`
 - Improved logic for `<ConfirmDeleteButton />` timer

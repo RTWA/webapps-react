@@ -15,6 +15,7 @@ const Switch = props => {
         disabled,
         onChange,
         className,
+        ...attributes
     } = props;
 
     const { UI } = useContext(WebAppsContext);
@@ -63,7 +64,7 @@ const Switch = props => {
     return (
         <div className={className}>
             <div className="relative inline-block w-10 mr-2 align-middle select-none">
-                <input type="checkbox" id={id} name={name} className={classes} checked={checked} disabled={disabled} onChange={onChange} />
+                <input type="checkbox" id={id} name={name} className={classes} checked={checked} disabled={disabled} onChange={onChange} {...attributes} />
                 <label htmlFor={id} className={labelClasses} />
             </div>
             <label htmlFor={id} className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{label}</label>

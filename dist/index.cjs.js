@@ -4,7 +4,7 @@
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
-};var _excluded$r = ["headers", "accept", "type"];
+};var _excluded$s = ["headers", "accept", "type"];
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -37,7 +37,7 @@ var client = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
-            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$r);
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$s);
             _context2.prev = 2;
             config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
@@ -1353,7 +1353,7 @@ var PropTypes = propTypes.exports;var classnames = {exports: {}};/*!
 }());
 }(classnames));
 
-var classNames = classnames.exports;var _excluded$q = ["tag", "className", "innerRef", "color", "pill", "children"];
+var classNames = classnames.exports;var _excluded$r = ["tag", "className", "innerRef", "color", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -1362,7 +1362,7 @@ var Badge = function Badge(props) {
       color = props.color,
       pill = props.pill,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$q);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$r);
 
   var classes = classNames(className, 'inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', "bg-".concat(color), pill ? 'rounded-full' : '');
   var Tag = attributes.to || attributes.href ? reactRouterDom.NavLink : tag;
@@ -1383,7 +1383,7 @@ Badge.propTypes = {
 };
 Badge.defaultProps = {
   tag: 'span'
-};var _excluded$p = ["tag", "className", "innerRef", "color", "darkColor", "children"];
+};var _excluded$q = ["tag", "className", "innerRef", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -1392,7 +1392,7 @@ var Banner = function Banner(props) {
       color = props.color,
       darkColor = props.darkColor,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$p);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$q);
 
   var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
@@ -1415,7 +1415,7 @@ Banner.defaultProps = {
   tag: 'div',
   color: 'gray-300',
   darkColor: 'gray-700'
-};var _excluded$o = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+};var _excluded$p = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -1428,7 +1428,7 @@ var Link = function Link(props) {
       href = props.href,
       onClick = props.onClick,
       disabled = props.disabled,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$o);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$p);
 
   var to = rest ? rest.to : null;
 
@@ -2274,7 +2274,7 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var _excluded$n = ["hasToasts", "placement", "className"];
+}var _excluded$o = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -2292,7 +2292,7 @@ var ToastContainer = function ToastContainer(_ref) {
   var hasToasts = _ref.hasToasts,
       placement = _ref.placement,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$n);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$o);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: classes(placement, hasToasts, className),
@@ -2419,7 +2419,7 @@ function generateUEID() {
     icon: MiscIcon,
     iconColor: 'text-gray-500 dark:text-white'
   }
-};var _excluded$m = ["autoDismissTimeout", "opacity", "isRunning"],
+};var _excluded$n = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2$1 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "UI", "color"];
 
@@ -2434,7 +2434,7 @@ var Countdown = function Countdown(_ref) {
   _ref.autoDismissTimeout;
       var opacity = _ref.opacity,
       isRunning = _ref.isRunning,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$m);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$n);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "toast-countdown",
@@ -3532,7 +3532,7 @@ TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
   childFactory: PropTypes.func
 } : {};
 TransitionGroup.defaultProps = defaultProps;
-var TransitionGroup$1 = TransitionGroup;var _excluded$l = ["autoDismiss", "autoDismissTimeout", "component"];
+var TransitionGroup$1 = TransitionGroup;var _excluded$m = ["autoDismiss", "autoDismissTimeout", "component"];
 
 function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -3643,7 +3643,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
           autoDismiss = _this$props2.autoDismiss,
           autoDismissTimeout = _this$props2.autoDismissTimeout,
           Toast = _this$props2.component,
-          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$l);
+          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$m);
 
       var isRunning = this.state.isRunning; // NOTE: conditions here so methods can be clean
 
@@ -3664,7 +3664,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
 
 _defineProperty__default["default"](ToastController, "defaultProps", {
   autoDismiss: false
-});var _excluded$k = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
+});var _excluded$l = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
 function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -3871,7 +3871,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
             actionLabel = _ref.actionLabel,
             secondaryAction = _ref.secondaryAction,
             secondaryActionLabel = _ref.secondaryActionLabel,
-            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$k);
+            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$l);
 
         return /*#__PURE__*/React__default["default"].createElement(Transition$1, {
           appear: true,
@@ -4778,7 +4778,7 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var _excluded$j = ["style", "size", "rounded", "square", "className", "children"];
+};var _excluded$k = ["style", "size", "rounded", "square", "className", "children"];
 
 var Button = function Button(props) {
   var style = props.style,
@@ -4787,7 +4787,7 @@ var Button = function Button(props) {
       square = props.square,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$j);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$k);
 
   var _useContext = React$1.useContext(WebAppsContext),
       UI = _useContext.UI;
@@ -4876,7 +4876,7 @@ ColorGridSelect.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   colors: []
-};var _excluded$i = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+};var _excluded$j = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -4886,7 +4886,7 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
       initialColor = props.initialColor,
       confirmColor = props.confirmColor,
       className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$j);
 
   var isMountedRef = React$1.useRef(true);
   var isMounted = React$1.useCallback(function () {
@@ -4963,7 +4963,7 @@ ConfirmDeleteButton.defaultProps = {
   timeout: 2000,
   initialColor: 'red',
   confirmColor: 'orange'
-};var _excluded$h = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+};var _excluded$i = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -4972,7 +4972,7 @@ var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
       confirmText = props.confirmText,
       onCancel = props.onCancel,
       onConfirm = props.onConfirm,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "fixed z-50 inset-0 overflow-y-auto"
@@ -5044,7 +5044,7 @@ ConfirmDeleteModal.defaultProps = {
   message: "Are you sure to wish to delete this item?\nThis action cannot be undone.",
   cancelText: "No",
   confirmText: "Yes"
-};var _excluded$g = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
+};var _excluded$h = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
   var id = props.id,
@@ -5057,7 +5057,7 @@ var Input = function Input(props) {
       wrapperClassName = props.wrapperClassName,
       labelClassName = props.labelClassName,
       inputClassName = props.inputClassName,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$g);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
 
   var _useContext = React$1.useContext(WebAppsContext),
       UI = _useContext.UI;
@@ -5144,7 +5144,7 @@ Input.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   inputClassName: ''
-};var _excluded$f = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
+};var _excluded$g = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
 
 var DataSuggest = function DataSuggest(_ref) {
   var data = _ref.data,
@@ -5154,7 +5154,7 @@ var DataSuggest = function DataSuggest(_ref) {
       limit = _ref.limit,
       labelKey = _ref.labelKey,
       valueKey = _ref.valueKey,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$f);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$g);
 
   var _useState = React$1.useState(0),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -5277,14 +5277,14 @@ DataSuggest.defaultProps = {
   placeholder: 'Start typing to search...',
   noMatchesText: 'No matching results found!',
   limit: 0
-};var _excluded$e = ["show", "text", "buttonClassNames", "dropClassNames"];
+};var _excluded$f = ["show", "text", "buttonClassNames", "dropClassNames"];
 
 var DropDownButton = function DropDownButton(props) {
   var show = props.show,
       text = props.text,
       buttonClassNames = props.buttonClassNames,
       dropClassNames = props.dropClassNames,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$e);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$f);
 
   var _useState = React$1.useState(show),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -5335,11 +5335,11 @@ var DropDownButton = function DropDownButton(props) {
 
 DropDownButton.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-};var _excluded$d = ["icon"];
+};var _excluded$e = ["icon"];
 
 var Icon = function Icon(props) {
   var icon = props.icon,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$d);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$e);
 
   var addClasses = function addClasses(string) {
     if (typeof string === 'string') {
@@ -6739,13 +6739,13 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
     .split(' ')
     .filter(function (name) { return !name.match(/^ps([-_].+|)$/); })
     .join(' ');
-};var _excluded$c = ["tag", "className", "settings"];
+};var _excluded$d = ["tag", "className", "settings"];
 
 var Scrollbar = function Scrollbar(props) {
   var Tag = props.tag,
       className = props.className,
       settings = props.settings,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$c);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$d);
 
   var _useState = React$1.useState(),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -6787,7 +6787,7 @@ Scrollbar.propTypes = {
 };
 Scrollbar.defaultProps = {
   tag: 'div'
-};var _excluded$b = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
+};var _excluded$c = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
 
 var Select = function Select(props) {
   var id = props.id,
@@ -6801,7 +6801,7 @@ var Select = function Select(props) {
       labelClassName = props.labelClassName,
       selectClassName = props.selectClassName,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$b);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$c);
 
   var _useContext = React$1.useContext(WebAppsContext),
       UI = _useContext.UI;
@@ -6888,7 +6888,7 @@ Select.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   selectClassName: ''
-};var _excluded$a = ["UI", "setUI"],
+};var _excluded$b = ["UI", "setUI"],
     _excluded2 = ["children", "className", "innerRef", "color", "icon", "name", "badge", "show", "route"];
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -6900,7 +6900,7 @@ var DropdownContext = /*#__PURE__*/React__default["default"].createContext({});
 var NavDropdown = function NavDropdown(_ref) {
   var UI = _ref.UI,
       setUI = _ref.setUI,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$a);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$b);
 
   var children = props.children,
       className = props.className,
@@ -6988,7 +6988,7 @@ var NavDropdown = function NavDropdown(_ref) {
   }, children)));
 };
 
-var NavDropdown$1 = withWebApps(NavDropdown);var _excluded$9 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+var NavDropdown$1 = withWebApps(NavDropdown);var _excluded$a = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -7003,7 +7003,7 @@ var NavChild = function NavChild(props) {
       props.addLinkClass;
       props.label;
       var color = props.color,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$9);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$a);
 
   var _useContext = React$1.useContext(DropdownContext),
       isOpen = _useContext.isOpen;
@@ -7028,7 +7028,7 @@ var NavChild = function NavChild(props) {
   }, name), badge && /*#__PURE__*/React__default["default"].createElement(Badge, _objectSpread$3(_objectSpread$3({}, badge), {}, {
     text: null
   }), badge.text)));
-};var _excluded$8 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+};var _excluded$9 = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -7043,7 +7043,7 @@ var NavItem = function NavItem(props) {
       props.addLinkClass;
       props.label;
       var color = props.color,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$8);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$9);
 
   var _useContext = React$1.useContext(DropdownContext),
       isOpen = _useContext.isOpen;
@@ -7068,13 +7068,13 @@ var NavItem = function NavItem(props) {
   }, name), badge && /*#__PURE__*/React__default["default"].createElement(Badge, _objectSpread$2(_objectSpread$2({}, badge), {}, {
     text: null
   }), badge.text)));
-};var _excluded$7 = ["name", "className", "innerRef"];
+};var _excluded$8 = ["name", "className", "innerRef"];
 
 var NavTitle = function NavTitle(props) {
   var name = props.name,
       className = props.className,
       innerRef = props.innerRef,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$7);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$8);
 
   var classes = classNames('relative', 'my-6', 'h-px', 'bg-gray-600', 'dark:bg-gray-400', className);
   return /*#__PURE__*/React__default["default"].createElement("li", _extends__default["default"]({
@@ -7092,7 +7092,7 @@ NavTitle.propTypes = {
   name: PropTypes.string,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-};var _excluded$6 = ["_tag", "_children"];
+};var _excluded$7 = ["_tag", "_children"];
 
 var CreateElement = function CreateElement(_ref) {
   var items = _ref.items,
@@ -7102,7 +7102,7 @@ var CreateElement = function CreateElement(_ref) {
   var renderItem = function renderItem(item, i) {
     var _tag = item._tag,
         _children = item._children,
-        rest = _objectWithoutProperties__default["default"](item, _excluded$6);
+        rest = _objectWithoutProperties__default["default"](item, _excluded$7);
 
     var Tag = components[_tag] || _tag;
     var children = _children ? _children.map(function (child, i) {
@@ -7177,7 +7177,7 @@ var NavigationError = /*#__PURE__*/function (_Component) {
   }]);
 
   return NavigationError;
-}(React$1.Component);var _excluded$5 = ["loadNavigation", "UI", "setUI"];
+}(React$1.Component);var _excluded$6 = ["loadNavigation", "UI", "setUI"];
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -7187,7 +7187,7 @@ var SidebarWrapper = function SidebarWrapper(_ref) {
   var loadNavigation = _ref.loadNavigation,
       UI = _ref.UI,
       setUI = _ref.setUI,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$5);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$6);
 
   var children = props.children,
       dropdownMode = props.dropdownMode;
@@ -7271,11 +7271,11 @@ SidebarWrapper.propTypes = {
 SidebarWrapper.defaultProps = {
   dropdownMode: 'closeInactive'
 };
-var SidebarWrapper$1 = withWebApps(SidebarWrapper);var _excluded$4 = ["navigation"];
+var SidebarWrapper$1 = withWebApps(SidebarWrapper);var _excluded$5 = ["navigation"];
 
 var Sidebar = function Sidebar(_ref) {
   var navigation = _ref.navigation,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$4);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$5);
 
   React$1.useEffect(function () {
     if (navigation.menu !== null && navigation.menu !== undefined) {
@@ -7295,7 +7295,9 @@ var Sidebar = function Sidebar(_ref) {
   }) : null);
 };
 
-var Sidebar$1 = withWebApps(Sidebar);var Switch = function Switch(props) {
+var Sidebar$1 = withWebApps(Sidebar);var _excluded$4 = ["id", "name", "label", "helpText", "error", "state", "checked", "disabled", "onChange", "className"];
+
+var Switch = function Switch(props) {
   var id = props.id,
       name = props.name,
       label = props.label,
@@ -7305,7 +7307,8 @@ var Sidebar$1 = withWebApps(Sidebar);var Switch = function Switch(props) {
       checked = props.checked,
       disabled = props.disabled,
       onChange = props.onChange,
-      className = props.className;
+      className = props.className,
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$4);
 
   var _useContext = React$1.useContext(WebAppsContext),
       UI = _useContext.UI;
@@ -7316,7 +7319,7 @@ var Sidebar$1 = withWebApps(Sidebar);var Switch = function Switch(props) {
     className: className
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: "relative inline-block w-10 mr-2 align-middle select-none"
-  }, /*#__PURE__*/React__default["default"].createElement("input", {
+  }, /*#__PURE__*/React__default["default"].createElement("input", _extends__default["default"]({
     type: "checkbox",
     id: id,
     name: name,
@@ -7324,7 +7327,7 @@ var Sidebar$1 = withWebApps(Sidebar);var Switch = function Switch(props) {
     checked: checked,
     disabled: disabled,
     onChange: onChange
-  }), /*#__PURE__*/React__default["default"].createElement("label", {
+  }, attributes)), /*#__PURE__*/React__default["default"].createElement("label", {
     htmlFor: id,
     className: labelClasses
   })), /*#__PURE__*/React__default["default"].createElement("label", {
