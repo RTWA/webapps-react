@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createLocalStorageStateHook } from 'use-local-storage-state';
 
-import { client, controller } from '../../API';
+import { client } from '../../API';
 import { ToastProvider, useToasts } from '../../Toasts';
 
 export const WebAppsContext = React.createContext({});
 
 const useModals = createLocalStorageStateHook('modals', {});
-const useUI = createLocalStorageStateHook('UI', { sidebar: 'responsive', envWriteable: false })
+const useUI = createLocalStorageStateHook('UI', { sidebar: 'responsive', envWriteable: false });
+
+let controller = new AbortController();
 
 const WebAppsProvider = props => {
     const [UI, setUI] = useUI();
@@ -42,7 +44,7 @@ const WebAppsProvider = props => {
     }
 
     const loadUI = async () => {
-        await client('/api/setting', { key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']) })
+        await client('/api/setting', { key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']) }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     UI.theme = json.data['core.ui.theme'];
@@ -59,7 +61,7 @@ const WebAppsProvider = props => {
     }
 
     const loadNavigation = async () => {
-        await client('/api/navigation')
+        await client('/api/navigation', undefined, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     navigation.menu = json.data.navigation;
@@ -81,7 +83,7 @@ const WebAppsProvider = props => {
     }
 
     const getApps = async () => {
-        await client('/api/apps')
+        await client('/api/apps', undefined, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     apps.local = json.data.apps;
@@ -94,7 +96,7 @@ const WebAppsProvider = props => {
                     console.error(error);
                 }
             });
-        await client('/api/online/apps/list')
+        await client('/api/online/apps/list', undefined, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     apps.online = json.data.apps;
@@ -110,7 +112,7 @@ const WebAppsProvider = props => {
     }
 
     const getPlugins = async () => {
-        await client('/api/plugins')
+        await client('/api/plugins', undefined, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     plugins.all = json.data.plugins;
@@ -123,7 +125,7 @@ const WebAppsProvider = props => {
                     console.error(error);
                 }
             });
-        await client('/api/plugins/active')
+        await client('/api/plugins/active', undefined, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     plugins.active = json.data.plugins;
@@ -136,7 +138,7 @@ const WebAppsProvider = props => {
                     console.error(error);
                 }
             });
-        await client('/api/online/plugins/list')
+        await client('/api/online/plugins/list', undefined, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     plugins.online = json.data.plugins;
@@ -153,7 +155,7 @@ const WebAppsProvider = props => {
 
     const downloadApp = async e => {
         e.preventDefault();
-        await client('/api/online/apps/download', { slug: e.target.dataset.slug })
+        await client('/api/online/apps/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(e.target.dataset.slug, 'Has been downloaded and installed', { appearance: 'success' });
@@ -172,7 +174,7 @@ const WebAppsProvider = props => {
 
     const updateApp = async e => {
         e.preventDefault();
-        await client('/api/online/apps/download', { slug: e.target.dataset.slug })
+        await client('/api/online/apps/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(e.target.dataset.slug, `Has been updated`, { appearance: 'success' });
@@ -191,7 +193,7 @@ const WebAppsProvider = props => {
 
     const activateApp = async e => {
         e.preventDefault();
-        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'activate' })
+        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'activate' }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -222,7 +224,7 @@ const WebAppsProvider = props => {
 
     const deactivateApp = async e => {
         e.preventDefault();
-        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'deactivate' })
+        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'deactivate' }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -253,7 +255,7 @@ const WebAppsProvider = props => {
 
     const installApp = async e => {
         e.preventDefault();
-        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'install' })
+        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'install' }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -284,7 +286,7 @@ const WebAppsProvider = props => {
 
     const uninstallApp = async e => {
         e.preventDefault();
-        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'uninstall' })
+        await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'uninstall' }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -315,7 +317,7 @@ const WebAppsProvider = props => {
 
     const downloadPlugin = async e => {
         e.preventDefault();
-        await client('/api/online/plugins/download', { slug: e.target.dataset.slug })
+        await client('/api/online/plugins/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -335,7 +337,7 @@ const WebAppsProvider = props => {
 
     const updatePlugin = async e => {
         e.preventDefault();
-        await client('/api/online/plugins/download', { slug: e.target.dataset.slug })
+        await client('/api/online/plugins/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
@@ -355,7 +357,7 @@ const WebAppsProvider = props => {
 
     const togglePlugin = async e => {
         e.preventDefault();
-        await client('/api/plugins/toggle', { slug: e.target.dataset.slug })
+        await client('/api/plugins/toggle', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
@@ -387,7 +389,7 @@ const WebAppsProvider = props => {
 
     const uninstallPlugin = async e => {
         e.preventDefault();
-        await client('/api/plugin', { slug: e.target.dataset.slug, '_method': 'DELETE' }, { method: 'DELETE' })
+        await client('/api/plugin', { slug: e.target.dataset.slug, '_method': 'DELETE' }, { method: 'DELETE', signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });

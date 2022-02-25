@@ -7,54 +7,7 @@ const RE_CONTENT_TYPE_TEXT = new RegExp("^text/", "i");
 const TYPE_JSON = 'application/json';
 const UNEXPECTED_ERROR_MESSAGE = "An unexpected error occurred while processing your request.";
 
-export const controller = new AbortController();
-
 export const client = async (
-    endpoint,
-    data = undefined,
-    {
-        headers: customHeaders,
-        accept: accept = TYPE_JSON,
-        type: type = TYPE_JSON,
-        ...customConfig
-    } = {}
-) => {
-    try {
-        const config = {
-            method: data ? 'POST' : 'GET',
-            body: data ? JSON.stringify(data) : undefined,
-            headers: {
-                'Accept': accept ? accept : null,
-                'Content-Type': data ? type : undefined,
-                ...customHeaders
-            },
-            signal: controller.signal,
-            ...customConfig,
-        }
-
-        const csrfToken = getCookie('XSRF-TOKEN');
-        if (csrfToken !== undefined) {
-            config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
-        }
-        const url = `${window.location.origin.replace(/\/$/, "")}${endpoint}`;
-
-        const fetchResponse = await fetch(url, config);
-        const responseData = await unwrapResponseData(fetchResponse);
-
-        return new Promise(async (resolve, reject) => {
-            if (fetchResponse.ok && (fetchResponse.status >= 200 && fetchResponse.status < 300)) {
-                fetchResponse.data = responseData;
-                return resolve(fetchResponse);
-            }
-
-            return reject(normalizeError(responseData, url, config, fetchResponse));
-        });
-    } catch (error) {
-        return Promise.reject(normalizeTransportError(error));
-    }
-}
-
-export const unabortableClient = async (
     endpoint,
     data = undefined,
     {

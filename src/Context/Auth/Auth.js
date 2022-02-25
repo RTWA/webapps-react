@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import AuthContext from './AuthContext';
-import { client, controller, unabortableClient } from '../../API';
+import { client } from '../../API';
 import Loader from '../../Components/Loader';
+
+let controller = new AbortController();
 
 const Auth = props => {
     const [state, setState] = useState({
@@ -29,11 +31,11 @@ const Auth = props => {
         return new Promise(async (resolve, reject) => {
             try {
                 // Get CSRF Cookie
-                await client('/sanctum/csrf_cookie', undefined, { accept: 'text/html' });
+                await client('/sanctum/csrf_cookie', undefined, { accept: 'text/html', signal: controller.signal });
                 // Perform sign in
-                await client('/login', { username, password });
+                await client('/login', { username, password }, { signal: controller.signal });
                 // When correct, get the user object
-                const { data } = await client('/api/user');
+                const { data } = await client('/api/user', undefined, { signal: controller.signal });
                 const preferences = data.preferences ? data.preferences : {};
                 delete data.preferences;
 
@@ -56,7 +58,7 @@ const Auth = props => {
     const signOut = async () => {
         new Promise(async (resolve, reject) => {
             try {
-                await unabortableClient('/api/logout', {});
+                await client('/api/logout', {});
                 if (isMounted) {
                     setState({
                         user: null,
@@ -88,12 +90,12 @@ const Auth = props => {
             if (state.authenticated === null) {
                 // The status is null if it hasn't been checked
                 try {
-                    const { data } = await client('/api/user');
+                    const { data } = await client('/api/user', undefined, { signal: controller.signal });
                     const preferences = data.preferences ? data.preferences : {};
                     delete data.preferences;
 
                     if (isMounted) {
-                        setState({ 
+                        setState({
                             user: data,
                             authenticated: true,
                             preferences: preferences
@@ -104,7 +106,7 @@ const Auth = props => {
                     if (error.response && error.status.code === 401) {
                         // If 401 returns, the user is not logged in
                         if (isMounted) {
-                            setState({ 
+                            setState({
                                 user: null,
                                 authenticated: false,
                                 preferences: {}
@@ -129,7 +131,7 @@ const Auth = props => {
 
     const checkPermission = async permission => {
         return new Promise(async (resolve, reject) => {
-            await client('/api/permission/check', { 'permission': permission })
+            await client('/api/permission/check', { 'permission': permission }, { signal: controller.signal })
                 .then(json => {
                     if (isMounted) {
                         return resolve(json.data.has_permission);
@@ -145,7 +147,7 @@ const Auth = props => {
 
     const checkGroup = async group => {
         return new Promise(async (resolve, reject) => {
-            await client('/api/group/check', { 'group': group })
+            await client('/api/group/check', { 'group': group }, { signal: controller.signal })
                 .then(data => {
                     if (isMounted) {
                         return resolve(data.in_group);
@@ -164,7 +166,7 @@ const Auth = props => {
         preferences[preference] = value;
         setState({ preferences });
 
-        await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT' })
+        await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT', signal: controller.signal })
             .catch(error => {
                 if (!error.status?.isAbort && isMounted) {
                     // TODO: Handle errors

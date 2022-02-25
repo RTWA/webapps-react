@@ -1,3 +1,7 @@
+## Version 1.11.0
+- BREAKING: Removed `APIController` - you must now provide your own AbortController to `APIClient`
+- Improved logic for `<ConfirmDeleteButton />` timer
+
 ## Version 1.10.3
 - Fixed attribute issue with multiple Components
 

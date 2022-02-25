@@ -19,8 +19,15 @@ const ConfirmDeleteButton = props => {
     const isMountedRef = useRef(true);
     const isMounted = useCallback(() => isMountedRef.current, []);
 
+    let timer = null;
+
     useEffect(() => {
-        () => void (isMountedRef.current = false);
+        () => {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            void (isMountedRef.current = false);
+        }
     },[]);
 
     const [waiting, setWaiting] = useState(false);
@@ -35,7 +42,7 @@ const ConfirmDeleteButton = props => {
         e.preventDefault();
         setWaiting(true);
 
-        setTimeout(() => {
+        timer = setTimeout(() => {
             if (isMounted()) {
                 setWaiting(false);
             }

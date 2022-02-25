@@ -4,8 +4,7 @@
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
-};var _excluded$r = ["headers", "accept", "type"],
-    _excluded2$2 = ["headers", "accept", "type"];
+};var _excluded$r = ["headers", "accept", "type"];
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -16,7 +15,6 @@ var RE_CONTENT_TYPE_TEXT = new RegExp("^text/", "i"); // Static strings.
 
 var TYPE_JSON = 'application/json';
 var UNEXPECTED_ERROR_MESSAGE = "An unexpected error occurred while processing your request.";
-var controller = new AbortController();
 var client = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee2(endpoint) {
     var data,
@@ -47,8 +45,7 @@ var client = /*#__PURE__*/function () {
               headers: _objectSpread$9({
                 'Accept': accept ? accept : null,
                 'Content-Type': data ? type : undefined
-              }, customHeaders),
-              signal: controller.signal
+              }, customHeaders)
             }, customConfig);
             csrfToken = getCookie('XSRF-TOKEN');
 
@@ -114,137 +111,41 @@ var client = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
-var unabortableClient = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee4(endpoint) {
-    var data,
-        _ref5,
-        customHeaders,
-        _ref5$accept,
-        accept,
-        _ref5$type,
-        type,
-        customConfig,
-        config,
-        csrfToken,
-        url,
-        fetchResponse,
-        responseData,
-        _args4 = arguments;
-
-    return _regeneratorRuntime__default["default"].wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            data = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : undefined;
-            _ref5 = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : {}, customHeaders = _ref5.headers, _ref5$accept = _ref5.accept, accept = _ref5$accept === void 0 ? TYPE_JSON : _ref5$accept, _ref5$type = _ref5.type, type = _ref5$type === void 0 ? TYPE_JSON : _ref5$type, customConfig = _objectWithoutProperties__default["default"](_ref5, _excluded2$2);
-            _context4.prev = 2;
-            config = _objectSpread$9({
-              method: data ? 'POST' : 'GET',
-              body: data ? JSON.stringify(data) : undefined,
-              headers: _objectSpread$9({
-                'Accept': accept ? accept : null,
-                'Content-Type': data ? type : undefined
-              }, customHeaders)
-            }, customConfig);
-            csrfToken = getCookie('XSRF-TOKEN');
-
-            if (csrfToken !== undefined) {
-              config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
-            }
-
-            url = "".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint);
-            _context4.next = 9;
-            return fetch(url, config);
-
-          case 9:
-            fetchResponse = _context4.sent;
-            _context4.next = 12;
-            return unwrapResponseData(fetchResponse);
-
-          case 12:
-            responseData = _context4.sent;
-            return _context4.abrupt("return", new Promise( /*#__PURE__*/function () {
-              var _ref6 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee3(resolve, reject) {
-                return _regeneratorRuntime__default["default"].wrap(function _callee3$(_context3) {
-                  while (1) {
-                    switch (_context3.prev = _context3.next) {
-                      case 0:
-                        if (!(fetchResponse.ok && fetchResponse.status >= 200 && fetchResponse.status < 300)) {
-                          _context3.next = 3;
-                          break;
-                        }
-
-                        fetchResponse.data = responseData;
-                        return _context3.abrupt("return", resolve(fetchResponse));
-
-                      case 3:
-                        return _context3.abrupt("return", reject(normalizeError(responseData, url, config, fetchResponse)));
-
-                      case 4:
-                      case "end":
-                        return _context3.stop();
-                    }
-                  }
-                }, _callee3);
-              }));
-
-              return function (_x5, _x6) {
-                return _ref6.apply(this, arguments);
-              };
-            }()));
-
-          case 16:
-            _context4.prev = 16;
-            _context4.t0 = _context4["catch"](2);
-            return _context4.abrupt("return", Promise.reject(normalizeTransportError(_context4.t0)));
-
-          case 19:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4, null, [[2, 16]]);
-  }));
-
-  return function unabortableClient(_x4) {
-    return _ref4.apply(this, arguments);
-  };
-}();
 
 var normalizeError = function normalizeError(data, url, config, fetchResponse) {
   if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
     new Promise( /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee5(resolve, reject) {
-        return _regeneratorRuntime__default["default"].wrap(function _callee5$(_context5) {
+      var _ref4 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee3(resolve, reject) {
+        return _regeneratorRuntime__default["default"].wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context5.prev = 0;
-                _context5.next = 3;
+                _context3.prev = 0;
+                _context3.next = 3;
                 return unabortableClient('/api/logout', {});
 
               case 3:
                 localStorage.setItem('WA_Login', window.location.href);
                 window.location.replace(window.location.origin + '/login?logout');
                 resolve(true);
-                _context5.next = 11;
+                _context3.next = 11;
                 break;
 
               case 8:
-                _context5.prev = 8;
-                _context5.t0 = _context5["catch"](0);
-                return _context5.abrupt("return", reject(_context5.t0));
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+                return _context3.abrupt("return", reject(_context3.t0));
 
               case 11:
               case "end":
-                return _context5.stop();
+                return _context3.stop();
             }
           }
-        }, _callee5, null, [[0, 8]]);
+        }, _callee3, null, [[0, 8]]);
       }));
 
-      return function (_x7, _x8) {
-        return _ref7.apply(this, arguments);
+      return function (_x4, _x5) {
+        return _ref4.apply(this, arguments);
       };
     }());
   }
@@ -283,62 +184,62 @@ var normalizeTransportError = function normalizeTransportError(transportError) {
 };
 
 var unwrapResponseData = /*#__PURE__*/function () {
-  var _ref8 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee6(response) {
+  var _ref5 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee4(response) {
     var contentType;
-    return _regeneratorRuntime__default["default"].wrap(function _callee6$(_context6) {
+    return _regeneratorRuntime__default["default"].wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context6.prev = _context6.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
             if (!(response.status === 204)) {
-              _context6.next = 2;
+              _context4.next = 2;
               break;
             }
 
-            return _context6.abrupt("return");
+            return _context4.abrupt("return");
 
           case 2:
             contentType = response.headers.has('Content-Type') ? response.headers.get('Content-Type') : "";
 
             if (!RE_CONTENT_TYPE_JSON.test(contentType)) {
-              _context6.next = 9;
+              _context4.next = 9;
               break;
             }
 
-            _context6.next = 6;
+            _context4.next = 6;
             return response.json();
 
           case 6:
-            return _context6.abrupt("return", _context6.sent);
+            return _context4.abrupt("return", _context4.sent);
 
           case 9:
             if (!RE_CONTENT_TYPE_TEXT.test(contentType)) {
-              _context6.next = 15;
+              _context4.next = 15;
               break;
             }
 
-            _context6.next = 12;
+            _context4.next = 12;
             return response.text();
 
           case 12:
-            return _context6.abrupt("return", _context6.sent);
+            return _context4.abrupt("return", _context4.sent);
 
           case 15:
-            _context6.next = 17;
+            _context4.next = 17;
             return response.blob();
 
           case 17:
-            return _context6.abrupt("return", _context6.sent);
+            return _context4.abrupt("return", _context4.sent);
 
           case 18:
           case "end":
-            return _context6.stop();
+            return _context4.stop();
         }
       }
-    }, _callee6);
+    }, _callee4);
   }));
 
-  return function unwrapResponseData(_x9) {
-    return _ref8.apply(this, arguments);
+  return function unwrapResponseData(_x6) {
+    return _ref5.apply(this, arguments);
   };
 }();var propTypes = {exports: {}};var reactIs$1 = {exports: {}};var reactIs_production_min$1 = {};/** @license React v16.13.1
  * react-is.production.min.js
@@ -1685,7 +1586,9 @@ Loader.defaultProps = {
   height: '24',
   width: '24',
   alignment: 'center'
-};var Auth = function Auth(props) {
+};var controller$1 = new AbortController();
+
+var Auth = function Auth(props) {
   var _useState = React$1.useState({
     user: null,
     authenticated: null,
@@ -1706,7 +1609,7 @@ Loader.defaultProps = {
 
     return function () {
       void (isMountedRef.current = false);
-      controller.abort();
+      controller$1.abort();
     };
   }, []);
 
@@ -1727,7 +1630,8 @@ Loader.defaultProps = {
                           _context.prev = 0;
                           _context.next = 3;
                           return client('/sanctum/csrf_cookie', undefined, {
-                            accept: 'text/html'
+                            accept: 'text/html',
+                            signal: controller$1.signal
                           });
 
                         case 3:
@@ -1735,11 +1639,15 @@ Loader.defaultProps = {
                           return client('/login', {
                             username: username,
                             password: password
+                          }, {
+                            signal: controller$1.signal
                           });
 
                         case 5:
                           _context.next = 7;
-                          return client('/api/user');
+                          return client('/api/user', undefined, {
+                            signal: controller$1.signal
+                          });
 
                         case 7:
                           _yield$client = _context.sent;
@@ -1814,7 +1722,7 @@ Loader.defaultProps = {
                         case 0:
                           _context3.prev = 0;
                           _context3.next = 3;
-                          return unabortableClient('/api/logout', {});
+                          return client('/api/logout', {});
 
                         case 3:
                           if (isMounted) {
@@ -1896,7 +1804,9 @@ Loader.defaultProps = {
 
                           _context5.prev = 1;
                           _context5.next = 4;
-                          return client('/api/user');
+                          return client('/api/user', undefined, {
+                            signal: controller$1.signal
+                          });
 
                         case 4:
                           _yield$client2 = _context5.sent;
@@ -2006,6 +1916,8 @@ Loader.defaultProps = {
                           _context7.next = 2;
                           return client('/api/permission/check', {
                             'permission': permission
+                          }, {
+                            signal: controller$1.signal
                           }).then(function (json) {
                             if (isMounted) {
                               return resolve(json.data.has_permission);
@@ -2057,6 +1969,8 @@ Loader.defaultProps = {
                           _context9.next = 2;
                           return client('/api/group/check', {
                             'group': group
+                          }, {
+                            signal: controller$1.signal
                           }).then(function (data) {
                             if (isMounted) {
                               return resolve(data.in_group);
@@ -2110,7 +2024,8 @@ Loader.defaultProps = {
                 'preference': preference,
                 'value': value
               }, {
-                method: 'PUT'
+                method: 'PUT',
+                signal: controller$1.signal
               })["catch"](function (error) {
                 var _error$status;
 
@@ -4045,6 +3960,7 @@ var useUI$1 = createLocalStorageStateHook('UI', {
   sidebar: 'responsive',
   envWriteable: false
 });
+var controller = new AbortController();
 
 var WebAppsProvider = function WebAppsProvider(props) {
   var _useUI = useUI$1(),
@@ -4107,6 +4023,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               _context.next = 2;
               return client('/api/setting', {
                 key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode'])
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   UI.theme = json.data['core.ui.theme'];
@@ -4142,7 +4060,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return client('/api/navigation').then(function (json) {
+              return client('/api/navigation', undefined, {
+                signal: controller.signal
+              }).then(function (json) {
                 if (isMounted()) {
                   navigation.menu = json.data.navigation;
                   navigation.routes = json.data.routes;
@@ -4181,7 +4101,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return client('/api/apps').then(function (json) {
+              return client('/api/apps', undefined, {
+                signal: controller.signal
+              }).then(function (json) {
                 if (isMounted()) {
                   apps.local = json.data.apps;
                   setApps(_objectSpread$5({}, apps));
@@ -4197,7 +4119,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
             case 2:
               _context3.next = 4;
-              return client('/api/online/apps/list').then(function (json) {
+              return client('/api/online/apps/list', undefined, {
+                signal: controller.signal
+              }).then(function (json) {
                 if (isMounted()) {
                   apps.online = json.data.apps;
                   setApps(_objectSpread$5({}, apps));
@@ -4231,7 +4155,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return client('/api/plugins').then(function (json) {
+              return client('/api/plugins', undefined, {
+                signal: controller.signal
+              }).then(function (json) {
                 if (isMounted()) {
                   plugins.all = json.data.plugins;
                   setPlugins(_objectSpread$5({}, plugins));
@@ -4247,7 +4173,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
             case 2:
               _context4.next = 4;
-              return client('/api/plugins/active').then(function (json) {
+              return client('/api/plugins/active', undefined, {
+                signal: controller.signal
+              }).then(function (json) {
                 if (isMounted()) {
                   plugins.active = json.data.plugins;
                   setPlugins(_objectSpread$5({}, plugins));
@@ -4263,7 +4191,9 @@ var WebAppsProvider = function WebAppsProvider(props) {
 
             case 4:
               _context4.next = 6;
-              return client('/api/online/plugins/list').then(function (json) {
+              return client('/api/online/plugins/list', undefined, {
+                signal: controller.signal
+              }).then(function (json) {
                 if (isMounted()) {
                   plugins.online = json.data.plugins;
                   setPlugins(_objectSpread$5({}, plugins));
@@ -4300,6 +4230,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               _context5.next = 3;
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
@@ -4341,6 +4273,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               _context6.next = 3;
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(e.target.dataset.slug, "Has been updated", {
@@ -4383,6 +4317,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'activate'
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.message, '', {
@@ -4436,6 +4372,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'deactivate'
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.message, '', {
@@ -4489,6 +4427,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'install'
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.message, '', {
@@ -4542,6 +4482,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'uninstall'
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.message, '', {
@@ -4593,6 +4535,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               _context11.next = 3;
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.message, '', {
@@ -4634,6 +4578,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               _context12.next = 3;
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.message, '', {
@@ -4675,6 +4621,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
               _context13.next = 3;
               return client('/api/plugins/toggle', {
                 slug: e.target.dataset.slug
+              }, {
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.plugin.name, json.data.message, {
@@ -4730,7 +4678,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 slug: e.target.dataset.slug,
                 '_method': 'DELETE'
               }, {
-                method: 'DELETE'
+                method: 'DELETE',
+                signal: controller.signal
               }).then(function (json) {
                 if (isMounted()) {
                   addToast(json.data.plugin.name, json.data.message, {
@@ -24359,7 +24308,6 @@ var WebAppsDocComponent$1 = withWebAppsDocs(WebAppsDocComponent);/** @jsxRuntime
 var returnLibrary = function returnLibrary() {
   return {
     APIClient: client,
-    APIController: controller,
     Badge: Badge,
     Banner: Banner,
     Button: Button,

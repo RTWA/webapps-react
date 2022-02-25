@@ -1,7 +1,7 @@
 /** @jsxRuntime classic /
 /* @jsx jsx */
 
-import { client as APIClient, controller as APIController } from './API';
+import { client as APIClient } from './API';
 
 import Badge from './Components/Badge';
 import Banner from './Components/Banner';
@@ -54,7 +54,6 @@ import {
 const returnLibrary = () => {
     return {
         APIClient,
-        APIController,
 
         Badge,
         Banner,
