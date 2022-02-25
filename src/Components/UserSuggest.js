@@ -97,9 +97,9 @@ const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit,
     }
 
     return (
-        <div className="relative">
+        <div className="relative mb-6">
             <Input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput}
-                placeholder={placeholder} autoComplete="no" {...props} />
+                placeholder={placeholder} autoComplete="no" wrapperClassName="" {...props} />
             {usersListComponent}
         </div>
     );

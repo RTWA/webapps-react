@@ -87,9 +87,9 @@ const DataSuggest = ({ data, select, placeholder, noMatchesText, limit, labelKey
     }
 
     return (
-        <div className="relative">
+        <div className="relative mb-6">
             <Input type="text" onChange={onChange} onKeyDown={onKeyDown} value={dataInput}
-                placeholder={placeholder} autoComplete="no" {...props} />
+                placeholder={placeholder} autoComplete="no" wrapperClassName="" {...props} />
             {dataListComponent}
         </div>
     );

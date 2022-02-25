@@ -5125,8 +5125,8 @@ var Input = function Input(props) {
 };
 
 Input.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   action: PropTypes.object,
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -5247,14 +5247,15 @@ var DataSuggest = function DataSuggest(_ref) {
   }
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "relative"
+    className: "relative mb-6"
   }, /*#__PURE__*/React__default["default"].createElement(Input, _extends__default["default"]({
     type: "text",
     onChange: onChange,
     onKeyDown: onKeyDown,
     value: dataInput,
     placeholder: placeholder,
-    autoComplete: "no"
+    autoComplete: "no",
+    wrapperClassName: ""
   }, props)), dataListComponent);
 };
 
@@ -6869,8 +6870,8 @@ var Select = function Select(props) {
 };
 
 Select.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   action: PropTypes.object,
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -7339,8 +7340,8 @@ var Switch = function Switch(props) {
 };
 
 Switch.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
@@ -8046,14 +8047,15 @@ var UserSuggest = function UserSuggest(_ref) {
   }
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "relative"
+    className: "relative mb-6"
   }, /*#__PURE__*/React__default["default"].createElement(Input, _extends__default["default"]({
     type: "text",
     onChange: onChange,
     onKeyDown: onKeyDown,
     value: userInput,
     placeholder: placeholder,
-    autoComplete: "no"
+    autoComplete: "no",
+    wrapperClassName: ""
   }, props)), usersListComponent);
 };
 

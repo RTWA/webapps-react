@@ -1,3 +1,7 @@
+## Version 1.11.2
+- `<Input />`, `<Select />` and `<Switch />` - `id` and `name` props updated to accept both `string` and `number`
+- Fixed typeahead position for `<UserSuggest />` and `<DataSuggest />`
+
 ## Version 1.11.1
 - Added additional attributes to `<Switch />` Component
 

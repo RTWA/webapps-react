@@ -105,8 +105,8 @@ const Select = props => {
 }
 
 Select.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     label: PropTypes.string,
     action: PropTypes.object,
     helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
