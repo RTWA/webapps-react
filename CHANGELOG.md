@@ -1,3 +1,6 @@
+## Versoin 1.11.3
+- Fixed some SVG attributes in `<Icon />` Component
+
 ## Version 1.11.2
 - `<Input />`, `<Select />` and `<Switch />` - `id` and `name` props updated to accept both `string` and `number`
 - Fixed typeahead position for `<UserSuggest />` and `<DataSuggest />`

@@ -7,9 +7,28 @@ const Icon = props => {
         ...attributes
     } = props;
 
+    const matchCase = (text, pattern) => {
+        var result = '';
+    
+        for(var i = 0; i < text.length; i++) {
+            var c = text.charAt(i);
+            var p = pattern.charCodeAt(i);
+    
+            if(p >= 65 && p < 65 + 26) {
+                result += c.toUpperCase();
+            } else {
+                result += c.toLowerCase();
+            }
+        }
+    
+        return result;
+    }
+
     const addClasses = string => {
         if (typeof (string) === 'string') {
-            return string.replace(/<svg/g, `<svg className="${attributes.className}"`)
+            return string.replace(r, function(match) {
+                return matchCase(/<svg/g, `<svg className="${attributes.className}"`);
+            })
         }
     }
 
