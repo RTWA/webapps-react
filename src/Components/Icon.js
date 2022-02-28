@@ -26,8 +26,8 @@ const Icon = props => {
 
     const addClasses = string => {
         if (typeof (string) === 'string') {
-            return string.replace(r, function(match) {
-                return matchCase(/<svg/g, `<svg className="${attributes.className}"`);
+            return string.replace(/<svg/g, function(match) {
+                return matchCase(`<svg className="${attributes.className}"`, match);
             })
         }
     }
