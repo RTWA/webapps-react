@@ -5342,28 +5342,9 @@ var Icon = function Icon(props) {
   var icon = props.icon,
       attributes = _objectWithoutProperties(props, _excluded$e);
 
-  var matchCase = function matchCase(text, pattern) {
-    var result = '';
-
-    for (var i = 0; i < text.length; i++) {
-      var c = text.charAt(i);
-      var p = pattern.charCodeAt(i);
-
-      if (p >= 65 && p < 65 + 26) {
-        result += c.toUpperCase();
-      } else {
-        result += c.toLowerCase();
-      }
-    }
-
-    return result;
-  };
-
   var addClasses = function addClasses(string) {
     if (typeof string === 'string') {
-      return string.replace(/<svg/g, function (match) {
-        return matchCase("<svg className=\"".concat(attributes.className, "\""), match);
-      });
+      return string.replace(/<svg/g, "<svg class=\"".concat(attributes.className, "\""));
     }
   };
 

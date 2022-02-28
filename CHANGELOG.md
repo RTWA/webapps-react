@@ -1,4 +1,4 @@
-## Versoin 1.11.3 & 1.11.4
+## Versoin 1.11.3, 1.11.4 & 1.11.5
 - Fixed some SVG attributes in `<Icon />` Component
 
 ## Version 1.11.2
