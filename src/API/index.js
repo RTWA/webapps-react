@@ -63,7 +63,7 @@ export const mediaClient = async (
     try {
         const config = {
             method: data ? 'POST' : 'GET',
-            body: data ? JSON.stringify(data) : undefined,
+            body: data ? data : undefined,
             headers: {
                 'Accept': accept ? accept : null,
                 ...customHeaders

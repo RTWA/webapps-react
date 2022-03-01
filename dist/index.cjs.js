@@ -136,7 +136,7 @@ var mediaClient = /*#__PURE__*/function () {
             _context4.prev = 2;
             config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
-              body: data ? JSON.stringify(data) : undefined,
+              body: data ? data : undefined,
               headers: _objectSpread$9({
                 'Accept': accept ? accept : null
               }, customHeaders)

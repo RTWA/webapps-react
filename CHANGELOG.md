@@ -1,3 +1,6 @@
+## Version 1.12.1
+- Dont' JSONify body data for `APIMediaClient`
+
 ## Version 1.12.0
 - Added `APIMediaClient` for uploading media without a 'Content-Type' header
 
