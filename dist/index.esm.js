@@ -4,7 +4,8 @@ import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objec
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
-};var _excluded$s = ["headers", "accept", "type"];
+};var _excluded$s = ["headers", "accept", "type"],
+    _excluded2$2 = ["headers", "accept"];
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -111,41 +112,134 @@ var client = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+var mediaClient = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(endpoint) {
+    var data,
+        _ref5,
+        customHeaders,
+        _ref5$accept,
+        accept,
+        customConfig,
+        config,
+        csrfToken,
+        url,
+        fetchResponse,
+        responseData,
+        _args4 = arguments;
+
+    return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            data = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : undefined;
+            _ref5 = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : {}, customHeaders = _ref5.headers, _ref5$accept = _ref5.accept, accept = _ref5$accept === void 0 ? TYPE_JSON : _ref5$accept, customConfig = _objectWithoutProperties(_ref5, _excluded2$2);
+            _context4.prev = 2;
+            config = _objectSpread$9({
+              method: data ? 'POST' : 'GET',
+              body: data ? JSON.stringify(data) : undefined,
+              headers: _objectSpread$9({
+                'Accept': accept ? accept : null
+              }, customHeaders)
+            }, customConfig);
+            csrfToken = getCookie('XSRF-TOKEN');
+
+            if (csrfToken !== undefined) {
+              config.headers['X-XSRF-TOKEN'] = csrfToken.replace('%3D', '=');
+            }
+
+            url = "".concat(window.location.origin.replace(/\/$/, "")).concat(endpoint);
+            _context4.next = 9;
+            return fetch(url, config);
+
+          case 9:
+            fetchResponse = _context4.sent;
+            _context4.next = 12;
+            return unwrapResponseData(fetchResponse);
+
+          case 12:
+            responseData = _context4.sent;
+            return _context4.abrupt("return", new Promise( /*#__PURE__*/function () {
+              var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
+                return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+                  while (1) {
+                    switch (_context3.prev = _context3.next) {
+                      case 0:
+                        if (!(fetchResponse.ok && fetchResponse.status >= 200 && fetchResponse.status < 300)) {
+                          _context3.next = 3;
+                          break;
+                        }
+
+                        fetchResponse.data = responseData;
+                        return _context3.abrupt("return", resolve(fetchResponse));
+
+                      case 3:
+                        return _context3.abrupt("return", reject(normalizeError(responseData, url, config, fetchResponse)));
+
+                      case 4:
+                      case "end":
+                        return _context3.stop();
+                    }
+                  }
+                }, _callee3);
+              }));
+
+              return function (_x5, _x6) {
+                return _ref6.apply(this, arguments);
+              };
+            }()));
+
+          case 16:
+            _context4.prev = 16;
+            _context4.t0 = _context4["catch"](2);
+            return _context4.abrupt("return", Promise.reject(normalizeTransportError(_context4.t0)));
+
+          case 19:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4, null, [[2, 16]]);
+  }));
+
+  return function mediaClient(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
 
 var normalizeError = function normalizeError(data, url, config, fetchResponse) {
   if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
     new Promise( /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(resolve, reject) {
-        return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(resolve, reject) {
+        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
+                _context5.prev = 0;
+                _context5.next = 3;
                 return unabortableClient('/api/logout', {});
 
               case 3:
                 localStorage.setItem('WA_Login', window.location.href);
                 window.location.replace(window.location.origin + '/login?logout');
                 resolve(true);
-                _context3.next = 11;
+                _context5.next = 11;
                 break;
 
               case 8:
-                _context3.prev = 8;
-                _context3.t0 = _context3["catch"](0);
-                return _context3.abrupt("return", reject(_context3.t0));
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](0);
+                return _context5.abrupt("return", reject(_context5.t0));
 
               case 11:
               case "end":
-                return _context3.stop();
+                return _context5.stop();
             }
           }
-        }, _callee3, null, [[0, 8]]);
+        }, _callee5, null, [[0, 8]]);
       }));
 
-      return function (_x4, _x5) {
-        return _ref4.apply(this, arguments);
+      return function (_x7, _x8) {
+        return _ref7.apply(this, arguments);
       };
     }());
   }
@@ -184,62 +278,62 @@ var normalizeTransportError = function normalizeTransportError(transportError) {
 };
 
 var unwrapResponseData = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(response) {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(response) {
     var contentType;
-    return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+    return _regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context6.prev = _context6.next) {
           case 0:
             if (!(response.status === 204)) {
-              _context4.next = 2;
+              _context6.next = 2;
               break;
             }
 
-            return _context4.abrupt("return");
+            return _context6.abrupt("return");
 
           case 2:
             contentType = response.headers.has('Content-Type') ? response.headers.get('Content-Type') : "";
 
             if (!RE_CONTENT_TYPE_JSON.test(contentType)) {
-              _context4.next = 9;
+              _context6.next = 9;
               break;
             }
 
-            _context4.next = 6;
+            _context6.next = 6;
             return response.json();
 
           case 6:
-            return _context4.abrupt("return", _context4.sent);
+            return _context6.abrupt("return", _context6.sent);
 
           case 9:
             if (!RE_CONTENT_TYPE_TEXT.test(contentType)) {
-              _context4.next = 15;
+              _context6.next = 15;
               break;
             }
 
-            _context4.next = 12;
+            _context6.next = 12;
             return response.text();
 
           case 12:
-            return _context4.abrupt("return", _context4.sent);
+            return _context6.abrupt("return", _context6.sent);
 
           case 15:
-            _context4.next = 17;
+            _context6.next = 17;
             return response.blob();
 
           case 17:
-            return _context4.abrupt("return", _context4.sent);
+            return _context6.abrupt("return", _context6.sent);
 
           case 18:
           case "end":
-            return _context4.stop();
+            return _context6.stop();
         }
       }
-    }, _callee4);
+    }, _callee6);
   }));
 
-  return function unwrapResponseData(_x6) {
-    return _ref5.apply(this, arguments);
+  return function unwrapResponseData(_x9) {
+    return _ref8.apply(this, arguments);
   };
 }();var propTypes = {exports: {}};var reactIs$1 = {exports: {}};var reactIs_production_min$1 = {};/** @license React v16.13.1
  * react-is.production.min.js
@@ -24313,6 +24407,7 @@ var WebAppsDocComponent$1 = withWebAppsDocs(WebAppsDocComponent);/** @jsxRuntime
 var returnLibrary = function returnLibrary() {
   return {
     APIClient: client,
+    APIMediaClient: mediaClient,
     Badge: Badge,
     Banner: Banner,
     Button: Button,

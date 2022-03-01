@@ -1,7 +1,7 @@
 /** @jsxRuntime classic /
 /* @jsx jsx */
 
-import { client as APIClient } from './API';
+import { client as APIClient, mediaClient as APIMediaClient } from './API';
 
 import Badge from './Components/Badge';
 import Banner from './Components/Banner';
@@ -54,6 +54,7 @@ import {
 const returnLibrary = () => {
     return {
         APIClient,
+        APIMediaClient,
 
         Badge,
         Banner,

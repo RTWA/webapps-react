@@ -1,3 +1,6 @@
+## Version 1.12.0
+- Added `APIMediaClient` for uploading media without a 'Content-Type' header
+
 ## Versoin 1.11.3, 1.11.4 & 1.11.5
 - Fixed some SVG attributes in `<Icon />` Component
 
