@@ -97,7 +97,7 @@ const normalizeError = (data, url, config, fetchResponse) => {
     if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
         new Promise(async (resolve, reject) => {
             try {
-                await unabortableClient('/api/logout', {});
+                await client('/api/logout', {});
                 localStorage.setItem('WA_Login', window.location.href);
                 window.location.replace(window.location.origin + '/login?logout');
                 resolve(true);

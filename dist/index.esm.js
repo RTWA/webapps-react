@@ -216,7 +216,7 @@ var normalizeError = function normalizeError(data, url, config, fetchResponse) {
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return unabortableClient('/api/logout', {});
+                return client('/api/logout', {});
 
               case 3:
                 localStorage.setItem('WA_Login', window.location.href);

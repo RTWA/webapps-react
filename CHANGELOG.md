@@ -1,3 +1,6 @@
+## Version 1.12.2
+- Fixed issue with `APIClient` handling a 401 error, rather than returning an error
+
 ## Version 1.12.1
 - Dont' JSONify body data for `APIMediaClient`
 
