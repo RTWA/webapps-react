@@ -1,10 +1,10 @@
-'use strict';var _defineProperty=require('@babel/runtime/helpers/defineProperty'),_objectWithoutProperties=require('@babel/runtime/helpers/objectWithoutProperties'),_asyncToGenerator=require('@babel/runtime/helpers/asyncToGenerator'),_regeneratorRuntime=require('@babel/runtime/regenerator'),_extends=require('@babel/runtime/helpers/extends'),React$1=require('react'),reactRouterDom=require('react-router-dom'),_slicedToArray=require('@babel/runtime/helpers/slicedToArray'),ReactDOM=require('react-dom'),_toConsumableArray=require('@babel/runtime/helpers/toConsumableArray'),_classCallCheck$1=require('@babel/runtime/helpers/classCallCheck'),_createClass$1=require('@babel/runtime/helpers/createClass'),_assertThisInitialized$1=require('@babel/runtime/helpers/assertThisInitialized'),_inherits$1=require('@babel/runtime/helpers/inherits'),_possibleConstructorReturn$1=require('@babel/runtime/helpers/possibleConstructorReturn'),_getPrototypeOf=require('@babel/runtime/helpers/getPrototypeOf'),_objectWithoutPropertiesLoose=require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose'),_extends$1=require('@babel/runtime/helpers/esm/extends'),_assertThisInitialized=require('@babel/runtime/helpers/esm/assertThisInitialized'),_inheritsLoose=require('@babel/runtime/helpers/esm/inheritsLoose'),_typeof=require('@babel/runtime/helpers/typeof'),path=require('path'),process$1=require('process'),url=require('url');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var _defineProperty__default=/*#__PURE__*/_interopDefaultLegacy(_defineProperty);var _objectWithoutProperties__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);var _asyncToGenerator__default=/*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);var _regeneratorRuntime__default=/*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);var _extends__default=/*#__PURE__*/_interopDefaultLegacy(_extends);var React__default=/*#__PURE__*/_interopDefaultLegacy(React$1);var _slicedToArray__default=/*#__PURE__*/_interopDefaultLegacy(_slicedToArray);var ReactDOM__default=/*#__PURE__*/_interopDefaultLegacy(ReactDOM);var _toConsumableArray__default=/*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);var _classCallCheck__default=/*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);var _createClass__default=/*#__PURE__*/_interopDefaultLegacy(_createClass$1);var _assertThisInitialized__default$1=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$1);var _inherits__default=/*#__PURE__*/_interopDefaultLegacy(_inherits$1);var _possibleConstructorReturn__default=/*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn$1);var _getPrototypeOf__default=/*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);var _objectWithoutPropertiesLoose__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);var _extends__default$1=/*#__PURE__*/_interopDefaultLegacy(_extends$1);var _assertThisInitialized__default=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);var _inheritsLoose__default=/*#__PURE__*/_interopDefaultLegacy(_inheritsLoose);var _typeof__default=/*#__PURE__*/_interopDefaultLegacy(_typeof);var path__default=/*#__PURE__*/_interopDefaultLegacy(path);var process__default=/*#__PURE__*/_interopDefaultLegacy(process$1);var getCookie = function getCookie(name) {
+'use strict';var _defineProperty=require('@babel/runtime/helpers/defineProperty'),_objectWithoutProperties=require('@babel/runtime/helpers/objectWithoutProperties'),_asyncToGenerator=require('@babel/runtime/helpers/asyncToGenerator'),_regeneratorRuntime=require('@babel/runtime/regenerator'),_extends=require('@babel/runtime/helpers/extends'),_toConsumableArray=require('@babel/runtime/helpers/toConsumableArray'),_slicedToArray=require('@babel/runtime/helpers/slicedToArray'),React$1=require('react'),ReactDOM=require('react-dom'),_classCallCheck$1=require('@babel/runtime/helpers/classCallCheck'),_createClass$1=require('@babel/runtime/helpers/createClass'),_assertThisInitialized$1=require('@babel/runtime/helpers/assertThisInitialized'),_inherits$1=require('@babel/runtime/helpers/inherits'),_possibleConstructorReturn$1=require('@babel/runtime/helpers/possibleConstructorReturn'),_getPrototypeOf=require('@babel/runtime/helpers/getPrototypeOf'),_objectWithoutPropertiesLoose=require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose'),_extends$1=require('@babel/runtime/helpers/esm/extends'),_assertThisInitialized=require('@babel/runtime/helpers/esm/assertThisInitialized'),_inheritsLoose=require('@babel/runtime/helpers/esm/inheritsLoose'),reactRouterDom=require('react-router-dom'),_typeof=require('@babel/runtime/helpers/typeof'),path=require('path'),process$1=require('process'),url=require('url');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var _defineProperty__default=/*#__PURE__*/_interopDefaultLegacy(_defineProperty);var _objectWithoutProperties__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);var _asyncToGenerator__default=/*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);var _regeneratorRuntime__default=/*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);var _extends__default=/*#__PURE__*/_interopDefaultLegacy(_extends);var _toConsumableArray__default=/*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);var _slicedToArray__default=/*#__PURE__*/_interopDefaultLegacy(_slicedToArray);var React__default=/*#__PURE__*/_interopDefaultLegacy(React$1);var ReactDOM__default=/*#__PURE__*/_interopDefaultLegacy(ReactDOM);var _classCallCheck__default=/*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);var _createClass__default=/*#__PURE__*/_interopDefaultLegacy(_createClass$1);var _assertThisInitialized__default$1=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$1);var _inherits__default=/*#__PURE__*/_interopDefaultLegacy(_inherits$1);var _possibleConstructorReturn__default=/*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn$1);var _getPrototypeOf__default=/*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);var _objectWithoutPropertiesLoose__default=/*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);var _extends__default$1=/*#__PURE__*/_interopDefaultLegacy(_extends$1);var _assertThisInitialized__default=/*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);var _inheritsLoose__default=/*#__PURE__*/_interopDefaultLegacy(_inheritsLoose);var _typeof__default=/*#__PURE__*/_interopDefaultLegacy(_typeof);var path__default=/*#__PURE__*/_interopDefaultLegacy(path);var process__default=/*#__PURE__*/_interopDefaultLegacy(process$1);var getCookie = function getCookie(name) {
   var _document;
 
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
-};var _excluded$s = ["headers", "accept", "type"],
+};var _excluded$t = ["headers", "accept", "type"],
     _excluded2$2 = ["headers", "accept"];
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -38,7 +38,7 @@ var client = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
-            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$s);
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$t);
             _context2.prev = 2;
             config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
@@ -1447,118 +1447,7 @@ var PropTypes = propTypes.exports;var classnames = {exports: {}};/*!
 }());
 }(classnames));
 
-var classNames = classnames.exports;var _excluded$r = ["tag", "className", "innerRef", "color", "pill", "children"];
-
-var Badge = function Badge(props) {
-  var tag = props.tag,
-      className = props.className,
-      innerRef = props.innerRef,
-      color = props.color,
-      pill = props.pill,
-      children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$r);
-
-  var classes = classNames(className, 'inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', "bg-".concat(color), pill ? 'rounded-full' : '');
-  var Tag = attributes.to || attributes.href ? reactRouterDom.NavLink : tag;
-
-  var ref = _defineProperty__default["default"]({}, "".concat(typeof Tag === 'string' ? 'ref' : 'innerRef'), innerRef);
-
-  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends__default["default"]({
-    className: classes
-  }, attributes, ref), children);
-};
-
-Badge.propTypes = {
-  tag: PropTypes.string,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  color: PropTypes.string,
-  pill: PropTypes.bool
-};
-Badge.defaultProps = {
-  tag: 'span'
-};var _excluded$q = ["tag", "className", "innerRef", "color", "darkColor", "children"];
-
-var Banner = function Banner(props) {
-  var tag = props.tag,
-      className = props.className,
-      innerRef = props.innerRef,
-      color = props.color,
-      darkColor = props.darkColor,
-      children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$q);
-
-  var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
-  var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
-
-  var ref = _defineProperty__default["default"]({}, "".concat(typeof Tag === 'string' ? 'ref' : 'innerRef'), innerRef);
-
-  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends__default["default"]({
-    className: classes
-  }, attributes, ref), children);
-};
-
-Banner.propTypes = {
-  tag: PropTypes.string,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  color: PropTypes.string,
-  darkColor: PropTypes.string
-};
-Banner.defaultProps = {
-  tag: 'div',
-  color: 'gray-300',
-  darkColor: 'gray-700'
-};var _excluded$p = ["className", "innerRef", "active", "href", "onClick", "disabled"];
-
-function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-var Link = function Link(props) {
-  var className = props.className,
-      innerRef = props.innerRef,
-      active = props.active,
-      href = props.href,
-      onClick = props.onClick,
-      disabled = props.disabled,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$p);
-
-  var to = rest ? rest.to : null;
-
-  var click = function click(e) {
-    if (!href && !to || href === '#') {
-      e.preventDefault();
-    }
-
-    !disabled && onClick && onClick(e);
-  };
-
-  var classes = classNames(active, disabled, className);
-  return to ? /*#__PURE__*/React__default["default"].createElement(reactRouterDom.NavLink, _extends__default["default"]({}, rest, {
-    className: classes,
-    onClick: click,
-    ref: innerRef
-  })) : /*#__PURE__*/React__default["default"].createElement("a", _extends__default["default"]({
-    href: href || '#',
-    className: classes,
-    rel: rest.target === '_blank' ? 'noopener norefferer' : null
-  }, rest, {
-    onClick: click,
-    ref: innerRef
-  }));
-};
-
-Link.propTypes = _objectSpread$8(_objectSpread$8({
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  active: PropTypes.bool,
-  href: PropTypes.string,
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool
-}, reactRouterDom.NavLink.propTypes), {}, {
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
-  to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
-});var AuthContext = /*#__PURE__*/React__default["default"].createContext({});var Loader = function Loader(props) {
+var classNames = classnames.exports;var AuthContext = /*#__PURE__*/React__default["default"].createContext({});var Loader = function Loader(props) {
   var className = props.className,
       style = props.style,
       color = props.color,
@@ -2368,7 +2257,7 @@ function parseJSON(value) {
             },
         ], [value, setValueAll, isPersistent]);
     };
-}var _excluded$o = ["hasToasts", "placement", "className"];
+}var _excluded$s = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -2386,7 +2275,7 @@ var ToastContainer = function ToastContainer(_ref) {
   var hasToasts = _ref.hasToasts,
       placement = _ref.placement,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$o);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$s);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: classes(placement, hasToasts, className),
@@ -2513,13 +2402,13 @@ function generateUEID() {
     icon: MiscIcon,
     iconColor: 'text-gray-500 dark:text-white'
   }
-};var _excluded$n = ["autoDismissTimeout", "opacity", "isRunning"],
+};var _excluded$r = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2$1 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "UI", "color"];
 
-function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var gutter = 8; // NOTE: invoke animation when NOT `autoDismiss` with opacity of 0 to avoid a
 // paint bug in FireFox.
 // https://bugzilla.mozilla.org/show_bug.cgi?id=625289
@@ -2528,7 +2417,7 @@ var Countdown = function Countdown(_ref) {
   _ref.autoDismissTimeout;
       var opacity = _ref.opacity,
       isRunning = _ref.isRunning,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$n);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$r);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "toast-countdown",
@@ -2610,7 +2499,7 @@ var ToastElement = function ToastElement(_ref2) {
     }
   }, /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "".concat((_appearances$appearan = appearances[appearance]) !== null && _appearances$appearan !== void 0 && _appearances$appearan.background ? appearances[appearance].background : 'bg-white dark:bg-gray-600', "\n                    ").concat((_appearances$appearan2 = appearances[appearance]) !== null && _appearances$appearan2 !== void 0 && _appearances$appearan2.border ? appearances[appearance].border : 'border-gray-200 dark:border-gray-600', "\n                    border overflow-hidden shadow-lg rounded-lg mx-auto mb-2 flex flex-row w-96"),
-    style: _objectSpread$7({
+    style: _objectSpread$8({
       transition: "transform ".concat(transitionDuration, "ms cubic-bezier(0.2, 0, 0, 1), opacity ").concat(transitionDuration, "ms")
     }, toastStates(placement)[transitionState])
   }, props)));
@@ -3626,7 +3515,7 @@ TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
   childFactory: PropTypes.func
 } : {};
 TransitionGroup.defaultProps = defaultProps;
-var TransitionGroup$1 = TransitionGroup;var _excluded$m = ["autoDismiss", "autoDismissTimeout", "component"];
+var TransitionGroup$1 = TransitionGroup;var _excluded$q = ["autoDismiss", "autoDismissTimeout", "component"];
 
 function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -3737,7 +3626,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
           autoDismiss = _this$props2.autoDismiss,
           autoDismissTimeout = _this$props2.autoDismissTimeout,
           Toast = _this$props2.component,
-          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$m);
+          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$q);
 
       var isRunning = this.state.isRunning; // NOTE: conditions here so methods can be clean
 
@@ -3758,11 +3647,11 @@ var ToastController = /*#__PURE__*/function (_Component) {
 
 _defineProperty__default["default"](ToastController, "defaultProps", {
   autoDismiss: false
-});var _excluded$l = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
+});var _excluded$p = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
-function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -3832,7 +3721,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
 
 
       _this.setState(function (state) {
-        var newToast = _objectSpread$6({
+        var newToast = _objectSpread$7({
           title: title,
           content: content,
           id: id
@@ -3900,7 +3789,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           return t.id === id;
         });
 
-        var updateToast = _objectSpread$6(_objectSpread$6({}, old[i]), options);
+        var updateToast = _objectSpread$7(_objectSpread$7({}, old[i]), options);
 
         var toasts = [].concat(_toConsumableArray__default["default"](old.slice(0, i)), [updateToast], _toConsumableArray__default["default"](old.slice(i + 1)));
         return {
@@ -3929,7 +3818,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           UI = _this$props.UI,
           color = _this$props.color;
 
-      var _defaultComponents$co = _objectSpread$6(_objectSpread$6({}, defaultComponents), components),
+      var _defaultComponents$co = _objectSpread$7(_objectSpread$7({}, defaultComponents), components),
           Toast = _defaultComponents$co.Toast,
           ToastContainer = _defaultComponents$co.ToastContainer;
 
@@ -3965,7 +3854,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
             actionLabel = _ref.actionLabel,
             secondaryAction = _ref.secondaryAction,
             secondaryActionLabel = _ref.secondaryActionLabel,
-            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$l);
+            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$p);
 
         return /*#__PURE__*/React__default["default"].createElement(Transition$1, {
           appear: true,
@@ -4045,9 +3934,9 @@ var useToasts = function useToasts() {
     updateToast: ctx.update,
     toastStack: ctx.toasts
   };
-};function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+};function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React__default["default"].createContext({});
 var useModals = createLocalStorageStateHook('modals', {});
 var useUI$1 = createLocalStorageStateHook('UI', {
@@ -4123,7 +4012,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                 if (isMounted()) {
                   UI.theme = json.data['core.ui.theme'];
                   UI.dark_mode = json.data['core.ui.dark_mode'];
-                  setUI(_objectSpread$5({}, UI));
+                  setUI(_objectSpread$6({}, UI));
                 }
               })["catch"](function (error) {
                 var _error$status;
@@ -4161,8 +4050,8 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   navigation.menu = json.data.navigation;
                   navigation.routes = json.data.routes;
                   UI.envWriteable = json.data.envPermissions;
-                  setNavigation(_objectSpread$5({}, navigation));
-                  setUI(_objectSpread$5({}, UI));
+                  setNavigation(_objectSpread$6({}, navigation));
+                  setUI(_objectSpread$6({}, UI));
                 }
               })["catch"](function (error) {
                 var _error$status2;
@@ -4200,7 +4089,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   apps.local = json.data.apps;
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status3;
@@ -4218,7 +4107,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   apps.online = json.data.apps;
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status4;
@@ -4254,7 +4143,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   plugins.all = json.data.plugins;
-                  setPlugins(_objectSpread$5({}, plugins));
+                  setPlugins(_objectSpread$6({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status5;
@@ -4272,7 +4161,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   plugins.active = json.data.plugins;
-                  setPlugins(_objectSpread$5({}, plugins));
+                  setPlugins(_objectSpread$6({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status6;
@@ -4290,7 +4179,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   plugins.online = json.data.plugins;
-                  setPlugins(_objectSpread$5({}, plugins));
+                  setPlugins(_objectSpread$6({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status7;
@@ -4333,7 +4222,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status8;
@@ -4376,7 +4265,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status9;
@@ -4431,7 +4320,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key].active = true;
                     }
                   });
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status10;
@@ -4486,7 +4375,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key].active = false;
                     }
                   });
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status11;
@@ -4541,7 +4430,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key].installed = true;
                     }
                   });
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status12;
@@ -4595,7 +4484,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       apps.online[key] = json.data.app;
                     }
                   });
-                  setApps(_objectSpread$5({}, apps));
+                  setApps(_objectSpread$6({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status13;
@@ -4638,7 +4527,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
-                  setPlugins(_objectSpread$5({}, plugins));
+                  setPlugins(_objectSpread$6({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status14;
@@ -4681,7 +4570,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                   });
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
-                  setPlugins(_objectSpread$5({}, plugins));
+                  setPlugins(_objectSpread$6({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status15;
@@ -4736,7 +4625,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       delete plugins.online[key].downloaded;
                     }
                   });
-                  setPlugins(_objectSpread$5({}, plugins));
+                  setPlugins(_objectSpread$6({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status16;
@@ -4791,7 +4680,7 @@ var WebAppsProvider = function WebAppsProvider(props) {
                       plugins.online[key] = json.data.plugin;
                     }
                   });
-                  setPlugins(_objectSpread$5({}, plugins));
+                  setPlugins(_objectSpread$6({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status17;
@@ -4872,7 +4761,367 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var _excluded$k = ["style", "size", "rounded", "square", "className", "children"];
+};var _excluded$o = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
+
+var Input = function Input(props) {
+  var id = props.id,
+      name = props.name,
+      label = props.label,
+      action = props.action,
+      helpText = props.helpText,
+      error = props.error,
+      state = props.state,
+      wrapperClassName = props.wrapperClassName,
+      labelClassName = props.labelClassName,
+      inputClassName = props.inputClassName,
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$o);
+
+  var _useContext = React$1.useContext(WebAppsContext),
+      UI = _useContext.UI;
+
+  var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
+  var inputClasses = classNames('bg-gray-50', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'dark:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', "focus:ring-".concat(UI.theme, "-600"), "dark:focus:ring-".concat(UI.theme, "-500"), "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '', inputClassName);
+
+  var Append = function Append() {
+    if (state === 'saving') {
+      return /*#__PURE__*/React__default["default"].createElement(Loader, {
+        style: "circle",
+        height: "5",
+        width: "5",
+        color: "orange"
+      });
+    } else if (state === 'saved') {
+      return /*#__PURE__*/React__default["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-green-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React__default["default"].createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M5 13l4 4L19 7"
+      }));
+    } else if (state === 'error') {
+      return /*#__PURE__*/React__default["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-red-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React__default["default"].createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M6 18L18 6M6 6l12 12"
+      }));
+    } else if (action) {
+      return action;
+    }
+
+    return null;
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: wrapperClassName
+  }, label !== '' ? /*#__PURE__*/React__default["default"].createElement("label", {
+    htmlFor: id,
+    className: labelClasses
+  }, label) : null, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React__default["default"].createElement("input", _extends__default["default"]({
+    id: id,
+    name: name,
+    className: inputClasses
+  }, attributes)), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "flex absolute inset-y-0 right-0 items-center pr-3"
+  }, /*#__PURE__*/React__default["default"].createElement(Append, null))), helpText !== '' || error !== '' ? /*#__PURE__*/React__default["default"].createElement("span", {
+    className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
+  }, state === 'error' ? error : helpText) : null);
+};
+
+Input.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  label: PropTypes.string,
+  action: PropTypes.object,
+  helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  error: PropTypes.string,
+  state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
+  wrapperClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  labelClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  inputClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
+};
+Input.defaultProps = {
+  error: '',
+  state: '',
+  label: '',
+  helpText: '',
+  wrapperClassName: 'mb-6',
+  labelClassName: '',
+  inputClassName: ''
+};var _excluded$n = ["id", "groupData", "setData", "accessToken", "saveChange"];
+
+var AzureGroupSearch = function AzureGroupSearch(_ref) {
+  var _groupData$id, _groupData$id2, _groupData$id3;
+
+  var id = _ref.id,
+      groupData = _ref.groupData,
+      setData = _ref.setData,
+      accessToken = _ref.accessToken,
+      saveChange = _ref.saveChange,
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$n);
+
+  var _useState = React$1.useState([]),
+      _useState2 = _slicedToArray__default["default"](_useState, 2),
+      controllers = _useState2[0],
+      setControllers = _useState2[1];
+
+  var _useState3 = React$1.useState(0),
+      _useState4 = _slicedToArray__default["default"](_useState3, 2),
+      active = _useState4[0],
+      setActive = _useState4[1];
+
+  var _useState5 = React$1.useState(false),
+      _useState6 = _slicedToArray__default["default"](_useState5, 2),
+      showResults = _useState6[0],
+      setShowResults = _useState6[1];
+
+  var change = function change(e) {
+    // Abort any running requests
+    controllers.map(function (controller, i) {
+      controller === null || controller === void 0 ? void 0 : controller.abort();
+      delete controllers[i];
+    });
+    var signal = new AbortController();
+    setControllers([].concat(_toConsumableArray__default["default"](controllers), [signal]));
+    var id = e.target.id;
+    var value = e.target.value;
+
+    if (groupData[id] === undefined) {
+      groupData[id] = {};
+    }
+
+    groupData[id].value = value;
+    var headers = new Headers();
+    var bearer = "Bearer ".concat(accessToken);
+    headers.append('Authorization', bearer);
+    var options = {
+      method: "GET",
+      headers: headers,
+      signal: signal.signal
+    };
+    var graphEndpoint = "https://graph.microsoft.com/v1.0/groups?$filter=startswith(displayName, '".concat(value, "')&$select=id,displayName");
+    fetch(graphEndpoint, options).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      groupData[id].data = data.value;
+      setData(_toConsumableArray__default["default"](groupData));
+      setActive(0);
+      setShowResults(true);
+    })["catch"](function (error) {
+      var _error$status;
+
+      if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort)) {
+        // TODO: Handle Errors
+        console.log(error);
+      }
+    });
+  };
+
+  var onClick = function onClick(e) {
+    e.stopPropagation();
+    groupData[id].selected = groupData[id].data[e.currentTarget.dataset.key];
+    groupData[id].value = groupData[id].data[e.currentTarget.dataset.key].displayName;
+    groupData[id].data = [];
+    setActive(0);
+    setShowResults(false);
+    setData(_toConsumableArray__default["default"](groupData));
+    saveChange(id);
+  };
+
+  var onKeyDown = function onKeyDown(e) {
+    if (e.keyCode === 13) {
+      groupData[id].selected = groupData[id].data[active];
+      groupData[id].value = groupData[id].data[active].displayName;
+      setData(_toConsumableArray__default["default"](groupData));
+      setShowResults(false);
+      setActive(0);
+      saveChange(id);
+    } else if (e.keyCode === 38) {
+      if (active === 0) {
+        return;
+      }
+
+      setActive(active - 1);
+    } else if (e.keyCode === 40) {
+      if (active + 1 === groupData[id].data.length) {
+        return;
+      }
+
+      setActive(active + 1);
+    }
+  };
+
+  var DataListComponent;
+
+  if (showResults && (_groupData$id = groupData[id]) !== null && _groupData$id !== void 0 && _groupData$id.value) {
+    var _groupData$id$data;
+
+    if ((_groupData$id$data = groupData[id].data) !== null && _groupData$id$data !== void 0 && _groupData$id$data.length) {
+      var count = 1;
+      DataListComponent = /*#__PURE__*/React__default["default"].createElement("ul", {
+        className: "z-50 absolute mx-1.5 inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
+      }, groupData[id].data.map(function (data, index) {
+        if (count <= 5) {
+          var className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
+
+          if (index === active) {
+            className = "flex flex-row gap-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-900";
+          }
+
+          count = count + 1;
+          return /*#__PURE__*/React__default["default"].createElement("li", {
+            className: className,
+            key: data.id,
+            "data-key": index,
+            onClick: onClick
+          }, data.displayName);
+        }
+      }));
+    } else {
+      DataListComponent = /*#__PURE__*/React__default["default"].createElement("ul", {
+        className: "z-50 absolute mx-1.5 inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
+      }, /*#__PURE__*/React__default["default"].createElement("li", {
+        className: "px-4 py-2 text-center"
+      }, /*#__PURE__*/React__default["default"].createElement("em", null, "No matching groups found!")));
+    }
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "relative mb-6"
+  }, /*#__PURE__*/React__default["default"].createElement(Input, _extends__default["default"]({
+    type: "text",
+    id: "".concat(id),
+    value: ((_groupData$id2 = groupData[id]) === null || _groupData$id2 === void 0 ? void 0 : _groupData$id2.value) || '',
+    onChange: change,
+    onKeyDown: onKeyDown,
+    state: (_groupData$id3 = groupData[id]) === null || _groupData$id3 === void 0 ? void 0 : _groupData$id3.state,
+    wrapperClassName: ""
+  }, props)), DataListComponent);
+};var _excluded$m = ["tag", "className", "innerRef", "color", "pill", "children"];
+
+var Badge = function Badge(props) {
+  var tag = props.tag,
+      className = props.className,
+      innerRef = props.innerRef,
+      color = props.color,
+      pill = props.pill,
+      children = props.children,
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$m);
+
+  var classes = classNames(className, 'inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', "bg-".concat(color), pill ? 'rounded-full' : '');
+  var Tag = attributes.to || attributes.href ? reactRouterDom.NavLink : tag;
+
+  var ref = _defineProperty__default["default"]({}, "".concat(typeof Tag === 'string' ? 'ref' : 'innerRef'), innerRef);
+
+  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends__default["default"]({
+    className: classes
+  }, attributes, ref), children);
+};
+
+Badge.propTypes = {
+  tag: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  color: PropTypes.string,
+  pill: PropTypes.bool
+};
+Badge.defaultProps = {
+  tag: 'span'
+};var _excluded$l = ["tag", "className", "innerRef", "color", "darkColor", "children"];
+
+var Banner = function Banner(props) {
+  var tag = props.tag,
+      className = props.className,
+      innerRef = props.innerRef,
+      color = props.color,
+      darkColor = props.darkColor,
+      children = props.children,
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$l);
+
+  var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
+  var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
+
+  var ref = _defineProperty__default["default"]({}, "".concat(typeof Tag === 'string' ? 'ref' : 'innerRef'), innerRef);
+
+  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends__default["default"]({
+    className: classes
+  }, attributes, ref), children);
+};
+
+Banner.propTypes = {
+  tag: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  color: PropTypes.string,
+  darkColor: PropTypes.string
+};
+Banner.defaultProps = {
+  tag: 'div',
+  color: 'gray-300',
+  darkColor: 'gray-700'
+};var _excluded$k = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+
+function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var Link = function Link(props) {
+  var className = props.className,
+      innerRef = props.innerRef,
+      active = props.active,
+      href = props.href,
+      onClick = props.onClick,
+      disabled = props.disabled,
+      rest = _objectWithoutProperties__default["default"](props, _excluded$k);
+
+  var to = rest ? rest.to : null;
+
+  var click = function click(e) {
+    if (!href && !to || href === '#') {
+      e.preventDefault();
+    }
+
+    !disabled && onClick && onClick(e);
+  };
+
+  var classes = classNames(active, disabled, className);
+  return to ? /*#__PURE__*/React__default["default"].createElement(reactRouterDom.NavLink, _extends__default["default"]({}, rest, {
+    className: classes,
+    onClick: click,
+    ref: innerRef
+  })) : /*#__PURE__*/React__default["default"].createElement("a", _extends__default["default"]({
+    href: href || '#',
+    className: classes,
+    rel: rest.target === '_blank' ? 'noopener norefferer' : null
+  }, rest, {
+    onClick: click,
+    ref: innerRef
+  }));
+};
+
+Link.propTypes = _objectSpread$5(_objectSpread$5({
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  active: PropTypes.bool,
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool
+}, reactRouterDom.NavLink.propTypes), {}, {
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
+});var _excluded$j = ["style", "size", "rounded", "square", "className", "children"];
 
 var Button = function Button(props) {
   var style = props.style,
@@ -4881,7 +5130,7 @@ var Button = function Button(props) {
       square = props.square,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$k);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$j);
 
   var _useContext = React$1.useContext(WebAppsContext),
       UI = _useContext.UI;
@@ -4970,7 +5219,7 @@ ColorGridSelect.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   colors: []
-};var _excluded$j = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+};var _excluded$i = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -4980,7 +5229,7 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
       initialColor = props.initialColor,
       confirmColor = props.confirmColor,
       className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$j);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
 
   var isMountedRef = React$1.useRef(true);
   var isMounted = React$1.useCallback(function () {
@@ -5057,7 +5306,7 @@ ConfirmDeleteButton.defaultProps = {
   timeout: 2000,
   initialColor: 'red',
   confirmColor: 'orange'
-};var _excluded$i = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+};var _excluded$h = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -5066,7 +5315,7 @@ var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
       confirmText = props.confirmText,
       onCancel = props.onCancel,
       onConfirm = props.onConfirm,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "fixed z-50 inset-0 overflow-y-auto"
@@ -5138,106 +5387,6 @@ ConfirmDeleteModal.defaultProps = {
   message: "Are you sure to wish to delete this item?\nThis action cannot be undone.",
   cancelText: "No",
   confirmText: "Yes"
-};var _excluded$h = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
-
-var Input = function Input(props) {
-  var id = props.id,
-      name = props.name,
-      label = props.label,
-      action = props.action,
-      helpText = props.helpText,
-      error = props.error,
-      state = props.state,
-      wrapperClassName = props.wrapperClassName,
-      labelClassName = props.labelClassName,
-      inputClassName = props.inputClassName,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
-
-  var _useContext = React$1.useContext(WebAppsContext),
-      UI = _useContext.UI;
-
-  var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
-  var inputClasses = classNames('bg-gray-50', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'dark:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', "focus:ring-".concat(UI.theme, "-600"), "dark:focus:ring-".concat(UI.theme, "-500"), "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '', inputClassName);
-
-  var Append = function Append() {
-    if (state === 'saving') {
-      return /*#__PURE__*/React__default["default"].createElement(Loader, {
-        style: "circle",
-        height: "5",
-        width: "5",
-        color: "orange"
-      });
-    } else if (state === 'saved') {
-      return /*#__PURE__*/React__default["default"].createElement("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        className: "h-5 w-5 text-green-500",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor"
-      }, /*#__PURE__*/React__default["default"].createElement("path", {
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: 2,
-        d: "M5 13l4 4L19 7"
-      }));
-    } else if (state === 'error') {
-      return /*#__PURE__*/React__default["default"].createElement("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        className: "h-5 w-5 text-red-500",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor"
-      }, /*#__PURE__*/React__default["default"].createElement("path", {
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: 2,
-        d: "M6 18L18 6M6 6l12 12"
-      }));
-    } else if (action) {
-      return action;
-    }
-
-    return null;
-  };
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: wrapperClassName
-  }, label !== '' ? /*#__PURE__*/React__default["default"].createElement("label", {
-    htmlFor: id,
-    className: labelClasses
-  }, label) : null, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "relative"
-  }, /*#__PURE__*/React__default["default"].createElement("input", _extends__default["default"]({
-    id: id,
-    name: name,
-    className: inputClasses
-  }, attributes)), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "flex absolute inset-y-0 right-0 items-center pr-3"
-  }, /*#__PURE__*/React__default["default"].createElement(Append, null))), helpText !== '' || error !== '' ? /*#__PURE__*/React__default["default"].createElement("span", {
-    className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
-  }, state === 'error' ? error : helpText) : null);
-};
-
-Input.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  label: PropTypes.string,
-  action: PropTypes.object,
-  helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  error: PropTypes.string,
-  state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
-  wrapperClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
-  labelClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
-  inputClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
-};
-Input.defaultProps = {
-  error: '',
-  state: '',
-  label: '',
-  helpText: '',
-  wrapperClassName: 'mb-6',
-  labelClassName: '',
-  inputClassName: ''
 };var _excluded$g = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
 
 var DataSuggest = function DataSuggest(_ref) {
@@ -24408,6 +24557,7 @@ var returnLibrary = function returnLibrary() {
   return {
     APIClient: client,
     APIMediaClient: mediaClient,
+    AzureGroupSearch: AzureGroupSearch,
     Badge: Badge,
     Banner: Banner,
     Button: Button,

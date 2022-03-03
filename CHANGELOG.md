@@ -1,3 +1,6 @@
+## Version 1.13.0
+- Added `<AzureGroupSearch />` Component
+
 ## Version 1.12.2
 - Fixed issue with `APIClient` handling a 401 error, rather than returning an error
 
