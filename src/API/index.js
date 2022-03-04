@@ -21,6 +21,7 @@ export const client = async (
         const config = {
             method: data ? 'POST' : 'GET',
             body: data ? JSON.stringify(data) : undefined,
+            credentials: 'include',
             headers: {
                 'Accept': accept ? accept : null,
                 'Content-Type': data ? type : undefined,
@@ -64,6 +65,7 @@ export const mediaClient = async (
         const config = {
             method: data ? 'POST' : 'GET',
             body: data ? data : undefined,
+            credentials: 'include',
             headers: {
                 'Accept': accept ? accept : null,
                 ...customHeaders
@@ -99,7 +101,7 @@ const normalizeError = (data, url, config, fetchResponse) => {
             try {
                 await client('/api/logout', {});
                 localStorage.setItem('WA_Login', window.location.href);
-                window.location.replace(window.location.origin + '/login?logout');
+                window.location.replace(window.location.origin + '/login');
                 resolve(true);
             } catch (error) {
                 return reject(error);

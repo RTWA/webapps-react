@@ -43,6 +43,7 @@ var client = /*#__PURE__*/function () {
             config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
               body: data ? JSON.stringify(data) : undefined,
+              credentials: 'include',
               headers: _objectSpread$9({
                 'Accept': accept ? accept : null,
                 'Content-Type': data ? type : undefined
@@ -137,6 +138,7 @@ var mediaClient = /*#__PURE__*/function () {
             config = _objectSpread$9({
               method: data ? 'POST' : 'GET',
               body: data ? data : undefined,
+              credentials: 'include',
               headers: _objectSpread$9({
                 'Accept': accept ? accept : null
               }, customHeaders)
@@ -220,7 +222,7 @@ var normalizeError = function normalizeError(data, url, config, fetchResponse) {
 
               case 3:
                 localStorage.setItem('WA_Login', window.location.href);
-                window.location.replace(window.location.origin + '/login?logout');
+                window.location.replace(window.location.origin + '/login');
                 resolve(true);
                 _context5.next = 11;
                 break;
