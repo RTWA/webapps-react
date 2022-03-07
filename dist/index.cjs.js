@@ -1606,7 +1606,7 @@ var Auth = function Auth(props) {
             case 0:
               return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
                 var _ref2 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee(resolve, reject) {
-                  var _yield$client, data, preferences;
+                  var _yield$client, data, preferences, _error$status;
 
                   return _regeneratorRuntime__default["default"].wrap(function _callee$(_context) {
                     while (1) {
@@ -1660,7 +1660,7 @@ var Auth = function Auth(props) {
                           _context.prev = 16;
                           _context.t0 = _context["catch"](0);
 
-                          if (!isMounted) {
+                          if (!(!((_error$status = _context.t0.status) !== null && _error$status !== void 0 && _error$status.isAbort) && isMounted)) {
                             _context.next = 20;
                             break;
                           }
@@ -1701,6 +1701,8 @@ var Auth = function Auth(props) {
             case 0:
               new Promise( /*#__PURE__*/function () {
                 var _ref4 = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee3(resolve, reject) {
+                  var _error$status2;
+
                   return _regeneratorRuntime__default["default"].wrap(function _callee3$(_context3) {
                     while (1) {
                       switch (_context3.prev = _context3.next) {
@@ -1726,7 +1728,7 @@ var Auth = function Auth(props) {
                           _context3.prev = 6;
                           _context3.t0 = _context3["catch"](0);
 
-                          if (!isMounted) {
+                          if (!(!((_error$status2 = _context3.t0.status) !== null && _error$status2 !== void 0 && _error$status2.isAbort) && isMounted)) {
                             _context3.next = 10;
                             break;
                           }
@@ -1908,7 +1910,9 @@ var Auth = function Auth(props) {
                               return resolve(json.data.has_permission);
                             }
                           })["catch"](function (error) {
-                            if (isMounted) {
+                            var _error$status3;
+
+                            if (!((_error$status3 = error.status) !== null && _error$status3 !== void 0 && _error$status3.isAbort) && isMounted) {
                               return reject(error);
                             }
                           });
@@ -1956,12 +1960,14 @@ var Auth = function Auth(props) {
                             'group': group
                           }, {
                             signal: controller$1.signal
-                          }).then(function (data) {
+                          }).then(function (json) {
                             if (isMounted) {
-                              return resolve(data.in_group);
+                              return resolve(json.data.in_group);
                             }
                           })["catch"](function (error) {
-                            if (isMounted) {
+                            var _error$status4;
+
+                            if (!((_error$status4 = error.status) !== null && _error$status4 !== void 0 && _error$status4.isAbort) && isMounted) {
                               return reject(error);
                             }
                           });
@@ -2012,9 +2018,9 @@ var Auth = function Auth(props) {
                 method: 'PUT',
                 signal: controller$1.signal
               })["catch"](function (error) {
-                var _error$status;
+                var _error$status5;
 
-                if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort) && isMounted) {
+                if (!((_error$status5 = error.status) !== null && _error$status5 !== void 0 && _error$status5.isAbort) && isMounted) {
                   // TODO: Handle errors
                   console.error(error);
                 }

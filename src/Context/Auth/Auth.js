@@ -48,7 +48,7 @@ const Auth = props => {
                     return resolve(data);
                 }
             } catch (error) {
-                if (isMounted) {
+                if (!error.status?.isAbort && isMounted) {
                     return reject(error);
                 }
             }
@@ -69,7 +69,7 @@ const Auth = props => {
                     resolve(true);
                 }
             } catch (error) {
-                if (isMounted) {
+                if (!error.status?.isAbort && isMounted) {
                     return reject(error);
                 }
             }
@@ -138,7 +138,7 @@ const Auth = props => {
                     }
                 })
                 .catch(error => {
-                    if (isMounted) {
+                    if (!error.status?.isAbort && isMounted) {
                         return reject(error);
                     }
                 })
@@ -148,13 +148,13 @@ const Auth = props => {
     const checkGroup = async group => {
         return new Promise(async (resolve, reject) => {
             await client('/api/group/check', { 'group': group }, { signal: controller.signal })
-                .then(data => {
+                .then(json => {
                     if (isMounted) {
-                        return resolve(data.in_group);
+                        return resolve(json.data.in_group);
                     }
                 })
                 .catch(error => {
-                    if (isMounted) {
+                    if (!error.status?.isAbort && isMounted) {
                         return reject(error);
                     }
                 })

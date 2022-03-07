@@ -1,3 +1,6 @@
+## Version 1.13.3
+- Fixed `<Auth />` Context `checkGroup` function
+
 ## Version 1.13.2
 - Added `GridSelect` Component
 
