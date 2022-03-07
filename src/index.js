@@ -12,6 +12,7 @@ import ConfirmDeleteButton from './Components/ConfirmDeleteButton';
 import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
 import DataSuggest from './Components/DataSuggest';
 import DropDownButton from './Components/DropDownButton';
+import GridSelect from './Components/GridSelect';
 import Icon from './Components/Icon';
 import InfiniteScroll from './Components/InfiniteScroll';
 import Input from './Components/Input';
@@ -66,6 +67,7 @@ const returnLibrary = () => {
         ConfirmDeleteModal,
         DataSuggest,
         DropDownButton,
+        GridSelect,
         Icon,
         InfiniteScroll,
         Input,

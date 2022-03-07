@@ -5581,6 +5581,65 @@ var DropDownButton = function DropDownButton(props) {
 
 DropDownButton.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+};var GridSelect = function GridSelect(props) {
+  var id = props.id,
+      label = props.label,
+      helpText = props.helpText,
+      wrapperClassName = props.wrapperClassName,
+      labelClassName = props.labelClassName,
+      options = props.options,
+      onSelect = props.onSelect;
+
+  var _useContext = React$1.useContext(WebAppsContext),
+      UI = _useContext.UI;
+
+  var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: wrapperClassName
+  }, /*#__PURE__*/React__default["default"].createElement("label", {
+    className: labelClasses,
+    htmlFor: id
+  }, label), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "grid grid-cols-1 md:col-span-3 sm:grid-cols-".concat(options.length / 2, " xl:grid-cols-").concat(options.length, " gap-y-2 gap-x-4 mt-1 xl:mt-0 w-full")
+  }, Object(options).map(function (option) {
+    return option.selected ? /*#__PURE__*/React__default["default"].createElement("div", {
+      key: option.value,
+      onClick: function onClick() {
+        return onSelect(option.value);
+      },
+      className: "border-2 border-white dark:border-gray-800 w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 cursor-pointer ring-4 ring-".concat(UI.theme, "-600 dark:ring-").concat(UI.theme, "-500 ring-opacity-50")
+    }, /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "flex justify-center h-14 p-2 bg-gray-300 dark:bg-gray-700 not-sr-only"
+    }, option.object)) : /*#__PURE__*/React__default["default"].createElement("div", {
+      key: option.value,
+      onClick: function onClick() {
+        return onSelect(option.value);
+      },
+      className: "border-2 border-white dark:border-gray-800 w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 cursor-pointer"
+    }, /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "flex justify-center h-14 p-2 bg-gray-300 dark:bg-gray-700 not-sr-only"
+    }, option.object));
+  })), helpText !== '' ? /*#__PURE__*/React__default["default"].createElement("p", {
+    className: "mt-1 text-sm text-gray-500 dark:text-gray-400"
+  }, helpText) : null);
+};
+
+GridSelect.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  wrapperClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  labelClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+  options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  onSelect: PropTypes.func
+};
+GridSelect.defaultProps = {
+  id: '',
+  label: '',
+  helpText: '',
+  wrapperClassName: 'mb-6',
+  labelClassName: '',
+  options: []
 };var _excluded$e = ["icon"];
 
 var Icon = function Icon(props) {
@@ -24568,6 +24627,7 @@ var returnLibrary = function returnLibrary() {
     ConfirmDeleteModal: ConfirmDeleteModal,
     DataSuggest: DataSuggest,
     DropDownButton: DropDownButton,
+    GridSelect: GridSelect,
     Icon: Icon,
     InfiniteScroll: InfiniteScroll,
     Input: Input,

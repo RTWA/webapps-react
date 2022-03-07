@@ -1,3 +1,6 @@
+## Version 1.13.2
+- Added `GridSelect` Component
+
 ## Version 1.13.1
 - Added `credentials: 'include` to `APIClient` and `APIMediaClient` config
 - Removed the `?logout` from the login redirect URL when a `401` status is received by `APIClient` or `APIMediaClient`. This will allow a user to automatically sign-in again, if Azure authentication is defaulted.
