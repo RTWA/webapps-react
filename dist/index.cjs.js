@@ -3525,9 +3525,9 @@ TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
 TransitionGroup.defaultProps = defaultProps;
 var TransitionGroup$1 = TransitionGroup;var _excluded$q = ["autoDismiss", "autoDismissTimeout", "component"];
 
-function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function Timer(callback, delay) {
   var timerId;
@@ -3555,7 +3555,7 @@ function Timer(callback, delay) {
 var ToastController = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](ToastController, _Component);
 
-  var _super = _createSuper$3(ToastController);
+  var _super = _createSuper$4(ToastController);
 
   function ToastController() {
     var _this;
@@ -3661,9 +3661,9 @@ function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if 
 
 function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var defaultComponents = {
   Toast: DefaultToast,
   ToastContainer: ToastContainer
@@ -3677,7 +3677,7 @@ var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.do
 var ToastProvider = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](ToastProvider, _Component);
 
-  var _super = _createSuper$2(ToastProvider);
+  var _super = _createSuper$3(ToastProvider);
 
   function ToastProvider() {
     var _this;
@@ -7435,14 +7435,14 @@ var CreateElement = function CreateElement(_ref) {
 
 CreateElement.propTypes = {
   components: PropTypes.object
-};function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+};function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 var NavigationError = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](NavigationError, _Component);
 
-  var _super = _createSuper$1(NavigationError);
+  var _super = _createSuper$2(NavigationError);
 
   function NavigationError(props) {
     var _this;
@@ -24402,14 +24402,14 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
     },
     update: plugins.update
   }) : null));
-};function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+};function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 var AppError = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](AppError, _Component);
 
-  var _super = _createSuper(AppError);
+  var _super = _createSuper$1(AppError);
 
   function AppError(props) {
     var _this;
@@ -24448,33 +24448,37 @@ var AppError = /*#__PURE__*/function (_Component) {
     value: function render() {
       if (this.state.hasError) {
         return /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "text-gray-700 bg-gray-200 dark:bg-gray-900 dark:text-white h-screen w-screen relative"
+          className: "text-gray-700 dark:text-gray-100 bg-gray-200 dark:bg-gray-900 h-screen w-screen"
         }, /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "h-full w-full flex flex-wrap justify-center content-center items-center absolute z-0"
+          className: "h-full w-full flex flex-wrap justify-center content-end md:content-center items-end md:items-center"
+        }, /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "p-6 text-center"
         }, /*#__PURE__*/React__default["default"].createElement("svg", {
-          className: "w-full px-6 lg:px-64 fill-current text-gray-300 dark:text-gray-800",
-          viewBox: "0 0 445 202",
-          xmlns: "http://www.w3.org/2000/svg"
+          xmlns: "http://www.w3.org/2000/svg",
+          className: "h-48 w-48 mx-auto text-red-500 dark:text-red-900",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor"
         }, /*#__PURE__*/React__default["default"].createElement("path", {
-          d: "M38.804 144.71c1.527 8.356 4.447 14.803 8.76 19.34 4.312 4.537 10.601 6.805 18.867 6.805 9.523 0 16.778-3.346 21.764-10.04 4.987-6.693 7.48-15.116 7.48-25.268 0-9.973-2.336-18.396-7.008-25.269-4.672-6.873-11.95-10.31-21.832-10.31-4.672 0-8.715.585-12.129 1.753-6.02 2.156-10.557 6.154-13.611 11.994l-34.5-1.617L20.34 4.15h107.678v32.614H48.103l-7.008 42.72c5.93-3.863 10.556-6.423 13.88-7.681 5.57-2.067 12.354-3.1 20.35-3.1 16.172 0 30.277 5.436 42.317 16.307 12.039 10.87 18.058 26.683 18.058 47.437 0 18.059-5.795 34.186-17.385 48.381-11.59 14.196-28.93 21.293-52.02 21.293-18.597 0-33.87-4.986-45.82-14.959C8.527 177.19 1.879 163.04.53 144.711h38.274zm155.789-43.528c0 22.46 1.842 39.643 5.525 51.547 3.684 11.905 11.23 17.857 22.64 17.857 11.411 0 18.89-5.952 22.44-17.857 3.548-11.904 5.323-29.086 5.323-51.547 0-23.54-1.775-40.97-5.324-52.29s-11.028-16.98-22.438-16.98c-11.41 0-18.957 5.66-22.64 16.98-3.684 11.32-5.526 28.75-5.526 52.29zM222.759.242c24.887 0 42.339 8.76 52.356 26.28 10.018 17.52 15.027 42.406 15.027 74.66s-5.01 57.095-15.027 74.525c-10.017 17.43-27.47 26.145-52.356 26.145-24.887 0-42.339-8.715-52.357-26.145-10.017-17.43-15.026-42.271-15.026-74.525 0-32.254 5.009-57.14 15.026-74.66C180.42 9.001 197.872.241 222.76.241zm125.332 100.94c0 22.46 1.842 39.643 5.525 51.547 3.684 11.905 11.23 17.857 22.64 17.857 11.411 0 18.89-5.952 22.44-17.857 3.548-11.904 5.323-29.086 5.323-51.547 0-23.54-1.775-40.97-5.324-52.29s-11.028-16.98-22.438-16.98c-11.41 0-18.957 5.66-22.64 16.98-3.684 11.32-5.526 28.75-5.526 52.29zM376.257.242c24.887 0 42.339 8.76 52.356 26.28 10.018 17.52 15.027 42.406 15.027 74.66s-5.01 57.095-15.027 74.525c-10.017 17.43-27.47 26.145-52.356 26.145-24.887 0-42.339-8.715-52.357-26.145-10.017-17.43-15.026-42.271-15.026-74.525 0-32.254 5.009-57.14 15.026-74.66C333.918 9.001 351.37.241 376.257.241z",
-          fillRule: "nonzero"
-        }))), /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "h-full w-full flex flex-wrap justify-center content-end md:content-center items-end md:items-center relative z-10"
-        }, /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "p-6 text-center "
-        }, /*#__PURE__*/React__default["default"].createElement("h2", {
-          className: "uppercase text-xl lg:text-5xl font-black"
-        }, "Sorry, something went wrong."), /*#__PURE__*/React__default["default"].createElement("p", {
-          className: "mt-3 text-sm lg:text-base text-gray-900 dark:text-gray-300"
-        }, this.state.error.toString()), /*#__PURE__*/React__default["default"].createElement(reactRouterDom.Link, {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: 2,
+          d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        })), /*#__PURE__*/React__default["default"].createElement("h2", {
+          className: "text-xl lg:text-3xl font-bold"
+        }, "Sorry, something went wrong on this page."), /*#__PURE__*/React__default["default"].createElement("p", {
+          className: "my-4 text-sm lg:text-base text-gray-900 dark:text-gray-300"
+        }, this.state.error.toString()), /*#__PURE__*/React__default["default"].createElement("p", null, "You could try reloading the page, or continue to use WebApps."), /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "flex flex-auto mt-6 gap-6 justify-center"
+        }, /*#__PURE__*/React__default["default"].createElement(reactRouterDom.Link, {
           to: "/",
-          className: "inline-block mr-3 mt-6 px-4 py-2 border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 bg-").concat(this.props.theme, "-600 dark:bg-").concat(this.props.theme, "-500 text-white dark:text-white hover:bg-").concat(this.props.theme, "-400 dark:hover:bg-").concat(this.props.theme, "-700 hover:border-").concat(this.props.theme, "-400 dark:hover:border-").concat(this.props.theme, "-700")
-        }, "Back To Homepage"), /*#__PURE__*/React__default["default"].createElement("button", {
+          className: "px-4 py-2 border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 bg-").concat(this.props.theme, "-600 dark:bg-").concat(this.props.theme, "-500 text-white dark:text-white hover:bg-").concat(this.props.theme, "-400 dark:hover:bg-").concat(this.props.theme, "-700 hover:border-").concat(this.props.theme, "-400 dark:hover:border-").concat(this.props.theme, "-700")
+        }, "Back To Dashboard"), /*#__PURE__*/React__default["default"].createElement("button", {
           onClick: function onClick() {
             return window.location.reload();
           },
-          className: "ml-3 inline-block mt-6 px-4 py-2 border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 text-").concat(this.props.theme, "-600 dark:text-").concat(this.props.theme, "-500 hover:bg-").concat(this.props.theme, "-600 dark:hover:bg-").concat(this.props.theme, "-600 hover:text-white dark:hover:text-white")
-        }, "Reload Page"))));
+          className: "px-4 py-2 border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 dark:hover:border-").concat(this.props.theme, "-600 text-").concat(this.props.theme, "-600 dark:text-").concat(this.props.theme, "-500 hover:bg-").concat(this.props.theme, "-600 dark:hover:bg-").concat(this.props.theme, "-600 hover:text-white dark:hover:text-white")
+        }, "Reload Page")))));
       }
 
       return this.props.children;
@@ -24490,7 +24494,117 @@ AppError.propTypes = {
 AppError.defaultProps = {
   theme: 'indigo'
 };
-var AppError$1 = reactRouterDom.withRouter(AppError);var WebAppsDocsContext = /*#__PURE__*/React__default["default"].createContext({});
+var AppError$1 = reactRouterDom.withRouter(AppError);function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var ComponentErrorTrigger = function ComponentErrorTrigger(_ref) {
+  var error = _ref.error;
+
+  var Trigger = function Trigger() {
+    throw new Error(error);
+  };
+
+  return error ? /*#__PURE__*/React__default["default"].createElement(Trigger, null) : null;
+};
+
+var ComponentError = /*#__PURE__*/function (_Component) {
+  _inherits__default["default"](ComponentError, _Component);
+
+  var _super = _createSuper(ComponentError);
+
+  function ComponentError(props) {
+    var _this;
+
+    _classCallCheck__default["default"](this, ComponentError);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      hasError: false,
+      info: '',
+      error: ''
+    };
+
+    _this.props.history.listen(function (location, action) {
+      if (_this.state.hasError) {
+        _this.setState({
+          hasError: false
+        });
+      }
+    });
+
+    _this.reset.bind(_assertThisInitialized__default$1["default"](_this));
+
+    return _this;
+  }
+
+  _createClass__default["default"](ComponentError, [{
+    key: "componentDidCatch",
+    value: function componentDidCatch(error, info) {
+      this.setState({
+        hasError: true,
+        info: info,
+        error: error
+      });
+    }
+  }, {
+    key: "reset",
+    value: function reset() {
+      this.setState({
+        hasError: false,
+        info: '',
+        error: ''
+      });
+      this.props.retry();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      if (this.state.hasError) {
+        return /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "h-full w-full flex flex-wrap justify-center content-center items-center"
+        }, /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "p-6 text-center"
+        }, /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "flex flex-row items-center justify-center gap-2"
+        }, /*#__PURE__*/React__default["default"].createElement("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          className: "h-8 w-8 text-red-500 dark:text-red-900",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor"
+        }, /*#__PURE__*/React__default["default"].createElement("path", {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: 2,
+          d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        })), /*#__PURE__*/React__default["default"].createElement("h2", {
+          className: "text-xl font-bold"
+        }, "This failed to load!")), /*#__PURE__*/React__default["default"].createElement("p", {
+          className: "my-3 text-sm text-gray-900 dark:text-gray-300"
+        }, this.state.error.toString().replace('Error: ', '')), this.props.retry ? /*#__PURE__*/React__default["default"].createElement("button", {
+          onClick: function onClick() {
+            return _this2.reset();
+          },
+          className: "px-2 py-1 text-xs border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 dark:hover:border-").concat(this.props.theme, "-600 text-").concat(this.props.theme, "-600 dark:text-").concat(this.props.theme, "-500 hover:bg-").concat(this.props.theme, "-600 dark:hover:bg-").concat(this.props.theme, "-600 hover:text-white dark:hover:text-white")
+        }, "Reload Section") : null));
+      }
+
+      return this.props.children;
+    }
+  }]);
+
+  return ComponentError;
+}(React$1.Component);
+
+ComponentError.propTypes = {
+  theme: PropTypes.string
+};
+ComponentError.defaultProps = {
+  theme: 'indigo'
+};
+var ComponentError$1 = reactRouterDom.withRouter(ComponentError);var WebAppsDocsContext = /*#__PURE__*/React__default["default"].createContext({});
 var colors = [{
   "class": 'indigo',
   name: 'Indigo'
@@ -24659,6 +24773,8 @@ var returnLibrary = function returnLibrary() {
     WebAppsContext: WebAppsContext,
     withWebApps: withWebApps,
     AppError: AppError$1,
+    ComponentError: ComponentError$1,
+    ComponentErrorTrigger: ComponentErrorTrigger,
     NavigationError: NavigationError,
     CreateElement: CreateElement,
     DefaultToastContainer: ToastContainer,

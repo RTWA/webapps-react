@@ -33,6 +33,7 @@ import { NavChild, NavDropdown, NavItem, NavTitle } from './Components/NavElemen
 import { Auth, AuthContext, withAuth, WebApps, WebAppsContext, withWebApps } from './Context/index';
 
 import AppError from './Errors/AppError';
+import ComponentError, { ComponentErrorTrigger } from './Errors/ComponentError';
 import NavigationError from './Errors/NavigationError';
 
 import CreateElement from './Helpers/CreateElement';
@@ -98,6 +99,8 @@ const returnLibrary = () => {
         withWebApps,
 
         AppError,
+        ComponentError,
+        ComponentErrorTrigger,
         NavigationError,
 
         CreateElement,

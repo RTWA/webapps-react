@@ -1,3 +1,6 @@
+## Version 1.14.0
+- Added `<ComponentError />` Boundary and `<ComponentErrorTrigger />` Component
+
 ## Version 1.13.3
 - Fixed `<Auth />` Context `checkGroup` function
 
