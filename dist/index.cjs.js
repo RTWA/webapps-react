@@ -7109,13 +7109,14 @@ Scrollbar.propTypes = {
 };
 Scrollbar.defaultProps = {
   tag: 'div'
-};var _excluded$c = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
+};var _excluded$c = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
 
 var Select = function Select(props) {
   var id = props.id,
       name = props.name,
       label = props.label,
       action = props.action,
+      actionLocation = props.actionLocation,
       helpText = props.helpText,
       error = props.error,
       state = props.state,

@@ -10,6 +10,7 @@ const Select = props => {
         name,
         label,
         action,
+        actionLocation,
         helpText,
         error,
         state,

@@ -1,3 +1,6 @@
+## Version 1.14.3
+- Fixed `actionLocation is not defined` error for `<Select />` Component
+
 ## Version 1.14.2
 - Fixed `props` issue on `<UserSuggest />` Component
 
