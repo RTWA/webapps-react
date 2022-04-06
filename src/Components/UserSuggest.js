@@ -3,7 +3,7 @@ import UserAvatar from 'react-user-avatar';
 import PropTypes from "prop-types";
 import Input from './Input';
 
-const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit, ...props }) => {
+const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit, wrapperClassName, ...props }) => {
     const [activeUser, setActiveUser] = useState(0);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [showUsers, setShowUsers] = useState(false);
@@ -14,6 +14,7 @@ const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit,
 
         const _filteredUsers = users.filter(
             user => user.username.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+                || user.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1
         );
 
         setActiveUser(0);
@@ -97,11 +98,8 @@ const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit,
     }
 
     return (
-        <div className="relative mb-6">
-            <Input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput}
-                placeholder={placeholder} autoComplete="no" wrapperClassName="" {...props} />
-            {usersListComponent}
-        </div>
+        <Input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput}
+            placeholder={placeholder} autoComplete="no" action={usersListComponent} actionLocation='none' {...props} />
     );
 }
 
@@ -112,6 +110,7 @@ UserSuggest.propTypes = {
     placeholder: PropTypes.string,
     noMatchesText: PropTypes.string,
     limit: PropTypes.number,
+    wrapperClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 };
 
 UserSuggest.defaultProps = {
@@ -120,7 +119,8 @@ UserSuggest.defaultProps = {
     photos: true,
     placeholder: 'Start typing a username...',
     noMatchesText: 'No matching users found!',
-    limit: 0
+    limit: 0,
+    wrapperClassName: 'relative mb-6',
 };
 
 export default UserSuggest;

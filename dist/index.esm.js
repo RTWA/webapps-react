@@ -1449,7 +1449,7 @@ var PropTypes = propTypes.exports;var classnames = {exports: {}};/*!
 }());
 }(classnames));
 
-var classNames = classnames.exports;var AuthContext = /*#__PURE__*/React$1.createContext({});var Loader = function Loader(props) {
+var classNames = classnames.exports;var AuthContext = /*#__PURE__*/React$1.createContext({});var Loader$1 = function Loader(props) {
   var className = props.className,
       style = props.style,
       color = props.color,
@@ -1558,14 +1558,14 @@ var classNames = classnames.exports;var AuthContext = /*#__PURE__*/React$1.creat
   }, "Loading"));
 };
 
-Loader.propsTypes = {
+Loader$1.propsTypes = {
   style: PropTypes.oneOf(['', 'circle']),
   color: PropTypes.string,
   height: PropTypes.string,
   width: PropTypes.string,
   alignment: PropTypes.oneOf(['left', 'center', 'right'])
 };
-Loader.defaultProps = {
+Loader$1.defaultProps = {
   style: '',
   color: 'gray',
   height: '24',
@@ -2056,7 +2056,7 @@ var Auth = function Auth(props) {
       }
     });
   } else {
-    return /*#__PURE__*/React$1.createElement(Loader, null);
+    return /*#__PURE__*/React$1.createElement(Loader$1, null);
   }
 };
 
@@ -4769,13 +4769,14 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var _excluded$o = ["id", "name", "label", "action", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
+};var _excluded$o = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
   var id = props.id,
       name = props.name,
       label = props.label,
       action = props.action,
+      actionLocation = props.actionLocation,
       helpText = props.helpText,
       error = props.error,
       state = props.state,
@@ -4788,18 +4789,22 @@ var Input = function Input(props) {
       UI = _useContext.UI;
 
   var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
-  var inputClasses = classNames('bg-gray-50', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'dark:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', "focus:ring-".concat(UI.theme, "-600"), "dark:focus:ring-".concat(UI.theme, "-500"), "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '', inputClassName);
+  var inputClasses = classNames('bg-gray-50', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'dark:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', "focus:ring-".concat(UI.theme, "-600"), "dark:focus:ring-".concat(UI.theme, "-500"), "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '', actionLocation === 'left' ? 'pl-10' : '', inputClassName);
 
   var Append = function Append() {
     if (state === 'saving') {
-      return /*#__PURE__*/React$1.createElement(Loader, {
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation, "-0 items-center p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React$1.createElement(Loader$1, {
         style: "circle",
         height: "5",
         width: "5",
         color: "orange"
-      });
+      }));
     } else if (state === 'saved') {
-      return /*#__PURE__*/React$1.createElement("svg", {
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation, "-0 items-center p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React$1.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         className: "h-5 w-5 text-green-500",
         fill: "none",
@@ -4810,9 +4815,11 @@ var Input = function Input(props) {
         strokeLinejoin: "round",
         strokeWidth: 2,
         d: "M5 13l4 4L19 7"
-      }));
+      })));
     } else if (state === 'error') {
-      return /*#__PURE__*/React$1.createElement("svg", {
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation, "-0 items-center p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React$1.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         className: "h-5 w-5 text-red-500",
         fill: "none",
@@ -4823,9 +4830,13 @@ var Input = function Input(props) {
         strokeLinejoin: "round",
         strokeWidth: 2,
         d: "M6 18L18 6M6 6l12 12"
-      }));
-    } else if (action) {
+      })));
+    } else if (action && actionLocation === 'none') {
       return action;
+    } else if (action) {
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation, "-0 items-center p").concat(actionLocation.charAt(0), "-3")
+      }, action);
     }
 
     return null;
@@ -4842,9 +4853,7 @@ var Input = function Input(props) {
     id: id,
     name: name,
     className: inputClasses
-  }, attributes)), /*#__PURE__*/React$1.createElement("div", {
-    className: "flex absolute inset-y-0 right-0 items-center pr-3"
-  }, /*#__PURE__*/React$1.createElement(Append, null))), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("span", {
+  }, attributes)), /*#__PURE__*/React$1.createElement(Append, null)), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("span", {
     className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
   }, state === 'error' ? error : helpText) : null);
 };
@@ -4854,6 +4863,7 @@ Input.propTypes = {
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   action: PropTypes.object,
+  actionLocation: PropTypes.oneOfType(['right', 'left', 'none']),
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
   state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
@@ -4865,6 +4875,7 @@ Input.defaultProps = {
   error: '',
   state: '',
   label: '',
+  actionLocation: 'right',
   helpText: '',
   wrapperClassName: 'mb-6',
   labelClassName: '',
@@ -7118,18 +7129,22 @@ var Select = function Select(props) {
       UI = _useContext.UI;
 
   var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
-  var selectClasses = classNames('bg-gray-50', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'dark:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', "focus:ring-".concat(UI.theme, "-600"), "dark:focus:ring-".concat(UI.theme, "-500"), "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '', selectClassName);
+  var selectClasses = classNames('bg-gray-50', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'dark:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', "focus:ring-".concat(UI.theme, "-600"), "dark:focus:ring-".concat(UI.theme, "-500"), "focus:border-".concat(UI.theme, "-600"), "dark:focus:border-".concat(UI.theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '', actionLocation === 'left' ? 'pl-10' : '', selectClassName);
 
   var Append = function Append() {
     if (state === 'saving') {
-      return /*#__PURE__*/React$1.createElement(Loader, {
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation === 'right' ? 'right-5' : 'left-0', " items-center p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React$1.createElement(Loader$1, {
         style: "circle",
         height: "5",
         width: "5",
         color: "orange"
-      });
+      }));
     } else if (state === 'saved') {
-      return /*#__PURE__*/React$1.createElement("svg", {
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation === 'right' ? 'right-5' : 'left-0', " items-center p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React$1.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         className: "h-5 w-5 text-green-500",
         fill: "none",
@@ -7140,9 +7155,11 @@ var Select = function Select(props) {
         strokeLinejoin: "round",
         strokeWidth: 2,
         d: "M5 13l4 4L19 7"
-      }));
+      })));
     } else if (state === 'error') {
-      return /*#__PURE__*/React$1.createElement("svg", {
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation === 'right' ? 'right-5' : 'left-0', " items-center p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React$1.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         className: "h-5 w-5 text-red-500",
         fill: "none",
@@ -7153,9 +7170,11 @@ var Select = function Select(props) {
         strokeLinejoin: "round",
         strokeWidth: 2,
         d: "M6 18L18 6M6 6l12 12"
-      }));
+      })));
     } else if (action) {
-      return action;
+      return /*#__PURE__*/React$1.createElement("div", {
+        className: "flex absolute inset-y-0 ".concat(actionLocation === 'right' ? 'right-5' : 'left-0', " items-center p").concat(actionLocation.charAt(0), "-3")
+      }, action);
     }
 
     return null;
@@ -7172,9 +7191,7 @@ var Select = function Select(props) {
     id: id,
     name: name,
     className: selectClasses
-  }, attributes), children), /*#__PURE__*/React$1.createElement("div", {
-    className: "flex absolute inset-y-0 right-5 items-center pr-3"
-  }, /*#__PURE__*/React$1.createElement(Append, null))), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("span", {
+  }, attributes), children), /*#__PURE__*/React$1.createElement(Append, null)), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("span", {
     className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
   }, state === 'error' ? error : helpText) : null);
 };
@@ -7184,6 +7201,7 @@ Select.propTypes = {
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   action: PropTypes.object,
+  actionLocation: PropTypes.oneOfType(['right', 'left']),
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
   state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
@@ -7195,6 +7213,7 @@ Select.defaultProps = {
   error: '',
   state: '',
   label: '',
+  actionLocation: 'right',
   helpText: '',
   wrapperClassName: 'mb-6',
   labelClassName: '',
@@ -7626,6 +7645,48 @@ var Switch = function Switch(props) {
 
   var classes = classNames('outline-none', 'focus:ring-0', 'focus:ring-offset-0', 'focus:outline-none', 'right-4', 'checked:right-0', 'duration-200', 'ease-in', 'absolute', 'block', 'w-6', 'h-6', 'rounded-full', 'bg-white', 'border-2', 'appearance-none', 'transition-colours', 'duration-500', disabled ? 'cursor-not-allowed' : 'cursor-pointer', checked ? "border-".concat(UI.theme, "-600 dark:border-").concat(UI.theme, "-500") : 'border-gray-300 dark:border-gray-700', state === 'error' ? 'border-red-500' : '', state === 'saved' ? 'border-green-500' : '', state === 'saving' ? 'border-orange-500' : '');
   var labelClasses = classNames('block', 'overflow-hidden', 'h-6', 'rounded-full', 'transition-colours', 'duration-500', disabled ? 'cursor-not-allowed' : 'cursor-pointer', !checked && state === '' ? 'bg-gray-300 dark:bg-gray-700' : '', checked && state === '' ? "bg-".concat(UI.theme, "-600 dark:bg-").concat(UI.theme, "-500") : '', state === 'error' ? 'bg-red-500' : '', state === 'saved' ? 'bg-green-500' : '', state === 'saving' ? 'bg-orange-500' : '');
+
+  var Append = function Append() {
+    if (state === 'saving') {
+      return /*#__PURE__*/React$1.createElement(Loader, {
+        style: "circle",
+        height: "5",
+        width: "5",
+        color: "orange"
+      });
+    } else if (state === 'saved') {
+      return /*#__PURE__*/React$1.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-green-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React$1.createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M5 13l4 4L19 7"
+      }));
+    } else if (state === 'error') {
+      return /*#__PURE__*/React$1.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-red-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React$1.createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M6 18L18 6M6 6l12 12"
+      }));
+    } else if (action) {
+      return action;
+    }
+
+    return null;
+  };
+
   return /*#__PURE__*/React$1.createElement("div", {
     className: className
   }, /*#__PURE__*/React$1.createElement("div", {
@@ -7641,10 +7702,12 @@ var Switch = function Switch(props) {
   }, attributes)), /*#__PURE__*/React$1.createElement("label", {
     htmlFor: id,
     className: labelClasses
-  })), /*#__PURE__*/React$1.createElement("label", {
+  })), /*#__PURE__*/React$1.createElement("div", {
+    className: "inline-flex flex-row gap-4"
+  }, /*#__PURE__*/React$1.createElement("label", {
     htmlFor: id,
     className: "ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-  }, label), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("p", {
+  }, label), /*#__PURE__*/React$1.createElement(Append, null)), helpText !== '' || error !== '' ? /*#__PURE__*/React$1.createElement("p", {
     className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
   }, state === 'error' ? error : helpText) : null);
 };
@@ -7653,6 +7716,7 @@ Switch.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
+  action: PropTypes.object,
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
   state: PropTypes.string,
@@ -8251,7 +8315,7 @@ var UserAvatar = function (_React$Component) {
   return UserAvatar;
 }(React.Component);
 
-var userAvatar = UserAvatar;var _excluded$3 = ["users", "select", "photos", "placeholder", "noMatchesText", "limit"];
+var userAvatar = UserAvatar;var _excluded$3 = ["users", "select", "photos", "placeholder", "noMatchesText", "limit", "wrapperClassName"];
 
 var UserSuggest = function UserSuggest(_ref) {
   var users = _ref.users,
@@ -8259,8 +8323,9 @@ var UserSuggest = function UserSuggest(_ref) {
       photos = _ref.photos,
       placeholder = _ref.placeholder,
       noMatchesText = _ref.noMatchesText,
-      limit = _ref.limit,
-      props = _objectWithoutProperties(_ref, _excluded$3);
+      limit = _ref.limit;
+      _ref.wrapperClassName;
+      var props = _objectWithoutProperties(_ref, _excluded$3);
 
   var _useState = useState(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8286,7 +8351,7 @@ var UserSuggest = function UserSuggest(_ref) {
     var userInput = e.currentTarget.value;
 
     var _filteredUsers = users.filter(function (user) {
-      return user.username.toLowerCase().indexOf(userInput.toLowerCase()) > -1;
+      return user.username.toLowerCase().indexOf(userInput.toLowerCase()) > -1 || user.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1;
     });
 
     setActiveUser(0);
@@ -8356,17 +8421,16 @@ var UserSuggest = function UserSuggest(_ref) {
     }
   }
 
-  return /*#__PURE__*/React$1.createElement("div", {
-    className: "relative mb-6"
-  }, /*#__PURE__*/React$1.createElement(Input, _extends({
+  return /*#__PURE__*/React$1.createElement(Input, _extends({
     type: "text",
     onChange: onChange,
     onKeyDown: onKeyDown,
     value: userInput,
     placeholder: placeholder,
     autoComplete: "no",
-    wrapperClassName: ""
-  }, props)), usersListComponent);
+    action: usersListComponent,
+    actionLocation: "none"
+  }, props));
 };
 
 UserSuggest.propTypes = {
@@ -8375,7 +8439,8 @@ UserSuggest.propTypes = {
   photos: PropTypes.bool,
   placeholder: PropTypes.string,
   noMatchesText: PropTypes.string,
-  limit: PropTypes.number
+  limit: PropTypes.number,
+  wrapperClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
 };
 UserSuggest.defaultProps = {
   users: [],
@@ -8385,7 +8450,8 @@ UserSuggest.defaultProps = {
   photos: true,
   placeholder: 'Start typing a username...',
   noMatchesText: 'No matching users found!',
-  limit: 0
+  limit: 0,
+  wrapperClassName: 'relative mb-6'
 };const protocols = ['http', 'https', 'mailto', 'tel'];
 
 /**
@@ -24752,7 +24818,7 @@ var returnLibrary = function returnLibrary() {
     InfiniteScroll: InfiniteScroll,
     Input: Input,
     Link: Link,
-    Loader: Loader,
+    Loader: Loader$1,
     Scrollbar: Scrollbar,
     Select: Select,
     Sidebar: Sidebar$1,

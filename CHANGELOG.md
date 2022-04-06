@@ -1,3 +1,11 @@
+## Version 1.14.1
+- Added `actionLocation` prop to `<Input />` Component
+- Added `actionLocation` prop to `<Select />` Component
+- Added `action` prop to `<Switch />` Component
+- Added `wrapperClassName` prop to `<UserSuggest />` Component
+  - Defaults to `relative mb-6`
+- `<UserSuggest />` Component update to enable search by username or user's name
+
 ## Version 1.14.0
 - Added `<ComponentError />` Boundary and `<ComponentErrorTrigger />` Component
 

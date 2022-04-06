@@ -61,13 +61,37 @@ const Switch = props => {
         (state === 'saving') ? 'bg-orange-500' : '',
     )
 
+    const Append = () => {
+        if (state === 'saving') {
+            return <Loader style="circle" height="5" width="5" color="orange" />
+        } else if (state === 'saved') {
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+            )
+        } else if (state === 'error') {
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            )
+        } else if (action) {
+            return action
+        }
+        return null;
+    }
+
     return (
         <div className={className}>
             <div className="relative inline-block w-10 mr-2 align-middle select-none">
                 <input type="checkbox" id={id} name={name} className={classes} checked={checked} disabled={disabled} onChange={onChange} {...attributes} />
                 <label htmlFor={id} className={labelClasses} />
             </div>
-            <label htmlFor={id} className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{label}</label>
+            <div className="inline-flex flex-row gap-4">
+                <label htmlFor={id} className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{label}</label>
+                <Append />
+            </div>
             {
                 (helpText !== '' || error !== '')
                     ? (
@@ -84,6 +108,7 @@ Switch.propTypes = {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     label: PropTypes.string,
+    action: PropTypes.object,
     helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     error: PropTypes.string,
     state: PropTypes.string,
