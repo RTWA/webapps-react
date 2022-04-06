@@ -1,3 +1,6 @@
+## Version 1.14.2
+- Fixed `props` issue on `<UserSuggest />` Component
+
 ## Version 1.14.1
 - Added `actionLocation` prop to `<Input />` Component
 - Added `actionLocation` prop to `<Select />` Component

@@ -8315,7 +8315,7 @@ var UserAvatar = function (_React$Component) {
   return UserAvatar;
 }(React.Component);
 
-var userAvatar = UserAvatar;var _excluded$3 = ["users", "select", "photos", "placeholder", "noMatchesText", "limit", "wrapperClassName"];
+var userAvatar = UserAvatar;var _excluded$3 = ["users", "select", "photos", "placeholder", "noMatchesText", "limit"];
 
 var UserSuggest = function UserSuggest(_ref) {
   var users = _ref.users,
@@ -8323,9 +8323,8 @@ var UserSuggest = function UserSuggest(_ref) {
       photos = _ref.photos,
       placeholder = _ref.placeholder,
       noMatchesText = _ref.noMatchesText,
-      limit = _ref.limit;
-      _ref.wrapperClassName;
-      var props = _objectWithoutProperties(_ref, _excluded$3);
+      limit = _ref.limit,
+      props = _objectWithoutProperties(_ref, _excluded$3);
 
   var _useState = useState(0),
       _useState2 = _slicedToArray(_useState, 2),

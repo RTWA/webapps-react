@@ -3,7 +3,7 @@ import UserAvatar from 'react-user-avatar';
 import PropTypes from "prop-types";
 import Input from './Input';
 
-const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit, wrapperClassName, ...props }) => {
+const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit, ...props }) => {
     const [activeUser, setActiveUser] = useState(0);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [showUsers, setShowUsers] = useState(false);
