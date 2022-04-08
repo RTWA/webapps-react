@@ -1,3 +1,6 @@
+## Version 1.14.5
+- Fixed `ReferenceError: action is not defined` error for `<Switch />` Component
+
 ## Version 1.14.4
 - Fixed `Invalid argument supplied to oneOfType` error for `<Select />` Component
 - Fixed `Invalid argument supplied to oneOfType` error for `<Input />` Component
