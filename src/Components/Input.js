@@ -84,7 +84,7 @@ const Input = props => {
             )
         } else if (action && actionLocation === 'none') {
             return action;
-        } else if (action) {
+        } else if (action !== undefined) {
             return (
                 <div className={`flex absolute inset-y-0 ${actionLocation}-0 items-center p${actionLocation.charAt(0)}-3`}>
                     {action}
@@ -120,7 +120,7 @@ Input.propTypes = {
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     label: PropTypes.string,
     action: PropTypes.object,
-    actionLocation: PropTypes.oneOfType(['right', 'left', 'none']),
+    actionLocation: PropTypes.oneOf(['right', 'left', 'none']),
     helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     error: PropTypes.string,
     state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),

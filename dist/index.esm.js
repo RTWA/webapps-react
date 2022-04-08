@@ -4833,7 +4833,7 @@ var Input = function Input(props) {
       })));
     } else if (action && actionLocation === 'none') {
       return action;
-    } else if (action) {
+    } else if (action !== undefined) {
       return /*#__PURE__*/React$1.createElement("div", {
         className: "flex absolute inset-y-0 ".concat(actionLocation, "-0 items-center p").concat(actionLocation.charAt(0), "-3")
       }, action);
@@ -4863,7 +4863,7 @@ Input.propTypes = {
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   action: PropTypes.object,
-  actionLocation: PropTypes.oneOfType(['right', 'left', 'none']),
+  actionLocation: PropTypes.oneOf(['right', 'left', 'none']),
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
   state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),
@@ -7172,7 +7172,7 @@ var Select = function Select(props) {
         strokeWidth: 2,
         d: "M6 18L18 6M6 6l12 12"
       })));
-    } else if (action) {
+    } else if (action !== undefined) {
       return /*#__PURE__*/React$1.createElement("div", {
         className: "flex absolute inset-y-0 ".concat(actionLocation === 'right' ? 'right-5' : 'left-0', " items-center p").concat(actionLocation.charAt(0), "-3")
       }, action);
@@ -7202,7 +7202,7 @@ Select.propTypes = {
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   action: PropTypes.object,
-  actionLocation: PropTypes.oneOfType(['right', 'left']),
+  actionLocation: PropTypes.oneOf(['right', 'left']),
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   error: PropTypes.string,
   state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),

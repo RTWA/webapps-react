@@ -83,7 +83,7 @@ const Select = props => {
                     </svg>
                 </div>
             )
-        } else if (action) {
+        } else if (action !== undefined) {
             return (
                 <div className={`flex absolute inset-y-0 ${(actionLocation === 'right') ? 'right-5' : 'left-0'} items-center p${actionLocation.charAt(0)}-3`}>
                     {action}
@@ -121,7 +121,7 @@ Select.propTypes = {
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     label: PropTypes.string,
     action: PropTypes.object,
-    actionLocation: PropTypes.oneOfType(['right', 'left']),
+    actionLocation: PropTypes.oneOf(['right', 'left']),
     helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     error: PropTypes.string,
     state: PropTypes.oneOf(['', 'saving', 'error', 'saved']),

@@ -1,3 +1,9 @@
+## Version 1.14.4
+- Fixed `Invalid argument supplied to oneOfType` error for `<Select />` Component
+- Fixed `Invalid argument supplied to oneOfType` error for `<Input />` Component
+- Fixed `ReferenceError: action is not defined` error for `<Select />` Component
+- Fixed `ReferenceError: action is not defined` error for `<Input />` Component
+
 ## Version 1.14.3
 - Fixed `actionLocation is not defined` error for `<Select />` Component
 
