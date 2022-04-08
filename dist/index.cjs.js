@@ -7626,7 +7626,7 @@ var Sidebar = function Sidebar(_ref) {
   }) : null);
 };
 
-var Sidebar$1 = withWebApps(Sidebar);var _excluded$4 = ["id", "name", "label", "helpText", "error", "state", "checked", "disabled", "onChange", "className"];
+var Sidebar$1 = withWebApps(Sidebar);var _excluded$4 = ["id", "name", "label", "helpText", "error", "state", "checked", "disabled", "onChange", "action", "className"];
 
 var Switch = function Switch(props) {
   var id = props.id,
@@ -7638,6 +7638,7 @@ var Switch = function Switch(props) {
       checked = props.checked,
       disabled = props.disabled,
       onChange = props.onChange,
+      action = props.action,
       className = props.className,
       attributes = _objectWithoutProperties__default["default"](props, _excluded$4);
 
@@ -7681,7 +7682,7 @@ var Switch = function Switch(props) {
         strokeWidth: 2,
         d: "M6 18L18 6M6 6l12 12"
       }));
-    } else if (action !== undefined) {
+    } else if (action) {
       return action;
     }
 

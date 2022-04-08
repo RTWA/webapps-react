@@ -1,3 +1,6 @@
+## Version 1.14.6
+- (Actually) Fixed `ReferenceError: action is not defined` error for `<Switch />` Component
+
 ## Version 1.14.5
 - Fixed `ReferenceError: action is not defined` error for `<Switch />` Component
 

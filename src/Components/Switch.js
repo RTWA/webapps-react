@@ -14,6 +14,7 @@ const Switch = props => {
         checked,
         disabled,
         onChange,
+        action,
         className,
         ...attributes
     } = props;
@@ -76,7 +77,7 @@ const Switch = props => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
             )
-        } else if (action !== undefined) {
+        } else if (action) {
             return action
         }
         return null;
