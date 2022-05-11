@@ -1,4 +1,4 @@
-## Versoin 1.14.7
+## Version 1.14.7
 - Signout now redirects correctly when a server port is required
 
 ## Version 1.14.6
