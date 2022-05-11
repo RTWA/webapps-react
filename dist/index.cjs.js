@@ -1717,7 +1717,7 @@ var Auth = function Auth(props) {
                               user: null,
                               authenticated: false
                             });
-                            window.location.replace("//" + window.location.hostname + '/login?logout');
+                            window.location.replace(window.location.origin + '/login?logout');
                             resolve(true);
                           }
 

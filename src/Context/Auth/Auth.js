@@ -65,7 +65,7 @@ const Auth = props => {
                         authenticated: false
                     });
 
-                    window.location.replace("//" + window.location.hostname + '/login?logout');
+                    window.location.replace(window.location.origin + '/login?logout');
                     resolve(true);
                 }
             } catch (error) {
