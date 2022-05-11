@@ -21,10 +21,12 @@ MODE.map((m) => {
         },
         external: ['react', 'react-dom', 'react-router-dom', /@babel\/runtime/],
         plugins: [
-            css(),
+            css({
+                output: 'webapps-react.css',
+            }),
             resolve({
                 extensions: ['.js'],
-                dedupe: ['perfect-scrollbar', 'react', 'react-dom', 'react-router-dom'],
+                dedupe: ['react', 'react-dom', 'react-router-dom'],
                 preferBuiltins: true,
             }),
             babel({

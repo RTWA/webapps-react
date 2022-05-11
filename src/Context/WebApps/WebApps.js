@@ -7,12 +7,12 @@ import { ToastProvider, useToasts } from '../../Toasts';
 export const WebAppsContext = React.createContext({});
 
 const useModals = createLocalStorageStateHook('modals', {});
-const useUI = createLocalStorageStateHook('UI', { sidebar: 'responsive', envWriteable: false });
+// const useUI = createLocalStorageStateHook('UI', { sidebar: 'responsive', envWriteable: false });
 
 let controller = new AbortController();
 
 const WebAppsProvider = props => {
-    const [UI, setUI] = useUI();
+    const [UI, setUI] = useState({ envWriteable: false });
     const [modals, setModals] = useModals();
     const [navigation, setNavigation] = useState({});
     const [apps, setApps] = useState({});
@@ -49,6 +49,12 @@ const WebAppsProvider = props => {
                 if (isMounted()) {
                     UI.theme = json.data['core.ui.theme'];
                     UI.dark_mode = json.data['core.ui.dark_mode'];
+                    UI.navigation = {
+                        // TODO: Set based on APP/USER settings
+                        color_mode: 'dark',
+                        display_mode: 'side',
+                        opened: true,
+                    }
                     setUI({ ...UI });
                 }
             })
@@ -458,7 +464,7 @@ const WebAppsProvider = props => {
 }
 
 export const WebApps = props => {
-    const [UI, setUI] = useUI();
+    const [UI, setUI] = useState({theme: 'indigo'});
 
     return (
         <ToastProvider UI={UI} autoDismiss="true" autoDismissTimeout="3000">

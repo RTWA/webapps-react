@@ -4,7 +4,7 @@ import CreateElement from '../Helpers/CreateElement';
 import SidebarWrapper from './SidebarWrapper';
 import { withWebApps } from '../Context/index';
 
-const Sidebar = ({ navigation, ...props }) => {
+const Sidebar = ({ navigation }) => {
 
     useEffect(() => {
         if (navigation.menu !== null && navigation.menu !== undefined) {
@@ -15,7 +15,7 @@ const Sidebar = ({ navigation, ...props }) => {
     }, [navigation])
 
     return (
-        <SidebarWrapper {...props}>
+        <SidebarWrapper>
             {
                 (navigation.menu !== null && navigation.menu !== undefined && !navigation.menu.error) ? (
                     <CreateElement
