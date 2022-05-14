@@ -30,7 +30,19 @@ import AppPluginChangelogModal from './Components/AppPluginChangelogModal';
 import { AppCard, PluginCard } from './Components/Cards/index';
 import { NavChild, NavDropdown, NavItem, NavTitle } from './Components/NavElements/index';
 
-import { Auth, AuthContext, withAuth, WebApps, WebAppsContext, withWebApps } from './Context/index';
+import { 
+    Auth,
+    AuthContext,
+    withAuth, 
+
+    WebAppsUX,
+    WebAppsUXContext,
+    withWebAppsUX,
+    
+    WebApps,
+    WebAppsContext,
+    withWebApps,
+ } from './Context/index';
 
 import AppError from './Errors/AppError';
 import ComponentError, { ComponentErrorTrigger } from './Errors/ComponentError';
@@ -94,6 +106,11 @@ const returnLibrary = () => {
         Auth,
         AuthContext,
         withAuth,
+        
+        WebAppsUX,
+        WebAppsUXContext,
+        withWebAppsUX,
+
         WebApps,
         WebAppsContext,
         withWebApps,
