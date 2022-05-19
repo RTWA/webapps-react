@@ -13,15 +13,23 @@ const Loader = props => {
     } = props;
 
     const classes = classNames(
-        'loader',
         `text-${color}-300`,
         `dark:text-${color}-500`,
-        `h-${height}`,
-        `w-${width}`,
+        'h-full',
         (alignment === 'left') ? 'mr-auto' : '',
         (alignment === 'center') ? 'mx-auto' : '',
         (alignment === 'right') ? 'ml-auto' : '',
         className,
+    );
+
+    const svgClasses = classNames(
+        'loader',
+        `h-${height}`,
+        `w-${width}`,
+        `-translate-y-${height/2}`,
+        (alignment === 'left') ? 'mr-auto' : '',
+        (alignment === 'center') ? 'mx-auto' : '',
+        (alignment === 'right') ? 'ml-auto' : '',
     );
 
     const circleClasses = classNames(
@@ -49,7 +57,7 @@ const Loader = props => {
 
     return (
         <div className={classes}>
-            <svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+            <svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" className={svgClasses}>
                 <g fill="none" fillRule="evenodd" transform="translate(1 1)" strokeWidth={2}>
                     <circle cx={22} cy={22} r={6} strokeOpacity={0}>
                         <animate attributeName="r" begin="1.5s" dur="3s" values="6;22" calcMode="linear" repeatCount="indefinite" />
