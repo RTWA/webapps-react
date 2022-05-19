@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 const Icon = props => {
     const {
         icon,
-        ...attributes
+        className
     } = props;
 
     const addClasses = string => {
         if (typeof (string) === 'string') {
-            return string.replace(/<svg/g, `<svg class="${attributes.className}"`)
+            return string.replace(/<svg/g, `<svg class="${className}"`)
         }
     }
 
-    return <div dangerouslySetInnerHTML={{ __html: addClasses(icon) }} {...attributes} />
+    return <div dangerouslySetInnerHTML={{ __html: addClasses(icon) }} className={className} />
 }
 
 Icon.propTypes = {
