@@ -1,31 +1,30 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { createLocalStorageStateHook } from 'use-local-storage-state';
 
 import { client } from '../../API';
-import { ToastProvider, useToasts } from '../../Toasts';
+import { useToasts } from '../../Toasts';
+
+import { WebAppsUXContext } from '..';
 
 export const WebAppsContext = React.createContext({});
 
 const useModals = createLocalStorageStateHook('modals', {});
-// const useUI = createLocalStorageStateHook('UI', { sidebar: 'responsive', envWriteable: false });
 
 let controller = new AbortController();
 
-const WebAppsProvider = props => {
-    const [UI, setUI] = useState({ envWriteable: false });
+export const WebApps = props => {
     const [modals, setModals] = useModals();
-    const [navigation, setNavigation] = useState({});
     const [apps, setApps] = useState({});
     const [plugins, setPlugins] = useState({});
 
     const { addToast } = useToasts();
+    const { darkMode, theme, useNavigation } = useContext(WebAppsUXContext);
+    const { navigation, loadNavigation } = useNavigation;
 
     const isMountedRef = useRef(true);
     const isMounted = useCallback(() => isMountedRef.current, []);
 
     useEffect(() => {
-        loadUI();
-        loadNavigation();
         getApps();
         getPlugins();
 
@@ -36,56 +35,11 @@ const WebAppsProvider = props => {
     }, []);
 
     const toggleModal = modal => {
-        if (unmounted.current) {
+        if (isMounted()) {
             setModals({
                 modal: !modals[modal]
             });
         }
-    }
-
-    const loadUI = async () => {
-        await client('/api/setting', { key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']) }, { signal: controller.signal })
-            .then(json => {
-                if (isMounted()) {
-                    UI.theme = json.data['core.ui.theme'];
-                    UI.dark_mode = json.data['core.ui.dark_mode'];
-                    UI.navigation = {
-                        // TODO: Set based on APP/USER settings
-                        color_mode: 'dark',
-                        display_mode: 'side',
-                        opened: true,
-                    }
-                    setUI({ ...UI });
-                }
-            })
-            .catch(error => {
-                if (!error.status?.isAbort && isMounted()) {
-                    // TODO: Handle errors
-                    console.error(error);
-                }
-            });
-    }
-
-    const loadNavigation = async () => {
-        await client('/api/navigation', undefined, { signal: controller.signal })
-            .then(json => {
-                if (isMounted()) {
-                    navigation.menu = json.data.navigation;
-                    navigation.routes = json.data.routes;
-                    UI.envWriteable = json.data.envPermissions;
-
-                    setNavigation({ ...navigation });
-                    setUI({ ...UI });
-                }
-            })
-            .catch(error => {
-                if (!error.status?.isAbort && isMounted()) {
-                    let nav = [];
-                    nav['error'] = true;
-                    nav['message'] = error.data.message;
-                    setNavigation(nav);
-                }
-            });
     }
 
     const getApps = async () => {
@@ -444,14 +398,23 @@ const WebAppsProvider = props => {
         uninstall: uninstallPlugin,
     }
 
+    const setUI = () => {
+        console.error('Deprecated function, please use WebAppsUX context instead!');
+    }
+
+    const UI = {
+        dark_mode: darkMode,
+        theme: theme,
+    }
+
     return (
         <WebAppsContext.Provider
             value={{
-                navigation: navigation,
-                UI: UI,
+                navigation: navigation, // Legacy - from UX
+                UI: UI, // Legacy - from UX
                 modals: modals,
-                loadNavigation: loadNavigation,
-                setUI: setUI,
+                loadNavigation: loadNavigation, // Legacy - from UX
+                setUI: setUI, // Legacy - Deprecated
                 setModals: setModals,
                 toggleModal: toggleModal,
                 apps: _apps,
@@ -460,15 +423,5 @@ const WebAppsProvider = props => {
         >
             {props.children || null}
         </WebAppsContext.Provider>
-    )
-}
-
-export const WebApps = props => {
-    const [UI, setUI] = useState({theme: 'indigo'});
-
-    return (
-        <ToastProvider UI={UI} autoDismiss="true" autoDismissTimeout="3000">
-            <WebAppsProvider {...props} />
-        </ToastProvider>
     )
 }
