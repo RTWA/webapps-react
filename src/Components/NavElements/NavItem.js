@@ -6,9 +6,8 @@ import Icon from '../Icon';
 import Link from '../Link';
 
 import { DropdownContext } from './NavDropdown';
-import { withWebApps } from '../../Context';
 
-const NavItem = ({ UI, ...props }) => {
+const NavItem = props => {
     const {
         className,
         innerRef,
@@ -22,7 +21,6 @@ const NavItem = ({ UI, ...props }) => {
     } = props
 
     const { isOpen } = useContext(DropdownContext);
-    const { navigation } = UI;
 
     const linkClasses = classNames(
         'relative',
@@ -40,24 +38,16 @@ const NavItem = ({ UI, ...props }) => {
         'duration-200',
         'focus:outline-none',
         color
-            ? (navigation.color_mode === 'dark') 
-                ? `text-${color}-600 hover:text-${color}-800 hover:bg-white/10`
-                : `text-${color}-600 hover:text-${color}-800 dark:text-${color}-400 dark:hover:text-${color}-100 hover:bg-${color}-100 dark:hover:bg-${color}-600`
-            : (navigation.color_mode === 'dark') 
-                ? 'text-white/60 hover:text-white/100 hover:bg-white/10'
-                : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
+            ? `text-${color}-600 hover:bg-black/10 dark:hover:bg-white/10`
+            : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10'
     )
 
     const routerLinkProps = rest.to && {
-        exact: true,
+        exact: (rest.to.startsWith('/settings')) ? false : true,
         activeClassName: classNames(
             color
-                ? (navigation.color_mode === 'dark') 
-                    ? `text-${color}-800 bg-white/10`
-                    : `text-${color}-800 bg-gray-100 dark:text-${color}-100 dark:bg-gray-600`
-                : (navigation.color_mode === 'dark') 
-                    ? 'text-white/100 bg-white/10'
-                    : 'text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-600'
+                ? `text-${color}-600 bg-black/10 dark:bg-white/10`
+                : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10'
         )
     }
 
@@ -77,4 +67,4 @@ const NavItem = ({ UI, ...props }) => {
     )
 }
 
-export default withWebApps(NavItem);
+export default NavItem;

@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { withWebApps } from '../../Context'
+import { WebAppsUXContext } from '../../Context'
 
-const NavTitle = ({ UI, ...props }) => {
-
+const NavTitle = props => {
     const {
         name,
         className,
         innerRef,
         ...attributes
-    } = props
+    } = props;
+
+    const { theme } = useContext(WebAppsUXContext);
 
     const classes = classNames(
         'relative',
@@ -29,11 +30,9 @@ const NavTitle = ({ UI, ...props }) => {
 
     return (
         <div className={classes} {...attributes} ref={innerRef}>
-            {/* <div className="absolute left-0 top-0 flex justify-center w-full -mt-2"> */}
-            <div className={`text-${UI.theme}-600 text-xs uppercase font-semibold tracking-wider`}>
+            <div className={`text-${theme}-600 text-xs uppercase font-semibold tracking-wider`}>
                 {name}
             </div>
-            {/* </div> */}
         </div>
     )
 }
@@ -45,4 +44,4 @@ NavTitle.propTypes = {
 };
 
 
-export default withWebApps(NavTitle)
+export default NavTitle;

@@ -2,17 +2,17 @@ import React, {
     useState,
     useEffect,
     createRef,
+    useContext,
 } from 'react';
 import classNames from 'classnames';
-import { useLocation } from 'react-router-dom';
 
 import Badge from '../Badge';
 import Icon from '../Icon';
-import { withWebApps } from '../../Context';
+import { WebAppsUXContext } from '../../Context';
 
 export const DropdownContext = React.createContext({});
 
-const NavDropdown = ({ UI, setUI, ...props }) => {
+const NavDropdown = props => {
     const {
         children,
         className,
@@ -23,51 +23,53 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
         badge,
         show,
         route,
-        ...attributes
     } = props;
 
-    const ref = createRef()
-    innerRef && innerRef(ref)
+    const {
+        useNavigation,
+    } = useContext(WebAppsUXContext);
 
-    if (UI.navigation === undefined) {
+    const { navigation, setNavigation } = useNavigation;
+
+    const ref = createRef();
+    innerRef && innerRef(ref);
+
+    if (navigation === undefined) {
         return null;
     }
 
-    const { dropdownMode, openDropdown } = UI.navigation;
+    const { dropdownMode, openDropdown } = navigation;
 
     const [isOpen, setIsOpen] = useState(show)
     useEffect(() => {
-        setIsOpen(show)
+        setIsOpen(show);
     }, [show]);
-
-    useEffect(() => {
-        !dropdownMode && (!openDropdown || !ref.current.contains(openDropdown)) && setIsOpen(false)
-    }, [openDropdown]);
 
     const toggle = (e) => {
         e.preventDefault();
-        if (!dropdownMode && UI.navigation !== undefined) {
-            UI.navigation.openDropdown = isOpen ? ref.current.parentNode.closest('.nav-dropdown') : ref.current;
-            setUI({ ...UI });
+        if (!dropdownMode && navigation !== undefined) {
+            navigation.openDropdown = isOpen ? ref.current.parentNode.closest('.nav-dropdown') : ref.current;
+            setNavigation({ ...navigation });
         }
-        setIsOpen(!isOpen)
+        setIsOpen(!isOpen);
     }
 
-    let path = ''
+    let path = '';
     try {
-        path = useLocation().pathname
+        path = window.location.pathname;
     } catch (e) {
-        console.warn(e)
+        console.warn(e);
     }
 
     useEffect(() => {
-        if (dropdownMode === 'close')
-            setIsOpen(false)
-        else if (dropdownMode === 'closeInactive' && route)
-            setIsOpen(path.includes(route))
-        else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route)
-            setIsOpen(path.includes(route))
-    }, [path])
+        if (dropdownMode === 'close') {
+            setIsOpen(false);
+        } else if (dropdownMode === 'closeInactive' && route) {
+            setIsOpen(path.includes(route));
+        } else if ((!dropdownMode || dropdownMode !== 'noAction') && route) {
+            setIsOpen(path.includes(route));
+        }
+    }, [path]);
 
     const linkClasses = classNames(
         'relative',
@@ -83,34 +85,26 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
         'duration-200',
         'focus:outline-none',
         color
-            ? (UI.navigation.color_mode === 'dark')
-                ? `text-${color}-600 hover:text-${color}-800 hover:bg-white/10`
-                : `text-${color}-600 hover:text-${color}-800 dark:text-${color}-400 dark:hover:text-${color}-100 hover:bg-${color}-100 dark:hover:bg-${color}-600`
-            : (UI.navigation.color_mode === 'dark')
-                ? 'text-white/60 hover:text-white/100 hover:bg-white/10'
-                : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600',
+            ? `text-${color}-600 hover:bg-black/10 dark:hover:bg-white/10`
+            : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10',
         isOpen
             ? color
-                ? (UI.navigation.color_mode === 'dark')
-                    ? `text-${color}-800 bg-white/10 rounded-t-md`
-                    : `text-${color}-800 bg-gray-100 dark:text-${color}-100 dark:bg-gray-600 rounded-t-md`
-                : (UI.navigation.color_mode === 'dark')
-                    ? 'text-white/100 bg-white/10 rounded-t-md'
-                    : 'text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-600 rounded-t-md'
+                ? `rounded-t-md text-${color}-600 bg-black/10 dark:bg-white/10`
+                : 'rounded-t-md text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10'
             : 'rounded-md'
-    )
+    );
 
     const childWrapper = classNames(
         isOpen
-            ? (UI.navigation.color_mode === 'dark')
-                ? `block py-1 bg-white/10 rounded-b-md`
-                : `block py-1 bg-gray-100 dark:bg-gray-600 rounded-b-md`
+            ? `block p-1 bg-black/10 dark:bg-white/10 rounded-b-md`
             : 'hidden'
-    )
+    );
 
-    const dropIcon = (isOpen
-        ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>'
-        : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>')
+    const dropIcon = (
+        isOpen
+            ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>'
+            : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>'
+    );
 
     return (
         <div className={classNames(className, 'mb-1')} ref={ref}>
@@ -135,4 +129,4 @@ const NavDropdown = ({ UI, setUI, ...props }) => {
     )
 }
 
-export default withWebApps(NavDropdown);
+export default NavDropdown;

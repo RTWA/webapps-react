@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavChild, NavDropdown, NavItem, NavTitle } from './NavElements/index';
 import CreateElement from '../Helpers/CreateElement';
 import SidebarWrapper from './SidebarWrapper';
-import { withWebApps } from '../Context/index';
+import { WebAppsUXContext } from '../Context';
 
-const Sidebar = ({ navigation }) => {
+const Sidebar = props => {
+    const { useNavigation } = useContext(WebAppsUXContext);
+    const { navigation } = useNavigation;
 
     useEffect(() => {
         if (navigation.menu !== null && navigation.menu !== undefined) {
@@ -12,10 +14,10 @@ const Sidebar = ({ navigation }) => {
                 throw new Error(navigation.menu.message);
             }
         }
-    }, [navigation])
+    }, [navigation]);
 
     return (
-        <SidebarWrapper>
+        <SidebarWrapper {...props}>
             {
                 (navigation.menu !== null && navigation.menu !== undefined && !navigation.menu.error) ? (
                     <CreateElement
@@ -33,4 +35,4 @@ const Sidebar = ({ navigation }) => {
     )
 }
 
-export default withWebApps(Sidebar);
+export default Sidebar;
