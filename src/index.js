@@ -3,6 +3,7 @@
 
 import { client as APIClient, mediaClient as APIMediaClient } from './API';
 
+import AppPage from './Components/AppPage';
 import AzureGroupSearch from './Components/AzureGroupSearch';
 import Badge from './Components/Badge';
 import Banner from './Components/Banner';
@@ -13,11 +14,13 @@ import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
 import DataSuggest from './Components/DataSuggest';
 import DropDownButton from './Components/DropDownButton';
 import GridSelect from './Components/GridSelect';
+import Headerbar from './Components/HeaderBar';
 import Icon from './Components/Icon';
 import InfiniteScroll from './Components/InfiniteScroll';
 import Input from './Components/Input';
 import Link from './Components/Link';
 import Loader from './Components/Loader';
+import PageWrapper from './Components/PageWrapper';
 import Scrollbar from './Components/Scrollbar';
 import Select from './Components/Select';
 import Sidebar from './Components/Sidebar';
@@ -27,8 +30,11 @@ import UserSuggest from './Components/UserSuggest';
 
 import AppPluginChangelogModal from './Components/AppPluginChangelogModal';
 
-import { AppCard, PluginCard } from './Components/Cards/index';
-import { NavChild, NavDropdown, NavItem, NavTitle } from './Components/NavElements/index';
+import { AppCard, PluginCard } from './Components/Cards';
+
+import { Drawer, DrawerHeader, DrawerItem, DrawerItems } from './Components/Drawer';
+import { Flyout, FlyoutContent, FlyoutHeader, FlyoutFooter } from './Components/Flyout';
+import { NavChild, NavDropdown, NavItem, NavTitle } from './Components/NavElements';
 
 import { 
     Auth,
@@ -71,6 +77,7 @@ const returnLibrary = () => {
         APIClient,
         APIMediaClient,
 
+        AppPage,
         AzureGroupSearch,
         Badge,
         Banner,
@@ -79,13 +86,23 @@ const returnLibrary = () => {
         ConfirmDeleteButton,
         ConfirmDeleteModal,
         DataSuggest,
+        Drawer,
+        DrawerHeader,
+        DrawerItem,
+        DrawerItems,
         DropDownButton,
+        Flyout,
+        FlyoutContent,
+        FlyoutHeader,
+        FlyoutFooter,
+        Headerbar,
         GridSelect,
         Icon,
         InfiniteScroll,
         Input,
         Link,
         Loader,
+        PageWrapper,
         Scrollbar,
         Select,
         Sidebar,
