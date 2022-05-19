@@ -10,8 +10,8 @@ const Auth = props => {
     const [state, setState] = useState({
         user: null,
         authenticated: null,
-        preferences: {},
     });
+    const [preferences, setPreferences] = useState({});
 
     const isMountedRef = useRef(true);
     const isMounted = useCallback(() => isMountedRef.current, []);
@@ -36,15 +36,15 @@ const Auth = props => {
                 await client('/login', { username, password }, { signal: controller.signal });
                 // When correct, get the user object
                 const { data } = await client('/api/user', undefined, { signal: controller.signal });
-                const preferences = data.preferences ? data.preferences : {};
+                let _preferences = data.preferences ? JSON.parse(data.preferences) : {};
                 delete data.preferences;
 
                 if (isMounted) {
                     setState({
                         user: data,
                         authenticated: true,
-                        preferences: preferences
                     });
+                    setPreferences(_preferences);
                     return resolve(data);
                 }
             } catch (error) {
@@ -91,15 +91,15 @@ const Auth = props => {
                 // The status is null if it hasn't been checked
                 try {
                     const { data } = await client('/api/user', undefined, { signal: controller.signal });
-                    const preferences = data.preferences ? data.preferences : {};
+                    let _preferences = data.preferences ? JSON.parse(data.preferences) : {};
                     delete data.preferences;
 
                     if (isMounted) {
                         setState({
                             user: data,
                             authenticated: true,
-                            preferences: preferences
                         });
+                        setPreferences(_preferences);
                         return resolve(true);
                     }
                 } catch (error) {
@@ -109,8 +109,8 @@ const Auth = props => {
                             setState({
                                 user: null,
                                 authenticated: false,
-                                preferences: {}
                             });
+                            setPreferences({});
                             return resolve(false);
                         }
                     } else {
@@ -162,9 +162,8 @@ const Auth = props => {
     }
 
     const setPreference = async (preference, value) => {
-        let { preferences } = state;
         preferences[preference] = value;
-        setState({ preferences });
+        setPreferences({ ...preferences });
 
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT', signal: controller.signal })
             .catch(error => {
@@ -182,14 +181,14 @@ const Auth = props => {
                 value={{
                     user: state.user,
                     authenticated: state.authenticated,
-                    signIn: signIn,
-                    signOut: signOut,
-                    setUser: setUser,
-                    checkAuthentication: checkAuthentication,
-                    checkPermission: checkPermission,
-                    checkGroup: checkGroup,
-                    preferences: state.preferences,
-                    setPreference: setPreference
+                    signIn,
+                    signOut,
+                    setUser,
+                    checkAuthentication,
+                    checkPermission,
+                    checkGroup,
+                    preferences,
+                    setPreference
                 }}
             />
         )
