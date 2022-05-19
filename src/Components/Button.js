@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Link from './Link';
-import { WebAppsContext } from '../Context/index';
+import { WebAppsUXContext } from '../Context/index';
 
 const Button = props => {
     const {
@@ -16,9 +16,9 @@ const Button = props => {
         ...attributes
     } = props;
 
-    const { UI } = useContext(WebAppsContext);
+    const { theme } = useContext(WebAppsUXContext);
 
-    const color = (props.color === 'brand') ? UI.theme : props.color;
+    const color = (props.color === 'brand') ? theme : props.color;
 
     const classes = classNames(
         'font-bold',

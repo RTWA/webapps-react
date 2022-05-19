@@ -109,7 +109,7 @@ export const DefaultToast = ({
     actionLabel,
     secondaryAction,
     secondaryActionLabel,
-    UI,
+    theme,
     color,
     ...otherProps
 }) => {
@@ -154,7 +154,7 @@ export const DefaultToast = ({
                     (action && secondaryAction)
                         ? (
                             <div className="flex flex-row gap-x-6 pt-2">
-                                <button role="button" className={`text-${(color) ? color : UI.theme}-600 dark:text-${(color) ? color : UI.theme}-500 hover:text-${(color) ? color : UI.theme}-500 dark:hover:text-${(color) ? color : UI.theme}-600 font-bold`} onClick={action}>
+                                <button role="button" className={`text-${(color) ? color : theme}-600 dark:text-${(color) ? color : theme}-500 hover:text-${(color) ? color : theme}-500 dark:hover:text-${(color) ? color : theme}-600 font-bold`} onClick={action}>
                                     {actionLabel}
                                 </button>
                                 <button role="button" className="text-gray-500 dark:text-white hover:font-medium" onClick={(secondaryAction === 'dismiss') ? onDismiss : secondaryAction}>
@@ -167,7 +167,7 @@ export const DefaultToast = ({
             {
                 (action && !secondaryAction)
                     ? (
-                        <div className={`flex items-center text-${(color) ? color : UI.theme}-600 dark:text-${(color) ? color : UI.theme}-500 hover:text-${(color) ? color : UI.theme}-500 dark:hover:text-${(color) ? color : UI.theme}-600 px-4`}>
+                        <div className={`flex items-center text-${(color) ? color : theme}-600 dark:text-${(color) ? color : theme}-500 hover:text-${(color) ? color : theme}-500 dark:hover:text-${(color) ? color : theme}-600 px-4`}>
                             <button role="button" className="font-bold" onClick={action}>{actionLabel}</button>
                         </div>
                     ) : null

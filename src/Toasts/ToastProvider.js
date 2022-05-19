@@ -74,7 +74,7 @@ export class ToastProvider extends Component {
     remove = (id, cb = NOOP) => {
         const callback = () => cb(id);
 
-        // Bail if NO toasts exits with this ID
+        // Bail if NO toasts exists with this ID
         if (!this.has(id)) {
             return;
         }
@@ -96,7 +96,7 @@ export class ToastProvider extends Component {
     update = (id, options = {}, cb = NOOP) => {
         const callback = () => cb(id);
 
-        // Bail if NO toasts exist with ID
+        // Bail if NO toasts exists with ID
         if (!this.has(id)) {
             return;
         }
@@ -122,7 +122,7 @@ export class ToastProvider extends Component {
             portalTargetSelector,
             transitionDuration,
             containerClasses,
-            UI,
+            theme,
             color,
         } = this.props;
         const { Toast, ToastContainer } = { ...defaultComponents, ...components };
@@ -186,7 +186,7 @@ export class ToastProvider extends Component {
                                                         actionLabel={actionLabel}
                                                         secondaryAction={secondaryAction}
                                                         secondaryActionLabel={secondaryActionLabel}
-                                                        UI={UI}
+                                                        theme={theme}
                                                         color={color}
                                                         {...unknownConsumerProps}
                                                     />

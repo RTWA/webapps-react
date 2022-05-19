@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { WebAppsContext } from '../Context';
+import { WebAppsUXContext } from '../Context';
 
 const ColorGridSelect = props => {
     const {
@@ -14,7 +14,7 @@ const ColorGridSelect = props => {
         onSelect,
     } = props;
     
-    const { UI } = useContext(WebAppsContext);
+    const { theme } = useContext(WebAppsUXContext);
 
     const labelClasses = classNames(
         'block',
@@ -34,15 +34,15 @@ const ColorGridSelect = props => {
                     Object(colors).map(function (color) {
                         return (color.selected)
                             ? (
-                                <div key={color.value} onClick={() => onSelect(color.value)} className={`border-2 border-white dark:border-gray-800 w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 cursor-pointer ring-4 ring-${UI.theme}-600 dark:ring-${UI.theme}-500 ring-opacity-50`}>
-                                    <div className={`h-10 ${color.bgClasses} not-sr-only`}></div>
-                                    <div className="text-center font-semibold">{color.name}</div>
+                                <div key={color.value} onClick={() => onSelect(color.value)} className={`border-2 border-white dark:border-gray-800 w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 cursor-pointer ring-4 ring-${theme}-600 ring-opacity-50`}>
+                                    <div className={`h-10 ${color.bgClasses} rounded-tl-xl rounded-tr-xl not-sr-only`}></div>
+                                    <div className="text-center text-gray-700 dark:text-gray-300 font-semibold">{color.name}</div>
                                 </div>
                             )
                             : (
                                 <div key={color.value} onClick={() => onSelect(color.value)} className="border-2 border-white dark:border-gray-800 w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 cursor-pointer">
-                                    <div className={`h-10 ${color.bgClasses} not-sr-only`}></div>
-                                    <div className="text-center">{color.name}</div>
+                                    <div className={`h-10 ${color.bgClasses} rounded-tl-xl rounded-tr-xl not-sr-only`}></div>
+                                    <div className="text-center text-gray-700 dark:text-gray-300">{color.name}</div>
                                 </div>
                             )
                     })

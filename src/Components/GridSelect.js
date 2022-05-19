@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { WebAppsContext } from '../Context';
+import { WebAppsUXContext } from '../Context';
 
 const GridSelect = props => {
     const {
@@ -13,8 +13,8 @@ const GridSelect = props => {
         options,
         onSelect,
     } = props;
-    
-    const { UI } = useContext(WebAppsContext);
+
+    const { theme } = useContext(WebAppsUXContext);
 
     const labelClasses = classNames(
         'block',
@@ -29,12 +29,12 @@ const GridSelect = props => {
     return (
         <div className={wrapperClassName}>
             <label className={labelClasses} htmlFor={id}>{label}</label>
-            <div className={`grid grid-cols-1 md:col-span-3 sm:grid-cols-${options.length / 2} xl:grid-cols-${options.length} gap-y-2 gap-x-4 mt-1 xl:mt-0 w-full`}>
+            <div className={`grid grid-cols-1 md:col-span-3 sm:grid-cols-${options.length / 2} xl:grid-cols-${options.length} gap-y-2 gap-x-4 mt-1 xl:mt-0 w-full dark:text-white`}>
                 {
                     Object(options).map(function (option) {
                         return (option.selected)
                             ? (
-                                <div key={option.value} onClick={() => onSelect(option.value)} className={`border-2 border-white dark:border-gray-800 w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 cursor-pointer ring-4 ring-${UI.theme}-600 dark:ring-${UI.theme}-500 ring-opacity-50`}>
+                                <div key={option.value} onClick={() => onSelect(option.value)} className={`border-2 border-white dark:border-gray-800 w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 cursor-pointer ring-4 ring-${theme}-600 dark:ring-${theme}-500 ring-opacity-50`}>
                                     <div className="flex justify-center h-14 p-2 bg-gray-300 dark:bg-gray-700 not-sr-only">
                                         {option.object}
                                     </div>
@@ -50,7 +50,7 @@ const GridSelect = props => {
                     })
                 }
             </div>
-            { (helpText !== '') ? <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{helpText}</p> : null }
+            {(helpText !== '') ? <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{helpText}</p> : null}
         </div>
     )
 }
@@ -65,7 +65,7 @@ GridSelect.propTypes = {
     onSelect: PropTypes.func,
 }
 
-GridSelect.defaultProps = {    
+GridSelect.defaultProps = {
     id: '',
     label: '',
     helpText: '',
