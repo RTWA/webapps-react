@@ -58,7 +58,7 @@ var getCookie = function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(';').shift();
 };
 
-var _excluded$q = ["headers", "accept", "type"],
+var _excluded$r = ["headers", "accept", "type"],
     _excluded2$1 = ["headers", "accept"];
 
 function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -92,7 +92,7 @@ var client = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
-            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$q);
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$r);
             _context2.prev = 2;
             config = _objectSpread$e({
               method: data ? 'POST' : 'GET',
@@ -1553,9 +1553,13 @@ var Loader = function Loader(props) {
       height = props.height,
       width = props.width,
       alignment = props.alignment;
-  var classes = classNames("text-".concat(color, "-300"), "dark:text-".concat(color, "-500"), 'h-full', alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '', className);
+
+  var _useContext = React$1.useContext(WebAppsUXContext),
+      theme = _useContext.theme;
+
+  var classes = classNames("text-".concat(color || 'gray', "-300"), "dark:text-".concat(color || 'gray', "-500"), 'h-full', alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '', className);
   var svgClasses = classNames('loader', "h-".concat(height), "w-".concat(width), "-translate-y-".concat(height / 2), alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '');
-  var circleClasses = classNames('animate-spin', 'inline', 'text-gray-200', 'dark:text-gray-600', "fill-".concat(color, "-600"), "h-".concat(height), "w-".concat(width), className);
+  var circleClasses = classNames('animate-spin', 'inline', 'text-gray-300', 'dark:text-gray-600', "fill-".concat(color || theme, "-600"), "h-".concat(height), "w-".concat(width), className);
 
   if (style === 'circle') {
     return /*#__PURE__*/React__default["default"].createElement("div", {
@@ -1666,7 +1670,6 @@ Loader.propsTypes = {
 };
 Loader.defaultProps = {
   style: '',
-  color: 'gray',
   height: '24',
   width: '24',
   alignment: 'center'
@@ -2381,7 +2384,7 @@ function createLocalStorageStateHook(key, defaultValue) {
     };
 }
 
-var _excluded$p = ["hasToasts", "placement", "className"];
+var _excluded$q = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -2399,7 +2402,7 @@ var ToastContainer = function ToastContainer(_ref) {
   var hasToasts = _ref.hasToasts,
       placement = _ref.placement,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$p);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$q);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: classes(placement, hasToasts, className),
@@ -2534,7 +2537,7 @@ var appearances = {
   }
 };
 
-var _excluded$o = ["autoDismissTimeout", "opacity", "isRunning"],
+var _excluded$p = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "theme", "color"];
 
@@ -2549,7 +2552,7 @@ var Countdown = function Countdown(_ref) {
   _ref.autoDismissTimeout;
       var opacity = _ref.opacity,
       isRunning = _ref.isRunning,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$o);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$p);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "toast-countdown",
@@ -3661,7 +3664,7 @@ TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
 TransitionGroup.defaultProps = defaultProps;
 var TransitionGroup$1 = TransitionGroup;
 
-var _excluded$n = ["autoDismiss", "autoDismissTimeout", "component"];
+var _excluded$o = ["autoDismiss", "autoDismissTimeout", "component"];
 
 function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -3772,7 +3775,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
           autoDismiss = _this$props2.autoDismiss,
           autoDismissTimeout = _this$props2.autoDismissTimeout,
           Toast = _this$props2.component,
-          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$n);
+          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$o);
 
       var isRunning = this.state.isRunning; // NOTE: conditions here so methods can be clean
 
@@ -3795,7 +3798,7 @@ _defineProperty__default["default"](ToastController, "defaultProps", {
   autoDismiss: false
 });
 
-var _excluded$m = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
+var _excluded$n = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -4002,7 +4005,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
             actionLabel = _ref.actionLabel,
             secondaryAction = _ref.secondaryAction,
             secondaryActionLabel = _ref.secondaryActionLabel,
-            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$m);
+            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$n);
 
         return /*#__PURE__*/React__default["default"].createElement(Transition$1, {
           appear: true,
@@ -22340,7 +22343,7 @@ var withWebAppsUX = function withWebAppsUX(Component) {
   return C;
 };
 
-var _excluded$l = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
+var _excluded$m = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
   var id = props.id,
@@ -22354,7 +22357,7 @@ var Input = function Input(props) {
       wrapperClassName = props.wrapperClassName,
       labelClassName = props.labelClassName,
       inputClassName = props.inputClassName,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$l);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$m);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -22453,7 +22456,7 @@ Input.defaultProps = {
   inputClassName: ''
 };
 
-var _excluded$k = ["id", "groupData", "setData", "accessToken", "saveChange"];
+var _excluded$l = ["id", "groupData", "setData", "accessToken", "saveChange"];
 
 var AzureGroupSearch = function AzureGroupSearch(_ref) {
   var _groupData$id, _groupData$id2, _groupData$id3;
@@ -22463,7 +22466,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
       setData = _ref.setData,
       accessToken = _ref.accessToken,
       saveChange = _ref.saveChange,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$k);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$l);
 
   var _useState = React$1.useState([]),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -22604,7 +22607,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
   }, props)), DataListComponent);
 };
 
-var _excluded$j = ["tag", "className", "innerRef", "color", "darkColor", "shade", "darkShade", "pill", "children"];
+var _excluded$k = ["tag", "className", "innerRef", "color", "darkColor", "shade", "darkShade", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -22616,7 +22619,7 @@ var Badge = function Badge(props) {
       darkShade = props.darkShade,
       pill = props.pill,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$j);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$k);
 
   var classes = classNames('inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', 'text-white', 'dark:text-gray-800', "bg-".concat(color, "-").concat(shade), "dark:".concat(darkColor || color, "-").concat(darkShade), pill ? 'rounded-full' : '', className);
   var Tag = attributes.to || attributes.href ? reactRouterDom.NavLink : tag;
@@ -22644,7 +22647,7 @@ Badge.defaultProps = {
   darkShade: '600'
 };
 
-var _excluded$i = ["tag", "className", "innerRef", "color", "darkColor", "children"];
+var _excluded$j = ["tag", "className", "innerRef", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -22653,7 +22656,7 @@ var Banner = function Banner(props) {
       color = props.color,
       darkColor = props.darkColor,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$j);
 
   var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
@@ -22678,7 +22681,7 @@ Banner.defaultProps = {
   darkColor: 'gray-700'
 };
 
-var _excluded$h = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+var _excluded$i = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -22691,7 +22694,7 @@ var Link = function Link(props) {
       href = props.href,
       onClick = props.onClick,
       disabled = props.disabled,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$h);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$i);
 
   var to = rest ? rest.to : null;
 
@@ -22729,22 +22732,25 @@ Link.propTypes = _objectSpread$8(_objectSpread$8({
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
 });
 
-var _excluded$g = ["style", "size", "rounded", "square", "className", "children"];
+var _excluded$h = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
 
 var Button = function Button(props) {
-  var style = props.style,
+  var shade = props.shade,
+      darkShade = props.darkShade,
+      type = props.type,
       size = props.size,
       rounded = props.rounded,
       square = props.square,
+      padding = props.padding,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$g);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
 
   var color = props.color === 'brand' ? theme : props.color;
-  var classes = classNames('font-bold', 'outline-none', 'focus:outline-none', 'ease-linear', 'transition-all', 'duration-150', style === 'full' ? "bg-".concat(color, "-600 hover:bg-").concat(color, "-400 dark:bg-").concat(color, "-400 dark:hover:bg-").concat(color, "-600 text-white dark:text-gray-900") : '', style === 'outline' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent border border-").concat(color, "-600 dark:border-").concat(color, "-400 hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'ghost' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-400 hover:text-white dark:hover:text-white") : '', style === 'link' ? "text-".concat(color, "-600 dark:text-").concat(color, "-400 bg-transparent hover:text-").concat(color, "-400 dark:hover:text-").concat(color, "-600") : '', size === "small" ? 'text-xs px-2 py-1' : size === "large" ? 'text-lg px-8 py-3' : 'px-4 py-2', rounded ? 'rounded-full' : square ? 'rounded-none' : 'rounded-md', className);
+  var classes = classNames('font-bold', 'outline-none', 'focus:outline-none', 'ease-linear', 'transition-all', 'duration-150', type === 'full' ? "bg-".concat(color, "-").concat(shade, " hover:bg-").concat(color, "-").concat(darkShade, " dark:bg-").concat(color, "-").concat(darkShade, " dark:hover:bg-").concat(color, "-").concat(shade, " text-white dark:text-gray-900") : '', type === 'outline' ? "text-".concat(color, "-").concat(shade, " dark:text-").concat(color, "-").concat(darkShade, " bg-transparent border border-").concat(color, "-").concat(shade, " dark:border-").concat(color, "-").concat(darkShade, " hover:bg-").concat(color, "-600 dark:hover:bg-").concat(color, "-").concat(darkShade, " hover:text-white dark:hover:text-white") : '', type === 'ghost' ? "text-".concat(color, "-").concat(shade, " dark:text-").concat(color, "-").concat(darkShade, " bg-transparent hover:bg-").concat(color, "-").concat(shade, " dark:hover:bg-").concat(color, "-").concat(darkShade, " hover:text-white dark:hover:text-white") : '', type === 'link' ? "text-".concat(color, "-").concat(shade, " dark:text-").concat(color, "-").concat(darkShade, " bg-transparent hover:text-").concat(color, "-").concat(darkShade, " dark:hover:text-").concat(color, "-").concat(shade) : '', size === "small" ? 'text-xs' : size === "large" ? 'text-lg' : '', padding ? size === "small" ? 'px-2 py-1' : size === "large" ? 'px-8 py-3' : 'px-4 py-2' : '', rounded ? 'rounded-full' : square ? 'rounded-none' : 'rounded-md', className);
   return props.href !== undefined || props.to !== undefined ? /*#__PURE__*/React__default["default"].createElement(Link, _extends__default["default"]({
     className: classes
   }, attributes), children) : /*#__PURE__*/React__default["default"].createElement("button", _extends__default["default"]({
@@ -22755,15 +22761,21 @@ var Button = function Button(props) {
 
 Button.propTypes = {
   color: PropTypes.string,
-  style: PropTypes.oneOf(['full', 'outline', 'ghost', 'link']),
+  shade: PropTypes.string,
+  darkShade: PropTypes.string,
+  type: PropTypes.oneOf(['full', 'outline', 'ghost', 'link']),
   size: PropTypes.oneOf(['', 'small', 'large']),
   rounded: PropTypes.bool,
-  square: PropTypes.bool
+  square: PropTypes.bool,
+  padding: PropTypes.bool
 };
 Button.defaultProps = {
   color: 'brand',
-  style: 'full',
-  size: ''
+  shade: '600',
+  darkShade: '400',
+  type: 'full',
+  size: '',
+  padding: true
 };
 
 var ColorGridSelect = function ColorGridSelect(props) {
@@ -22831,7 +22843,7 @@ ColorGridSelect.defaultProps = {
   colors: []
 };
 
-var _excluded$f = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+var _excluded$g = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -22841,7 +22853,7 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
       initialColor = props.initialColor,
       confirmColor = props.confirmColor,
       className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$f);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$g);
 
   var isMountedRef = React$1.useRef(true);
   var isMounted = React$1.useCallback(function () {
@@ -22920,7 +22932,7 @@ ConfirmDeleteButton.defaultProps = {
   confirmColor: 'orange'
 };
 
-var _excluded$e = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+var _excluded$f = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -22929,10 +22941,10 @@ var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
       confirmText = props.confirmText,
       onCancel = props.onCancel,
       onConfirm = props.onConfirm,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$e);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$f);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
-    className: "fixed z-50 inset-0 overflow-y-auto"
+    className: "fixed z-[500] inset-0 overflow-y-auto"
   }, attributes), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -23003,7 +23015,7 @@ ConfirmDeleteModal.defaultProps = {
   confirmText: "Yes"
 };
 
-var _excluded$d = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
+var _excluded$e = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
 
 var DataSuggest = function DataSuggest(_ref) {
   var data = _ref.data,
@@ -23013,7 +23025,7 @@ var DataSuggest = function DataSuggest(_ref) {
       limit = _ref.limit,
       labelKey = _ref.labelKey,
       valueKey = _ref.valueKey,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$d);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$e);
 
   var _useState = React$1.useState(0),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -23139,14 +23151,15 @@ DataSuggest.defaultProps = {
   limit: 0
 };
 
-var _excluded$c = ["show", "text", "buttonClassNames", "dropClassNames"];
+var _excluded$d = ["show", "text", "origin", "buttonClassNames", "dropClassNames"];
 
 var DropDownButton = function DropDownButton(props) {
   var show = props.show,
       text = props.text,
+      origin = props.origin,
       buttonClassNames = props.buttonClassNames,
       dropClassNames = props.dropClassNames,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$c);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$d);
 
   var _useState = React$1.useState(show),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -23161,15 +23174,18 @@ var DropDownButton = function DropDownButton(props) {
     setOpen(!open);
   };
 
-  var close = function close() {
+  var close = function close(action) {
+    action();
     setOpen(false);
   };
 
-  var dropClass = classNames('origin-top-right', 'absolute', 'right-0', 'w-56', 'bg-white', 'dark:bg-gray-700', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'z-20', dropClassNames, open ? '' : 'hidden');
+  var dropClass = classNames("origin-top-".concat(origin), 'absolute', "".concat(origin, "-0"), 'w-56', 'bg-white', 'dark:bg-gray-700', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'z-20', dropClassNames, open ? '' : 'hidden');
   var childrenWithClose = React__default["default"].Children.map(props.children, function (child) {
     if ( /*#__PURE__*/React__default["default"].isValidElement(child)) {
       return /*#__PURE__*/React__default["default"].cloneElement(child, {
-        onClick: close
+        onClick: function onClick() {
+          return close(child.props.onClick);
+        }
       });
     }
 
@@ -23188,7 +23204,7 @@ var DropDownButton = function DropDownButton(props) {
   }), text), /*#__PURE__*/React__default["default"].createElement("div", {
     className: dropClass
   }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "py-1",
+    className: "py-1 flex flex-col",
     role: "menu",
     "aria-orientation": "vertical",
     "aria-labelledby": id
@@ -23196,7 +23212,50 @@ var DropDownButton = function DropDownButton(props) {
 };
 
 DropDownButton.propTypes = {
-  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  origin: PropTypes.oneOf(['right', 'left'])
+};
+DropDownButton.defaultProps = {
+  origin: 'right'
+};
+
+var _excluded$c = ["active", "align", "shade", "darkShade", "className", "children"];
+
+var DropDownItem = function DropDownItem(props) {
+  var active = props.active,
+      align = props.align,
+      shade = props.shade,
+      darkShade = props.darkShade,
+      className = props.className,
+      children = props.children,
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$c);
+
+  var _useContext = React$1.useContext(WebAppsUXContext),
+      theme = _useContext.theme;
+
+  var color = props.color === 'brand' ? theme : props.color;
+  var classes = classNames("text-".concat(align), 'py-2', 'px-4', 'outline-none', 'focus:outline-none', 'ease-linear', 'transition-all', 'duration-150', "text-".concat(color, "-").concat(shade), "dark:text-".concat(color, "-").concat(darkShade), 'bg-transparent', 'hover:font-semibold', "hover:bg-gray-100", "dark:hover:bg-gray-600", active ? 'font-semibold bg-gray-100 dark:bg-gray-600' : '', className);
+  return props.href !== undefined || props.to !== undefined ? /*#__PURE__*/React__default["default"].createElement(Link, _extends__default["default"]({
+    className: classes
+  }, attributes), children) : /*#__PURE__*/React__default["default"].createElement("button", _extends__default["default"]({
+    type: "button",
+    className: classes
+  }, attributes), children);
+};
+
+DropDownItem.propTypes = {
+  active: PropTypes.bool,
+  align: PropTypes.oneOf(['left', 'right', 'center']),
+  color: PropTypes.string,
+  shade: PropTypes.string,
+  darkShade: PropTypes.string
+};
+DropDownItem.defaultProps = {
+  active: false,
+  align: 'center',
+  color: 'brand',
+  shade: '600',
+  darkShade: '400'
 };
 
 var GridSelect = function GridSelect(props) {
@@ -24788,7 +24847,7 @@ var Select = function Select(props) {
       theme = _useContext.theme;
 
   var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
-  var selectClasses = classNames('bg-transparent', 'border-2', 'border-gray-300', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'focus:bg-gray-50', 'dark:focus:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', 'ring-0', "focus:border-".concat(theme, "-600"), "dark:focus:border-".concat(theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500' : '', actionLocation === 'left' ? 'pl-10' : '', selectClassName);
+  var selectClasses = classNames('bg-transparent', 'border-2', 'border-gray-400', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'focus:bg-gray-50', 'dark:focus:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', 'ring-0', "focus:border-".concat(theme, "-600"), "dark:focus:border-".concat(theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500' : '', actionLocation === 'left' ? 'pl-10' : '', selectClassName);
 
   var Append = function Append() {
     if (state === 'saving') {
@@ -42604,7 +42663,7 @@ var FlyoutContent = function FlyoutContent(props) {
   return /*#__PURE__*/React__default["default"].createElement(Scrollbar, {
     className: "flex flex-col flex-auto relative"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "p-6 w-full"
+    className: "p-6 w-full h-full bg-white dark:bg-gray-900"
   }, children));
 };
 
@@ -43008,6 +43067,7 @@ var returnLibrary = function returnLibrary() {
     DrawerItem: DrawerItem,
     DrawerItems: DrawerItems,
     DropDownButton: DropDownButton,
+    DropDownItem: DropDownItem,
     Flyout: Flyout$1,
     FlyoutContent: FlyoutContent,
     FlyoutHeader: FlyoutHeader,

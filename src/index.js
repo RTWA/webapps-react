@@ -13,6 +13,7 @@ import ConfirmDeleteButton from './Components/ConfirmDeleteButton';
 import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
 import DataSuggest from './Components/DataSuggest';
 import DropDownButton from './Components/DropDownButton';
+import DropDownItem from './Components/DropDownItem';
 import GridSelect from './Components/GridSelect';
 import Headerbar from './Components/HeaderBar';
 import Icon from './Components/Icon';
@@ -91,6 +92,7 @@ const returnLibrary = () => {
         DrawerItem,
         DrawerItems,
         DropDownButton,
+        DropDownItem,
         Flyout,
         FlyoutContent,
         FlyoutHeader,
