@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { WebAppsUXContext } from '../Context';
 
 const Loader = props => {
     const {
         className,
-        style,
+        type,
         color,
         height,
         width,
         alignment,
     } = props;
 
+    const { theme } = useContext(WebAppsUXContext);
+
     const classes = classNames(
-        `text-${color}-300`,
-        `dark:text-${color}-500`,
+        `text-${color || 'gray'}-300`,
+        `dark:text-${color || 'gray'}-500`,
         'h-full',
         (alignment === 'left') ? 'mr-auto' : '',
         (alignment === 'center') ? 'mx-auto' : '',
@@ -35,15 +38,15 @@ const Loader = props => {
     const circleClasses = classNames(
         'animate-spin',
         'inline',
-        'text-gray-200',
+        'text-gray-300',
         'dark:text-gray-600',
-        `fill-${color}-600`,
+        `fill-${color || theme}-600`,
         `h-${height}`,
         `w-${width}`,
         className,
     );
 
-    if (style === 'circle') {
+    if (type === 'circle') {
         return (
             <div className={`text-${alignment}`}>
                 <svg role="status" className={circleClasses} viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +83,7 @@ const Loader = props => {
 }
 
 Loader.propsTypes = {
-    style: PropTypes.oneOf(['', 'circle']),
+    type: PropTypes.oneOf(['', 'circle']),
     color: PropTypes.string,
     height: PropTypes.string,
     width: PropTypes.string,
@@ -88,8 +91,7 @@ Loader.propsTypes = {
 }
 
 Loader.defaultProps = {
-    style: '',
-    color: 'gray',
+    type: '',
     height: '24',
     width: '24',
     alignment: 'center',

@@ -1548,7 +1548,7 @@ var AuthContext = /*#__PURE__*/React__default["default"].createContext({});
 
 var Loader = function Loader(props) {
   var className = props.className,
-      style = props.style,
+      type = props.type,
       color = props.color,
       height = props.height,
       width = props.width,
@@ -1561,7 +1561,7 @@ var Loader = function Loader(props) {
   var svgClasses = classNames('loader', "h-".concat(height), "w-".concat(width), "-translate-y-".concat(height / 2), alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '');
   var circleClasses = classNames('animate-spin', 'inline', 'text-gray-300', 'dark:text-gray-600', "fill-".concat(color || theme, "-600"), "h-".concat(height), "w-".concat(width), className);
 
-  if (style === 'circle') {
+  if (type === 'circle') {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: "text-".concat(alignment)
     }, /*#__PURE__*/React__default["default"].createElement("svg", {
@@ -1662,14 +1662,14 @@ var Loader = function Loader(props) {
 };
 
 Loader.propsTypes = {
-  style: PropTypes.oneOf(['', 'circle']),
+  type: PropTypes.oneOf(['', 'circle']),
   color: PropTypes.string,
   height: PropTypes.string,
   width: PropTypes.string,
   alignment: PropTypes.oneOf(['left', 'center', 'right'])
 };
 Loader.defaultProps = {
-  style: '',
+  type: '',
   height: '24',
   width: '24',
   alignment: 'center'
