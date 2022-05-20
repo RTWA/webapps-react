@@ -36,7 +36,7 @@ const Select = props => {
     const selectClasses = classNames(
         'bg-transparent',
         'border-2',
-        'border-gray-300',
+        'border-gray-400',
         'text-gray-900',
         'outline-none',
         'text-sm',
