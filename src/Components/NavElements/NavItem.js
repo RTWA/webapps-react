@@ -6,6 +6,7 @@ import Icon from '../Icon';
 import Link from '../Link';
 
 import { DropdownContext } from './NavDropdown';
+import { WebAppsUXContext } from '../../Context';
 
 const NavItem = props => {
     const {
@@ -21,6 +22,8 @@ const NavItem = props => {
     } = props
 
     const { isOpen } = useContext(DropdownContext);
+    const { useNavigation } = useContext(WebAppsUXContext);
+    const { navigation, toggleNavigation } = useNavigation;
 
     const linkClasses = classNames(
         'relative',
@@ -51,10 +54,17 @@ const NavItem = props => {
         )
     }
 
+    const click = () => {
+        if (navigation.display_mode === 'overlay' && navigation.opened) {
+            toggleNavigation();
+        }
+    }
+
     return (
         <div className={className} ref={innerRef}>
             <Link
                 className={linkClasses}
+                onClick={click}
                 {...routerLinkProps}
                 {...rest}
                 tabIndex={isOpen === false ? -1 : 0}

@@ -25030,16 +25030,29 @@ var NavChild = function NavChild(props) {
   var _useContext = useContext(DropdownContext),
       isOpen = _useContext.isOpen;
 
+  var _useContext2 = useContext(WebAppsUXContext),
+      useNavigation = _useContext2.useNavigation;
+
+  var navigation = useNavigation.navigation,
+      toggleNavigation = useNavigation.toggleNavigation;
   var linkClasses = classNames('relative', 'flex', 'items-center', 'justify-start', 'mb-1', 'px-4', 'py-2.5', 'text-sm', 'font-medium', 'leading-5', 'rounded-md', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:bg-black/10 dark:hover:bg-white/10") : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10');
   var routerLinkProps = rest.to && {
     exact: true,
     activeClassName: classNames(color ? "text-".concat(color, "-600 bg-black/10 dark:bg-white/10") : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10')
   };
+
+  var click = function click() {
+    if (navigation.display_mode === 'overlay' && navigation.opened) {
+      toggleNavigation();
+    }
+  };
+
   return /*#__PURE__*/React$1.createElement("div", {
     className: className,
     ref: innerRef
   }, /*#__PURE__*/React$1.createElement(Link, _extends({
-    className: linkClasses
+    className: linkClasses,
+    onClick: click
   }, routerLinkProps, rest, {
     tabIndex: isOpen === false ? -1 : 0
   }), icon && /*#__PURE__*/React$1.createElement(Icon, {
@@ -25072,16 +25085,29 @@ var NavItem = function NavItem(props) {
   var _useContext = useContext(DropdownContext),
       isOpen = _useContext.isOpen;
 
+  var _useContext2 = useContext(WebAppsUXContext),
+      useNavigation = _useContext2.useNavigation;
+
+  var navigation = useNavigation.navigation,
+      toggleNavigation = useNavigation.toggleNavigation;
   var linkClasses = classNames('relative', 'flex', 'items-center', 'justify-start', 'mb-1', 'px-4', 'py-2.5', 'text-sm', 'font-medium', 'leading-5', 'rounded-md', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:bg-black/10 dark:hover:bg-white/10") : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10');
   var routerLinkProps = rest.to && {
     exact: rest.to.startsWith('/settings') ? false : true,
     activeClassName: classNames(color ? "text-".concat(color, "-600 bg-black/10 dark:bg-white/10") : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10')
   };
+
+  var click = function click() {
+    if (navigation.display_mode === 'overlay' && navigation.opened) {
+      toggleNavigation();
+    }
+  };
+
   return /*#__PURE__*/React$1.createElement("div", {
     className: className,
     ref: innerRef
   }, /*#__PURE__*/React$1.createElement(Link, _extends({
-    className: linkClasses
+    className: linkClasses,
+    onClick: click
   }, routerLinkProps, rest, {
     tabIndex: isOpen === false ? -1 : 0
   }), icon && /*#__PURE__*/React$1.createElement(Icon, {
