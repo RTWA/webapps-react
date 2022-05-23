@@ -1,5 +1,4 @@
-import React from 'react';
-import { createLocalStorageStateHook } from 'use-local-storage-state';
+import React, { useState } from 'react';
 import invariant from 'tiny-invariant';
 
 export const WebAppsDocsContext = React.createContext({});
@@ -39,10 +38,8 @@ const colors = [
     }
 ];
 
-const useUI = createLocalStorageStateHook('UI', { theme: 'indigo', dark_mode: 'light', colors: colors });
-
 export const WebAppsDocs = props => {
-    const [UI, setUI] = useUI();
+    const [UI, setUI] = useState({ theme: 'indigo', dark_mode: 'light', colors: colors });
 
     return (
         <WebAppsDocsContext.Provider value={{ UI, setUI }}>
