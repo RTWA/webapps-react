@@ -2203,187 +2203,6 @@ var withAuth = function withAuth(Component) {
   return C;
 };
 
-/**
- * Abstraction for localStorage that uses an in-memory fallback when localStorage throws an error.
- * Reasons for throwing an error:
- * - maximum quota is exceeded
- * - under Mobile Safari (since iOS 5) when the user enters private mode `localStorage.setItem()`
- *   will throw
- * - trying to access localStorage object when cookies are disabled in Safari throws
- *   "SecurityError: The operation is insecure."
- */
-const data = {};
-var storage = {
-    get(key, defaultValue) {
-        var _a;
-        try {
-            return (_a = data[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
-        }
-        catch (_b) {
-            return defaultValue;
-        }
-    },
-    set(key, value) {
-        try {
-            localStorage.setItem(key, JSON.stringify(value));
-            data[key] = undefined;
-            return true;
-        }
-        catch (_a) {
-            data[key] = value;
-            return false;
-        }
-    },
-    remove(key) {
-        data[key] = undefined;
-        localStorage.removeItem(key);
-    },
-};
-/**
- * A wrapper for `JSON.parse()` which supports the return value of `JSON.stringify(undefined)`
- * which returns the string `"undefined"` and this method returns the value `undefined`.
- */
-function parseJSON(value) {
-    return value === 'undefined'
-        ? undefined
-        : // JSON.parse() doesn't accept non-string values, this is why we pass empty
-            // string which will throw an error which can be handled
-            JSON.parse(value !== null && value !== void 0 ? value : '');
-}
-
-function useLocalStorageStateBase(key, defaultValue) {
-    const defaultValueForKey = React$1.useMemo(() => {
-        const isCallable = (value) => typeof value === 'function';
-        return isCallable(defaultValue) ? defaultValue() : defaultValue;
-        // disabling "exhaustive-deps" because we don't want to change the default state when the
-        // `defaultValue` is changed
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [key]);
-    const defaultState = React$1.useMemo(() => {
-        return {
-            value: storage.get(key, defaultValueForKey),
-            isPersistent: (() => {
-                /**
-                 * We want to return `true` on the server. If you render a message based on
-                 * `isPersistent` and the server returns `false` then the message will flicker until
-                 * hydration is done:
-                 * `{!isPersistent && <span>You changes aren't being persisted.</span>}`
-                 */
-                if (typeof window === 'undefined') {
-                    return true;
-                }
-                try {
-                    // - ulss = use-local-storage-state
-                    // - using shorthand to make library smaller in size
-                    localStorage.setItem('__ulss', '#');
-                    localStorage.removeItem('__ulss');
-                    return true;
-                }
-                catch (_a) {
-                    return false;
-                }
-            })(),
-        };
-    }, [key, defaultValueForKey]);
-    const [{ value, isPersistent }, setState] = React$1.useState(defaultState);
-    const updateValue = React$1.useMemo(() => {
-        return (newValue) => {
-            const isCallable = (value) => typeof value === 'function';
-            if (isCallable(newValue)) {
-                setState((state) => ({
-                    value: newValue(state.value),
-                    isPersistent: storage.set(key, newValue(state.value)),
-                }));
-            }
-            else {
-                setState({
-                    value: newValue,
-                    isPersistent: storage.set(key, newValue),
-                });
-            }
-        };
-    }, [key]);
-    // syncs changes across tabs and iframe's
-    React$1.useEffect(() => {
-        const onStorage = (e) => {
-            if (e.storageArea === localStorage && e.key === key) {
-                setState({
-                    value: storage.get(key, defaultValueForKey),
-                    isPersistent: true,
-                });
-            }
-        };
-        window.addEventListener('storage', onStorage);
-        return () => window.removeEventListener('storage', onStorage);
-    }, [key, defaultValueForKey]);
-    const isFirstRender = React$1.useRef(true);
-    React$1.useEffect(() => {
-        // https://github.com/astoilkov/use-local-storage-state/issues/30
-        if (isFirstRender.current && defaultState.value === undefined) {
-            return;
-        }
-        // set the `defaultValue` in the localStorage on initial render:
-        // https://github.com/astoilkov/use-local-storage-state/issues/26
-        storage.set(key, defaultState.value);
-        if (isFirstRender.current) {
-            isFirstRender.current = false;
-            return;
-        }
-        // update the state when the `key` property changes (not on first render because this will
-        // cause a second unnecessary render)
-        setState(defaultState);
-    }, [key, defaultState]);
-    return React$1.useMemo(() => [
-        value,
-        updateValue,
-        {
-            isPersistent: isPersistent,
-            removeItem() {
-                storage.remove(key);
-                setState((state) => ({
-                    value: defaultValueForKey,
-                    isPersistent: state.isPersistent,
-                }));
-            },
-        },
-    ], [value, updateValue, isPersistent, key, defaultValueForKey]);
-}
-
-function createLocalStorageStateHook(key, defaultValue) {
-    const setValueFunctions = [];
-    const removeItemFunctions = [];
-    return function useLocalStorageStateHook() {
-        const [value, setValue, { isPersistent, removeItem }] = useLocalStorageStateBase(key, defaultValue);
-        const setValueAll = React$1.useCallback((newValue) => {
-            ReactDOM.unstable_batchedUpdates(() => {
-                for (const setValueFunction of setValueFunctions) {
-                    setValueFunction(newValue);
-                }
-            });
-        }, []);
-        React$1.useEffect(() => {
-            setValueFunctions.push(setValue);
-            removeItemFunctions.push(removeItem);
-            return () => {
-                setValueFunctions.splice(setValueFunctions.indexOf(setValue), 1);
-                removeItemFunctions.splice(removeItemFunctions.indexOf(removeItem), 1);
-            };
-        }, [setValue, removeItem]);
-        return React$1.useMemo(() => [
-            value,
-            setValueAll,
-            {
-                isPersistent,
-                removeItem() {
-                    for (const removeItemFunction of removeItemFunctions) {
-                        removeItemFunction();
-                    }
-                },
-            },
-        ], [value, setValueAll, isPersistent]);
-    };
-}
-
 var _excluded$q = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
@@ -4357,7 +4176,6 @@ var WebApps = function WebApps(props) {
                     appearance: 'success'
                   }); // Reload Navigation
 
-                  // Reload Navigation
                   loadNavigation();
                   Object.keys(apps.local).map(function (key) {
                     if (e.target.dataset.slug === apps.local[key].slug) {
@@ -4412,7 +4230,6 @@ var WebApps = function WebApps(props) {
                     appearance: 'success'
                   }); // Reload Navigation
 
-                  // Reload Navigation
                   loadNavigation();
                   Object.keys(apps.local).map(function (key) {
                     if (e.target.dataset.slug === apps.local[key].slug) {
@@ -4467,7 +4284,6 @@ var WebApps = function WebApps(props) {
                     appearance: 'success'
                   }); // Reload Navigation
 
-                  // Reload Navigation
                   loadNavigation();
                   Object.keys(apps.local).map(function (key) {
                     if (e.target.dataset.slug === apps.local[key].slug) {
@@ -42923,6 +42739,187 @@ ComponentError.defaultProps = {
   theme: 'indigo'
 };
 var ComponentError$1 = reactRouterDom.withRouter(ComponentError);
+
+/**
+ * Abstraction for localStorage that uses an in-memory fallback when localStorage throws an error.
+ * Reasons for throwing an error:
+ * - maximum quota is exceeded
+ * - under Mobile Safari (since iOS 5) when the user enters private mode `localStorage.setItem()`
+ *   will throw
+ * - trying to access localStorage object when cookies are disabled in Safari throws
+ *   "SecurityError: The operation is insecure."
+ */
+const data = {};
+var storage = {
+    get(key, defaultValue) {
+        var _a;
+        try {
+            return (_a = data[key]) !== null && _a !== void 0 ? _a : parseJSON(localStorage.getItem(key));
+        }
+        catch (_b) {
+            return defaultValue;
+        }
+    },
+    set(key, value) {
+        try {
+            localStorage.setItem(key, JSON.stringify(value));
+            data[key] = undefined;
+            return true;
+        }
+        catch (_a) {
+            data[key] = value;
+            return false;
+        }
+    },
+    remove(key) {
+        data[key] = undefined;
+        localStorage.removeItem(key);
+    },
+};
+/**
+ * A wrapper for `JSON.parse()` which supports the return value of `JSON.stringify(undefined)`
+ * which returns the string `"undefined"` and this method returns the value `undefined`.
+ */
+function parseJSON(value) {
+    return value === 'undefined'
+        ? undefined
+        : // JSON.parse() doesn't accept non-string values, this is why we pass empty
+            // string which will throw an error which can be handled
+            JSON.parse(value !== null && value !== void 0 ? value : '');
+}
+
+function useLocalStorageStateBase(key, defaultValue) {
+    const defaultValueForKey = React$1.useMemo(() => {
+        const isCallable = (value) => typeof value === 'function';
+        return isCallable(defaultValue) ? defaultValue() : defaultValue;
+        // disabling "exhaustive-deps" because we don't want to change the default state when the
+        // `defaultValue` is changed
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [key]);
+    const defaultState = React$1.useMemo(() => {
+        return {
+            value: storage.get(key, defaultValueForKey),
+            isPersistent: (() => {
+                /**
+                 * We want to return `true` on the server. If you render a message based on
+                 * `isPersistent` and the server returns `false` then the message will flicker until
+                 * hydration is done:
+                 * `{!isPersistent && <span>You changes aren't being persisted.</span>}`
+                 */
+                if (typeof window === 'undefined') {
+                    return true;
+                }
+                try {
+                    // - ulss = use-local-storage-state
+                    // - using shorthand to make library smaller in size
+                    localStorage.setItem('__ulss', '#');
+                    localStorage.removeItem('__ulss');
+                    return true;
+                }
+                catch (_a) {
+                    return false;
+                }
+            })(),
+        };
+    }, [key, defaultValueForKey]);
+    const [{ value, isPersistent }, setState] = React$1.useState(defaultState);
+    const updateValue = React$1.useMemo(() => {
+        return (newValue) => {
+            const isCallable = (value) => typeof value === 'function';
+            if (isCallable(newValue)) {
+                setState((state) => ({
+                    value: newValue(state.value),
+                    isPersistent: storage.set(key, newValue(state.value)),
+                }));
+            }
+            else {
+                setState({
+                    value: newValue,
+                    isPersistent: storage.set(key, newValue),
+                });
+            }
+        };
+    }, [key]);
+    // syncs changes across tabs and iframe's
+    React$1.useEffect(() => {
+        const onStorage = (e) => {
+            if (e.storageArea === localStorage && e.key === key) {
+                setState({
+                    value: storage.get(key, defaultValueForKey),
+                    isPersistent: true,
+                });
+            }
+        };
+        window.addEventListener('storage', onStorage);
+        return () => window.removeEventListener('storage', onStorage);
+    }, [key, defaultValueForKey]);
+    const isFirstRender = React$1.useRef(true);
+    React$1.useEffect(() => {
+        // https://github.com/astoilkov/use-local-storage-state/issues/30
+        if (isFirstRender.current && defaultState.value === undefined) {
+            return;
+        }
+        // set the `defaultValue` in the localStorage on initial render:
+        // https://github.com/astoilkov/use-local-storage-state/issues/26
+        storage.set(key, defaultState.value);
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        // update the state when the `key` property changes (not on first render because this will
+        // cause a second unnecessary render)
+        setState(defaultState);
+    }, [key, defaultState]);
+    return React$1.useMemo(() => [
+        value,
+        updateValue,
+        {
+            isPersistent: isPersistent,
+            removeItem() {
+                storage.remove(key);
+                setState((state) => ({
+                    value: defaultValueForKey,
+                    isPersistent: state.isPersistent,
+                }));
+            },
+        },
+    ], [value, updateValue, isPersistent, key, defaultValueForKey]);
+}
+
+function createLocalStorageStateHook(key, defaultValue) {
+    const setValueFunctions = [];
+    const removeItemFunctions = [];
+    return function useLocalStorageStateHook() {
+        const [value, setValue, { isPersistent, removeItem }] = useLocalStorageStateBase(key, defaultValue);
+        const setValueAll = React$1.useCallback((newValue) => {
+            ReactDOM.unstable_batchedUpdates(() => {
+                for (const setValueFunction of setValueFunctions) {
+                    setValueFunction(newValue);
+                }
+            });
+        }, []);
+        React$1.useEffect(() => {
+            setValueFunctions.push(setValue);
+            removeItemFunctions.push(removeItem);
+            return () => {
+                setValueFunctions.splice(setValueFunctions.indexOf(setValue), 1);
+                removeItemFunctions.splice(removeItemFunctions.indexOf(removeItem), 1);
+            };
+        }, [setValue, removeItem]);
+        return React$1.useMemo(() => [
+            value,
+            setValueAll,
+            {
+                isPersistent,
+                removeItem() {
+                    for (const removeItemFunction of removeItemFunctions) {
+                        removeItemFunction();
+                    }
+                },
+            },
+        ], [value, setValueAll, isPersistent]);
+    };
+}
 
 var WebAppsDocsContext = /*#__PURE__*/React__default["default"].createContext({});
 var colors = [{
