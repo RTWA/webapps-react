@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { WebAppsContext } from '../Context';
+import { WebAppsUXContext } from '../Context';
+import Loader from './Loader';
 
 const Switch = props => {
     const {
@@ -19,7 +20,7 @@ const Switch = props => {
         ...attributes
     } = props;
 
-    const { UI } = useContext(WebAppsContext);
+    const { theme } = useContext(WebAppsUXContext);
 
     const classes = classNames(
         'outline-none',
@@ -41,7 +42,7 @@ const Switch = props => {
         'transition-colours',
         'duration-500',
         (disabled) ? 'cursor-not-allowed' : 'cursor-pointer',
-        (checked) ? `border-${UI.theme}-600 dark:border-${UI.theme}-500` : 'border-gray-300 dark:border-gray-700',
+        (checked) ? `border-${theme}-600 dark:border-${theme}-500` : 'border-gray-300 dark:border-gray-700',
         (state === 'error') ? 'border-red-500' : '',
         (state === 'saved') ? 'border-green-500' : '',
         (state === 'saving') ? 'border-orange-500' : '',
@@ -56,7 +57,7 @@ const Switch = props => {
         'duration-500',
         (disabled) ? 'cursor-not-allowed' : 'cursor-pointer',
         (!checked && state === '') ? 'bg-gray-300 dark:bg-gray-700' : '',
-        (checked && state === '') ? `bg-${UI.theme}-600 dark:bg-${UI.theme}-500` : '',
+        (checked && state === '') ? `bg-${theme}-600 dark:bg-${theme}-500` : '',
         (state === 'error') ? 'bg-red-500' : '',
         (state === 'saved') ? 'bg-green-500' : '',
         (state === 'saving') ? 'bg-orange-500' : '',

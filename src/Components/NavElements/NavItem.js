@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Badge from '../Badge';
@@ -7,6 +6,7 @@ import Icon from '../Icon';
 import Link from '../Link';
 
 import { DropdownContext } from './NavDropdown';
+import { WebAppsUXContext } from '../../Context';
 
 const NavItem = props => {
     const {
@@ -22,43 +22,58 @@ const NavItem = props => {
     } = props
 
     const { isOpen } = useContext(DropdownContext);
+    const { useNavigation } = useContext(WebAppsUXContext);
+    const { navigation, toggleNavigation } = useNavigation;
 
     const linkClasses = classNames(
+        'relative',
         'flex',
         'items-center',
-        'py-2',
+        'justify-start',
         'mb-1',
-        'rounded-lg',
+        'px-4',
+        'py-2.5',
+        'text-sm',
+        'font-medium',
+        'leading-5',
+        'rounded-md',
         'transition-colors',
         'duration-200',
         'focus:outline-none',
         color
-            ? `text-${color}-600 hover:text-${color}-800 dark:text-${color}-400 dark:hover:text-${color}-100 hover:bg-${color}-100 dark:hover:bg-${color}-600`
-            : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600',
+            ? `text-${color}-600 hover:bg-black/10 dark:hover:bg-white/10`
+            : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10'
     )
 
     const routerLinkProps = rest.to && {
-        exact: true,
+        exact: (rest.to.startsWith('/settings')) ? false : true,
         activeClassName: classNames(
             color
-                ? `text-${color}-800 bg-gray-100 dark:text-${color}-100 dark:bg-gray-600`
-                : 'text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600',
+                ? `text-${color}-600 bg-black/10 dark:bg-white/10`
+                : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10'
         )
     }
 
+    const click = () => {
+        if (navigation.display_mode === 'overlay' && navigation.opened) {
+            toggleNavigation();
+        }
+    }
+
     return (
-        <li className={className} ref={innerRef}>
+        <div className={className} ref={innerRef}>
             <Link
                 className={linkClasses}
+                onClick={click}
                 {...routerLinkProps}
                 {...rest}
                 tabIndex={isOpen === false ? -1 : 0}
             >
-                {icon && <Icon icon={icon} className="h-5 w-10" />}
-                <span className="font-medium text-sm">{name}</span>
+                {icon && <Icon icon={icon} className="h-6 w-6 mr-4" />}
+                <span>{name}</span>
                 {badge && <Badge {...{ ...badge, text: null }}>{badge.text}</Badge>}
             </Link>
-        </li>
+        </div>
     )
 }
 

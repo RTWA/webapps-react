@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { WebAppsContext } from '../Context/index';
+import { WebAppsUXContext } from '../Context/index';
 import Loader from './Loader';
 
 const Input = props => {
@@ -20,7 +20,7 @@ const Input = props => {
         ...attributes
     } = props;
 
-    const { UI } = useContext(WebAppsContext);
+    const { theme } = useContext(WebAppsUXContext);
 
     const labelClasses = classNames(
         'block',
@@ -33,9 +33,9 @@ const Input = props => {
     )
 
     const inputClasses = classNames(
-        'bg-gray-50',
+        'bg-transparent',
         'border-2',
-        'border-gray-300',
+        'border-gray-400',
         'text-gray-900',
         'outline-none',
         'text-sm',
@@ -43,18 +43,18 @@ const Input = props => {
         'block',
         'w-full',
         'p-2.5',
-        'dark:bg-gray-700',
+        'focus:bg-gray-50',
+        'dark:focus:bg-gray-700',
         'dark:border-gray-600',
         'dark:placeholder-gray-400',
         'dark:text-white',
         'transition-colors',
-        `focus:ring-${UI.theme}-600`,
-        `dark:focus:ring-${UI.theme}-500`,
-        `focus:border-${UI.theme}-600`,
-        `dark:focus:border-${UI.theme}-500`,
-        (state === 'error') ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500' : '',
-        (state === 'saved') ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500 dark:focus:ring-green-500' : '',
-        (state === 'saving') ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-orange-500 dark:focus:ring-orange-500' : '',
+        'focus:ring-0',
+        `focus:border-${theme}-600`,
+        `dark:focus:border-${theme}-500`,
+        (state === 'error') ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500' : '',
+        (state === 'saved') ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500' : '',
+        (state === 'saving') ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500' : '',
         (actionLocation === 'left') ? 'pl-10' : '',
         inputClassName,
     )

@@ -29,7 +29,7 @@ const Scrollbar = props => {
     }
 
     const createPerfectScrollbar = () => {
-        setInstance(new PerfectScrollbar(ref.current, settings))
+        setInstance(new PerfectScrollbar(ref.current))
     }
 
     const uninit = () => {

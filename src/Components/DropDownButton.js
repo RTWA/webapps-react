@@ -8,6 +8,7 @@ const DropDownButton = props => {
     const {
         show,
         text,
+        origin,
         buttonClassNames,
         dropClassNames,
         ...rest
@@ -22,14 +23,15 @@ const DropDownButton = props => {
         setOpen(!open);
     }
 
-    const close = () => {
+    const close = action => {
+        action();
         setOpen(false);
     }
 
     const dropClass = classNames(
-        'origin-top-right',
+        `origin-top-${origin}`,
         'absolute',
-        'right-0',
+        `${origin}-0`,
         'w-56',
         'bg-white',
         'dark:bg-gray-700',
@@ -44,7 +46,7 @@ const DropDownButton = props => {
 
     const childrenWithClose = React.Children.map(props.children, child => {
         if (React.isValidElement(child)) {
-            return React.cloneElement(child, { onClick: close });
+            return React.cloneElement(child, { onClick: () => close(child.props.onClick) });
         }
         return child;
     });
@@ -58,7 +60,7 @@ const DropDownButton = props => {
                 {text}
             </Button>
             <div className={dropClass}>
-                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby={id}>
+                <div className="py-1 flex flex-col" role="menu" aria-orientation="vertical" aria-labelledby={id}>
                     {childrenWithClose}
                 </div>
             </div>
@@ -67,7 +69,12 @@ const DropDownButton = props => {
 }
 
 DropDownButton.propTypes = {
-    text: PropsTypes.oneOfType([PropsTypes.string, PropsTypes.object])
+    text: PropsTypes.oneOfType([PropsTypes.string, PropsTypes.object]),
+    origin: PropsTypes.oneOf(['right', 'left']),
+}
+
+DropDownButton.defaultProps = {
+    origin: 'right',
 }
 
 export default DropDownButton;

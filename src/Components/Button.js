@@ -3,22 +3,25 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Link from './Link';
-import { WebAppsContext } from '../Context/index';
+import { WebAppsUXContext } from '../Context/index';
 
 const Button = props => {
     const {
-        style,
+        shade,
+        darkShade,
+        type,
         size,
         rounded,
         square,
+        padding,
         className,
         children,
         ...attributes
     } = props;
 
-    const { UI } = useContext(WebAppsContext);
+    const { theme } = useContext(WebAppsUXContext);
 
-    const color = (props.color === 'brand') ? UI.theme : props.color;
+    const color = (props.color === 'brand') ? theme : props.color;
 
     const classes = classNames(
         'font-bold',
@@ -27,23 +30,30 @@ const Button = props => {
         'ease-linear',
         'transition-all',
         'duration-150',
-        (style === 'full')
-            ? `bg-${color}-600 hover:bg-${color}-400 dark:bg-${color}-400 dark:hover:bg-${color}-600 text-white dark:text-gray-900`
+        (type === 'full')
+            ? `bg-${color}-${shade} hover:bg-${color}-${darkShade} dark:bg-${color}-${darkShade} dark:hover:bg-${color}-${shade} text-white dark:text-gray-900`
             : '',
-        (style === 'outline')
-            ? `text-${color}-600 dark:text-${color}-400 bg-transparent border border-${color}-600 dark:border-${color}-400 hover:bg-${color}-600 dark:hover:bg-${color}-400 hover:text-white dark:hover:text-white`
+        (type === 'outline')
+            ? `text-${color}-${shade} dark:text-${color}-${darkShade} bg-transparent border border-${color}-${shade} dark:border-${color}-${darkShade} hover:bg-${color}-600 dark:hover:bg-${color}-${darkShade} hover:text-white dark:hover:text-white`
             : '',
-        (style === 'ghost')
-            ? `text-${color}-600 dark:text-${color}-400 bg-transparent hover:bg-${color}-600 dark:hover:bg-${color}-400 hover:text-white dark:hover:text-white`
+        (type === 'ghost')
+            ? `text-${color}-${shade} dark:text-${color}-${darkShade} bg-transparent hover:bg-${color}-${shade} dark:hover:bg-${color}-${darkShade} hover:text-white dark:hover:text-white`
             : '',
-        (style === 'link')
-            ? `text-${color}-600 dark:text-${color}-400 bg-transparent hover:text-${color}-400 dark:hover:text-${color}-600`
+        (type === 'link')
+            ? `text-${color}-${shade} dark:text-${color}-${darkShade} bg-transparent hover:text-${color}-${darkShade} dark:hover:text-${color}-${shade}`
             : '',
         (size === "small")
-            ? 'text-xs px-2 py-1'
+            ? 'text-xs'
             : (size === "large")
-                ? 'text-lg px-8 py-3'
-                : 'px-4 py-2',
+                ? 'text-lg'
+                : '',
+        (padding)
+            ? (size === "small")
+                ? 'px-2 py-1'
+                : (size === "large")
+                    ? 'px-8 py-3'
+                    : 'px-4 py-2'
+            : '',
         (rounded)
             ? 'rounded-full'
             : (square)
@@ -53,22 +63,28 @@ const Button = props => {
     );
 
     return (props.href !== undefined || props.to !== undefined)
-            ? <Link className={classes} {...attributes}>{children}</Link>
-            : <button type="button" className={classes} {...attributes}>{children}</button>
+        ? <Link className={classes} {...attributes}>{children}</Link>
+        : <button type="button" className={classes} {...attributes}>{children}</button>
 }
 
 Button.propTypes = {
     color: PropTypes.string,
-    style: PropTypes.oneOf(['full', 'outline', 'ghost', 'link']),
+    shade: PropTypes.string,
+    darkShade: PropTypes.string,
+    type: PropTypes.oneOf(['full', 'outline', 'ghost', 'link']),
     size: PropTypes.oneOf(['', 'small', 'large']),
     rounded: PropTypes.bool,
     square: PropTypes.bool,
+    padding: PropTypes.bool,
 }
 
 Button.defaultProps = {
     color: 'brand',
-    style: 'full',
+    shade: '600',
+    darkShade: '400',
+    type: 'full',
     size: '',
+    padding: true,
 }
 
 export default Button;

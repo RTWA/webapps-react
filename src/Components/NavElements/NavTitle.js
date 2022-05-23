@@ -1,31 +1,39 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { WebAppsUXContext } from '../../Context'
 
 const NavTitle = props => {
-
     const {
         name,
         className,
         innerRef,
         ...attributes
-    } = props
+    } = props;
+
+    const { theme } = useContext(WebAppsUXContext);
 
     const classes = classNames(
         'relative',
-        'my-6',
-        'h-px',
-        'bg-gray-600',
-        'dark:bg-gray-400',
+        'flex',
+        'items-center',
+        'justify-start',
+        'mt-6',
+        'px-4',
+        'py-2.5',
+        'text-sm',
+        'font-medium',
+        'leading-5',
+        'rounded-md',
         className
     )
 
     return (
-        <li className={classes} {...attributes} ref={innerRef}>
-            <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
-                <span className="bg-white dark:bg-gray-800 px-4 text-xs text-gray-600 dark:text-gray-400 uppercase">{name}</span>
+        <div className={classes} {...attributes} ref={innerRef}>
+            <div className={`text-${theme}-600 text-xs uppercase font-semibold tracking-wider`}>
+                {name}
             </div>
-        </li>
+        </div>
     )
 }
 
@@ -36,4 +44,4 @@ NavTitle.propTypes = {
 };
 
 
-export default NavTitle
+export default NavTitle;
