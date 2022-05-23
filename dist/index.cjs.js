@@ -8,13 +8,13 @@ var React$1 = require('react');
 var _extends = require('@babel/runtime/helpers/extends');
 var _toConsumableArray = require('@babel/runtime/helpers/toConsumableArray');
 var _slicedToArray = require('@babel/runtime/helpers/slicedToArray');
-var ReactDOM = require('react-dom');
 var _classCallCheck$1 = require('@babel/runtime/helpers/classCallCheck');
 var _createClass$1 = require('@babel/runtime/helpers/createClass');
 var _assertThisInitialized$1 = require('@babel/runtime/helpers/assertThisInitialized');
 var _inherits$1 = require('@babel/runtime/helpers/inherits');
 var _possibleConstructorReturn$1 = require('@babel/runtime/helpers/possibleConstructorReturn');
 var _getPrototypeOf = require('@babel/runtime/helpers/getPrototypeOf');
+var ReactDOM = require('react-dom');
 var _objectWithoutPropertiesLoose = require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose');
 var _extends$1 = require('@babel/runtime/helpers/esm/extends');
 var _assertThisInitialized = require('@babel/runtime/helpers/esm/assertThisInitialized');
@@ -35,13 +35,13 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React$1);
 var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends);
 var _toConsumableArray__default = /*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);
 var _slicedToArray__default = /*#__PURE__*/_interopDefaultLegacy(_slicedToArray);
-var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 var _classCallCheck__default = /*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);
 var _createClass__default = /*#__PURE__*/_interopDefaultLegacy(_createClass$1);
 var _assertThisInitialized__default$1 = /*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$1);
 var _inherits__default = /*#__PURE__*/_interopDefaultLegacy(_inherits$1);
 var _possibleConstructorReturn__default = /*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn$1);
 var _getPrototypeOf__default = /*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);
+var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 var _objectWithoutPropertiesLoose__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);
 var _extends__default$1 = /*#__PURE__*/_interopDefaultLegacy(_extends$1);
 var _assertThisInitialized__default = /*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized);
@@ -4091,14 +4091,8 @@ function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if 
 
 function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React__default["default"].createContext({});
-var useModals = createLocalStorageStateHook('modals', {});
 var controller = new AbortController();
 var WebApps = function WebApps(props) {
-  var _useModals = useModals(),
-      _useModals2 = _slicedToArray__default["default"](_useModals, 2),
-      modals = _useModals2[0],
-      setModals = _useModals2[1];
-
   var _useState = React$1.useState({}),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
       apps = _useState2[0],
@@ -4131,14 +4125,6 @@ var WebApps = function WebApps(props) {
       controller.abort();
     };
   }, []);
-
-  var toggleModal = function toggleModal(modal) {
-    if (isMounted()) {
-      setModals({
-        modal: !modals[modal]
-      });
-    }
-  };
 
   var getApps = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee() {
@@ -4801,13 +4787,10 @@ var WebApps = function WebApps(props) {
       // Legacy - from UX
       UI: UI,
       // Legacy - from UX
-      modals: modals,
       loadNavigation: loadNavigation,
       // Legacy - from UX
       setUI: setUI,
       // Legacy - Deprecated
-      setModals: setModals,
-      toggleModal: toggleModal,
       apps: _apps,
       plugins: _plugins
     }

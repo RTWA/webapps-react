@@ -6,13 +6,13 @@ import React$1, { useContext, useState, useRef, useCallback, useEffect, useMemo,
 import _extends from '@babel/runtime/helpers/extends';
 import _toConsumableArray from '@babel/runtime/helpers/toConsumableArray';
 import _slicedToArray from '@babel/runtime/helpers/slicedToArray';
-import ReactDOM, { unstable_batchedUpdates, createPortal } from 'react-dom';
 import _classCallCheck$1 from '@babel/runtime/helpers/classCallCheck';
 import _createClass$1 from '@babel/runtime/helpers/createClass';
 import _assertThisInitialized$1 from '@babel/runtime/helpers/assertThisInitialized';
 import _inherits$1 from '@babel/runtime/helpers/inherits';
 import _possibleConstructorReturn$1 from '@babel/runtime/helpers/possibleConstructorReturn';
 import _getPrototypeOf from '@babel/runtime/helpers/getPrototypeOf';
+import ReactDOM, { unstable_batchedUpdates, createPortal } from 'react-dom';
 import _objectWithoutPropertiesLoose from '@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';
 import _extends$1 from '@babel/runtime/helpers/esm/extends';
 import _assertThisInitialized from '@babel/runtime/helpers/esm/assertThisInitialized';
@@ -4064,14 +4064,8 @@ function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if 
 
 function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var WebAppsContext = /*#__PURE__*/React$1.createContext({});
-var useModals = createLocalStorageStateHook('modals', {});
 var controller = new AbortController();
 var WebApps = function WebApps(props) {
-  var _useModals = useModals(),
-      _useModals2 = _slicedToArray(_useModals, 2),
-      modals = _useModals2[0],
-      setModals = _useModals2[1];
-
   var _useState = useState({}),
       _useState2 = _slicedToArray(_useState, 2),
       apps = _useState2[0],
@@ -4104,14 +4098,6 @@ var WebApps = function WebApps(props) {
       controller.abort();
     };
   }, []);
-
-  var toggleModal = function toggleModal(modal) {
-    if (isMounted()) {
-      setModals({
-        modal: !modals[modal]
-      });
-    }
-  };
 
   var getApps = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
@@ -4774,13 +4760,10 @@ var WebApps = function WebApps(props) {
       // Legacy - from UX
       UI: UI,
       // Legacy - from UX
-      modals: modals,
       loadNavigation: loadNavigation,
       // Legacy - from UX
       setUI: setUI,
       // Legacy - Deprecated
-      setModals: setModals,
-      toggleModal: toggleModal,
       apps: _apps,
       plugins: _plugins
     }

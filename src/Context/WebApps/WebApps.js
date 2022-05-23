@@ -8,12 +8,9 @@ import { WebAppsUXContext } from '..';
 
 export const WebAppsContext = React.createContext({});
 
-const useModals = createLocalStorageStateHook('modals', {});
-
 let controller = new AbortController();
 
 export const WebApps = props => {
-    const [modals, setModals] = useModals();
     const [apps, setApps] = useState({});
     const [plugins, setPlugins] = useState({});
 
@@ -33,14 +30,6 @@ export const WebApps = props => {
             controller.abort();
         }
     }, []);
-
-    const toggleModal = modal => {
-        if (isMounted()) {
-            setModals({
-                modal: !modals[modal]
-            });
-        }
-    }
 
     const getApps = async () => {
         await client('/api/apps', undefined, { signal: controller.signal })
@@ -412,11 +401,8 @@ export const WebApps = props => {
             value={{
                 navigation: navigation, // Legacy - from UX
                 UI: UI, // Legacy - from UX
-                modals: modals,
                 loadNavigation: loadNavigation, // Legacy - from UX
                 setUI: setUI, // Legacy - Deprecated
-                setModals: setModals,
-                toggleModal: toggleModal,
                 apps: _apps,
                 plugins: _plugins,
             }}
