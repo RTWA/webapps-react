@@ -1,3 +1,32 @@
+## Version 2.0.0
+#### What's New?
+- New `<AppPage />` Component
+- New drawer functionality, with new components:
+  - `<Drawer />`, `<DrawerHeader />`, `<DrawerItems />` and `<DrawerItem />`
+- New `<DropDownItem >` Component
+- New flyout functionality, with new components:
+  - `<Flyout />`, `<FlyoutHeader />`, `<FlyoutContent>` and `<FlyoutFooter />`
+- New `<HeaderBar />` Component
+- New `<PageWrapper />` Component
+- New `<WebAppsUX />` Context, with HOC (`withWebAppsUX`)
+
+#### What's Changed?
+- Sidebar UI has been updated and includes a new dark mode
+- Updated UI for `<AppCard />` and `<PluginCard />` Components
+- Updated UI for `<AppPluginChangelogModal />` Component
+- `<Badge />` Component now has `shade` and `darkShade` properties
+- BREAKING: `<Button />` Component `style` property is now `type`
+- `<Button />` Component now has `shade` and `darkShade` properties
+- `<Button />` Component now has a boolean `padding` property - defaults to true
+- `<DropDownButton />` Component now has an `origin` property - defaults to `right`
+- BREAKING: `<Loader />` Component `style` property is now `type`
+- Security Updates
+- Minor UI Updates
+  
+#### What's Fixed?
+- When navigating in mobile view, selecting a menu option now hides the mobile menu
+
+
 ## Version 1.14.7
 - Signout now redirects correctly when a server port is required
 
