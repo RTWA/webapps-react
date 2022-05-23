@@ -1,5 +1,4 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { createLocalStorageStateHook } from 'use-local-storage-state';
 
 import { client } from '../../API';
 import { useToasts } from '../../Toasts';
