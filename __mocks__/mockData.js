@@ -117,11 +117,21 @@ const settings = {
 
 const navigation = {
     navigation: [
-        { _tag: "NavItem", name: "Test Nav", to: "/test", icon: ["fas", "star"] }
+        { _tag: "NavTitle", name: "Nav Title" },
+        { _tag: "NavItem", name: "Nav Item", to: "/test", icon: "[\"fas\", \"star\"]" },
+        {
+            _tag: "NavDropdown", name: "Nav Dropdown", icon: "[\"fas\", \"star\"]", _children: [
+                { _tag: "NavChild", name: "Nav Child", to: "/child" }
+            ]
+        }
     ],
     routes: [
-        { path: "/test", name: "Test", component: "Dashboard" }
-    ]
+        { path: "/test", name: "Test", component: "Dashboard" },
+        { path: "/child", name: "Child", component: "Dashboard" }
+    ],
+    sidebar: {
+        color_mode: true
+    }
 };
 
 const apps = [

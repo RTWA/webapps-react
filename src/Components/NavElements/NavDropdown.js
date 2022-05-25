@@ -113,7 +113,6 @@ const NavDropdown = props => {
                 className={linkClasses}
                 tabIndex="0"
                 onClick={toggle}
-                aria-label="menu dropdown"
             >
                 {icon && <Icon icon={icon} className="h-6 w-6 mr-4" />}
                 <span className="font-medium text-sm">{name}</span>

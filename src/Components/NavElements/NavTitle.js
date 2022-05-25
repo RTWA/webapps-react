@@ -30,9 +30,9 @@ const NavTitle = props => {
 
     return (
         <div className={classes} {...attributes} ref={innerRef}>
-            <div className={`text-${theme}-600 text-xs uppercase font-semibold tracking-wider`}>
+            <h6 className={`text-${theme}-600 text-xs uppercase font-semibold tracking-wider`}>
                 {name}
-            </div>
+            </h6>
         </div>
     )
 }
