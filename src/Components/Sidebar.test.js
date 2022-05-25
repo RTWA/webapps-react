@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { WebApps } from '../Context/index';
+import { WebAppsUX } from '../Context/index';
 
 import Sidebar from './Sidebar';
 
 test('Sidebar Component Renders', () => {
-    render(<WebApps><Sidebar /></WebApps>);
+    render(<WebAppsUX><Sidebar data-testid="sidebar" /></WebAppsUX>);
 
     // Not great...
-    expect(screen.getByRole('list')).toBeDefined();
+    expect(screen.getByTestId('sidebar')).toBeDefined();
 });

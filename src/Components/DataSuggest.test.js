@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import DataSuggest from './DataSuggest';
-import { WebApps } from '../Context/index';
+import { WebAppsUX } from '../Context/index';
 
 const data = [
     {
@@ -16,7 +16,7 @@ const data = [
 ]
 
 test('DataSuggest Component Renders', () => {
-    render(<WebApps><DataSuggest data-testid="webapps-DataSuggest-component" data={data} /></WebApps>);
+    render(<WebAppsUX><DataSuggest data-testid="webapps-DataSuggest-component" data={data} /></WebAppsUX>);
 
     expect(screen.getByTestId('webapps-DataSuggest-component')).toBeDefined();
 });

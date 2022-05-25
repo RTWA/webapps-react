@@ -2,10 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import DropDownButton from './DropDownButton';
-import { WebApps } from '../Context/index';
+import { WebAppsUX } from '../Context/index';
 
 test('DropDownButton Component Renders', () => {
-    render(<WebApps>
+    render(<WebAppsUX>
         <DropDownButton data-testid="webapps-DropDownButton-component" text="Button Drop">
             <div>
                 <a href="#" onClick={(e) => e.preventDefault()}>
@@ -13,7 +13,7 @@ test('DropDownButton Component Renders', () => {
                 </a>
             </div>
         </DropDownButton>
-    </WebApps>);
+    </WebAppsUX>);
 
     expect(screen.getByTestId('webapps-DropDownButton-component')).toBeDefined();
 });

@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react';
-import { withWebAppsUX } from '../Context/index';
+import React, { useContext, useEffect } from 'react';
+import { WebAppsUXContext } from '../Context';
 import NavigationError from '../Errors/NavigationError';
 import Scrollbar from './Scrollbar';
 import classNames from 'classnames';
 
 const SidebarWrapper = props => {
     const {
-        breakpoint,
-        isBreakpoint,
-        theme,
-        useNavigation,
         children,
         dropDownMode,
+        ...rest
     } = props;
 
+    const { breakpoint, isBreakpoint, theme, useNavigation } = useContext(WebAppsUXContext);
     const { navigation, loadNavigation, setNavigation, toggleNavigation } = useNavigation;
 
     useEffect(() => {
@@ -54,7 +52,7 @@ const SidebarWrapper = props => {
 
     return (
         <>
-            <nav className={navClasses}>
+            <nav className={navClasses} {...rest}>
                 <div className="absolute left-0 top-0 bottom-0 flex flex-auto flex-col w-full h-full overflow-hidden z-[1000]">
                     <div className={`flex items-center h-20 p-6 pb-0 ${(navigation.color_mode === 'dark') ? 'text-white' : 'text-gray-600 dark:text-white'}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={`h-10 text-${theme}-600`}>
@@ -84,4 +82,4 @@ const SidebarWrapper = props => {
     )
 }
 
-export default withWebAppsUX(SidebarWrapper);
+export default SidebarWrapper;

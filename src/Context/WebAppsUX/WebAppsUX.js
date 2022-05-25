@@ -58,14 +58,14 @@ export const WebAppsUX = props => {
     const loadNavigation = async () => {
         await APIClient('/api/navigation', undefined, { signal: APIController.signal })
             .then(json => {
+                let navigation = {
+                    menu: json.data.navigation,
+                    routes: json.data.routes,
+                    color_mode: json.data.sidebar.color_mode,
+                    display_mode: isBreakpoint('lg') ? 'side' : 'overlay',
+                    opened: isBreakpoint('lg') ? true : false,
+                }
                 if (isMounted()) {
-                    let navigation = {
-                        menu: json.data.navigation,
-                        routes: json.data.routes,
-                        color_mode: json.data.sidebar.color_mode,
-                        display_mode: isBreakpoint('lg') ? 'side' : 'overlay',
-                        opened: isBreakpoint('lg') ? true : false,
-                    }
                     setNavigation({ ...navigation });
                 }
             })
@@ -73,12 +73,12 @@ export const WebAppsUX = props => {
                 if (!error.status?.isAbort && isMounted()) {
                     let nav = [];
                     navigation.error = true;
-                    navigation.message = error.data.message;
+                    navigation.message = error.data?.message;
                     setNavigation({ ...navigation });
                 }
             });
     };
-    
+
     const toggleNavigation = () => {
         navigation.opened = !navigation.opened
         setNavigation({ ...navigation });
@@ -186,7 +186,7 @@ export const WebAppsUX = props => {
             }}
         >
             <ToastProvider theme={theme} autoDismiss="true" autoDismissTimeout="3000">
-            {props.children || null}
+                {props.children || null}
             </ToastProvider>
         </WebAppsUXContext.Provider>
     )

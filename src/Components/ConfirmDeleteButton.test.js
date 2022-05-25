@@ -2,10 +2,10 @@ import React from 'react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import ConfirmDeleteButton from './ConfirmDeleteButton';
-import { WebApps } from '../Context/index';
+import { WebAppsUX } from '../Context/index';
 
 test('ConfirmDeleteButton Component Renders', async () => {
-    render(<WebApps><ConfirmDeleteButton data-testid="webapps-ConfirmDeleteButton-component" timeout={10} /></WebApps>);
+    render(<WebAppsUX><ConfirmDeleteButton data-testid="webapps-ConfirmDeleteButton-component" timeout={10} /></WebAppsUX>);
 
     expect(screen.getByTestId('webapps-ConfirmDeleteButton-component')).toBeDefined();
     expect(screen.getByText(/delete/i)).toBeDefined();
