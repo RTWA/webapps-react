@@ -4418,9 +4418,9 @@ SwitchTransition.defaultProps = {
 
 var _excluded$y = ["autoDismiss", "autoDismissTimeout", "component"];
 
-function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$5() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function Timer(callback, delay) {
   var timerId;
@@ -4448,7 +4448,7 @@ function Timer(callback, delay) {
 var ToastController = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](ToastController, _Component);
 
-  var _super = _createSuper$4(ToastController);
+  var _super = _createSuper$5(ToastController);
 
   function ToastController() {
     var _this;
@@ -4556,9 +4556,9 @@ function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if 
 
 function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$b(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var defaultComponents = {
   Toast: DefaultToast,
   ToastContainer: ToastContainer
@@ -4572,7 +4572,7 @@ var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.do
 var ToastProvider = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](ToastProvider, _Component);
 
-  var _super = _createSuper$3(ToastProvider);
+  var _super = _createSuper$4(ToastProvider);
 
   function ToastProvider() {
     var _this;
@@ -22799,43 +22799,48 @@ function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { 
 var WebAppsUXContext = /*#__PURE__*/React$1.createContext({});
 var APIController = new AbortController();
 var WebAppsUX = function WebAppsUX(props) {
-  var _useState = React$1.useState(function () {
+  var _useState = React$1.useState(null),
+      _useState2 = _slicedToArray__default["default"](_useState, 2),
+      coreError = _useState2[0],
+      setCoreError = _useState2[1];
+
+  var _useState3 = React$1.useState(function () {
     return getDeviceConfig(window.innerWidth);
   }),
-      _useState2 = _slicedToArray__default["default"](_useState, 2),
-      breakpoint = _useState2[0],
-      setBreakpoint = _useState2[1];
-
-  var _useState3 = React$1.useState(),
       _useState4 = _slicedToArray__default["default"](_useState3, 2),
-      darkMode = _useState4[0],
-      setDarkMode = _useState4[1];
+      breakpoint = _useState4[0],
+      setBreakpoint = _useState4[1];
 
-  var _useState5 = React$1.useState({
-    display_mode: 'side',
-    opened: true
-  }),
+  var _useState5 = React$1.useState(),
       _useState6 = _slicedToArray__default["default"](_useState5, 2),
-      drawer = _useState6[0],
-      setDrawer = _useState6[1];
+      darkMode = _useState6[0],
+      setDarkMode = _useState6[1];
 
   var _useState7 = React$1.useState({
     display_mode: 'side',
-    opened: false
+    opened: true
   }),
       _useState8 = _slicedToArray__default["default"](_useState7, 2),
-      flyout = _useState8[0],
-      setFlyout = _useState8[1];
+      drawer = _useState8[0],
+      setDrawer = _useState8[1];
 
-  var _useState9 = React$1.useState({}),
+  var _useState9 = React$1.useState({
+    display_mode: 'side',
+    opened: false
+  }),
       _useState10 = _slicedToArray__default["default"](_useState9, 2),
-      navigation = _useState10[0],
-      setNavigation = _useState10[1];
+      flyout = _useState10[0],
+      setFlyout = _useState10[1];
 
-  var _useState11 = React$1.useState(),
+  var _useState11 = React$1.useState({}),
       _useState12 = _slicedToArray__default["default"](_useState11, 2),
-      theme = _useState12[0],
-      setTheme = _useState12[1];
+      navigation = _useState12[0],
+      setNavigation = _useState12[1];
+
+  var _useState13 = React$1.useState(),
+      _useState14 = _slicedToArray__default["default"](_useState13, 2),
+      theme = _useState14[0],
+      setTheme = _useState14[1];
 
   var isMountedRef = React$1.useRef(true);
   var isMounted = React$1.useCallback(function () {
@@ -22855,7 +22860,9 @@ var WebAppsUX = function WebAppsUX(props) {
             return loadNavigation();
 
           case 5:
-            return _context.abrupt("return", function () {
+            return _context.abrupt("return",
+            /* istanbul ignore next */
+            function () {
               void (isMountedRef.current = false);
               APIController.abort();
               window.removeEventListener('resize', calcInnerWidth);
@@ -22881,6 +22888,7 @@ var WebAppsUX = function WebAppsUX(props) {
               }, {
                 signal: APIController.signal
               }).then(function (json) {
+                /* istanbul ignore else */
                 if (isMounted()) {
                   setTheme(json.data['core.ui.theme']);
                   setDarkMode(json.data['core.ui.dark_mode']);
@@ -22888,9 +22896,9 @@ var WebAppsUX = function WebAppsUX(props) {
               })["catch"](function (error) {
                 var _error$status;
 
+                /* istanbul ignore else */
                 if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort) && isMounted()) {
-                  // TODO: Handle errors
-                  console.error(error);
+                  setCoreError(error.data.message);
                 }
               });
 
@@ -22924,6 +22932,7 @@ var WebAppsUX = function WebAppsUX(props) {
                   display_mode: isBreakpoint('lg') ? 'side' : 'overlay',
                   opened: isBreakpoint('lg') ? true : false
                 };
+                /* istanbul ignore else */
 
                 if (isMounted()) {
                   setNavigation(_objectSpread$9({}, navigation));
@@ -22931,6 +22940,7 @@ var WebAppsUX = function WebAppsUX(props) {
               })["catch"](function (error) {
                 var _error$status2;
 
+                /* istanbul ignore else */
                 if (!((_error$status2 = error.status) !== null && _error$status2 !== void 0 && _error$status2.isAbort) && isMounted()) {
                   var _error$data;
 
@@ -22959,6 +22969,7 @@ var WebAppsUX = function WebAppsUX(props) {
   }();
 
   var toggleNavigation = function toggleNavigation() {
+    /* istanbul ignore else */
     if (isMounted()) {
       navigation.opened = !navigation.opened;
       setNavigation(_objectSpread$9({}, navigation));
@@ -22966,6 +22977,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var calcInnerWidth = lodash.exports.throttle(function () {
+    /* istanbul ignore else */
     if (isMounted()) {
       setBreakpoint(getDeviceConfig(window.innerWidth));
     }
@@ -22976,6 +22988,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var openDrawer = function openDrawer() {
+    /* istanbul ignore else */
     if (!drawer.opened && isMounted()) {
       if (isBreakpoint('lg') && flyout.active) {
         flyout.opened = false;
@@ -22988,6 +23001,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var closeDrawer = function closeDrawer() {
+    /* istanbul ignore else */
     if (drawer.opened && isMounted()) {
       drawer.opened = false;
       setDrawer(_objectSpread$9({}, drawer));
@@ -23003,6 +23017,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var openFlyout = function openFlyout() {
+    /* istanbul ignore else */
     if (!flyout.opened && isMounted()) {
       if (isBreakpoint('lg') && drawer.active) {
         drawer.opened = false;
@@ -23015,6 +23030,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var closeFlyout = function closeFlyout() {
+    /* istanbul ignore else */
     if (flyout.opened && isMounted()) {
       if (isBreakpoint('lg') && drawer.active) {
         drawer.opened = true;
@@ -23055,6 +23071,10 @@ var WebAppsUX = function WebAppsUX(props) {
     openFlyout: openFlyout
   };
 
+  if (coreError) {
+    throw Error(coreError);
+  }
+
   if (!navigation.menu && !theme) {
     return /*#__PURE__*/React__default["default"].createElement(Loader, null);
   }
@@ -23075,7 +23095,7 @@ var WebAppsUX = function WebAppsUX(props) {
     theme: theme,
     autoDismiss: "true",
     autoDismissTimeout: "3000"
-  }, props.children || null));
+  }, props.children));
 };
 
 var withWebAppsUX = function withWebAppsUX(Component) {
@@ -26022,14 +26042,14 @@ var SidebarWrapper = function SidebarWrapper(props) {
   }, children);
 };
 
-function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 var NavigationError = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](NavigationError, _Component);
 
-  var _super = _createSuper$2(NavigationError);
+  var _super = _createSuper$3(NavigationError);
 
   function NavigationError(props) {
     var _this;
@@ -43857,14 +43877,14 @@ var FlyoutFooter = function FlyoutFooter(props) {
   }, children);
 };
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 var AppError = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](AppError, _Component);
 
-  var _super = _createSuper$1(AppError);
+  var _super = _createSuper$2(AppError);
 
   function AppError(props) {
     var _this;
@@ -43951,9 +43971,9 @@ AppError.defaultProps = {
 };
 var AppError$1 = reactRouterDom.withRouter(AppError);
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var ComponentErrorTrigger = function ComponentErrorTrigger(_ref) {
   var error = _ref.error;
 
@@ -43967,7 +43987,7 @@ var ComponentErrorTrigger = function ComponentErrorTrigger(_ref) {
 var ComponentError = /*#__PURE__*/function (_Component) {
   _inherits__default["default"](ComponentError, _Component);
 
-  var _super = _createSuper(ComponentError);
+  var _super = _createSuper$1(ComponentError);
 
   function ComponentError(props) {
     var _this;
@@ -44062,6 +44082,80 @@ ComponentError.defaultProps = {
   theme: 'indigo'
 };
 var ComponentError$1 = reactRouterDom.withRouter(ComponentError);
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+var CoreError = /*#__PURE__*/function (_Component) {
+  _inherits__default["default"](CoreError, _Component);
+
+  var _super = _createSuper(CoreError);
+
+  function CoreError(props) {
+    var _this;
+
+    _classCallCheck__default["default"](this, CoreError);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      hasError: false,
+      info: '',
+      error: ''
+    };
+    return _this;
+  }
+
+  _createClass__default["default"](CoreError, [{
+    key: "componentDidCatch",
+    value: function componentDidCatch(error, info) {
+      this.setState({
+        hasError: true,
+        info: info,
+        error: error
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.hasError) {
+        return /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "text-gray-700 dark:text-gray-100 bg-gray-200 dark:bg-gray-900 h-screen w-screen"
+        }, /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "h-full w-full flex flex-wrap justify-center content-end md:content-center items-end md:items-center"
+        }, /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "p-6 text-center"
+        }, /*#__PURE__*/React__default["default"].createElement("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          className: "h-48 w-48 mx-auto text-red-500 dark:text-red-900",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor"
+        }, /*#__PURE__*/React__default["default"].createElement("path", {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: 2,
+          d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        })), /*#__PURE__*/React__default["default"].createElement("h2", {
+          className: "text-xl lg:text-3xl font-bold"
+        }, "A serious error has occurred!"), /*#__PURE__*/React__default["default"].createElement("p", {
+          className: "my-4 text-sm lg:text-base text-gray-900 dark:text-gray-300"
+        }, this.state.error.toString()), /*#__PURE__*/React__default["default"].createElement("p", null, "You could try reloading the page, or contact your system administrator."), /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "flex flex-auto mt-6 gap-6 justify-center"
+        }, /*#__PURE__*/React__default["default"].createElement("button", {
+          onClick: function onClick() {
+            return window.location.reload();
+          },
+          className: "px-4 py-2 border border-indigo-600 dark:border-indigo-500 dark:hover:border-indigo-600 text-indigo-600 dark:text-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white"
+        }, "Reload Page")))));
+      }
+
+      return this.props.children;
+    }
+  }]);
+
+  return CoreError;
+}(React$1.Component);
 
 var WebAppsDocsContext = /*#__PURE__*/React__default["default"].createContext({});
 var colors = [{
@@ -44252,6 +44346,7 @@ var returnLibrary = function returnLibrary() {
     AppError: AppError$1,
     ComponentError: ComponentError$1,
     ComponentErrorTrigger: ComponentErrorTrigger,
+    CoreError: CoreError,
     NavigationError: NavigationError,
     CreateElement: CreateElement,
     DefaultToastContainer: ToastContainer,

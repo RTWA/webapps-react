@@ -53,6 +53,7 @@ import {
 
 import AppError from './Errors/AppError';
 import ComponentError, { ComponentErrorTrigger } from './Errors/ComponentError';
+import CoreError from './Errors/CoreError';
 import NavigationError from './Errors/NavigationError';
 
 import CreateElement from './Helpers/CreateElement';
@@ -137,6 +138,7 @@ const returnLibrary = () => {
         AppError,
         ComponentError,
         ComponentErrorTrigger,
+        CoreError,
         NavigationError,
 
         CreateElement,

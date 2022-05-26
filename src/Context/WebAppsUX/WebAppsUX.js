@@ -12,6 +12,7 @@ export const WebAppsUXContext = createContext({});
 let APIController = new AbortController();
 
 export const WebAppsUX = props => {
+    const [coreError, setCoreError] = useState(null);
     const [breakpoint, setBreakpoint] = useState(() => getDeviceConfig(window.innerWidth));
     const [darkMode, setDarkMode] = useState();
     const [drawer, setDrawer] = useState({
@@ -33,7 +34,7 @@ export const WebAppsUX = props => {
         await loadUI();
         await loadNavigation();
 
-        return () => {
+        return /* istanbul ignore next */ () => {
             void (isMountedRef.current = false);
             APIController.abort();
             window.removeEventListener('resize', calcInnerWidth);
@@ -43,15 +44,16 @@ export const WebAppsUX = props => {
     const loadUI = async () => {
         await APIClient('/api/setting', { key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']) }, { signal: APIController.signal })
             .then(json => {
+                /* istanbul ignore else */
                 if (isMounted()) {
                     setTheme(json.data['core.ui.theme']);
                     setDarkMode(json.data['core.ui.dark_mode']);
                 }
             })
             .catch(error => {
+                /* istanbul ignore else */
                 if (!error.status?.isAbort && isMounted()) {
-                    // TODO: Handle errors
-                    console.error(error);
+                    setCoreError(error.data.message);
                 }
             });
     };
@@ -66,11 +68,13 @@ export const WebAppsUX = props => {
                     display_mode: isBreakpoint('lg') ? 'side' : 'overlay',
                     opened: isBreakpoint('lg') ? true : false,
                 }
+                /* istanbul ignore else */
                 if (isMounted()) {
                     setNavigation({ ...navigation });
                 }
             })
             .catch(error => {
+                /* istanbul ignore else */
                 if (!error.status?.isAbort && isMounted()) {
                     let navigation = {
                         color_mode: 'dark',
@@ -85,6 +89,7 @@ export const WebAppsUX = props => {
     };
 
     const toggleNavigation = () => {
+        /* istanbul ignore else */
         if (isMounted()) {
             navigation.opened = !navigation.opened
             setNavigation({ ...navigation });
@@ -92,6 +97,7 @@ export const WebAppsUX = props => {
     }
 
     const calcInnerWidth = throttle(function () {
+        /* istanbul ignore else */
         if (isMounted()) {
             setBreakpoint(getDeviceConfig(window.innerWidth));
         }
@@ -102,6 +108,7 @@ export const WebAppsUX = props => {
     };
 
     const openDrawer = () => {
+        /* istanbul ignore else */
         if (!drawer.opened && isMounted()) {
             if (isBreakpoint('lg') && flyout.active) {
                 flyout.opened = false;
@@ -113,6 +120,7 @@ export const WebAppsUX = props => {
     };
 
     const closeDrawer = () => {
+        /* istanbul ignore else */
         if (drawer.opened && isMounted()) {
             drawer.opened = false;
             setDrawer({ ...drawer });
@@ -128,6 +136,7 @@ export const WebAppsUX = props => {
     };
 
     const openFlyout = () => {
+        /* istanbul ignore else */
         if (!flyout.opened && isMounted()) {
             if (isBreakpoint('lg') && drawer.active) {
                 drawer.opened = false;
@@ -139,6 +148,7 @@ export const WebAppsUX = props => {
     };
 
     const closeFlyout = () => {
+        /* istanbul ignore else */
         if (flyout.opened && isMounted()) {
             if (isBreakpoint('lg') && drawer.active) {
                 drawer.opened = true;
@@ -180,6 +190,10 @@ export const WebAppsUX = props => {
         openFlyout,
     };
 
+    if (coreError) {
+        throw Error(coreError);
+    }
+
     if (!navigation.menu && !theme) {
         return <Loader />;
     }
@@ -199,7 +213,7 @@ export const WebAppsUX = props => {
             }}
         >
             <ToastProvider theme={theme} autoDismiss="true" autoDismissTimeout="3000">
-                {props.children || null}
+                {props.children}
             </ToastProvider>
         </WebAppsUXContext.Provider>
     )
