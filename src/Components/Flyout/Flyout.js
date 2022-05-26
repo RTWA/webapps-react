@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 
-import { withWebAppsUX } from '../../Context';
+import { WebAppsUXContext } from '../../Context';
 
 const Flyout = props => {
     const {
-        breakpoint,
-        isBreakpoint,
-        useFlyouts,
         children,
+        ...rest
     } = props;
 
+    const { breakpoint, isBreakpoint, useFlyouts } = useContext(WebAppsUXContext);
     const { flyout, setFlyout } = useFlyouts;
 
     useEffect(() => {
@@ -46,10 +45,10 @@ const Flyout = props => {
     )
 
     return (
-        <div className={classes}>
+        <div className={classes} {...rest}>
             {children}
         </div>
     );
 }
 
-export default withWebAppsUX(Flyout);
+export default Flyout;
