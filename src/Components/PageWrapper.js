@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withWebAppsUX } from '../Context';
+import React, { useContext } from 'react';
+import { WebAppsUXContext } from '../Context';
 import Scrollbar from './Scrollbar';
 
 const PageWrapper = props => {
     const {
-        useDrawer,
         title,
-        children
+        children,
+        ...rest
     } = props;
 
+    const { useDrawer } = useContext(WebAppsUXContext);
     const { drawer, toggleDrawer } = useDrawer;
 
     return (
-        <Scrollbar className="flex flex-col flex-auto relative">
+        <Scrollbar className="flex flex-col flex-auto relative" {...rest}>
             <div className="flex-auto px-6 pt-9 pb-12 md:p-8 md:pb-12 lg:p-12">
                 {
                     (drawer.active || title)
@@ -52,12 +52,4 @@ const PageWrapper = props => {
     )
 }
 
-PageWrapper.propTypes = {
-    hasDrawer: PropTypes.bool
-}
-
-PageWrapper.defaultProps = {
-    hasDrawer: false
-}
-
-export default withWebAppsUX(PageWrapper)
+export default PageWrapper;
