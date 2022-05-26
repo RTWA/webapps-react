@@ -111,7 +111,7 @@ const handlers = [
             ctx.json(mock.navigation)
         )
     }),
-    
+
     rest.post('/api/setting', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -120,7 +120,45 @@ const handlers = [
             })
         )
     }),
-    
+
+    rest.get('https://graph.microsoft.com/v1.0/groups', (req, res, ctx) => {
+        const filter = req.url.searchParams.get('$filter');
+        if (filter === "startswith(displayName, 'Error')") {
+            return res(
+                ctx.status(500),
+            )
+        }
+
+        if (filter === "startswith(displayName, 'Nope')") {
+            return res(
+                ctx.status(200),
+                ctx.json({
+                    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#groups(id,displayName)",
+                    "value": []
+                })
+            )
+        }
+
+        return res(
+            ctx.status(200),
+            ctx.json({
+                "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#groups(id,displayName)",
+                "value": [
+                    {
+                        "@odata.id": "#",
+                        id: "000",
+                        displayName: "Example Group 1"
+                    },
+                    {
+                        "@odata.id": "#",
+                        id: "001",
+                        displayName: "Example Group 2"
+                    }
+                ]
+            })
+        )
+    }),
+
 ];
 
 const server = setupServer(...handlers);

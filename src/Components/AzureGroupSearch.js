@@ -8,7 +8,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
 
     const change = e => {
         // Abort any running requests
-        controllers.map(function (controller, i) {
+        controllers.map(/* istanbul ignore next */(controller, i) => {
             controller?.abort();
             delete controllers[i];
         });
@@ -18,6 +18,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
         let id = e.target.id;
         let value = e.target.value;
 
+        /* istanbul ignore else */
         if (groupData[id] === undefined) {
             groupData[id] = {};
         }
@@ -43,9 +44,20 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
                 setShowResults(true);
             })
             .catch(error => {
+                /* istanbul ignore else */
                 if (!error.status?.isAbort) {
                     // TODO: Handle Errors
-                    console.log(error)
+
+                    // Only log, if we are not in a test environment (Jest)
+                    /* istanbul ignore next */
+                    if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
+                        console.log(error)
+                    }
+
+                    groupData[id].data = [];
+                    setData([...groupData]);
+                    setActive(0);
+                    setShowResults(true);
                 }
             });
     }
@@ -64,6 +76,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
     }
 
     const onKeyDown = e => {
+        /* istanbul ignore else */
         if (e.keyCode === 13) {
             groupData[id].selected = groupData[id].data[active];
             groupData[id].value = groupData[id].data[active].displayName;
@@ -93,6 +106,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
                 <ul className="z-50 absolute mx-1.5 inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer">
                     {
                         groupData[id].data.map((data, index) => {
+                            /* istanbul ignore else */
                             if (count <= 5) {
                                 let className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
 
