@@ -84,12 +84,16 @@ export const WebAppsUX = props => {
     };
 
     const toggleNavigation = () => {
-        navigation.opened = !navigation.opened
-        setNavigation({ ...navigation });
+        if (isMounted()) {
+            navigation.opened = !navigation.opened
+            setNavigation({ ...navigation });
+        }
     }
 
     const calcInnerWidth = throttle(function () {
-        setBreakpoint(getDeviceConfig(window.innerWidth));
+        if (isMounted()) {
+            setBreakpoint(getDeviceConfig(window.innerWidth));
+        }
     }, 200);
 
     const isBreakpoint = bp => {
@@ -97,7 +101,7 @@ export const WebAppsUX = props => {
     };
 
     const openDrawer = () => {
-        if (!drawer.opened) {
+        if (!drawer.opened && isMounted()) {
             if (isBreakpoint('lg') && flyout.active) {
                 flyout.opened = false;
                 setFlyout({ ...flyout });
@@ -108,7 +112,7 @@ export const WebAppsUX = props => {
     };
 
     const closeDrawer = () => {
-        if (drawer.opened) {
+        if (drawer.opened && isMounted()) {
             drawer.opened = false;
             setDrawer({ ...drawer });
         }
@@ -123,7 +127,7 @@ export const WebAppsUX = props => {
     };
 
     const openFlyout = () => {
-        if (!flyout.opened) {
+        if (!flyout.opened && isMounted()) {
             if (isBreakpoint('lg') && drawer.active) {
                 drawer.opened = false;
                 setDrawer({ ...drawer });
@@ -134,7 +138,7 @@ export const WebAppsUX = props => {
     };
 
     const closeFlyout = () => {
-        if (flyout.opened) {
+        if (flyout.opened && isMounted()) {
             if (isBreakpoint('lg') && drawer.active) {
                 drawer.opened = true;
                 setDrawer({ ...drawer });
