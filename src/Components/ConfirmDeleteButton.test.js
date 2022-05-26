@@ -47,4 +47,5 @@ test('ConfirmDeleteButton Component actions onClick', async () => {
 
     await act(async () => {
         fireEvent.click(screen.getByText(/are you sure?/i));
+    });
 });
