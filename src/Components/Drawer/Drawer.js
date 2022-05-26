@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 
-import { withWebAppsUX } from '../../Context';
+import { WebAppsUXContext } from '../../Context';
 import Scrollbar from '../Scrollbar';
 
 const Drawer = props => {
     const {
-        breakpoint,
-        isBreakpoint,
-        useDrawer,
         children,
+        ...rest
     } = props;
 
+    const { breakpoint, isBreakpoint, useDrawer } = useContext(WebAppsUXContext);
     const { drawer, setDrawer, toggleDrawer } = useDrawer;
 
     useEffect(() => {
@@ -53,14 +52,14 @@ const Drawer = props => {
 
     return (
         <>
-            <div className={navClasses}>
+            <div className={navClasses} {...rest}>
                 <div className="absolute left-0 top-0 bottom-0 flex flex-auto flex-col w-full h-full overflow-hidden z-[110]">
                     <Scrollbar
                         settings={{ suppressScrollX: !isRtl }}
                         tag="div"
                         className={`flex flex-col flex-grow h-full`}
                     >
-                        {children || null}
+                        {children}
                     </Scrollbar>
                 </div>
             </div>
@@ -73,4 +72,4 @@ const Drawer = props => {
     );
 }
 
-export default withWebAppsUX(Drawer);
+export default Drawer;
