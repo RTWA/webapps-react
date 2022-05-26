@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import DataSuggest from './DataSuggest';
 import { WebAppsUX } from '../Context/index';
@@ -15,8 +15,8 @@ const data = [
     }
 ]
 
-test('DataSuggest Component Renders', () => {
+test('DataSuggest Component Renders', async () => {
     render(<WebAppsUX><DataSuggest data-testid="webapps-DataSuggest-component" data={data} /></WebAppsUX>);
 
-    expect(screen.getByTestId('webapps-DataSuggest-component')).toBeDefined();
+    await waitFor(() => expect(screen.getByTestId('webapps-DataSuggest-component')).toBeDefined());
 });
