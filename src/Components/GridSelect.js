@@ -12,6 +12,7 @@ const GridSelect = props => {
         labelClassName,
         options,
         onSelect,
+        ...rest
     } = props;
 
     const { theme } = useContext(WebAppsUXContext);
@@ -27,7 +28,7 @@ const GridSelect = props => {
     )
 
     return (
-        <div className={wrapperClassName}>
+        <div className={wrapperClassName} {...rest}>
             <label className={labelClasses} htmlFor={id}>{label}</label>
             <div className={`grid grid-cols-1 md:col-span-3 sm:grid-cols-${options.length / 2} xl:grid-cols-${options.length} gap-y-2 gap-x-4 mt-1 xl:mt-0 w-full dark:text-white`}>
                 {

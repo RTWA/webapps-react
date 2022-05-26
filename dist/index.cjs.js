@@ -4,8 +4,8 @@ var _defineProperty = require('@babel/runtime/helpers/defineProperty');
 var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
 var _asyncToGenerator = require('@babel/runtime/helpers/asyncToGenerator');
 var _regeneratorRuntime = require('@babel/runtime/regenerator');
-var React$1 = require('react');
 var _extends = require('@babel/runtime/helpers/extends');
+var React$1 = require('react');
 var _toConsumableArray = require('@babel/runtime/helpers/toConsumableArray');
 var _slicedToArray = require('@babel/runtime/helpers/slicedToArray');
 var _classCallCheck$1 = require('@babel/runtime/helpers/classCallCheck');
@@ -31,8 +31,8 @@ var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_definePropert
 var _objectWithoutProperties__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);
 var _asyncToGenerator__default = /*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);
 var _regeneratorRuntime__default = /*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);
-var React__default = /*#__PURE__*/_interopDefaultLegacy(React$1);
 var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends);
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React$1);
 var _toConsumableArray__default = /*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);
 var _slicedToArray__default = /*#__PURE__*/_interopDefaultLegacy(_slicedToArray);
 var _classCallCheck__default = /*#__PURE__*/_interopDefaultLegacy(_classCallCheck$1);
@@ -58,7 +58,7 @@ var getCookie = function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(';').shift();
 };
 
-var _excluded$t = ["headers", "accept", "type"],
+var _excluded$y = ["headers", "accept", "type"],
     _excluded2$1 = ["headers", "accept"];
 
 function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -92,7 +92,7 @@ var client = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
-            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$t);
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$y);
             _context2.prev = 2;
             config = _objectSpread$e({
               method: data ? 'POST' : 'GET',
@@ -393,11 +393,17 @@ var unwrapResponseData = /*#__PURE__*/function () {
   };
 }();
 
-var AppPage = function AppPage(props) {
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+var _excluded$x = ["id", "children"];
+
+var AppPage = function AppPage(_ref) {
+  var id = _ref.id,
+      children = _ref.children,
+      rest = _objectWithoutProperties__default["default"](_ref, _excluded$x);
+
+  return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "flex md:flex-row flex-col h-full",
-    id: props.id
-  }, props.children);
+    id: id
+  }, rest), children);
 };
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -2307,7 +2313,7 @@ var withAuth = function withAuth(Component) {
   return C;
 };
 
-var _excluded$s = ["hasToasts", "placement", "className"];
+var _excluded$w = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -2325,7 +2331,7 @@ var ToastContainer = function ToastContainer(_ref) {
   var hasToasts = _ref.hasToasts,
       placement = _ref.placement,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$s);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$w);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: classes(placement, hasToasts, className),
@@ -2460,7 +2466,7 @@ var appearances = {
   }
 };
 
-var _excluded$r = ["autoDismissTimeout", "opacity", "isRunning"],
+var _excluded$v = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "theme", "color"];
 
@@ -2475,7 +2481,7 @@ var Countdown = function Countdown(_ref) {
   _ref.autoDismissTimeout;
       var opacity = _ref.opacity,
       isRunning = _ref.isRunning,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$r);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$v);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "toast-countdown",
@@ -4410,7 +4416,7 @@ SwitchTransition.defaultProps = {
   mode: modes.out
 };
 
-var _excluded$q = ["autoDismiss", "autoDismissTimeout", "component"];
+var _excluded$u = ["autoDismiss", "autoDismissTimeout", "component"];
 
 function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -4521,7 +4527,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
           autoDismiss = _this$props2.autoDismiss,
           autoDismissTimeout = _this$props2.autoDismissTimeout,
           Toast = _this$props2.component,
-          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$q);
+          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$u);
 
       var isRunning = this.state.isRunning; // NOTE: conditions here so methods can be clean
 
@@ -4544,7 +4550,7 @@ _defineProperty__default["default"](ToastController, "defaultProps", {
   autoDismiss: false
 });
 
-var _excluded$p = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
+var _excluded$t = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -4751,7 +4757,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
             actionLabel = _ref.actionLabel,
             secondaryAction = _ref.secondaryAction,
             secondaryActionLabel = _ref.secondaryActionLabel,
-            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$p);
+            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$t);
 
         return /*#__PURE__*/React__default["default"].createElement(Transition, {
           appear: true,
@@ -23086,7 +23092,7 @@ var withWebAppsUX = function withWebAppsUX(Component) {
   return C;
 };
 
-var _excluded$o = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
+var _excluded$s = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
   var id = props.id,
@@ -23100,7 +23106,7 @@ var Input = function Input(props) {
       wrapperClassName = props.wrapperClassName,
       labelClassName = props.labelClassName,
       inputClassName = props.inputClassName,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$o);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$s);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -23199,7 +23205,7 @@ Input.defaultProps = {
   inputClassName: ''
 };
 
-var _excluded$n = ["id", "groupData", "setData", "accessToken", "saveChange"];
+var _excluded$r = ["id", "groupData", "setData", "accessToken", "saveChange"];
 
 var AzureGroupSearch = function AzureGroupSearch(_ref) {
   var _groupData$id, _groupData$id2, _groupData$id3;
@@ -23209,7 +23215,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
       setData = _ref.setData,
       accessToken = _ref.accessToken,
       saveChange = _ref.saveChange,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$n);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$r);
 
   var _useState = React$1.useState([]),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -23228,7 +23234,9 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
 
   var change = function change(e) {
     // Abort any running requests
-    controllers.map(function (controller, i) {
+    controllers.map(
+    /* istanbul ignore next */
+    function (controller, i) {
       controller === null || controller === void 0 ? void 0 : controller.abort();
       delete controllers[i];
     });
@@ -23236,6 +23244,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     setControllers([].concat(_toConsumableArray__default["default"](controllers), [signal]));
     var id = e.target.id;
     var value = e.target.value;
+    /* istanbul ignore else */
 
     if (groupData[id] === undefined) {
       groupData[id] = {};
@@ -23261,9 +23270,20 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     })["catch"](function (error) {
       var _error$status;
 
+      /* istanbul ignore else */
       if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort)) {
         // TODO: Handle Errors
-        console.log(error);
+        // Only log, if we are not in a test environment (Jest)
+
+        /* istanbul ignore next */
+        if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
+          console.log(error);
+        }
+
+        groupData[id].data = [];
+        setData(_toConsumableArray__default["default"](groupData));
+        setActive(0);
+        setShowResults(true);
       }
     });
   };
@@ -23280,6 +23300,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
   };
 
   var onKeyDown = function onKeyDown(e) {
+    /* istanbul ignore else */
     if (e.keyCode === 13) {
       groupData[id].selected = groupData[id].data[active];
       groupData[id].value = groupData[id].data[active].displayName;
@@ -23312,6 +23333,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
       DataListComponent = /*#__PURE__*/React__default["default"].createElement("ul", {
         className: "z-50 absolute mx-1.5 inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
       }, groupData[id].data.map(function (data, index) {
+        /* istanbul ignore else */
         if (count <= 5) {
           var className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
 
@@ -23350,7 +23372,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
   }, props)), DataListComponent);
 };
 
-var _excluded$m = ["tag", "className", "color", "darkColor", "shade", "darkShade", "pill", "children"];
+var _excluded$q = ["tag", "className", "color", "darkColor", "shade", "darkShade", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -23361,7 +23383,7 @@ var Badge = function Badge(props) {
       darkShade = props.darkShade,
       pill = props.pill,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$m);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$q);
 
   var classes = classNames('inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', 'text-white', 'dark:text-gray-800', "bg-".concat(color, "-").concat(shade), "dark:".concat(darkColor || color, "-").concat(darkShade), pill ? 'rounded-full' : '', className);
   var Tag = attributes.to || attributes.href ? reactRouterDom.NavLink : tag;
@@ -23386,7 +23408,7 @@ Badge.defaultProps = {
   darkShade: '600'
 };
 
-var _excluded$l = ["tag", "className", "color", "darkColor", "children"];
+var _excluded$p = ["tag", "className", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -23394,7 +23416,7 @@ var Banner = function Banner(props) {
       color = props.color,
       darkColor = props.darkColor,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$l);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$p);
 
   var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
@@ -23416,7 +23438,7 @@ Banner.defaultProps = {
   darkColor: 'gray-700'
 };
 
-var _excluded$k = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+var _excluded$o = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23429,7 +23451,7 @@ var Link = function Link(props) {
       href = props.href,
       onClick = props.onClick,
       disabled = props.disabled,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$k);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$o);
 
   var to = rest.to ? rest.to : null;
 
@@ -23467,7 +23489,7 @@ Link.propTypes = _objectSpread$8(_objectSpread$8({
   to: propTypes.exports.oneOfType([propTypes.exports.object, propTypes.exports.string, propTypes.exports.func])
 });
 
-var _excluded$j = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
+var _excluded$n = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
 
 var Button = function Button(props) {
   var shade = props.shade,
@@ -23479,7 +23501,7 @@ var Button = function Button(props) {
       padding = props.padding,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$j);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$n);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -23513,6 +23535,8 @@ Button.defaultProps = {
   padding: true
 };
 
+var _excluded$m = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "colors", "onSelect"];
+
 var ColorGridSelect = function ColorGridSelect(props) {
   var id = props.id,
       label = props.label,
@@ -23520,15 +23544,16 @@ var ColorGridSelect = function ColorGridSelect(props) {
       wrapperClassName = props.wrapperClassName,
       labelClassName = props.labelClassName,
       colors = props.colors,
-      onSelect = props.onSelect;
+      onSelect = props.onSelect,
+      rest = _objectWithoutProperties__default["default"](props, _excluded$m);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
 
   var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: wrapperClassName
-  }, /*#__PURE__*/React__default["default"].createElement("label", {
+  }, rest), /*#__PURE__*/React__default["default"].createElement("label", {
     className: labelClasses,
     htmlFor: id
   }, label), /*#__PURE__*/React__default["default"].createElement("div", {
@@ -23578,7 +23603,7 @@ ColorGridSelect.defaultProps = {
   colors: []
 };
 
-var _excluded$i = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+var _excluded$l = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -23588,7 +23613,7 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
       initialColor = props.initialColor,
       confirmColor = props.confirmColor,
       className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$l);
 
   var isMountedRef = React$1.useRef(true);
   var isMounted = React$1.useCallback(function () {
@@ -23677,7 +23702,7 @@ ConfirmDeleteButton.defaultProps = {
   confirmColor: 'orange'
 };
 
-var _excluded$h = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+var _excluded$k = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -23686,7 +23711,7 @@ var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
       confirmText = props.confirmText,
       onCancel = props.onCancel,
       onConfirm = props.onConfirm,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$k);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "fixed z-[500] inset-0 overflow-y-auto"
@@ -23760,7 +23785,7 @@ ConfirmDeleteModal.defaultProps = {
   confirmText: "Yes"
 };
 
-var _excluded$g = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
+var _excluded$j = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
 
 var DataSuggest = function DataSuggest(_ref) {
   var data = _ref.data,
@@ -23770,7 +23795,7 @@ var DataSuggest = function DataSuggest(_ref) {
       limit = _ref.limit,
       labelKey = _ref.labelKey,
       valueKey = _ref.valueKey,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$g);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$j);
 
   var _useState = React$1.useState(0),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -23815,6 +23840,7 @@ var DataSuggest = function DataSuggest(_ref) {
   };
 
   var onKeyDown = function onKeyDown(e) {
+    /* istanbul ignore else */
     if (e.keyCode === 13) {
       setDataInput(filteredData[active][labelKey]);
       select(filteredData[active]);
@@ -23837,6 +23863,7 @@ var DataSuggest = function DataSuggest(_ref) {
       dataListComponent = /*#__PURE__*/React__default["default"].createElement("ul", {
         className: "absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
       }, filteredData.map(function (data, index) {
+        /* istanbul ignore else */
         if (limit === 0 || count <= limit) {
           var className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
 
@@ -23896,7 +23923,7 @@ DataSuggest.defaultProps = {
   limit: 0
 };
 
-var _excluded$f = ["show", "text", "origin", "buttonClassNames", "dropClassNames"];
+var _excluded$i = ["show", "text", "origin", "buttonClassNames", "dropClassNames"];
 
 var DropDownButton = function DropDownButton(props) {
   var show = props.show,
@@ -23904,7 +23931,7 @@ var DropDownButton = function DropDownButton(props) {
       origin = props.origin,
       buttonClassNames = props.buttonClassNames,
       dropClassNames = props.dropClassNames,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$f);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$i);
 
   var _useState = React$1.useState(show),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -23967,7 +23994,7 @@ DropDownButton.defaultProps = {
   origin: 'right'
 };
 
-var _excluded$e = ["active", "align", "shade", "darkShade", "className", "children"];
+var _excluded$h = ["active", "align", "shade", "darkShade", "className", "children"];
 
 var DropDownItem = function DropDownItem(props) {
   var active = props.active,
@@ -23976,7 +24003,7 @@ var DropDownItem = function DropDownItem(props) {
       darkShade = props.darkShade,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$e);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -24006,6 +24033,8 @@ DropDownItem.defaultProps = {
   darkShade: '400'
 };
 
+var _excluded$g = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "options", "onSelect"];
+
 var GridSelect = function GridSelect(props) {
   var id = props.id,
       label = props.label,
@@ -24013,15 +24042,16 @@ var GridSelect = function GridSelect(props) {
       wrapperClassName = props.wrapperClassName,
       labelClassName = props.labelClassName,
       options = props.options,
-      onSelect = props.onSelect;
+      onSelect = props.onSelect,
+      rest = _objectWithoutProperties__default["default"](props, _excluded$g);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
 
   var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: wrapperClassName
-  }, /*#__PURE__*/React__default["default"].createElement("label", {
+  }, rest), /*#__PURE__*/React__default["default"].createElement("label", {
     className: labelClasses,
     htmlFor: id
   }, label), /*#__PURE__*/React__default["default"].createElement("div", {
@@ -24067,18 +24097,23 @@ GridSelect.defaultProps = {
   options: []
 };
 
-var Headerbar = function Headerbar(props) {
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+var _excluded$f = ["children"];
+
+var Headerbar = function Headerbar(_ref) {
+  var children = _ref.children,
+      rest = _objectWithoutProperties__default["default"](_ref, _excluded$f);
+
+  return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "relative flex flex-0 items-center w-full h-16 min-h-[4rem] px-4 md:px-6 shadow dark:shadow-none dark:border-b dark:border-gray-800 bg-white dark:bg-transparent z-[190]"
-  }, props.children || null);
+  }, rest), children);
 };
 
-var _excluded$d = ["icon", "className"];
+var _excluded$e = ["icon", "className"];
 
 var Icon = function Icon(_ref) {
   var icon = _ref.icon,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$d);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$e);
 
   var addClasses = function addClasses(string) {
     if (typeof string === 'string') {
@@ -25485,13 +25520,13 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
     .join(' ');
 };
 
-var _excluded$c = ["tag", "className", "settings"];
+var _excluded$d = ["tag", "className", "settings"];
 
 var Scrollbar = function Scrollbar(props) {
   var Tag = props.tag,
       className = props.className;
       props.settings;
-      var attributes = _objectWithoutProperties__default["default"](props, _excluded$c);
+      var attributes = _objectWithoutProperties__default["default"](props, _excluded$d);
 
   var _useState = React$1.useState(),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -25546,15 +25581,21 @@ Scrollbar.defaultProps = {
   tag: 'div'
 };
 
+var _excluded$c = ["title", "children"];
+
 var PageWrapper = function PageWrapper(props) {
-  var useDrawer = props.useDrawer,
-      title = props.title,
-      children = props.children;
+  var title = props.title,
+      children = props.children,
+      rest = _objectWithoutProperties__default["default"](props, _excluded$c);
+
+  var _useContext = React$1.useContext(WebAppsUXContext),
+      useDrawer = _useContext.useDrawer;
+
   var drawer = useDrawer.drawer,
       toggleDrawer = useDrawer.toggleDrawer;
-  return /*#__PURE__*/React__default["default"].createElement(Scrollbar, {
+  return /*#__PURE__*/React__default["default"].createElement(Scrollbar, _extends__default["default"]({
     className: "flex flex-col flex-auto relative"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, rest), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "flex-auto px-6 pt-9 pb-12 md:p-8 md:pb-12 lg:p-12"
   }, drawer.active || title ? /*#__PURE__*/React__default["default"].createElement("div", {
     className: "flex items-center mb-8"
@@ -25579,14 +25620,6 @@ var PageWrapper = function PageWrapper(props) {
     className: "w-full"
   }, children)));
 };
-
-PageWrapper.propTypes = {
-  hasDrawer: propTypes.exports.bool
-};
-PageWrapper.defaultProps = {
-  hasDrawer: false
-};
-var PageWrapper$1 = withWebAppsUX(PageWrapper);
 
 var _excluded$b = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
 
@@ -25616,7 +25649,7 @@ var Select = function Select(props) {
       return /*#__PURE__*/React__default["default"].createElement("div", {
         className: "flex absolute inset-y-0 ".concat(actionLocation === 'right' ? 'right-5' : 'left-0', " items-center p").concat(actionLocation.charAt(0), "-3")
       }, /*#__PURE__*/React__default["default"].createElement(Loader, {
-        style: "circle",
+        type: "circle",
         height: "5",
         width: "5",
         color: "orange"
@@ -26896,6 +26929,7 @@ var UserSuggest = function UserSuggest(_ref) {
   };
 
   var onKeyDown = function onKeyDown(e) {
+    /* istanbul ignore else */
     if (e.keyCode === 13) {
       setUserInput(filteredUsers[activeUser].username);
       select(filteredUsers[activeUser]);
@@ -26918,6 +26952,7 @@ var UserSuggest = function UserSuggest(_ref) {
       usersListComponent = /*#__PURE__*/React__default["default"].createElement("ul", {
         className: "absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer"
       }, filteredUsers.map(function (user, index) {
+        /* istanbul ignore else */
         if (limit === 0 || count <= limit) {
           var className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
 
@@ -44170,7 +44205,7 @@ var returnLibrary = function returnLibrary() {
     Input: Input,
     Link: Link,
     Loader: Loader,
-    PageWrapper: PageWrapper$1,
+    PageWrapper: PageWrapper,
     Scrollbar: Scrollbar,
     Select: Select,
     Sidebar: Sidebar,
