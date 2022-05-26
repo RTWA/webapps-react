@@ -14,7 +14,7 @@ const Link = props => {
     ...rest
   } = props;
 
-  const to = rest ? rest.to : null;
+  const to = rest.to ? rest.to : null;
   const click = e => {
     if ((!href && !to) || href === '#') {
       e.preventDefault()

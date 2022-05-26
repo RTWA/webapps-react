@@ -23404,7 +23404,7 @@ var Link = function Link(props) {
       disabled = props.disabled,
       rest = _objectWithoutProperties(props, _excluded$k);
 
-  var to = rest ? rest.to : null;
+  var to = rest.to ? rest.to : null;
 
   var click = function click(e) {
     if (!href && !to || href === '#') {
