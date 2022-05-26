@@ -1,20 +1,22 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import { rest } from 'msw';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { WebAppsUX, WebAppsUXContext } from '../../Context/index';
 
 import { Flyout, FlyoutHeader, FlyoutContent, FlyoutFooter } from '.';
-import { server } from '../../../__mocks__/server';
 
 const ToggleFullFlyout = () => {
-    const { useFlyouts } = useContext(WebAppsUXContext);
-    const { flyout, setFlyout, toggleFlyout } = useFlyouts;
+    const { useDrawer, useFlyouts } = useContext(WebAppsUXContext);
+    const { flyout, setFlyout, openFlyout, toggleFlyout } = useFlyouts;
+    const { drawer, setDrawer } = useDrawer;
 
     useEffect(() => {
+        drawer.active = true;
+        setDrawer({ ...drawer });
         flyout.display_mode = 'side';
-        flyout.opened = true;
+        flyout.opened = false;
         setFlyout({ ...flyout });
+        openFlyout();
     }, []);
 
     return <button onClick={toggleFlyout}>Toggle Full Flyout</button>

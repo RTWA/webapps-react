@@ -96,8 +96,7 @@ export const WebAppsUX = props => {
         }
     }
 
-    const calcInnerWidth = throttle(function () {
-        /* istanbul ignore else */
+    const calcInnerWidth = throttle(/* istanbul ignore next */() => {
         if (isMounted()) {
             setBreakpoint(getDeviceConfig(window.innerWidth));
         }
@@ -150,6 +149,7 @@ export const WebAppsUX = props => {
     const closeFlyout = () => {
         /* istanbul ignore else */
         if (flyout.opened && isMounted()) {
+            /* istanbul ignore else */
             if (isBreakpoint('lg') && drawer.active) {
                 drawer.opened = true;
                 setDrawer({ ...drawer });
@@ -191,6 +191,7 @@ export const WebAppsUX = props => {
     };
 
     if (coreError) {
+        APIController.abort();
         throw Error(coreError);
     }
 

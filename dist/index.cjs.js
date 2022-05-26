@@ -22986,8 +22986,9 @@ var WebAppsUX = function WebAppsUX(props) {
     }
   };
 
-  var calcInnerWidth = lodash.exports.throttle(function () {
-    /* istanbul ignore else */
+  var calcInnerWidth = lodash.exports.throttle(
+  /* istanbul ignore next */
+  function () {
     if (isMounted()) {
       setBreakpoint(getDeviceConfig(window.innerWidth));
     }
@@ -23042,6 +23043,7 @@ var WebAppsUX = function WebAppsUX(props) {
   var closeFlyout = function closeFlyout() {
     /* istanbul ignore else */
     if (flyout.opened && isMounted()) {
+      /* istanbul ignore else */
       if (isBreakpoint('lg') && drawer.active) {
         drawer.opened = true;
         setDrawer(_objectSpread$9({}, drawer));
@@ -23082,6 +23084,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   if (coreError) {
+    APIController.abort();
     throw Error(coreError);
   }
 
@@ -44145,7 +44148,9 @@ var CoreError = /*#__PURE__*/function (_Component) {
         }, this.state.error.toString()), /*#__PURE__*/React__default["default"].createElement("p", null, "You could try reloading the page, or contact your system administrator."), /*#__PURE__*/React__default["default"].createElement("div", {
           className: "flex flex-auto mt-6 gap-6 justify-center"
         }, /*#__PURE__*/React__default["default"].createElement("button", {
-          onClick: function onClick() {
+          onClick:
+          /* istanbul ignore next */
+          function onClick() {
             return window.location.reload();
           },
           className: "px-4 py-2 border border-indigo-600 dark:border-indigo-500 dark:hover:border-indigo-600 text-indigo-600 dark:text-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white"

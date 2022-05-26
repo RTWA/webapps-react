@@ -1,20 +1,22 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import { rest } from 'msw';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { WebAppsUX, WebAppsUXContext } from '../../Context/index';
 
 import { Drawer, DrawerHeader, DrawerItems, DrawerItem } from '.';
-import { server } from '../../../__mocks__/server';
 
 const ToggleFullDrawer = () => {
-    const { useDrawer } = useContext(WebAppsUXContext);
-    const { drawer, setDrawer, toggleDrawer } = useDrawer;
+    const { useDrawer, useFlyouts } = useContext(WebAppsUXContext);
+    const { drawer, setDrawer, openDrawer, toggleDrawer } = useDrawer;
+    const { flyout, setFlyout } = useFlyouts;
 
     useEffect(() => {
+        flyout.active = true;
+        setFlyout({ ...flyout });
         drawer.display_mode = 'side';
-        drawer.opened = true;
+        drawer.opened = false;
         setDrawer({ ...drawer });
+        openDrawer();
     }, []);
 
     return <button onClick={toggleDrawer}>Toggle Full Drawer</button>

@@ -27,7 +27,7 @@ class CoreError extends Component {
                             <p className="my-4 text-sm lg:text-base text-gray-900 dark:text-gray-300">{this.state.error.toString()}</p>
                             <p>You could try reloading the page, or contact your system administrator.</p>
                             <div className="flex flex-auto mt-6 gap-6 justify-center">
-                                <button onClick={() => window.location.reload()} className="px-4 py-2 border border-indigo-600 dark:border-indigo-500 dark:hover:border-indigo-600 text-indigo-600 dark:text-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white">
+                                <button onClick={/* istanbul ignore next */() => window.location.reload()} className="px-4 py-2 border border-indigo-600 dark:border-indigo-500 dark:hover:border-indigo-600 text-indigo-600 dark:text-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white">
                                     Reload Page
                                 </button>
                             </div>
