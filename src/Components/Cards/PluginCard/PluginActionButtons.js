@@ -58,6 +58,7 @@ const PluginActionButtons = ({ plugin, setChangelog, ...props }) => {
         )
     }
 
+    /* istanbul ignore else */
     if (plugin.installed && !plugin.hasUpdate) {
         return (
             <button className="w-full dark:text-white bg-gray-300 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-700 font-bold py-2 px-4 inline-flex items-center rounded-none"

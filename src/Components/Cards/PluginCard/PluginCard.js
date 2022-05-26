@@ -2,38 +2,40 @@ import React, { useContext, useEffect, useState } from 'react';
 import PluginActionButtons from './PluginActionButtons';
 
 import Icon from '../../Icon';
-import { WebAppsContext } from '../../../Context/index';
+import { WebAppsContext, WebAppsUXContext } from '../../../Context/index';
 import AppPluginChangelogModal from '../../AppPluginChangelogModal';
 
 const PluginCard = props => {
     const {
         plugin,
         showActions,
+        ...rest
     } = props;
 
-    const [darkMode, setDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const [changelog, setChangelog] = useState(false);
 
-    const { plugins, UI } = useContext(WebAppsContext);
+    const { plugins } = useContext(WebAppsContext);
+    const { darkMode } = useContext(WebAppsUXContext);
     
     useEffect(() => {
-        if (UI.dark_mode === 'user' && (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage['WA_DarkMode'] !== 'light')) {
-            setDarkMode(true);
-        } else if (UI.dark_mode === 'dark') {
-            setDarkMode(true);
+        if (darkMode === 'user' && (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage['WA_DarkMode'] !== 'light')) {
+            setIsDarkMode(true);
+        } else if (darkMode === 'dark') {
+            setIsDarkMode(true);
         }
     })
 
     const background_style = {
-        backgroundColor: (darkMode) ? plugin.background_color || '#4B5563' : plugin.background_color || '#F3F4F6'
+        backgroundColor: (isDarkMode) ? plugin.background_color || '#4B5563' : plugin.background_color || '#F3F4F6'
     };
 
     const icon_style = {
-        color: (darkMode) ? plugin.icon_color || '#F3F4F6' : plugin.icon_color || '#000000'
+        color: (isDarkMode) ? plugin.icon_color || '#F3F4F6' : plugin.icon_color || '#000000'
     };
 
     return (
-        <div className="w-full">
+        <div className="w-full" {...rest}>
             <div className="dark:text-white bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
                 <div className="relative pb-28 overflow-hidden" style={background_style}>
                     <Icon icon={plugin.icon} className="absolute inset-0 h-full w-full flex justify center" style={icon_style} />

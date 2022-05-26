@@ -75,6 +75,7 @@ const AppActionButtons = ({ app, setChangelog, ...props }) => {
     }
 
     // Installed, Active, No Updates
+    /* istanbul ignore else */
     if (app.installed && app.active && !app.hasUpdate) {
         return (
             <button className="w-full bg-gray-300 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-700 font-bold py-2 px-4 inline-flex items-center rounded-none"
