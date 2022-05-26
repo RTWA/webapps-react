@@ -22,7 +22,8 @@ const ConfirmDeleteButton = props => {
     let timer = null;
 
     useEffect(() => {
-        () => {
+        return () => {
+            /* istanbul ignore else */
             if (timer) {
                 clearTimeout(timer);
             }
@@ -43,6 +44,7 @@ const ConfirmDeleteButton = props => {
         setWaiting(true);
 
         timer = setTimeout(() => {
+            /* istanbul ignore else */
             if (isMounted()) {
                 setWaiting(false);
             }

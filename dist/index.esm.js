@@ -23558,7 +23558,16 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var isMounted = useCallback(function () {
     return isMountedRef.current;
   }, []);
+  var timer = null;
   useEffect(function () {
+    return function () {
+      /* istanbul ignore else */
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      void (isMountedRef.current = false);
+    };
   }, []);
 
   var _useState = useState(false),
@@ -23575,7 +23584,8 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var onQuery = function onQuery(e) {
     e.preventDefault();
     setWaiting(true);
-    setTimeout(function () {
+    timer = setTimeout(function () {
+      /* istanbul ignore else */
       if (isMounted()) {
         setWaiting(false);
       }
