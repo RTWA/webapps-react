@@ -64,7 +64,7 @@ const Select = props => {
         if (state === 'saving') {
             return (
                 <div className={`flex absolute inset-y-0 ${(actionLocation === 'right') ? 'right-5' : 'left-0'} items-center p${actionLocation.charAt(0)}-3`}>
-                    <Loader style="circle" height="5" width="5" color="orange" />
+                    <Loader type="circle" height="5" width="5" color="orange" />
                 </div>
             )
         } else if (state === 'saved') {
