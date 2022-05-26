@@ -23275,14 +23275,6 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
 
       /* istanbul ignore else */
       if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort)) {
-        // TODO: Handle Errors
-        // Only log, if we are not in a test environment (Jest)
-
-        /* istanbul ignore next */
-        if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
-          console.log(error);
-        }
-
         groupData[id].data = [];
         setData(_toConsumableArray(groupData));
         setActive(0);

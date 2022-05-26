@@ -46,14 +46,6 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
             .catch(error => {
                 /* istanbul ignore else */
                 if (!error.status?.isAbort) {
-                    // TODO: Handle Errors
-
-                    // Only log, if we are not in a test environment (Jest)
-                    /* istanbul ignore next */
-                    if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
-                        console.log(error)
-                    }
-
                     groupData[id].data = [];
                     setData([...groupData]);
                     setActive(0);
