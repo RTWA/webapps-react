@@ -22953,12 +22953,16 @@ var WebAppsUX = function WebAppsUX(props) {
   }();
 
   var toggleNavigation = function toggleNavigation() {
-    navigation.opened = !navigation.opened;
-    setNavigation(_objectSpread$9({}, navigation));
+    if (isMounted()) {
+      navigation.opened = !navigation.opened;
+      setNavigation(_objectSpread$9({}, navigation));
+    }
   };
 
   var calcInnerWidth = lodash.exports.throttle(function () {
-    setBreakpoint(getDeviceConfig(window.innerWidth));
+    if (isMounted()) {
+      setBreakpoint(getDeviceConfig(window.innerWidth));
+    }
   }, 200);
 
   var isBreakpoint = function isBreakpoint(bp) {
@@ -22966,7 +22970,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var openDrawer = function openDrawer() {
-    if (!drawer.opened) {
+    if (!drawer.opened && isMounted()) {
       if (isBreakpoint('lg') && flyout.active) {
         flyout.opened = false;
         setFlyout(_objectSpread$9({}, flyout));
@@ -22978,7 +22982,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var closeDrawer = function closeDrawer() {
-    if (drawer.opened) {
+    if (drawer.opened && isMounted()) {
       drawer.opened = false;
       setDrawer(_objectSpread$9({}, drawer));
     }
@@ -22993,7 +22997,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var openFlyout = function openFlyout() {
-    if (!flyout.opened) {
+    if (!flyout.opened && isMounted()) {
       if (isBreakpoint('lg') && drawer.active) {
         drawer.opened = false;
         setDrawer(_objectSpread$9({}, drawer));
@@ -23005,7 +23009,7 @@ var WebAppsUX = function WebAppsUX(props) {
   };
 
   var closeFlyout = function closeFlyout() {
-    if (flyout.opened) {
+    if (flyout.opened && isMounted()) {
       if (isBreakpoint('lg') && drawer.active) {
         drawer.opened = true;
         setDrawer(_objectSpread$9({}, drawer));
@@ -23044,6 +23048,11 @@ var WebAppsUX = function WebAppsUX(props) {
     closeFlyout: closeFlyout,
     openFlyout: openFlyout
   };
+
+  if (!navigation.menu && !theme) {
+    return /*#__PURE__*/React__default["default"].createElement(Loader, null);
+  }
+
   return /*#__PURE__*/React__default["default"].createElement(WebAppsUXContext.Provider, {
     value: {
       breakpoint: breakpoint,
@@ -23915,8 +23924,9 @@ var DropDownButton = function DropDownButton(props) {
     setOpen(false);
   };
 
-  var dropClass = classNames("origin-top-".concat(origin), 'absolute', "".concat(origin, "-0"), 'w-56', 'bg-white', 'dark:bg-gray-700', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'z-20', dropClassNames, open ? '' : 'hidden');
+  var dropClass = classNames("origin-top-".concat(origin), 'absolute', "".concat(origin, "-0"), 'w-56', 'bg-white', 'dark:bg-gray-700', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'z-20', dropClassNames);
   var childrenWithClose = React__default["default"].Children.map(props.children, function (child) {
+    /* istanbul ignore else */
     if ( /*#__PURE__*/React__default["default"].isValidElement(child)) {
       return /*#__PURE__*/React__default["default"].cloneElement(child, {
         onClick: function onClick() {
@@ -23924,6 +23934,8 @@ var DropDownButton = function DropDownButton(props) {
         }
       });
     }
+    /* istanbul ignore next */
+
 
     return child;
   });
@@ -23937,14 +23949,14 @@ var DropDownButton = function DropDownButton(props) {
     "aria-haspopup": "true",
     "aria-expanded": "false",
     onClick: toggle
-  }), text), /*#__PURE__*/React__default["default"].createElement("div", {
+  }), text), open ? /*#__PURE__*/React__default["default"].createElement("div", {
     className: dropClass
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: "py-1 flex flex-col",
     role: "menu",
     "aria-orientation": "vertical",
     "aria-labelledby": id
-  }, childrenWithClose)));
+  }, childrenWithClose)) : null);
 };
 
 DropDownButton.propTypes = {

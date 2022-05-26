@@ -41,13 +41,14 @@ const DropDownButton = props => {
         'ring-opacity-5',
         'z-20',
         dropClassNames,
-        (open) ? '' : 'hidden'
     );
 
     const childrenWithClose = React.Children.map(props.children, child => {
+        /* istanbul ignore else */
         if (React.isValidElement(child)) {
             return React.cloneElement(child, { onClick: () => close(child.props.onClick) });
         }
+        /* istanbul ignore next */
         return child;
     });
 
@@ -59,11 +60,16 @@ const DropDownButton = props => {
                 id={id} aria-haspopup="true" aria-expanded="false" onClick={toggle}>
                 {text}
             </Button>
-            <div className={dropClass}>
-                <div className="py-1 flex flex-col" role="menu" aria-orientation="vertical" aria-labelledby={id}>
-                    {childrenWithClose}
-                </div>
-            </div>
+            {
+                (open)
+                    ? (
+                        <div className={dropClass}>
+                            <div className="py-1 flex flex-col" role="menu" aria-orientation="vertical" aria-labelledby={id}>
+                                {childrenWithClose}
+                            </div>
+                        </div>
+                    ) : null
+            }
         </div>
     )
 }
