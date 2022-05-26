@@ -48,10 +48,6 @@ const Sidebar = props => {
                 ? 'translate-x-0' : '-translate-x-full'
     )
 
-    if (!navigation.menu) {
-        return null;
-    }
-
     return (
         <>
             <nav className={navClasses} {...rest}>

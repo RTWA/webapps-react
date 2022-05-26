@@ -26086,11 +26086,6 @@ var Sidebar = function Sidebar(props) {
     setNavigation(_objectSpread$4({}, navigation));
   }, [breakpoint]);
   var navClasses = classNames('webapps-sidebar', 'border-r', 'dark:border-gray-800', (navigation === null || navigation === void 0 ? void 0 : navigation.color_mode) === 'dark' ? 'dark bg-gray-900' : 'bg-white dark:bg-gray-900', (navigation === null || navigation === void 0 ? void 0 : navigation.display_mode) === 'side' ? '' : 'webapps-sidebar-overlay', (navigation === null || navigation === void 0 ? void 0 : navigation.display_mode) === 'side' ? navigation !== null && navigation !== void 0 && navigation.opened ? 'ml-0' : '-ml-72' : navigation !== null && navigation !== void 0 && navigation.opened ? 'translate-x-0' : '-translate-x-full');
-
-  if (!navigation.menu) {
-    return null;
-  }
-
   return /*#__PURE__*/React$1.createElement(React$1.Fragment, null, /*#__PURE__*/React$1.createElement("nav", _extends({
     className: navClasses
   }, rest), /*#__PURE__*/React$1.createElement("div", {
