@@ -5,6 +5,7 @@ import { client as APIClient } from '../../API';
 import { getDeviceConfig } from '../../Helpers/getDeviceConfig';
 import { isWithinBreakpoint } from '../../Helpers/isWithinBreakpoint';
 import { ToastProvider } from '../../Toasts';
+import Loader from '../../Components/Loader';
 
 export const WebAppsUXContext = createContext({});
 
@@ -178,6 +179,10 @@ export const WebAppsUX = props => {
         closeFlyout,
         openFlyout,
     };
+
+    if (!navigation.menu && !theme) {
+        return <Loader />;
+    }
 
     return (
         <WebAppsUXContext.Provider
