@@ -7,6 +7,7 @@ import Loader from '../../Components/Loader';
 let controller = new AbortController();
 
 const Auth = props => {
+    const [coreError, setCoreError] = useState(null);
     const [state, setState] = useState({
         user: null,
         authenticated: null,
@@ -168,10 +169,13 @@ const Auth = props => {
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT', signal: controller.signal })
             .catch(error => {
                 if (!error.status?.isAbort && isMounted) {
-                    // TODO: Handle errors
-                    console.error(error);
+                    setCoreError(error.data?.message);
                 }
             })
+    }
+
+    if (coreError) {
+        throw Error(coreError);
     }
 
     if (state.authenticated !== null) {

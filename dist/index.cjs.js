@@ -1791,18 +1791,23 @@ function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { 
 var controller$1 = new AbortController();
 
 var Auth = function Auth(props) {
-  var _useState = React$1.useState({
+  var _useState = React$1.useState(null),
+      _useState2 = _slicedToArray__default["default"](_useState, 2),
+      coreError = _useState2[0],
+      setCoreError = _useState2[1];
+
+  var _useState3 = React$1.useState({
     user: null,
     authenticated: null
   }),
-      _useState2 = _slicedToArray__default["default"](_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
-
-  var _useState3 = React$1.useState({}),
       _useState4 = _slicedToArray__default["default"](_useState3, 2),
-      preferences = _useState4[0],
-      setPreferences = _useState4[1];
+      state = _useState4[0],
+      setState = _useState4[1];
+
+  var _useState5 = React$1.useState({}),
+      _useState6 = _slicedToArray__default["default"](_useState5, 2),
+      preferences = _useState6[0],
+      setPreferences = _useState6[1];
 
   var isMountedRef = React$1.useRef(true);
   var isMounted = React$1.useCallback(function () {
@@ -2238,8 +2243,9 @@ var Auth = function Auth(props) {
                 var _error$status5;
 
                 if (!((_error$status5 = error.status) !== null && _error$status5 !== void 0 && _error$status5.isAbort) && isMounted) {
-                  // TODO: Handle errors
-                  console.error(error);
+                  var _error$data;
+
+                  setCoreError((_error$data = error.data) === null || _error$data === void 0 ? void 0 : _error$data.message);
                 }
               });
 
@@ -2255,6 +2261,10 @@ var Auth = function Auth(props) {
       return _ref11.apply(this, arguments);
     };
   }();
+
+  if (coreError) {
+    throw Error(coreError);
+  }
 
   if (state.authenticated !== null) {
     return /*#__PURE__*/React__default["default"].createElement(AuthContext.Provider, {
