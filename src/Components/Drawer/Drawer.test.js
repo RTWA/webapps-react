@@ -65,8 +65,8 @@ const TestDrawer = ({ overlay }) => {
                 </Drawer>
                 {
                     (!overlay)
-                    ? <ToggleFullDrawer />
-                    : <ToggleDrawer />
+                        ? <ToggleFullDrawer />
+                        : <ToggleDrawer />
                 }
             </BrowserRouter>
         </WebAppsUX>
