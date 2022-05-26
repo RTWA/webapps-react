@@ -3,6 +3,7 @@ import React, {
     useEffect,
     createRef,
     useContext,
+    createContext,
 } from 'react';
 import classNames from 'classnames';
 
@@ -10,7 +11,7 @@ import Badge from '../Badge';
 import Icon from '../Icon';
 import { WebAppsUXContext } from '../../Context';
 
-export const DropdownContext = React.createContext({});
+export const DropdownContext = createContext({});
 
 const NavDropdown = props => {
     const {
@@ -34,11 +35,12 @@ const NavDropdown = props => {
     const ref = createRef();
     innerRef && innerRef(ref);
 
+    /* istanbul ignore next */
     if (navigation === undefined) {
         return null;
     }
 
-    const { dropdownMode, openDropdown } = navigation;
+    const { dropdownMode } = navigation;
 
     const [isOpen, setIsOpen] = useState(show)
     useEffect(() => {
@@ -47,8 +49,9 @@ const NavDropdown = props => {
 
     const toggle = (e) => {
         e.preventDefault();
+        /* istanbul ignore else */
         if (!dropdownMode && navigation !== undefined) {
-            navigation.openDropdown = isOpen ? ref.current.parentNode.closest('.nav-dropdown') : ref.current;
+            navigation.openDropdown = isOpen ? null : ref.current;
             setNavigation({ ...navigation });
         }
         setIsOpen(!isOpen);
@@ -58,17 +61,12 @@ const NavDropdown = props => {
     try {
         path = window.location.pathname;
     } catch (e) {
+        /* istanbul ignore next */
         console.warn(e);
     }
 
     useEffect(() => {
-        if (dropdownMode === 'close') {
-            setIsOpen(false);
-        } else if (dropdownMode === 'closeInactive' && route) {
-            setIsOpen(path.includes(route));
-        } else if ((!dropdownMode || dropdownMode !== 'noAction') && route) {
-            setIsOpen(path.includes(route));
-        }
+        setIsOpen(path.includes(route));
     }, [path]);
 
     const linkClasses = classNames(

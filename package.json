@@ -8,6 +8,7 @@
     "test": "jest",
     "test-watch": "jest --watchAll",
     "test-verbose": "jest --verbose",
+    "test-coverage": "jest --verbose --coverage",
     "watch": "rollup -c -w",
     "build": "rollup -c --compact"
   },

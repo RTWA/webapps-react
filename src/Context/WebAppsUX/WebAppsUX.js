@@ -71,9 +71,13 @@ export const WebAppsUX = props => {
             })
             .catch(error => {
                 if (!error.status?.isAbort && isMounted()) {
-                    let nav = [];
-                    navigation.error = true;
-                    navigation.message = error.data?.message;
+                    let navigation = {
+                        color_mode: 'dark',
+                        menu: {
+                            error: true,
+                            message: error.data?.message
+                        }
+                    }
                     setNavigation({ ...navigation });
                 }
             });

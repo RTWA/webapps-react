@@ -17,12 +17,13 @@ const Scrollbar = props => {
 
     useEffect(() => {
         init();
-        () => {
+        return () => {
             uninit();
         }
     }, []);
 
     const init = () => {
+        /* istanbul ignore else */
         if (!instance) {
             createPerfectScrollbar()
         }
@@ -33,13 +34,13 @@ const Scrollbar = props => {
     }
 
     const uninit = () => {
+        /* istanbul ignore next */
         if (instance) {
             instance.destroy()
             setInstance(null)
         }
     }
 
-    // render
     return (
         <Tag
             className={classNames(className)}

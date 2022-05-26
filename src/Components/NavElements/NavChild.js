@@ -55,6 +55,7 @@ const NavChild = props => {
     }
 
     const click = () => {
+        /* istanbul ignore next */
         if (navigation.display_mode === 'overlay' && navigation.opened) {
             toggleNavigation();
         }

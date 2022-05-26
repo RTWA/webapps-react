@@ -55,6 +55,7 @@ const NavItem = props => {
     }
 
     const click = () => {
+        /* istanbul ignore next */
         if (navigation.display_mode === 'overlay' && navigation.opened) {
             toggleNavigation();
         }
@@ -67,7 +68,7 @@ const NavItem = props => {
                 onClick={click}
                 {...routerLinkProps}
                 {...rest}
-                tabIndex={isOpen === false ? -1 : 0}
+                tabIndex={/* istanbul ignore next */ isOpen === false ? -1 : 0}
             >
                 {icon && <Icon icon={icon} className="h-6 w-6 mr-4" />}
                 <span>{name}</span>

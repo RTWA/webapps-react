@@ -22927,9 +22927,15 @@ var WebAppsUX = function WebAppsUX(props) {
 
                 if (!((_error$status2 = error.status) !== null && _error$status2 !== void 0 && _error$status2.isAbort) && isMounted()) {
                   var _error$data;
-                  navigation.error = true;
-                  navigation.message = (_error$data = error.data) === null || _error$data === void 0 ? void 0 : _error$data.message;
-                  setNavigation(_objectSpread$9({}, navigation));
+
+                  var _navigation = {
+                    color_mode: 'dark',
+                    menu: {
+                      error: true,
+                      message: (_error$data = error.data) === null || _error$data === void 0 ? void 0 : _error$data.message
+                    }
+                  };
+                  setNavigation(_objectSpread$9({}, _navigation));
                 }
               });
 
@@ -25481,9 +25487,13 @@ var Scrollbar = function Scrollbar(props) {
   var ref = /*#__PURE__*/React$1.createRef();
   React$1.useEffect(function () {
     init();
+    return function () {
+      uninit();
+    };
   }, []);
 
   var init = function init() {
+    /* istanbul ignore else */
     if (!instance) {
       createPerfectScrollbar();
     }
@@ -25493,6 +25503,13 @@ var Scrollbar = function Scrollbar(props) {
     setInstance(new PerfectScrollbar(ref.current));
   };
 
+  var uninit = function uninit() {
+    /* istanbul ignore next */
+    if (instance) {
+      instance.destroy();
+      setInstance(null);
+    }
+  };
 
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends__default["default"]({
     className: classNames(className),
@@ -25672,7 +25689,7 @@ Select.defaultProps = {
 function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$7(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-var DropdownContext = /*#__PURE__*/React__default["default"].createContext({});
+var DropdownContext = /*#__PURE__*/React$1.createContext({});
 
 var NavDropdown = function NavDropdown(props) {
   var children = props.children,
@@ -25692,13 +25709,13 @@ var NavDropdown = function NavDropdown(props) {
       setNavigation = useNavigation.setNavigation;
   var ref = /*#__PURE__*/React$1.createRef();
   innerRef && innerRef(ref);
+  /* istanbul ignore next */
 
   if (navigation === undefined) {
     return null;
   }
 
   var dropdownMode = navigation.dropdownMode;
-      navigation.openDropdown;
 
   var _useState = React$1.useState(show),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -25711,9 +25728,10 @@ var NavDropdown = function NavDropdown(props) {
 
   var toggle = function toggle(e) {
     e.preventDefault();
+    /* istanbul ignore else */
 
     if (!dropdownMode && navigation !== undefined) {
-      navigation.openDropdown = isOpen ? ref.current.parentNode.closest('.nav-dropdown') : ref.current;
+      navigation.openDropdown = isOpen ? null : ref.current;
       setNavigation(_objectSpread$7({}, navigation));
     }
 
@@ -25725,17 +25743,12 @@ var NavDropdown = function NavDropdown(props) {
   try {
     path = window.location.pathname;
   } catch (e) {
+    /* istanbul ignore next */
     console.warn(e);
   }
 
   React$1.useEffect(function () {
-    if (dropdownMode === 'close') {
-      setIsOpen(false);
-    } else if (dropdownMode === 'closeInactive' && route) {
-      setIsOpen(path.includes(route));
-    } else if ((!dropdownMode || dropdownMode !== 'noAction') && route) {
-      setIsOpen(path.includes(route));
-    }
+    setIsOpen(path.includes(route));
   }, [path]);
   var linkClasses = classNames('relative', 'flex', 'items-center', 'justify-start', 'px-4', 'py-2.5', 'text-sm', 'font-medium', 'leading-5', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:bg-black/10 dark:hover:bg-white/10") : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10', isOpen ? color ? "rounded-t-md text-".concat(color, "-600 bg-black/10 dark:bg-white/10") : 'rounded-t-md text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10' : 'rounded-md');
   var childWrapper = classNames(isOpen ? "block p-1 bg-black/10 dark:bg-white/10 rounded-b-md" : 'hidden');
@@ -25799,6 +25812,7 @@ var NavChild = function NavChild(props) {
   };
 
   var click = function click() {
+    /* istanbul ignore next */
     if (navigation.display_mode === 'overlay' && navigation.opened) {
       toggleNavigation();
     }
@@ -25854,6 +25868,7 @@ var NavItem = function NavItem(props) {
   };
 
   var click = function click() {
+    /* istanbul ignore next */
     if (navigation.display_mode === 'overlay' && navigation.opened) {
       toggleNavigation();
     }
@@ -25866,7 +25881,9 @@ var NavItem = function NavItem(props) {
     className: linkClasses,
     onClick: click
   }, routerLinkProps, rest, {
-    tabIndex: isOpen === false ? -1 : 0
+    tabIndex:
+    /* istanbul ignore next */
+    isOpen === false ? -1 : 0
   }), icon && /*#__PURE__*/React__default["default"].createElement(Icon, {
     icon: icon,
     className: "h-6 w-6 mr-4"
@@ -25936,6 +25953,28 @@ CreateElement.propTypes = {
   components: propTypes.exports.object
 };
 
+var SidebarWrapper = function SidebarWrapper(props) {
+  var children = props.children;
+
+  var _useContext = React$1.useContext(WebAppsUXContext),
+      useNavigation = _useContext.useNavigation;
+
+  var navigation = useNavigation.navigation;
+  React$1.useEffect(function () {
+    if (navigation.menu && navigation.menu.error) {
+      throw new Error(navigation.menu.message);
+    }
+  }, [navigation]);
+  var isRtl = getComputedStyle(document.querySelector('html')).direction === 'rtl';
+  return /*#__PURE__*/React__default["default"].createElement(Scrollbar, {
+    settings: {
+      suppressScrollX: !isRtl
+    },
+    tag: "div",
+    className: "flex flex-col flex-grow h-full px-3 mt-6 mb-4"
+  }, children);
+};
+
 function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
 function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
@@ -25991,31 +26030,56 @@ var NavigationError = /*#__PURE__*/function (_Component) {
   return NavigationError;
 }(React$1.Component);
 
-var _excluded$6 = ["children", "dropDownMode"];
+var SidebarHeader = function SidebarHeader() {
+  var _useContext = React$1.useContext(WebAppsUXContext),
+      theme = _useContext.theme,
+      useNavigation = _useContext.useNavigation;
+
+  var navigation = useNavigation.navigation;
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "flex items-center h-20 p-6 pb-0 ".concat((navigation === null || navigation === void 0 ? void 0 : navigation.color_mode) === 'dark' ? 'text-white' : 'text-gray-600 dark:text-white')
+  }, /*#__PURE__*/React__default["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    className: "h-10 text-".concat(theme, "-600")
+  }, /*#__PURE__*/React__default["default"].createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: 2,
+    d: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+  })), /*#__PURE__*/React__default["default"].createElement("span", {
+    className: "ml-4 text-2xl font-bold"
+  }, "WebApps"));
+};
+
+var _excluded$6 = ["dropDownMode"];
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$4(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-var SidebarWrapper = function SidebarWrapper(props) {
-  var children = props.children,
-      dropDownMode = props.dropDownMode,
+var Sidebar = function Sidebar(props) {
+  var dropDownMode = props.dropDownMode,
       rest = _objectWithoutProperties__default["default"](props, _excluded$6);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       breakpoint = _useContext.breakpoint,
       isBreakpoint = _useContext.isBreakpoint,
-      theme = _useContext.theme,
       useNavigation = _useContext.useNavigation;
 
-  var navigation = useNavigation.navigation,
-      loadNavigation = useNavigation.loadNavigation,
+  var loadNavigation = useNavigation.loadNavigation,
+      navigation = useNavigation.navigation,
       setNavigation = useNavigation.setNavigation,
       toggleNavigation = useNavigation.toggleNavigation;
   React$1.useEffect(function () {
+    /* istanbul ignore else */
     if (!navigation.dropDownMode) {
       navigation.dropDownMode = dropDownMode;
     }
+    /* istanbul ignore else */
+
 
     if (!navigation.openDropdown) {
       navigation.openDropdown = '';
@@ -26034,54 +26098,19 @@ var SidebarWrapper = function SidebarWrapper(props) {
 
     setNavigation(_objectSpread$4({}, navigation));
   }, [breakpoint]);
-  var isRtl = getComputedStyle(document.querySelector('html')).direction === 'rtl';
-  var navClasses = classNames('webapps-sidebar', 'border-r', 'dark:border-gray-800', navigation.color_mode === 'dark' ? 'dark bg-gray-900' : 'bg-white dark:bg-gray-900', navigation.display_mode === 'side' ? '' : 'webapps-sidebar-overlay', navigation.display_mode === 'side' ? navigation.opened ? 'ml-0' : '-ml-72' : navigation.opened ? 'translate-x-0' : '-translate-x-full');
+  var navClasses = classNames('webapps-sidebar', 'border-r', 'dark:border-gray-800', (navigation === null || navigation === void 0 ? void 0 : navigation.color_mode) === 'dark' ? 'dark bg-gray-900' : 'bg-white dark:bg-gray-900', (navigation === null || navigation === void 0 ? void 0 : navigation.display_mode) === 'side' ? '' : 'webapps-sidebar-overlay', (navigation === null || navigation === void 0 ? void 0 : navigation.display_mode) === 'side' ? navigation !== null && navigation !== void 0 && navigation.opened ? 'ml-0' : '-ml-72' : navigation !== null && navigation !== void 0 && navigation.opened ? 'translate-x-0' : '-translate-x-full');
+
+  if (!navigation.menu) {
+    return null;
+  }
+
   return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("nav", _extends__default["default"]({
     className: navClasses
   }, rest), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "absolute left-0 top-0 bottom-0 flex flex-auto flex-col w-full h-full overflow-hidden z-[1000]"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "flex items-center h-20 p-6 pb-0 ".concat(navigation.color_mode === 'dark' ? 'text-white' : 'text-gray-600 dark:text-white')
-  }, /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    stroke: "currentColor",
-    className: "h-10 text-".concat(theme, "-600")
-  }, /*#__PURE__*/React__default["default"].createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: 2,
-    d: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
-  })), /*#__PURE__*/React__default["default"].createElement("span", {
-    className: "ml-4 text-2xl font-bold"
-  }, "WebApps")), /*#__PURE__*/React__default["default"].createElement(NavigationError, {
+  }, /*#__PURE__*/React__default["default"].createElement(SidebarHeader, null), /*#__PURE__*/React__default["default"].createElement(NavigationError, {
     retry: loadNavigation
-  }, /*#__PURE__*/React__default["default"].createElement(Scrollbar, {
-    settings: {
-      suppressScrollX: !isRtl
-    },
-    tag: "div",
-    className: "flex flex-col flex-grow h-full px-3 mt-6 mb-4"
-  }, children)))), navigation.display_mode === 'overlay' && navigation.opened ? /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "absolute top-0 bottom-0 left-0 right-0 z-[199] opacity-60 bg-gray-600",
-    onClick: toggleNavigation
-  }) : null);
-};
-
-var Sidebar = function Sidebar(props) {
-  var _useContext = React$1.useContext(WebAppsUXContext),
-      useNavigation = _useContext.useNavigation;
-
-  var navigation = useNavigation.navigation;
-  React$1.useEffect(function () {
-    if (navigation.menu !== null && navigation.menu !== undefined) {
-      if (navigation.menu.error) {
-        throw new Error(navigation.menu.message);
-      }
-    }
-  }, [navigation]);
-  return /*#__PURE__*/React__default["default"].createElement(SidebarWrapper, props, navigation.menu !== null && navigation.menu !== undefined && !navigation.menu.error ? /*#__PURE__*/React__default["default"].createElement(CreateElement, {
+  }, /*#__PURE__*/React__default["default"].createElement(SidebarWrapper, rest, navigation.menu && !navigation.menu.error ? /*#__PURE__*/React__default["default"].createElement(CreateElement, {
     items: navigation.menu,
     components: {
       NavChild: NavChild,
@@ -26089,6 +26118,9 @@ var Sidebar = function Sidebar(props) {
       NavItem: NavItem,
       NavTitle: NavTitle
     }
+  }) : null)))), navigation.display_mode === 'overlay' && navigation.opened ? /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "absolute top-0 bottom-0 left-0 right-0 z-[199] opacity-60 bg-gray-600",
+    onClick: toggleNavigation
   }) : null);
 };
 

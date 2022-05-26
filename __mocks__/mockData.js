@@ -120,9 +120,32 @@ const navigation = {
         { _tag: "NavTitle", name: "Nav Title" },
         { _tag: "NavItem", name: "Nav Item", to: "/test", icon: "[\"fas\", \"star\"]" },
         {
+            _tag: "NavItem", name: "NavItem Coloured", to: "/settings/test", icon: "[\"fas\", \"star\"]", color: "red", badge: {
+                color: 'green',
+                text: 'badge',
+                pill: true,
+                className: 'ml-auto',
+            }
+        },
+        {
             _tag: "NavDropdown", name: "Nav Dropdown", icon: "[\"fas\", \"star\"]", _children: [
                 { _tag: "NavChild", name: "Nav Child", to: "/child" }
             ]
+        },
+        {
+            _tag: "NavDropdown", name: "NavDropdown Coloured", icon: "[\"fas\", \"star\"]", color: 'blue', _children: [
+                { _tag: "NavChild", name: "NavChild Coloured", icon: "[\"fas\", \"star\"]", color: 'orange', to: "/child", badge: {
+                    color: 'green',
+                    text: 'childbadge',
+                    pill: true,
+                    className: 'ml-auto',
+                } }
+            ], badge: {
+                color: 'green',
+                text: 'dropbadge',
+                pill: true,
+                className: 'ml-auto',
+            }
         }
     ],
     routes: [
@@ -130,7 +153,7 @@ const navigation = {
         { path: "/child", name: "Child", component: "Dashboard" }
     ],
     sidebar: {
-        color_mode: true
+        color_mode: 'light',
     }
 };
 
