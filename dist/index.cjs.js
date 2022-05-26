@@ -23377,12 +23377,11 @@ Badge.defaultProps = {
   darkShade: '600'
 };
 
-var _excluded$l = ["tag", "className", "innerRef", "color", "darkColor", "children"];
+var _excluded$l = ["tag", "className", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
       className = props.className,
-      innerRef = props.innerRef,
       color = props.color,
       darkColor = props.darkColor,
       children = props.children,
@@ -23390,12 +23389,9 @@ var Banner = function Banner(props) {
 
   var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
-
-  var ref = _defineProperty__default["default"]({}, "".concat(typeof Tag === 'string' ? 'ref' : 'innerRef'), innerRef);
-
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends__default["default"]({
     className: classes
-  }, attributes, ref), children);
+  }, attributes), children);
 };
 
 Banner.propTypes = {

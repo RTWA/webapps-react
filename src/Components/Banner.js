@@ -7,7 +7,6 @@ const Banner = props => {
     const {
         tag,
         className,
-        innerRef,
         color,
         darkColor,
         children,
@@ -25,9 +24,8 @@ const Banner = props => {
     );
 
     const Tag = attributes.to || attributes.hred ? NavLink : tag;
-    const ref = { [`${typeof Tag === 'string' ? 'ref' : 'innerRef'}`]: innerRef };
 
-    return <Tag className={classes} {...attributes} {...ref}>{children}</Tag>;
+    return <Tag className={classes} {...attributes}>{children}</Tag>;
 }
 
 Banner.propTypes = {
