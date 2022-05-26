@@ -54,7 +54,7 @@ test('Rounded Button Component Renders', async () => {
 });
 
 test('Square Button Component Renders', async () => {
-    render(<WebAppsUX><Button data-testid="webapps-Button-Square-component" square>Square Button Test</Button></WebAppsUX>);
+    render(<WebAppsUX><Button data-testid="webapps-Button-Square-component" square color="green">Square Button Test</Button></WebAppsUX>);
 
     await waitFor(() => expect(screen.getByTestId('webapps-Button-Square-component')).toBeDefined());
 });
