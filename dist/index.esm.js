@@ -23314,12 +23314,11 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
   }, props)), DataListComponent);
 };
 
-var _excluded$m = ["tag", "className", "innerRef", "color", "darkColor", "shade", "darkShade", "pill", "children"];
+var _excluded$m = ["tag", "className", "color", "darkColor", "shade", "darkShade", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
       className = props.className,
-      innerRef = props.innerRef,
       color = props.color,
       darkColor = props.darkColor,
       shade = props.shade,
@@ -23330,12 +23329,9 @@ var Badge = function Badge(props) {
 
   var classes = classNames('inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', 'text-white', 'dark:text-gray-800', "bg-".concat(color, "-").concat(shade), "dark:".concat(darkColor || color, "-").concat(darkShade), pill ? 'rounded-full' : '', className);
   var Tag = attributes.to || attributes.href ? NavLink : tag;
-
-  var ref = _defineProperty({}, "".concat(typeof Tag === 'string' ? 'ref' : 'innerRef'), innerRef);
-
   return /*#__PURE__*/React$1.createElement(Tag, _extends({
     className: classes
-  }, attributes, ref), children);
+  }, attributes), children);
 };
 
 Badge.propTypes = {

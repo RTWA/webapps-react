@@ -7,7 +7,6 @@ const Badge = props => {
     let {
         tag,
         className,
-        innerRef,
         color,
         darkColor,
         shade,
@@ -35,9 +34,8 @@ const Badge = props => {
     );
 
     const Tag = attributes.to || attributes.href ? NavLink : tag;
-    const ref = { [`${typeof Tag === 'string' ? 'ref' : 'innerRef'}`]: innerRef };
 
-    return <Tag className={classes} {...attributes} {...ref}>{children}</Tag>
+    return <Tag className={classes} {...attributes}>{children}</Tag>
 
 }
 
