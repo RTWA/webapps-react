@@ -65,7 +65,7 @@ const Switch = props => {
 
     const Append = () => {
         if (state === 'saving') {
-            return <Loader style="circle" height="5" width="5" color="orange" />
+            return <Loader type="circle" height="5" width="5" color="orange" />
         } else if (state === 'saved') {
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

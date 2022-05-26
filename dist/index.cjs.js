@@ -26151,7 +26151,7 @@ var Switch = function Switch(props) {
   var Append = function Append() {
     if (state === 'saving') {
       return /*#__PURE__*/React__default["default"].createElement(Loader, {
-        style: "circle",
+        type: "circle",
         height: "5",
         width: "5",
         color: "orange"
