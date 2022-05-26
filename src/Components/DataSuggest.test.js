@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import DataSuggest from './DataSuggest';
 import { WebAppsUX } from '../Context/index';
@@ -63,9 +63,8 @@ test('DataSuggest Component Can Select A Match', async () => {
     });
     await waitFor(() => expect(screen.getByText(/test item 1/i)).toBeDefined());
 
-    const testItem1 = screen.getByRole('listitem');
     await act(async () => {
-        fireEvent.click(testItem1);
+        fireEvent.click(screen.getByRole('listitem'));
     });
     await waitFor(() => expect(screen.queryByRole('list')).toBeNull());
 });

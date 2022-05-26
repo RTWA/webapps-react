@@ -35,6 +35,7 @@ const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit,
     };
 
     const onKeyDown = e => {
+        /* istanbul ignore else */
         if (e.keyCode === 13) {
             setUserInput(filteredUsers[activeUser].username);
             select(filteredUsers[activeUser]);
@@ -64,6 +65,7 @@ const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit,
                 <ul className="absolute inset-x-0 bg-white dark:bg-gray-700 rounded-b border border-gray-200 dark:border-gray-600 text-gray-900 text-sm font-medium dark:text-white cursor-pointer">
                     {
                         filteredUsers.map((user, index) => {
+                            /* istanbul ignore else */
                             if (limit === 0 || count <= limit) {
                                 let className = "flex flex-row gap-x-2 px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-900";
 
