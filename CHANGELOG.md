@@ -2,7 +2,7 @@
 #### What's Changed?
 - Various UI improvements
 - Various speed improvements
-- Various reliability improvements
+- Various reliability improvements 
 
 ## Version 2.0.0
 #### What's New?
