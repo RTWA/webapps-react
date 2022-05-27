@@ -3,12 +3,21 @@ import { setupServer } from 'msw/node';
 
 import * as mock from './mockData';
 
+let isAuth = false;
+
 const handlers = [
+    rest.get('/sanctum/csrf_cookie', (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+        );
+    }),
+
     rest.post('/login', (req, res, ctx) => {
         const { username, password } = req.body;
 
         // Testing for valid credentials
         if (username === mock.User.username && password == mock.User.password) {
+            isAuth = true;
             return res(
                 ctx.status(204),
             );
@@ -35,10 +44,28 @@ const handlers = [
         }
     }),
 
-    rest.get('/user', (req, res, ctx) => {
+    rest.post('/api/logout', (req, res, ctx) => {
+        if (!isAuth) {
+            return res(
+                ctx.status(500)
+            )
+        }
+
+        isAuth = false;
         return res(
-            ctx.status(200),
-            ctx.json(mock.User)
+            ctx.status(200)
+        )
+    }),
+
+    rest.get('/api/user', (req, res, ctx) => {
+        if (isAuth) {
+            return res(
+                ctx.status(200),
+                ctx.json(mock.User)
+            )
+        }
+        return res(
+            ctx.status(401),
         )
     }),
 
@@ -56,6 +83,50 @@ const handlers = [
             ctx.status(200),
             ctx.json({
                 users: []
+            })
+        )
+    }),
+
+    rest.put('/api/user/preference', (req, res, ctx) => {
+        const { preference } = req.body;
+        if (preference === 'not_valid') {
+            return res(
+                ctx.status(500)
+            )
+        }
+        return res(
+            ctx.status(200),
+        )
+    }),
+
+    rest.post('/api/permission/check', (req, res, ctx) => {
+        const { permission } = req.body;
+        if (permission === 'fail') {
+            return res(
+                ctx.status(500),
+            )
+        }
+
+        return res(
+            ctx.status(200),
+            ctx.json({
+                has_permission: true
+            })
+        )
+    }),
+
+    rest.post('/api/group/check', (req, res, ctx) => {
+        const { group } = req.body;
+        if (group === 'Fail') {
+            return res(
+                ctx.status(500),
+            )
+        }
+
+        return res(
+            ctx.status(200),
+            ctx.json({
+                in_group: true
             })
         )
     }),
@@ -163,4 +234,4 @@ const handlers = [
 
 const server = setupServer(...handlers);
 
-export { server, rest };
+export { server, rest, isAuth };

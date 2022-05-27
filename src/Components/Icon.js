@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Icon = ({icon, className, ...props}) => {
+const Icon = ({ icon, className, ...props }) => {
     const addClasses = string => {
         if (typeof (string) === 'string') {
             return string.replace(/<svg/g, `<svg class="${className}"`)

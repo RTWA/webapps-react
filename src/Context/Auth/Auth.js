@@ -4,20 +4,19 @@ import AuthContext from './AuthContext';
 import { client } from '../../API';
 import Loader from '../../Components/Loader';
 
-let controller = new AbortController();
-
 const Auth = props => {
     const [coreError, setCoreError] = useState(null);
-    const [state, setState] = useState({
-        user: null,
-        authenticated: null,
-    });
+    const [user, setUser] = useState(null);
+    const [authenticated, setAuthenticated] = useState(null);
     const [preferences, setPreferences] = useState({});
 
     const isMountedRef = useRef(true);
     const isMounted = useCallback(() => isMountedRef.current, []);
 
+    let controller = new AbortController();
+
     useEffect(() => {
+        /* istanbul ignore else */
         if (props.checkOnInit) {
             checkAuthentication();
         }
@@ -37,19 +36,19 @@ const Auth = props => {
                 await client('/login', { username, password }, { signal: controller.signal });
                 // When correct, get the user object
                 const { data } = await client('/api/user', undefined, { signal: controller.signal });
-                let _preferences = data.preferences ? JSON.parse(data.preferences) : {};
+                let _preferences = data.preferences ? /* istanbul ignore next */ JSON.parse(data.preferences) : {};
                 delete data.preferences;
 
-                if (isMounted) {
-                    setState({
-                        user: data,
-                        authenticated: true,
-                    });
+                /* istanbul ignore else */
+                if (isMounted()) {
+                    setUser(data);
+                    setAuthenticated(true);
                     setPreferences(_preferences);
                     return resolve(data);
                 }
             } catch (error) {
-                if (!error.status?.isAbort && isMounted) {
+                /* istanbul ignore else */
+                if (!error.status?.isAbort && isMounted()) {
                     return reject(error);
                 }
             }
@@ -59,72 +58,78 @@ const Auth = props => {
     const signOut = async () => {
         new Promise(async (resolve, reject) => {
             try {
-                await client('/api/logout', {});
-                if (isMounted) {
-                    setState({
-                        user: null,
-                        authenticated: false
-                    });
-
-                    window.location.replace(window.location.origin + '/login?logout');
+                await client('/api/logout', {})
+                /* istanbul ignore else */
+                if (isMounted()) {
+                    setUser(null);
+                    setAuthenticated(false);
+                    // Only if we are not in a test environment (Jest)
+                    /* istanbul ignore next */
+                    if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
+                        window.location.replace(window.location.origin + '/login?logout');
+                    }
                     resolve(true);
                 }
             } catch (error) {
-                if (!error.status?.isAbort && isMounted) {
+                /* istanbul ignore next */
+                if (!error.status?.isAbort && isMounted()) {
                     return reject(error);
                 }
             }
         });
     }
 
-    const setUser = (user, authenticated) => {
-        if (isMounted) {
-            setState({
-                user,
-                authenticated
-            });
+    const _setUser = (_user, _authenticated) => {
+        /* istanbul ignore else */
+        if (isMounted()) {
+            setUser(_user);
+            setAuthenticated(_authenticated);
         }
     }
 
     const checkAuthentication = async () => {
         return new Promise(async (resolve, reject) => {
-            if (state.authenticated === null) {
+            if (authenticated === null) {
                 // The status is null if it hasn't been checked
-                try {
-                    const { data } = await client('/api/user', undefined, { signal: controller.signal });
-                    let _preferences = data.preferences ? JSON.parse(data.preferences) : {};
-                    delete data.preferences;
+                await client('/api/user', undefined, { signal: controller.signal })
+                    .then(json => {
+                        let _preferences = json.data.preferences ? /* istanbul ignore next */ JSON.parse(json.data.preferences) : {};
+                        delete json.data.preferences;
 
-                    if (isMounted) {
-                        setState({
-                            user: data,
-                            authenticated: true,
-                        });
-                        setPreferences(_preferences);
-                        return resolve(true);
-                    }
-                } catch (error) {
-                    if (error.response && error.status.code === 401) {
-                        // If 401 returns, the user is not logged in
-                        if (isMounted) {
-                            setState({
-                                user: null,
-                                authenticated: false,
-                            });
-                            setPreferences({});
-                            return resolve(false);
+                        /* istanbul ignore else */
+                        if (isMounted()) {
+                            setUser(json.data)
+                            setAuthenticated(true);
+                            setPreferences(_preferences);
+                            return resolve(true);
                         }
-                    } else {
-                        // Any other code, something went wrong
-                        if (isMounted) {
-                            return reject(error);
+                    })
+                    .catch(error => {
+                        /* istanbul ignore else */
+                        if (!error.status?.isAbort) {
+                            if (error.response && error.status.code === 401) {
+                                // If 401 returns, the user is not logged in
+                                /* istanbul ignore else */
+                                if (isMounted()) {
+                                    setUser(null)
+                                    setAuthenticated(false);
+                                    setPreferences({});
+                                    return resolve(false);
+                                }
+                            } else {
+                                // Any other code, something went wrong
+                                /* istanbul ignore else */
+                                if (isMounted()) {
+                                    setCoreError(error.data?.message);
+                                }
+                            }
                         }
-                    }
-                }
+                    });
             } else {
                 // We've already check authenticated, just return state
-                if (isMounted) {
-                    return resolve(state.authenticated);
+                /* istanbul ignore else */
+                if (isMounted()) {
+                    return resolve(authenticated);
                 }
             }
         });
@@ -134,13 +139,15 @@ const Auth = props => {
         return new Promise(async (resolve, reject) => {
             await client('/api/permission/check', { 'permission': permission }, { signal: controller.signal })
                 .then(json => {
-                    if (isMounted) {
+                    /* istanbul ignore else */
+                    if (isMounted()) {
                         return resolve(json.data.has_permission);
                     }
                 })
                 .catch(error => {
-                    if (!error.status?.isAbort && isMounted) {
-                        return reject(error);
+                    /* istanbul ignore else */
+                    if (!error.status?.isAbort && isMounted()) {
+                        setCoreError(error.data?.message);
                     }
                 })
         });
@@ -150,13 +157,15 @@ const Auth = props => {
         return new Promise(async (resolve, reject) => {
             await client('/api/group/check', { 'group': group }, { signal: controller.signal })
                 .then(json => {
-                    if (isMounted) {
+                    /* istanbul ignore else */
+                    if (isMounted()) {
                         return resolve(json.data.in_group);
                     }
                 })
                 .catch(error => {
-                    if (!error.status?.isAbort && isMounted) {
-                        return reject(error);
+                    /* istanbul ignore else */
+                    if (!error.status?.isAbort && isMounted()) {
+                        setCoreError(error.data?.message);
                     }
                 })
         });
@@ -168,7 +177,8 @@ const Auth = props => {
 
         await client('/api/user/preference', { 'preference': preference, 'value': value }, { method: 'PUT', signal: controller.signal })
             .catch(error => {
-                if (!error.status?.isAbort && isMounted) {
+                /* istanbul ignore else */
+                if (!error.status?.isAbort && isMounted()) {
                     setCoreError(error.data?.message);
                 }
             })
@@ -178,16 +188,16 @@ const Auth = props => {
         throw Error(coreError);
     }
 
-    if (state.authenticated !== null) {
+    if (authenticated !== null) {
         return (
             <AuthContext.Provider
-                children={props.children || null}
+                children={props.children}
                 value={{
-                    user: state.user,
-                    authenticated: state.authenticated,
+                    user,
+                    authenticated,
                     signIn,
                     signOut,
-                    setUser,
+                    setUser: _setUser,
                     checkAuthentication,
                     checkPermission,
                     checkGroup,

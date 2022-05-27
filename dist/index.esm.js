@@ -244,27 +244,28 @@ var normalizeError = function normalizeError(data, url, config, fetchResponse) {
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.prev = 0;
-                _context5.next = 3;
-                return client('/api/logout', {});
 
-              case 3:
-                localStorage.setItem('WA_Login', window.location.href);
-                window.location.replace(window.location.origin + '/login');
+                // Only if we are not in a test environment (Jest)
+                if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
+                  localStorage.setItem('WA_Login', window.location.href);
+                  window.location.replace(window.location.origin + '/login');
+                }
+
                 resolve(true);
-                _context5.next = 11;
+                _context5.next = 8;
                 break;
 
-              case 8:
-                _context5.prev = 8;
+              case 5:
+                _context5.prev = 5;
                 _context5.t0 = _context5["catch"](0);
                 return _context5.abrupt("return", reject(_context5.t0));
 
-              case 11:
+              case 8:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 8]]);
+        }, _callee5, null, [[0, 5]]);
       }));
 
       return function (_x7, _x8) {
@@ -1761,7 +1762,6 @@ Loader.defaultProps = {
 function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-var controller$1 = new AbortController();
 
 var Auth = function Auth(props) {
   var _useState = useState(null),
@@ -1769,31 +1769,35 @@ var Auth = function Auth(props) {
       coreError = _useState2[0],
       setCoreError = _useState2[1];
 
-  var _useState3 = useState({
-    user: null,
-    authenticated: null
-  }),
+  var _useState3 = useState(null),
       _useState4 = _slicedToArray(_useState3, 2),
-      state = _useState4[0],
-      setState = _useState4[1];
+      user = _useState4[0],
+      setUser = _useState4[1];
 
-  var _useState5 = useState({}),
+  var _useState5 = useState(null),
       _useState6 = _slicedToArray(_useState5, 2),
-      preferences = _useState6[0],
-      setPreferences = _useState6[1];
+      authenticated = _useState6[0],
+      setAuthenticated = _useState6[1];
+
+  var _useState7 = useState({}),
+      _useState8 = _slicedToArray(_useState7, 2),
+      preferences = _useState8[0],
+      setPreferences = _useState8[1];
 
   var isMountedRef = useRef(true);
   var isMounted = useCallback(function () {
     return isMountedRef.current;
   }, []);
+  var controller = new AbortController();
   useEffect(function () {
+    /* istanbul ignore else */
     if (props.checkOnInit) {
       checkAuthentication();
     }
 
     return function () {
       void (isMountedRef.current = false);
-      controller$1.abort();
+      controller.abort();
     };
   }, []);
 
@@ -1815,7 +1819,7 @@ var Auth = function Auth(props) {
                           _context.next = 3;
                           return client('/sanctum/csrf_cookie', undefined, {
                             accept: 'text/html',
-                            signal: controller$1.signal
+                            signal: controller.signal
                           });
 
                         case 3:
@@ -1824,54 +1828,55 @@ var Auth = function Auth(props) {
                             username: username,
                             password: password
                           }, {
-                            signal: controller$1.signal
+                            signal: controller.signal
                           });
 
                         case 5:
                           _context.next = 7;
                           return client('/api/user', undefined, {
-                            signal: controller$1.signal
+                            signal: controller.signal
                           });
 
                         case 7:
                           _yield$client = _context.sent;
                           data = _yield$client.data;
-                          _preferences = data.preferences ? JSON.parse(data.preferences) : {};
+                          _preferences = data.preferences ?
+                          /* istanbul ignore next */
+                          JSON.parse(data.preferences) : {};
                           delete data.preferences;
+                          /* istanbul ignore else */
 
-                          if (!isMounted) {
-                            _context.next = 15;
+                          if (!isMounted()) {
+                            _context.next = 16;
                             break;
                           }
 
-                          setState({
-                            user: data,
-                            authenticated: true
-                          });
+                          setUser(data);
+                          setAuthenticated(true);
                           setPreferences(_preferences);
                           return _context.abrupt("return", resolve(data));
 
-                        case 15:
-                          _context.next = 21;
+                        case 16:
+                          _context.next = 22;
                           break;
 
-                        case 17:
-                          _context.prev = 17;
+                        case 18:
+                          _context.prev = 18;
                           _context.t0 = _context["catch"](0);
 
-                          if (!(!((_error$status = _context.t0.status) !== null && _error$status !== void 0 && _error$status.isAbort) && isMounted)) {
-                            _context.next = 21;
+                          if (!(!((_error$status = _context.t0.status) !== null && _error$status !== void 0 && _error$status.isAbort) && isMounted())) {
+                            _context.next = 22;
                             break;
                           }
 
                           return _context.abrupt("return", reject(_context.t0));
 
-                        case 21:
+                        case 22:
                         case "end":
                           return _context.stop();
                       }
                     }
-                  }, _callee, null, [[0, 17]]);
+                  }, _callee, null, [[0, 18]]);
                 }));
 
                 return function (_x3, _x4) {
@@ -1911,12 +1916,17 @@ var Auth = function Auth(props) {
                           return client('/api/logout', {});
 
                         case 3:
-                          if (isMounted) {
-                            setState({
-                              user: null,
-                              authenticated: false
-                            });
-                            window.location.replace(window.location.origin + '/login?logout');
+                          /* istanbul ignore else */
+                          if (isMounted()) {
+                            setUser(null);
+                            setAuthenticated(false); // Only if we are not in a test environment (Jest)
+
+                            /* istanbul ignore next */
+
+                            if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
+                              window.location.replace(window.location.origin + '/login?logout');
+                            }
+
                             resolve(true);
                           }
 
@@ -1927,7 +1937,7 @@ var Auth = function Auth(props) {
                           _context3.prev = 6;
                           _context3.t0 = _context3["catch"](0);
 
-                          if (!(!((_error$status2 = _context3.t0.status) !== null && _error$status2 !== void 0 && _error$status2.isAbort) && isMounted)) {
+                          if (!(!((_error$status2 = _context3.t0.status) !== null && _error$status2 !== void 0 && _error$status2.isAbort) && isMounted())) {
                             _context3.next = 10;
                             break;
                           }
@@ -1960,12 +1970,11 @@ var Auth = function Auth(props) {
     };
   }();
 
-  var setUser = function setUser(user, authenticated) {
-    if (isMounted) {
-      setState({
-        user: user,
-        authenticated: authenticated
-      });
+  var _setUser = function _setUser(_user, _authenticated) {
+    /* istanbul ignore else */
+    if (isMounted()) {
+      setUser(_user);
+      setAuthenticated(_authenticated);
     }
   };
 
@@ -1977,96 +1986,78 @@ var Auth = function Auth(props) {
             case 0:
               return _context6.abrupt("return", new Promise( /*#__PURE__*/function () {
                 var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(resolve, reject) {
-                  var _yield$client2, data, _preferences;
-
                   return _regeneratorRuntime.wrap(function _callee5$(_context5) {
                     while (1) {
                       switch (_context5.prev = _context5.next) {
                         case 0:
-                          if (!(state.authenticated === null)) {
-                            _context5.next = 27;
+                          if (!(authenticated === null)) {
+                            _context5.next = 5;
                             break;
                           }
 
-                          _context5.prev = 1;
-                          _context5.next = 4;
+                          _context5.next = 3;
                           return client('/api/user', undefined, {
-                            signal: controller$1.signal
+                            signal: controller.signal
+                          }).then(function (json) {
+                            var _preferences = json.data.preferences ?
+                            /* istanbul ignore next */
+                            JSON.parse(json.data.preferences) : {};
+
+                            delete json.data.preferences;
+                            /* istanbul ignore else */
+
+                            if (isMounted()) {
+                              setUser(json.data);
+                              setAuthenticated(true);
+                              setPreferences(_preferences);
+                              return resolve(true);
+                            }
+                          })["catch"](function (error) {
+                            var _error$status3;
+
+                            /* istanbul ignore else */
+                            if (!((_error$status3 = error.status) !== null && _error$status3 !== void 0 && _error$status3.isAbort)) {
+                              if (error.response && error.status.code === 401) {
+                                // If 401 returns, the user is not logged in
+
+                                /* istanbul ignore else */
+                                if (isMounted()) {
+                                  setUser(null);
+                                  setAuthenticated(false);
+                                  setPreferences({});
+                                  return resolve(false);
+                                }
+                              } else {
+                                // Any other code, something went wrong
+
+                                /* istanbul ignore else */
+                                if (isMounted()) {
+                                  var _error$data;
+
+                                  setCoreError((_error$data = error.data) === null || _error$data === void 0 ? void 0 : _error$data.message);
+                                }
+                              }
+                            }
                           });
 
-                        case 4:
-                          _yield$client2 = _context5.sent;
-                          data = _yield$client2.data;
-                          _preferences = data.preferences ? JSON.parse(data.preferences) : {};
-                          delete data.preferences;
-
-                          if (!isMounted) {
-                            _context5.next = 12;
-                            break;
-                          }
-
-                          setState({
-                            user: data,
-                            authenticated: true
-                          });
-                          setPreferences(_preferences);
-                          return _context5.abrupt("return", resolve(true));
-
-                        case 12:
-                          _context5.next = 25;
+                        case 3:
+                          _context5.next = 7;
                           break;
 
-                        case 14:
-                          _context5.prev = 14;
-                          _context5.t0 = _context5["catch"](1);
-
-                          if (!(_context5.t0.response && _context5.t0.status.code === 401)) {
-                            _context5.next = 23;
+                        case 5:
+                          if (!isMounted()) {
+                            _context5.next = 7;
                             break;
                           }
 
-                          if (!isMounted) {
-                            _context5.next = 21;
-                            break;
-                          }
+                          return _context5.abrupt("return", resolve(authenticated));
 
-                          setState({
-                            user: null,
-                            authenticated: false
-                          });
-                          setPreferences({});
-                          return _context5.abrupt("return", resolve(false));
-
-                        case 21:
-                          _context5.next = 25;
-                          break;
-
-                        case 23:
-                          if (!isMounted) {
-                            _context5.next = 25;
-                            break;
-                          }
-
-                          return _context5.abrupt("return", reject(_context5.t0));
-
-                        case 25:
-                          _context5.next = 29;
-                          break;
-
-                        case 27:
-                          if (!isMounted) {
-                            _context5.next = 29;
-                            break;
-                          }
-
-                          return _context5.abrupt("return", resolve(state.authenticated));
-
-                        case 29:
+                        case 7:
                         case "end":
                           return _context5.stop();
                       }
                     }
-                  }, _callee5, null, [[1, 14]]);
+                  }, _callee5);
                 }));
 
                 return function (_x7, _x8) {
@@ -2103,16 +2094,20 @@ var Auth = function Auth(props) {
                           return client('/api/permission/check', {
                             'permission': permission
                           }, {
-                            signal: controller$1.signal
+                            signal: controller.signal
                           }).then(function (json) {
-                            if (isMounted) {
+                            /* istanbul ignore else */
+                            if (isMounted()) {
                               return resolve(json.data.has_permission);
                             }
                           })["catch"](function (error) {
-                            var _error$status3;
+                            var _error$status4;
 
-                            if (!((_error$status3 = error.status) !== null && _error$status3 !== void 0 && _error$status3.isAbort) && isMounted) {
-                              return reject(error);
+                            /* istanbul ignore else */
+                            if (!((_error$status4 = error.status) !== null && _error$status4 !== void 0 && _error$status4.isAbort) && isMounted()) {
+                              var _error$data2;
+
+                              setCoreError((_error$data2 = error.data) === null || _error$data2 === void 0 ? void 0 : _error$data2.message);
                             }
                           });
 
@@ -2158,16 +2153,20 @@ var Auth = function Auth(props) {
                           return client('/api/group/check', {
                             'group': group
                           }, {
-                            signal: controller$1.signal
+                            signal: controller.signal
                           }).then(function (json) {
-                            if (isMounted) {
+                            /* istanbul ignore else */
+                            if (isMounted()) {
                               return resolve(json.data.in_group);
                             }
                           })["catch"](function (error) {
-                            var _error$status4;
+                            var _error$status5;
 
-                            if (!((_error$status4 = error.status) !== null && _error$status4 !== void 0 && _error$status4.isAbort) && isMounted) {
-                              return reject(error);
+                            /* istanbul ignore else */
+                            if (!((_error$status5 = error.status) !== null && _error$status5 !== void 0 && _error$status5.isAbort) && isMounted()) {
+                              var _error$data3;
+
+                              setCoreError((_error$data3 = error.data) === null || _error$data3 === void 0 ? void 0 : _error$data3.message);
                             }
                           });
 
@@ -2211,14 +2210,15 @@ var Auth = function Auth(props) {
                 'value': value
               }, {
                 method: 'PUT',
-                signal: controller$1.signal
+                signal: controller.signal
               })["catch"](function (error) {
-                var _error$status5;
+                var _error$status6;
 
-                if (!((_error$status5 = error.status) !== null && _error$status5 !== void 0 && _error$status5.isAbort) && isMounted) {
-                  var _error$data;
+                /* istanbul ignore else */
+                if (!((_error$status6 = error.status) !== null && _error$status6 !== void 0 && _error$status6.isAbort) && isMounted()) {
+                  var _error$data4;
 
-                  setCoreError((_error$data = error.data) === null || _error$data === void 0 ? void 0 : _error$data.message);
+                  setCoreError((_error$data4 = error.data) === null || _error$data4 === void 0 ? void 0 : _error$data4.message);
                 }
               });
 
@@ -2239,15 +2239,15 @@ var Auth = function Auth(props) {
     throw Error(coreError);
   }
 
-  if (state.authenticated !== null) {
+  if (authenticated !== null) {
     return /*#__PURE__*/React$1.createElement(AuthContext.Provider, {
-      children: props.children || null,
+      children: props.children,
       value: {
-        user: state.user,
-        authenticated: state.authenticated,
+        user: user,
+        authenticated: authenticated,
         signIn: signIn,
         signOut: signOut,
-        setUser: setUser,
+        setUser: _setUser,
         checkAuthentication: checkAuthentication,
         checkPermission: checkPermission,
         checkGroup: checkGroup,

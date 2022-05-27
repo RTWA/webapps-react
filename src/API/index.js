@@ -99,9 +99,11 @@ const normalizeError = (data, url, config, fetchResponse) => {
     if (fetchResponse.status === 401 && window.location.pathname !== '/login') {
         new Promise(async (resolve, reject) => {
             try {
-                await client('/api/logout', {});
-                localStorage.setItem('WA_Login', window.location.href);
-                window.location.replace(window.location.origin + '/login');
+                // Only if we are not in a test environment (Jest)
+                if (process.env.JEST_WORKER_ID === undefined || process.env.NODE_ENV !== 'test') {
+                    localStorage.setItem('WA_Login', window.location.href);
+                    window.location.replace(window.location.origin + '/login');
+                }
                 resolve(true);
             } catch (error) {
                 return reject(error);
@@ -130,7 +132,7 @@ const normalizeError = (data, url, config, fetchResponse) => {
 }
 
 const normalizeTransportError = transportError => {
-    return({
+    return ({
         data: {
             type: "TransportError",
             message: UNEXPECTED_ERROR_MESSAGE,
