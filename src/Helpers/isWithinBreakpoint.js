@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export const isWithinBreakpoint = (current, breakpoint) => {
     if (breakpoint === 'xs') {
         return ['xs', 'sm', 'md', 'lg', 'xl', '2xl'].includes(current);

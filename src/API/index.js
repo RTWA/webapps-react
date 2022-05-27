@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import getCookie from '../Helpers/getCookie';
 
 // Regular expression patterns for testing content-type response headers.

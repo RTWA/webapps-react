@@ -50,6 +50,7 @@ var _typeof__default = /*#__PURE__*/_interopDefaultLegacy(_typeof);
 var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
 var process__default = /*#__PURE__*/_interopDefaultLegacy(process$1);
 
+/* istanbul ignore file */
 var getCookie = function getCookie(name) {
   var _document;
 
@@ -2436,6 +2437,7 @@ var CloseIcon = function CloseIcon() {
   }));
 };
 
+/* istanbul ignore file */
 var NOOP = function NOOP() {};
 function generateUEID() {
   var first = Math.random() * 46656 | 0;
@@ -22771,6 +22773,7 @@ var lodash = {exports: {}};
 	}.call(commonjsGlobal));
 } (lodash, lodash.exports));
 
+/* istanbul ignore file */
 var getDeviceConfig = function getDeviceConfig(width) {
   if (width < 640) {
     return 'xs';
@@ -22787,6 +22790,7 @@ var getDeviceConfig = function getDeviceConfig(width) {
   }
 };
 
+/* istanbul ignore file */
 var isWithinBreakpoint = function isWithinBreakpoint(current, breakpoint) {
   if (breakpoint === 'xs') {
     return ['xs', 'sm', 'md', 'lg', 'xl', '2xl'].includes(current);

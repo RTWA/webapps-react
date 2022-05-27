@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export const getDeviceConfig = width => {
     if (width < 640) {
         return 'xs';
