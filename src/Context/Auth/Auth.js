@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import AuthContext from './AuthContext';
 import { client } from '../../API';
-import Loader from '../../Components/Loader';
+import AppLoader from '../../Components/AppLoader';
 
 const Auth = props => {
     const [coreError, setCoreError] = useState(null);
@@ -206,9 +206,9 @@ const Auth = props => {
                 }}
             />
         )
-    } else {
-        return <Loader />
     }
+
+    return <AppLoader theme={null} />
 }
 
 

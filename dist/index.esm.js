@@ -1,11 +1,38 @@
-import _defineProperty from'@babel/runtime/helpers/defineProperty';import _objectWithoutProperties from'@babel/runtime/helpers/objectWithoutProperties';import _asyncToGenerator from'@babel/runtime/helpers/asyncToGenerator';import _regeneratorRuntime from'@babel/runtime/regenerator';import _extends from'@babel/runtime/helpers/extends';import React$1,{useContext,useState,useRef,useCallback,useEffect,Children,isValidElement,cloneElement,Component,createContext,createRef,useMemo}from'react';import _toConsumableArray from'@babel/runtime/helpers/toConsumableArray';import _slicedToArray from'@babel/runtime/helpers/slicedToArray';import _classCallCheck$1 from'@babel/runtime/helpers/classCallCheck';import _createClass$1 from'@babel/runtime/helpers/createClass';import _assertThisInitialized$1 from'@babel/runtime/helpers/assertThisInitialized';import _inherits$1 from'@babel/runtime/helpers/inherits';import _possibleConstructorReturn$1 from'@babel/runtime/helpers/possibleConstructorReturn';import _getPrototypeOf from'@babel/runtime/helpers/getPrototypeOf';import ReactDOM,{createPortal}from'react-dom';import _extends$1 from'@babel/runtime/helpers/esm/extends';import _objectWithoutPropertiesLoose from'@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';import _inheritsLoose from'@babel/runtime/helpers/esm/inheritsLoose';import _assertThisInitialized from'@babel/runtime/helpers/esm/assertThisInitialized';import {NavLink,withRouter,Link as Link$1}from'react-router-dom';import _typeof from'@babel/runtime/helpers/typeof';import path from'path';import process$1 from'process';import {fileURLToPath}from'url';/* istanbul ignore file */
+import _defineProperty from '@babel/runtime/helpers/defineProperty';
+import _objectWithoutProperties from '@babel/runtime/helpers/objectWithoutProperties';
+import _asyncToGenerator from '@babel/runtime/helpers/asyncToGenerator';
+import _regeneratorRuntime from '@babel/runtime/regenerator';
+import React$1, { useState, useRef, useCallback, useEffect, Children, isValidElement, cloneElement, Component, useContext, createContext, createRef, useMemo } from 'react';
+import _extends from '@babel/runtime/helpers/extends';
+import _toConsumableArray from '@babel/runtime/helpers/toConsumableArray';
+import _slicedToArray from '@babel/runtime/helpers/slicedToArray';
+import _classCallCheck$1 from '@babel/runtime/helpers/classCallCheck';
+import _createClass$1 from '@babel/runtime/helpers/createClass';
+import _assertThisInitialized$1 from '@babel/runtime/helpers/assertThisInitialized';
+import _inherits$1 from '@babel/runtime/helpers/inherits';
+import _possibleConstructorReturn$1 from '@babel/runtime/helpers/possibleConstructorReturn';
+import _getPrototypeOf from '@babel/runtime/helpers/getPrototypeOf';
+import ReactDOM, { createPortal } from 'react-dom';
+import _extends$1 from '@babel/runtime/helpers/esm/extends';
+import _objectWithoutPropertiesLoose from '@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';
+import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
+import _assertThisInitialized from '@babel/runtime/helpers/esm/assertThisInitialized';
+import { NavLink, withRouter, Link as Link$1 } from 'react-router-dom';
+import _typeof from '@babel/runtime/helpers/typeof';
+import path from 'path';
+import process$1 from 'process';
+import { fileURLToPath } from 'url';
+
+/* istanbul ignore file */
 var getCookie = function getCookie(name) {
   var _document;
 
   var value = "; ".concat((_document = document) === null || _document === void 0 ? void 0 : _document.cookie);
   var parts = value.split("; ".concat(name, "="));
   if (parts.length === 2) return parts.pop().split(';').shift();
-};var _excluded$C = ["headers", "accept", "type"],
+};
+
+var _excluded$C = ["headers", "accept", "type"],
     _excluded2$1 = ["headers", "accept"];
 
 function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -339,7 +366,122 @@ var unwrapResponseData = /*#__PURE__*/function () {
   return function unwrapResponseData(_x9) {
     return _ref8.apply(this, arguments);
   };
-}();var _excluded$B = ["id", "children"];
+}();
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+var classnames = {exports: {}};
+
+/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+(function (module) {
+	/* global define */
+
+	(function () {
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames() {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					if (arg.length) {
+						var inner = classNames.apply(null, arg);
+						if (inner) {
+							classes.push(inner);
+						}
+					}
+				} else if (argType === 'object') {
+					if (arg.toString === Object.prototype.toString) {
+						for (var key in arg) {
+							if (hasOwn.call(arg, key) && arg[key]) {
+								classes.push(key);
+							}
+						}
+					} else {
+						classes.push(arg.toString());
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (module.exports) {
+			classNames.default = classNames;
+			module.exports = classNames;
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+} (classnames));
+
+var classNames = classnames.exports;
+
+var AppLoader = function AppLoader(props) {
+  var theme = props.theme;
+      props.className;
+  var grayClasses = classNames("text-gray-300", "dark:text-gray-500");
+  var themeClasses = classNames('absolute', 'bottom-0', "text-".concat(theme, "-600"));
+  var boundClasses = classNames('absolute', 'bottom-0', 'overflow-hidden', 'transition-[height]', 'duration-[1s]', 'w-24', theme ? 'h-24' : 'h-0'); // const svgClasses = classNames(
+  //     `h-${height}`,
+  //     `w-${width}`,
+  //     `-translate-y-${height / 2}`,
+  //     'mx-auto',
+  // );
+
+  return /*#__PURE__*/React$1.createElement("div", {
+    className: "h-full w-full flex items-center justify-center"
+  }, /*#__PURE__*/React$1.createElement("div", {
+    className: "relative h-24 w-24"
+  }, /*#__PURE__*/React$1.createElement("div", {
+    className: "absolute inset-0"
+  }, /*#__PURE__*/React$1.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    className: grayClasses,
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    strokeWidth: 2
+  }, /*#__PURE__*/React$1.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+  }))), /*#__PURE__*/React$1.createElement("div", {
+    className: boundClasses
+  }, /*#__PURE__*/React$1.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    className: themeClasses,
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    strokeWidth: 2
+  }, /*#__PURE__*/React$1.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+  })))), /*#__PURE__*/React$1.createElement("div", {
+    className: "sr-only"
+  }, "Loading"));
+};
+
+var _excluded$B = ["id", "children"];
 
 var AppPage = function AppPage(_ref) {
   var id = _ref.id,
@@ -350,11 +492,15 @@ var AppPage = function AppPage(_ref) {
     className: "flex md:flex-row flex-col h-full",
     id: id
   }, rest), children);
-};var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+};
 
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}var propTypes = {exports: {}};var reactIs$1 = {exports: {}};var reactIs_production_min$1 = {};/** @license React v16.13.1
+var propTypes = {exports: {}};
+
+var reactIs$1 = {exports: {}};
+
+var reactIs_production_min$1 = {};
+
+/** @license React v16.13.1
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -375,7 +521,11 @@ var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):601
 	reactIs_production_min$1.isMemo=function(a){return z(a)===r};reactIs_production_min$1.isPortal=function(a){return z(a)===d};reactIs_production_min$1.isProfiler=function(a){return z(a)===g};reactIs_production_min$1.isStrictMode=function(a){return z(a)===f};reactIs_production_min$1.isSuspense=function(a){return z(a)===p};
 	reactIs_production_min$1.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};reactIs_production_min$1.typeOf=z;
 	return reactIs_production_min$1;
-}var reactIs_development$1 = {};/** @license React v16.13.1
+}
+
+var reactIs_development$1 = {};
+
+/** @license React v16.13.1
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -560,7 +710,9 @@ function requireReactIs_development$1 () {
 	  })();
 	}
 	return reactIs_development$1;
-}var hasRequiredReactIs;
+}
+
+var hasRequiredReactIs;
 
 function requireReactIs () {
 	if (hasRequiredReactIs) return reactIs$1.exports;
@@ -574,7 +726,9 @@ function requireReactIs () {
 		}
 } (reactIs$1));
 	return reactIs$1.exports;
-}/*
+}
+
+/*
 object-assign
 (c) Sindre Sorhus
 @license MIT
@@ -670,7 +824,9 @@ function requireObjectAssign () {
 		return to;
 	};
 	return objectAssign;
-}/**
+}
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -688,7 +844,9 @@ function requireReactPropTypesSecret () {
 
 	ReactPropTypesSecret_1 = ReactPropTypesSecret;
 	return ReactPropTypesSecret_1;
-}var has;
+}
+
+var has;
 var hasRequiredHas;
 
 function requireHas () {
@@ -696,7 +854,9 @@ function requireHas () {
 	hasRequiredHas = 1;
 	has = Function.call.bind(Object.prototype.hasOwnProperty);
 	return has;
-}/**
+}
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -805,7 +965,9 @@ function requireCheckPropTypes () {
 
 	checkPropTypes_1 = checkPropTypes;
 	return checkPropTypes_1;
-}/**
+}
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -1421,7 +1583,9 @@ function requireFactoryWithTypeCheckers () {
 	  return ReactPropTypes;
 	};
 	return factoryWithTypeCheckers;
-}/**
+}
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -1490,7 +1654,9 @@ function requireFactoryWithThrowingShims () {
 	  return ReactPropTypes;
 	};
 	return factoryWithThrowingShims;
-}/**
+}
+
+/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
@@ -1508,190 +1674,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
   propTypes.exports = requireFactoryWithThrowingShims()();
-}var classnames = {exports: {}};/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
+}
 
-(function (module) {
-	/* global define */
+var AuthContext = /*#__PURE__*/React$1.createContext({});
 
-	(function () {
-
-		var hasOwn = {}.hasOwnProperty;
-
-		function classNames() {
-			var classes = [];
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg;
-
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					if (arg.length) {
-						var inner = classNames.apply(null, arg);
-						if (inner) {
-							classes.push(inner);
-						}
-					}
-				} else if (argType === 'object') {
-					if (arg.toString === Object.prototype.toString) {
-						for (var key in arg) {
-							if (hasOwn.call(arg, key) && arg[key]) {
-								classes.push(key);
-							}
-						}
-					} else {
-						classes.push(arg.toString());
-					}
-				}
-			}
-
-			return classes.join(' ');
-		}
-
-		if (module.exports) {
-			classNames.default = classNames;
-			module.exports = classNames;
-		} else {
-			window.classNames = classNames;
-		}
-	}());
-} (classnames));
-
-var classNames = classnames.exports;var AuthContext = /*#__PURE__*/React$1.createContext({});var Loader = function Loader(props) {
-  var className = props.className,
-      type = props.type,
-      color = props.color,
-      height = props.height,
-      width = props.width,
-      alignment = props.alignment;
-
-  var _useContext = useContext(WebAppsUXContext),
-      theme = _useContext.theme;
-
-  var classes = classNames("text-".concat(color || 'gray', "-300"), "dark:text-".concat(color || 'gray', "-500"), 'h-full', alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '', className);
-  var svgClasses = classNames('loader', "h-".concat(height), "w-".concat(width), "-translate-y-".concat(height / 2), alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '');
-  var circleClasses = classNames('animate-spin', 'inline', 'text-gray-300', 'dark:text-gray-600', "fill-".concat(color || theme, "-600"), "h-".concat(height), "w-".concat(width), className);
-
-  if (type === 'circle') {
-    return /*#__PURE__*/React$1.createElement("div", {
-      className: "text-".concat(alignment)
-    }, /*#__PURE__*/React$1.createElement("svg", {
-      role: "status",
-      className: circleClasses,
-      viewBox: "0 0 100 101",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/React$1.createElement("path", {
-      d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
-      fill: "currentColor"
-    }), /*#__PURE__*/React$1.createElement("path", {
-      d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
-      fill: "currentFill"
-    })), /*#__PURE__*/React$1.createElement("div", {
-      className: "sr-only"
-    }, "Loading"));
-  }
-
-  return /*#__PURE__*/React$1.createElement("div", {
-    className: classes
-  }, /*#__PURE__*/React$1.createElement("svg", {
-    viewBox: "0 0 45 45",
-    xmlns: "http://www.w3.org/2000/svg",
-    stroke: "currentColor",
-    className: svgClasses
-  }, /*#__PURE__*/React$1.createElement("g", {
-    fill: "none",
-    fillRule: "evenodd",
-    transform: "translate(1 1)",
-    strokeWidth: 2
-  }, /*#__PURE__*/React$1.createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 6,
-    strokeOpacity: 0
-  }, /*#__PURE__*/React$1.createElement("animate", {
-    attributeName: "r",
-    begin: "1.5s",
-    dur: "3s",
-    values: "6;22",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React$1.createElement("animate", {
-    attributeName: "stroke-opacity",
-    begin: "1.5s",
-    dur: "3s",
-    values: "1;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React$1.createElement("animate", {
-    attributeName: "stroke-width",
-    begin: "1.5s",
-    dur: "3s",
-    values: "2;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React$1.createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 6,
-    strokeOpacity: 0
-  }, /*#__PURE__*/React$1.createElement("animate", {
-    attributeName: "r",
-    begin: "3s",
-    dur: "3s",
-    values: "6;22",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React$1.createElement("animate", {
-    attributeName: "stroke-opacity",
-    begin: "3s",
-    dur: "3s",
-    values: "1;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React$1.createElement("animate", {
-    attributeName: "stroke-width",
-    begin: "3s",
-    dur: "3s",
-    values: "2;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React$1.createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 8
-  }, /*#__PURE__*/React$1.createElement("animate", {
-    attributeName: "r",
-    begin: "0s",
-    dur: "1.5s",
-    values: "6;1;2;3;4;5;6",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })))), /*#__PURE__*/React$1.createElement("div", {
-    className: "sr-only"
-  }, "Loading"));
-};
-
-Loader.propsTypes = {
-  type: propTypes.exports.oneOf(['', 'circle']),
-  color: propTypes.exports.string,
-  height: propTypes.exports.string,
-  width: propTypes.exports.string,
-  alignment: propTypes.exports.oneOf(['left', 'center', 'right'])
-};
-Loader.defaultProps = {
-  type: '',
-  height: '24',
-  width: '24',
-  alignment: 'center'
-};function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
@@ -2187,9 +2174,11 @@ var Auth = function Auth(props) {
         setPreference: setPreference
       }
     });
-  } else {
-    return /*#__PURE__*/React$1.createElement(Loader, null);
   }
+
+  return /*#__PURE__*/React$1.createElement(AppLoader, {
+    theme: null
+  });
 };
 
 Auth.propTypes = {
@@ -2198,7 +2187,9 @@ Auth.propTypes = {
 };
 Auth.defaultProps = {
   checkOnInit: true
-};var isProduction = process.env.NODE_ENV === 'production';
+};
+
+var isProduction = process.env.NODE_ENV === 'production';
 var prefix = 'Invariant failed';
 function invariant(condition, message) {
     if (condition) {
@@ -2210,7 +2201,9 @@ function invariant(condition, message) {
     var provided = typeof message === 'function' ? message() : message;
     var value = provided ? prefix + ": " + provided : prefix;
     throw new Error(value);
-}var withAuth = function withAuth(Component) {
+}
+
+var withAuth = function withAuth(Component) {
   var displayName = "withAuth(".concat(Component.displayName || Component.name, ")");
 
   var C = function C(props) {
@@ -2222,7 +2215,9 @@ function invariant(condition, message) {
 
   C.displayName = displayName;
   return C;
-};var _excluded$A = ["hasToasts", "placement", "className"];
+};
+
+var _excluded$A = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -2248,7 +2243,9 @@ var ToastContainer = function ToastContainer(_ref) {
       zIndex: 1000
     }
   }, props));
-};var SuccessIcon = function SuccessIcon() {
+};
+
+var SuccessIcon = function SuccessIcon() {
   return /*#__PURE__*/React$1.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "h-5 w-5 mt-0.5",
@@ -2331,7 +2328,9 @@ var CloseIcon = function CloseIcon() {
     strokeWidth: 2,
     d: "M6 18L18 6M6 6l12 12"
   }));
-};/* istanbul ignore file */
+};
+
+/* istanbul ignore file */
 var NOOP = function NOOP() {};
 function generateUEID() {
   var first = Math.random() * 46656 | 0;
@@ -2339,7 +2338,9 @@ function generateUEID() {
   first = ('000' + first.toString(36)).slice(-3);
   second = ('000' + second.toString(36)).slice(-3);
   return first + second;
-}var appearances = {
+}
+
+var appearances = {
   success: {
     icon: SuccessIcon,
     iconColor: 'text-green-500'
@@ -2368,7 +2369,9 @@ function generateUEID() {
     icon: MiscIcon,
     iconColor: 'text-gray-500 dark:text-white'
   }
-};var _excluded$z = ["autoDismissTimeout", "opacity", "isRunning"],
+};
+
+var _excluded$z = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "theme", "color"];
 
@@ -2539,7 +2542,9 @@ var DefaultToast = function DefaultToast(_ref3) {
 };
 DefaultToast.defaultProps = {
   onDismiss: NOOP
-};/**
+};
+
+/**
  * Checks if a given element has a CSS class.
  * 
  * @param element the element
@@ -2548,7 +2553,9 @@ DefaultToast.defaultProps = {
 function hasClass(element, className) {
   if (element.classList) return !!className && element.classList.contains(className);
   return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
-}/**
+}
+
+/**
  * Adds a CSS class to a given element.
  * 
  * @param element the element
@@ -2557,7 +2564,9 @@ function hasClass(element, className) {
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!hasClass(element, className)) if (typeof element.className === 'string') element.className = element.className + " " + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + " " + className);
-}function replaceClassName(origClass, classToRemove) {
+}
+
+function replaceClassName(origClass, classToRemove) {
   return origClass.replace(new RegExp("(^|\\s)" + classToRemove + "(?:\\s|$)", 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
 }
 /**
@@ -2576,9 +2585,13 @@ function removeClass$1(element, className) {
   } else {
     element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
   }
-}var config = {
+}
+
+var config = {
   disabled: false
-};var timeoutsShape = process.env.NODE_ENV !== 'production' ? propTypes.exports.oneOfType([propTypes.exports.number, propTypes.exports.shape({
+};
+
+var timeoutsShape = process.env.NODE_ENV !== 'production' ? propTypes.exports.oneOfType([propTypes.exports.number, propTypes.exports.shape({
   enter: propTypes.exports.number,
   exit: propTypes.exports.number,
   appear: propTypes.exports.number
@@ -2594,7 +2607,11 @@ var classNamesShape = process.env.NODE_ENV !== 'production' ? propTypes.exports.
   exit: propTypes.exports.string,
   exitDone: propTypes.exports.string,
   exitActive: propTypes.exports.string
-})]) : null;var TransitionGroupContext = React$1.createContext(null);var UNMOUNTED = 'unmounted';
+})]) : null;
+
+var TransitionGroupContext = React$1.createContext(null);
+
+var UNMOUNTED = 'unmounted';
 var EXITED = 'exited';
 var ENTERING = 'entering';
 var ENTERED = 'entered';
@@ -3200,7 +3217,9 @@ Transition.UNMOUNTED = UNMOUNTED;
 Transition.EXITED = EXITED;
 Transition.ENTERING = ENTERING;
 Transition.ENTERED = ENTERED;
-Transition.EXITING = EXITING;var _addClass = function addClass$1(node, classes) {
+Transition.EXITING = EXITING;
+
+var _addClass = function addClass$1(node, classes) {
   return node && classes && classes.split(' ').forEach(function (c) {
     return addClass(node, c);
   });
@@ -3600,7 +3619,9 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends$1({},
    * @type Function(node: HtmlElement)
    */
   onExited: propTypes.exports.func
-}) : {};/**
+}) : {};
+
+/**
  * Given `this.props.children`, return an object mapping key to child.
  *
  * @param {*} children `this.props.children`
@@ -3738,7 +3759,9 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
     }
   });
   return children;
-}var values = Object.values || function (obj) {
+}
+
+var values = Object.values || function (obj) {
   return Object.keys(obj).map(function (k) {
     return obj[k];
   });
@@ -3916,7 +3939,9 @@ TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
    */
   childFactory: propTypes.exports.func
 } : {};
-TransitionGroup.defaultProps = defaultProps;/**
+TransitionGroup.defaultProps = defaultProps;
+
+/**
  * The `<ReplaceTransition>` component is a specialized `Transition` component
  * that animates between two children.
  *
@@ -4044,7 +4069,9 @@ ReplaceTransition.propTypes = process.env.NODE_ENV !== "production" ? {
     if (React$1.Children.count(props[propName]) !== 2) return new Error("\"" + propName + "\" must be exactly two transition components.");
     return null;
   }
-} : {};var _leaveRenders, _enterRenders;
+} : {};
+
+var _leaveRenders, _enterRenders;
 
 function areChildrenDifferent(oldChildren, newChildren) {
   if (oldChildren === newChildren) return false;
@@ -4292,7 +4319,9 @@ SwitchTransition.propTypes = process.env.NODE_ENV !== "production" ? {
 } : {};
 SwitchTransition.defaultProps = {
   mode: modes.out
-};var _excluded$y = ["autoDismiss", "autoDismissTimeout", "component"];
+};
+
+var _excluded$y = ["autoDismiss", "autoDismissTimeout", "component"];
 
 function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
@@ -4424,7 +4453,9 @@ var ToastController = /*#__PURE__*/function (_Component) {
 
 _defineProperty(ToastController, "defaultProps", {
   autoDismiss: false
-});var _excluded$x = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
+});
+
+var _excluded$x = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -4711,7 +4742,9 @@ var useToasts = function useToasts() {
     updateToast: ctx.update,
     toastStack: ctx.toasts
   };
-};function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+};
+
+function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var WebAppsContext = /*#__PURE__*/React$1.createContext({});
@@ -5416,7 +5449,9 @@ var WebApps = function WebApps(props) {
       plugins: _plugins
     }
   }, props.children || null);
-};var withWebApps = function withWebApps(Component) {
+};
+
+var withWebApps = function withWebApps(Component) {
   var displayName = "withWebApps(".concat(Component.displayName || Component.name, ")");
 
   var C = function C(props) {
@@ -5428,7 +5463,11 @@ var WebApps = function WebApps(props) {
 
   C.displayName = displayName;
   return C;
-};var lodash = {exports: {}};/**
+};
+
+var lodash = {exports: {}};
+
+/**
  * @license
  * Lodash <https://lodash.com/>
  * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -22625,7 +22664,9 @@ var WebApps = function WebApps(props) {
 	    root._ = _;
 	  }
 	}.call(commonjsGlobal));
-} (lodash, lodash.exports));/* istanbul ignore file */
+} (lodash, lodash.exports));
+
+/* istanbul ignore file */
 var getDeviceConfig = function getDeviceConfig(width) {
   if (width < 640) {
     return 'xs';
@@ -22640,7 +22681,9 @@ var getDeviceConfig = function getDeviceConfig(width) {
   } else if (width >= 1536) {
     return '2xl';
   }
-};/* istanbul ignore file */
+};
+
+/* istanbul ignore file */
 var isWithinBreakpoint = function isWithinBreakpoint(current, breakpoint) {
   if (breakpoint === 'xs') {
     return ['xs', 'sm', 'md', 'lg', 'xl', '2xl'].includes(current);
@@ -22655,7 +22698,9 @@ var isWithinBreakpoint = function isWithinBreakpoint(current, breakpoint) {
   } else if (breakpoint === '2xl') {
     return ['2xl'].includes(current);
   }
-};function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+};
+
+function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$9(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var WebAppsUXContext = /*#__PURE__*/createContext({});
@@ -22701,13 +22746,19 @@ var WebAppsUX = function WebAppsUX(props) {
 
   var _useState13 = useState(),
       _useState14 = _slicedToArray(_useState13, 2),
-      theme = _useState14[0],
-      setTheme = _useState14[1];
+      _theme = _useState14[0],
+      set_Theme = _useState14[1];
+
+  var _useState15 = useState(),
+      _useState16 = _slicedToArray(_useState15, 2),
+      theme = _useState16[0],
+      setTheme = _useState16[1];
 
   var isMountedRef = useRef(true);
   var isMounted = useCallback(function () {
     return isMountedRef.current;
   }, []);
+  var timer = null;
   useEffect( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
     return _regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -22728,6 +22779,10 @@ var WebAppsUX = function WebAppsUX(props) {
               void (isMountedRef.current = false);
               APIController.abort();
               window.removeEventListener('resize', calcInnerWidth);
+
+              if (timer) {
+                clearTimeout(timer);
+              }
             });
 
           case 6:
@@ -22737,6 +22792,13 @@ var WebAppsUX = function WebAppsUX(props) {
       }
     }, _callee);
   })), []);
+  useEffect(function () {
+    if (_theme) {
+      timer = setTimeout(function () {
+        setTheme(_theme);
+      }, 1250);
+    }
+  }, [_theme]);
 
   var loadUI = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
@@ -22752,7 +22814,7 @@ var WebAppsUX = function WebAppsUX(props) {
               }).then(function (json) {
                 /* istanbul ignore else */
                 if (isMounted()) {
-                  setTheme(json.data['core.ui.theme']);
+                  set_Theme(json.data['core.ui.theme']);
                   setDarkMode(json.data['core.ui.dark_mode']);
                 }
               })["catch"](function (error) {
@@ -22941,7 +23003,9 @@ var WebAppsUX = function WebAppsUX(props) {
   }
 
   if (!navigation.menu && !theme) {
-    return /*#__PURE__*/React$1.createElement(Loader, null);
+    return /*#__PURE__*/React$1.createElement(AppLoader, {
+      theme: _theme
+    });
   }
 
   return /*#__PURE__*/React$1.createElement(WebAppsUXContext.Provider, {
@@ -22961,7 +23025,9 @@ var WebAppsUX = function WebAppsUX(props) {
     autoDismiss: "true",
     autoDismissTimeout: "3000"
   }, props.children));
-};var withWebAppsUX = function withWebAppsUX(Component) {
+};
+
+var withWebAppsUX = function withWebAppsUX(Component) {
   var displayName = "withWebAppsUX(".concat(Component.displayName || Component.name, ")");
 
   var C = function C(props) {
@@ -22973,7 +23039,138 @@ var WebAppsUX = function WebAppsUX(props) {
 
   C.displayName = displayName;
   return C;
-};var _excluded$w = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
+};
+
+var Loader = function Loader(props) {
+  var className = props.className,
+      type = props.type,
+      color = props.color,
+      height = props.height,
+      width = props.width,
+      alignment = props.alignment;
+
+  var _useContext = useContext(WebAppsUXContext),
+      theme = _useContext.theme;
+
+  var classes = classNames("text-".concat(color || 'gray', "-300"), "dark:text-".concat(color || 'gray', "-500"), 'h-full', alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '', className);
+  var svgClasses = classNames('loader', "h-".concat(height), "w-".concat(width), "-translate-y-".concat(height / 2), alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '');
+  var circleClasses = classNames('animate-spin', 'inline', 'text-gray-300', 'dark:text-gray-600', "fill-".concat(color || theme, "-600"), "h-".concat(height), "w-".concat(width), className);
+
+  if (type === 'circle') {
+    return /*#__PURE__*/React$1.createElement("div", {
+      className: "text-".concat(alignment)
+    }, /*#__PURE__*/React$1.createElement("svg", {
+      role: "status",
+      className: circleClasses,
+      viewBox: "0 0 100 101",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/React$1.createElement("path", {
+      d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
+      fill: "currentColor"
+    }), /*#__PURE__*/React$1.createElement("path", {
+      d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
+      fill: "currentFill"
+    })), /*#__PURE__*/React$1.createElement("div", {
+      className: "sr-only"
+    }, "Loading"));
+  }
+
+  return /*#__PURE__*/React$1.createElement("div", {
+    className: classes
+  }, /*#__PURE__*/React$1.createElement("svg", {
+    viewBox: "0 0 45 45",
+    xmlns: "http://www.w3.org/2000/svg",
+    stroke: "currentColor",
+    className: svgClasses
+  }, /*#__PURE__*/React$1.createElement("g", {
+    fill: "none",
+    fillRule: "evenodd",
+    transform: "translate(1 1)",
+    strokeWidth: 2
+  }, /*#__PURE__*/React$1.createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React$1.createElement("animate", {
+    attributeName: "r",
+    begin: "1.5s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React$1.createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "1.5s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React$1.createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "1.5s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React$1.createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React$1.createElement("animate", {
+    attributeName: "r",
+    begin: "3s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React$1.createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "3s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React$1.createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "3s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React$1.createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 8
+  }, /*#__PURE__*/React$1.createElement("animate", {
+    attributeName: "r",
+    begin: "0s",
+    dur: "1.5s",
+    values: "6;1;2;3;4;5;6",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })))), /*#__PURE__*/React$1.createElement("div", {
+    className: "sr-only"
+  }, "Loading"));
+};
+
+Loader.propsTypes = {
+  type: propTypes.exports.oneOf(['', 'circle']),
+  color: propTypes.exports.string,
+  height: propTypes.exports.string,
+  width: propTypes.exports.string,
+  alignment: propTypes.exports.oneOf(['left', 'center', 'right'])
+};
+Loader.defaultProps = {
+  type: '',
+  height: '24',
+  width: '24',
+  alignment: 'center'
+};
+
+var _excluded$w = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
   var id = props.id,
@@ -23084,7 +23281,9 @@ Input.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   inputClassName: ''
-};var _excluded$v = ["id", "groupData", "setData", "accessToken", "saveChange"];
+};
+
+var _excluded$v = ["id", "groupData", "setData", "accessToken", "saveChange"];
 
 var AzureGroupSearch = function AzureGroupSearch(_ref) {
   var _groupData$id, _groupData$id2, _groupData$id3;
@@ -23241,7 +23440,9 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     state: (_groupData$id3 = groupData[id]) === null || _groupData$id3 === void 0 ? void 0 : _groupData$id3.state,
     wrapperClassName: ""
   }, props)), DataListComponent);
-};var _excluded$u = ["tag", "className", "color", "darkColor", "shade", "darkShade", "pill", "children"];
+};
+
+var _excluded$u = ["tag", "className", "color", "darkColor", "shade", "darkShade", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -23275,7 +23476,9 @@ Badge.defaultProps = {
   tag: 'span',
   shade: '600',
   darkShade: '600'
-};var _excluded$t = ["tag", "className", "color", "darkColor", "children"];
+};
+
+var _excluded$t = ["tag", "className", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -23303,7 +23506,9 @@ Banner.defaultProps = {
   tag: 'div',
   color: 'gray-300',
   darkColor: 'gray-700'
-};var _excluded$s = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+};
+
+var _excluded$s = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23352,7 +23557,9 @@ Link.propTypes = _objectSpread$8(_objectSpread$8({
 }, NavLink.propTypes), {}, {
   className: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.array, propTypes.exports.object]),
   to: propTypes.exports.oneOfType([propTypes.exports.object, propTypes.exports.string, propTypes.exports.func])
-});var _excluded$r = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
+});
+
+var _excluded$r = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
 
 var Button = function Button(props) {
   var shade = props.shade,
@@ -23396,7 +23603,9 @@ Button.defaultProps = {
   type: 'full',
   size: '',
   padding: true
-};var _excluded$q = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "colors", "onSelect"];
+};
+
+var _excluded$q = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "colors", "onSelect"];
 
 var ColorGridSelect = function ColorGridSelect(props) {
   var id = props.id,
@@ -23462,7 +23671,9 @@ ColorGridSelect.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   colors: []
-};var _excluded$p = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+};
+
+var _excluded$p = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -23559,7 +23770,9 @@ ConfirmDeleteButton.defaultProps = {
   timeout: 2000,
   initialColor: 'red',
   confirmColor: 'orange'
-};var _excluded$o = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+};
+
+var _excluded$o = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -23640,7 +23853,9 @@ ConfirmDeleteModal.defaultProps = {
   message: "Are you sure to wish to delete this item?\nThis action cannot be undone.",
   cancelText: "No",
   confirmText: "Yes"
-};var _excluded$n = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
+};
+
+var _excluded$n = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
 
 var DataSuggest = function DataSuggest(_ref) {
   var data = _ref.data,
@@ -23776,7 +23991,9 @@ DataSuggest.defaultProps = {
   placeholder: 'Start typing to search...',
   noMatchesText: 'No matching results found!',
   limit: 0
-};var _excluded$m = ["show", "text", "origin", "buttonClassNames", "dropClassNames"];
+};
+
+var _excluded$m = ["show", "text", "origin", "buttonClassNames", "dropClassNames"];
 
 var DropDownButton = function DropDownButton(props) {
   var show = props.show,
@@ -23845,7 +24062,9 @@ DropDownButton.propTypes = {
 };
 DropDownButton.defaultProps = {
   origin: 'right'
-};var _excluded$l = ["active", "align", "shade", "darkShade", "className", "children"];
+};
+
+var _excluded$l = ["active", "align", "shade", "darkShade", "className", "children"];
 
 var DropDownItem = function DropDownItem(props) {
   var active = props.active,
@@ -23882,7 +24101,9 @@ DropDownItem.defaultProps = {
   color: 'brand',
   shade: '600',
   darkShade: '400'
-};var _excluded$k = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "options", "onSelect"];
+};
+
+var _excluded$k = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "options", "onSelect"];
 
 var GridSelect = function GridSelect(props) {
   var id = props.id,
@@ -23944,7 +24165,9 @@ GridSelect.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   options: []
-};var _excluded$j = ["children"];
+};
+
+var _excluded$j = ["children"];
 
 var Headerbar = function Headerbar(_ref) {
   var children = _ref.children,
@@ -23953,7 +24176,9 @@ var Headerbar = function Headerbar(_ref) {
   return /*#__PURE__*/React$1.createElement("div", _extends({
     className: "relative flex flex-0 items-center w-full h-16 min-h-[4rem] px-4 md:px-6 shadow dark:shadow-none dark:border-b dark:border-gray-800 bg-white dark:bg-transparent z-[190]"
   }, rest), children);
-};var _excluded$i = ["icon", "className"];
+};
+
+var _excluded$i = ["icon", "className"];
 
 var Icon = function Icon(_ref) {
   var icon = _ref.icon,
@@ -23976,7 +24201,9 @@ var Icon = function Icon(_ref) {
 
 Icon.propTypes = {
   icon: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object])
-};var InfiniteScroll = function InfiniteScroll(props) {
+};
+
+var InfiniteScroll = function InfiniteScroll(props) {
   var _useState = useState(1),
       _useState2 = _slicedToArray(_useState, 2),
       page = _useState2[0],
@@ -24014,7 +24241,9 @@ Icon.propTypes = {
   return /*#__PURE__*/React$1.createElement(React$1.Fragment, null, props.children, /*#__PURE__*/React$1.createElement("span", {
     ref: marker
   }));
-};/*!
+};
+
+/*!
  * perfect-scrollbar v1.5.3
  * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
@@ -25359,7 +25588,9 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
     .split(' ')
     .filter(function (name) { return !name.match(/^ps([-_].+|)$/); })
     .join(' ');
-};var _excluded$h = ["tag", "className", "settings"];
+};
+
+var _excluded$h = ["tag", "className", "settings"];
 
 var Scrollbar = function Scrollbar(props) {
   var Tag = props.tag,
@@ -25418,7 +25649,9 @@ Scrollbar.propTypes = {
 };
 Scrollbar.defaultProps = {
   tag: 'div'
-};var _excluded$g = ["title", "children"];
+};
+
+var _excluded$g = ["title", "children"];
 
 var PageWrapper = function PageWrapper(props) {
   var title = props.title,
@@ -25456,7 +25689,9 @@ var PageWrapper = function PageWrapper(props) {
   }, title) : null) : null, /*#__PURE__*/React$1.createElement("div", {
     className: "w-full"
   }, children)));
-};var _excluded$f = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
+};
+
+var _excluded$f = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
 
 var Select = function Select(props) {
   var id = props.id,
@@ -25566,7 +25801,9 @@ Select.defaultProps = {
   wrapperClassName: 'mb-6',
   labelClassName: '',
   selectClassName: ''
-};function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+};
+
+function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$7(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var DropdownContext = /*#__PURE__*/createContext({});
@@ -25658,7 +25895,9 @@ var NavDropdown = function NavDropdown(props) {
       isOpen: isOpen
     }
   }, children)));
-};var _excluded$e = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+};
+
+var _excluded$e = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -25712,7 +25951,9 @@ var NavChild = function NavChild(props) {
   }, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$6(_objectSpread$6({}, badge), {}, {
     text: null
   }), badge.text)));
-};var _excluded$d = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+};
+
+var _excluded$d = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -25766,7 +26007,9 @@ var NavItem = function NavItem(props) {
   }), /*#__PURE__*/React$1.createElement("span", null, name), badge && /*#__PURE__*/React$1.createElement(Badge, _objectSpread$5(_objectSpread$5({}, badge), {}, {
     text: null
   }), badge.text)));
-};var _excluded$c = ["name", "className", "innerRef"];
+};
+
+var _excluded$c = ["name", "className", "innerRef"];
 
 var NavTitle = function NavTitle(props) {
   var name = props.name,
@@ -25791,7 +26034,9 @@ NavTitle.propTypes = {
   name: propTypes.exports.string,
   className: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.array, propTypes.exports.object]),
   innerRef: propTypes.exports.oneOfType([propTypes.exports.object, propTypes.exports.func])
-};var _excluded$b = ["_tag", "_children"];
+};
+
+var _excluded$b = ["_tag", "_children"];
 
 var CreateElement = function CreateElement(_ref) {
   var items = _ref.items,
@@ -25823,7 +26068,9 @@ var CreateElement = function CreateElement(_ref) {
 
 CreateElement.propTypes = {
   components: propTypes.exports.object
-};var SidebarWrapper = function SidebarWrapper(props) {
+};
+
+var SidebarWrapper = function SidebarWrapper(props) {
   var children = props.children;
 
   var _useContext = useContext(WebAppsUXContext),
@@ -25843,7 +26090,9 @@ CreateElement.propTypes = {
     tag: "div",
     className: "flex flex-col flex-grow h-full px-3 mt-6 mb-4"
   }, children);
-};function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+};
+
+function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
 function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25896,7 +26145,9 @@ var NavigationError = /*#__PURE__*/function (_Component) {
   }]);
 
   return NavigationError;
-}(Component);var SidebarHeader = function SidebarHeader() {
+}(Component);
+
+var SidebarHeader = function SidebarHeader() {
   var _useContext = useContext(WebAppsUXContext),
       theme = _useContext.theme,
       useNavigation = _useContext.useNavigation;
@@ -25918,7 +26169,9 @@ var NavigationError = /*#__PURE__*/function (_Component) {
   })), /*#__PURE__*/React$1.createElement("span", {
     className: "ml-4 text-2xl font-bold"
   }, "WebApps"));
-};var _excluded$a = ["dropDownMode"];
+};
+
+var _excluded$a = ["dropDownMode"];
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -25981,7 +26234,9 @@ var Sidebar = function Sidebar(props) {
     className: "absolute top-0 bottom-0 left-0 right-0 z-[199] opacity-60 bg-gray-600",
     onClick: toggleNavigation
   }) : null);
-};var _excluded$9 = ["id", "name", "label", "helpText", "error", "state", "checked", "disabled", "onChange", "action", "className"];
+};
+
+var _excluded$9 = ["id", "name", "label", "helpText", "error", "state", "checked", "disabled", "onChange", "action", "className"];
 
 var Switch = function Switch(props) {
   var id = props.id,
@@ -26088,7 +26343,11 @@ Switch.defaultProps = {
   helpText: '',
   disabled: false,
   className: 'w-full'
-};var initials$2 = {exports: {}};var initials_1 = initials$1;
+};
+
+var initials$2 = {exports: {}};
+
+var initials_1 = initials$1;
 
 // extend public API
 initials$1.addTo = addInitialsTo;
@@ -26509,14 +26768,20 @@ function normalize$1 (options) {
   options.existing = options.existing || {};
 
   return options
-}(function (module) {
+}
+
+(function (module) {
 	module.exports = initials_1;
-} (initials$2));var addPx$1 = function(num){
+} (initials$2));
+
+var addPx$1 = function(num){
     if (!isNaN(num)){
         return num.toString(10)+'px';
     }
     return num;
-};var hexToRgb$1 = function hexToRgb (hex) {
+};
+
+var hexToRgb$1 = function hexToRgb (hex) {
 
   if (hex.charAt && hex.charAt(0) === '#') {
     hex = removeHash(hex);
@@ -26550,14 +26815,18 @@ function expand (hex) {
       return accum.concat([value, value])
     }, [])
     .join('')
-}var hexToRgb = hexToRgb$1;
+}
+
+var hexToRgb = hexToRgb$1;
 
 var contrast$1 = function contrast (hex) {
   var rgb = hexToRgb(hex);
   var o = Math.round(((parseInt(rgb[0]) * 299) + (parseInt(rgb[1]) * 587) + (parseInt(rgb[2]) * 114)) /1000);
 
   return (o <= 180) ? 'dark' : 'light';
-};var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+};
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26674,7 +26943,9 @@ var UserAvatar = function (_React$Component) {
   return UserAvatar;
 }(React.Component);
 
-var userAvatar = UserAvatar;var _excluded$8 = ["users", "select", "photos", "placeholder", "noMatchesText", "limit"];
+var userAvatar = UserAvatar;
+
+var _excluded$8 = ["users", "select", "photos", "placeholder", "noMatchesText", "limit"];
 
 var UserSuggest = function UserSuggest(_ref) {
   var users = _ref.users,
@@ -26812,7 +27083,9 @@ UserSuggest.defaultProps = {
   noMatchesText: 'No matching users found!',
   limit: 0,
   wrapperClassName: 'relative mb-6'
-};const protocols = ['http', 'https', 'mailto', 'tel'];
+};
+
+const protocols = ['http', 'https', 'mailto', 'tel'];
 
 /**
  * @param {string} uri
@@ -26856,7 +27129,9 @@ function uriTransformer(uri) {
 
   // eslint-disable-next-line no-script-url
   return 'javascript:void(0)'
-}/*!
+}
+
+/*!
  * Determine if an object is a Buffer
  *
  * @author   Feross Aboukhadijeh <https://feross.org>
@@ -26866,7 +27141,9 @@ function uriTransformer(uri) {
 var isBuffer = function isBuffer (obj) {
   return obj != null && obj.constructor != null &&
     typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-};var own$9 = {}.hasOwnProperty;
+};
+
+var own$9 = {}.hasOwnProperty;
 
 /**
  * @typedef {import('unist').Node} Node
@@ -26931,7 +27208,9 @@ function position(pos) {
  */
 function index$1(value) {
   return value && typeof value === 'number' ? value : 1
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Position} Position
  * @typedef {import('unist').Point} Point
@@ -27070,7 +27349,11 @@ VFileMessage.prototype.column = null;
 VFileMessage.prototype.line = null;
 VFileMessage.prototype.source = null;
 VFileMessage.prototype.ruleId = null;
-VFileMessage.prototype.position = null;const proc = process$1;/**
+VFileMessage.prototype.position = null;
+
+const proc = process$1;
+
+/**
  * @typedef URL
  * @property {string} hash
  * @property {string} host
@@ -27102,7 +27385,9 @@ function isUrl(fileURLOrPath) {
     // @ts-expect-error: indexable.
     fileURLOrPath.origin
   )
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Position} Position
  * @typedef {import('unist').Point} Point
@@ -27488,7 +27773,9 @@ function assertPath(path, name) {
   if (!path) {
     throw new Error('Setting `' + name + '` requires `path` to be set too')
   }
-}/**
+}
+
+/**
  * Throw a given error.
  *
  * @param {Error|null|undefined} [error]
@@ -27499,7 +27786,9 @@ function bail(error) {
   if (error) {
     throw error
   }
-}var hasOwn = Object.prototype.hasOwnProperty;
+}
+
+var hasOwn = Object.prototype.hasOwnProperty;
 var toStr = Object.prototype.toString;
 var defineProperty = Object.defineProperty;
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -27613,14 +27902,18 @@ var extend = function extend() {
 
 	// Return the modified object
 	return target;
-};function isPlainObject(value) {
+};
+
+function isPlainObject(value) {
 	if (Object.prototype.toString.call(value) !== '[object Object]') {
 		return false;
 	}
 
 	const prototype = Object.getPrototypeOf(value);
 	return prototype === null || prototype === Object.prototype;
-}/**
+}
+
+/**
  * @typedef {(error?: Error|null|undefined, ...output: any[]) => void} Callback
  * @typedef {(...input: any[]) => any} Middleware
  *
@@ -27776,7 +28069,9 @@ function wrap$1(middleware, callback) {
   function then(value) {
     done(null, value);
   }
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('vfile').VFileCompatible} VFileCompatible
  * @typedef {import('vfile').VFileValue} VFileValue
@@ -28361,7 +28656,9 @@ function looksLikeAVFile(value) {
  */
 function looksLikeAVFileValue(value) {
   return typeof value === 'string' || isBuffer(value)
-}/**
+}
+
+/**
  * @typedef Options
  * @property {boolean} [includeImageAlt=true]
  */
@@ -28415,7 +28712,9 @@ function all$1(values, includeImageAlt) {
   }
 
   return result.join('')
-}/**
+}
+
+/**
  * Like `Array#splice`, but smarter for giant arrays.
  *
  * `Array#splice` takes all items to be inserted as individual argument which
@@ -28483,7 +28782,9 @@ function push(list, items) {
   }
 
   return items
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').NormalizedExtension} NormalizedExtension
  * @typedef {import('micromark-util-types').Extension} Extension
  * @typedef {import('micromark-util-types').Construct} Construct
@@ -28558,14 +28859,18 @@ function constructs(existing, list) {
   }
 
   splice(existing, 0, 0, before);
-}// This module is generated by `script/`.
+}
+
+// This module is generated by `script/`.
 //
 // CommonMark handles attention (emphasis, strong) markers based on what comes
 // before or after them.
 // One such difference is if those characters are Unicode punctuation.
 // This script is generated from the Unicode data.
 const unicodePunctuationRegex =
-  /[!-/:-@[-`{-~\u00A1\u00A7\u00AB\u00B6\u00B7\u00BB\u00BF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;/**
+  /[!-/:-@[-`{-~\u00A1\u00A7\u00AB\u00B6\u00B7\u00BB\u00BF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;
+
+/**
  * @typedef {import('micromark-util-types').Code} Code
  */
 /**
@@ -28758,7 +29063,9 @@ function regexCheck(regex) {
   function check(code) {
     return code !== null && regex.test(String.fromCharCode(code))
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  */
@@ -28795,7 +29102,9 @@ function factorySpace(effects, ok, type, max) {
     effects.exit(type);
     return ok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').Token} Token
@@ -28871,7 +29180,9 @@ function initializeContent(effects) {
     effects.consume(code);
     return data
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').Construct} Construct
@@ -29235,7 +29546,9 @@ function tokenizeContainer(effects, ok, nok) {
     'linePrefix',
     this.parser.constructs.disable.null.includes('codeIndented') ? undefined : 4
   )
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Code} Code
  */
 
@@ -29263,7 +29576,9 @@ function classifyCharacter(code) {
   if (unicodePunctuation(code)) {
     return 2
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').TokenizeContext} TokenizeContext
  * @typedef {import('micromark-util-types').Event} Event
  * @typedef {import('micromark-util-types').Resolver} Resolver
@@ -29292,7 +29607,9 @@ function resolveAll(constructs, events, context) {
   }
 
   return events
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Resolver} Resolver
@@ -29523,7 +29840,9 @@ function movePoint(point, offset) {
   point.column += offset;
   point.offset += offset;
   point._bufferIndex += offset;
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -29656,7 +29975,9 @@ function tokenizeAutolink(effects, ok, nok) {
     effects.exit('autolink');
     return ok
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -29676,7 +29997,9 @@ function tokenizeBlankLine(effects, ok, nok) {
   function afterWhitespace(code) {
     return code === null || markdownLineEnding(code) ? ok(code) : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Exiter} Exiter
@@ -29748,7 +30071,9 @@ function tokenizeBlockQuoteContinuation(effects, ok, nok) {
 
 function exit(effects) {
   effects.exit('blockQuote');
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -29785,7 +30110,9 @@ function tokenizeCharacterEscape(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * Map of named character references.
  *
  * @type {Record<string, string>}
@@ -32013,7 +32340,9 @@ const characterEntities = {
   zscr: '𝓏',
   zwj: '‍',
   zwnj: '‌'
-};const own$7 = {}.hasOwnProperty;
+};
+
+const own$7 = {}.hasOwnProperty;
 
 /**
  * Decode a single character reference (without the `&` or `;`).
@@ -32028,7 +32357,9 @@ const characterEntities = {
  */
 function decodeNamedCharacterReference(value) {
   return own$7.call(characterEntities, value) ? characterEntities[value] : false
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Token} Token
@@ -32125,7 +32456,9 @@ function tokenizeCharacterReference(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -32353,7 +32686,9 @@ function tokenizeCodeFenced(effects, ok, nok) {
       return nok(code)
     }
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').Resolver} Resolver
@@ -32459,7 +32794,9 @@ function tokenizeIndentedContent(effects, ok, nok) {
       ? start(code)
       : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -32642,7 +32979,9 @@ function tokenizeCodeText(effects, ok, nok) {
     token.type = 'codeTextData';
     return data(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Token} Token
  * @typedef {import('micromark-util-types').Chunk} Chunk
  * @typedef {import('micromark-util-types').Event} Event
@@ -32887,7 +33226,9 @@ function subcontent(events, eventIndex) {
   }
 
   return gaps
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -33007,7 +33348,9 @@ function tokenizeContinuation(effects, ok, nok) {
 
     return effects.interrupt(self.parser.constructs.flow, nok, ok)(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  */
@@ -33152,7 +33495,9 @@ function factoryDestination(
 
     return destinationRaw(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').TokenizeContext} TokenizeContext
  * @typedef {import('micromark-util-types').State} State
@@ -33258,7 +33603,9 @@ function factoryLabel(effects, ok, nok, type, markerType, stringType) {
 
     return label(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  * @typedef {import('micromark-util-types').Code} Code
@@ -33347,7 +33694,9 @@ function factoryTitle(effects, ok, nok, type, markerType, stringType) {
 
     return title(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Effects} Effects
  * @typedef {import('micromark-util-types').State} State
  */
@@ -33381,7 +33730,9 @@ function factoryWhitespace(effects, ok) {
 
     return ok(code)
   }
-}/**
+}
+
+/**
  * Normalize an identifier (such as used in definitions).
  *
  * @param {string} value
@@ -33400,7 +33751,9 @@ function normalizeIdentifier(value) {
       .toLowerCase()
       .toUpperCase()
   )
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -33520,7 +33873,9 @@ function tokenizeTitle(effects, ok, nok) {
   function after(code) {
     return code === null || markdownLineEnding(code) ? ok(code) : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -33554,7 +33909,9 @@ function tokenizeHardBreakEscape(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -33693,7 +34050,9 @@ function tokenizeHeadingAtx(effects, ok, nok) {
     effects.consume(code);
     return data
   }
-}/**
+}
+
+/**
  * List of lowercase HTML tag names which when parsing HTML (flow), result
  * in more relaxed rules (condition 6): because they are known blocks, the
  * HTML-like syntax doesn’t have to be strictly parsed.
@@ -33780,7 +34139,9 @@ const htmlBlockNames = [
  * merged to the primary branch and is slated to be released in the next release
  * of CommonMark.
  */
-const htmlRawNames = ['pre', 'script', 'style', 'textarea'];/**
+const htmlRawNames = ['pre', 'script', 'style', 'textarea'];
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -34331,7 +34692,9 @@ function tokenizeNextBlank(effects, ok, nok) {
     effects.exit('lineEndingBlank');
     return effects.attempt(blankLine, ok, nok)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -34801,7 +35164,9 @@ function tokenizeHtmlText(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -35159,7 +35524,9 @@ function tokenizeCollapsedReference(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -35212,7 +35579,9 @@ function tokenizeLabelStartImage(effects, ok, nok) {
       ? nok(code)
       : ok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -35253,7 +35622,9 @@ function tokenizeLabelStartLink(effects, ok, nok) {
       ? nok(code)
       : ok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -35276,7 +35647,9 @@ function tokenizeLineEnding(effects, ok) {
     effects.exit('lineEnding');
     return factorySpace(effects, ok, 'linePrefix')
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
  * @typedef {import('micromark-util-types').State} State
@@ -35334,7 +35707,9 @@ function tokenizeThematicBreak(effects, ok, nok) {
     effects.exit('thematicBreakSequence');
     return atBreak(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').TokenizeContext} TokenizeContext
  * @typedef {import('micromark-util-types').Exiter} Exiter
@@ -35593,7 +35968,9 @@ function tokenizeListItemPrefixWhitespace(effects, ok, nok) {
       ? ok(code)
       : nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Construct} Construct
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Tokenizer} Tokenizer
@@ -35724,7 +36101,9 @@ function tokenizeSetextUnderline(effects, ok, nok) {
 
     return nok(code)
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').State} State
@@ -35785,7 +36164,9 @@ function initializeFlow(effects) {
     self.currentConstruct = undefined;
     return initial
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Initializer} Initializer
  * @typedef {import('micromark-util-types').Construct} Construct
@@ -36000,7 +36381,9 @@ function resolveAllLineSuffixes(events, context) {
   }
 
   return events
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Code} Code
  * @typedef {import('micromark-util-types').Chunk} Chunk
  * @typedef {import('micromark-util-types').Point} Point
@@ -36563,7 +36946,9 @@ function serializeChunks(chunks, expandTabs) {
   }
 
   return result.join('')
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Extension} Extension
  */
 /** @type {Extension['document']} */
@@ -36644,7 +37029,22 @@ const attentionMarkers = {
 
 const disable = {
   null: []
-};var defaultConstructs=/*#__PURE__*/Object.freeze({__proto__:null,document:document$1,contentInitial:contentInitial,flowInitial:flowInitial,flow:flow,string:string,text:text$1,insideSpan:insideSpan,attentionMarkers:attentionMarkers,disable:disable});/**
+};
+
+var defaultConstructs = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    document: document$1,
+    contentInitial: contentInitial,
+    flowInitial: flowInitial,
+    flow: flow,
+    string: string,
+    text: text$1,
+    insideSpan: insideSpan,
+    attentionMarkers: attentionMarkers,
+    disable: disable
+});
+
+/**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').FullNormalizedExtension} FullNormalizedExtension
  * @typedef {import('micromark-util-types').ParseOptions} ParseOptions
@@ -36688,7 +37088,9 @@ function parse$1(options = {}) {
       return createTokenizer(parser, initial, from)
     }
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Encoding} Encoding
  * @typedef {import('micromark-util-types').Value} Value
  * @typedef {import('micromark-util-types').Chunk} Chunk
@@ -36816,7 +37218,9 @@ function preprocess() {
 
     return chunks
   }
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Event} Event
  */
 /**
@@ -36830,7 +37234,9 @@ function postprocess(events) {
   }
 
   return events
-}/**
+}
+
+/**
  * Turn the number (in string form as either hexa- or plain decimal) coming from
  * a numeric character reference into a character.
  *
@@ -36859,7 +37265,9 @@ function decodeNumericCharacterReference(value, base) {
   }
 
   return String.fromCharCode(code)
-}const characterEscapeOrReference =
+}
+
+const characterEscapeOrReference =
   /\\([!-/:-@[-`{-~])|&(#(?:\d{1,7}|x[\da-f]{1,6})|[\da-z]{1,31});/gi;
 /**
  * Utility to decode markdown strings (which occur in places such as fenced
@@ -36896,7 +37304,9 @@ function decode($0, $1, $2) {
   }
 
   return decodeNamedCharacterReference($2) || $0
-}/**
+}
+
+/**
  * @typedef {import('micromark-util-types').Encoding} Encoding
  * @typedef {import('micromark-util-types').Event} Event
  * @typedef {import('micromark-util-types').ParseOptions} ParseOptions
@@ -38077,7 +38487,9 @@ function defaultOnError(left, right) {
         ') is still open'
     )
   }
-}/**
+}
+
+/**
  * @typedef {import('mdast').Root} Root
  * @typedef {import('mdast-util-from-markdown').Options} Options
  */
@@ -38102,7 +38514,9 @@ function remarkParse(options) {
   };
 
   Object.assign(this, {Parser: parser});
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist').Literal} Literal
@@ -38147,7 +38561,9 @@ var u = /**
 
     return node
   }
-);/**
+);
+
+/**
  * @typedef {import('mdast').Root|import('mdast').Parent['children'][number]} MdastNode
  * @typedef {import('./index.js').H} H
  * @typedef {import('./index.js').Handler} Handler
@@ -38252,7 +38668,9 @@ function all(h, parent) {
   }
 
   return values
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  *
@@ -38399,13 +38817,17 @@ function castFactory(check) {
 // Utility to return true.
 function ok() {
   return true
-}/**
+}
+
+/**
  * @param {string} d
  * @returns {string}
  */
 function color$1(d) {
   return '\u001B[33m' + d + '\u001B[39m'
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -38553,7 +38975,9 @@ function toResult$1(value) {
   }
 
   return [value]
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -38605,7 +39029,9 @@ const visit$1 =
         )
       }
     }
-  );/**
+  );
+
+/**
  * @typedef {import('unist').Position} Position
  * @typedef {import('unist').Node} Node
  * @typedef {Record<string, unknown> & {type: string, position?: PositionLike|undefined}} NodeLike
@@ -38644,7 +39070,9 @@ function point(type) {
       offset: point.offset > -1 ? point.offset : null
     }
   }
-}/**
+}
+
+/**
  * @typedef {Object} PointLike
  * @property {number} [line]
  * @property {number} [column]
@@ -38675,13 +39103,17 @@ function generated(node) {
     !node.position.end.line ||
     !node.position.end.column
   )
-}/**
+}
+
+/**
  * @param {string} d
  * @returns {string}
  */
 function color(d) {
   return '\u001B[33m' + d + '\u001B[39m'
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -38816,7 +39248,9 @@ function toResult(value) {
   }
 
   return [value]
-}/**
+}
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
  * @typedef {import('unist-util-is').Test} Test
@@ -38862,7 +39296,9 @@ const visit =
         )
       }
     }
-  );/**
+  );
+
+/**
  * @typedef {import('mdast').Root|import('mdast').Content} Node
  * @typedef {import('mdast').Definition} Definition
  * @typedef {import('unist-util-visit').Visitor<Definition>} DefinitionVisitor
@@ -38912,7 +39348,9 @@ function definitions(node) {
  */
 function clean(value) {
   return String(value || '').toUpperCase()
-}const characterReferences = {'"': 'quot', '&': 'amp', '<': 'lt', '>': 'gt'};
+}
+
+const characterReferences = {'"': 'quot', '&': 'amp', '<': 'lt', '>': 'gt'};
 
 /**
  * Encode only the dangerous HTML characters.
@@ -38935,7 +39373,9 @@ function encode$1(value) {
     // @ts-expect-error Hush, it’s fine.
     return '&' + characterReferences[value] + ';'
   }
-}/**
+}
+
+/**
  * Make a value safe for injection as a URL.
  *
  * This encodes unsafe characters with percent-encoding and skips already
@@ -39042,7 +39482,9 @@ function normalizeUri(value) {
   }
 
   return result.join('') + value.slice(start)
-}/**
+}
+
+/**
  * @typedef {import('./index.js').Content} Content
  */
 
@@ -39073,7 +39515,9 @@ function wrap(nodes, loose) {
   }
 
   return result
-}/**
+}
+
+/**
  * @typedef {import('mdast').BlockContent} BlockContent
  * @typedef {import('mdast').FootnoteDefinition} FootnoteDefinition
  * @typedef {import('hast').Element} Element
@@ -39192,7 +39636,9 @@ function footer(h) {
       {type: 'text', value: '\n'}
     ]
   }
-}/**
+}
+
+/**
  * @typedef {import('mdast').Blockquote} Blockquote
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39203,7 +39649,9 @@ function footer(h) {
  */
 function blockquote(h, node) {
   return h(node, 'blockquote', wrap(all(h, node), true))
-}/**
+}
+
+/**
  * @typedef {import('hast').Element} Element
  * @typedef {import('hast').Text} Text
  * @typedef {import('mdast').Break} Break
@@ -39217,7 +39665,9 @@ function blockquote(h, node) {
  */
 function hardBreak(h, node) {
   return [h(node, 'br'), u('text', '\n')]
-}/**
+}
+
+/**
  * @typedef {import('mdast').Code} Code
  * @typedef {import('hast').Element} Element
  * @typedef {import('hast').Properties} Properties
@@ -39247,7 +39697,9 @@ function code(h, node) {
   }
 
   return h(node.position, 'pre', [code])
-}/**
+}
+
+/**
  * @typedef {import('mdast').Delete} Delete
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39258,7 +39710,9 @@ function code(h, node) {
  */
 function strikethrough(h, node) {
   return h(node, 'del', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Emphasis} Emphasis
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39269,7 +39723,9 @@ function strikethrough(h, node) {
  */
 function emphasis(h, node) {
   return h(node, 'em', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').FootnoteReference} FootnoteReference
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39313,7 +39769,9 @@ function footnoteReference(h, node) {
       [u('text', String(counter))]
     )
   ])
-}/**
+}
+
+/**
  * @typedef {import('mdast').Footnote} Footnote
  * @typedef {import('../index.js').Handler} Handler
  *
@@ -39349,7 +39807,9 @@ function footnote(h, node) {
     identifier,
     position: node.position
   })
-}/**
+}
+
+/**
  * @typedef {import('mdast').Heading} Heading
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39360,7 +39820,9 @@ function footnote(h, node) {
  */
 function heading(h, node) {
   return h(node, 'h' + node.depth, all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').HTML} HTML
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39373,7 +39835,9 @@ function heading(h, node) {
  */
 function html$2(h, node) {
   return h.dangerous ? h.augment(node, u('raw', node.value)) : null
-}var encodeCache = {};
+}
+
+var encodeCache = {};
 
 
 // Create a lookup array where anything but characters in `chars` string
@@ -39466,7 +39930,9 @@ encode.defaultChars   = ";/?:@&=+$,-_.!~*'()#";
 encode.componentChars = "-_.!~*'()";
 
 
-var encode_1 = encode;/**
+var encode_1 = encode;
+
+/**
  * @typedef {import('mdast').LinkReference} LinkReference
  * @typedef {import('mdast').ImageReference} ImageReference
  * @typedef {import('./index.js').Handler} Handler
@@ -39512,7 +39978,9 @@ function revert(h, node) {
   }
 
   return contents
-}/**
+}
+
+/**
  * @typedef {import('mdast').ImageReference} ImageReference
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -39537,7 +40005,9 @@ function imageReference(h, node) {
   }
 
   return h(node, 'img', props)
-}/**
+}
+
+/**
  * @typedef {import('mdast').Image} Image
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -39556,7 +40026,9 @@ function image(h, node) {
   }
 
   return h(node, 'img', props)
-}/**
+}
+
+/**
  * @typedef {import('mdast').InlineCode} InlineCode
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39567,7 +40039,9 @@ function image(h, node) {
  */
 function inlineCode(h, node) {
   return h(node, 'code', [u('text', node.value.replace(/\r?\n|\r/g, ' '))])
-}/**
+}
+
+/**
  * @typedef {import('mdast').LinkReference} LinkReference
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -39592,7 +40066,9 @@ function linkReference(h, node) {
   }
 
   return h(node, 'a', props, all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Link} Link
  * @typedef {import('hast').Properties} Properties
  * @typedef {import('../index.js').Handler} Handler
@@ -39611,7 +40087,9 @@ function link(h, node) {
   }
 
   return h(node, 'a', props, all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').ListItem} ListItem
  * @typedef {import('mdast').List} List
  * @typedef {import('hast').Properties} Properties
@@ -39723,7 +40201,9 @@ function listItemLoose(node) {
   return spread === undefined || spread === null
     ? node.children.length > 1
     : spread
-}/**
+}
+
+/**
  * @typedef {import('mdast').List} List
  * @typedef {import('hast').Element} Element
  * @typedef {import('hast').Properties} Properties
@@ -39763,7 +40243,9 @@ function list(h, node) {
   }
 
   return h(node, name, props, wrap(items, true))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Paragraph} Paragraph
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39774,7 +40256,9 @@ function list(h, node) {
  */
 function paragraph(h, node) {
   return h(node, 'p', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Root} Root
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39786,7 +40270,9 @@ function paragraph(h, node) {
 function root(h, node) {
   // @ts-expect-error `root`s are also fine.
   return h.augment(node, u('root', wrap(all(h, node))))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Strong} Strong
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39797,7 +40283,9 @@ function root(h, node) {
  */
 function strong(h, node) {
   return h(node, 'strong', all(h, node))
-}/**
+}
+
+/**
  * @typedef {import('mdast').Table} Table
  * @typedef {import('mdast').TableCell} TableCell
  * @typedef {import('hast').Element} Element
@@ -39853,7 +40341,9 @@ function table(h, node) {
       true
     )
   )
-}/**
+}
+
+/**
  * @typedef {import('mdast').Text} Text
  * @typedef {import('../index.js').Handler} Handler
  */
@@ -39867,7 +40357,9 @@ function text(h, node) {
     node,
     u('text', String(node.value).replace(/[ \t]*(\r?\n|\r)[ \t]*/g, '$1'))
   )
-}/**
+}
+
+/**
  * @typedef {import('mdast').ThematicBreak} ThematicBreak
  * @typedef {import('hast').Element} Element
  * @typedef {import('../index.js').Handler} Handler
@@ -39880,7 +40372,9 @@ function text(h, node) {
  */
 function thematicBreak(h, node) {
   return h(node, 'hr')
-}const handlers = {
+}
+
+const handlers = {
   blockquote,
   break: hardBreak,
   code,
@@ -39912,7 +40406,9 @@ function thematicBreak(h, node) {
 // Return nothing for nodes that are ignored.
 function ignore() {
   return null
-}/**
+}
+
+/**
  * @typedef {import('mdast').Root|import('mdast').Parent['children'][number]} MdastNode
  * @typedef {import('hast').Root|import('hast').Parent['children'][number]} HastNode
  * @typedef {import('mdast').Parent} Parent
@@ -40135,7 +40631,9 @@ function toHast(tree, options) {
   }
 
   return Array.isArray(node) ? {type: 'root', children: node} : node
-}/**
+}
+
+/**
  * @typedef {import('hast').Root} HastRoot
  * @typedef {import('mdast').Root} MdastRoot
  * @typedef {import('mdast-util-to-hast').Options} Options
@@ -40201,7 +40699,9 @@ function bridge(destination, options) {
 function mutate(options) {
   // @ts-expect-error: assume a corresponding node is returned by `toHast`.
   return (node) => toHast(node, options)
-}/**
+}
+
+/**
  * @typedef {import('./info.js').Info} Info
  * @typedef {Record<string, Info>} Properties
  * @typedef {Record<string, string>} Normal
@@ -40228,7 +40728,9 @@ Schema.prototype.property = {};
 /** @type {Normal} */
 Schema.prototype.normal = {};
 /** @type {string|null} */
-Schema.prototype.space = null;/**
+Schema.prototype.space = null;
+
+/**
  * @typedef {import('./schema.js').Properties} Properties
  * @typedef {import('./schema.js').Normal} Normal
  */
@@ -40251,13 +40753,17 @@ function merge(definitions, space) {
   }
 
   return new Schema(property, normal, space)
-}/**
+}
+
+/**
  * @param {string} value
  * @returns {string}
  */
 function normalize(value) {
   return value.toLowerCase()
-}class Info {
+}
+
+class Info {
   /**
    * @constructor
    * @param {string} property
@@ -40281,7 +40787,9 @@ Info.prototype.commaSeparated = false;
 Info.prototype.spaceSeparated = false;
 Info.prototype.commaOrSpaceSeparated = false;
 Info.prototype.mustUseProperty = false;
-Info.prototype.defined = false;let powers = 0;
+Info.prototype.defined = false;
+
+let powers = 0;
 
 const boolean = increment();
 const booleanish = increment();
@@ -40293,7 +40801,20 @@ const commaOrSpaceSeparated = increment();
 
 function increment() {
   return 2 ** ++powers
-}var types=/*#__PURE__*/Object.freeze({__proto__:null,boolean:boolean,booleanish:booleanish,overloadedBoolean:overloadedBoolean,number:number,spaceSeparated:spaceSeparated,commaSeparated:commaSeparated,commaOrSpaceSeparated:commaOrSpaceSeparated});/** @type {Array<keyof types>} */
+}
+
+var types = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    boolean: boolean,
+    booleanish: booleanish,
+    overloadedBoolean: overloadedBoolean,
+    number: number,
+    spaceSeparated: spaceSeparated,
+    commaSeparated: commaSeparated,
+    commaOrSpaceSeparated: commaOrSpaceSeparated
+});
+
+/** @type {Array<keyof types>} */
 // @ts-expect-error: hush.
 const checks = Object.keys(types);
 
@@ -40333,7 +40854,9 @@ function mark(values, key, value) {
     // @ts-expect-error: assume `value` matches the expected value of `key`.
     values[key] = value;
   }
-}/**
+}
+
+/**
  * @typedef {import('./schema.js').Properties} Properties
  * @typedef {import('./schema.js').Normal} Normal
  *
@@ -40386,7 +40909,9 @@ function create(definition) {
   }
 
   return new Schema(property, normal, definition.space)
-}const xlink = create({
+}
+
+const xlink = create({
   space: 'xlink',
   transform(_, prop) {
     return 'xlink:' + prop.slice(5).toLowerCase()
@@ -40400,32 +40925,42 @@ function create(definition) {
     xLinkTitle: null,
     xLinkType: null
   }
-});const xml = create({
+});
+
+const xml = create({
   space: 'xml',
   transform(_, prop) {
     return 'xml:' + prop.slice(3).toLowerCase()
   },
   properties: {xmlLang: null, xmlBase: null, xmlSpace: null}
-});/**
+});
+
+/**
  * @param {Record<string, string>} attributes
  * @param {string} attribute
  * @returns {string}
  */
 function caseSensitiveTransform(attributes, attribute) {
   return attribute in attributes ? attributes[attribute] : attribute
-}/**
+}
+
+/**
  * @param {Record<string, string>} attributes
  * @param {string} property
  * @returns {string}
  */
 function caseInsensitiveTransform(attributes, property) {
   return caseSensitiveTransform(attributes, property.toLowerCase())
-}const xmlns = create({
+}
+
+const xmlns = create({
   space: 'xmlns',
   attributes: {xmlnsxlink: 'xmlns:xlink'},
   transform: caseInsensitiveTransform,
   properties: {xmlns: null, xmlnsXLink: null}
-});const aria = create({
+});
+
+const aria = create({
   transform(_, prop) {
     return prop === 'role' ? prop : 'aria-' + prop.slice(4).toLowerCase()
   },
@@ -40480,7 +41015,9 @@ function caseInsensitiveTransform(attributes, property) {
     ariaValueText: null,
     role: null
   }
-});const html$1 = create({
+});
+
+const html$1 = create({
   space: 'html',
   attributes: {
     acceptcharset: 'accept-charset',
@@ -40777,7 +41314,9 @@ function caseInsensitiveTransform(attributes, property) {
     security: null,
     unselectable: null
   }
-});const svg$1 = create({
+});
+
+const svg$1 = create({
   space: 'svg',
   attributes: {
     accentHeight: 'accent-height',
@@ -41331,7 +41870,9 @@ function caseInsensitiveTransform(attributes, property) {
     z: null,
     zoomAndPan: null
   }
-});/**
+});
+
+/**
  * @typedef {import('./util/schema.js').Schema} Schema
  */
 
@@ -41394,7 +41935,9 @@ function kebab($0) {
  */
 function camelcase($0) {
   return $0.charAt(1).toUpperCase()
-}const hastToReact = {
+}
+
+const hastToReact = {
   classId: 'classID',
   dataType: 'datatype',
   itemId: 'itemID',
@@ -41412,12 +41955,16 @@ function camelcase($0) {
   xLinkTitle: 'xlinkTitle',
   xLinkType: 'xlinkType',
   xmlnsXLink: 'xmlnsXlink'
-};/**
+};
+
+/**
  * @typedef {import('./lib/util/info.js').Info} Info
  * @typedef {import('./lib/util/schema.js').Schema} Schema
  */
 const html = merge([xml, xlink, xmlns, aria, html$1], 'html');
-const svg = merge([xml, xlink, xmlns, aria, svg$1], 'svg');/**
+const svg = merge([xml, xlink, xmlns, aria, svg$1], 'svg');
+
+/**
  * @typedef {import('unist').Node} Node
  * @typedef {import('hast').Root} Root
  * @typedef {import('hast').Element} Element
@@ -41480,7 +42027,13 @@ function rehypeFilter(options) {
       });
     }
   }
-}var reactIs = {exports: {}};var reactIs_production_min = {};/**
+}
+
+var reactIs = {exports: {}};
+
+var reactIs_production_min = {};
+
+/**
  * @license React
  * react-is.production.min.js
  *
@@ -41501,7 +42054,11 @@ var b=Symbol.for("react.element"),c=Symbol.for("react.portal"),d=Symbol.for("rea
 	reactIs_production_min.isPortal=function(a){return v(a)===c};reactIs_production_min.isProfiler=function(a){return v(a)===f};reactIs_production_min.isStrictMode=function(a){return v(a)===e};reactIs_production_min.isSuspense=function(a){return v(a)===m};reactIs_production_min.isSuspenseList=function(a){return v(a)===n};
 	reactIs_production_min.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===d||a===f||a===e||a===m||a===n||a===t||"object"===typeof a&&null!==a&&(a.$$typeof===q||a.$$typeof===p||a.$$typeof===g||a.$$typeof===h||a.$$typeof===l||a.$$typeof===u||void 0!==a.getModuleId)?!0:!1};reactIs_production_min.typeOf=v;
 	return reactIs_production_min;
-}var reactIs_development = {};/**
+}
+
+var reactIs_development = {};
+
+/**
  * @license React
  * react-is.development.js
  *
@@ -41724,7 +42281,9 @@ function requireReactIs_development () {
 	  })();
 	}
 	return reactIs_development;
-}(function (module) {
+}
+
+(function (module) {
 
 	if (process.env.NODE_ENV === 'production') {
 	  module.exports = requireReactIs_production_min();
@@ -41733,7 +42292,9 @@ function requireReactIs_development () {
 	}
 } (reactIs));
 
-var ReactIs = /*@__PURE__*/getDefaultExportFromCjs(reactIs.exports);/**
+var ReactIs = /*@__PURE__*/getDefaultExportFromCjs(reactIs.exports);
+
+/**
  * @param {unknown} thing
  * @returns {boolean}
  */
@@ -41749,7 +42310,9 @@ function whitespace(thing) {
   // HTML whitespace expression.
   // See <https://html.spec.whatwg.org/#space-character>.
   return typeof value === 'string' && value.replace(/[ \t\n\f\r]/g, '') === ''
-}/**
+}
+
+/**
  * Parse space separated tokens to an array of strings.
  *
  * @param {string} value Space separated tokens
@@ -41764,7 +42327,9 @@ function whitespace(thing) {
  */
 function stringify$1(values) {
   return values.join(' ').trim()
-}/**
+}
+
+/**
  * @typedef {Object} StringifyOptions
  * @property {boolean} [padLeft=true] Whether to pad a space before a token (`boolean`, default: `true`).
  * @property {boolean} [padRight=false] Whether to pad a space after a token (`boolean`, default: `false`).
@@ -41792,7 +42357,9 @@ function stringify(values, options) {
         (settings.padLeft === false ? '' : ' ')
     )
     .trim()
-}// http://www.w3.org/TR/CSS21/grammar.html
+}
+
+// http://www.w3.org/TR/CSS21/grammar.html
 // https://github.com/visionmedia/css-parse/pull/49#issuecomment-30088027
 var COMMENT_REGEX = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g;
 
@@ -42048,7 +42615,9 @@ var inlineStyleParser = function(style, options) {
  */
 function trim(str) {
   return str ? str.replace(TRIM_REGEX, EMPTY_STRING) : EMPTY_STRING;
-}var parse = inlineStyleParser;
+}
+
+var parse = inlineStyleParser;
 
 /**
  * Parses inline style to object.
@@ -42089,7 +42658,9 @@ function StyleToObject(style, iterator) {
   return output;
 }
 
-var styleToObject = StyleToObject;/**
+var styleToObject = StyleToObject;
+
+/**
  * @template T
  * @typedef {import('react').ComponentType<T>} ComponentType<T>
  */
@@ -42434,7 +43005,9 @@ function flattenPosition(pos) {
   ]
     .map((d) => String(d))
     .join('')
-}/**
+}
+
+/**
  * @typedef {import('react').ReactNode} ReactNode
  * @typedef {import('react').ReactElement<{}>} ReactElement
  * @typedef {import('unified').PluggableList} PluggableList
@@ -42609,7 +43182,9 @@ ReactMarkdown.propTypes = {
   linkTarget: propTypes.exports.oneOfType([propTypes.exports.func, propTypes.exports.string]),
   transformImageUri: propTypes.exports.func,
   components: propTypes.exports.object
-};var _excluded$7 = ["item", "close", "update"];
+};
+
+var _excluded$7 = ["item", "close", "update"];
 
 var AppPluginChangelogModal = function AppPluginChangelogModal(props) {
   var item = props.item,
@@ -42674,7 +43249,9 @@ AppPluginChangelogModal.propTypes = {
   item: propTypes.exports.object,
   close: propTypes.exports.func,
   install: propTypes.exports.func
-};var _excluded$6 = ["app", "setChangelog"];
+};
+
+var _excluded$6 = ["app", "setChangelog"];
 
 var AppActionButtons = function AppActionButtons(_ref) {
   var app = _ref.app,
@@ -42817,7 +43394,9 @@ var AppActionButtons = function AppActionButtons(_ref) {
       d: "M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
     })), "Deactivate");
   }
-};var _excluded$5 = ["app", "showActions"];
+};
+
+var _excluded$5 = ["app", "showActions"];
 
 var AppCard = function AppCard(props) {
   var app = props.app,
@@ -42911,7 +43490,9 @@ var AppCard = function AppCard(props) {
     },
     update: apps.update
   }) : null));
-};var _excluded$4 = ["plugin", "setChangelog"];
+};
+
+var _excluded$4 = ["plugin", "setChangelog"];
 
 var PluginActionButtons = function PluginActionButtons(_ref) {
   var plugin = _ref.plugin,
@@ -43030,7 +43611,9 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
       d: "M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
     })), "Deactivate");
   }
-};var _excluded$3 = ["plugin", "showActions"];
+};
+
+var _excluded$3 = ["plugin", "showActions"];
 
 var PluginCard = function PluginCard(props) {
   var plugin = props.plugin,
@@ -43124,7 +43707,9 @@ var PluginCard = function PluginCard(props) {
     },
     update: plugins.update
   }) : null));
-};var _excluded$2 = ["children"];
+};
+
+var _excluded$2 = ["children"];
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -43177,7 +43762,9 @@ var Drawer = function Drawer(props) {
     className: "absolute top-0 bottom-0 left-0 right-0 z-[199] opacity-60 bg-gray-600",
     onClick: toggleDrawer
   }) : null);
-};var DrawerHeader = function DrawerHeader(props) {
+};
+
+var DrawerHeader = function DrawerHeader(props) {
   var _useContext = useContext(WebAppsUXContext),
       useNavigation = _useContext.useNavigation;
 
@@ -43204,7 +43791,9 @@ var Drawer = function Drawer(props) {
     strokeLinejoin: "round",
     d: "M6 18L18 6M6 6l12 12"
   })))));
-};var _excluded$1 = ["badge", "color", "icon", "children"];
+};
+
+var _excluded$1 = ["badge", "color", "icon", "children"];
 
 function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -43237,11 +43826,15 @@ var DrawerItem = function DrawerItem(_ref) {
   }, _objectSpread$2(_objectSpread$2({}, badge), {}, {
     text: null
   })), badge.text));
-};var DrawerItems = function DrawerItems(props) {
+};
+
+var DrawerItems = function DrawerItems(props) {
   return /*#__PURE__*/React$1.createElement("div", {
     className: "flex flex-col divide-y border-t border-b dark:border-gray-800 dark:divide-gray-800"
   }, props.children);
-};var _excluded = ["children"];
+};
+
+var _excluded = ["children"];
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -43281,14 +43874,18 @@ var Flyout = function Flyout(props) {
   return /*#__PURE__*/React$1.createElement("div", _extends({
     className: classes
   }, rest), children);
-};var FlyoutContent = function FlyoutContent(props) {
+};
+
+var FlyoutContent = function FlyoutContent(props) {
   var children = props.children;
   return /*#__PURE__*/React$1.createElement(Scrollbar, {
     className: "flex flex-col flex-auto relative"
   }, /*#__PURE__*/React$1.createElement("div", {
     className: "p-6 w-full h-full bg-white dark:bg-gray-900"
   }, children));
-};var FlyoutHeader = function FlyoutHeader(props) {
+};
+
+var FlyoutHeader = function FlyoutHeader(props) {
   var closeAction = props.closeAction,
       children = props.children;
 
@@ -43317,7 +43914,9 @@ var Flyout = function Flyout(props) {
     strokeWidth: "2",
     d: "M6 18L18 6M6 6l12 12"
   }))) : null);
-};var FlyoutFooter = function FlyoutFooter(props) {
+};
+
+var FlyoutFooter = function FlyoutFooter(props) {
   var children = props.children;
 
   var _useContext = useContext(WebAppsUXContext),
@@ -43326,7 +43925,9 @@ var Flyout = function Flyout(props) {
   return /*#__PURE__*/React$1.createElement("div", {
     className: "flex items-center py-2 px-4 bg-gray-100 dark:bg-gray-800 border-t-2 border-".concat(theme, "-600")
   }, children);
-};function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+};
+
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
 function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -43418,7 +44019,9 @@ AppError.propTypes = {
 AppError.defaultProps = {
   theme: 'indigo'
 };
-var AppError$1 = withRouter(AppError);function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+var AppError$1 = withRouter(AppError);
+
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
 function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var ComponentErrorTrigger = function ComponentErrorTrigger(_ref) {
@@ -43528,7 +44131,9 @@ ComponentError.propTypes = {
 ComponentError.defaultProps = {
   theme: 'indigo'
 };
-var ComponentError$1 = withRouter(ComponentError);function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+var ComponentError$1 = withRouter(ComponentError);
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -43602,7 +44207,9 @@ var CoreError = /*#__PURE__*/function (_Component) {
   }]);
 
   return CoreError;
-}(Component);var WebAppsDocsContext = /*#__PURE__*/React$1.createContext({});
+}(Component);
+
+var WebAppsDocsContext = /*#__PURE__*/React$1.createContext({});
 var colors = [{
   "class": 'indigo',
   name: 'Indigo'
@@ -43657,7 +44264,9 @@ var withWebAppsDocs = function withWebAppsDocs(Component) {
 
   C.displayName = displayName;
   return C;
-};function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+};
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
@@ -43728,13 +44337,16 @@ var WebAppsDocComponent = function WebAppsDocComponent(_ref) {
   })) : null));
 };
 
-var WebAppsDocComponent$1 = withWebAppsDocs(WebAppsDocComponent);/** @jsxRuntime classic /
+var WebAppsDocComponent$1 = withWebAppsDocs(WebAppsDocComponent);
+
+/** @jsxRuntime classic /
 /* @jsx jsx */
 
 var returnLibrary = function returnLibrary() {
   return {
     APIClient: client,
     APIMediaClient: mediaClient,
+    AppLoader: AppLoader,
     AppPage: AppPage,
     AzureGroupSearch: AzureGroupSearch,
     Badge: Badge,
@@ -43803,4 +44415,6 @@ var returnLibrary = function returnLibrary() {
   };
 };
 
-var index = returnLibrary();export{index as default};
+var index = returnLibrary();
+
+export { index as default };

@@ -3,6 +3,7 @@
 
 import { client as APIClient, mediaClient as APIMediaClient } from './API';
 
+import AppLoader from './Components/AppLoader';
 import AppPage from './Components/AppPage';
 import AzureGroupSearch from './Components/AzureGroupSearch';
 import Badge from './Components/Badge';
@@ -79,6 +80,7 @@ const returnLibrary = () => {
         APIClient,
         APIMediaClient,
 
+        AppLoader,
         AppPage,
         AzureGroupSearch,
         Badge,

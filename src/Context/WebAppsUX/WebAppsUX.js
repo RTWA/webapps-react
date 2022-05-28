@@ -5,7 +5,7 @@ import { client as APIClient } from '../../API';
 import { getDeviceConfig } from '../../Helpers/getDeviceConfig';
 import { isWithinBreakpoint } from '../../Helpers/isWithinBreakpoint';
 import { ToastProvider } from '../../Toasts';
-import Loader from '../../Components/Loader';
+import AppLoader from '../../Components/AppLoader';
 
 export const WebAppsUXContext = createContext({});
 
@@ -24,10 +24,13 @@ export const WebAppsUX = props => {
         opened: false,
     });
     const [navigation, setNavigation] = useState({});
+    const [_theme, set_Theme] = useState();
     const [theme, setTheme] = useState();
 
     const isMountedRef = useRef(true);
     const isMounted = useCallback(() => isMountedRef.current, []);
+
+    let timer = null
 
     useEffect(async () => {
         window.addEventListener('resize', calcInnerWidth);
@@ -38,15 +41,26 @@ export const WebAppsUX = props => {
             void (isMountedRef.current = false);
             APIController.abort();
             window.removeEventListener('resize', calcInnerWidth);
+            if (timer) {
+                clearTimeout(timer);
+            }
         }
     }, []);
+
+    useEffect(() => {
+        if (_theme) {
+            timer = setTimeout(() => {
+                setTheme(_theme)
+            }, 1250);
+        }
+    }, [_theme]);
 
     const loadUI = async () => {
         await APIClient('/api/setting', { key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']) }, { signal: APIController.signal })
             .then(json => {
                 /* istanbul ignore else */
                 if (isMounted()) {
-                    setTheme(json.data['core.ui.theme']);
+                    set_Theme(json.data['core.ui.theme']);
                     setDarkMode(json.data['core.ui.dark_mode']);
                 }
             })
@@ -196,7 +210,7 @@ export const WebAppsUX = props => {
     }
 
     if (!navigation.menu && !theme) {
-        return <Loader />;
+        return <AppLoader theme={_theme} />;
     }
 
     return (
