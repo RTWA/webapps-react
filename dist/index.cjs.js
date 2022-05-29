@@ -23313,7 +23313,7 @@ Input.defaultProps = {
 var _excluded$v = ["id", "groupData", "setData", "accessToken", "saveChange"];
 
 var AzureGroupSearch = function AzureGroupSearch(_ref) {
-  var _groupData$id, _groupData$id2, _groupData$id3;
+  var _groupData$id, _groupData$id2, _groupData$id3, _groupData$id4;
 
   var id = _ref.id,
       groupData = _ref.groupData,
@@ -23465,6 +23465,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     onChange: change,
     onKeyDown: onKeyDown,
     state: (_groupData$id3 = groupData[id]) === null || _groupData$id3 === void 0 ? void 0 : _groupData$id3.state,
+    error: (_groupData$id4 = groupData[id]) === null || _groupData$id4 === void 0 ? void 0 : _groupData$id4.error,
     wrapperClassName: ""
   }, props)), DataListComponent);
 };
@@ -44119,12 +44120,12 @@ var ComponentError = /*#__PURE__*/function (_Component) {
         return /*#__PURE__*/React__default["default"].createElement("div", {
           className: "h-full w-full flex flex-wrap justify-center content-center items-center"
         }, /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "p-6 text-center"
+          className: "p-6 text-gray-900 dark:text-gray-300"
         }, /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "flex flex-row items-center justify-center gap-2"
+          className: "flex flex-row gap-2 items-center"
         }, /*#__PURE__*/React__default["default"].createElement("svg", {
           xmlns: "http://www.w3.org/2000/svg",
-          className: "h-8 w-8 text-red-500 dark:text-red-900",
+          className: "pt-1 h-12 w-12 text-red-500 dark:text-red-900",
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor"
@@ -44133,16 +44134,21 @@ var ComponentError = /*#__PURE__*/function (_Component) {
           strokeLinejoin: "round",
           strokeWidth: 2,
           d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-        })), /*#__PURE__*/React__default["default"].createElement("h2", {
-          className: "text-xl font-bold"
-        }, "This failed to load!")), /*#__PURE__*/React__default["default"].createElement("p", {
-          className: "my-3 text-sm text-gray-900 dark:text-gray-300"
-        }, this.state.error.toString().replace('Error: ', '')), this.props.retry ? /*#__PURE__*/React__default["default"].createElement("button", {
+        })), /*#__PURE__*/React__default["default"].createElement("div", {
+          className: "flex flex-col"
+        }, /*#__PURE__*/React__default["default"].createElement("h2", {
+          className: "text-lg font-bold"
+        }, this.props.title || 'This failed to load!'), /*#__PURE__*/React__default["default"].createElement("p", {
+          className: "text-sm"
+        }, this.state.error.toString().replace('Error: ', '')), this.props.retry ? /*#__PURE__*/React__default["default"].createElement(Button, {
           onClick: function onClick() {
             return _this2.reset();
           },
-          className: "px-2 py-1 text-xs border border-".concat(this.props.theme, "-600 dark:border-").concat(this.props.theme, "-500 dark:hover:border-").concat(this.props.theme, "-600 text-").concat(this.props.theme, "-600 dark:text-").concat(this.props.theme, "-500 hover:bg-").concat(this.props.theme, "-600 dark:hover:bg-").concat(this.props.theme, "-600 hover:text-white dark:hover:text-white")
-        }, "Reload Section") : null));
+          size: "small",
+          type: "link",
+          padding: false,
+          className: "text-left mt-1"
+        }, "Try Again") : null))));
       }
 
       return this.props.children;
@@ -44156,7 +44162,7 @@ ComponentError.propTypes = {
   theme: propTypes.exports.string
 };
 ComponentError.defaultProps = {
-  theme: 'indigo'
+  theme: 'gray'
 };
 var ComponentError$1 = reactRouterDom.withRouter(ComponentError);
 

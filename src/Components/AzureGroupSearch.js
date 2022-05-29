@@ -125,7 +125,15 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
 
     return (
         <div className="relative mb-6">
-            <Input type="text" id={`${id}`} value={groupData[id]?.value || ''} onChange={change} onKeyDown={onKeyDown} state={groupData[id]?.state} wrapperClassName="" {...props} />
+            <Input
+                type="text"
+                id={`${id}`}
+                value={groupData[id]?.value || ''}
+                onChange={change}
+                onKeyDown={onKeyDown}
+                state={groupData[id]?.state}
+                error={groupData[id]?.error}
+                wrapperClassName="" {...props} />
             {DataListComponent}
         </div>
     );
