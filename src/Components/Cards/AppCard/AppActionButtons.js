@@ -1,8 +1,18 @@
 import React, { useContext } from 'react';
 import { WebAppsContext } from '../../../Context/index';
+import Loader from '../../Loader';
 
 const AppActionButtons = ({ app, setChangelog, ...props }) => {
     const { apps } = useContext(WebAppsContext);
+
+    if (app.queued) {
+        return (
+            <div className="w-full dark:text-white bg-gray-300 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-700 font-bold py-2 px-4 inline-flex items-center gap-x-2 rounded-none">
+                <Loader type="circle" height="5" width="5" />
+                {app.queued} Queued...
+            </div>
+        )
+    }
 
     // Installed, has update
     if (app.installed && app.hasUpdate) {

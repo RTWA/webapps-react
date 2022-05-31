@@ -30,6 +30,52 @@ export const WebApps = props => {
         }
     }, []);
 
+    const setAppProp = (slug, prop, value) => {
+        Object.keys(apps.local).map(key => {
+            if (apps.local[key]?.slug === slug) {
+                apps.local[key][prop] = value;
+            }
+        });
+        Object.keys(apps.online).map(key => {
+            if (apps.local[key]?.slug === slug) {
+                apps.local[key][prop] = value;
+            }
+        });
+        setApps({ ...apps });
+    }
+
+    const clearAppProp = (slug, prop) => {
+        Object.keys(apps.local).map(key => {
+            if (apps.local[key]?.slug === slug) {
+                delete apps.local[key][prop];
+            }
+        });
+        Object.keys(apps.online).map(key => {
+            if (apps.online[key]?.slug === slug) {
+                delete apps.online[key][prop];
+            }
+        });
+        setApps({ ...apps });
+    }
+
+    const setPluginProp = (slug, prop, value) => {
+        plugins.map(plugin => {
+            if (plugin.slug === slug) {
+                plugin[prop] = value;
+            }
+        });
+        setPlugins({ ...plugins });
+    }
+
+    const clearPluginProp = (slug, prop) => {
+        plugins.map(plugin => {
+            if (plugin.slug === slug) {
+                delete plugin[prop];
+            }
+        });
+        setPlugins({ ...plugins });
+    }
+
     const getApps = async () => {
         await client('/api/apps', undefined, { signal: controller.signal })
             .then(json => {
@@ -103,10 +149,12 @@ export const WebApps = props => {
 
     const downloadApp = async e => {
         e.preventDefault();
+        setAppProp(e.target.dataset.slug, 'queued', 'Install');
         await client('/api/online/apps/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(e.target.dataset.slug, 'Has been downloaded and installed', { appearance: 'success' });
+                    clearAppProp(e.target.dataset.slug, 'queued');
                     apps.local = json.data.apps;
                     apps.online = json.data.online;
                     setApps({ ...apps });
@@ -122,10 +170,12 @@ export const WebApps = props => {
 
     const updateApp = async e => {
         e.preventDefault();
+        setAppProp(e.target.dataset.slug, 'queued', 'Update');
         await client('/api/online/apps/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(e.target.dataset.slug, `Has been updated`, { appearance: 'success' });
+                    clearAppProp(e.target.dataset.slug, 'queued');
                     apps.local = json.data.apps;
                     apps.online = json.data.online;
                     setApps({ ...apps });
@@ -203,10 +253,12 @@ export const WebApps = props => {
 
     const installApp = async e => {
         e.preventDefault();
+        setAppProp(e.target.dataset.slug, 'queued', 'Install');
         await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'install' }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
+                    clearAppProp(e.target.dataset.slug, 'queued');
 
                     // Reload Navigation
                     loadNavigation();
@@ -234,10 +286,12 @@ export const WebApps = props => {
 
     const uninstallApp = async e => {
         e.preventDefault();
+        setAppProp(e.target.dataset.slug, 'queued', 'Uninstall');
         await client('/api/apps/control', { slug: e.target.dataset.slug, task: 'uninstall' }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
+                    clearAppProp(e.target.dataset.slug, 'queued');
 
                     let _apps = [];
                     Object.keys(apps.local).map((key) => {
@@ -265,10 +319,12 @@ export const WebApps = props => {
 
     const downloadPlugin = async e => {
         e.preventDefault();
+        setPluginProp(e.target.dataset.slug, 'queued', 'Install');
         await client('/api/online/plugins/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
+                    clearPluginProp(e.target.dataset.slug, 'queued');
 
                     plugins.all = json.data.plugins;
                     plugins.online = json.data.online;
@@ -285,10 +341,12 @@ export const WebApps = props => {
 
     const updatePlugin = async e => {
         e.preventDefault();
+        setPluginProp(e.target.dataset.slug, 'queued', 'Update');
         await client('/api/online/plugins/download', { slug: e.target.dataset.slug }, { signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.message, '', { appearance: 'success' });
+                    clearPluginProp(e.target.dataset.slug, 'queued');
 
                     plugins.all = json.data.plugins;
                     plugins.online = json.data.online;
@@ -337,10 +395,12 @@ export const WebApps = props => {
 
     const uninstallPlugin = async e => {
         e.preventDefault();
+        setPluginProp(e.target.dataset.slug, 'queued', 'Uninstall');
         await client('/api/plugin', { slug: e.target.dataset.slug, '_method': 'DELETE' }, { method: 'DELETE', signal: controller.signal })
             .then(json => {
                 if (isMounted()) {
                     addToast(json.data.plugin.name, json.data.message, { appearance: 'success' });
+                    clearPluginProp(e.target.dataset.slug, 'queued');
 
                     let _plugins = [];
                     Object.keys(plugins.all).map((key) => {

@@ -4943,6 +4943,60 @@ var WebApps = function WebApps(props) {
     };
   }, []);
 
+  var setAppProp = function setAppProp(slug, prop, value) {
+    Object.keys(apps.local).map(function (key) {
+      var _apps$local$key;
+
+      if (((_apps$local$key = apps.local[key]) === null || _apps$local$key === void 0 ? void 0 : _apps$local$key.slug) === slug) {
+        apps.local[key][prop] = value;
+      }
+    });
+    Object.keys(apps.online).map(function (key) {
+      var _apps$local$key2;
+
+      if (((_apps$local$key2 = apps.local[key]) === null || _apps$local$key2 === void 0 ? void 0 : _apps$local$key2.slug) === slug) {
+        apps.local[key][prop] = value;
+      }
+    });
+    setApps(_objectSpread$a({}, apps));
+  };
+
+  var clearAppProp = function clearAppProp(slug, prop) {
+    Object.keys(apps.local).map(function (key) {
+      var _apps$local$key3;
+
+      if (((_apps$local$key3 = apps.local[key]) === null || _apps$local$key3 === void 0 ? void 0 : _apps$local$key3.slug) === slug) {
+        delete apps.local[key][prop];
+      }
+    });
+    Object.keys(apps.online).map(function (key) {
+      var _apps$online$key;
+
+      if (((_apps$online$key = apps.online[key]) === null || _apps$online$key === void 0 ? void 0 : _apps$online$key.slug) === slug) {
+        delete apps.online[key][prop];
+      }
+    });
+    setApps(_objectSpread$a({}, apps));
+  };
+
+  var setPluginProp = function setPluginProp(slug, prop, value) {
+    plugins.map(function (plugin) {
+      if (plugin.slug === slug) {
+        plugin[prop] = value;
+      }
+    });
+    setPlugins(_objectSpread$a({}, plugins));
+  };
+
+  var clearPluginProp = function clearPluginProp(slug, prop) {
+    plugins.map(function (plugin) {
+      if (plugin.slug === slug) {
+        delete plugin[prop];
+      }
+    });
+    setPlugins(_objectSpread$a({}, plugins));
+  };
+
   var getApps = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee() {
       return _regeneratorRuntime__default["default"].wrap(function _callee$(_context) {
@@ -5076,7 +5130,8 @@ var WebApps = function WebApps(props) {
           switch (_context3.prev = _context3.next) {
             case 0:
               e.preventDefault();
-              _context3.next = 3;
+              setAppProp(e.target.dataset.slug, 'queued', 'Install');
+              _context3.next = 4;
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
               }, {
@@ -5086,6 +5141,7 @@ var WebApps = function WebApps(props) {
                   addToast(e.target.dataset.slug, 'Has been downloaded and installed', {
                     appearance: 'success'
                   });
+                  clearAppProp(e.target.dataset.slug, 'queued');
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
                   setApps(_objectSpread$a({}, apps));
@@ -5099,7 +5155,7 @@ var WebApps = function WebApps(props) {
                 }
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context3.stop();
           }
@@ -5119,7 +5175,8 @@ var WebApps = function WebApps(props) {
           switch (_context4.prev = _context4.next) {
             case 0:
               e.preventDefault();
-              _context4.next = 3;
+              setAppProp(e.target.dataset.slug, 'queued', 'Update');
+              _context4.next = 4;
               return client('/api/online/apps/download', {
                 slug: e.target.dataset.slug
               }, {
@@ -5129,6 +5186,7 @@ var WebApps = function WebApps(props) {
                   addToast(e.target.dataset.slug, "Has been updated", {
                     appearance: 'success'
                   });
+                  clearAppProp(e.target.dataset.slug, 'queued');
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
                   setApps(_objectSpread$a({}, apps));
@@ -5142,7 +5200,7 @@ var WebApps = function WebApps(props) {
                 }
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context4.stop();
           }
@@ -5270,7 +5328,8 @@ var WebApps = function WebApps(props) {
           switch (_context7.prev = _context7.next) {
             case 0:
               e.preventDefault();
-              _context7.next = 3;
+              setAppProp(e.target.dataset.slug, 'queued', 'Install');
+              _context7.next = 4;
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'install'
@@ -5280,7 +5339,8 @@ var WebApps = function WebApps(props) {
                 if (isMounted()) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
-                  }); // Reload Navigation
+                  });
+                  clearAppProp(e.target.dataset.slug, 'queued'); // Reload Navigation
 
                   loadNavigation();
                   Object.keys(apps.local).map(function (key) {
@@ -5304,7 +5364,7 @@ var WebApps = function WebApps(props) {
                 }
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context7.stop();
           }
@@ -5324,7 +5384,8 @@ var WebApps = function WebApps(props) {
           switch (_context8.prev = _context8.next) {
             case 0:
               e.preventDefault();
-              _context8.next = 3;
+              setAppProp(e.target.dataset.slug, 'queued', 'Uninstall');
+              _context8.next = 4;
               return client('/api/apps/control', {
                 slug: e.target.dataset.slug,
                 task: 'uninstall'
@@ -5335,6 +5396,7 @@ var WebApps = function WebApps(props) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   });
+                  clearAppProp(e.target.dataset.slug, 'queued');
                   var _apps2 = [];
                   Object.keys(apps.local).map(function (key) {
                     if (e.target.dataset.slug !== apps.local[key].slug) {
@@ -5358,7 +5420,7 @@ var WebApps = function WebApps(props) {
                 }
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context8.stop();
           }
@@ -5378,7 +5440,8 @@ var WebApps = function WebApps(props) {
           switch (_context9.prev = _context9.next) {
             case 0:
               e.preventDefault();
-              _context9.next = 3;
+              setPluginProp(e.target.dataset.slug, 'queued', 'Install');
+              _context9.next = 4;
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
               }, {
@@ -5388,6 +5451,7 @@ var WebApps = function WebApps(props) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   });
+                  clearPluginProp(e.target.dataset.slug, 'queued');
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
                   setPlugins(_objectSpread$a({}, plugins));
@@ -5401,7 +5465,7 @@ var WebApps = function WebApps(props) {
                 }
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context9.stop();
           }
@@ -5421,7 +5485,8 @@ var WebApps = function WebApps(props) {
           switch (_context10.prev = _context10.next) {
             case 0:
               e.preventDefault();
-              _context10.next = 3;
+              setPluginProp(e.target.dataset.slug, 'queued', 'Update');
+              _context10.next = 4;
               return client('/api/online/plugins/download', {
                 slug: e.target.dataset.slug
               }, {
@@ -5431,6 +5496,7 @@ var WebApps = function WebApps(props) {
                   addToast(json.data.message, '', {
                     appearance: 'success'
                   });
+                  clearPluginProp(e.target.dataset.slug, 'queued');
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
                   setPlugins(_objectSpread$a({}, plugins));
@@ -5444,7 +5510,7 @@ var WebApps = function WebApps(props) {
                 }
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context10.stop();
           }
@@ -5519,7 +5585,8 @@ var WebApps = function WebApps(props) {
           switch (_context12.prev = _context12.next) {
             case 0:
               e.preventDefault();
-              _context12.next = 3;
+              setPluginProp(e.target.dataset.slug, 'queued', 'Uninstall');
+              _context12.next = 4;
               return client('/api/plugin', {
                 slug: e.target.dataset.slug,
                 '_method': 'DELETE'
@@ -5531,6 +5598,7 @@ var WebApps = function WebApps(props) {
                   addToast(json.data.plugin.name, json.data.message, {
                     appearance: 'success'
                   });
+                  clearPluginProp(e.target.dataset.slug, 'queued');
                   var _plugins2 = [];
                   Object.keys(plugins.all).map(function (key) {
                     if (e.target.dataset.slug !== plugins.all[key].slug) {
@@ -5554,7 +5622,7 @@ var WebApps = function WebApps(props) {
                 }
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context12.stop();
           }
@@ -43291,7 +43359,17 @@ var AppActionButtons = function AppActionButtons(_ref) {
       _objectWithoutProperties__default["default"](_ref, _excluded$6);
 
   var _useContext = React$1.useContext(WebAppsContext),
-      apps = _useContext.apps; // Installed, has update
+      apps = _useContext.apps;
+
+  if (app.queued) {
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "w-full dark:text-white bg-gray-300 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-700 font-bold py-2 px-4 inline-flex items-center gap-x-2 rounded-none"
+    }, /*#__PURE__*/React__default["default"].createElement(Loader, {
+      type: "circle",
+      height: "5",
+      width: "5"
+    }), app.queued, " Queued...");
+  } // Installed, has update
 
 
   if (app.installed && app.hasUpdate) {
@@ -43533,6 +43611,16 @@ var PluginActionButtons = function PluginActionButtons(_ref) {
 
   var _useContext = React$1.useContext(WebAppsContext),
       plugins = _useContext.plugins;
+
+  if (plugin.queued) {
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "w-full dark:text-white bg-gray-300 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-700 font-bold py-2 px-4 inline-flex items-center gap-x-2 rounded-none"
+    }, /*#__PURE__*/React__default["default"].createElement(Loader, {
+      type: "circle",
+      height: "5",
+      width: "5"
+    }), plugin.queued, " Queued...");
+  }
 
   if (plugin.installed && plugin.hasUpdate) {
     return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("button", {
