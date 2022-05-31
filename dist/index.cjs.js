@@ -23588,7 +23588,7 @@ var Banner = function Banner(props) {
       children = props.children,
       attributes = _objectWithoutProperties__default["default"](props, _excluded$t);
 
-  var classes = classNames(className, 'w-full', 'py-2', 'px-8', 'mb-4', "bg-".concat(color), "dark:bg-".concat(darkColor));
+  var classes = classNames(className, 'w-full', 'py-2', 'px-8', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends__default["default"]({
     className: classes

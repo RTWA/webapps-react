@@ -18,7 +18,6 @@ const Banner = props => {
         'w-full',
         'py-2',
         'px-8',
-        'mb-4',
         `bg-${color}`,
         `dark:bg-${darkColor}`,
     );
