@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AuthContext from './AuthContext';
 import { client } from '../../API';
 import AppLoader from '../../Components/AppLoader';
+import Loader from '../../Components/Loader';
 
 const Auth = props => {
     const [coreError, setCoreError] = useState(null);
@@ -27,7 +28,7 @@ const Auth = props => {
         }
     }, []);
 
-    const signIn = async (username, password) => {
+    const signIn = async (username, password, history) => {
         return new Promise(async (resolve, reject) => {
             try {
                 // Get CSRF Cookie
@@ -208,7 +209,11 @@ const Auth = props => {
         )
     }
 
-    return <AppLoader theme={null} />
+    if (window.location.pathname !== '/login') {
+        return <AppLoader theme={null} />
+    }
+
+    return <Loader />
 }
 
 

@@ -1705,6 +1705,135 @@ if (process.env.NODE_ENV !== 'production') {
 
 var AuthContext = /*#__PURE__*/React__default["default"].createContext({});
 
+var Loader = function Loader(props) {
+  var className = props.className,
+      type = props.type,
+      color = props.color,
+      height = props.height,
+      width = props.width,
+      alignment = props.alignment;
+
+  var _useContext = React$1.useContext(WebAppsUXContext),
+      theme = _useContext.theme;
+
+  var classes = classNames("text-".concat(color || 'gray', "-300"), "dark:text-".concat(color || 'gray', "-500"), 'h-full', alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '', className);
+  var svgClasses = classNames('loader', "h-".concat(height), "w-".concat(width), "-translate-y-".concat(height / 2), alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '');
+  var circleClasses = classNames('animate-spin', 'inline', 'text-gray-300', 'dark:text-gray-600', "fill-".concat(color || theme, "-600"), "h-".concat(height), "w-".concat(width), className);
+
+  if (type === 'circle') {
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "text-".concat(alignment)
+    }, /*#__PURE__*/React__default["default"].createElement("svg", {
+      role: "status",
+      className: circleClasses,
+      viewBox: "0 0 100 101",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
+      fill: "currentColor"
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
+      fill: "currentFill"
+    })), /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "sr-only"
+    }, "Loading"));
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: classes
+  }, /*#__PURE__*/React__default["default"].createElement("svg", {
+    viewBox: "0 0 45 45",
+    xmlns: "http://www.w3.org/2000/svg",
+    stroke: "currentColor",
+    className: svgClasses
+  }, /*#__PURE__*/React__default["default"].createElement("g", {
+    fill: "none",
+    fillRule: "evenodd",
+    transform: "translate(1 1)",
+    strokeWidth: 2
+  }, /*#__PURE__*/React__default["default"].createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React__default["default"].createElement("animate", {
+    attributeName: "r",
+    begin: "1.5s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default["default"].createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "1.5s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default["default"].createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "1.5s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React__default["default"].createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 6,
+    strokeOpacity: 0
+  }, /*#__PURE__*/React__default["default"].createElement("animate", {
+    attributeName: "r",
+    begin: "3s",
+    dur: "3s",
+    values: "6;22",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default["default"].createElement("animate", {
+    attributeName: "stroke-opacity",
+    begin: "3s",
+    dur: "3s",
+    values: "1;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  }), /*#__PURE__*/React__default["default"].createElement("animate", {
+    attributeName: "stroke-width",
+    begin: "3s",
+    dur: "3s",
+    values: "2;0",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })), /*#__PURE__*/React__default["default"].createElement("circle", {
+    cx: 22,
+    cy: 22,
+    r: 8
+  }, /*#__PURE__*/React__default["default"].createElement("animate", {
+    attributeName: "r",
+    begin: "0s",
+    dur: "1.5s",
+    values: "6;1;2;3;4;5;6",
+    calcMode: "linear",
+    repeatCount: "indefinite"
+  })))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "sr-only"
+  }, "Loading"));
+};
+
+Loader.propsTypes = {
+  type: propTypes.exports.oneOf(['', 'circle']),
+  color: propTypes.exports.string,
+  height: propTypes.exports.string,
+  width: propTypes.exports.string,
+  alignment: propTypes.exports.oneOf(['left', 'center', 'right'])
+};
+Loader.defaultProps = {
+  type: '',
+  height: '24',
+  width: '24',
+  alignment: 'center'
+};
+
 function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -1748,7 +1877,7 @@ var Auth = function Auth(props) {
   }, []);
 
   var signIn = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee2(username, password) {
+    var _ref = _asyncToGenerator__default["default"]( /*#__PURE__*/_regeneratorRuntime__default["default"].mark(function _callee2(username, password, history) {
       return _regeneratorRuntime__default["default"].wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -1825,7 +1954,7 @@ var Auth = function Auth(props) {
                   }, _callee, null, [[0, 18]]);
                 }));
 
-                return function (_x3, _x4) {
+                return function (_x4, _x5) {
                   return _ref2.apply(this, arguments);
                 };
               }()));
@@ -1838,7 +1967,7 @@ var Auth = function Auth(props) {
       }, _callee2);
     }));
 
-    return function signIn(_x, _x2) {
+    return function signIn(_x, _x2, _x3) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -1898,7 +2027,7 @@ var Auth = function Auth(props) {
                   }, _callee3, null, [[0, 6]]);
                 }));
 
-                return function (_x5, _x6) {
+                return function (_x6, _x7) {
                   return _ref4.apply(this, arguments);
                 };
               }());
@@ -2006,7 +2135,7 @@ var Auth = function Auth(props) {
                   }, _callee5);
                 }));
 
-                return function (_x7, _x8) {
+                return function (_x8, _x9) {
                   return _ref6.apply(this, arguments);
                 };
               }()));
@@ -2065,7 +2194,7 @@ var Auth = function Auth(props) {
                   }, _callee7);
                 }));
 
-                return function (_x10, _x11) {
+                return function (_x11, _x12) {
                   return _ref8.apply(this, arguments);
                 };
               }()));
@@ -2078,7 +2207,7 @@ var Auth = function Auth(props) {
       }, _callee8);
     }));
 
-    return function checkPermission(_x9) {
+    return function checkPermission(_x10) {
       return _ref7.apply(this, arguments);
     };
   }();
@@ -2124,7 +2253,7 @@ var Auth = function Auth(props) {
                   }, _callee9);
                 }));
 
-                return function (_x13, _x14) {
+                return function (_x14, _x15) {
                   return _ref10.apply(this, arguments);
                 };
               }()));
@@ -2137,7 +2266,7 @@ var Auth = function Auth(props) {
       }, _callee10);
     }));
 
-    return function checkGroup(_x12) {
+    return function checkGroup(_x13) {
       return _ref9.apply(this, arguments);
     };
   }();
@@ -2176,7 +2305,7 @@ var Auth = function Auth(props) {
       }, _callee11);
     }));
 
-    return function setPreference(_x15, _x16) {
+    return function setPreference(_x16, _x17) {
       return _ref11.apply(this, arguments);
     };
   }();
@@ -2203,9 +2332,13 @@ var Auth = function Auth(props) {
     });
   }
 
-  return /*#__PURE__*/React__default["default"].createElement(AppLoader, {
-    theme: null
-  });
+  if (window.location.pathname !== '/login') {
+    return /*#__PURE__*/React__default["default"].createElement(AppLoader, {
+      theme: null
+    });
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement(Loader, null);
 };
 
 Auth.propTypes = {
@@ -23068,135 +23201,6 @@ var withWebAppsUX = function withWebAppsUX(Component) {
   return C;
 };
 
-var Loader = function Loader(props) {
-  var className = props.className,
-      type = props.type,
-      color = props.color,
-      height = props.height,
-      width = props.width,
-      alignment = props.alignment;
-
-  var _useContext = React$1.useContext(WebAppsUXContext),
-      theme = _useContext.theme;
-
-  var classes = classNames("text-".concat(color || 'gray', "-300"), "dark:text-".concat(color || 'gray', "-500"), 'h-full', alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '', className);
-  var svgClasses = classNames('loader', "h-".concat(height), "w-".concat(width), "-translate-y-".concat(height / 2), alignment === 'left' ? 'mr-auto' : '', alignment === 'center' ? 'mx-auto' : '', alignment === 'right' ? 'ml-auto' : '');
-  var circleClasses = classNames('animate-spin', 'inline', 'text-gray-300', 'dark:text-gray-600', "fill-".concat(color || theme, "-600"), "h-".concat(height), "w-".concat(width), className);
-
-  if (type === 'circle') {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "text-".concat(alignment)
-    }, /*#__PURE__*/React__default["default"].createElement("svg", {
-      role: "status",
-      className: circleClasses,
-      viewBox: "0 0 100 101",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/React__default["default"].createElement("path", {
-      d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
-      fill: "currentColor"
-    }), /*#__PURE__*/React__default["default"].createElement("path", {
-      d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
-      fill: "currentFill"
-    })), /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "sr-only"
-    }, "Loading"));
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: classes
-  }, /*#__PURE__*/React__default["default"].createElement("svg", {
-    viewBox: "0 0 45 45",
-    xmlns: "http://www.w3.org/2000/svg",
-    stroke: "currentColor",
-    className: svgClasses
-  }, /*#__PURE__*/React__default["default"].createElement("g", {
-    fill: "none",
-    fillRule: "evenodd",
-    transform: "translate(1 1)",
-    strokeWidth: 2
-  }, /*#__PURE__*/React__default["default"].createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 6,
-    strokeOpacity: 0
-  }, /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "r",
-    begin: "1.5s",
-    dur: "3s",
-    values: "6;22",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "stroke-opacity",
-    begin: "1.5s",
-    dur: "3s",
-    values: "1;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "stroke-width",
-    begin: "1.5s",
-    dur: "3s",
-    values: "2;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React__default["default"].createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 6,
-    strokeOpacity: 0
-  }, /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "r",
-    begin: "3s",
-    dur: "3s",
-    values: "6;22",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "stroke-opacity",
-    begin: "3s",
-    dur: "3s",
-    values: "1;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "stroke-width",
-    begin: "3s",
-    dur: "3s",
-    values: "2;0",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React__default["default"].createElement("circle", {
-    cx: 22,
-    cy: 22,
-    r: 8
-  }, /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "r",
-    begin: "0s",
-    dur: "1.5s",
-    values: "6;1;2;3;4;5;6",
-    calcMode: "linear",
-    repeatCount: "indefinite"
-  })))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sr-only"
-  }, "Loading"));
-};
-
-Loader.propsTypes = {
-  type: propTypes.exports.oneOf(['', 'circle']),
-  color: propTypes.exports.string,
-  height: propTypes.exports.string,
-  width: propTypes.exports.string,
-  alignment: propTypes.exports.oneOf(['left', 'center', 'right'])
-};
-Loader.defaultProps = {
-  type: '',
-  height: '24',
-  width: '24',
-  alignment: 'center'
-};
-
 var _excluded$w = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
@@ -23217,14 +23221,14 @@ var Input = function Input(props) {
       theme = _useContext.theme;
 
   var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
-  var inputClasses = classNames('bg-transparent', 'border-2', 'border-gray-400', 'text-gray-900', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'focus:bg-gray-50', 'dark:focus:bg-gray-700', 'dark:border-gray-600', 'dark:placeholder-gray-400', 'dark:text-white', 'transition-colors', 'focus:ring-0', "focus:border-".concat(theme, "-600"), "dark:focus:border-".concat(theme, "-500"), state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500' : '', actionLocation === 'left' ? 'pl-10' : '', inputClassName);
+  var inputClasses = classNames('bg-transparent', 'border-2', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'focus:bg-gray-50', 'dark:focus:bg-gray-700', 'dark:placeholder-gray-400', 'transition-colors', 'focus:ring-0', theme === undefined ? '' : "focus:border-".concat(theme, "-600"), theme === undefined ? '' : "dark:focus:border-".concat(theme, "-500"), state === '' ? 'border-gray-400 text-gray-900 dark:text-white dark:border-gray-600' : '', state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500' : '', actionLocation === 'left' ? 'pl-10' : '', inputClassName);
 
   var Append = function Append() {
     if (state === 'saving') {
       return /*#__PURE__*/React__default["default"].createElement("div", {
         className: "flex absolute inset-y-0 ".concat(actionLocation, "-0 items-center p").concat(actionLocation.charAt(0), "-3")
       }, /*#__PURE__*/React__default["default"].createElement(Loader, {
-        style: "circle",
+        type: "circle",
         height: "5",
         width: "5",
         color: "orange"
@@ -43907,9 +43911,9 @@ var Flyout = function Flyout(props) {
 var FlyoutContent = function FlyoutContent(props) {
   var children = props.children;
   return /*#__PURE__*/React__default["default"].createElement(Scrollbar, {
-    className: "flex flex-col flex-auto relative"
+    className: "flex flex-col flex-auto relative bg-white dark:bg-gray-900"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "p-6 w-full h-full bg-white dark:bg-gray-900"
+    className: "p-6 w-full h-full"
   }, children));
 };
 
