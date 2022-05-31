@@ -35,8 +35,6 @@ const Input = props => {
     const inputClasses = classNames(
         'bg-transparent',
         'border-2',
-        'border-gray-400',
-        'text-gray-900',
         'outline-none',
         'text-sm',
         'rounded-lg',
@@ -45,13 +43,12 @@ const Input = props => {
         'p-2.5',
         'focus:bg-gray-50',
         'dark:focus:bg-gray-700',
-        'dark:border-gray-600',
         'dark:placeholder-gray-400',
-        'dark:text-white',
         'transition-colors',
         'focus:ring-0',
-        `focus:border-${theme}-600`,
-        `dark:focus:border-${theme}-500`,
+        (theme === undefined) ? '' : `focus:border-${theme}-600`,
+        (theme === undefined) ? '' : `dark:focus:border-${theme}-500`,
+        (state === '') ? 'border-gray-400 text-gray-900 dark:text-white dark:border-gray-600' : '',
         (state === 'error') ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500' : '',
         (state === 'saved') ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500' : '',
         (state === 'saving') ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500' : '',
@@ -63,7 +60,7 @@ const Input = props => {
         if (state === 'saving') {
             return (
                 <div className={`flex absolute inset-y-0 ${actionLocation}-0 items-center p${actionLocation.charAt(0)}-3`}>
-                    <Loader style="circle" height="5" width="5" color="orange" />
+                    <Loader type="circle" height="5" width="5" color="orange" />
                 </div>
             )
         } else if (state === 'saved') {
