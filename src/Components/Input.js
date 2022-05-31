@@ -115,7 +115,7 @@ const Input = props => {
 Input.propTypes = {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     action: PropTypes.object,
     actionLocation: PropTypes.oneOf(['right', 'left', 'none']),
     helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),

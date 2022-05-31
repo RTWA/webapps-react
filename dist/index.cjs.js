@@ -23361,7 +23361,7 @@ var Input = function Input(props) {
 Input.propTypes = {
   id: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
   name: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
-  label: propTypes.exports.string,
+  label: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
   action: propTypes.exports.object,
   actionLocation: propTypes.exports.oneOf(['right', 'left', 'none']),
   helpText: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
@@ -25882,7 +25882,7 @@ var Select = function Select(props) {
 Select.propTypes = {
   id: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
   name: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
-  label: propTypes.exports.string,
+  label: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
   action: propTypes.exports.object,
   actionLocation: propTypes.exports.oneOf(['right', 'left']),
   helpText: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
@@ -26427,7 +26427,7 @@ var Switch = function Switch(props) {
 Switch.propTypes = {
   id: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
   name: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
-  label: propTypes.exports.string,
+  label: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
   action: propTypes.exports.object,
   helpText: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
   error: propTypes.exports.string,

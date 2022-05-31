@@ -119,7 +119,7 @@ const Select = props => {
 Select.propTypes = {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     action: PropTypes.object,
     actionLocation: PropTypes.oneOf(['right', 'left']),
     helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),

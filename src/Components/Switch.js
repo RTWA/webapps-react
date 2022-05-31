@@ -109,7 +109,7 @@ const Switch = props => {
 Switch.propTypes = {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     action: PropTypes.object,
     helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     error: PropTypes.string,
