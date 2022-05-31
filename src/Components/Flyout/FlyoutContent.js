@@ -7,8 +7,8 @@ const FlyoutContent = props => {
     } = props;
 
     return (
-        <Scrollbar className="flex flex-col flex-auto relative">
-            <div className="p-6 w-full h-full bg-white dark:bg-gray-900">
+        <Scrollbar className="flex flex-col flex-auto relative bg-white dark:bg-gray-900">
+            <div className="p-6 w-full h-full">
                 {children}
             </div>
         </Scrollbar>
