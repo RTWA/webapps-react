@@ -1,3 +1,18 @@
+## Version 2.0.2
+#### What's New?
+- Added `<AppLoader />` Component
+- Added `<Textarea />` Component
+- Added `Queued` stage to `<AppActionButtons />` and `<PluginActionButtons />` Components
+
+### What's Changed?
+- UI improvements for `<ComponentError />` Error Boundary
+- UI improvements for `<Input />` Component
+- UI improvements for `<FlyoutContent />` Component
+- `<Input />`, `<Switch />` and `<Select />` now accept the `label` prop as `string` or `object`
+
+### What's Fixed?
+- Fixed an issue with `<AzureGroupSearch />`
+
 ## Version 2.0.1
 #### What's Changed?
 - Various UI improvements
