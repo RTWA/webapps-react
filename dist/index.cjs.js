@@ -62,9 +62,9 @@ var getCookie = function getCookie(name) {
 var _excluded$D = ["headers", "accept", "type"],
     _excluded2$1 = ["headers", "accept"];
 
-function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$f(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$e(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$f(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$f(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$f(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 var RE_CONTENT_TYPE_JSON = new RegExp("^application/(x-)?json", "i");
 var RE_CONTENT_TYPE_TEXT = new RegExp("^text/", "i"); // Static strings.
@@ -95,11 +95,11 @@ var client = /*#__PURE__*/function () {
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
             _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$D);
             _context2.prev = 2;
-            config = _objectSpread$e({
+            config = _objectSpread$f({
               method: data ? 'POST' : 'GET',
               body: data ? JSON.stringify(data) : undefined,
               credentials: 'include',
-              headers: _objectSpread$e({
+              headers: _objectSpread$f({
                 'Accept': accept ? accept : null,
                 'Content-Type': data ? type : undefined
               }, customHeaders)
@@ -190,11 +190,11 @@ var mediaClient = /*#__PURE__*/function () {
             data = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : undefined;
             _ref5 = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : {}, customHeaders = _ref5.headers, _ref5$accept = _ref5.accept, accept = _ref5$accept === void 0 ? TYPE_JSON : _ref5$accept, customConfig = _objectWithoutProperties__default["default"](_ref5, _excluded2$1);
             _context4.prev = 2;
-            config = _objectSpread$e({
+            config = _objectSpread$f({
               method: data ? 'POST' : 'GET',
               body: data ? data : undefined,
               credentials: 'include',
-              headers: _objectSpread$e({
+              headers: _objectSpread$f({
                 'Accept': accept ? accept : null
               }, customHeaders)
             }, customConfig);
@@ -303,7 +303,7 @@ var normalizeError = function normalizeError(data, url, config, fetchResponse) {
   }
 
   var error = {
-    data: _objectSpread$e({
+    data: _objectSpread$f({
       type: "ServerError",
       message: UNEXPECTED_ERROR_MESSAGE
     }, data),
@@ -1834,9 +1834,9 @@ Loader.defaultProps = {
   alignment: 'center'
 };
 
-function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$e(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 var Auth = function Auth(props) {
   var _useState = React$1.useState(null),
@@ -2278,7 +2278,7 @@ var Auth = function Auth(props) {
           switch (_context11.prev = _context11.next) {
             case 0:
               preferences[preference] = value;
-              setPreferences(_objectSpread$d({}, preferences));
+              setPreferences(_objectSpread$e({}, preferences));
               _context11.next = 4;
               return client('/api/user/preference', {
                 'preference': preference,
@@ -2535,9 +2535,9 @@ var _excluded$A = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "theme", "color"];
 
-function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$c(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var gutter = 8; // NOTE: invoke animation when NOT `autoDismiss` with opacity of 0 to avoid a
 // paint bug in FireFox.
 // https://bugzilla.mozilla.org/show_bug.cgi?id=625289
@@ -2628,7 +2628,7 @@ var ToastElement = function ToastElement(_ref2) {
     }
   }, /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "".concat((_appearances$appearan = appearances[appearance]) !== null && _appearances$appearan !== void 0 && _appearances$appearan.background ? appearances[appearance].background : 'bg-white dark:bg-gray-600', "\n                    ").concat((_appearances$appearan2 = appearances[appearance]) !== null && _appearances$appearan2 !== void 0 && _appearances$appearan2.border ? appearances[appearance].border : 'border-gray-200 dark:border-gray-600', "\n                    border overflow-hidden shadow-lg rounded-lg mx-auto mb-2 flex flex-row w-96"),
-    style: _objectSpread$c({
+    style: _objectSpread$d({
       transition: "transform ".concat(transitionDuration, "ms cubic-bezier(0.2, 0, 0, 1), opacity ").concat(transitionDuration, "ms")
     }, toastStates(placement)[transitionState])
   }, props)));
@@ -4617,9 +4617,9 @@ _defineProperty__default["default"](ToastController, "defaultProps", {
 
 var _excluded$y = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
-function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$b(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$c(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -4689,7 +4689,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
 
 
       _this.setState(function (state) {
-        var newToast = _objectSpread$b({
+        var newToast = _objectSpread$c({
           title: title,
           content: content,
           id: id
@@ -4757,7 +4757,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           return t.id === id;
         });
 
-        var updateToast = _objectSpread$b(_objectSpread$b({}, old[i]), options);
+        var updateToast = _objectSpread$c(_objectSpread$c({}, old[i]), options);
 
         var toasts = [].concat(_toConsumableArray__default["default"](old.slice(0, i)), [updateToast], _toConsumableArray__default["default"](old.slice(i + 1)));
         return {
@@ -4786,7 +4786,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
           theme = _this$props.theme,
           color = _this$props.color;
 
-      var _defaultComponents$co = _objectSpread$b(_objectSpread$b({}, defaultComponents), components),
+      var _defaultComponents$co = _objectSpread$c(_objectSpread$c({}, defaultComponents), components),
           Toast = _defaultComponents$co.Toast,
           ToastContainer = _defaultComponents$co.ToastContainer;
 
@@ -4904,9 +4904,9 @@ var useToasts = function useToasts() {
   };
 };
 
-function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$b(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var WebAppsContext = /*#__PURE__*/React__default["default"].createContext({});
 var controller = new AbortController();
 var WebApps = function WebApps(props) {
@@ -4958,7 +4958,7 @@ var WebApps = function WebApps(props) {
         apps.local[key][prop] = value;
       }
     });
-    setApps(_objectSpread$a({}, apps));
+    setApps(_objectSpread$b({}, apps));
   };
 
   var clearAppProp = function clearAppProp(slug, prop) {
@@ -4976,7 +4976,7 @@ var WebApps = function WebApps(props) {
         delete apps.online[key][prop];
       }
     });
-    setApps(_objectSpread$a({}, apps));
+    setApps(_objectSpread$b({}, apps));
   };
 
   var setPluginProp = function setPluginProp(slug, prop, value) {
@@ -4985,7 +4985,7 @@ var WebApps = function WebApps(props) {
         plugin[prop] = value;
       }
     });
-    setPlugins(_objectSpread$a({}, plugins));
+    setPlugins(_objectSpread$b({}, plugins));
   };
 
   var clearPluginProp = function clearPluginProp(slug, prop) {
@@ -4994,7 +4994,7 @@ var WebApps = function WebApps(props) {
         delete plugin[prop];
       }
     });
-    setPlugins(_objectSpread$a({}, plugins));
+    setPlugins(_objectSpread$b({}, plugins));
   };
 
   var getApps = /*#__PURE__*/function () {
@@ -5009,7 +5009,7 @@ var WebApps = function WebApps(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   apps.local = json.data.apps;
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status;
@@ -5027,7 +5027,7 @@ var WebApps = function WebApps(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   apps.online = json.data.apps;
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status2;
@@ -5063,7 +5063,7 @@ var WebApps = function WebApps(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   plugins.all = json.data.plugins;
-                  setPlugins(_objectSpread$a({}, plugins));
+                  setPlugins(_objectSpread$b({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status3;
@@ -5081,7 +5081,7 @@ var WebApps = function WebApps(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   plugins.active = json.data.plugins;
-                  setPlugins(_objectSpread$a({}, plugins));
+                  setPlugins(_objectSpread$b({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status4;
@@ -5099,7 +5099,7 @@ var WebApps = function WebApps(props) {
               }).then(function (json) {
                 if (isMounted()) {
                   plugins.online = json.data.plugins;
-                  setPlugins(_objectSpread$a({}, plugins));
+                  setPlugins(_objectSpread$b({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status5;
@@ -5144,7 +5144,7 @@ var WebApps = function WebApps(props) {
                   clearAppProp(e.target.dataset.slug, 'queued');
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status6;
@@ -5189,7 +5189,7 @@ var WebApps = function WebApps(props) {
                   clearAppProp(e.target.dataset.slug, 'queued');
                   apps.local = json.data.apps;
                   apps.online = json.data.online;
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status7;
@@ -5243,7 +5243,7 @@ var WebApps = function WebApps(props) {
                       apps.online[key].active = true;
                     }
                   });
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status8;
@@ -5297,7 +5297,7 @@ var WebApps = function WebApps(props) {
                       apps.online[key].active = false;
                     }
                   });
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status9;
@@ -5353,7 +5353,7 @@ var WebApps = function WebApps(props) {
                       apps.online[key].installed = true;
                     }
                   });
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status10;
@@ -5409,7 +5409,7 @@ var WebApps = function WebApps(props) {
                       apps.online[key] = json.data.app;
                     }
                   });
-                  setApps(_objectSpread$a({}, apps));
+                  setApps(_objectSpread$b({}, apps));
                 }
               })["catch"](function (error) {
                 var _error$status11;
@@ -5454,7 +5454,7 @@ var WebApps = function WebApps(props) {
                   clearPluginProp(e.target.dataset.slug, 'queued');
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
-                  setPlugins(_objectSpread$a({}, plugins));
+                  setPlugins(_objectSpread$b({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status12;
@@ -5499,7 +5499,7 @@ var WebApps = function WebApps(props) {
                   clearPluginProp(e.target.dataset.slug, 'queued');
                   plugins.all = json.data.plugins;
                   plugins.online = json.data.online;
-                  setPlugins(_objectSpread$a({}, plugins));
+                  setPlugins(_objectSpread$b({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status13;
@@ -5554,7 +5554,7 @@ var WebApps = function WebApps(props) {
                       delete plugins.online[key].downloaded;
                     }
                   });
-                  setPlugins(_objectSpread$a({}, plugins));
+                  setPlugins(_objectSpread$b({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status14;
@@ -5611,7 +5611,7 @@ var WebApps = function WebApps(props) {
                       plugins.online[key] = json.data.plugin;
                     }
                   });
-                  setPlugins(_objectSpread$a({}, plugins));
+                  setPlugins(_objectSpread$b({}, plugins));
                 }
               })["catch"](function (error) {
                 var _error$status15;
@@ -22928,9 +22928,9 @@ var isWithinBreakpoint = function isWithinBreakpoint(current, breakpoint) {
   }
 };
 
-function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$9(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var WebAppsUXContext = /*#__PURE__*/React$1.createContext({});
 var APIController = new AbortController();
 var WebAppsUX = function WebAppsUX(props) {
@@ -23087,7 +23087,7 @@ var WebAppsUX = function WebAppsUX(props) {
                 /* istanbul ignore else */
 
                 if (isMounted()) {
-                  setNavigation(_objectSpread$9({}, navigation));
+                  setNavigation(_objectSpread$a({}, navigation));
                 }
               })["catch"](function (error) {
                 var _error$status2;
@@ -23103,7 +23103,7 @@ var WebAppsUX = function WebAppsUX(props) {
                       message: (_error$data = error.data) === null || _error$data === void 0 ? void 0 : _error$data.message
                     }
                   };
-                  setNavigation(_objectSpread$9({}, _navigation));
+                  setNavigation(_objectSpread$a({}, _navigation));
                 }
               });
 
@@ -23124,7 +23124,7 @@ var WebAppsUX = function WebAppsUX(props) {
     /* istanbul ignore else */
     if (isMounted()) {
       navigation.opened = !navigation.opened;
-      setNavigation(_objectSpread$9({}, navigation));
+      setNavigation(_objectSpread$a({}, navigation));
     }
   };
 
@@ -23145,11 +23145,11 @@ var WebAppsUX = function WebAppsUX(props) {
     if (!drawer.opened && isMounted()) {
       if (isBreakpoint('lg') && flyout.active) {
         flyout.opened = false;
-        setFlyout(_objectSpread$9({}, flyout));
+        setFlyout(_objectSpread$a({}, flyout));
       }
 
       drawer.opened = true;
-      setDrawer(_objectSpread$9({}, drawer));
+      setDrawer(_objectSpread$a({}, drawer));
     }
   };
 
@@ -23157,7 +23157,7 @@ var WebAppsUX = function WebAppsUX(props) {
     /* istanbul ignore else */
     if (drawer.opened && isMounted()) {
       drawer.opened = false;
-      setDrawer(_objectSpread$9({}, drawer));
+      setDrawer(_objectSpread$a({}, drawer));
     }
   };
 
@@ -23174,11 +23174,11 @@ var WebAppsUX = function WebAppsUX(props) {
     if (!flyout.opened && isMounted()) {
       if (isBreakpoint('lg') && drawer.active) {
         drawer.opened = false;
-        setDrawer(_objectSpread$9({}, drawer));
+        setDrawer(_objectSpread$a({}, drawer));
       }
 
       flyout.opened = true;
-      setFlyout(_objectSpread$9({}, flyout));
+      setFlyout(_objectSpread$a({}, flyout));
     }
   };
 
@@ -23188,11 +23188,11 @@ var WebAppsUX = function WebAppsUX(props) {
       /* istanbul ignore else */
       if (isBreakpoint('lg') && drawer.active) {
         drawer.opened = true;
-        setDrawer(_objectSpread$9({}, drawer));
+        setDrawer(_objectSpread$a({}, drawer));
       }
 
       flyout.opened = false;
-      setFlyout(_objectSpread$9({}, flyout));
+      setFlyout(_objectSpread$a({}, flyout));
     }
   };
 
@@ -23384,6 +23384,10 @@ Input.defaultProps = {
 
 var _excluded$w = ["id", "groupData", "setData", "accessToken", "saveChange"];
 
+function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$9(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
 var AzureGroupSearch = function AzureGroupSearch(_ref) {
   var _groupData$id, _groupData$id2, _groupData$id3, _groupData$id4;
 
@@ -23428,6 +23432,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     }
 
     groupData[id].value = value;
+    setData(_objectSpread$9({}, groupData));
     var headers = new Headers();
     var bearer = "Bearer ".concat(accessToken);
     headers.append('Authorization', bearer);
@@ -23441,7 +23446,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
       return response.json();
     }).then(function (data) {
       groupData[id].data = data.value;
-      setData(_toConsumableArray__default["default"](groupData));
+      setData(_objectSpread$9({}, groupData));
       setActive(0);
       setShowResults(true);
     })["catch"](function (error) {
@@ -23450,7 +23455,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
       /* istanbul ignore else */
       if (!((_error$status = error.status) !== null && _error$status !== void 0 && _error$status.isAbort)) {
         groupData[id].data = [];
-        setData(_toConsumableArray__default["default"](groupData));
+        setData(_objectSpread$9({}, groupData));
         setActive(0);
         setShowResults(true);
       }
@@ -23464,7 +23469,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     groupData[id].data = [];
     setActive(0);
     setShowResults(false);
-    setData(_toConsumableArray__default["default"](groupData));
+    setData(_objectSpread$9({}, groupData));
     saveChange(id);
   };
 
@@ -23473,7 +23478,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     if (e.keyCode === 13) {
       groupData[id].selected = groupData[id].data[active];
       groupData[id].value = groupData[id].data[active].displayName;
-      setData(_toConsumableArray__default["default"](groupData));
+      setData(_objectSpread$9({}, groupData));
       setShowResults(false);
       setActive(0);
       saveChange(id);
@@ -23532,7 +23537,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
     className: "relative mb-6"
   }, /*#__PURE__*/React__default["default"].createElement(Input, _extends__default["default"]({
     type: "text",
-    id: "".concat(id),
+    id: id,
     value: ((_groupData$id2 = groupData[id]) === null || _groupData$id2 === void 0 ? void 0 : _groupData$id2.value) || '',
     onChange: change,
     onKeyDown: onKeyDown,

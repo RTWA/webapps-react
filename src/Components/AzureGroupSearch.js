@@ -23,6 +23,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
             groupData[id] = {};
         }
         groupData[id].value = value;
+        setData({ ...groupData });
 
         let headers = new Headers();
         let bearer = `Bearer ${accessToken}`;
@@ -39,7 +40,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
             .then(data => {
                 groupData[id].data = data.value
 
-                setData([...groupData]);
+                setData({ ...groupData });
                 setActive(0);
                 setShowResults(true);
             })
@@ -47,7 +48,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
                 /* istanbul ignore else */
                 if (!error.status?.isAbort) {
                     groupData[id].data = [];
-                    setData([...groupData]);
+                    setData({ ...groupData });
                     setActive(0);
                     setShowResults(true);
                 }
@@ -63,7 +64,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
 
         setActive(0);
         setShowResults(false);
-        setData([...groupData]);
+        setData({ ...groupData });
         saveChange(id);
     }
 
@@ -72,7 +73,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
         if (e.keyCode === 13) {
             groupData[id].selected = groupData[id].data[active];
             groupData[id].value = groupData[id].data[active].displayName;
-            setData([...groupData]);
+            setData({ ...groupData });
             setShowResults(false);
             setActive(0);
             saveChange(id);
@@ -127,7 +128,7 @@ const AzureGroupSearch = ({ id, groupData, setData, accessToken, saveChange, ...
         <div className="relative mb-6">
             <Input
                 type="text"
-                id={`${id}`}
+                id={id}
                 value={groupData[id]?.value || ''}
                 onChange={change}
                 onKeyDown={onKeyDown}
