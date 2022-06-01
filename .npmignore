@@ -6,6 +6,10 @@ src
 CHANGELOG.md
 .babelrc
 .gitignore
-
-# others
 .vscode
+coverage
+jest.config.js
+jest.setup.js
+rollup.config.js
+.github
+__mocks__
