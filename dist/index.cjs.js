@@ -59,7 +59,7 @@ var getCookie = function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(';').shift();
 };
 
-var _excluded$C = ["headers", "accept", "type"],
+var _excluded$D = ["headers", "accept", "type"],
     _excluded2$1 = ["headers", "accept"];
 
 function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -93,7 +93,7 @@ var client = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             data = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : undefined;
-            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$C);
+            _ref2 = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : {}, customHeaders = _ref2.headers, _ref2$accept = _ref2.accept, accept = _ref2$accept === void 0 ? TYPE_JSON : _ref2$accept, _ref2$type = _ref2.type, type = _ref2$type === void 0 ? TYPE_JSON : _ref2$type, customConfig = _objectWithoutProperties__default["default"](_ref2, _excluded$D);
             _context2.prev = 2;
             config = _objectSpread$e({
               method: data ? 'POST' : 'GET',
@@ -508,12 +508,12 @@ var AppLoader = function AppLoader(props) {
   }, "Loading"));
 };
 
-var _excluded$B = ["id", "children"];
+var _excluded$C = ["id", "children"];
 
 var AppPage = function AppPage(_ref) {
   var id = _ref.id,
       children = _ref.children,
-      rest = _objectWithoutProperties__default["default"](_ref, _excluded$B);
+      rest = _objectWithoutProperties__default["default"](_ref, _excluded$C);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "flex md:flex-row flex-col h-full",
@@ -2377,7 +2377,7 @@ var withAuth = function withAuth(Component) {
   return C;
 };
 
-var _excluded$A = ["hasToasts", "placement", "className"];
+var _excluded$B = ["hasToasts", "placement", "className"];
 var placements = {
   'top-left': ['top-0', 'left-0'],
   'top-center': ['top-0', 'left-1/2', 'transform', '-translate-x-1/2'],
@@ -2395,7 +2395,7 @@ var ToastContainer = function ToastContainer(_ref) {
   var hasToasts = _ref.hasToasts,
       placement = _ref.placement,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$A);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$B);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: classes(placement, hasToasts, className),
@@ -2531,7 +2531,7 @@ var appearances = {
   }
 };
 
-var _excluded$z = ["autoDismissTimeout", "opacity", "isRunning"],
+var _excluded$A = ["autoDismissTimeout", "opacity", "isRunning"],
     _excluded2 = ["appearance", "placement", "transitionDuration", "transitionState"],
     _excluded3 = ["appearance", "autoDismiss", "autoDismissTimeout", "title", "content", "isRunning", "onDismiss", "placement", "transitionDuration", "transitionState", "onMouseEnter", "onMouseLeave", "action", "actionLabel", "secondaryAction", "secondaryActionLabel", "theme", "color"];
 
@@ -2546,7 +2546,7 @@ var Countdown = function Countdown(_ref) {
   _ref.autoDismissTimeout;
       var opacity = _ref.opacity,
       isRunning = _ref.isRunning,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$z);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$A);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "toast-countdown",
@@ -4481,7 +4481,7 @@ SwitchTransition.defaultProps = {
   mode: modes.out
 };
 
-var _excluded$y = ["autoDismiss", "autoDismissTimeout", "component"];
+var _excluded$z = ["autoDismiss", "autoDismissTimeout", "component"];
 
 function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -4592,7 +4592,7 @@ var ToastController = /*#__PURE__*/function (_Component) {
           autoDismiss = _this$props2.autoDismiss,
           autoDismissTimeout = _this$props2.autoDismissTimeout,
           Toast = _this$props2.component,
-          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$y);
+          props = _objectWithoutProperties__default["default"](_this$props2, _excluded$z);
 
       var isRunning = this.state.isRunning; // NOTE: conditions here so methods can be clean
 
@@ -4615,7 +4615,7 @@ _defineProperty__default["default"](ToastController, "defaultProps", {
   autoDismiss: false
 });
 
-var _excluded$x = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
+var _excluded$y = ["appearance", "autoDismiss", "title", "content", "id", "onDismiss", "action", "actionLabel", "secondaryAction", "secondaryActionLabel"];
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -4822,7 +4822,7 @@ var ToastProvider = /*#__PURE__*/function (_Component) {
             actionLabel = _ref.actionLabel,
             secondaryAction = _ref.secondaryAction,
             secondaryActionLabel = _ref.secondaryActionLabel,
-            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$x);
+            unknownConsumerProps = _objectWithoutProperties__default["default"](_ref, _excluded$y);
 
         return /*#__PURE__*/React__default["default"].createElement(Transition, {
           appear: true,
@@ -23269,7 +23269,7 @@ var withWebAppsUX = function withWebAppsUX(Component) {
   return C;
 };
 
-var _excluded$w = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
+var _excluded$x = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName"];
 
 var Input = function Input(props) {
   var id = props.id,
@@ -23283,7 +23283,7 @@ var Input = function Input(props) {
       wrapperClassName = props.wrapperClassName,
       labelClassName = props.labelClassName,
       inputClassName = props.inputClassName,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$w);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$x);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -23382,7 +23382,7 @@ Input.defaultProps = {
   inputClassName: ''
 };
 
-var _excluded$v = ["id", "groupData", "setData", "accessToken", "saveChange"];
+var _excluded$w = ["id", "groupData", "setData", "accessToken", "saveChange"];
 
 var AzureGroupSearch = function AzureGroupSearch(_ref) {
   var _groupData$id, _groupData$id2, _groupData$id3, _groupData$id4;
@@ -23392,7 +23392,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
       setData = _ref.setData,
       accessToken = _ref.accessToken,
       saveChange = _ref.saveChange,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$v);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$w);
 
   var _useState = React$1.useState([]),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -23542,7 +23542,7 @@ var AzureGroupSearch = function AzureGroupSearch(_ref) {
   }, props)), DataListComponent);
 };
 
-var _excluded$u = ["tag", "className", "color", "darkColor", "shade", "darkShade", "pill", "children"];
+var _excluded$v = ["tag", "className", "color", "darkColor", "shade", "darkShade", "pill", "children"];
 
 var Badge = function Badge(props) {
   var tag = props.tag,
@@ -23553,7 +23553,7 @@ var Badge = function Badge(props) {
       darkShade = props.darkShade,
       pill = props.pill,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$u);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$v);
 
   var classes = classNames('inline-flex', 'items-center', 'justify-center', 'px-2', 'py-1', 'text-xs', 'font-bold', 'leading-none', 'text-white', 'dark:text-gray-800', "bg-".concat(color, "-").concat(shade), "dark:".concat(darkColor || color, "-").concat(darkShade), pill ? 'rounded-full' : '', className);
   var Tag = attributes.to || attributes.href ? reactRouterDom.NavLink : tag;
@@ -23578,7 +23578,7 @@ Badge.defaultProps = {
   darkShade: '600'
 };
 
-var _excluded$t = ["tag", "className", "color", "darkColor", "children"];
+var _excluded$u = ["tag", "className", "color", "darkColor", "children"];
 
 var Banner = function Banner(props) {
   var tag = props.tag,
@@ -23586,7 +23586,7 @@ var Banner = function Banner(props) {
       color = props.color,
       darkColor = props.darkColor,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$t);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$u);
 
   var classes = classNames(className, 'w-full', 'py-2', 'px-8', "bg-".concat(color), "dark:bg-".concat(darkColor));
   var Tag = attributes.to || attributes.hred ? reactRouterDom.NavLink : tag;
@@ -23608,7 +23608,7 @@ Banner.defaultProps = {
   darkColor: 'gray-700'
 };
 
-var _excluded$s = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+var _excluded$t = ["className", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23621,7 +23621,7 @@ var Link = function Link(props) {
       href = props.href,
       onClick = props.onClick,
       disabled = props.disabled,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$s);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$t);
 
   var to = rest.to ? rest.to : null;
 
@@ -23659,7 +23659,7 @@ Link.propTypes = _objectSpread$8(_objectSpread$8({
   to: propTypes.exports.oneOfType([propTypes.exports.object, propTypes.exports.string, propTypes.exports.func])
 });
 
-var _excluded$r = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
+var _excluded$s = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
 
 var Button = function Button(props) {
   var shade = props.shade,
@@ -23671,7 +23671,7 @@ var Button = function Button(props) {
       padding = props.padding,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$r);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$s);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -23705,7 +23705,7 @@ Button.defaultProps = {
   padding: true
 };
 
-var _excluded$q = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "colors", "onSelect"];
+var _excluded$r = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "colors", "onSelect"];
 
 var ColorGridSelect = function ColorGridSelect(props) {
   var id = props.id,
@@ -23715,7 +23715,7 @@ var ColorGridSelect = function ColorGridSelect(props) {
       labelClassName = props.labelClassName,
       colors = props.colors,
       onSelect = props.onSelect,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$q);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$r);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -23773,7 +23773,7 @@ ColorGridSelect.defaultProps = {
   colors: []
 };
 
-var _excluded$p = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
+var _excluded$q = ["text", "confirmText", "onClick", "timeout", "initialColor", "confirmColor", "className"];
 
 var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
   var text = props.text,
@@ -23783,7 +23783,7 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
       initialColor = props.initialColor,
       confirmColor = props.confirmColor,
       className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$p);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$q);
 
   var isMountedRef = React$1.useRef(true);
   var isMounted = React$1.useCallback(function () {
@@ -23872,7 +23872,7 @@ ConfirmDeleteButton.defaultProps = {
   confirmColor: 'orange'
 };
 
-var _excluded$o = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
+var _excluded$p = ["title", "message", "cancelText", "confirmText", "onCancel", "onConfirm"];
 
 var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
   var title = props.title,
@@ -23881,7 +23881,7 @@ var ConfirmDeleteModal = function ConfirmDeleteModal(props) {
       confirmText = props.confirmText,
       onCancel = props.onCancel,
       onConfirm = props.onConfirm,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$o);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$p);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "fixed z-[500] inset-0 overflow-y-auto"
@@ -23955,7 +23955,7 @@ ConfirmDeleteModal.defaultProps = {
   confirmText: "Yes"
 };
 
-var _excluded$n = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
+var _excluded$o = ["data", "select", "placeholder", "noMatchesText", "limit", "labelKey", "valueKey"];
 
 var DataSuggest = function DataSuggest(_ref) {
   var data = _ref.data,
@@ -23965,7 +23965,7 @@ var DataSuggest = function DataSuggest(_ref) {
       limit = _ref.limit,
       labelKey = _ref.labelKey,
       valueKey = _ref.valueKey,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$n);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$o);
 
   var _useState = React$1.useState(0),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -24093,7 +24093,7 @@ DataSuggest.defaultProps = {
   limit: 0
 };
 
-var _excluded$m = ["show", "text", "origin", "buttonClassNames", "dropClassNames"];
+var _excluded$n = ["show", "text", "origin", "buttonClassNames", "dropClassNames"];
 
 var DropDownButton = function DropDownButton(props) {
   var show = props.show,
@@ -24101,7 +24101,7 @@ var DropDownButton = function DropDownButton(props) {
       origin = props.origin,
       buttonClassNames = props.buttonClassNames,
       dropClassNames = props.dropClassNames,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$m);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$n);
 
   var _useState = React$1.useState(show),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -24164,7 +24164,7 @@ DropDownButton.defaultProps = {
   origin: 'right'
 };
 
-var _excluded$l = ["active", "align", "shade", "darkShade", "className", "children"];
+var _excluded$m = ["active", "align", "shade", "darkShade", "className", "children"];
 
 var DropDownItem = function DropDownItem(props) {
   var active = props.active,
@@ -24173,7 +24173,7 @@ var DropDownItem = function DropDownItem(props) {
       darkShade = props.darkShade,
       className = props.className,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$l);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$m);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -24203,7 +24203,7 @@ DropDownItem.defaultProps = {
   darkShade: '400'
 };
 
-var _excluded$k = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "options", "onSelect"];
+var _excluded$l = ["id", "label", "helpText", "wrapperClassName", "labelClassName", "options", "onSelect"];
 
 var GridSelect = function GridSelect(props) {
   var id = props.id,
@@ -24213,7 +24213,7 @@ var GridSelect = function GridSelect(props) {
       labelClassName = props.labelClassName,
       options = props.options,
       onSelect = props.onSelect,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$k);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$l);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -24267,23 +24267,23 @@ GridSelect.defaultProps = {
   options: []
 };
 
-var _excluded$j = ["children"];
+var _excluded$k = ["children"];
 
 var Headerbar = function Headerbar(_ref) {
   var children = _ref.children,
-      rest = _objectWithoutProperties__default["default"](_ref, _excluded$j);
+      rest = _objectWithoutProperties__default["default"](_ref, _excluded$k);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends__default["default"]({
     className: "relative flex flex-0 items-center w-full h-16 min-h-[4rem] px-4 md:px-6 shadow dark:shadow-none dark:border-b dark:border-gray-800 bg-white dark:bg-transparent z-[190]"
   }, rest), children);
 };
 
-var _excluded$i = ["icon", "className"];
+var _excluded$j = ["icon", "className"];
 
 var Icon = function Icon(_ref) {
   var icon = _ref.icon,
       className = _ref.className,
-      props = _objectWithoutProperties__default["default"](_ref, _excluded$i);
+      props = _objectWithoutProperties__default["default"](_ref, _excluded$j);
 
   var addClasses = function addClasses(string) {
     if (typeof string === 'string') {
@@ -25690,13 +25690,13 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
     .join(' ');
 };
 
-var _excluded$h = ["tag", "className", "settings"];
+var _excluded$i = ["tag", "className", "settings"];
 
 var Scrollbar = function Scrollbar(props) {
   var Tag = props.tag,
       className = props.className;
       props.settings;
-      var attributes = _objectWithoutProperties__default["default"](props, _excluded$h);
+      var attributes = _objectWithoutProperties__default["default"](props, _excluded$i);
 
   var _useState = React$1.useState(),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
@@ -25751,12 +25751,12 @@ Scrollbar.defaultProps = {
   tag: 'div'
 };
 
-var _excluded$g = ["title", "children"];
+var _excluded$h = ["title", "children"];
 
 var PageWrapper = function PageWrapper(props) {
   var title = props.title,
       children = props.children,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$g);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$h);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       useDrawer = _useContext.useDrawer;
@@ -25791,7 +25791,7 @@ var PageWrapper = function PageWrapper(props) {
   }, children)));
 };
 
-var _excluded$f = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
+var _excluded$g = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "selectClassName", "children"];
 
 var Select = function Select(props) {
   var id = props.id,
@@ -25806,7 +25806,7 @@ var Select = function Select(props) {
       labelClassName = props.labelClassName,
       selectClassName = props.selectClassName,
       children = props.children,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$f);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$g);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -25997,7 +25997,7 @@ var NavDropdown = function NavDropdown(props) {
   }, children)));
 };
 
-var _excluded$e = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+var _excluded$f = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -26012,7 +26012,7 @@ var NavChild = function NavChild(props) {
       props.addLinkClass;
       props.label;
       var color = props.color,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$e);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$f);
 
   var _useContext = React$1.useContext(DropdownContext),
       isOpen = _useContext.isOpen;
@@ -26053,7 +26053,7 @@ var NavChild = function NavChild(props) {
   }), badge.text)));
 };
 
-var _excluded$d = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
+var _excluded$e = ["className", "innerRef", "name", "icon", "badge", "addLinkClass", "label", "color"];
 
 function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -26068,7 +26068,7 @@ var NavItem = function NavItem(props) {
       props.addLinkClass;
       props.label;
       var color = props.color,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$d);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$e);
 
   var _useContext = React$1.useContext(DropdownContext),
       isOpen = _useContext.isOpen;
@@ -26109,13 +26109,13 @@ var NavItem = function NavItem(props) {
   }), badge.text)));
 };
 
-var _excluded$c = ["name", "className", "innerRef"];
+var _excluded$d = ["name", "className", "innerRef"];
 
 var NavTitle = function NavTitle(props) {
   var name = props.name,
       className = props.className,
       innerRef = props.innerRef,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$c);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$d);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -26136,7 +26136,7 @@ NavTitle.propTypes = {
   innerRef: propTypes.exports.oneOfType([propTypes.exports.object, propTypes.exports.func])
 };
 
-var _excluded$b = ["_tag", "_children"];
+var _excluded$c = ["_tag", "_children"];
 
 var CreateElement = function CreateElement(_ref) {
   var items = _ref.items,
@@ -26146,7 +26146,7 @@ var CreateElement = function CreateElement(_ref) {
   var renderItem = function renderItem(item, i) {
     var _tag = item._tag,
         _children = item._children,
-        rest = _objectWithoutProperties__default["default"](item, _excluded$b);
+        rest = _objectWithoutProperties__default["default"](item, _excluded$c);
 
     var Tag = components[_tag] || _tag;
     var children = _children ? _children.map(function (child, i) {
@@ -26271,7 +26271,7 @@ var SidebarHeader = function SidebarHeader() {
   }, "WebApps"));
 };
 
-var _excluded$a = ["dropDownMode"];
+var _excluded$b = ["dropDownMode"];
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -26279,7 +26279,7 @@ function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { 
 
 var Sidebar = function Sidebar(props) {
   var dropDownMode = props.dropDownMode,
-      rest = _objectWithoutProperties__default["default"](props, _excluded$a);
+      rest = _objectWithoutProperties__default["default"](props, _excluded$b);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       breakpoint = _useContext.breakpoint,
@@ -26336,7 +26336,7 @@ var Sidebar = function Sidebar(props) {
   }) : null);
 };
 
-var _excluded$9 = ["id", "name", "label", "helpText", "error", "state", "checked", "disabled", "onChange", "action", "className"];
+var _excluded$a = ["id", "name", "label", "helpText", "error", "state", "checked", "disabled", "onChange", "action", "className"];
 
 var Switch = function Switch(props) {
   var id = props.id,
@@ -26350,7 +26350,7 @@ var Switch = function Switch(props) {
       onChange = props.onChange,
       action = props.action,
       className = props.className,
-      attributes = _objectWithoutProperties__default["default"](props, _excluded$9);
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$a);
 
   var _useContext = React$1.useContext(WebAppsUXContext),
       theme = _useContext.theme;
@@ -26443,6 +26443,123 @@ Switch.defaultProps = {
   helpText: '',
   disabled: false,
   className: 'w-full'
+};
+
+var _excluded$9 = ["id", "name", "label", "action", "actionLocation", "helpText", "error", "state", "wrapperClassName", "labelClassName", "inputClassName", "rows"];
+
+var Textarea = function Textarea(props) {
+  var id = props.id,
+      name = props.name,
+      label = props.label,
+      action = props.action,
+      actionLocation = props.actionLocation,
+      helpText = props.helpText,
+      error = props.error,
+      state = props.state,
+      wrapperClassName = props.wrapperClassName,
+      labelClassName = props.labelClassName,
+      inputClassName = props.inputClassName,
+      rows = props.rows,
+      attributes = _objectWithoutProperties__default["default"](props, _excluded$9);
+
+  var _useContext = React$1.useContext(WebAppsUXContext),
+      theme = _useContext.theme;
+
+  var labelClasses = classNames('block', 'mb-2', 'text-sm', 'font-medium', 'text-gray-700', 'dark:text-gray-300', labelClassName);
+  var inputClasses = classNames('bg-transparent', 'border-2', 'outline-none', 'text-sm', 'rounded-lg', 'block', 'w-full', 'p-2.5', 'focus:bg-gray-50', 'dark:focus:bg-gray-700', 'dark:placeholder-gray-400', 'transition-colors', 'focus:ring-0', theme === undefined ? '' : "focus:border-".concat(theme, "-600"), theme === undefined ? '' : "dark:focus:border-".concat(theme, "-500"), state === '' ? 'border-gray-400 text-gray-900 dark:text-white dark:border-gray-600' : '', state === 'error' ? 'border-red-500 text-red-500 focus:border-red-500 dark:focus:border-red-500' : '', state === 'saved' ? 'border-green-500 text-green-500 focus:border-green-500 dark:focus:border-green-500' : '', state === 'saving' ? 'border-orange-500 focus:border-orange-500 dark:focus:border-orange-500' : '', actionLocation === 'left' ? 'pl-10' : '', inputClassName);
+
+  var Append = function Append() {
+    if (state === 'saving') {
+      return /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "flex absolute top-0 ".concat(actionLocation, "-0 items-center pt-1.5 p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React__default["default"].createElement(Loader, {
+        type: "circle",
+        height: "5",
+        width: "5",
+        color: "orange"
+      }));
+    } else if (state === 'saved') {
+      return /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "flex absolute top-0 ".concat(actionLocation, "-0 items-center pt-1.5 p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React__default["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-green-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React__default["default"].createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M5 13l4 4L19 7"
+      })));
+    } else if (state === 'error') {
+      return /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "flex absolute top-0 ".concat(actionLocation, "-0 items-center pt-1.5 p").concat(actionLocation.charAt(0), "-3")
+      }, /*#__PURE__*/React__default["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-5 w-5 text-red-500",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      }, /*#__PURE__*/React__default["default"].createElement("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M6 18L18 6M6 6l12 12"
+      })));
+    } else if (action && actionLocation === 'none') {
+      return action;
+    } else if (action !== undefined) {
+      return /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "flex absolute top-0 ".concat(actionLocation, "-0 items-center pt-1.5 p").concat(actionLocation.charAt(0), "-3")
+      }, action);
+    }
+
+    return null;
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: wrapperClassName
+  }, label !== '' ? /*#__PURE__*/React__default["default"].createElement("label", {
+    htmlFor: id,
+    className: labelClasses
+  }, label) : null, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React__default["default"].createElement("textarea", _extends__default["default"]({
+    id: id,
+    name: name,
+    className: inputClasses,
+    rows: rows
+  }, attributes)), /*#__PURE__*/React__default["default"].createElement(Append, null)), helpText !== '' || error !== '' ? /*#__PURE__*/React__default["default"].createElement("span", {
+    className: "text-sm transition-colors ".concat(state === 'error' ? 'text-red-500' : 'text-gray-500 dark:text-gray-400')
+  }, state === 'error' ? error : helpText) : null);
+};
+
+Textarea.propTypes = {
+  id: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
+  name: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number]),
+  label: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
+  action: propTypes.exports.object,
+  actionLocation: propTypes.exports.oneOf(['right', 'left', 'none']),
+  helpText: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.object]),
+  error: propTypes.exports.string,
+  state: propTypes.exports.oneOf(['', 'saving', 'error', 'saved']),
+  wrapperClassName: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.array, propTypes.exports.object]),
+  labelClassName: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.array, propTypes.exports.object]),
+  inputClassName: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.array, propTypes.exports.object]),
+  rows: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.number])
+};
+Textarea.defaultProps = {
+  error: '',
+  state: '',
+  label: '',
+  actionLocation: 'right',
+  helpText: '',
+  wrapperClassName: 'mb-6',
+  labelClassName: '',
+  inputClassName: '',
+  rows: 4
 };
 
 var initials$2 = {exports: {}};
@@ -44504,6 +44621,7 @@ var returnLibrary = function returnLibrary() {
     Sidebar: Sidebar,
     SidebarWrapper: SidebarWrapper,
     Switch: Switch,
+    Textarea: Textarea,
     UserSuggest: UserSuggest,
     AppPluginChangelogModal: AppPluginChangelogModal,
     AppCard: AppCard,
