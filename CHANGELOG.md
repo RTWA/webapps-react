@@ -1,3 +1,13 @@
+## Version 2.0.3
+#### What's New?
+- Added `<UserAvatar />` Component
+
+#### What's Fixed?
+- Selecting a drawer item, when on overlay mode, closes the overlay
+
+#### What's Changed?
+- Updated `<UserSuggest />` Component to use new `<UserAvatar />` Component
+
 ## Version 2.0.2
 #### What's New?
 - Added `<AppLoader />` Component
