@@ -59,18 +59,28 @@ export const WebApps = props => {
     }
 
     const setPluginProp = (slug, prop, value) => {
-        plugins.map(plugin => {
-            if (plugin.slug === slug) {
-                plugin[prop] = value;
+        Object.keys(plugins.local).map(key => {
+            if (plugins.local[key]?.slug === slug) {
+                plugins.local[key][prop] = value;
+            }
+        });
+        Object.keys(plugins.online).map(key => {
+            if (plugins.local[key]?.slug === slug) {
+                plugins.local[key][prop] = value;
             }
         });
         setPlugins({ ...plugins });
     }
 
     const clearPluginProp = (slug, prop) => {
-        plugins.map(plugin => {
-            if (plugin.slug === slug) {
-                delete plugin[prop];
+        Object.keys(plugins.local).map(key => {
+            if (plugins.local[key]?.slug === slug) {
+                delete plugins.local[key][prop];
+            }
+        });
+        Object.keys(plugins.online).map(key => {
+            if (plugins.online[key]?.slug === slug) {
+                delete plugins.online[key][prop];
             }
         });
         setPlugins({ ...plugins });
