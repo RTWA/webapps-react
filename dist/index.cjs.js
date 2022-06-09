@@ -4835,17 +4835,24 @@ var WebApps = function WebApps(props) {
   };
 
   var setPluginProp = function setPluginProp(slug, prop, value) {
-    Object.keys(plugins.local).map(function (key) {
-      var _plugins$local$key;
+    Object.keys(plugins.all).map(function (key) {
+      var _plugins$all$key;
 
-      if (((_plugins$local$key = plugins.local[key]) === null || _plugins$local$key === void 0 ? void 0 : _plugins$local$key.slug) === slug) {
-        plugins.local[key][prop] = value;
+      if (((_plugins$all$key = plugins.all[key]) === null || _plugins$all$key === void 0 ? void 0 : _plugins$all$key.slug) === slug) {
+        plugins.all[key][prop] = value;
+      }
+    });
+    Object.keys(plugins.active).map(function (key) {
+      var _plugins$active$key;
+
+      if (((_plugins$active$key = plugins.active[key]) === null || _plugins$active$key === void 0 ? void 0 : _plugins$active$key.slug) === slug) {
+        plugins.active[key][prop] = value;
       }
     });
     Object.keys(plugins.online).map(function (key) {
-      var _plugins$local$key2;
+      var _plugins$local$key;
 
-      if (((_plugins$local$key2 = plugins.local[key]) === null || _plugins$local$key2 === void 0 ? void 0 : _plugins$local$key2.slug) === slug) {
+      if (((_plugins$local$key = plugins.local[key]) === null || _plugins$local$key === void 0 ? void 0 : _plugins$local$key.slug) === slug) {
         plugins.local[key][prop] = value;
       }
     });
@@ -4853,11 +4860,18 @@ var WebApps = function WebApps(props) {
   };
 
   var clearPluginProp = function clearPluginProp(slug, prop) {
-    Object.keys(plugins.local).map(function (key) {
-      var _plugins$local$key3;
+    Object.keys(plugins.all).map(function (key) {
+      var _plugins$all$key2;
 
-      if (((_plugins$local$key3 = plugins.local[key]) === null || _plugins$local$key3 === void 0 ? void 0 : _plugins$local$key3.slug) === slug) {
-        delete plugins.local[key][prop];
+      if (((_plugins$all$key2 = plugins.all[key]) === null || _plugins$all$key2 === void 0 ? void 0 : _plugins$all$key2.slug) === slug) {
+        delete plugins.all[key][prop];
+      }
+    });
+    Object.keys(plugins.active).map(function (key) {
+      var _plugins$active$key2;
+
+      if (((_plugins$active$key2 = plugins.active[key]) === null || _plugins$active$key2 === void 0 ? void 0 : _plugins$active$key2.slug) === slug) {
+        delete plugins.active[key][prop];
       }
     });
     Object.keys(plugins.online).map(function (key) {
