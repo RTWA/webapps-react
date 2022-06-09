@@ -29,6 +29,7 @@ import Sidebar from './Components/Sidebar';
 import SidebarWrapper from './Components/SidebarWrapper';
 import Switch from './Components/Switch';
 import Textarea from './Components/Textarea';
+import UserAvatar from './Components/UserAvatar';
 import UserSuggest from './Components/UserSuggest';
 
 import AppPluginChangelogModal from './Components/AppPluginChangelogModal';
@@ -115,6 +116,7 @@ const returnLibrary = () => {
         SidebarWrapper,
         Switch,
         Textarea,
+        UserAvatar,
         UserSuggest,
 
         AppPluginChangelogModal,
