@@ -30,9 +30,17 @@ const DrawerItem = ({ badge, color, icon, children, ...props }) => {
         )
     }
 
+    const click = () => {
+        /* istanbul ignore next */
+        if (navigation.display_mode === 'overlay' && navigation.opened) {
+            toggleNavigation();
+        }
+    }
+
     return (
         <Link
             className={linkClasses}
+            onClick={click}
             {...routerLinkProps}
             {...props}
         >
