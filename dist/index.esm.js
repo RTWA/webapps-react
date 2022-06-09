@@ -4850,10 +4850,10 @@ var WebApps = function WebApps(props) {
       }
     });
     Object.keys(plugins.online).map(function (key) {
-      var _plugins$local$key;
+      var _plugins$online$key;
 
-      if (((_plugins$local$key = plugins.local[key]) === null || _plugins$local$key === void 0 ? void 0 : _plugins$local$key.slug) === slug) {
-        plugins.local[key][prop] = value;
+      if (((_plugins$online$key = plugins.online[key]) === null || _plugins$online$key === void 0 ? void 0 : _plugins$online$key.slug) === slug) {
+        plugins.online[key][prop] = value;
       }
     });
     setPlugins(_objectSpread$b({}, plugins));
@@ -4875,9 +4875,9 @@ var WebApps = function WebApps(props) {
       }
     });
     Object.keys(plugins.online).map(function (key) {
-      var _plugins$online$key;
+      var _plugins$online$key2;
 
-      if (((_plugins$online$key = plugins.online[key]) === null || _plugins$online$key === void 0 ? void 0 : _plugins$online$key.slug) === slug) {
+      if (((_plugins$online$key2 = plugins.online[key]) === null || _plugins$online$key2 === void 0 ? void 0 : _plugins$online$key2.slug) === slug) {
         delete plugins.online[key][prop];
       }
     });

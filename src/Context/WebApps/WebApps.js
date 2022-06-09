@@ -70,8 +70,8 @@ export const WebApps = props => {
             }
         });
         Object.keys(plugins.online).map(key => {
-            if (plugins.local[key]?.slug === slug) {
-                plugins.local[key][prop] = value;
+            if (plugins.online[key]?.slug === slug) {
+                plugins.online[key][prop] = value;
             }
         });
         setPlugins({ ...plugins });

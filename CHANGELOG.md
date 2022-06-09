@@ -1,4 +1,4 @@
-## Version 2.0.5 [2.0.6] & 2.0.7
+## Version [2.0.5, 2.0.6, 2.0.7] & 2.0.8
 #### What's Fixed?
 - Fixed issue in `<WebApps />` Context preventing Plugins from being Installed or Updated
 
