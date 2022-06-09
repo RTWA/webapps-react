@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import UserAvatar from 'react-user-avatar';
 import PropTypes from "prop-types";
 import Input from './Input';
+import UserAvatar from './UserAvatar';
 
 const UserSuggest = ({ users, select, photos, placeholder, noMatchesText, limit, ...props }) => {
     const [activeUser, setActiveUser] = useState(0);
