@@ -7,7 +7,8 @@ import Link from '../Link';
 
 const DrawerItem = ({ badge, color, icon, children, ...props }) => {
 
-    const { theme } = useContext(WebAppsUXContext);
+    const { theme, useDrawer } = useContext(WebAppsUXContext);
+    const { drawer, toggleDrawer } = useDrawer;
 
     const linkClasses = classNames(
         'flex',
@@ -32,8 +33,8 @@ const DrawerItem = ({ badge, color, icon, children, ...props }) => {
 
     const click = () => {
         /* istanbul ignore next */
-        if (navigation.display_mode === 'overlay' && navigation.opened) {
-            toggleNavigation();
+        if (drawer.display_mode === 'overlay' && drawer.opened) {
+            toggleDrawer();
         }
     }
 
