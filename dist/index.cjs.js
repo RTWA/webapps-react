@@ -43482,8 +43482,11 @@ var DrawerItem = function DrawerItem(_ref) {
       props = _objectWithoutProperties__default["default"](_ref, _excluded$1);
 
   var _useContext = React.useContext(WebAppsUXContext),
-      theme = _useContext.theme;
+      theme = _useContext.theme,
+      useDrawer = _useContext.useDrawer;
 
+  var drawer = useDrawer.drawer,
+      toggleDrawer = useDrawer.toggleDrawer;
   var linkClasses = classNames('flex', 'items-center', 'justify-start', 'px-8', 'py-5', 'cursor-pointer', color ? "hover:bg-".concat(color, "-50 dark:hover:bg-").concat(color, "-900") : 'hover:bg-gray-100 dark:hover:bg-gray-800');
   var routerLinkProps = props.to && {
     exact: true,
@@ -43492,8 +43495,8 @@ var DrawerItem = function DrawerItem(_ref) {
 
   var click = function click() {
     /* istanbul ignore next */
-    if (navigation.display_mode === 'overlay' && navigation.opened) {
-      toggleNavigation();
+    if (drawer.display_mode === 'overlay' && drawer.opened) {
+      toggleDrawer();
     }
   };
 

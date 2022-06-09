@@ -1,3 +1,7 @@
+## Version 2.0.4
+### What's Fixed?
+- `<DrawerItem />` navigation error
+
 ## Version 2.0.3
 #### What's New?
 - Added `<UserAvatar />` Component
