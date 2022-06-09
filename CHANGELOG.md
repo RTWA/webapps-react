@@ -1,5 +1,9 @@
+## Version 2.0.5
+#### What's Fixed?
+- Fixed issue in `<WebApps />` Context preventing Plugins from being Installed or Updated
+
 ## Version 2.0.4
-### What's Fixed?
+#### What's Fixed?
 - `<DrawerItem />` navigation error
 
 ## Version 2.0.3

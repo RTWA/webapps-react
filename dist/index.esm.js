@@ -4835,18 +4835,36 @@ var WebApps = function WebApps(props) {
   };
 
   var setPluginProp = function setPluginProp(slug, prop, value) {
-    plugins.map(function (plugin) {
-      if (plugin.slug === slug) {
-        plugin[prop] = value;
+    Object.keys(plugins.local).map(function (key) {
+      var _plugins$local$key;
+
+      if (((_plugins$local$key = plugins.local[key]) === null || _plugins$local$key === void 0 ? void 0 : _plugins$local$key.slug) === slug) {
+        plugins.local[key][prop] = value;
+      }
+    });
+    Object.keys(plugins.online).map(function (key) {
+      var _plugins$local$key2;
+
+      if (((_plugins$local$key2 = plugins.local[key]) === null || _plugins$local$key2 === void 0 ? void 0 : _plugins$local$key2.slug) === slug) {
+        plugins.local[key][prop] = value;
       }
     });
     setPlugins(_objectSpread$b({}, plugins));
   };
 
   var clearPluginProp = function clearPluginProp(slug, prop) {
-    plugins.map(function (plugin) {
-      if (plugin.slug === slug) {
-        delete plugin[prop];
+    Object.keys(plugins.local).map(function (key) {
+      var _plugins$local$key3;
+
+      if (((_plugins$local$key3 = plugins.local[key]) === null || _plugins$local$key3 === void 0 ? void 0 : _plugins$local$key3.slug) === slug) {
+        delete plugins.local[key][prop];
+      }
+    });
+    Object.keys(plugins.online).map(function (key) {
+      var _plugins$online$key;
+
+      if (((_plugins$online$key = plugins.online[key]) === null || _plugins$online$key === void 0 ? void 0 : _plugins$online$key.slug) === slug) {
+        delete plugins.online[key][prop];
       }
     });
     setPlugins(_objectSpread$b({}, plugins));
