@@ -3,6 +3,7 @@
 
 import { client as APIClient, mediaClient as APIMediaClient } from './API';
 
+import AlertModal from './Components/AlertModal';
 import AppLoader from './Components/AppLoader';
 import AppPage from './Components/AppPage';
 import AzureGroupSearch from './Components/AzureGroupSearch';
@@ -11,7 +12,6 @@ import Banner from './Components/Banner';
 import Button from './Components/Button';
 import ColorGridSelect from './Components/ColorGridSelect';
 import ConfirmDeleteButton from './Components/ConfirmDeleteButton';
-import ConfirmDeleteModal from './Components/ConfirmDeleteModal';
 import DataSuggest from './Components/DataSuggest';
 import DropDownButton from './Components/DropDownButton';
 import DropDownItem from './Components/DropDownItem';
@@ -82,6 +82,7 @@ const returnLibrary = () => {
         APIClient,
         APIMediaClient,
 
+        AlertModal,
         AppLoader,
         AppPage,
         AzureGroupSearch,
@@ -90,7 +91,6 @@ const returnLibrary = () => {
         Button,
         ColorGridSelect,
         ConfirmDeleteButton,
-        ConfirmDeleteModal,
         DataSuggest,
         Drawer,
         DrawerHeader,
