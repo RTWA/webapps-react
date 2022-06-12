@@ -5506,11 +5506,13 @@ var WebApps = function WebApps(props) {
                   Object.keys(apps.local).map(function (key) {
                     if (e.target.dataset.slug === apps.local[key].slug) {
                       apps.local[key].installed = true;
+                      apps.local[key].active = false;
                     }
                   });
                   Object.keys(apps.online).map(function (key) {
                     if (e.target.dataset.slug === apps.online[key].slug) {
                       apps.online[key].installed = true;
+                      apps.online[key].active = false;
                     }
                   });
                   setApps(_objectSpread$b({}, apps));
