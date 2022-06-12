@@ -5588,6 +5588,7 @@ var WebApps = function WebApps(props) {
                   });
                   clearPluginProp(e.target.dataset.slug, 'queued');
                   plugins.all = json.data.plugins;
+                  plugins.active = json.data.active;
                   plugins.online = json.data.online;
                   setPlugins(_objectSpread$b({}, plugins));
                 }
@@ -5675,21 +5676,23 @@ var WebApps = function WebApps(props) {
                   addToast(json.data.plugin.name, json.data.message, {
                     appearance: 'success'
                   });
-                  Object.keys(plugins.all).map(function (key) {
+                  Object.keys(plugins === null || plugins === void 0 ? void 0 : plugins.all).map(function (key) {
                     if (e.target.dataset.slug === plugins.all[key].slug) {
                       plugins.all[key].state = json.data.plugin.state;
                       plugins.all[key].installed = true;
                       delete plugins.all[key].downloaded;
                     }
                   });
-                  Object.keys(plugins.online).map(function (key) {
+                  Object.keys(plugins === null || plugins === void 0 ? void 0 : plugins.online).map(function (key) {
                     if (e.target.dataset.slug === plugins.online[key].slug) {
                       plugins.online[key].state = json.data.plugin.state;
                       plugins.online[key].installed = true;
                       delete plugins.online[key].downloaded;
                     }
                   });
+                  plugins.active = json.data.active;
                   setPlugins(_objectSpread$b({}, plugins));
+                  console.log(plugins);
                 }
               })["catch"](function (error) {
                 var _error$status14;
