@@ -1,3 +1,12 @@
+## Version 2.1.0
+#### What's Changed?
+- `<ConfirmDeleteModal />` is now `<AlertModal />` and accepts `type` of `error` (default), `success` or `info`
+
+#### What's Fixed?
+- Close control on `<DrawerHeader />` now closes drawer, not sidebar
+- A just installed App is now able to be activated without requiring a page refresh
+- A just activated Plugin is now available under `Create new Block` wihtout requiring a page refresh
+
 ## Version [2.0.5, 2.0.6, 2.0.7] & 2.0.8
 #### What's Fixed?
 - Fixed issue in `<WebApps />` Context preventing Plugins from being Installed or Updated
