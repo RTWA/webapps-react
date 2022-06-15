@@ -5719,7 +5719,6 @@ var WebApps = function WebApps(props) {
                   });
                   plugins.active = json.data.active;
                   setPlugins(_objectSpread$b({}, plugins));
-                  console.log(plugins);
                 }
               })["catch"](function (error) {
                 var _error$status14;

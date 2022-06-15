@@ -407,7 +407,6 @@ export const WebApps = props => {
                     });
                     plugins.active = json.data.active;
                     setPlugins({ ...plugins });
-                    console.log(plugins);
                 }
             })
             .catch(error => {
