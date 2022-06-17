@@ -11,5 +11,6 @@ module.exports = {
     },
     transformIgnorePatterns: [
       "node_modules/(?!react-markdown)"
-    ]
+    ],
+    testEnvironment: 'jsdom',
   }
