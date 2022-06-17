@@ -23761,7 +23761,7 @@ Banner.defaultProps = {
   darkColor: 'gray-700'
 };
 
-var _excluded$t = ["className", "innerRef", "active", "href", "onClick", "disabled"];
+var _excluded$t = ["className", "activeClasses", "innerRef", "active", "href", "onClick", "disabled"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23769,6 +23769,7 @@ function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { 
 
 var Link = function Link(props) {
   var className = props.className,
+      activeClasses = props.activeClasses,
       innerRef = props.innerRef,
       active = props.active,
       href = props.href,
@@ -23788,7 +23789,9 @@ var Link = function Link(props) {
 
   var classes = classNames(active, disabled, className);
   return to ? /*#__PURE__*/React__default["default"].createElement(reactRouterDom.NavLink, _extends__default["default"]({}, rest, {
-    className: classes,
+    className: function className(isActive) {
+      return classNames(classes, isActive ? activeClasses : '');
+    },
     onClick: click,
     ref: innerRef
   })) : /*#__PURE__*/React__default["default"].createElement("a", _extends__default["default"]({
@@ -23801,16 +23804,15 @@ var Link = function Link(props) {
   }));
 };
 
-Link.propTypes = _objectSpread$8(_objectSpread$8({
+Link.propTypes = _objectSpread$8({
   innerRef: propTypes.exports.oneOfType([propTypes.exports.object, propTypes.exports.func]),
   active: propTypes.exports.bool,
   href: propTypes.exports.string,
   onClick: propTypes.exports.func,
-  disabled: propTypes.exports.bool
-}, reactRouterDom.NavLink.propTypes), {}, {
+  disabled: propTypes.exports.bool,
   className: propTypes.exports.oneOfType([propTypes.exports.string, propTypes.exports.array, propTypes.exports.object]),
   to: propTypes.exports.oneOfType([propTypes.exports.object, propTypes.exports.string, propTypes.exports.func])
-});
+}, reactRouterDom.NavLink.propTypes);
 
 var _excluded$s = ["shade", "darkShade", "type", "size", "rounded", "square", "padding", "className", "children"];
 
@@ -23943,37 +23945,48 @@ var ConfirmDeleteButton = function ConfirmDeleteButton(props) {
     return isMountedRef.current;
   }, []);
   var timer = null;
-  React.useEffect(function () {
-    return function () {
-      /* istanbul ignore else */
-      if (timer) {
-        clearTimeout(timer);
-      }
-
-      void (isMountedRef.current = false);
-    };
-  }, []);
 
   var _useState = React.useState(false),
       _useState2 = _slicedToArray__default["default"](_useState, 2),
       waiting = _useState2[0],
       setWaiting = _useState2[1];
 
+  React.useEffect(function () {
+    return function () {
+      void (isMountedRef.current = false);
+      /* istanbul ignore else */
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, []);
+  React.useEffect(function () {
+    /* istanbul ignore else */
+    if (isMounted() && waiting) {
+      timer = setTimeout(function () {
+        /* istanbul ignore else */
+        if (isMounted() && waiting) {
+          setWaiting(false);
+        }
+      }, timeout);
+    }
+  }, [waiting]);
+
   var onConfirm = function onConfirm(e) {
     e.preventDefault();
     setWaiting(false);
     onClick();
+    /* istanbul ignore else */
+
+    if (timer) {
+      clearTimeout(timer);
+    }
   };
 
   var onQuery = function onQuery(e) {
     e.preventDefault();
     setWaiting(true);
-    timer = setTimeout(function () {
-      /* istanbul ignore else */
-      if (isMounted()) {
-        setWaiting(false);
-      }
-    }, timeout);
   };
 
   return waiting ? /*#__PURE__*/React__default["default"].createElement(Button, _extends__default["default"]({
@@ -26093,10 +26106,7 @@ var NavChild = function NavChild(props) {
   var navigation = useNavigation.navigation,
       toggleNavigation = useNavigation.toggleNavigation;
   var linkClasses = classNames('relative', 'flex', 'items-center', 'justify-start', 'mb-1', 'px-4', 'py-2.5', 'text-sm', 'font-medium', 'leading-5', 'rounded-md', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:bg-black/10 dark:hover:bg-white/10") : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10');
-  var routerLinkProps = rest.to && {
-    exact: true,
-    activeClassName: classNames(color ? "text-".concat(color, "-600 bg-black/10 dark:bg-white/10") : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10')
-  };
+  var activeClasses = classNames(color ? "text-".concat(color, "-600 bg-black/10 dark:bg-white/10") : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10');
 
   var click = function click() {
     /* istanbul ignore next */
@@ -26110,8 +26120,9 @@ var NavChild = function NavChild(props) {
     ref: innerRef
   }, /*#__PURE__*/React__default["default"].createElement(Link, _extends__default["default"]({
     className: linkClasses,
+    activeClasses: activeClasses,
     onClick: click
-  }, routerLinkProps, rest, {
+  }, rest, {
     tabIndex: isOpen === false ? -1 : 0
   }), icon && /*#__PURE__*/React__default["default"].createElement(Icon, {
     className: "h-5 w-5 mr-4",
@@ -26149,10 +26160,7 @@ var NavItem = function NavItem(props) {
   var navigation = useNavigation.navigation,
       toggleNavigation = useNavigation.toggleNavigation;
   var linkClasses = classNames('relative', 'flex', 'items-center', 'justify-start', 'mb-1', 'px-4', 'py-2.5', 'text-sm', 'font-medium', 'leading-5', 'rounded-md', 'transition-colors', 'duration-200', 'focus:outline-none', color ? "text-".concat(color, "-600 hover:bg-black/10 dark:hover:bg-white/10") : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10');
-  var routerLinkProps = rest.to && {
-    exact: rest.to.startsWith('/settings') ? false : true,
-    activeClassName: classNames(color ? "text-".concat(color, "-600 bg-black/10 dark:bg-white/10") : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10')
-  };
+  var activeClasses = classNames(color ? "text-".concat(color, "-600 bg-black/10 dark:bg-white/10") : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10');
 
   var click = function click() {
     /* istanbul ignore next */
@@ -26166,8 +26174,9 @@ var NavItem = function NavItem(props) {
     ref: innerRef
   }, /*#__PURE__*/React__default["default"].createElement(Link, _extends__default["default"]({
     className: linkClasses,
+    activeClasses: activeClasses,
     onClick: click
-  }, routerLinkProps, rest, {
+  }, rest, {
     tabIndex:
     /* istanbul ignore next */
     isOpen === false ? -1 : 0
@@ -44108,10 +44117,7 @@ var DrawerItem = function DrawerItem(_ref) {
   var drawer = useDrawer.drawer,
       toggleDrawer = useDrawer.toggleDrawer;
   var linkClasses = classNames('flex', 'items-center', 'justify-start', 'px-8', 'py-5', 'cursor-pointer', color ? "hover:bg-".concat(color, "-50 dark:hover:bg-").concat(color, "-900") : 'hover:bg-gray-100 dark:hover:bg-gray-800');
-  var routerLinkProps = props.to && {
-    exact: true,
-    activeClassName: classNames(color ? "bg-".concat(color, "-50 hover:bg-").concat(color, "-100 dark:bg-").concat(color, "-900 font-semibold") : "bg-".concat(theme, "-50 hover:bg-").concat(theme, "-100 dark:bg-").concat(theme, "-900 font-semibold"))
-  };
+  var activeClasses = classNames(color ? "bg-".concat(color, "-50 hover:bg-").concat(color, "-100 dark:bg-").concat(color, "-900 font-semibold") : "bg-".concat(theme, "-50 hover:bg-").concat(theme, "-100 dark:bg-").concat(theme, "-900 font-semibold"));
 
   var click = function click() {
     /* istanbul ignore next */
@@ -44122,8 +44128,9 @@ var DrawerItem = function DrawerItem(_ref) {
 
   return /*#__PURE__*/React__default["default"].createElement(Link, _extends__default["default"]({
     className: linkClasses,
+    activeClasses: activeClasses,
     onClick: click
-  }, routerLinkProps, props), icon && /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, props), icon && /*#__PURE__*/React__default["default"].createElement(Icon, {
     icon: icon,
     className: "h-5 w-5 mr-3"
   }), /*#__PURE__*/React__default["default"].createElement("div", null, children), badge && /*#__PURE__*/React__default["default"].createElement(Badge, _extends__default["default"]({
@@ -44254,19 +44261,19 @@ var AppError = /*#__PURE__*/function (_Component) {
       info: '',
       error: ''
     };
-
-    _this.props.history.listen(function (location, action) {
-      if (_this.state.hasError) {
-        _this.setState({
-          hasError: false
-        });
-      }
-    });
-
     return _this;
   }
 
   _createClass__default["default"](AppError, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.path !== this.props.path && this.state.hasError) {
+        this.setState({
+          hasError: false
+        });
+      }
+    }
+  }, {
     key: "componentDidCatch",
     value: function componentDidCatch(error, info) {
       this.setState({
@@ -44321,12 +44328,12 @@ var AppError = /*#__PURE__*/function (_Component) {
 }(React.Component);
 
 AppError.propTypes = {
-  theme: propTypes.exports.string
+  theme: propTypes.exports.string,
+  key: propTypes.exports.string
 };
 AppError.defaultProps = {
   theme: 'indigo'
 };
-var AppError$1 = reactRouterDom.withRouter(AppError);
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -44358,20 +44365,21 @@ var ComponentError = /*#__PURE__*/function (_Component) {
       error: ''
     };
 
-    _this.props.history.listen(function (location, action) {
-      if (_this.state.hasError) {
-        _this.setState({
-          hasError: false
-        });
-      }
-    });
-
     _this.reset.bind(_assertThisInitialized__default$1["default"](_this));
 
     return _this;
   }
 
   _createClass__default["default"](ComponentError, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.path !== this.props.path && this.state.hasError) {
+        this.setState({
+          hasError: false
+        });
+      }
+    }
+  }, {
     key: "componentDidCatch",
     value: function componentDidCatch(error, info) {
       this.setState({
@@ -44438,12 +44446,12 @@ var ComponentError = /*#__PURE__*/function (_Component) {
 }(React.Component);
 
 ComponentError.propTypes = {
-  theme: propTypes.exports.string
+  theme: propTypes.exports.string,
+  key: propTypes.exports.string
 };
 ComponentError.defaultProps = {
   theme: 'gray'
 };
-var ComponentError$1 = reactRouterDom.withRouter(ComponentError);
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
@@ -44710,8 +44718,8 @@ var returnLibrary = function returnLibrary() {
     WebApps: WebApps,
     WebAppsContext: WebAppsContext,
     withWebApps: withWebApps,
-    AppError: AppError$1,
-    ComponentError: ComponentError$1,
+    AppError: AppError,
+    ComponentError: ComponentError,
     ComponentErrorTrigger: ComponentErrorTrigger,
     CoreError: CoreError,
     NavigationError: NavigationError,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Button from '../Components/Button';
@@ -20,14 +19,15 @@ class ComponentError extends Component {
             info: '',
             error: '',
         };
-        this.props.history.listen((location, action) => {
-            if (this.state.hasError) {
-                this.setState({
-                    hasError: false,
-                });
-            }
-        });
         this.reset.bind(this);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.path !== this.props.path && this.state.hasError) {
+            this.setState({
+                hasError: false,
+            });
+        }
     }
 
     componentDidCatch(error, info) {
@@ -70,11 +70,12 @@ class ComponentError extends Component {
 }
 
 ComponentError.propTypes = {
-    theme: PropTypes.string
+    theme: PropTypes.string,
+    key: PropTypes.string,
 }
 
 ComponentError.defaultProps = {
     theme: 'gray'
 }
 
-export default withRouter(ComponentError);
+export default ComponentError;
