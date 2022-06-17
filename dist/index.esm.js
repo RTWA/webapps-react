@@ -23762,7 +23762,8 @@ var Link = function Link(props) {
 
   var classes = classNames(active, disabled, className);
   return to ? /*#__PURE__*/React.createElement(NavLink, _extends({}, rest, {
-    className: function className(isActive) {
+    className: function className(_ref) {
+      var isActive = _ref.isActive;
       return classNames(classes, isActive ? activeClasses : '');
     },
     onClick: click,

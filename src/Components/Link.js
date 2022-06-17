@@ -32,7 +32,7 @@ const Link = props => {
   return to ? (
     <NavLink
       {...rest}
-      className={isActive => classNames(
+      className={({ isActive }) => classNames(
         classes,
         isActive ? activeClasses : ''
       )}

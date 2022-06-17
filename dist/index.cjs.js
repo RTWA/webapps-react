@@ -23789,7 +23789,8 @@ var Link = function Link(props) {
 
   var classes = classNames(active, disabled, className);
   return to ? /*#__PURE__*/React__default["default"].createElement(reactRouterDom.NavLink, _extends__default["default"]({}, rest, {
-    className: function className(isActive) {
+    className: function className(_ref) {
+      var isActive = _ref.isActive;
       return classNames(classes, isActive ? activeClasses : '');
     },
     onClick: click,
