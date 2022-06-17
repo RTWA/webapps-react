@@ -23069,7 +23069,6 @@ function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if 
 
 function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var WebAppsUXContext = /*#__PURE__*/createContext({});
-var APIController = new AbortController();
 var WebAppsUX = function WebAppsUX(props) {
   var _useState = useState(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -23123,40 +23122,25 @@ var WebAppsUX = function WebAppsUX(props) {
   var isMounted = useCallback(function () {
     return isMountedRef.current;
   }, []);
+  var APIController = new AbortController();
   var timer = null;
-  useEffect( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-    return _regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            window.addEventListener('resize', calcInnerWidth);
-            _context.next = 3;
-            return loadUI();
+  useEffect(function () {
+    window.addEventListener('resize', calcInnerWidth);
+    loadUI();
+    loadNavigation();
+    return (
+      /* istanbul ignore next */
+      function () {
+        void (isMountedRef.current = false);
+        APIController.abort();
+        window.removeEventListener('resize', calcInnerWidth);
 
-          case 3:
-            _context.next = 5;
-            return loadNavigation();
-
-          case 5:
-            return _context.abrupt("return",
-            /* istanbul ignore next */
-            function () {
-              void (isMountedRef.current = false);
-              APIController.abort();
-              window.removeEventListener('resize', calcInnerWidth);
-
-              if (timer) {
-                clearTimeout(timer);
-              }
-            });
-
-          case 6:
-          case "end":
-            return _context.stop();
+        if (timer) {
+          clearTimeout(timer);
         }
       }
-    }, _callee);
-  })), []);
+    );
+  }, []);
   useEffect(function () {
     if (_theme) {
       timer = setTimeout(function () {
@@ -23166,12 +23150,12 @@ var WebAppsUX = function WebAppsUX(props) {
   }, [_theme]);
 
   var loadUI = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
-      return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+      return _regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              _context2.next = 2;
+              _context.next = 2;
               return client('/api/setting', {
                 key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode'])
               }, {
@@ -23193,24 +23177,24 @@ var WebAppsUX = function WebAppsUX(props) {
 
             case 2:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2);
+      }, _callee);
     }));
 
     return function loadUI() {
-      return _ref2.apply(this, arguments);
+      return _ref.apply(this, arguments);
     };
   }();
 
   var loadNavigation = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
-      return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
+      return _regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
-              _context3.next = 2;
+              _context2.next = 2;
               return client('/api/navigation', undefined, {
                 signal: APIController.signal
               }).then(function (json) {
@@ -23246,14 +23230,14 @@ var WebAppsUX = function WebAppsUX(props) {
 
             case 2:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
         }
-      }, _callee3);
+      }, _callee2);
     }));
 
     return function loadNavigation() {
-      return _ref3.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 

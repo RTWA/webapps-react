@@ -9,8 +9,6 @@ import AppLoader from '../../Components/AppLoader';
 
 export const WebAppsUXContext = createContext({});
 
-let APIController = new AbortController();
-
 export const WebAppsUX = props => {
     const [coreError, setCoreError] = useState(null);
     const [breakpoint, setBreakpoint] = useState(() => getDeviceConfig(window.innerWidth));
@@ -30,12 +28,14 @@ export const WebAppsUX = props => {
     const isMountedRef = useRef(true);
     const isMounted = useCallback(() => isMountedRef.current, []);
 
+    const APIController = new AbortController();
+
     let timer = null
 
-    useEffect(async () => {
+    useEffect(() => {
         window.addEventListener('resize', calcInnerWidth);
-        await loadUI();
-        await loadNavigation();
+        loadUI();
+        loadNavigation();
 
         return /* istanbul ignore next */ () => {
             void (isMountedRef.current = false);
