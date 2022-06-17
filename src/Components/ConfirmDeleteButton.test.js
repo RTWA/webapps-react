@@ -30,7 +30,7 @@ test('ConfirmDeleteButton Component Renders', async () => {
     await waitFor(() => expect(screen.getByText(/are you sure?/i)).toBeDefined());
 
     /* Wait for the timeout to clear */
-    await waitFor(() => expect(screen.getByText(/delete/i)).toBeDefined());
+    await waitFor(() => expect(screen.getByText(/delete/i)).toBeDefined(), { timeout: 5000 });
 });
 
 test('ConfirmDeleteButton Component actions onClick', async () => {
@@ -48,4 +48,6 @@ test('ConfirmDeleteButton Component actions onClick', async () => {
     await act(async () => {
         fireEvent.click(screen.getByText(/are you sure?/i));
     });
+    await waitFor(() => expect(screen.getByText(/yep/i)).toBeDefined());
+    expect(screen.getByText(/delete/i)).toBeDefined();
 });

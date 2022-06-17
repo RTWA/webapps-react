@@ -21,34 +21,43 @@ const ConfirmDeleteButton = props => {
 
     let timer = null;
 
+    const [waiting, setWaiting] = useState(false);
+
     useEffect(() => {
         return () => {
+            void (isMountedRef.current = false);
             /* istanbul ignore else */
             if (timer) {
                 clearTimeout(timer);
             }
-            void (isMountedRef.current = false);
         }
-    },[]);
+    }, []);
 
-    const [waiting, setWaiting] = useState(false);
+    useEffect(() => {
+        /* istanbul ignore else */
+        if (isMounted() && waiting) {
+            timer = setTimeout(() => {
+                /* istanbul ignore else */
+                if (isMounted() && waiting) {
+                    setWaiting(false);
+                }
+            }, timeout);
+        } 
+    }, [waiting]);
 
     const onConfirm = e => {
         e.preventDefault();
         setWaiting(false);
         onClick();
+        /* istanbul ignore else */
+        if (timer) {
+            clearTimeout(timer);
+        }
     }
 
     const onQuery = e => {
         e.preventDefault();
         setWaiting(true);
-
-        timer = setTimeout(() => {
-            /* istanbul ignore else */
-            if (isMounted()) {
-                setWaiting(false);
-            }
-        }, timeout)
     }
 
     return (
