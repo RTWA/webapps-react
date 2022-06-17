@@ -22,14 +22,11 @@ const DrawerItem = ({ badge, color, icon, children, ...props }) => {
             : 'hover:bg-gray-100 dark:hover:bg-gray-800',
     )
 
-    const routerLinkProps = props.to && {
-        exact: true,
-        activeClassName: classNames(
-            color
-                ? `bg-${color}-50 hover:bg-${color}-100 dark:bg-${color}-900 font-semibold`
-                : `bg-${theme}-50 hover:bg-${theme}-100 dark:bg-${theme}-900 font-semibold`
-        )
-    }
+    const activeClasses = classNames(
+        color
+            ? `bg-${color}-50 hover:bg-${color}-100 dark:bg-${color}-900 font-semibold`
+            : `bg-${theme}-50 hover:bg-${theme}-100 dark:bg-${theme}-900 font-semibold`
+    )
 
     const click = () => {
         /* istanbul ignore next */
@@ -41,8 +38,8 @@ const DrawerItem = ({ badge, color, icon, children, ...props }) => {
     return (
         <Link
             className={linkClasses}
+            activeClasses={activeClasses}
             onClick={click}
-            {...routerLinkProps}
             {...props}
         >
             {icon && <Icon icon={icon} className="h-5 w-5 mr-3" />}

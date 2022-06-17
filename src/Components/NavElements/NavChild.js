@@ -45,14 +45,11 @@ const NavChild = props => {
             : 'text-black/60 hover:text-black/100 dark:text-white/60 dark:hover:text-white/100 hover:bg-black/10 dark:hover:bg-white/10'
     )
 
-    const routerLinkProps = rest.to && {
-        exact: true,
-        activeClassName: classNames(
-            color
-                ? `text-${color}-600 bg-black/10 dark:bg-white/10`
-                : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10'
-        )
-    }
+    const activeClasses = classNames(
+        color
+            ? `text-${color}-600 bg-black/10 dark:bg-white/10`
+            : 'text-black/100 dark:text-white/100 bg-black/10 dark:bg-white/10'
+    )
 
     const click = () => {
         /* istanbul ignore next */
@@ -65,8 +62,8 @@ const NavChild = props => {
         <div className={className} ref={innerRef}>
             <Link
                 className={linkClasses}
+                activeClasses={activeClasses}
                 onClick={click}
-                {...routerLinkProps}
                 {...rest}
                 tabIndex={isOpen === false ? -1 : 0}
             >
