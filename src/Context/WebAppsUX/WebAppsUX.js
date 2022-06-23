@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { throttle } from 'lodash';
 
 import { client as APIClient } from '../../API';
@@ -6,12 +6,14 @@ import { getDeviceConfig } from '../../Helpers/getDeviceConfig';
 import { isWithinBreakpoint } from '../../Helpers/isWithinBreakpoint';
 import { ToastProvider } from '../../Toasts';
 import AppLoader from '../../Components/AppLoader';
+import AuthContext from '../Auth/AuthContext';
 
 export const WebAppsUXContext = createContext({});
 
 let APIController = new AbortController();
 
 export const WebAppsUX = props => {
+    const { authenticated } = useContext(AuthContext);
     const [coreError, setCoreError] = useState(null);
     const [breakpoint, setBreakpoint] = useState(() => getDeviceConfig(window.innerWidth));
     const [darkMode, setDarkMode] = useState();
@@ -35,7 +37,9 @@ export const WebAppsUX = props => {
     useEffect(async () => {
         window.addEventListener('resize', calcInnerWidth);
         await loadUI();
-        await loadNavigation();
+        if (authenticated) {
+            await loadNavigation();
+        }
 
         return /* istanbul ignore next */ () => {
             void (isMountedRef.current = false);
@@ -56,7 +60,7 @@ export const WebAppsUX = props => {
     }, [_theme]);
 
     const loadUI = async () => {
-        await APIClient('/api/setting', { key: JSON.stringify(['core.ui.theme', 'core.ui.dark_mode']) }, { signal: APIController.signal })
+        await APIClient('/api/theme', undefined, { signal: APIController.signal })
             .then(json => {
                 /* istanbul ignore else */
                 if (isMounted()) {

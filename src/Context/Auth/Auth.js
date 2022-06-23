@@ -20,6 +20,8 @@ const Auth = props => {
         /* istanbul ignore else */
         if (props.checkOnInit) {
             checkAuthentication();
+        } else {
+            setAuthenticated(false);
         }
 
         return () => {
@@ -28,7 +30,7 @@ const Auth = props => {
         }
     }, []);
 
-    const signIn = async (username, password, history) => {
+    const signIn = async (username, password) => {
         return new Promise(async (resolve, reject) => {
             try {
                 // Get CSRF Cookie
