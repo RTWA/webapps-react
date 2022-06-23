@@ -1,3 +1,8 @@
+## Versoin 2.1.1
+#### What's Fixed?
+- Using the `checkOnInit` prop for `<Auth />` Context now passes the loading screen
+- `<WebAppsUX />` Context will not redirect to login window
+
 ## Version 2.1.0
 #### What's Changed?
 - `<ConfirmDeleteModal />` is now `<AlertModal />` and accepts `type` of `error` (default), `success` or `info`
