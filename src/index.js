@@ -61,6 +61,12 @@ import NavigationError from './Errors/NavigationError';
 
 import CreateElement from './Helpers/CreateElement';
 
+import { 
+    Notifications,
+    NotificationsContext,
+    NotificationsProvider
+} from './Notifications';
+
 import {
     DefaultToastContainer,
     DefaultToast,
@@ -148,6 +154,10 @@ const returnLibrary = () => {
         NavigationError,
 
         CreateElement,
+
+        Notifications,
+        NotificationsContext,
+        NotificationsProvider,
 
         DefaultToastContainer,
         DefaultToast,
